@@ -18,4 +18,9 @@
 #import "Bee.h"
 
 @interface FirstBoard_iPhone : BeeUIBoard
+
+AS_SINGLETON( FirstBoard_iPhone )
+
+- (void)selectItem:(NSString *)item animated:(BOOL)animated;
+
 @end

@@ -17,10 +17,14 @@
 
 #import "FirstBoard_iPhone.h"
 #import "AppBoard_iPhone.h"
+#import "PhoneValidationController.h"
 
 #pragma mark -
 
 @implementation FirstBoard_iPhone
+
+SUPPORT_AUTOMATIC_LAYOUT( YES );
+SUPPORT_RESOURCE_LOADING( YES );
 
 + (void)load
 {
@@ -45,11 +49,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        self.view.hintString = @"This is the first board";
+        self.view.hintString = @"";
         self.view.backgroundColor = [UIColor whiteColor];
 
         [self showNavigationBarAnimated:NO];
-        [self setTitleString:@"First"];
+        [self setTitleString:@"我的旺财"];
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
@@ -102,4 +106,10 @@ ON_MESSAGE( message )
 	
 }
 
+ON_SIGNAL3( FirstBoard_iPhone, test, signal )
+{
+    PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+    
+    [self.stack pushViewController:phoneVal animated:YES];
+}
 @end

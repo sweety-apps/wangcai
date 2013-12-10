@@ -32,6 +32,7 @@
 #import "AppDelegate.h"
 #import "AppBoard_iPhone.h"
 #import "AppBoard_iPad.h"
+#import "LoginAndRegister.h"
 
 #pragma mark -
 
@@ -47,6 +48,9 @@
 	{
 		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
 	}
+    
+    // 登录
+    [[LoginAndRegister sharedInstance]login:nil];
 }
 
 - (void)unload
