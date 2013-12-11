@@ -30,9 +30,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Custom initialization        
         self.title = @"绑定手机";
-
+        self.viewInputNum = nil;
+        
         [self showFirstPage];
         
         self.textNum.delegate = self;
@@ -147,12 +148,12 @@
         newBtnViewFrame = self.nextNumBtn.frame;
         newBtnViewFrame.origin.y = keyboardTop + self.nextNumBtn.frame.origin.y;
     
-        [self.nextNumBtn setFrame:newBtnViewFrame];
+        self.nextNumBtn.frame = newBtnViewFrame;
     } else {
         newBtnViewFrame = self.btnCheckNum.frame;
         newBtnViewFrame.origin.y = keyboardTop + self.btnCheckNum.frame.origin.y;
         
-        [self.btnCheckNum setFrame:newBtnViewFrame];
+        self.btnCheckNum.frame = newBtnViewFrame;
     }
     
     [UIView commitAnimations];
@@ -297,13 +298,31 @@
 }
 
 - (void) showFirstPage {
+    [UIView beginAnimations:@"view curldown" context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.viewInputNum cache:YES];
+    
     self->curState = 0;
-    self.view = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] firstObject];
+    if ( self.viewInputNum == nil ) {
+        self.viewInputNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] firstObject];
+    }
+    
+    self.view = self.viewInputNum;
+    
+    [UIView setAnimationDelegate:self];
+    [UIView commitAnimations];
 }
 
 - (void) showSecondPage {
+    [UIView beginAnimations:@"view curlup" context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.viewInputNum cache:YES];
+    
     self->curState = 1;
     [self.view addSubview:self.viewCheckNum];
+    
+    [UIView setAnimationDelegate:self];
+    [UIView commitAnimations];
 }
 
 - (void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg  token:(NSString*) token {

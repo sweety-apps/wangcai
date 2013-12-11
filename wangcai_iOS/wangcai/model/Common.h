@@ -14,4 +14,5 @@
 + (NSString*) getIDFAAddress;
 + (NSString*) getMACAddress;
 + (NSString*) getTimestamp;
+
 @end
