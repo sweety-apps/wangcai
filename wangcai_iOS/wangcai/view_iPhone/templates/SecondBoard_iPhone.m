@@ -30,10 +30,16 @@
 - (void)load
 {
 	[super load];
+    
+    self->_extractController = [[ExtractMoneyController alloc]init:nil];
+    
+    UIView* view = self->_extractController.view;
+    [self.view addSubview:view];
 }
 
 - (void)unload
 {
+    [_extractController release];
 	[super unload];
 }
 
@@ -65,6 +71,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
+        [self hideNavigationBarAnimated:YES];
+        [self->_extractController setUIStack:self.stack];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {

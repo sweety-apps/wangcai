@@ -15,4 +15,9 @@
 #define HTTP_SEND_SMS_CODE @"http://wangcai.meme-da.com/send_sms_code.php"
 #define HTTP_LOGIN_AND_REGISTER @"http://wangcai.meme-da.com/register.php"
 #define HTTP_CHECK_SMS_CODE @"http://wangcai.meme-da.com/check_sms_code.php"
+
+
+
+#define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
+
 #endif

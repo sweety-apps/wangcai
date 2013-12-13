@@ -26,13 +26,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navHeader.png" id="X2v-wK-om7">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_Header.png" id="u6L-0T-Ks1">
                     <rect key="frame" x="0.0" y="20" width="320" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="hd_phoneValidation.png" id="Ufv-RN-Sm4">
-                    <rect key="frame" x="167" y="29" width="143" height="36"/>
-                    <autoresizingMask key="autoresizingMask"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_bkg.png" id="giI-SW-fja">
+                    <rect key="frame" x="0.0" y="74" width="320" height="98"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="lBC-tv-nwk">
                     <rect key="frame" x="0.0" y="32" width="46" height="30"/>
@@ -44,25 +44,25 @@
                         <action selector="clickBack:" destination="-2" eventType="touchUpInside" id="v34-dx-3z8"/>
                     </connections>
                 </button>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tab_bkg.png" id="JzO-OE-bJe">
-                    <rect key="frame" x="0.0" y="73" width="320" height="98"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="56" contentMode="center" image="get_award.png" highlightedImage="get_award_select.png" id="EaE-XP-d53">
+                <imageView userInteractionEnabled="NO" tag="56" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="get_award.png" highlightedImage="get_award_select.png" id="IJS-UF-RaO">
                     <rect key="frame" x="214" y="83" width="85" height="61"/>
-                    <autoresizingMask key="autoresizingMask"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="55" contentMode="center" image="input_smscode.png" highlightedImage="input_smscode_select.png" id="0gF-Ro-Qhj">
-                    <rect key="frame" x="117" y="97" width="99" height="47"/>
-                    <autoresizingMask key="autoresizingMask"/>
+                <imageView userInteractionEnabled="NO" tag="55" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input_smscode.png" highlightedImage="input_smscode_select.png" id="FGa-CZ-ZhG">
+                    <rect key="frame" x="116" y="97" width="99" height="47"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="54" contentMode="center" image="input_phone.png" highlightedImage="input_phone_select.png" id="gSt-d0-Bcg">
+                <imageView userInteractionEnabled="NO" tag="54" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input_phone.png" highlightedImage="input_phone_select.png" id="RJW-Pf-bya">
                     <rect key="frame" x="20" y="97" width="99" height="47"/>
-                    <autoresizingMask key="autoresizingMask"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hd_phoneValidation.png" id="7df-Av-riA">
+                    <rect key="frame" x="167" y="29" width="143" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
         <view contentMode="scaleToFill" id="rcj-Ju-r7j">
@@ -91,18 +91,11 @@
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NPo-Z9-CvX">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13876423412" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NPo-Z9-CvX">
                     <rect key="frame" x="109" y="41" width="88" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <attributedString key="attributedText">
-                        <fragment content="13876423412">
-                            <attributes>
-                                <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="12" name="STHeitiSC-Light"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="10" contentMode="center" image="sms_code_border.png" id="V17-wz-q6r">
@@ -212,18 +205,11 @@
                         <action selector="clickResend:" destination="-1" eventType="touchUpInside" id="1Ut-5v-ivq"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="54" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qVN-lk-7Q8">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="54" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120秒后重发" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qVN-lk-7Q8">
                     <rect key="frame" x="210" y="41" width="88" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <attributedString key="attributedText">
-                        <fragment content="120秒后重发">
-                            <attributes>
-                                <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="12" name="STHeitiSC-Light"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -326,9 +312,16 @@
     </objects>
     <resources>
         <image name="!.png" width="12" height="12"/>
+        <image name="!.png" width="12" height="12"/>
         <image name="back.png" width="11" height="22"/>
         <image name="body_bkg.png" width="320" height="415"/>
+        <image name="body_bkg.png" width="320" height="415"/>
+        <image name="body_bkg.png" width="320" height="415"/>
         <image name="bottom_arraw.png" width="20" height="10"/>
+        <image name="bottom_arraw.png" width="20" height="10"/>
+        <image name="bottom_arraw.png" width="20" height="10"/>
+        <image name="btn_normal.png" width="275" height="54"/>
+        <image name="btn_normal.png" width="275" height="54"/>
         <image name="btn_normal.png" width="275" height="54"/>
         <image name="get_award.png" width="85" height="61"/>
         <image name="get_award_select.png" width="85" height="61"/>
@@ -337,11 +330,15 @@
         <image name="input_phone_select.png" width="99" height="47"/>
         <image name="input_smscode.png" width="99" height="47"/>
         <image name="input_smscode_select.png" width="99" height="47"/>
-        <image name="navHeader.png" width="320" height="54"/>
+        <image name="nav_Header.png" width="320" height="54"/>
         <image name="phone_logo.png" width="11" height="19"/>
         <image name="phone_num_border.png" width="275" height="53"/>
         <image name="reg_success.png" width="166" height="31"/>
         <image name="resend_normal.png" width="66" height="27"/>
+        <image name="sms_code_border.png" width="45" height="43"/>
+        <image name="sms_code_border.png" width="45" height="43"/>
+        <image name="sms_code_border.png" width="45" height="43"/>
+        <image name="sms_code_border.png" width="45" height="43"/>
         <image name="sms_code_border.png" width="45" height="43"/>
         <image name="tab_bkg.png" width="320" height="98"/>
         <image name="warn_bkg.png" width="275" height="30"/>
