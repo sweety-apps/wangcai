@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define DEVICE_IS_IPHONE5 ([[UIScreen mainScreen] bounds].size.height == 568)
+
 @interface Common : NSObject
 
 + (void) openUrl:(NSString*) url;

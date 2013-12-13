@@ -326,16 +326,9 @@
     </objects>
     <resources>
         <image name="!.png" width="12" height="12"/>
-        <image name="!.png" width="12" height="12"/>
         <image name="back.png" width="11" height="22"/>
         <image name="body_bkg.png" width="320" height="415"/>
-        <image name="body_bkg.png" width="320" height="415"/>
-        <image name="body_bkg.png" width="320" height="415"/>
         <image name="bottom_arraw.png" width="20" height="10"/>
-        <image name="bottom_arraw.png" width="20" height="10"/>
-        <image name="bottom_arraw.png" width="20" height="10"/>
-        <image name="btn_normal.png" width="275" height="54"/>
-        <image name="btn_normal.png" width="275" height="54"/>
         <image name="btn_normal.png" width="275" height="54"/>
         <image name="get_award.png" width="85" height="61"/>
         <image name="get_award_select.png" width="85" height="61"/>
@@ -349,10 +342,6 @@
         <image name="phone_num_border.png" width="275" height="53"/>
         <image name="reg_success.png" width="166" height="31"/>
         <image name="resend_normal.png" width="66" height="27"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
         <image name="sms_code_border.png" width="45" height="43"/>
         <image name="tab_bkg.png" width="320" height="98"/>
         <image name="warn_bkg.png" width="275" height="30"/>

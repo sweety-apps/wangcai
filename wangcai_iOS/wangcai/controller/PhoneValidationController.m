@@ -8,6 +8,7 @@
 
 #import "PhoneValidationController.h"
 #import "MBHUDView.h"
+#import "Common.h"
 
 @interface PhoneValidationController ()
 @end
@@ -162,25 +163,31 @@
     
     if ( self->curState == 0 ) {
         self._viewInputNum.frame = newViewFrame;
-        self.nextNumBtn.frame = newBtnFrame;
+        
+        if ( !DEVICE_IS_IPHONE5 ) {
+            self.nextNumBtn.frame = newBtnFrame;
+        }
     } else if ( self->curState == 1 ) {
         self._viewCheckNum.frame = newViewFrame;
-        self.btnCheckNum.frame = newBtnFrame;
         
-        for (int i = 27; i <= 29; i ++ ) {
-            CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
-            rect.origin.y -= 44;
-            [self._viewCheckNum viewWithTag:i].frame = rect;
-        }
-        for (int i = 50; i <= 54; i ++ ) {
-            CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
-            rect.origin.y -= 20;
-            [self._viewCheckNum viewWithTag:i].frame = rect;
-        }
-        for (int i = 10; i <= 19; i ++ ) {
-            CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
-            rect.origin.y -= 36;
-            [self._viewCheckNum viewWithTag:i].frame = rect;
+        if ( !DEVICE_IS_IPHONE5 ) {
+            self.btnCheckNum.frame = newBtnFrame;
+        
+            for (int i = 27; i <= 29; i ++ ) {
+                CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
+                rect.origin.y -= 44;
+                [self._viewCheckNum viewWithTag:i].frame = rect;
+            }
+            for (int i = 50; i <= 54; i ++ ) {
+                CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
+                rect.origin.y -= 20;
+                [self._viewCheckNum viewWithTag:i].frame = rect;
+            }
+            for (int i = 10; i <= 19; i ++ ) {
+                CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
+                rect.origin.y -= 36;
+                [self._viewCheckNum viewWithTag:i].frame = rect;
+            }
         }
     }
     
@@ -207,7 +214,9 @@
         newBtnFrame.origin.y = 78 + self.nextNumBtn.frame.origin.y;
         
         self._viewInputNum.frame = newViewFrame;
-        self.nextNumBtn.frame = newBtnFrame;
+        if ( !DEVICE_IS_IPHONE5 ) {
+            self.nextNumBtn.frame = newBtnFrame;
+        }
         [self._imageArrow setHidden:NO];
     } else {
         newViewFrame = self._viewCheckNum.frame;
@@ -217,23 +226,26 @@
         newBtnFrame.origin.y = 78 + self.btnCheckNum.frame.origin.y;
         
         self._viewCheckNum.frame = newViewFrame;
-        self.btnCheckNum.frame = newBtnFrame;
-        [[self._viewCheckNum viewWithTag:31] setHidden:NO];
         
-        for (int i = 27; i <= 29; i ++ ) {
-            CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
-            rect.origin.y += 44;
-            [self._viewCheckNum viewWithTag:i].frame = rect;
-        }
-        for (int i = 50; i <= 54; i ++ ) {
-            CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
-            rect.origin.y += 20;
-            [self._viewCheckNum viewWithTag:i].frame = rect;
-        }
-        for (int i = 10; i <= 19; i ++ ) {
-            CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
-            rect.origin.y += 36;
-            [self._viewCheckNum viewWithTag:i].frame = rect;
+        if ( !DEVICE_IS_IPHONE5 ) {
+            self.btnCheckNum.frame = newBtnFrame;
+            [[self._viewCheckNum viewWithTag:31] setHidden:NO];
+        
+            for (int i = 27; i <= 29; i ++ ) {
+                CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
+                rect.origin.y += 44;
+                [self._viewCheckNum viewWithTag:i].frame = rect;
+            }
+            for (int i = 50; i <= 54; i ++ ) {
+                CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
+                rect.origin.y += 20;
+                [self._viewCheckNum viewWithTag:i].frame = rect;
+            }
+            for (int i = 10; i <= 19; i ++ ) {
+                CGRect rect = [self._viewCheckNum viewWithTag:i].frame;
+                rect.origin.y += 36;
+                [self._viewCheckNum viewWithTag:i].frame = rect;
+            }
         }
     }
     
