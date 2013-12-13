@@ -55,4 +55,11 @@
     pasteboard.string = self->_inviteCode;
 }
 
+-(void) ShareCompleted : (id) share State:(SSResponseState) state Err:(id<ICMErrorInfo>) error {
+}
+
+- (IBAction) clickShare:(id)sender {
+    ShareSocial* social = [[ShareSocial alloc]init:self];
+    [social share:@"" Context:@"送钱了。。。" Title:@"发钱" Url:@"http://www.qq.com" Description:@"快来抢"];
+}
 @end

@@ -10,47 +10,62 @@
 #import "PhoneValidation.h"
 
 @interface PhoneValidationController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate, PhoneValidationDelegate> {
-    IBOutlet UIView* viewInputNum;
-    IBOutlet UIView* viewCheckNum;
+    UIView* _mainView;
+    IBOutlet UIView* _viewInputNum;
+    IBOutlet UIView* _viewCheckNum;
+    IBOutlet UIView* _viewRegSuccess;
     
+    // TAB
+    UIImageView* _tab1;
+    UIImageView* _tab2;
+    UIImageView* _tab3;
+    
+    // 输入手机号
     IBOutlet UITextField* textNum;
     IBOutlet UIButton* nextNumBtn;
+    IBOutlet UIImageView* _imageArrow;
     
+    // 输入验证码
     IBOutlet UITextField* textCheck1;
     IBOutlet UITextField* textCheck2;
     IBOutlet UITextField* textCheck3;
     IBOutlet UITextField* textCheck4;
     IBOutlet UITextField* textCheck5;
-    IBOutlet UITextField* textCheck6;
-    
+    int        _nTime;
     IBOutlet UIButton* btnCheckNum;
+    UILabel* _phoneLabel;
+    
+    NSTimer*    _timer;
     
     NSString*  _phoneNum;
     NSString*  _token;
     
-    CGFloat    keyboardTop;
     int        alertState;
     int        curState;
-    CGRect     btnRect;
     
     PhoneValidation* phoneValidation;
 }
 
-@property (nonatomic, retain) UIView* viewInputNum;
-@property (nonatomic, retain) UITextField* textNum;
-@property (nonatomic, retain) UIButton* nextNumBtn;
-@property (nonatomic, retain) UIView* viewCheckNum;
-@property (nonatomic, retain) UITextField* textCheck1;
-@property (nonatomic, retain) UITextField* textCheck2;
-@property (nonatomic, retain) UITextField* textCheck3;
-@property (nonatomic, retain) UITextField* textCheck4;
-@property (nonatomic, retain) UITextField* textCheck5;
-@property (nonatomic, retain) UITextField* textCheck6;
-@property (nonatomic, retain) UIButton* btnCheckNum;
+@property (nonatomic, retain) IBOutlet UIView* _viewInputNum;
+@property (nonatomic, retain) IBOutlet UIView* _viewCheckNum;
+@property (nonatomic, retain) IBOutlet UIView* _viewRegSuccess;
+
+@property (nonatomic, retain) IBOutlet UITextField* textNum;
+@property (nonatomic, retain) IBOutlet UIButton* nextNumBtn;
+@property (nonatomic, retain) IBOutlet UITextField* textCheck1;
+@property (nonatomic, retain) IBOutlet UITextField* textCheck2;
+@property (nonatomic, retain) IBOutlet UITextField* textCheck3;
+@property (nonatomic, retain) IBOutlet UITextField* textCheck4;
+@property (nonatomic, retain) IBOutlet UITextField* textCheck5;
+
+@property (nonatomic, retain) IBOutlet UIButton* btnCheckNum;
+@property (nonatomic, retain) IBOutlet UIImageView* _imageArrow;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;   // return NO to not change text
 
 - (IBAction)clickNext:(id)sender;
+- (IBAction)clickBack:(id)sender;
+- (IBAction)clickResend:(id)sender;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 

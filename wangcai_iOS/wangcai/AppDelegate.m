@@ -34,6 +34,9 @@
 #import "AppBoard_iPad.h"
 #import "LoginAndRegister.h"
 #import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenApi/TencentOAuth.h>
 
 #pragma mark -
 
@@ -62,8 +65,26 @@
 	
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    //[super handleOpenURL:url];
+    return [ShareSDK handleOpenURL:url wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication
+                        annotation:annotation wxDelegate:self];
+}
+
 - (void) initShareSDK {
     [ShareSDK registerApp:@"ebe1cada416"];
+    
+    //添加微信
+    [ShareSDK connectWeChatWithAppId:@"wxf3b81b618060b1fc" wechatCls:[WXApi class]];
+    
+    //添加QQ应用
+    [ShareSDK connectQQWithQZoneAppKey:@"100574922"                 //该参数填入申请的QQ AppId
+                     qqApiInterfaceCls:[QQApiInterface class]
+                       tencentOAuthCls:[TencentOAuth class]];
     
     // TODO APPKEY都需要修改
     //添加新浪微博应用
