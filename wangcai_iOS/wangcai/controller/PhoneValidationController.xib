@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhoneValidationController">
             <connections>
-                <outlet property="_imageArrow" destination="STL-Qx-HGy" id="n4w-KO-qxr"/>
                 <outlet property="_viewCheckNum" destination="rcj-Ju-r7j" id="LYM-iO-cWj"/>
                 <outlet property="_viewInputNum" destination="j0d-JS-wL5" id="syu-wf-NEl"/>
                 <outlet property="_viewRegSuccess" destination="DBG-Zt-Qms" id="F48-mo-Bxf"/>
@@ -30,10 +29,6 @@
                     <rect key="frame" x="0.0" y="20" width="320" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_bkg.png" id="giI-SW-fja">
-                    <rect key="frame" x="0.0" y="74" width="320" height="98"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="lBC-tv-nwk">
                     <rect key="frame" x="0.0" y="32" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -44,22 +39,12 @@
                         <action selector="clickBack:" destination="-2" eventType="touchUpInside" id="v34-dx-3z8"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" tag="56" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="get_award.png" highlightedImage="get_award_select.png" id="IJS-UF-RaO">
-                    <rect key="frame" x="214" y="83" width="85" height="61"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绑定手机" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PsB-ds-GWa">
+                    <rect key="frame" x="182" y="30" width="118" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" tag="55" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input_smscode.png" highlightedImage="input_smscode_select.png" id="FGa-CZ-ZhG">
-                    <rect key="frame" x="116" y="97" width="99" height="47"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" tag="54" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input_phone.png" highlightedImage="input_phone_select.png" id="RJW-Pf-bya">
-                    <rect key="frame" x="20" y="97" width="99" height="47"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hd_phoneValidation.png" id="7df-Av-riA">
-                    <rect key="frame" x="167" y="29" width="143" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -70,56 +55,52 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="body_bkg.png" id="917-qG-KUw">
-                    <rect key="frame" x="0.0" y="11" width="320" height="415"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="31" contentMode="center" image="bottom_arraw.png" id="18P-pu-ocQ">
-                    <rect key="frame" x="150" y="2" width="20" height="10"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="50" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码已发送至" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zfj-5n-JSH">
-                    <rect key="frame" x="23" y="40" width="88" height="21"/>
+                    <rect key="frame" x="23" y="29" width="88" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="52" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="的手机" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8PM-8h-plV">
-                    <rect key="frame" x="185" y="40" width="88" height="21"/>
+                    <rect key="frame" x="185" y="29" width="88" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13876423412" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NPo-Z9-CvX">
-                    <rect key="frame" x="109" y="41" width="88" height="21"/>
+                    <rect key="frame" x="109" y="30" width="88" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                     <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="10" contentMode="center" image="sms_code_border.png" id="V17-wz-q6r">
-                    <rect key="frame" x="23" y="86" width="45" height="43"/>
+                    <rect key="frame" x="23" y="75" width="45" height="43"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="11" contentMode="center" image="sms_code_border.png" id="E8R-fi-CW4">
-                    <rect key="frame" x="80" y="86" width="45" height="43"/>
+                    <rect key="frame" x="80" y="75" width="45" height="43"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="12" contentMode="center" image="sms_code_border.png" id="8Vz-Op-Khi">
-                    <rect key="frame" x="138" y="86" width="45" height="43"/>
+                    <rect key="frame" x="138" y="75" width="45" height="43"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="13" contentMode="center" image="sms_code_border.png" id="sf7-Tf-T90">
-                    <rect key="frame" x="196" y="86" width="45" height="43"/>
+                    <rect key="frame" x="196" y="75" width="45" height="43"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="14" contentMode="center" image="sms_code_border.png" id="mJp-1b-KwO">
-                    <rect key="frame" x="253" y="86" width="45" height="43"/>
+                    <rect key="frame" x="253" y="75" width="45" height="43"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="26" id="qmX-LZ-igZ">
-                    <rect key="frame" x="25" y="93" width="40" height="30"/>
+                    <rect key="frame" x="25" y="82" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -128,7 +109,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="26" id="VjN-AE-Rgx">
-                    <rect key="frame" x="82" y="93" width="40" height="30"/>
+                    <rect key="frame" x="82" y="82" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -137,7 +118,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="26" id="da1-gB-XYx">
-                    <rect key="frame" x="140" y="93" width="40" height="30"/>
+                    <rect key="frame" x="140" y="82" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -146,7 +127,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="26" id="O9p-rP-0cL">
-                    <rect key="frame" x="198" y="93" width="40" height="30"/>
+                    <rect key="frame" x="198" y="82" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -155,7 +136,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="26" id="rNc-Nj-8Dl">
-                    <rect key="frame" x="255" y="93" width="40" height="30"/>
+                    <rect key="frame" x="255" y="82" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -164,22 +145,22 @@
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="27" contentMode="center" image="warn_bkg.png" id="2e9-Og-LdM">
-                    <rect key="frame" x="23" y="142" width="275" height="30"/>
+                    <rect key="frame" x="23" y="131" width="275" height="30"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="28" contentMode="center" image="!.png" id="KEn-fG-lFs">
-                    <rect key="frame" x="103" y="151" width="12" height="12"/>
+                    <rect key="frame" x="103" y="140" width="12" height="12"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="29" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入手机验证码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Se5-bH-GlL">
-                    <rect key="frame" x="123" y="146" width="172" height="21"/>
+                    <rect key="frame" x="123" y="135" width="172" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                     <color key="textColor" red="0.89413207116788318" green="0.36858462591240876" blue="0.04741674270072993" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CLZ-Rh-Zwn">
-                    <rect key="frame" x="23" y="213" width="275" height="54"/>
+                    <rect key="frame" x="23" y="202" width="275" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.80784313730000001" green="0.35686274509999999" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration">
@@ -197,7 +178,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="53" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KJA-hk-XRa">
-                    <rect key="frame" x="232" y="38" width="66" height="27"/>
+                    <rect key="frame" x="232" y="27" width="66" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="重新发送" backgroundImage="resend_normal.png"/>
@@ -206,7 +187,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="54" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120秒后重发" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qVN-lk-7Q8">
-                    <rect key="frame" x="210" y="41" width="88" height="21"/>
+                    <rect key="frame" x="210" y="30" width="88" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                     <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -220,11 +201,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="body_bkg.png" id="9hD-cG-H8O">
-                    <rect key="frame" x="0.0" y="11" width="320" height="415"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gEs-0V-m3Z">
-                    <rect key="frame" x="23" y="213" width="275" height="54"/>
+                    <rect key="frame" x="23" y="202" width="275" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.80784313725490198" green="0.35686274509803922" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration">
@@ -242,15 +223,15 @@
                     </connections>
                 </button>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone_num_border.png" id="4vl-2z-pIM">
-                    <rect key="frame" x="23" y="40" width="275" height="53"/>
+                    <rect key="frame" x="23" y="29" width="275" height="53"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone_logo.png" id="fNS-lT-b4q">
-                    <rect key="frame" x="39" y="57" width="11" height="19"/>
+                    <rect key="frame" x="39" y="46" width="11" height="19"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="28" id="Ob2-Xx-eW8">
-                    <rect key="frame" x="65" y="52" width="217" height="30"/>
+                    <rect key="frame" x="65" y="41" width="217" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -259,18 +240,14 @@
                     </connections>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仅限中国大陆手机用户" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="24P-9W-o4H">
-                    <rect key="frame" x="162" y="101" width="136" height="21"/>
+                    <rect key="frame" x="162" y="90" width="136" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="!.png" id="Pcr-dY-NwH">
-                    <rect key="frame" x="162" y="106" width="12" height="12"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="bottom_arraw.png" id="STL-Qx-HGy">
-                    <rect key="frame" x="56" y="2" width="20" height="10"/>
+                    <rect key="frame" x="162" y="95" width="12" height="12"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
             </subviews>
@@ -280,15 +257,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="body_bkg.png" id="bf7-Sz-0Dl">
-                    <rect key="frame" x="0.0" y="11" width="320" height="415"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="bottom_arraw.png" id="tcu-8H-ETU">
-                    <rect key="frame" x="246" y="2" width="20" height="10"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JRd-fi-2pZ">
-                    <rect key="frame" x="23" y="211" width="275" height="54"/>
+                    <rect key="frame" x="23" y="200" width="275" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.80784313730000001" green="0.35686274509999999" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration">
@@ -303,7 +276,7 @@
                     </state>
                 </button>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reg_success.png" id="5TP-7S-UCC">
-                    <rect key="frame" x="77" y="88" width="166" height="31"/>
+                    <rect key="frame" x="77" y="77" width="166" height="31"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
             </subviews>
@@ -312,35 +285,15 @@
     </objects>
     <resources>
         <image name="!.png" width="12" height="12"/>
-        <image name="!.png" width="12" height="12"/>
-        <image name="back.png" width="11" height="22"/>
+        <image name="back.png" width="12" height="22"/>
         <image name="body_bkg.png" width="320" height="415"/>
-        <image name="body_bkg.png" width="320" height="415"/>
-        <image name="body_bkg.png" width="320" height="415"/>
-        <image name="bottom_arraw.png" width="20" height="10"/>
-        <image name="bottom_arraw.png" width="20" height="10"/>
-        <image name="bottom_arraw.png" width="20" height="10"/>
         <image name="btn_normal.png" width="275" height="54"/>
-        <image name="btn_normal.png" width="275" height="54"/>
-        <image name="btn_normal.png" width="275" height="54"/>
-        <image name="get_award.png" width="85" height="61"/>
-        <image name="get_award_select.png" width="85" height="61"/>
-        <image name="hd_phoneValidation.png" width="143" height="36"/>
-        <image name="input_phone.png" width="99" height="47"/>
-        <image name="input_phone_select.png" width="99" height="47"/>
-        <image name="input_smscode.png" width="99" height="47"/>
-        <image name="input_smscode_select.png" width="99" height="47"/>
         <image name="nav_Header.png" width="320" height="54"/>
         <image name="phone_logo.png" width="11" height="19"/>
         <image name="phone_num_border.png" width="275" height="53"/>
         <image name="reg_success.png" width="166" height="31"/>
         <image name="resend_normal.png" width="66" height="27"/>
         <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="tab_bkg.png" width="320" height="98"/>
         <image name="warn_bkg.png" width="275" height="30"/>
     </resources>
 </document>

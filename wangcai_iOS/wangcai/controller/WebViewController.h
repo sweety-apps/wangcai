@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @protocol WebViewControllerDelegate <NSObject>
-
+// 绑定手机
 -(void) onAttachPhone;
-
+// 打款到支付宝
+-(void) onPayToAlipay:(float) fCoin;
+// 花费充值
+-(void) onPayToPhone:(float) fCoin;
 @end
 
 

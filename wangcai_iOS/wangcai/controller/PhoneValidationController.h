@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PhoneValidation.h"
+#import "TabController.h"
 
 @interface PhoneValidationController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate, PhoneValidationDelegate> {
     UIView* _mainView;
@@ -44,6 +45,7 @@
     int        curState;
     
     PhoneValidation* phoneValidation;
+    TabController* _tabController;
 }
 
 @property (nonatomic, retain) IBOutlet UIView* _viewInputNum;

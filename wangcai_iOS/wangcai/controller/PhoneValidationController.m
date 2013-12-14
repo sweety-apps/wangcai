@@ -44,6 +44,16 @@
         self->_tab3 = (UIImageView*)[self.view viewWithTag:56];
         self->_phoneLabel = (UILabel*)[self._viewCheckNum viewWithTag:51];
         
+        self->_tabController = [[TabController alloc] init:nil];
+        
+        UIView* viewTab = self->_tabController.view;
+        CGRect rectTab = viewTab.frame;
+        rectTab.origin.y = 74;
+        viewTab.frame = rectTab;
+        [self.view addSubview:viewTab];
+        
+        [self->_tabController setTabInfo:@"输入手机号" Tab2:@"输入验证码" Tab3:@"领取" Purse:1];
+        
         [self showFirstPage];
         
         self.textNum.delegate = self;
@@ -96,6 +106,7 @@
     self->_tab2 = nil;
     self->_tab3 = nil;
     self->_timer = nil;
+    self->_tabController = nil;
     [self->phoneValidation dealloc];
     [super dealloc];
 }
@@ -397,20 +408,10 @@
 }
 
 - (void) selectTab : (int)index {
-    if ( index == 1 ) {
-        [self->_tab1 setHighlighted:YES];
-        [self->_tab2 setHighlighted:NO];
-        [self->_tab3 setHighlighted:NO];
-    } else if ( index == 2 ) {
-        [self->_tab1 setHighlighted:NO];
-        [self->_tab2 setHighlighted:YES];
-        [self->_tab3 setHighlighted:NO];
+    [self->_tabController selectTab:index];
     
+    if ( index == 2 ) {
         self->_phoneLabel.text = self.textNum.text;
-    } else {
-        [self->_tab1 setHighlighted:NO];
-        [self->_tab2 setHighlighted:NO];
-        [self->_tab3 setHighlighted:YES];
     }
 }
 
@@ -419,7 +420,7 @@
     [self._viewInputNum setHidden:NO];
     [self._viewRegSuccess setHidden:NO];
     
-    self._viewInputNum.frame = CGRectMake( 0.0f, 160.0f, self->_viewInputNum.frame.size.width, self->_viewInputNum.frame.size.height);
+    self._viewInputNum.frame = CGRectMake( 0.0f, 173.0f, self->_viewInputNum.frame.size.width, self->_viewInputNum.frame.size.height);
 
     [UIView beginAnimations:@"view curldown" context:nil];
     [UIView setAnimationDuration:0.5];
@@ -438,7 +439,7 @@
     [self._viewInputNum setHidden:YES];
     [self._viewRegSuccess setHidden:NO];
     
-    self._viewRegSuccess.frame = CGRectMake( 0.0f, 160.0f, self->_viewRegSuccess.frame.size.width, self->_viewRegSuccess.frame.size.height);
+    self._viewRegSuccess.frame = CGRectMake( 0.0f, 173.0f, self->_viewRegSuccess.frame.size.width, self->_viewRegSuccess.frame.size.height);
     
     [UIView beginAnimations:@"view curldown" context:nil];
     [UIView setAnimationDuration:0.5];
@@ -457,7 +458,7 @@
     [self._viewInputNum setHidden:YES];
     [self._viewRegSuccess setHidden:YES];
     
-    self._viewCheckNum.frame = CGRectMake( 0.0f, 160.0f, self->_viewCheckNum.frame.size.width, self->_viewCheckNum.frame.size.height);
+    self._viewCheckNum.frame = CGRectMake( 0.0f, 173.0f, self->_viewCheckNum.frame.size.width, self->_viewCheckNum.frame.size.height);
     
     [UIView beginAnimations:@"view curlup" context:nil];
     [UIView setAnimationDuration:0.5];
@@ -513,6 +514,11 @@
     self->_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
     [[self._viewCheckNum viewWithTag:53] setHidden:YES];
     [[self._viewCheckNum viewWithTag:54] setHidden:NO];
+    
+    UILabel* label = (UILabel*)[self._viewCheckNum viewWithTag:54];
+    NSString *text = [[NSString alloc] initWithFormat:@"120秒后重发"];
+    label.text = text;
+    [text release];
 }
 
 - (void) endTime {

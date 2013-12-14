@@ -19,5 +19,5 @@
 
 
 #define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
-
+#define WEB_TASK          @"http://www.qq.com" /*@"http://wangcai.meme-da.com/web/task.php"*/
 #endif

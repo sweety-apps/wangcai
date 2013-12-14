@@ -61,15 +61,49 @@
     self->_delegate = delegate;
 }
 
+-(NSString*) getValueFromQuery:(NSString*) query Key:(NSString*) key {
+    NSString* findKey = [[NSString alloc]initWithFormat:@"%@=", key];
+    NSRange range = [query rangeOfString:findKey];
+    [findKey release];
+    if ( range.length != 0 ) {
+        NSString* tmp = [query substringFromIndex:(range.location + range.length)];
+        range = [tmp rangeOfString:@"&"];
+        if ( range.length != 0 ) {
+            tmp = [tmp substringToIndex:range.location];
+        }
+        
+        return [[tmp copy]autorelease];
+    }
+    
+    return nil;
+}
+
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSString* query = [request.mainDocumentURL query];
+    
     if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/query_attach_phone"] ) {
         // 查询手机是否已经绑定
-        [self notifyPhoneStatus:YES Phone:@"但是发生地发生地"];
+        [self notifyPhoneStatus:NO Phone:@"但是发生地发生地"];
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/attach_phone"] ) {
         // 点击了绑定手机
         if ( self->_delegate != nil ) {
             [self->_delegate onAttachPhone];
+        }
+        return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/pay_to_alipay"] ) {
+        NSString* value = [self getValueFromQuery:query Key:@"coin"];
+        float fCoin = [value floatValue];
+        if ( self->_delegate != nil ) {
+            [self->_delegate onPayToAlipay:fCoin];
+        }
+        
+        return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/pay_to_phone"] ) {
+        NSString* value = [self getValueFromQuery:query Key:@"coin"];
+        float fCoin = [value floatValue];
+        if ( self->_delegate != nil ) {
+            [self->_delegate onPayToPhone:fCoin];
         }
         
         return NO;

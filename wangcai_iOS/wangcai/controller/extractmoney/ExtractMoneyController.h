@@ -18,4 +18,6 @@
 - (void)setUIStack : (BeeUIStack*) beeStack;
 
 -(void) onAttachPhone;
+-(void) onPayToAlipay:(float) fCoin;
+-(void) onPayToPhone:(float) fCoin;
 @end

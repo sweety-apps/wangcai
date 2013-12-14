@@ -16,6 +16,9 @@
 //
 
 #import "Bee.h"
+#import "TaskController.h"
 
-@interface ThirdBoard_iPhone : BeeUIBoard
+@interface ThirdBoard_iPhone : BeeUIBoard {
+    TaskController* _taskController;
+}
 @end
