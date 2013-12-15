@@ -47,6 +47,8 @@
 	{
 		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
 	}
+    
+    [UIApplication sharedApplication].statusBarHidden = YES;
 }
 
 - (void)unload
