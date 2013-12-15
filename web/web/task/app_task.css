@@ -1,0 +1,15 @@
+html,body { font-size:12px; width:320px; height:100%; margin:0px; }
+
+.clear { clear:both; float:none }
+.hide  { display:none; visibility:hidden }
+
+.step { width:100%; height:90%; position:relative; padding:8px; }
+
+.step .appinfo .ico { float:left; width:80px; }
+.step .appinfo .info { float:right; width:230px }
+
+.step .install { position:absolute; bottom:20px; }
+
+
+.step .thumb { border:solid 1px #CCCCCC; text-align:center; vertical-align:middle; height:220px; display:table-cell; width:290px; padding:6px }
+.step .thumb img { max-height:100%; max-width:100%; }
