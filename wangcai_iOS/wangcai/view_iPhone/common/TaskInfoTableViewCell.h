@@ -10,4 +10,8 @@
 
 @interface TaskInfoTableViewCell : UITableViewCell
 
+@property (nonatomic,retain) IBOutlet UILabel* jintianhainengzhuanLabel;
+
+- (void)setJinTianHaiNengZhuanNumLabelText:(NSString*)text;
+
 @end

@@ -7,7 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Bee_UIImageView.h"
+
+typedef NSInteger CommonTaskTableViewCellShowType;
+
+#define CommonTaskTableViewCellShowTypeRedTextUp (0)
+#define CommonTaskTableViewCellShowTypeRedTextDown (1)
 
 @interface CommonTaskTableViewCell : UITableViewCell
+{
+    BeeUIImageView* _leftIcon;
+    UIImageView* _redBagIcon;
+    UIImageView* _backLabelImage;
+    UILabel* _redLabel;
+    UILabel* _blackLabel;
+    NSInteger _taskCellType;
+}
+
+@property (nonatomic,assign) NSInteger taskCellType;
+
+- (NSString*)getUpText;
+- (void)setUpText:(NSString*)text;
+
+- (NSString*)getDownText;
+- (void)setDownText:(NSString*)text;
+
+- (void)setRedBagIcon:(NSString*)imageName;
+- (void)setLeftIconUrl:(NSString*)imageUrl;
 
 @end

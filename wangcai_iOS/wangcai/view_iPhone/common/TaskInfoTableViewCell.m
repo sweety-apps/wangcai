@@ -10,6 +10,8 @@
 
 @implementation TaskInfoTableViewCell
 
+@synthesize jintianhainengzhuanLabel;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -24,6 +26,17 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)dealloc
+{
+    self.jintianhainengzhuanLabel = nil;
+    [super dealloc];
+}
+
+- (void)setJinTianHaiNengZhuanNumLabelText:(NSString*)text
+{
+    self.jintianhainengzhuanLabel.text = text;
 }
 
 @end
