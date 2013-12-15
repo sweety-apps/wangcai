@@ -53,6 +53,7 @@
 		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
 	}
     
+    [UIApplication sharedApplication].statusBarHidden = YES;
     // 初始化sharesdk
     [self initShareSDK];
     

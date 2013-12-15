@@ -55,6 +55,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
 	}
+    else if ( [signal is:BeeUIBoard.DID_APPEAR] )
+	{
+        self.view.backgroundColor = [UIColor colorWithRed:33.f/255.f green:33.f/255.f blue:33.f/255.f alpha:1.0];
+	}
 }
 
 - (void)selectItem:(NSString *)item animated:(BOOL)animated
