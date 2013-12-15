@@ -465,7 +465,15 @@ static void __uncaughtExceptionHandler( NSException * exception )
 		for ( unsigned int i = 0; i < classesCount; ++i )
 		{
 			Class classType = classes[i];
-
+            
+            // ios6下和sharesdk冲突
+            NSString* className = NSStringFromClass(classType);
+            if ( [className hasPrefix:@"SS"] || [className hasPrefix:@"AG"] ) {
+                continue;
+            }
+            
+            //
+            
 //			if ( NO == class_conformsToProtocol( classType, @protocol(NSObject)) )
 //				continue;
 			if ( NO == class_respondsToSelector( classType, @selector(doesNotRecognizeSelector:) ) )

@@ -16,6 +16,9 @@
 //
 
 #import "Bee.h"
+#import "ExtractMoneyController.h"
 
-@interface SecondBoard_iPhone : BeeUIBoard
+@interface SecondBoard_iPhone : BeeUIBoard {
+    ExtractMoneyController* _extractController;
+}
 @end
