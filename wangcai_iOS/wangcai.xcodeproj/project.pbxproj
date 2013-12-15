@@ -41,6 +41,88 @@
 		F3D834CE185C1E31003095D5 /* BaseTaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D834CC185C1E31003095D5 /* BaseTaskTableViewController.xib */; };
 		F3D834D1185C2172003095D5 /* TaskInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834D0185C2172003095D5 /* TaskInfoTableViewCell.m */; };
 		F3D9D526185D71AE00392C40 /* CommonTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D525185D71AE00392C40 /* CommonTaskTableViewCell.m */; };
+		F3D9D552185D876D00392C40 /* ExtractMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D529185D876D00392C40 /* ExtractMoneyController.m */; };
+		F3D9D553185D876D00392C40 /* ExtractMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D52A185D876D00392C40 /* ExtractMoneyController.xib */; };
+		F3D9D554185D876D00392C40 /* InviteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D52C185D876D00392C40 /* InviteController.m */; };
+		F3D9D555185D876D00392C40 /* InviteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D52D185D876D00392C40 /* InviteController.xib */; };
+		F3D9D556185D876D00392C40 /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D531185D876D00392C40 /* NSString+Trim.m */; };
+		F3D9D557185D876D00392C40 /* UIFont+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D533185D876D00392C40 /* UIFont+Alert.m */; };
+		F3D9D558185D876D00392C40 /* UIView+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D535185D876D00392C40 /* UIView+Animations.m */; };
+		F3D9D559185D876D00392C40 /* MBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D537185D876D00392C40 /* MBAlertView.m */; };
+		F3D9D55A185D876D00392C40 /* MBHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D539185D876D00392C40 /* MBHUDView.m */; };
+		F3D9D55B185D876D00392C40 /* MBAlertViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D53C185D876D00392C40 /* MBAlertViewItem.m */; };
+		F3D9D55C185D876D00392C40 /* MBAlertViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D541185D876D00392C40 /* MBAlertViewButton.m */; };
+		F3D9D55D185D876D00392C40 /* MBCheckMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D543185D876D00392C40 /* MBCheckMarkView.m */; };
+		F3D9D55E185D876D00392C40 /* MBSpinningCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D545185D876D00392C40 /* MBSpinningCircle.m */; };
+		F3D9D55F185D876D00392C40 /* PhoneValidationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D547185D876D00392C40 /* PhoneValidationController.m */; };
+		F3D9D560185D876D00392C40 /* PhoneValidationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D548185D876D00392C40 /* PhoneValidationController.xib */; };
+		F3D9D561185D876D00392C40 /* TabController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D54A185D876D00392C40 /* TabController.m */; };
+		F3D9D562185D876D00392C40 /* TabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D54B185D876D00392C40 /* TabController.xib */; };
+		F3D9D563185D876D00392C40 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D54D185D876D00392C40 /* TaskController.m */; };
+		F3D9D564185D876D00392C40 /* TaskController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D54E185D876D00392C40 /* TaskController.xib */; };
+		F3D9D565185D876D00392C40 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D550185D876D00392C40 /* WebViewController.m */; };
+		F3D9D566185D876D00392C40 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D551185D876D00392C40 /* WebViewController.xib */; };
+		F3D9D570185D878800392C40 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D568185D878800392C40 /* Common.m */; };
+		F3D9D571185D878800392C40 /* LoginAndRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D56B185D878800392C40 /* LoginAndRegister.m */; };
+		F3D9D572185D878800392C40 /* PhoneValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D56D185D878800392C40 /* PhoneValidation.m */; };
+		F3D9D573185D878800392C40 /* ShareSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D56F185D878800392C40 /* ShareSocial.m */; };
+		F3D9D5BE185D87C700392C40 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D576185D87C700392C40 /* CopyConnection.framework */; };
+		F3D9D5BF185D87C700392C40 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D577185D87C700392C40 /* DouBanConnection.framework */; };
+		F3D9D5C0185D87C700392C40 /* DropboxConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D578185D87C700392C40 /* DropboxConnection.framework */; };
+		F3D9D5C1185D87C700392C40 /* EverNoteConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D579185D87C700392C40 /* EverNoteConnection.framework */; };
+		F3D9D5C2185D87C700392C40 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D57A185D87C700392C40 /* FacebookConnection.framework */; };
+		F3D9D5C3185D87C700392C40 /* FlickrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D57B185D87C700392C40 /* FlickrConnection.framework */; };
+		F3D9D5C4185D87C700392C40 /* GooglePlusConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D57C185D87C700392C40 /* GooglePlusConnection.framework */; };
+		F3D9D5C5185D87C700392C40 /* InstagramConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D57D185D87C700392C40 /* InstagramConnection.framework */; };
+		F3D9D5C6185D87C700392C40 /* InstapaperConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D57E185D87C700392C40 /* InstapaperConnection.framework */; };
+		F3D9D5C7185D87C700392C40 /* InstapaperResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D57F185D87C700392C40 /* InstapaperResource.bundle */; };
+		F3D9D5C8185D87C800392C40 /* KaiXinConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D580185D87C700392C40 /* KaiXinConnection.framework */; };
+		F3D9D5C9185D87C800392C40 /* LinkedInConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D581185D87C700392C40 /* LinkedInConnection.framework */; };
+		F3D9D5CA185D87C800392C40 /* MailConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D582185D87C700392C40 /* MailConnection.framework */; };
+		F3D9D5CB185D87C800392C40 /* PinterestConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D583185D87C700392C40 /* PinterestConnection.framework */; };
+		F3D9D5CC185D87C800392C40 /* PocketConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D584185D87C700392C40 /* PocketConnection.framework */; };
+		F3D9D5CD185D87C800392C40 /* PrintConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D585185D87C700392C40 /* PrintConnection.framework */; };
+		F3D9D5CE185D87C800392C40 /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D586185D87C700392C40 /* QQConnection.framework */; };
+		F3D9D5CF185D87C800392C40 /* QZoneConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D587185D87C700392C40 /* QZoneConnection.framework */; };
+		F3D9D5D0185D87C800392C40 /* RenRenConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D588185D87C700392C40 /* RenRenConnection.framework */; };
+		F3D9D5D1185D87C800392C40 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D589185D87C700392C40 /* SinaWeiboConnection.framework */; };
+		F3D9D5D2185D87C800392C40 /* SMSConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D58A185D87C700392C40 /* SMSConnection.framework */; };
+		F3D9D5D3185D87C800392C40 /* SohuConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D58B185D87C700392C40 /* SohuConnection.framework */; };
+		F3D9D5D4185D87C800392C40 /* SohuWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D58C185D87C700392C40 /* SohuWeiboConnection.framework */; };
+		F3D9D5D5185D87C800392C40 /* T163WeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D58D185D87C700392C40 /* T163WeiboConnection.framework */; };
+		F3D9D5D6185D87C800392C40 /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D58E185D87C700392C40 /* TencentWeiboConnection.framework */; };
+		F3D9D5D7185D87C800392C40 /* TumblrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D58F185D87C700392C40 /* TumblrConnection.framework */; };
+		F3D9D5D8185D87C800392C40 /* TwitterConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D590185D87C700392C40 /* TwitterConnection.framework */; };
+		F3D9D5D9185D87C800392C40 /* VKontakteConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D591185D87C700392C40 /* VKontakteConnection.framework */; };
+		F3D9D5DA185D87C800392C40 /* WeChatConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D592185D87C700392C40 /* WeChatConnection.framework */; };
+		F3D9D5DB185D87C800392C40 /* YouDaoNoteConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D593185D87C700392C40 /* YouDaoNoteConnection.framework */; };
+		F3D9D5DC185D87C800392C40 /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D595185D87C700392C40 /* AGCommon.framework */; };
+		F3D9D5DD185D87C800392C40 /* ShareSDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D596185D87C700392C40 /* ShareSDKLocalizable.strings */; };
+		F3D9D5DE185D87C800392C40 /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D598185D87C700392C40 /* Resource.bundle */; };
+		F3D9D5DF185D87C800392C40 /* ShareSDKCoreService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D599185D87C700392C40 /* ShareSDKCoreService.framework */; };
+		F3D9D5E0185D87C800392C40 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D59D185D87C700392C40 /* GoogleOpenSource.framework */; };
+		F3D9D5E1185D87C800392C40 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D59E185D87C700392C40 /* GooglePlus.bundle */; };
+		F3D9D5E2185D87C800392C40 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D59F185D87C700392C40 /* GooglePlus.framework */; };
+		F3D9D5E3185D87C800392C40 /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5A1185D87C700392C40 /* Pinterest.framework */; };
+		F3D9D5E4185D87C800392C40 /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D5A3185D87C700392C40 /* PinterestSDKResources.bundle */; };
+		F3D9D5E5185D87C800392C40 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5A5185D87C700392C40 /* TencentOpenAPI.framework */; };
+		F3D9D5E6185D87C800392C40 /* RennSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5A7185D87C700392C40 /* RennSDK.framework */; };
+		F3D9D5E7185D87C800392C40 /* libSinaWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5A9185D87C700392C40 /* libSinaWeiboSDK.a */; };
+		F3D9D5E8185D87C800392C40 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5AC185D87C700392C40 /* libWeiboSDK.a */; };
+		F3D9D5E9185D87C800392C40 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5B0185D87C700392C40 /* libWeChatSDK.a */; };
+		F3D9D5EA185D87C900392C40 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5B3185D87C700392C40 /* ShareSDK.framework */; };
+		F3D9D5EB185D87C900392C40 /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D5B5185D87C700392C40 /* ShareSDKiPadDefaultShareViewUI.bundle */; };
+		F3D9D5EC185D87C900392C40 /* ShareSDKiPadDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5B6185D87C700392C40 /* ShareSDKiPadDefaultShareViewUI.framework */; };
+		F3D9D5ED185D87C900392C40 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D5B7185D87C700392C40 /* ShareSDKiPadSimpleShareViewUI.bundle */; };
+		F3D9D5EE185D87C900392C40 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5B8185D87C700392C40 /* ShareSDKiPadSimpleShareViewUI.framework */; };
+		F3D9D5EF185D87C900392C40 /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5B9185D87C700392C40 /* ShareSDKiPhoneAppRecommendShareViewUI.framework */; };
+		F3D9D5F0185D87C900392C40 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D5BA185D87C700392C40 /* ShareSDKiPhoneDefaultShareViewUI.bundle */; };
+		F3D9D5F1185D87C900392C40 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5BB185D87C700392C40 /* ShareSDKiPhoneDefaultShareViewUI.framework */; };
+		F3D9D5F2185D87C900392C40 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D5BC185D87C700392C40 /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
+		F3D9D5F3185D87C900392C40 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5BD185D87C700392C40 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
+		F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F4185D892600392C40 /* CoreTelephony.framework */; };
+		F3D9D5F7185D893D00392C40 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F6185D893D00392C40 /* MessageUI.framework */; };
+		F3D9D5F9185D89A600392C40 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F8185D89A600392C40 /* libicucore.dylib */; };
 		F3F186C018543A410098C852 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186BF18543A410098C852 /* UIKit.framework */; };
 		F3F186C218543A410098C852 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C118543A410098C852 /* Foundation.framework */; };
 		F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C318543A410098C852 /* CoreGraphics.framework */; };
@@ -361,6 +443,116 @@
 		F3D834D0185C2172003095D5 /* TaskInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskInfoTableViewCell.m; sourceTree = "<group>"; };
 		F3D9D524185D71AE00392C40 /* CommonTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTaskTableViewCell.h; sourceTree = "<group>"; };
 		F3D9D525185D71AE00392C40 /* CommonTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTaskTableViewCell.m; sourceTree = "<group>"; };
+		F3D9D528185D876D00392C40 /* ExtractMoneyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtractMoneyController.h; sourceTree = "<group>"; };
+		F3D9D529185D876D00392C40 /* ExtractMoneyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtractMoneyController.m; sourceTree = "<group>"; };
+		F3D9D52A185D876D00392C40 /* ExtractMoneyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtractMoneyController.xib; sourceTree = "<group>"; };
+		F3D9D52B185D876D00392C40 /* InviteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteController.h; sourceTree = "<group>"; };
+		F3D9D52C185D876D00392C40 /* InviteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteController.m; sourceTree = "<group>"; };
+		F3D9D52D185D876D00392C40 /* InviteController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteController.xib; sourceTree = "<group>"; };
+		F3D9D530185D876D00392C40 /* NSString+Trim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Trim.h"; sourceTree = "<group>"; };
+		F3D9D531185D876D00392C40 /* NSString+Trim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Trim.m"; sourceTree = "<group>"; };
+		F3D9D532185D876D00392C40 /* UIFont+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Alert.h"; sourceTree = "<group>"; };
+		F3D9D533185D876D00392C40 /* UIFont+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Alert.m"; sourceTree = "<group>"; };
+		F3D9D534185D876D00392C40 /* UIView+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animations.h"; sourceTree = "<group>"; };
+		F3D9D535185D876D00392C40 /* UIView+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animations.m"; sourceTree = "<group>"; };
+		F3D9D536185D876D00392C40 /* MBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAlertView.h; sourceTree = "<group>"; };
+		F3D9D537185D876D00392C40 /* MBAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAlertView.m; sourceTree = "<group>"; };
+		F3D9D538185D876D00392C40 /* MBHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBHUDView.h; sourceTree = "<group>"; };
+		F3D9D539185D876D00392C40 /* MBHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBHUDView.m; sourceTree = "<group>"; };
+		F3D9D53B185D876D00392C40 /* MBAlertViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAlertViewItem.h; sourceTree = "<group>"; };
+		F3D9D53C185D876D00392C40 /* MBAlertViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAlertViewItem.m; sourceTree = "<group>"; };
+		F3D9D53D185D876D00392C40 /* MBAlertViewSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAlertViewSubclass.h; sourceTree = "<group>"; };
+		F3D9D53F185D876D00392C40 /* AlertViewUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewUI.h; sourceTree = "<group>"; };
+		F3D9D540185D876D00392C40 /* MBAlertViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAlertViewButton.h; sourceTree = "<group>"; };
+		F3D9D541185D876D00392C40 /* MBAlertViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAlertViewButton.m; sourceTree = "<group>"; };
+		F3D9D542185D876D00392C40 /* MBCheckMarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCheckMarkView.h; sourceTree = "<group>"; };
+		F3D9D543185D876D00392C40 /* MBCheckMarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCheckMarkView.m; sourceTree = "<group>"; };
+		F3D9D544185D876D00392C40 /* MBSpinningCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBSpinningCircle.h; sourceTree = "<group>"; };
+		F3D9D545185D876D00392C40 /* MBSpinningCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBSpinningCircle.m; sourceTree = "<group>"; };
+		F3D9D546185D876D00392C40 /* PhoneValidationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneValidationController.h; sourceTree = "<group>"; };
+		F3D9D547185D876D00392C40 /* PhoneValidationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneValidationController.m; sourceTree = "<group>"; };
+		F3D9D548185D876D00392C40 /* PhoneValidationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneValidationController.xib; sourceTree = "<group>"; };
+		F3D9D549185D876D00392C40 /* TabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabController.h; sourceTree = "<group>"; };
+		F3D9D54A185D876D00392C40 /* TabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabController.m; sourceTree = "<group>"; };
+		F3D9D54B185D876D00392C40 /* TabController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabController.xib; sourceTree = "<group>"; };
+		F3D9D54C185D876D00392C40 /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskController.h; sourceTree = "<group>"; };
+		F3D9D54D185D876D00392C40 /* TaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskController.m; sourceTree = "<group>"; };
+		F3D9D54E185D876D00392C40 /* TaskController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskController.xib; sourceTree = "<group>"; };
+		F3D9D54F185D876D00392C40 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		F3D9D550185D876D00392C40 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		F3D9D551185D876D00392C40 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		F3D9D567185D878800392C40 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		F3D9D568185D878800392C40 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
+		F3D9D569185D878800392C40 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		F3D9D56A185D878800392C40 /* LoginAndRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginAndRegister.h; sourceTree = "<group>"; };
+		F3D9D56B185D878800392C40 /* LoginAndRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAndRegister.m; sourceTree = "<group>"; };
+		F3D9D56C185D878800392C40 /* PhoneValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneValidation.h; sourceTree = "<group>"; };
+		F3D9D56D185D878800392C40 /* PhoneValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneValidation.m; sourceTree = "<group>"; };
+		F3D9D56E185D878800392C40 /* ShareSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSocial.h; sourceTree = "<group>"; };
+		F3D9D56F185D878800392C40 /* ShareSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSocial.m; sourceTree = "<group>"; };
+		F3D9D576185D87C700392C40 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
+		F3D9D577185D87C700392C40 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
+		F3D9D578185D87C700392C40 /* DropboxConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxConnection.framework; sourceTree = "<group>"; };
+		F3D9D579185D87C700392C40 /* EverNoteConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EverNoteConnection.framework; sourceTree = "<group>"; };
+		F3D9D57A185D87C700392C40 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
+		F3D9D57B185D87C700392C40 /* FlickrConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FlickrConnection.framework; sourceTree = "<group>"; };
+		F3D9D57C185D87C700392C40 /* GooglePlusConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlusConnection.framework; sourceTree = "<group>"; };
+		F3D9D57D185D87C700392C40 /* InstagramConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InstagramConnection.framework; sourceTree = "<group>"; };
+		F3D9D57E185D87C700392C40 /* InstapaperConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InstapaperConnection.framework; sourceTree = "<group>"; };
+		F3D9D57F185D87C700392C40 /* InstapaperResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InstapaperResource.bundle; sourceTree = "<group>"; };
+		F3D9D580185D87C700392C40 /* KaiXinConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KaiXinConnection.framework; sourceTree = "<group>"; };
+		F3D9D581185D87C700392C40 /* LinkedInConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkedInConnection.framework; sourceTree = "<group>"; };
+		F3D9D582185D87C700392C40 /* MailConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnection.framework; sourceTree = "<group>"; };
+		F3D9D583185D87C700392C40 /* PinterestConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PinterestConnection.framework; sourceTree = "<group>"; };
+		F3D9D584185D87C700392C40 /* PocketConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PocketConnection.framework; sourceTree = "<group>"; };
+		F3D9D585185D87C700392C40 /* PrintConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PrintConnection.framework; sourceTree = "<group>"; };
+		F3D9D586185D87C700392C40 /* QQConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnection.framework; sourceTree = "<group>"; };
+		F3D9D587185D87C700392C40 /* QZoneConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QZoneConnection.framework; sourceTree = "<group>"; };
+		F3D9D588185D87C700392C40 /* RenRenConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RenRenConnection.framework; sourceTree = "<group>"; };
+		F3D9D589185D87C700392C40 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
+		F3D9D58A185D87C700392C40 /* SMSConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMSConnection.framework; sourceTree = "<group>"; };
+		F3D9D58B185D87C700392C40 /* SohuConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SohuConnection.framework; sourceTree = "<group>"; };
+		F3D9D58C185D87C700392C40 /* SohuWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SohuWeiboConnection.framework; sourceTree = "<group>"; };
+		F3D9D58D185D87C700392C40 /* T163WeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = T163WeiboConnection.framework; sourceTree = "<group>"; };
+		F3D9D58E185D87C700392C40 /* TencentWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentWeiboConnection.framework; sourceTree = "<group>"; };
+		F3D9D58F185D87C700392C40 /* TumblrConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TumblrConnection.framework; sourceTree = "<group>"; };
+		F3D9D590185D87C700392C40 /* TwitterConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterConnection.framework; sourceTree = "<group>"; };
+		F3D9D591185D87C700392C40 /* VKontakteConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VKontakteConnection.framework; sourceTree = "<group>"; };
+		F3D9D592185D87C700392C40 /* WeChatConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeChatConnection.framework; sourceTree = "<group>"; };
+		F3D9D593185D87C700392C40 /* YouDaoNoteConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YouDaoNoteConnection.framework; sourceTree = "<group>"; };
+		F3D9D595185D87C700392C40 /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
+		F3D9D597185D87C700392C40 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareSDKLocalizable.strings; sourceTree = "<group>"; };
+		F3D9D598185D87C700392C40 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
+		F3D9D599185D87C700392C40 /* ShareSDKCoreService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKCoreService.framework; sourceTree = "<group>"; };
+		F3D9D59A185D87C700392C40 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareSDKLocalizable.strings"; sourceTree = "<group>"; };
+		F3D9D59D185D87C700392C40 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
+		F3D9D59E185D87C700392C40 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
+		F3D9D59F185D87C700392C40 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
+		F3D9D5A1185D87C700392C40 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
+		F3D9D5A3185D87C700392C40 /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
+		F3D9D5A5185D87C700392C40 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		F3D9D5A7185D87C700392C40 /* RennSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RennSDK.framework; sourceTree = "<group>"; };
+		F3D9D5A9185D87C700392C40 /* libSinaWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSinaWeiboSDK.a; sourceTree = "<group>"; };
+		F3D9D5AA185D87C700392C40 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		F3D9D5AC185D87C700392C40 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		F3D9D5AD185D87C700392C40 /* WBApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBApi.h; sourceTree = "<group>"; };
+		F3D9D5AE185D87C700392C40 /* WBApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBApiObject.h; sourceTree = "<group>"; };
+		F3D9D5B0185D87C700392C40 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		F3D9D5B1185D87C700392C40 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		F3D9D5B2185D87C700392C40 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		F3D9D5B3185D87C700392C40 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
+		F3D9D5B5185D87C700392C40 /* ShareSDKiPadDefaultShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPadDefaultShareViewUI.bundle; sourceTree = "<group>"; };
+		F3D9D5B6185D87C700392C40 /* ShareSDKiPadDefaultShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPadDefaultShareViewUI.framework; sourceTree = "<group>"; };
+		F3D9D5B7185D87C700392C40 /* ShareSDKiPadSimpleShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPadSimpleShareViewUI.bundle; sourceTree = "<group>"; };
+		F3D9D5B8185D87C700392C40 /* ShareSDKiPadSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPadSimpleShareViewUI.framework; sourceTree = "<group>"; };
+		F3D9D5B9185D87C700392C40 /* ShareSDKiPhoneAppRecommendShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneAppRecommendShareViewUI.framework; sourceTree = "<group>"; };
+		F3D9D5BA185D87C700392C40 /* ShareSDKiPhoneDefaultShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPhoneDefaultShareViewUI.bundle; sourceTree = "<group>"; };
+		F3D9D5BB185D87C700392C40 /* ShareSDKiPhoneDefaultShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneDefaultShareViewUI.framework; sourceTree = "<group>"; };
+		F3D9D5BC185D87C700392C40 /* ShareSDKiPhoneSimpleShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPhoneSimpleShareViewUI.bundle; sourceTree = "<group>"; };
+		F3D9D5BD185D87C700392C40 /* ShareSDKiPhoneSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneSimpleShareViewUI.framework; sourceTree = "<group>"; };
+		F3D9D5F4185D892600392C40 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		F3D9D5F6185D893D00392C40 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F3D9D5F8185D89A600392C40 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		F3F186BC18543A410098C852 /* wangcai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wangcai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F186BF18543A410098C852 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F3F186C118543A410098C852 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -892,21 +1084,69 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D9D5F9185D89A600392C40 /* libicucore.dylib in Frameworks */,
+				F3D9D5F7185D893D00392C40 /* MessageUI.framework in Frameworks */,
+				F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */,
+				F3D9D5E9185D87C800392C40 /* libWeChatSDK.a in Frameworks */,
+				F3D9D5D1185D87C800392C40 /* SinaWeiboConnection.framework in Frameworks */,
+				F3D9D5E2185D87C800392C40 /* GooglePlus.framework in Frameworks */,
+				F3D9D5E3185D87C800392C40 /* Pinterest.framework in Frameworks */,
+				F3D9D5BF185D87C700392C40 /* DouBanConnection.framework in Frameworks */,
+				F3D9D5C6185D87C700392C40 /* InstapaperConnection.framework in Frameworks */,
+				F3D9D5D6185D87C800392C40 /* TencentWeiboConnection.framework in Frameworks */,
 				F3F186D218543A410098C852 /* QuartzCore.framework in Frameworks */,
+				F3D9D5F3185D87C900392C40 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
 				F3F186CA18543A410098C852 /* CoreMedia.framework in Frameworks */,
+				F3D9D5C8185D87C800392C40 /* KaiXinConnection.framework in Frameworks */,
+				F3D9D5E6185D87C800392C40 /* RennSDK.framework in Frameworks */,
+				F3D9D5F1185D87C900392C40 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
+				F3D9D5C3185D87C700392C40 /* FlickrConnection.framework in Frameworks */,
+				F3D9D5D5185D87C800392C40 /* T163WeiboConnection.framework in Frameworks */,
+				F3D9D5CE185D87C800392C40 /* QQConnection.framework in Frameworks */,
+				F3D9D5C0185D87C700392C40 /* DropboxConnection.framework in Frameworks */,
+				F3D9D5DA185D87C800392C40 /* WeChatConnection.framework in Frameworks */,
 				F3F186C618543A410098C852 /* AVFoundation.framework in Frameworks */,
 				F3F186D418543A410098C852 /* Security.framework in Frameworks */,
 				F3F186F918543A410098C852 /* libsqlite3.dylib in Frameworks */,
+				F3D9D5E8185D87C800392C40 /* libWeiboSDK.a in Frameworks */,
+				F3D9D5C9185D87C800392C40 /* LinkedInConnection.framework in Frameworks */,
+				F3D9D5CC185D87C800392C40 /* PocketConnection.framework in Frameworks */,
+				F3D9D5D0185D87C800392C40 /* RenRenConnection.framework in Frameworks */,
 				F3F186F718543A410098C852 /* libz.dylib in Frameworks */,
 				F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */,
+				F3D9D5DF185D87C800392C40 /* ShareSDKCoreService.framework in Frameworks */,
+				F3D9D5D2185D87C800392C40 /* SMSConnection.framework in Frameworks */,
+				F3D9D5DC185D87C800392C40 /* AGCommon.framework in Frameworks */,
+				F3D9D5D4185D87C800392C40 /* SohuWeiboConnection.framework in Frameworks */,
 				F3F186C018543A410098C852 /* UIKit.framework in Frameworks */,
+				F3D9D5EF185D87C900392C40 /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				F3F186CC18543A410098C852 /* CoreText.framework in Frameworks */,
+				F3D9D5E0185D87C800392C40 /* GoogleOpenSource.framework in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
+				F3D9D5D9185D87C800392C40 /* VKontakteConnection.framework in Frameworks */,
+				F3D9D5CF185D87C800392C40 /* QZoneConnection.framework in Frameworks */,
+				F3D9D5C4185D87C700392C40 /* GooglePlusConnection.framework in Frameworks */,
+				F3D9D5E7185D87C800392C40 /* libSinaWeiboSDK.a in Frameworks */,
 				F3F186D018543A410098C852 /* MobileCoreServices.framework in Frameworks */,
+				F3D9D5CA185D87C800392C40 /* MailConnection.framework in Frameworks */,
+				F3D9D5EC185D87C900392C40 /* ShareSDKiPadDefaultShareViewUI.framework in Frameworks */,
+				F3D9D5CB185D87C800392C40 /* PinterestConnection.framework in Frameworks */,
+				F3D9D5C5185D87C700392C40 /* InstagramConnection.framework in Frameworks */,
 				F3F186C818543A410098C852 /* CFNetwork.framework in Frameworks */,
+				F3D9D5C2185D87C700392C40 /* FacebookConnection.framework in Frameworks */,
+				F3D9D5CD185D87C800392C40 /* PrintConnection.framework in Frameworks */,
+				F3D9D5C1185D87C700392C40 /* EverNoteConnection.framework in Frameworks */,
+				F3D9D5D8185D87C800392C40 /* TwitterConnection.framework in Frameworks */,
+				F3D9D5D3185D87C800392C40 /* SohuConnection.framework in Frameworks */,
 				F3F186D618543A410098C852 /* SystemConfiguration.framework in Frameworks */,
+				F3D9D5EA185D87C900392C40 /* ShareSDK.framework in Frameworks */,
+				F3D9D5D7185D87C800392C40 /* TumblrConnection.framework in Frameworks */,
 				F3F186CE18543A410098C852 /* CoreVideo.framework in Frameworks */,
+				F3D9D5EE185D87C900392C40 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
+				F3D9D5DB185D87C800392C40 /* YouDaoNoteConnection.framework in Frameworks */,
 				F3F186FB18543A410098C852 /* libxml2.dylib in Frameworks */,
+				F3D9D5BE185D87C700392C40 /* CopyConnection.framework in Frameworks */,
+				F3D9D5E5185D87C800392C40 /* TencentOpenAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,9 +1244,233 @@
 			path = Num;
 			sourceTree = "<group>";
 		};
+		F3D9D527185D876D00392C40 /* extractmoney */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D528185D876D00392C40 /* ExtractMoneyController.h */,
+				F3D9D529185D876D00392C40 /* ExtractMoneyController.m */,
+			);
+			path = extractmoney;
+			sourceTree = "<group>";
+		};
+		F3D9D52E185D876D00392C40 /* MBAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D52F185D876D00392C40 /* Categories */,
+				F3D9D536185D876D00392C40 /* MBAlertView.h */,
+				F3D9D537185D876D00392C40 /* MBAlertView.m */,
+				F3D9D538185D876D00392C40 /* MBHUDView.h */,
+				F3D9D539185D876D00392C40 /* MBHUDView.m */,
+				F3D9D53A185D876D00392C40 /* Protected */,
+				F3D9D53E185D876D00392C40 /* Views */,
+			);
+			path = MBAlertView;
+			sourceTree = "<group>";
+		};
+		F3D9D52F185D876D00392C40 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D530185D876D00392C40 /* NSString+Trim.h */,
+				F3D9D531185D876D00392C40 /* NSString+Trim.m */,
+				F3D9D532185D876D00392C40 /* UIFont+Alert.h */,
+				F3D9D533185D876D00392C40 /* UIFont+Alert.m */,
+				F3D9D534185D876D00392C40 /* UIView+Animations.h */,
+				F3D9D535185D876D00392C40 /* UIView+Animations.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		F3D9D53A185D876D00392C40 /* Protected */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D53B185D876D00392C40 /* MBAlertViewItem.h */,
+				F3D9D53C185D876D00392C40 /* MBAlertViewItem.m */,
+				F3D9D53D185D876D00392C40 /* MBAlertViewSubclass.h */,
+			);
+			path = Protected;
+			sourceTree = "<group>";
+		};
+		F3D9D53E185D876D00392C40 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D53F185D876D00392C40 /* AlertViewUI.h */,
+				F3D9D540185D876D00392C40 /* MBAlertViewButton.h */,
+				F3D9D541185D876D00392C40 /* MBAlertViewButton.m */,
+				F3D9D542185D876D00392C40 /* MBCheckMarkView.h */,
+				F3D9D543185D876D00392C40 /* MBCheckMarkView.m */,
+				F3D9D544185D876D00392C40 /* MBSpinningCircle.h */,
+				F3D9D545185D876D00392C40 /* MBSpinningCircle.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F3D9D574185D87C700392C40 /* ShareSDK_v2.6.1 */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D575185D87C700392C40 /* Connection */,
+				F3D9D594185D87C700392C40 /* Core */,
+				F3D9D59B185D87C700392C40 /* Extend */,
+				F3D9D5B3185D87C700392C40 /* ShareSDK.framework */,
+				F3D9D5B4185D87C700392C40 /* UI */,
+			);
+			name = ShareSDK_v2.6.1;
+			path = wangcai/ShareSDK_v2.6.1;
+			sourceTree = "<group>";
+		};
+		F3D9D575185D87C700392C40 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D576185D87C700392C40 /* CopyConnection.framework */,
+				F3D9D577185D87C700392C40 /* DouBanConnection.framework */,
+				F3D9D578185D87C700392C40 /* DropboxConnection.framework */,
+				F3D9D579185D87C700392C40 /* EverNoteConnection.framework */,
+				F3D9D57A185D87C700392C40 /* FacebookConnection.framework */,
+				F3D9D57B185D87C700392C40 /* FlickrConnection.framework */,
+				F3D9D57C185D87C700392C40 /* GooglePlusConnection.framework */,
+				F3D9D57D185D87C700392C40 /* InstagramConnection.framework */,
+				F3D9D57E185D87C700392C40 /* InstapaperConnection.framework */,
+				F3D9D57F185D87C700392C40 /* InstapaperResource.bundle */,
+				F3D9D580185D87C700392C40 /* KaiXinConnection.framework */,
+				F3D9D581185D87C700392C40 /* LinkedInConnection.framework */,
+				F3D9D582185D87C700392C40 /* MailConnection.framework */,
+				F3D9D583185D87C700392C40 /* PinterestConnection.framework */,
+				F3D9D584185D87C700392C40 /* PocketConnection.framework */,
+				F3D9D585185D87C700392C40 /* PrintConnection.framework */,
+				F3D9D586185D87C700392C40 /* QQConnection.framework */,
+				F3D9D587185D87C700392C40 /* QZoneConnection.framework */,
+				F3D9D588185D87C700392C40 /* RenRenConnection.framework */,
+				F3D9D589185D87C700392C40 /* SinaWeiboConnection.framework */,
+				F3D9D58A185D87C700392C40 /* SMSConnection.framework */,
+				F3D9D58B185D87C700392C40 /* SohuConnection.framework */,
+				F3D9D58C185D87C700392C40 /* SohuWeiboConnection.framework */,
+				F3D9D58D185D87C700392C40 /* T163WeiboConnection.framework */,
+				F3D9D58E185D87C700392C40 /* TencentWeiboConnection.framework */,
+				F3D9D58F185D87C700392C40 /* TumblrConnection.framework */,
+				F3D9D590185D87C700392C40 /* TwitterConnection.framework */,
+				F3D9D591185D87C700392C40 /* VKontakteConnection.framework */,
+				F3D9D592185D87C700392C40 /* WeChatConnection.framework */,
+				F3D9D593185D87C700392C40 /* YouDaoNoteConnection.framework */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		F3D9D594185D87C700392C40 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D595185D87C700392C40 /* AGCommon.framework */,
+				F3D9D596185D87C700392C40 /* ShareSDKLocalizable.strings */,
+				F3D9D598185D87C700392C40 /* Resource.bundle */,
+				F3D9D599185D87C700392C40 /* ShareSDKCoreService.framework */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F3D9D59B185D87C700392C40 /* Extend */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D59C185D87C700392C40 /* GooglePlusSDK */,
+				F3D9D5A0185D87C700392C40 /* Pinterest.embeddedframework */,
+				F3D9D5A4185D87C700392C40 /* QQConnectSDK */,
+				F3D9D5A6185D87C700392C40 /* RenRenSDK */,
+				F3D9D5A8185D87C700392C40 /* SinaWeiboSDK */,
+				F3D9D5AB185D87C700392C40 /* TencentWeiboSDK */,
+				F3D9D5AF185D87C700392C40 /* WeChatSDK */,
+			);
+			path = Extend;
+			sourceTree = "<group>";
+		};
+		F3D9D59C185D87C700392C40 /* GooglePlusSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D59D185D87C700392C40 /* GoogleOpenSource.framework */,
+				F3D9D59E185D87C700392C40 /* GooglePlus.bundle */,
+				F3D9D59F185D87C700392C40 /* GooglePlus.framework */,
+			);
+			path = GooglePlusSDK;
+			sourceTree = "<group>";
+		};
+		F3D9D5A0185D87C700392C40 /* Pinterest.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D5A1185D87C700392C40 /* Pinterest.framework */,
+				F3D9D5A2185D87C700392C40 /* Resources */,
+			);
+			path = Pinterest.embeddedframework;
+			sourceTree = "<group>";
+		};
+		F3D9D5A2185D87C700392C40 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D5A3185D87C700392C40 /* PinterestSDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F3D9D5A4185D87C700392C40 /* QQConnectSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D5A5185D87C700392C40 /* TencentOpenAPI.framework */,
+			);
+			path = QQConnectSDK;
+			sourceTree = "<group>";
+		};
+		F3D9D5A6185D87C700392C40 /* RenRenSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D5A7185D87C700392C40 /* RennSDK.framework */,
+			);
+			path = RenRenSDK;
+			sourceTree = "<group>";
+		};
+		F3D9D5A8185D87C700392C40 /* SinaWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D5A9185D87C700392C40 /* libSinaWeiboSDK.a */,
+				F3D9D5AA185D87C700392C40 /* WeiboSDK.h */,
+			);
+			path = SinaWeiboSDK;
+			sourceTree = "<group>";
+		};
+		F3D9D5AB185D87C700392C40 /* TencentWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D5AC185D87C700392C40 /* libWeiboSDK.a */,
+				F3D9D5AD185D87C700392C40 /* WBApi.h */,
+				F3D9D5AE185D87C700392C40 /* WBApiObject.h */,
+			);
+			path = TencentWeiboSDK;
+			sourceTree = "<group>";
+		};
+		F3D9D5AF185D87C700392C40 /* WeChatSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D5B0185D87C700392C40 /* libWeChatSDK.a */,
+				F3D9D5B1185D87C700392C40 /* WXApi.h */,
+				F3D9D5B2185D87C700392C40 /* WXApiObject.h */,
+			);
+			path = WeChatSDK;
+			sourceTree = "<group>";
+		};
+		F3D9D5B4185D87C700392C40 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F3D9D5B5185D87C700392C40 /* ShareSDKiPadDefaultShareViewUI.bundle */,
+				F3D9D5B6185D87C700392C40 /* ShareSDKiPadDefaultShareViewUI.framework */,
+				F3D9D5B7185D87C700392C40 /* ShareSDKiPadSimpleShareViewUI.bundle */,
+				F3D9D5B8185D87C700392C40 /* ShareSDKiPadSimpleShareViewUI.framework */,
+				F3D9D5B9185D87C700392C40 /* ShareSDKiPhoneAppRecommendShareViewUI.framework */,
+				F3D9D5BA185D87C700392C40 /* ShareSDKiPhoneDefaultShareViewUI.bundle */,
+				F3D9D5BB185D87C700392C40 /* ShareSDKiPhoneDefaultShareViewUI.framework */,
+				F3D9D5BC185D87C700392C40 /* ShareSDKiPhoneSimpleShareViewUI.bundle */,
+				F3D9D5BD185D87C700392C40 /* ShareSDKiPhoneSimpleShareViewUI.framework */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		F3F186B318543A410098C852 = {
 			isa = PBXGroup;
 			children = (
+				F3D9D574185D87C700392C40 /* ShareSDK_v2.6.1 */,
 				F3F186D718543A410098C852 /* wangcai */,
 				F3F18A1118543A450098C852 /* wangcaiTests */,
 				F3F186BE18543A410098C852 /* Frameworks */,
@@ -1026,6 +1490,9 @@
 		F3F186BE18543A410098C852 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3D9D5F8185D89A600392C40 /* libicucore.dylib */,
+				F3D9D5F6185D893D00392C40 /* MessageUI.framework */,
+				F3D9D5F4185D892600392C40 /* CoreTelephony.framework */,
 				F3F186BF18543A410098C852 /* UIKit.framework */,
 				F3F186C118543A410098C852 /* Foundation.framework */,
 				F3F186C318543A410098C852 /* CoreGraphics.framework */,
@@ -1079,6 +1546,15 @@
 		F3F186ED18543A410098C852 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				F3D9D567185D878800392C40 /* Common.h */,
+				F3D9D568185D878800392C40 /* Common.m */,
+				F3D9D569185D878800392C40 /* Config.h */,
+				F3D9D56A185D878800392C40 /* LoginAndRegister.h */,
+				F3D9D56B185D878800392C40 /* LoginAndRegister.m */,
+				F3D9D56C185D878800392C40 /* PhoneValidation.h */,
+				F3D9D56D185D878800392C40 /* PhoneValidation.m */,
+				F3D9D56E185D878800392C40 /* ShareSocial.h */,
+				F3D9D56F185D878800392C40 /* ShareSocial.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1086,6 +1562,24 @@
 		F3F186EE18543A410098C852 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F3D9D527185D876D00392C40 /* extractmoney */,
+				F3D9D52A185D876D00392C40 /* ExtractMoneyController.xib */,
+				F3D9D52B185D876D00392C40 /* InviteController.h */,
+				F3D9D52C185D876D00392C40 /* InviteController.m */,
+				F3D9D52D185D876D00392C40 /* InviteController.xib */,
+				F3D9D52E185D876D00392C40 /* MBAlertView */,
+				F3D9D546185D876D00392C40 /* PhoneValidationController.h */,
+				F3D9D547185D876D00392C40 /* PhoneValidationController.m */,
+				F3D9D548185D876D00392C40 /* PhoneValidationController.xib */,
+				F3D9D549185D876D00392C40 /* TabController.h */,
+				F3D9D54A185D876D00392C40 /* TabController.m */,
+				F3D9D54B185D876D00392C40 /* TabController.xib */,
+				F3D9D54C185D876D00392C40 /* TaskController.h */,
+				F3D9D54D185D876D00392C40 /* TaskController.m */,
+				F3D9D54E185D876D00392C40 /* TaskController.xib */,
+				F3D9D54F185D876D00392C40 /* WebViewController.h */,
+				F3D9D550185D876D00392C40 /* WebViewController.m */,
+				F3D9D551185D876D00392C40 /* WebViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2146,6 +2640,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = F3F186B318543A410098C852;
 			productRefGroup = F3F186BD18543A410098C852 /* Products */;
@@ -2166,6 +2661,8 @@
 				F3F186E318543A410098C852 /* Default@2x.png in Resources */,
 				F3F18A45185763610098C852 /* testMain@2x.png in Resources */,
 				F3D834A2185B486A003095D5 /* bottom_bg@2x.png in Resources */,
+				F3D9D566185D876D00392C40 /* WebViewController.xib in Resources */,
+				F3D9D5DD185D87C800392C40 /* ShareSDKLocalizable.strings in Resources */,
 				F3F186E918543A410098C852 /* Icon@2x.png in Resources */,
 				F3D834A6185B486A003095D5 /* head_right_icon@2x.png in Resources */,
 				F3F189F918543A450098C852 /* MenuBoard_iPhone.xml in Resources */,
@@ -2174,11 +2671,18 @@
 				F3D834BC185B52E3003095D5 /* yue_0@2x.png in Resources */,
 				F3D834C5185B52E3003095D5 /* yue_9@2x.png in Resources */,
 				F3D8349B185B486A003095D5 /* package_icon_8@2x.png in Resources */,
+				F3D9D5ED185D87C900392C40 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
+				F3D9D5EB185D87C900392C40 /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
 				F3D834C3185B52E3003095D5 /* yue_7@2x.png in Resources */,
 				F3D834C6185B52E3003095D5 /* yue_dot@2x.png in Resources */,
+				F3D9D5DE185D87C800392C40 /* Resource.bundle in Resources */,
+				F3D9D5F2185D87C900392C40 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				F3D834CE185C1E31003095D5 /* BaseTaskTableViewController.xib in Resources */,
 				F3D834C4185B52E3003095D5 /* yue_8@2x.png in Resources */,
+				F3D9D555185D876D00392C40 /* InviteController.xib in Resources */,
+				F3D9D5E1185D87C800392C40 /* GooglePlus.bundle in Resources */,
 				F3D8349A185B486A003095D5 /* package_icon_3@2x.png in Resources */,
+				F3D9D562185D876D00392C40 /* TabController.xib in Resources */,
 				F3D834AB185B486A003095D5 /* zhanghuyue@2x.png in Resources */,
 				F3D834A7185B486A003095D5 /* main_page_head@2x.png in Resources */,
 				F3F186E518543A410098C852 /* Default-568h@2x.png in Resources */,
@@ -2189,18 +2693,24 @@
 				F3D8349C185B486A003095D5 /* package_icon_half@2x.png in Resources */,
 				F3D834C2185B52E3003095D5 /* yue_6@2x.png in Resources */,
 				F3D834A8185B486A003095D5 /* qiandao_button_icon@2x.png in Resources */,
+				F3D9D553185D876D00392C40 /* ExtractMoneyController.xib in Resources */,
 				F3F186E718543A410098C852 /* Icon.png in Resources */,
 				F3F186DC18543A410098C852 /* InfoPlist.strings in Resources */,
 				F3D834A9185B486A003095D5 /* recommand_task_icon@2x.png in Resources */,
 				F3D834BE185B52E3003095D5 /* yue_2@2x.png in Resources */,
 				F3D8349E185B486A003095D5 /* main_menu_title_text@2x.png in Resources */,
 				F3D8349D185B486A003095D5 /* package_icon_one@2x.png in Resources */,
+				F3D9D5C7185D87C700392C40 /* InstapaperResource.bundle in Resources */,
 				F3D834BD185B52E3003095D5 /* yue_1@2x.png in Resources */,
+				F3D9D5E4185D87C800392C40 /* PinterestSDKResources.bundle in Resources */,
 				F3F186E118543A410098C852 /* Default.png in Resources */,
+				F3D9D5F0185D87C900392C40 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				F3F18A26185472A90098C852 /* WCMainPageBoard_iPhone.xml in Resources */,
+				F3D9D560185D876D00392C40 /* PhoneValidationController.xib in Resources */,
 				F3D834A4185B486A003095D5 /* head_extension_part@2x.png in Resources */,
 				F3D834C1185B52E3003095D5 /* yue_5@2x.png in Resources */,
 				F3D834AA185B486A003095D5 /* tiquxianjin_icon@2x.png in Resources */,
+				F3D9D564185D876D00392C40 /* TaskController.xib in Resources */,
 				F3D834A5185B486A003095D5 /* head_left_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2221,6 +2731,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3F1889218543A430098C852 /* UIView+Metrics.m in Sources */,
+				F3D9D565185D876D00392C40 /* WebViewController.m in Sources */,
+				F3D9D55C185D876D00392C40 /* MBAlertViewButton.m in Sources */,
 				F3F188FA18543A440098C852 /* BeeUIQuery+CSS.m in Sources */,
 				F3F188E018543A430098C852 /* UILabel+BeeUILayout.m in Sources */,
 				F3F188A718543A430098C852 /* UIView+Wireframe.m in Sources */,
@@ -2237,6 +2749,7 @@
 				F3F1888218543A430098C852 /* Bee_UIWebView.m in Sources */,
 				F3F188A418543A430098C852 /* UIView+Visibility.m in Sources */,
 				F3F1871118543A410098C852 /* ASIHTTPRequest.m in Sources */,
+				F3D9D563185D876D00392C40 /* TaskController.m in Sources */,
 				F3F18A0518543A450098C852 /* ThirdBoard_iPhone.m in Sources */,
 				F3F1895B18543A440098C852 /* NSObject+BeeKeychain.mm in Sources */,
 				F3F188DD18543A430098C852 /* UIImageView+BeeUILayout.m in Sources */,
@@ -2249,6 +2762,7 @@
 				F3F1876818543A420098C852 /* Bee_MVC.mm in Sources */,
 				F3F187DA18543A420098C852 /* UIButton+BeeUIStyle.m in Sources */,
 				F3F1898218543A440098C852 /* NSDictionary+BeeActiveRecord.m in Sources */,
+				F3D9D55A185D876D00392C40 /* MBHUDView.m in Sources */,
 				F3F1895718543A440098C852 /* Bee_UserDefaults.mm in Sources */,
 				F3F1896E18543A440098C852 /* Bee_Database.mm in Sources */,
 				F3F1876C18543A420098C852 /* Bee_Controller.mm in Sources */,
@@ -2270,6 +2784,7 @@
 				F3F1890918543A440098C852 /* BeeUIQuery+Miscellaneous.m in Sources */,
 				F3F1880918543A430098C852 /* UIView+Transition.m in Sources */,
 				F3F1874B18543A420098C852 /* CXMLElement.m in Sources */,
+				F3D9D55E185D876D00392C40 /* MBSpinningCircle.m in Sources */,
 				F3F1883418543A430098C852 /* Bee_UIActivityIndicatorView.m in Sources */,
 				F3F1896218543A440098C852 /* Bee_ActiveBuilder.m in Sources */,
 				F3F1897518543A440098C852 /* Bee_MYSQL.m in Sources */,
@@ -2326,20 +2841,24 @@
 				F3F1897F18543A440098C852 /* NSArray+BeeActiveRecord.m in Sources */,
 				F3F1895E18543A440098C852 /* NSObject+BeeUserDefaults.mm in Sources */,
 				F3F188F718543A440098C852 /* BeeUIQuery+AJAX.m in Sources */,
+				F3D9D571185D878800392C40 /* LoginAndRegister.m in Sources */,
 				F3F188C118543A430098C852 /* UIView+BeeUICell.m in Sources */,
 				F3F1876018543A420098C852 /* CXMLNode_XPathExtensions.m in Sources */,
 				F3F1880618543A430098C852 /* UIView+Animation.m in Sources */,
+				F3D9D552185D876D00392C40 /* ExtractMoneyController.m in Sources */,
 				F3F1898F18543A440098C852 /* Bee_Foundation.mm in Sources */,
 				F3F1892718543A440098C852 /* Bee_UITemplateHTML.m in Sources */,
 				F3F187D318543A420098C852 /* Bee_UIStyle.m in Sources */,
 				F3F187CF18543A420098C852 /* UIViewController+UINavigationController.m in Sources */,
 				F3F187C018543A420098C852 /* UIViewController+LifeCycle.m in Sources */,
 				F3F189C318543A450098C852 /* NSObject+BeeNotification.mm in Sources */,
+				F3D9D559185D876D00392C40 /* MBAlertView.m in Sources */,
 				F3F1876F18543A420098C852 /* Bee_Message.mm in Sources */,
 				F3F1875D18543A420098C852 /* CXMLNode_PrivateExtensions.m in Sources */,
 				F3F1897C18543A440098C852 /* BeeDatabase+BeeActiveRecord.m in Sources */,
 				F3F187C318543A420098C852 /* UIViewController+Metrics.m in Sources */,
 				F3F188E918543A430098C852 /* UITextView+BeeUILayout.m in Sources */,
+				F3D9D558185D876D00392C40 /* UIView+Animations.m in Sources */,
 				F3F1893418543A440098C852 /* UIImage+Theme.m in Sources */,
 				F3F189B718543A440098C852 /* NSDate+BeeExtension.mm in Sources */,
 				F3F1890618543A440098C852 /* BeeUIQuery+Manipulation.m in Sources */,
@@ -2377,6 +2896,7 @@
 				F3F1877918543A420098C852 /* BeeMessage+BackwardCompatible.mm in Sources */,
 				F3F1899E18543A440098C852 /* Bee_Singleton.mm in Sources */,
 				F3F1878818543A420098C852 /* NSObject+BeeMessage.mm in Sources */,
+				F3D9D556185D876D00392C40 /* NSString+Trim.m in Sources */,
 				F3F186DE18543A410098C852 /* main.m in Sources */,
 				F3F187E918543A420098C852 /* UITextField+BeeUIStyle.m in Sources */,
 				F3F188D618543A430098C852 /* Bee_UILayout.m in Sources */,
@@ -2395,6 +2915,7 @@
 				F3F1872018543A420098C852 /* FMDatabase.m in Sources */,
 				F3F187C618543A420098C852 /* UIViewController+Title.m in Sources */,
 				F3F1886D18543A430098C852 /* Bee_UITabBar.m in Sources */,
+				F3D9D557185D876D00392C40 /* UIFont+Alert.m in Sources */,
 				F3F1890F18543A440098C852 /* BeeUIQuery+Transform.m in Sources */,
 				F3F188EC18543A440098C852 /* UIView+BeeUILayout.m in Sources */,
 				F3F1899518543A440098C852 /* Bee_Performance.mm in Sources */,
@@ -2402,14 +2923,17 @@
 				F3F1892A18543A440098C852 /* Bee_UITemplateXML.m in Sources */,
 				F3F1870818543A410098C852 /* ASIDataDecompressor.m in Sources */,
 				F3F1886418543A430098C852 /* Bee_UISegmentedControl.m in Sources */,
+				F3D9D570185D878800392C40 /* Common.m in Sources */,
 				F3F1890318543A440098C852 /* BeeUIQuery+Events.m in Sources */,
 				F3F1893118543A440098C852 /* UIFont+Theme.m in Sources */,
 				F3F189B418543A440098C852 /* NSData+BeeExtension.mm in Sources */,
+				F3D9D554185D876D00392C40 /* InviteController.m in Sources */,
 				F3F188CC18543A430098C852 /* BeeUISignal+SourceView.m in Sources */,
 				F3F187FC18543A420098C852 /* Bee_UIAnimationFade.m in Sources */,
 				F3F1885E18543A430098C852 /* Bee_UIScrollView.m in Sources */,
 				F3F189FC18543A450098C852 /* AppBoard_iPad.m in Sources */,
 				F3F1878518543A420098C852 /* BeeMessage+BeeXML.mm in Sources */,
+				F3D9D55B185D876D00392C40 /* MBAlertViewItem.m in Sources */,
 				F3F189C018543A450098C852 /* NSObject+BeeJSON.mm in Sources */,
 				F3F187EC18543A420098C852 /* UITextView+BeeUIStyle.m in Sources */,
 				F3D834CD185C1E31003095D5 /* BaseTaskTableViewController.m in Sources */,
@@ -2417,6 +2941,7 @@
 				F3F1881018543A430098C852 /* Bee_UIDataBinding.m in Sources */,
 				F3F1879718543A420098C852 /* Bee_UIMetrics.m in Sources */,
 				F3F1873818543A420098C852 /* Reachability.m in Sources */,
+				F3D9D561185D876D00392C40 /* TabController.m in Sources */,
 				F3F189DC18543A450098C852 /* Bee_HTTPMockServer.m in Sources */,
 				F3F1894818543A440098C852 /* Bee_Cache.mm in Sources */,
 				F3D834D1185C2172003095D5 /* TaskInfoTableViewCell.m in Sources */,
@@ -2433,8 +2958,10 @@
 				F3F189A118543A440098C852 /* Bee_SystemInfo.mm in Sources */,
 				F3F188EF18543A440098C852 /* UIViewController+BeeUILayout.m in Sources */,
 				F3F188AB18543A430098C852 /* Bee_UICameraView.m in Sources */,
+				F3D9D55F185D876D00392C40 /* PhoneValidationController.m in Sources */,
 				F3F189D918543A450098C852 /* Bee_HTTPConfig.m in Sources */,
 				F3F189FF18543A450098C852 /* FirstBoard_iPhone.m in Sources */,
+				F3D9D572185D878800392C40 /* PhoneValidation.m in Sources */,
 				F3F1875A18543A420098C852 /* CXMLNode_CreationExtensions.m in Sources */,
 				F3F1894E18543A440098C852 /* Bee_FileCache.mm in Sources */,
 				F3F1885B18543A430098C852 /* Bee_UIProgressView.m in Sources */,
@@ -2463,7 +2990,9 @@
 				F3F1882518543A430098C852 /* UINavigationBar+BeeExtension.m in Sources */,
 				F3D834AF185B517B003095D5 /* CommonYuENumView.m in Sources */,
 				F3F188DA18543A430098C852 /* UIButton+BeeUILayout.m in Sources */,
+				F3D9D573185D878800392C40 /* ShareSocial.m in Sources */,
 				F3F1875718543A420098C852 /* CXMLNode.m in Sources */,
+				F3D9D55D185D876D00392C40 /* MBCheckMarkView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2486,6 +3015,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F3D9D596185D87C700392C40 /* ShareSDKLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3D9D597185D87C700392C40 /* en */,
+				F3D9D59A185D87C700392C40 /* zh-Hans */,
+			);
+			name = ShareSDKLocalizable.strings;
+			sourceTree = "<group>";
+		};
 		F3F186DA18543A410098C852 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2583,11 +3121,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/Pinterest.embeddedframework,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/QQConnectSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "wangcai/wangcai-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2597,11 +3152,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/Pinterest.embeddedframework,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/QQConnectSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "wangcai/wangcai-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
