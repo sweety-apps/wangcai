@@ -77,13 +77,13 @@
         UIImageView* imageView = (UIImageView*)[self.view viewWithTag:33];
         UIImage* image = nil;
         if ( purse == 1 ) {
-            image = [UIImage imageNamed:@"1.png"];
+            image = [UIImage imageNamed:@"package_icon_one@2x.png"];
         } else if ( purse == 3 ) {
-            image = [UIImage imageNamed:@"3.png"];
+            image = [UIImage imageNamed:@"package_icon_3@2x.png"];
         } else if ( purse == 8 ) {
-            image = [UIImage imageNamed:@"8.png"];
+            image = [UIImage imageNamed:@"package_icon_8@2x.png"];
         } else if ( purse == 0.5 ) {
-            image = [UIImage imageNamed:@"0.5.png"];
+            image = [UIImage imageNamed:@"package_icon_half@2x.png"];
         }
         
         if ( image != nil ) {
