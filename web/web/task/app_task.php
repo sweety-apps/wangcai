@@ -28,7 +28,7 @@ var step = <?php echo $appInfo['curStep']; ?>;
 </head>
 
 <body>
-<div id="step1" class="step">
+<div id="step1" class="step hide">
 	<div class="appinfo">
 		<div class="ico">
 			<img width="78px" height="78px" src="<?php echo $appInfo['ico']; ?>" />
@@ -44,14 +44,14 @@ var step = <?php echo $appInfo['curStep']; ?>;
 	</div>
 	<div class="install">
 		<a href="<?php echo $appInfo['installUrl']; ?>" target="_blank">
-			<img src="../img/btnBkg.png" width="250px" />
+			<img src="../img/btnBkg.png" />
 		</a>
 	</div>
 </div>
 <?php
 if ( $appInfo['stepNum'] == 3 ) {
 ?>
-<div class="step" id="step2">
+<div class="step hide" id="step2">
 	<div class="appinfo">
 		<div class="ico">
 			<img width="78px" height="78px" src="<?php echo $appInfo['ico']; ?>" />
@@ -71,10 +71,13 @@ if ( $appInfo['stepNum'] == 3 ) {
 }
 ?>
 
-<div class="step" id="step<?php echo ($appInfo['stepNum']==3 ? 3 : 2); ?>">
+<div class="step hide" id="step<?php echo ($appInfo['stepNum']==3 ? 3 : 2); ?>">
+	<div class="suc">
+		<img src="../img/success.png" width="291px" />
+	</div>
 	<div class="install">
-		<a href="<?php echo $appInfo['installUrl']; ?>" target="_blank">
-			<img src="../img/btnBkg.png" width="250px" />
+		<a href="" target="_blank">
+			<img src="../img/award1.png" width="291px" />
 		</a>
 	</div>
 </div>
