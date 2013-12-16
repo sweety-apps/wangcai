@@ -24,6 +24,8 @@ static LoginAndRegister* _sharedInstance;
     [super init];
     self->idArray = [[NSMutableArray alloc]init];
     self->loginStatus = Login_Error;
+    self->_phoneNum = nil;
+    
     return self;
 }
 
@@ -72,12 +74,14 @@ static LoginAndRegister* _sharedInstance;
     self->loginStatus = Login_In;
     self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
     if ( phoneNum != nil ) {
-        self.PARAM(@"Phone", phoneNum);
+        // 应该在登录成功后设置
+        self->_phoneNum = [[phoneNum copy] autorelease];
+        self.PARAM(@"phone", phoneNum);
     }
     
-    self.PARAM(@"Idfa", [Common getIDFAAddress]);
-    self.PARAM(@"Mac", [Common getMACAddress]);
-    self.PARAM(@"Timestamp", [Common getTimestamp]);
+    self.PARAM(@"idfa", [Common getIDFAAddress]);
+    self.PARAM(@"mac", [Common getMACAddress]);
+    self.PARAM(@"timestamp", [Common getTimestamp]);
     
     self.TIMEOUT(10);
 }
@@ -97,6 +101,13 @@ static LoginAndRegister* _sharedInstance;
         // 判断返回数据是
         [self setLoginStatus:Login_Success];
     }
+}
+
+-(NSString*) getPhoneNum {
+    if ( self->_phoneNum == nil ) {
+        return nil;
+    }
+    return [[self->_phoneNum copy] autorelease];
 }
 
 @end

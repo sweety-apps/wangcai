@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6438ED7185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */; };
+		A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */; };
+		A6438EDC185F2381001A84AD /* UserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438EDB185F2381001A84AD /* UserInfoController.m */; };
+		A6438EDE185F239E001A84AD /* UserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438EDD185F239E001A84AD /* UserInfoController.xib */; };
 		A68B5595185EB61A0096C7AC /* !@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68B5573185EB61A0096C7AC /* !@2x.png */; };
 		A68B5596185EB61A0096C7AC /* arrow-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68B5574185EB61A0096C7AC /* arrow-down@2x.png */; };
 		A68B5597185EB61A0096C7AC /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68B5575185EB61A0096C7AC /* back@2x.png */; };
@@ -153,7 +157,6 @@
 		F3D9D570185D878800392C40 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D568185D878800392C40 /* Common.m */; };
 		F3D9D571185D878800392C40 /* LoginAndRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D56B185D878800392C40 /* LoginAndRegister.m */; };
 		F3D9D572185D878800392C40 /* PhoneValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D56D185D878800392C40 /* PhoneValidation.m */; };
-		F3D9D573185D878800392C40 /* ShareSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D56F185D878800392C40 /* ShareSocial.m */; };
 		F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F4185D892600392C40 /* CoreTelephony.framework */; };
 		F3D9D5F7185D893D00392C40 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F6185D893D00392C40 /* MessageUI.framework */; };
 		F3D9D5F9185D89A600392C40 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F8185D89A600392C40 /* libicucore.dylib */; };
@@ -439,6 +442,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A6438ED5185EF0F3001A84AD /* TransferToAlipayAndPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferToAlipayAndPhoneController.h; sourceTree = "<group>"; };
+		A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferToAlipayAndPhoneController.m; sourceTree = "<group>"; };
+		A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransferToAlipayAndPhoneController.xib; sourceTree = "<group>"; };
+		A6438EDA185F2381001A84AD /* UserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoController.h; sourceTree = "<group>"; };
+		A6438EDB185F2381001A84AD /* UserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoController.m; sourceTree = "<group>"; };
+		A6438EDD185F239E001A84AD /* UserInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoController.xib; sourceTree = "<group>"; };
 		A68B5573185EB61A0096C7AC /* !@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "!@2x.png"; sourceTree = "<group>"; };
 		A68B5574185EB61A0096C7AC /* arrow-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down@2x.png"; sourceTree = "<group>"; };
 		A68B5575185EB61A0096C7AC /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
@@ -573,7 +582,7 @@
 		F3D9D525185D71AE00392C40 /* CommonTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTaskTableViewCell.m; sourceTree = "<group>"; };
 		F3D9D528185D876D00392C40 /* ExtractMoneyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtractMoneyController.h; sourceTree = "<group>"; };
 		F3D9D529185D876D00392C40 /* ExtractMoneyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtractMoneyController.m; sourceTree = "<group>"; };
-		F3D9D52A185D876D00392C40 /* ExtractMoneyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtractMoneyController.xib; sourceTree = "<group>"; };
+		F3D9D52A185D876D00392C40 /* ExtractMoneyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExtractMoneyController.xib; path = ../ExtractMoneyController.xib; sourceTree = "<group>"; };
 		F3D9D52B185D876D00392C40 /* InviteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteController.h; sourceTree = "<group>"; };
 		F3D9D52C185D876D00392C40 /* InviteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteController.m; sourceTree = "<group>"; };
 		F3D9D52D185D876D00392C40 /* InviteController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteController.xib; sourceTree = "<group>"; };
@@ -616,8 +625,6 @@
 		F3D9D56B185D878800392C40 /* LoginAndRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginAndRegister.m; sourceTree = "<group>"; };
 		F3D9D56C185D878800392C40 /* PhoneValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneValidation.h; sourceTree = "<group>"; };
 		F3D9D56D185D878800392C40 /* PhoneValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneValidation.m; sourceTree = "<group>"; };
-		F3D9D56E185D878800392C40 /* ShareSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSocial.h; sourceTree = "<group>"; };
-		F3D9D56F185D878800392C40 /* ShareSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSocial.m; sourceTree = "<group>"; };
 		F3D9D5F4185D892600392C40 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		F3D9D5F6185D893D00392C40 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F3D9D5F8185D89A600392C40 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -1521,6 +1528,10 @@
 			children = (
 				F3D9D528185D876D00392C40 /* ExtractMoneyController.h */,
 				F3D9D529185D876D00392C40 /* ExtractMoneyController.m */,
+				F3D9D52A185D876D00392C40 /* ExtractMoneyController.xib */,
+				A6438ED5185EF0F3001A84AD /* TransferToAlipayAndPhoneController.h */,
+				A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */,
+				A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */,
 			);
 			path = extractmoney;
 			sourceTree = "<group>";
@@ -1662,8 +1673,6 @@
 				F3D9D56B185D878800392C40 /* LoginAndRegister.m */,
 				F3D9D56C185D878800392C40 /* PhoneValidation.h */,
 				F3D9D56D185D878800392C40 /* PhoneValidation.m */,
-				F3D9D56E185D878800392C40 /* ShareSocial.h */,
-				F3D9D56F185D878800392C40 /* ShareSocial.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1672,7 +1681,6 @@
 			isa = PBXGroup;
 			children = (
 				F3D9D527185D876D00392C40 /* extractmoney */,
-				F3D9D52A185D876D00392C40 /* ExtractMoneyController.xib */,
 				F3D9D52B185D876D00392C40 /* InviteController.h */,
 				F3D9D52C185D876D00392C40 /* InviteController.m */,
 				F3D9D52D185D876D00392C40 /* InviteController.xib */,
@@ -1689,6 +1697,9 @@
 				F3D9D54F185D876D00392C40 /* WebViewController.h */,
 				F3D9D550185D876D00392C40 /* WebViewController.m */,
 				F3D9D551185D876D00392C40 /* WebViewController.xib */,
+				A6438EDA185F2381001A84AD /* UserInfoController.h */,
+				A6438EDB185F2381001A84AD /* UserInfoController.m */,
+				A6438EDD185F239E001A84AD /* UserInfoController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2784,6 +2795,7 @@
 				F3D834BF185B52E3003095D5 /* yue_3@2x.png in Resources */,
 				F3D834A0185B486A003095D5 /* table_view_cell_label_bg@2x.png in Resources */,
 				A68B559F185EB61A0096C7AC /* menu-icon-red@2x.png in Resources */,
+				A6438EDE185F239E001A84AD /* UserInfoController.xib in Resources */,
 				F3D834BC185B52E3003095D5 /* yue_0@2x.png in Resources */,
 				F3D834C5185B52E3003095D5 /* yue_9@2x.png in Resources */,
 				A68B55A8185EB61A0096C7AC /* resend_down@2x.png in Resources */,
@@ -2841,6 +2853,7 @@
 				A68B55AE185EB61A0096C7AC /* splash-slogan@2x.png in Resources */,
 				F3D8349D185B486A003095D5 /* package_icon_one@2x.png in Resources */,
 				A68B55A9185EB61A0096C7AC /* resend_normal@2x.png in Resources */,
+				A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */,
 				F3D834BD185B52E3003095D5 /* yue_1@2x.png in Resources */,
 				F3F186E118543A410098C852 /* Default.png in Resources */,
 				F3F18A26185472A90098C852 /* WCMainPageBoard_iPhone.xml in Resources */,
@@ -3032,11 +3045,13 @@
 				F3F187A118543A420098C852 /* Bee_UIStack.m in Sources */,
 				F3F1870518543A410098C852 /* ASIDataCompressor.m in Sources */,
 				F3F188B418543A430098C852 /* Bee_UIPullLoader.m in Sources */,
+				A6438EDC185F2381001A84AD /* UserInfoController.m in Sources */,
 				F3F187F318543A420098C852 /* Bee_UIAnimation.m in Sources */,
 				F3F189D218543A450098C852 /* NSString+BeeExtension.mm in Sources */,
 				F3F1898C18543A440098C852 /* Bee_Assertion.mm in Sources */,
 				F3F188BE18543A430098C852 /* BeeUISignal+BeeUICell.m in Sources */,
 				F3F187B418543A420098C852 /* BeeUIBoard+Traversing.m in Sources */,
+				A6438ED7185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m in Sources */,
 				F3F1877918543A420098C852 /* BeeMessage+BackwardCompatible.mm in Sources */,
 				F3F1899E18543A440098C852 /* Bee_Singleton.mm in Sources */,
 				F3F1878818543A420098C852 /* NSObject+BeeMessage.mm in Sources */,
@@ -3134,7 +3149,6 @@
 				F3F1882518543A430098C852 /* UINavigationBar+BeeExtension.m in Sources */,
 				F3D834AF185B517B003095D5 /* CommonYuENumView.m in Sources */,
 				F3F188DA18543A430098C852 /* UIButton+BeeUILayout.m in Sources */,
-				F3D9D573185D878800392C40 /* ShareSocial.m in Sources */,
 				F3F1875718543A420098C852 /* CXMLNode.m in Sources */,
 				F3D9D55D185D876D00392C40 /* MBCheckMarkView.m in Sources */,
 			);

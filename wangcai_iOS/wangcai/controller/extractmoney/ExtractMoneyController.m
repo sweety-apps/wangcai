@@ -9,6 +9,7 @@
 #import "ExtractMoneyController.h"
 #import "Config.h"
 #import "PhoneValidationController.h"
+#import "TransferToAlipayAndPhoneController.h"
 
 @interface ExtractMoneyController ()
 
@@ -28,8 +29,8 @@
         
         UIView* view = self->_webViewController.view;
         CGRect rect = [[UIScreen mainScreen]bounds];
-        rect.origin.y = 75;
-        rect.size.height -= 75;
+        rect.origin.y = 54;
+        rect.size.height -= 54;
         view.frame = rect;
         [self.view addSubview:view];
         
@@ -47,16 +48,16 @@
 
 -(void) onPayToAlipay:(float) fCoin {
     // 转帐到支付宝
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"转帐到支付宝" message:@"......" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-    [alert show];
-    [alert release];
+    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:YES];
+    
+    [self->_beeStack pushViewController:controller animated:YES];
 }
 
 -(void) onPayToPhone:(float) fCoin {
     // 花费充值
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"话费充值" message:@"......" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-    [alert show];
-    [alert release];
+    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:NO];
+    
+    [self->_beeStack pushViewController:controller animated:YES];
 }
 
 - (void)viewDidLoad

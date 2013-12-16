@@ -29,14 +29,14 @@
         
         UIView* viewTab = self->_tabController.view;
         CGRect rectTab = viewTab.frame;
-        rectTab.origin.y = 74;
+        rectTab.origin.y = 54;
         viewTab.frame = rectTab;
         [self.view addSubview:viewTab];
         
         UIView* view = self->_webViewController.view;
         CGRect rect = [[UIScreen mainScreen]bounds];
-        rect.origin.y = 173;
-        rect.size.height -= 173;
+        rect.origin.y = 153;
+        rect.size.height -= 153;
         view.frame = rect;
         [self.view addSubview:view];
         

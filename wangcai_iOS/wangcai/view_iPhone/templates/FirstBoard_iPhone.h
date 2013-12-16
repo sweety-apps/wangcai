@@ -21,6 +21,4 @@
 
 AS_SINGLETON( FirstBoard_iPhone )
 
-- (void)selectItem:(NSString *)item animated:(BOOL)animated;
-
 @end

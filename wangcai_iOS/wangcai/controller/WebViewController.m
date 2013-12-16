@@ -23,6 +23,11 @@
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"WebViewController" owner:self options:nil] firstObject];
         self->_webView = (UIWebView*)[self.view viewWithTag:11];
         self->_webView.delegate = self;
+        
+        self->_loadingView = [[[NSBundle mainBundle] loadNibNamed:@"WebViewController" owner:self options:nil] lastObject];
+        [self.view addSubview:self->_loadingView];
+        
+        [self->_webView setHidden:YES];
     }
     return self;
 }
@@ -43,18 +48,18 @@
     self->_webView = nil;
     self->_url = nil;
     self->_delegate = nil;
+    self->_loadingView = nil;
     [super dealloc];
 }
 
 - (void)setNavigateUrl:(NSString*)url {
     self->_url = url;
-    
+    //CGRect rect = self.view.frame;
+    //rect.origin.y = 0;
+    //self->_webView.frame = rect;
     NSURL* nsurl = [[NSURL alloc] initWithString:url];
     [self->_webView loadRequest:[NSURLRequest requestWithURL:nsurl]];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    self->_webView.frame = self.view.frame;
+    [nsurl release];
 }
 
 - (void)setDelegate:(id)delegate {
@@ -122,4 +127,18 @@
     [self->_webView stringByEvaluatingJavaScriptFromString:js];
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [self->_loadingView setHidden:NO];
+    [self->_webView setHidden:YES];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self->_loadingView setHidden:YES];
+    [self->_webView setHidden:NO];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [self->_loadingView setHidden:YES];
+    [self->_webView setHidden:NO];
+}
 @end

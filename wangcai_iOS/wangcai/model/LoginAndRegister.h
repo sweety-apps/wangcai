@@ -22,6 +22,7 @@ typedef enum LoginStatus {
 @interface LoginAndRegister : BeeHTTPRequest {
     NSMutableArray* idArray;
     LoginStatus loginStatus;
+    NSString*   _phoneNum;
 }
 
 +(id) sharedInstance;
@@ -34,4 +35,6 @@ typedef enum LoginStatus {
 
 -(void) attachCompleteEvent : (id) delegate;
 -(void) deattchCompleteEvent : (id) delegate;
+
+-(NSString*) getPhoneNum;
 @end

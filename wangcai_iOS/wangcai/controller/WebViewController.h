@@ -22,6 +22,8 @@
     UIWebView* _webView;
     NSString*  _url;
     id         _delegate;
+    
+    UIView*    _loadingView;
 }
 
 - (id)init;
@@ -30,4 +32,8 @@
 - (void)notifyPhoneStatus:(BOOL)isAttach Phone:(NSString*)phone;
 
 - (void)setDelegate:(id)delegate;
+
+- (void)webViewDidStartLoad:(UIWebView *)webView;
+- (void)webViewDidFinishLoad:(UIWebView *)webView;
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
 @end

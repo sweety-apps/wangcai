@@ -4,16 +4,17 @@
 //
 //  Created by 1528 on 13-12-9.
 //  Copyright (c) 2013年 1528studio. All rights reserved.
-//
+//TransferToAlipayAndPhoneController
 
-#import "PhoneValidationController.h"
+#import "TransferToAlipayAndPhoneController.h"
 #import "MBHUDView.h"
 #import "Common.h"
+#import "LoginAndRegister.h"
 
-@interface PhoneValidationController ()
+@interface TransferToAlipayAndPhoneController ()
 @end
 
-@implementation PhoneValidationController
+@implementation TransferToAlipayAndPhoneController
 @synthesize _viewInputNum;
 @synthesize _viewCheckNum;
 @synthesize textNum;
@@ -28,16 +29,18 @@
 @synthesize _imageArrow;
 @synthesize _viewRegSuccess;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init:(BOOL)alipay
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"TransferToAlipayAndPhoneController" bundle:nil];
     if (self) {
         // Custom initialization
-        self.view = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] firstObject];
+        self.view = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] firstObject];
         self->_timer = nil;
-        self._viewInputNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:2];
-        self._viewCheckNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:1];
-        self._viewRegSuccess = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:3];
+        self->_isAlipay = alipay;
+        
+        self._viewInputNum = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] objectAtIndex:2];
+        self._viewCheckNum = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] objectAtIndex:1];
+        self._viewRegSuccess = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] objectAtIndex:3];
         
         self->_tab1 = (UIImageView*)[self.view viewWithTag:54];
         self->_tab2 = (UIImageView*)[self.view viewWithTag:55];
@@ -52,7 +55,18 @@
         viewTab.frame = rectTab;
         [self.view addSubview:viewTab];
         
-        [self->_tabController setTabInfo:@"输入手机号" Tab2:@"输入验证码" Tab3:@"领取" Purse:1];
+        UILabel* title = (UILabel*)[self.view viewWithTag:99];
+        if ( alipay ) {
+            [self->_tabController setTabInfo:@"输入支付宝帐号" Tab2:@"输入验证码" Tab3:@"提现成功" Purse:0];
+            [title setText:@"现金提取"];
+            
+            self.textNum.keyboardType = UIKeyboardTypeASCIICapable;
+        } else {
+            [self->_tabController setTabInfo:@"输入充值手机号" Tab2:@"输入验证码" Tab3:@"充值成功" Purse:0];
+            [title setText:@"手机充值"];
+            
+            self.textNum.keyboardType = UIKeyboardTypeNumberPad;
+        }
         
         [self showFirstPage];
         
@@ -303,7 +317,8 @@
     [[self._viewCheckNum viewWithTag:53] setHidden:YES];
     [[self._viewCheckNum viewWithTag:54] setHidden:YES];
     
-    [self->phoneValidation sendCheckNumToPhone:self->_phoneNum delegate:self ];
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    [self->phoneValidation sendCheckNumToPhone:phoneNum delegate:self ];
     [self showLoading];
 }
 
@@ -312,13 +327,11 @@
         NSString* phoneNum = self.textNum.text;
         if ( [self checkPhoneNum : phoneNum] ) {
             // 发送验证码，进入loading
-            [self->phoneValidation sendCheckNumToPhone:phoneNum delegate:self ];
+            [self->phoneValidation sendCheckNumToPhone:[[LoginAndRegister sharedInstance] getPhoneNum] delegate:self ];
             [self showLoading];
         
             return ;
         }
-    
-        self->_phoneNum = phoneNum;
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入有效的手机号码" delegate:self cancelButtonTitle:@"重新输入" otherButtonTitles:nil, nil];
         [alert show];
@@ -337,7 +350,7 @@
             
             [self showLoading];
             // 给服务器发送验证请求
-            [self->phoneValidation checkSmsCode:self->_phoneNum smsCode:checkNum Token:self->_token delegate:self];
+            [self->phoneValidation checkSmsCode:[[LoginAndRegister sharedInstance] getPhoneNum] smsCode:checkNum Token:self->_token delegate:self];
         }
     }
 }
@@ -411,7 +424,7 @@
     [self->_tabController selectTab:index];
     
     if ( index == 2 ) {
-        self->_phoneLabel.text = self.textNum.text;
+        self->_phoneLabel.text = [[LoginAndRegister sharedInstance] getPhoneNum];
     }
 }
 
