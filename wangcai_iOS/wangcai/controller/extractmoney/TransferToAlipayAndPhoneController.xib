@@ -300,6 +300,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="66612343"/>
+                    <connections>
+                        <action selector="clickOrderNumber:" destination="-1" eventType="touchUpInside" id="nB2-Ep-T3v"/>
+                    </connections>
                 </button>
             </subviews>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

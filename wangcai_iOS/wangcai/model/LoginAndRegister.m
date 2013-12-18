@@ -72,18 +72,22 @@ static LoginAndRegister* _sharedInstance;
     }
     
     self->loginStatus = Login_In;
-    self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
+
     if ( phoneNum != nil ) {
         // 应该在登录成功后设置
         self->_phoneNum = [[phoneNum copy] autorelease];
         self.PARAM(@"phone", phoneNum);
     }
     
-    self.PARAM(@"idfa", [Common getIDFAAddress]);
-    self.PARAM(@"mac", [Common getMACAddress]);
-    self.PARAM(@"timestamp", [Common getTimestamp]);
+    NSString* idfa = [Common getIDFAAddress];
+    self.PARAM(@"idfa", idfa);
+    NSString* mac = [Common getMACAddress];
+    self.PARAM(@"mac", mac);
+    NSString* timestamp = [Common getTimestamp];
+    self.PARAM(@"timestamp", timestamp);
     
     self.TIMEOUT(10);
+    self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
 }
 
 - (void) setLoginStatus : (LoginStatus) status {

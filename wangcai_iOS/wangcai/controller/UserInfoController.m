@@ -36,4 +36,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 60;
+}
+
+- (CGFloat) pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return 40;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 1;
+}
+
 @end

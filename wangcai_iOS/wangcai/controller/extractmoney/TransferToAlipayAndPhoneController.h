@@ -70,6 +70,8 @@
 - (IBAction)clickBack:(id)sender;
 - (IBAction)clickResend:(id)sender;
 
+- (IBAction)clickOrderNumber:(id)sender;
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 - (void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg token:(NSString*) token;

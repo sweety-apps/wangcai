@@ -36,10 +36,16 @@ SUPPORT_RESOURCE_LOADING( YES );
 - (void)load
 {
 	[super load];
+    
+    self->_exchangeController = [[ExchangeController alloc] init];
+    
+    UIView* view = self->_exchangeController.view;
+    [self.view addSubview:view];
 }
 
 - (void)unload
 {
+    [self->_exchangeController release];
 	[super unload];
 }
 
@@ -71,6 +77,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
+        [self->_exchangeController setUIStack:self.stack];
         [self hideNavigationBarAnimated:YES];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )

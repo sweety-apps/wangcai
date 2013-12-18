@@ -82,4 +82,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)clickBack:(id)sender {
+    [self postNotification:@"showMenu"];
+}
+
 @end

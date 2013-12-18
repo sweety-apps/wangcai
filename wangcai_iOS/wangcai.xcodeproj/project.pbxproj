@@ -11,6 +11,8 @@
 		A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */; };
 		A6438EDC185F2381001A84AD /* UserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438EDB185F2381001A84AD /* UserInfoController.m */; };
 		A6438EDE185F239E001A84AD /* UserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438EDD185F239E001A84AD /* UserInfoController.xib */; };
+		A66D0A7E1861D89200D0F79A /* exchange_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A66D0A7D1861D89200D0F79A /* exchange_btn@2x.png */; };
+		A66D0A801861DDF300D0F79A /* ExchangeControllerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66D0A7F1861DDF200D0F79A /* ExchangeControllerCell.xib */; };
 		A68B5595185EB61A0096C7AC /* !@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68B5573185EB61A0096C7AC /* !@2x.png */; };
 		A68B5596185EB61A0096C7AC /* arrow-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68B5574185EB61A0096C7AC /* arrow-down@2x.png */; };
 		A68B5597185EB61A0096C7AC /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68B5575185EB61A0096C7AC /* back@2x.png */; };
@@ -99,6 +101,14 @@
 		A68B5634185EB6380096C7AC /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68B55FE185EB6370096C7AC /* ShareSDKiPhoneDefaultShareViewUI.framework */; };
 		A68B5635185EB6380096C7AC /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A68B55FF185EB6370096C7AC /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
 		A68B5636185EB6380096C7AC /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68B5600185EB6370096C7AC /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
+		A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6DE671860287900D089C7 /* WebPageController.xib */; };
+		A6F6DE6B186028B700D089C7 /* WebPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6DE6A186028B700D089C7 /* WebPageController.m */; };
+		A6FD8A711861899500223772 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
+		A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A72186189B500223772 /* ExchangeController.xib */; };
+		A6FD8A7818618E1000223772 /* deal_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A7718618E1000223772 /* deal_btn@2x.png */; };
+		A6FD8A7A18618E1600223772 /* yellow_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A7918618E1600223772 /* yellow_circle@2x.png */; };
+		A6FD8A7C18618E1A00223772 /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A7B18618E1A00223772 /* line@2x.png */; };
+		A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */; };
 		F3D8349A185B486A003095D5 /* package_icon_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3D83485185B486A003095D5 /* package_icon_3@2x.png */; };
 		F3D8349B185B486A003095D5 /* package_icon_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3D83486185B486A003095D5 /* package_icon_8@2x.png */; };
 		F3D8349C185B486A003095D5 /* package_icon_half@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3D83487185B486A003095D5 /* package_icon_half@2x.png */; };
@@ -448,6 +458,8 @@
 		A6438EDA185F2381001A84AD /* UserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoController.h; sourceTree = "<group>"; };
 		A6438EDB185F2381001A84AD /* UserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoController.m; sourceTree = "<group>"; };
 		A6438EDD185F239E001A84AD /* UserInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoController.xib; sourceTree = "<group>"; };
+		A66D0A7D1861D89200D0F79A /* exchange_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_btn@2x.png"; sourceTree = "<group>"; };
+		A66D0A7F1861DDF200D0F79A /* ExchangeControllerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeControllerCell.xib; sourceTree = "<group>"; };
 		A68B5573185EB61A0096C7AC /* !@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "!@2x.png"; sourceTree = "<group>"; };
 		A68B5574185EB61A0096C7AC /* arrow-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down@2x.png"; sourceTree = "<group>"; };
 		A68B5575185EB61A0096C7AC /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
@@ -542,6 +554,17 @@
 		A68B55FE185EB6370096C7AC /* ShareSDKiPhoneDefaultShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneDefaultShareViewUI.framework; sourceTree = "<group>"; };
 		A68B55FF185EB6370096C7AC /* ShareSDKiPhoneSimpleShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPhoneSimpleShareViewUI.bundle; sourceTree = "<group>"; };
 		A68B5600185EB6370096C7AC /* ShareSDKiPhoneSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneSimpleShareViewUI.framework; sourceTree = "<group>"; };
+		A6F6DE671860287900D089C7 /* WebPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebPageController.xib; sourceTree = "<group>"; };
+		A6F6DE69186028B700D089C7 /* WebPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPageController.h; sourceTree = "<group>"; };
+		A6F6DE6A186028B700D089C7 /* WebPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPageController.m; sourceTree = "<group>"; };
+		A6FD8A6F1861899500223772 /* ExchangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeController.h; sourceTree = "<group>"; };
+		A6FD8A701861899500223772 /* ExchangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeController.m; sourceTree = "<group>"; };
+		A6FD8A72186189B500223772 /* ExchangeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeController.xib; sourceTree = "<group>"; };
+		A6FD8A7718618E1000223772 /* deal_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deal_btn@2x.png"; sourceTree = "<group>"; };
+		A6FD8A7918618E1600223772 /* yellow_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow_circle@2x.png"; sourceTree = "<group>"; };
+		A6FD8A7B18618E1A00223772 /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
+		A6FD8A7D1861C36700223772 /* ExchangeControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeControllerCell.h; sourceTree = "<group>"; };
+		A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeControllerCell.m; sourceTree = "<group>"; };
 		F3D83485185B486A003095D5 /* package_icon_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_3@2x.png"; sourceTree = "<group>"; };
 		F3D83486185B486A003095D5 /* package_icon_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_8@2x.png"; sourceTree = "<group>"; };
 		F3D83487185B486A003095D5 /* package_icon_half@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_half@2x.png"; sourceTree = "<group>"; };
@@ -1442,6 +1465,17 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		A6FD8A7418618D8100223772 /* Exchange */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD8A7B18618E1A00223772 /* line@2x.png */,
+				A6FD8A7918618E1600223772 /* yellow_circle@2x.png */,
+				A66D0A7D1861D89200D0F79A /* exchange_btn@2x.png */,
+				A6FD8A7718618E1000223772 /* deal_btn@2x.png */,
+			);
+			name = Exchange;
+			sourceTree = "<group>";
+		};
 		F3D83484185B486A003095D5 /* CommonIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1700,6 +1734,15 @@
 				A6438EDA185F2381001A84AD /* UserInfoController.h */,
 				A6438EDB185F2381001A84AD /* UserInfoController.m */,
 				A6438EDD185F239E001A84AD /* UserInfoController.xib */,
+				A6F6DE671860287900D089C7 /* WebPageController.xib */,
+				A6F6DE69186028B700D089C7 /* WebPageController.h */,
+				A6F6DE6A186028B700D089C7 /* WebPageController.m */,
+				A6FD8A6F1861899500223772 /* ExchangeController.h */,
+				A6FD8A701861899500223772 /* ExchangeController.m */,
+				A6FD8A72186189B500223772 /* ExchangeController.xib */,
+				A6FD8A7D1861C36700223772 /* ExchangeControllerCell.h */,
+				A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */,
+				A66D0A7F1861DDF200D0F79A /* ExchangeControllerCell.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2692,6 +2735,7 @@
 		F3F18A41185762BD0098C852 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A6FD8A7418618D8100223772 /* Exchange */,
 				A68B5572185EB61A0096C7AC /* img */,
 				F3D834B0185B52E2003095D5 /* Num */,
 				F3D83484185B486A003095D5 /* CommonIcons */,
@@ -2796,6 +2840,7 @@
 				F3D834A0185B486A003095D5 /* table_view_cell_label_bg@2x.png in Resources */,
 				A68B559F185EB61A0096C7AC /* menu-icon-red@2x.png in Resources */,
 				A6438EDE185F239E001A84AD /* UserInfoController.xib in Resources */,
+				A6FD8A7818618E1000223772 /* deal_btn@2x.png in Resources */,
 				F3D834BC185B52E3003095D5 /* yue_0@2x.png in Resources */,
 				F3D834C5185B52E3003095D5 /* yue_9@2x.png in Resources */,
 				A68B55A8185EB61A0096C7AC /* resend_down@2x.png in Resources */,
@@ -2817,6 +2862,7 @@
 				F3D8349A185B486A003095D5 /* package_icon_3@2x.png in Resources */,
 				A68B560A185EB6370096C7AC /* InstapaperResource.bundle in Resources */,
 				F3D9D562185D876D00392C40 /* TabController.xib in Resources */,
+				A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */,
 				F3D834AB185B486A003095D5 /* zhanghuyue@2x.png in Resources */,
 				A68B5621185EB6370096C7AC /* Resource.bundle in Resources */,
 				F3D834A7185B486A003095D5 /* main_page_head@2x.png in Resources */,
@@ -2828,6 +2874,7 @@
 				F3D834C0185B52E3003095D5 /* yue_4@2x.png in Resources */,
 				A68B5620185EB6370096C7AC /* ShareSDKLocalizable.strings in Resources */,
 				A68B559D185EB61A0096C7AC /* menu-icon-blue@2x.png in Resources */,
+				A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */,
 				F3D834A3185B486A003095D5 /* head_back@2x.png in Resources */,
 				F3D834A1185B486A003095D5 /* table_view_cell_line@2x.png in Resources */,
 				A68B55A1185EB61A0096C7AC /* nav_Header@2x.png in Resources */,
@@ -2842,6 +2889,7 @@
 				A68B55AD185EB61A0096C7AC /* splash-logo@2x.png in Resources */,
 				F3F186E718543A410098C852 /* Icon.png in Resources */,
 				A68B55A2185EB61A0096C7AC /* navigation-back@2x.png in Resources */,
+				A6FD8A7C18618E1A00223772 /* line@2x.png in Resources */,
 				A68B5595185EB61A0096C7AC /* !@2x.png in Resources */,
 				A68B5597185EB61A0096C7AC /* back@2x.png in Resources */,
 				A68B55AB185EB61A0096C7AC /* splash-bg@2x.png in Resources */,
@@ -2852,14 +2900,17 @@
 				F3D8349E185B486A003095D5 /* main_menu_title_text@2x.png in Resources */,
 				A68B55AE185EB61A0096C7AC /* splash-slogan@2x.png in Resources */,
 				F3D8349D185B486A003095D5 /* package_icon_one@2x.png in Resources */,
+				A6FD8A7A18618E1600223772 /* yellow_circle@2x.png in Resources */,
 				A68B55A9185EB61A0096C7AC /* resend_normal@2x.png in Resources */,
 				A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */,
+				A66D0A801861DDF300D0F79A /* ExchangeControllerCell.xib in Resources */,
 				F3D834BD185B52E3003095D5 /* yue_1@2x.png in Resources */,
 				F3F186E118543A410098C852 /* Default.png in Resources */,
 				F3F18A26185472A90098C852 /* WCMainPageBoard_iPhone.xml in Resources */,
 				F3D9D560185D876D00392C40 /* PhoneValidationController.xib in Resources */,
 				F3D834A4185B486A003095D5 /* head_extension_part@2x.png in Resources */,
 				F3D834C1185B52E3003095D5 /* yue_5@2x.png in Resources */,
+				A66D0A7E1861D89200D0F79A /* exchange_btn@2x.png in Resources */,
 				A68B5624185EB6380096C7AC /* GooglePlus.bundle in Resources */,
 				F3D834AA185B486A003095D5 /* tiquxianjin_icon@2x.png in Resources */,
 				A68B55A4185EB61A0096C7AC /* navigation_bar@2x.png in Resources */,
@@ -2921,6 +2972,7 @@
 				F3F1898218543A440098C852 /* NSDictionary+BeeActiveRecord.m in Sources */,
 				F3D9D55A185D876D00392C40 /* MBHUDView.m in Sources */,
 				F3F1895718543A440098C852 /* Bee_UserDefaults.mm in Sources */,
+				A6F6DE6B186028B700D089C7 /* WebPageController.m in Sources */,
 				F3F1896E18543A440098C852 /* Bee_Database.mm in Sources */,
 				F3F1876C18543A420098C852 /* Bee_Controller.mm in Sources */,
 				F3F1874E18543A420098C852 /* CXMLElement_CreationExtensions.m in Sources */,
@@ -2942,6 +2994,7 @@
 				F3F1880918543A430098C852 /* UIView+Transition.m in Sources */,
 				F3F1874B18543A420098C852 /* CXMLElement.m in Sources */,
 				F3D9D55E185D876D00392C40 /* MBSpinningCircle.m in Sources */,
+				A6FD8A711861899500223772 /* ExchangeController.m in Sources */,
 				F3F1883418543A430098C852 /* Bee_UIActivityIndicatorView.m in Sources */,
 				F3F1896218543A440098C852 /* Bee_ActiveBuilder.m in Sources */,
 				F3F1897518543A440098C852 /* Bee_MYSQL.m in Sources */,
@@ -3135,6 +3188,7 @@
 				F3F1899818543A440098C852 /* Bee_Runtime.mm in Sources */,
 				F3F1874218543A420098C852 /* CXMLDocument.m in Sources */,
 				F3F1898818543A440098C852 /* NSObject+BeeDatabase.m in Sources */,
+				A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */,
 				F3F1879B18543A420098C852 /* Bee_UIBoard.m in Sources */,
 				F3F1884C18543A430098C852 /* Bee_UIMenuController.m in Sources */,
 				F3F189AA18543A440098C852 /* Bee_UnitTest.m in Sources */,

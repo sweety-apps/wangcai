@@ -10,6 +10,7 @@
 #import "MBHUDView.h"
 #import "Common.h"
 #import "LoginAndRegister.h"
+#import "WebPageController.h"
 
 @interface TransferToAlipayAndPhoneController ()
 @end
@@ -148,7 +149,7 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    //[self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 - (void)keyboardWillShow: (NSNotification*) notification {
@@ -579,6 +580,11 @@
         UILabel* statusText = (UILabel*)[self._viewCheckNum viewWithTag:29];
         statusText.text = @"验证码错误请重新输入";
     }
+}
+
+- (IBAction)clickOrderNumber:(id)sender {
+    WebPageController* controller = [[WebPageController alloc] init:@"订单" Url:@"http://www.qq.com" Stack:self.stack];
+    [self.stack pushViewController:controller animated:YES];
 }
 
 @end
