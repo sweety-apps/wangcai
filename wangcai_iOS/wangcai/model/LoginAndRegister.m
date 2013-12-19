@@ -73,21 +73,37 @@ static LoginAndRegister* _sharedInstance;
     
     self->loginStatus = Login_In;
 
+    BeeHTTPRequest* req = self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
+    NSString* nsParam = [[NSString alloc]init];
+    
     if ( phoneNum != nil ) {
         // 应该在登录成功后设置
         self->_phoneNum = [[phoneNum copy] autorelease];
-        self.PARAM(@"phone", phoneNum);
+        
+        nsParam = [nsParam stringByAppendingFormat:@"phone=%@&", phoneNum];
     }
     
     NSString* idfa = [Common getIDFAAddress];
-    self.PARAM(@"idfa", idfa);
+    nsParam = [nsParam stringByAppendingFormat:@"idfa=%@&", idfa];
+
     NSString* mac = [Common getMACAddress];
-    self.PARAM(@"mac", mac);
-    NSString* timestamp = [Common getTimestamp];
-    self.PARAM(@"timestamp", timestamp);
+    nsParam = [nsParam stringByAppendingFormat:@"mac=%@&", mac];
     
-    self.TIMEOUT(10);
-    self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
+    NSString* timestamp = [Common getTimestamp];
+    nsParam = [nsParam stringByAppendingFormat:@"timestamp=%@&", timestamp];
+
+    req.postBody = [[[NSMutableData alloc] init]autorelease];
+    
+    
+    NSString* encodedString = [nsParam stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [nsParam release];
+    
+    const char * a =[encodedString UTF8String];
+
+    req.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
+    [req.postBody appendBytes:a length:strlen(a)];
+    
+    req.TIMEOUT(10);
 }
 
 - (void) setLoginStatus : (LoginStatus) status {
@@ -103,7 +119,14 @@ static LoginAndRegister* _sharedInstance;
         [self setLoginStatus:Login_Error];
     } else if ( req.succeed ) {
         // 判断返回数据是
-        [self setLoginStatus:Login_Success];
+        NSError* error;
+        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
+        if ( error != nil ) {
+            [self setLoginStatus:Login_Error];
+        } else {
+        
+            [self setLoginStatus:Login_Success];
+        }
     }
 }
 

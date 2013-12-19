@@ -19,7 +19,7 @@ typedef enum LoginStatus {
 -(void) loginCompleted : (LoginStatus) status;
 @end
 
-@interface LoginAndRegister : BeeHTTPRequest {
+@interface LoginAndRegister : NSObject {
     NSMutableArray* idArray;
     LoginStatus loginStatus;
     NSString*   _phoneNum;

@@ -953,7 +953,7 @@ static NSOperationQueue *sharedQueue = nil;
 		
 		NSString *header;
 		for (header in [self requestHeaders]) {
-//			NSLog( @"%@ : %@", header, [[self requestHeaders] objectForKey:header] );
+			NSLog( @"%@ : %@", header, [[self requestHeaders] objectForKey:header] );
 			CFHTTPMessageSetHeaderFieldValue(request, (CFStringRef)header, (CFStringRef)[[self requestHeaders] objectForKey:header]);
 		}
 

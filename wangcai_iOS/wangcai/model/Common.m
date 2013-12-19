@@ -119,15 +119,13 @@ NSString * macaddress()
 + (NSString*) getIDFAAddress {
     NSString* adid = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     
-    [adid autorelease];
-    return adid;
+    return [[adid copy] autorelease];
 }
 
 + (NSString*) getMACAddress {
     NSString* macAddr = macaddress();
     
-    [macAddr autorelease];
-    return macAddr;
+    return [[macAddr copy] autorelease];
 }
 
 + (NSString*) getTimestamp {
@@ -135,7 +133,7 @@ NSString * macaddress()
     NSTimeInterval a = [dat timeIntervalSince1970]*1000;
     NSString* timeString = [NSString stringWithFormat:@"%f", a];
     
-    return timeString;
+    return [[timeString copy] autorelease];
 }
 
 @end
