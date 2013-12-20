@@ -8,7 +8,7 @@ function getAppTaskInfo() {
 	$obj['ico'] = "../img/ico.png";	// 任务小图标
 	$obj['class'] = "家庭游戏";
 	$obj['desc'] = "易信是djskfjdskfjsd易信是djskfjdskfjsd易信是djskfjdskfjsd易信是djskfjdskfjsd易信是djskfjdskfjsd易信是djskfjdskfjsd易信是djskfjdskfjsd";
-	$obj['installUrl'] = "http://www.qq.com";
+	$obj['appid'] = "723564814";
 	$obj['thumb'] = "../img/test.jpg";
 	return $obj;
 }
@@ -29,7 +29,7 @@ var step = <?php echo $appInfo['curStep']; ?>;
 
 <body>
 <div id="step1" class="step hide">
-	<div class="appinfo">
+	<div class="appinfo" style="min-height:310px;">
 		<div class="ico">
 			<img width="78px" height="78px" src="<?php echo $appInfo['ico']; ?>" />
 		</div>
@@ -43,7 +43,7 @@ var step = <?php echo $appInfo['curStep']; ?>;
 		</div>
 	</div>
 	<div class="install">
-		<a href="<?php echo $appInfo['installUrl']; ?>" target="_blank">
+		<a href="/wangcai_js/install_app?appid=<?php echo $appInfo['appid']; ?>" target="_blank">
 			<img src="../img/btnBkg.png" width="291px" />
 		</a>
 	</div>
