@@ -126,9 +126,32 @@
         [alert release];
         
         return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/install_app"] ) {
+        NSString* value = [self getValueFromQuery:query Key:@"appid"];
+        
+        [self openAppWithIdentifier:value];
+        return NO;
     }
     
     return YES;
+}
+
+- (void)openAppWithIdentifier:(NSString *)appId {
+    SKStoreProductViewController *storeProductVC = [[SKStoreProductViewController alloc] init];
+    storeProductVC.delegate = self;
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:appId forKey:SKStoreProductParameterITunesItemIdentifier];
+    [storeProductVC loadProductWithParameters:dict completionBlock:^(BOOL result, NSError *error) {
+        if (result) {
+            [self presentViewController:storeProductVC animated:YES completion:nil];
+        }
+    }];
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [viewController dismissViewControllerAnimated:YES completion:^{
+        [viewController release];
+    }];
 }
 
 - (void)notifyPhoneStatus:(BOOL)isAttach Phone:(NSString*)phone {

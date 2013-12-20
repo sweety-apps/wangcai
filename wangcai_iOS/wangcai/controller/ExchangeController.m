@@ -44,7 +44,7 @@
         rect.origin.y = 54;
         _noattachView.frame = rect;
         
-        [self.view addSubview:_noattachView];
+        //[self.view addSubview:_noattachView];
         
     }
     return self;
