@@ -44,7 +44,7 @@ var step = <?php echo $appInfo['curStep']; ?>;
 	</div>
 	<div class="install">
 		<a href="<?php echo $appInfo['installUrl']; ?>" target="_blank">
-			<img src="../img/btnBkg.png" />
+			<img src="../img/btnBkg.png" width="291px" />
 		</a>
 	</div>
 </div>
