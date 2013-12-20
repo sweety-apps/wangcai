@@ -18,5 +18,5 @@
 - (IBAction)clickBack:(id)sender;
 
 - (id)init:(NSString *)title Url : (NSString*) url Stack : (BeeUIStack*) stack;
-
+- (id)initOrder:(NSString *)orderNum Url : (NSString*) url Stack : (BeeUIStack*) stack; // 显示订单信息
 @end

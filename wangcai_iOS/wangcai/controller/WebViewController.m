@@ -8,6 +8,9 @@
 
 #import "WebViewController.h"
 #import "PhoneValidationController.h"
+#import "TransferToAlipayAndPhoneController.h"
+#import "WebPageController.h"
+#import "Config.h"
 
 @interface WebViewController ()
 
@@ -38,6 +41,10 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)setBeeUIStack:(BeeUIStack*) beeStack {
+    _beeStack = beeStack;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -47,8 +54,8 @@
 - (void)dealloc {
     self->_webView = nil;
     self->_url = nil;
-    self->_delegate = nil;
     self->_loadingView = nil;
+    self->_beeStack = nil;
     [super dealloc];
 }
 
@@ -60,10 +67,6 @@
     NSURL* nsurl = [[NSURL alloc] initWithString:url];
     [self->_webView loadRequest:[NSURLRequest requestWithURL:nsurl]];
     [nsurl release];
-}
-
-- (void)setDelegate:(id)delegate {
-    self->_delegate = delegate;
 }
 
 -(NSString*) getValueFromQuery:(NSString*) query Key:(NSString*) key {
@@ -92,24 +95,24 @@
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/attach_phone"] ) {
         // 点击了绑定手机
-        if ( self->_delegate != nil ) {
-            [self->_delegate onAttachPhone];
-        }
+        [self onAttachPhone];
+
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/pay_to_alipay"] ) {
         NSString* value = [self getValueFromQuery:query Key:@"coin"];
         float fCoin = [value floatValue];
-        if ( self->_delegate != nil ) {
-            [self->_delegate onPayToAlipay:fCoin];
-        }
+        [self onPayToAlipay:fCoin];
         
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/pay_to_phone"] ) {
         NSString* value = [self getValueFromQuery:query Key:@"coin"];
         float fCoin = [value floatValue];
-        if ( self->_delegate != nil ) {
-            [self->_delegate onPayToPhone:fCoin];
-        }
+        [self onPayToPhone:fCoin];
+
+        return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/order_info"] ) {
+        NSString* value = [self getValueFromQuery:query Key:@"num"];
+        [self onShowOrder:value];
         
         return NO;
     }
@@ -140,5 +143,30 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [self->_loadingView setHidden:YES];
     [self->_webView setHidden:NO];
+}
+
+-(void) onAttachPhone {
+    PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+    
+    [self->_beeStack pushViewController:phoneVal animated:YES];
+}
+
+-(void) onPayToAlipay:(float) fCoin {
+    // 转帐到支付宝
+    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:YES];
+    
+    [self->_beeStack pushViewController:controller animated:YES];
+}
+
+-(void) onPayToPhone:(float) fCoin {
+    // 花费充值
+    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:NO];
+    
+    [self->_beeStack pushViewController:controller animated:YES];
+}
+
+-(void) onShowOrder:(NSString*) orderNum {
+    WebPageController* controller = [[WebPageController alloc] initOrder:orderNum Url:WEB_ORDER_INFO Stack:_beeStack];
+    [_beeStack pushViewController:controller animated:YES];
 }
 @end

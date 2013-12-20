@@ -83,6 +83,7 @@ static LoginAndRegister* _sharedInstance;
         nsParam = [nsParam stringByAppendingFormat:@"phone=%@&", phoneNum];
     }
     
+    
     NSString* idfa = [Common getIDFAAddress];
     nsParam = [nsParam stringByAppendingFormat:@"idfa=%@&", idfa];
 
@@ -92,18 +93,22 @@ static LoginAndRegister* _sharedInstance;
     NSString* timestamp = [Common getTimestamp];
     nsParam = [nsParam stringByAppendingFormat:@"timestamp=%@&", timestamp];
 
-    req.postBody = [[[NSMutableData alloc] init]autorelease];
+    NSMutableData* data = [[NSMutableData alloc] init];
     
     
     NSString* encodedString = [nsParam stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [nsParam release];
+    //[nsParam release];
     
     const char * a =[encodedString UTF8String];
 
     req.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
-    [req.postBody appendBytes:a length:strlen(a)];
+    [data appendBytes:a length:strlen(a)];
+    
+    req.postBody = [[data copy] autorelease];
     
     req.TIMEOUT(10);
+    
+    [data release];
 }
 
 - (void) setLoginStatus : (LoginStatus) status {

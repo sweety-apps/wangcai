@@ -9,17 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "WebViewController.h"
 
-@interface ExtractMoneyController : UIViewController<WebViewControllerDelegate> {
+@interface ExtractMoneyController : UIViewController {
     WebViewController* _webViewController;
     BeeUIStack* _beeStack;
 }
 
 - (id)init:(NSBundle *)nibBundleOrNil;
 - (void)setUIStack : (BeeUIStack*) beeStack;
-
--(void) onAttachPhone;
--(void) onPayToAlipay:(float) fCoin;
--(void) onPayToPhone:(float) fCoin;
 
 - (IBAction)clickBack:(id)sender;
 

@@ -25,7 +25,6 @@
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"ExtractMoneyController" owner:self options:nil] firstObject];
         
         self->_webViewController = [[WebViewController alloc]init];
-        [self->_webViewController setDelegate:self];
         
         UIView* view = self->_webViewController.view;
         CGRect rect = [[UIScreen mainScreen]bounds];
@@ -37,27 +36,6 @@
         [self->_webViewController setNavigateUrl:WEB_EXTRACT_MONEY];
     }
     return self;
-}
-
-
--(void) onAttachPhone {
-    PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
-    
-    [self->_beeStack pushViewController:phoneVal animated:YES];
-}
-
--(void) onPayToAlipay:(float) fCoin {
-    // 转帐到支付宝
-    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:YES];
-    
-    [self->_beeStack pushViewController:controller animated:YES];
-}
-
--(void) onPayToPhone:(float) fCoin {
-    // 花费充值
-    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:NO];
-    
-    [self->_beeStack pushViewController:controller animated:YES];
 }
 
 - (void)viewDidLoad
@@ -74,6 +52,7 @@
 
 - (void)setUIStack : (BeeUIStack*) beeStack {
     self->_beeStack = beeStack;
+    [_webViewController setBeeUIStack:beeStack];
 }
 
 - (void)didReceiveMemoryWarning

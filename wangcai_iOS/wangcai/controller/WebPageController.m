@@ -26,7 +26,7 @@
         [self->_titleLabel setText:title];
         
         self->_webViewController = [[WebViewController alloc]init];
-        [self->_webViewController setDelegate:self];
+        [self->_webViewController setBeeUIStack:stack];
         
         UIView* view = self->_webViewController.view;
         CGRect rect = [[UIScreen mainScreen]bounds];
@@ -37,6 +37,37 @@
         
         [self->_webViewController setNavigateUrl:url];
 
+    }
+    return self;
+}
+
+// 显示订单信息
+- (id)initOrder:(NSString *)orderNum Url : (NSString*) url Stack : (BeeUIStack*) stack
+{
+    self = [super initWithNibName:@"WebPageController" bundle:nil];
+    if (self) {
+        // Custom initialization
+        self.view = [[[NSBundle mainBundle] loadNibNamed:@"WebPageController" owner:self options:nil] firstObject];
+        self->_beeUIStack = stack;
+        self->_titleLabel = (UILabel*)[self.view viewWithTag:99];
+        
+        [self->_titleLabel setText:@"订单"];
+        CGRect rectTitle = self->_titleLabel.frame;
+        rectTitle.origin.x = 100;
+        [self->_titleLabel setFrame:rectTitle];
+        
+        self->_webViewController = [[WebViewController alloc]init];
+        [self->_webViewController setBeeUIStack:stack];
+        
+        UIView* view = self->_webViewController.view;
+        CGRect rect = [[UIScreen mainScreen]bounds];
+        rect.origin.y = 54;
+        rect.size.height -= 54;
+        view.frame = rect;
+        [self.view addSubview:view];
+        [self->_titleLabel setFrame:rectTitle];
+        [self->_webViewController setNavigateUrl:url];
+        
     }
     return self;
 }
