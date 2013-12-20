@@ -36,7 +36,9 @@
         [self.view addSubview:view];
         
         [self->_webViewController setNavigateUrl:url];
-
+        
+        [[self.view viewWithTag:97] setHidden:YES];
+        [[self.view viewWithTag:98] setHidden:YES];
     }
     return self;
 }
@@ -49,12 +51,8 @@
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"WebPageController" owner:self options:nil] firstObject];
         self->_beeUIStack = stack;
-        self->_titleLabel = (UILabel*)[self.view viewWithTag:99];
-        
-        [self->_titleLabel setText:@"订单"];
-        CGRect rectTitle = self->_titleLabel.frame;
-        rectTitle.origin.x = 100;
-        [self->_titleLabel setFrame:rectTitle];
+        self->_titleLabel = (UILabel*)[self.view viewWithTag:97];
+        [self->_titleLabel setText:orderNum];
         
         self->_webViewController = [[WebViewController alloc]init];
         [self->_webViewController setBeeUIStack:stack];
@@ -65,9 +63,10 @@
         rect.size.height -= 54;
         view.frame = rect;
         [self.view addSubview:view];
-        [self->_titleLabel setFrame:rectTitle];
+
         [self->_webViewController setNavigateUrl:url];
         
+        [[self.view viewWithTag:99] setHidden:YES];
     }
     return self;
 }

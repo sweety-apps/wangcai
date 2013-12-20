@@ -115,6 +115,17 @@
         [self onShowOrder:value];
         
         return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/copy_to_clip"] ) {
+        NSString* value = [self getValueFromQuery:query Key:@"context"];
+        
+        UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = value;
+        // 复制完成
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"复制完成" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+        
+        return NO;
     }
     
     return YES;
@@ -166,7 +177,10 @@
 }
 
 -(void) onShowOrder:(NSString*) orderNum {
-    WebPageController* controller = [[WebPageController alloc] initOrder:orderNum Url:WEB_ORDER_INFO Stack:_beeStack];
+    NSString* url = [[WEB_ORDER_INFO copy] autorelease];
+    url = [url stringByAppendingFormat:@"?ordernum=%@", orderNum];
+    
+    WebPageController* controller = [[WebPageController alloc] initOrder:orderNum Url:url Stack:_beeStack];
     [_beeStack pushViewController:controller animated:YES];
 }
 @end

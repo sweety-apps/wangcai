@@ -23,7 +23,6 @@
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"TaskController" owner:self options:nil] firstObject];
         
         self->_webViewController = [[WebViewController alloc]init];
-        [self->_webViewController setDelegate:self];
         
         self->_tabController = [[TabController alloc] init:nil];
         
