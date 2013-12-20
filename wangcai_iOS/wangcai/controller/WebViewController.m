@@ -26,7 +26,7 @@
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"WebViewController" owner:self options:nil] firstObject];
         self->_webView = (UIWebView*)[self.view viewWithTag:11];
         self->_webView.delegate = self;
-        
+        _delegate = nil;
         self->_loadingView = [[[NSBundle mainBundle] loadNibNamed:@"WebViewController" owner:self options:nil] lastObject];
         [self.view addSubview:self->_loadingView];
         
@@ -56,14 +56,17 @@
     self->_url = nil;
     self->_loadingView = nil;
     self->_beeStack = nil;
+    _delegate = nil;
     [super dealloc];
 }
 
 - (void)setNavigateUrl:(NSString*)url {
     self->_url = url;
-    //CGRect rect = self.view.frame;
-    //rect.origin.y = 0;
-    //self->_webView.frame = rect;
+    
+    CGRect rect = self.view.frame;
+    rect.origin.y = 0;
+    self->_webView.frame = rect;
+    
     NSURL* nsurl = [[NSURL alloc] initWithString:url];
     [self->_webView loadRequest:[NSURLRequest requestWithURL:nsurl]];
     [nsurl release];
@@ -129,29 +132,18 @@
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/install_app"] ) {
         NSString* value = [self getValueFromQuery:query Key:@"appid"];
         
-        [self openAppWithIdentifier:value];
+        if ( _delegate != nil ) {
+            [_delegate openAppWithIdentifier:value];
+        }
+
         return NO;
     }
     
     return YES;
 }
 
-- (void)openAppWithIdentifier:(NSString *)appId {
-    SKStoreProductViewController *storeProductVC = [[SKStoreProductViewController alloc] init];
-    storeProductVC.delegate = self;
-    
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:appId forKey:SKStoreProductParameterITunesItemIdentifier];
-    [storeProductVC loadProductWithParameters:dict completionBlock:^(BOOL result, NSError *error) {
-        if (result) {
-            [self presentViewController:storeProductVC animated:YES completion:nil];
-        }
-    }];
-}
-
-- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
-    [viewController dismissViewControllerAnimated:YES completion:^{
-        [viewController release];
-    }];
+- (void) setDelegate:(id) delegate {
+    _delegate = delegate;
 }
 
 - (void)notifyPhoneStatus:(BOOL)isAttach Phone:(NSString*)phone {

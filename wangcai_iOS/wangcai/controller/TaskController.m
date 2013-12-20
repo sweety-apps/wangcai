@@ -8,6 +8,7 @@
 
 #import "TaskController.h"
 #import "Config.h"
+#import "MBHUDView.h"
 
 @interface TaskController ()
 
@@ -39,6 +40,8 @@
         view.frame = rect;
         [self.view addSubview:view];
         
+        [self->_webViewController setDelegate:self];
+        
         [self->_webViewController setNavigateUrl:WEB_TASK];
         
         [self->_tabController setTabInfo:@"在AppStore安装" Tab2:@"游戏内注册" Tab3:@"领取" Purse:1];
@@ -65,4 +68,45 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)openAppWithIdentifier:(NSString *)appId {
+    NSString* strVersion = [[UIDevice currentDevice] systemVersion];
+    float version = [strVersion floatValue];
+    if ( version >= 6 ) {
+        SKStoreProductViewController *storeProductVC = [[SKStoreProductViewController alloc] init];
+        storeProductVC.delegate = self;
+    
+        // 显示loading
+        [self showLoading];
+    
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:appId forKey:SKStoreProductParameterITunesItemIdentifier];
+        [storeProductVC loadProductWithParameters:dict completionBlock:^(BOOL result, NSError *error) {
+            // 隐藏loading
+            [self hideLoading];
+        
+            if (result) {
+                [self presentViewController:storeProductVC animated:YES completion:nil];
+            }
+        }];
+    } else {
+        NSString* urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/us/app/id%@?mt=8", appId];
+        NSURL* url = [NSURL URLWithString:urlStr];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+}
+
+- (void) showLoading {
+    [MBHUDView hudWithBody:@"请等待..." type:MBAlertViewHUDTypeActivityIndicator hidesAfter:-1 show:YES];
+}
+
+- (void) hideLoading {
+    [MBHUDView dismissCurrentHUD];
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [viewController dismissViewControllerAnimated:YES completion:^{
+        [viewController release];
+    }];
+}
+
 @end
