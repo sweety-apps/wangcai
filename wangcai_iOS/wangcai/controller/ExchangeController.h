@@ -13,6 +13,8 @@
     IBOutlet UITableView* _tableView;
     IBOutlet UITableViewCell* _cellEnd;
     BeeUIStack* _beeStack;
+    
+    UIView*  _noattachView;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView* _tableView;
@@ -25,6 +27,7 @@
 
 - (IBAction)clickBack:(id)sender;
 - (IBAction)clickExchangeInfo:(id)sender;
+- (IBAction)clickAttachPhone:(id)sender;
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;

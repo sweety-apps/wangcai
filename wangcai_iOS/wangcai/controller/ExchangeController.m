@@ -10,6 +10,7 @@
 #import "ExchangeControllerCell.h"
 #import "WebPageController.h"
 #import "Config.h"
+#import "PhoneValidationController.h"
 
 @interface ExchangeController ()
 
@@ -37,6 +38,14 @@
         rect.origin.y = 102;
         rect.size.height -= 102;
         _tableView.frame = rect;
+        
+        _noattachView = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] lastObject];
+        rect = _noattachView.frame;
+        rect.origin.y = 54;
+        _noattachView.frame = rect;
+        
+        [self.view addSubview:_noattachView];
+        
     }
     return self;
 }
@@ -101,6 +110,12 @@
 - (IBAction)clickExchangeInfo:(id)sender {
     WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:WEB_EXCHANGE_INFO Stack:_beeStack];
     [_beeStack pushViewController:controller animated:YES];
+}
+
+- (IBAction)clickAttachPhone:(id)sender {
+    PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+    
+    [self->_beeStack pushViewController:phoneVal animated:YES];
 }
 
 @end
