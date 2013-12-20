@@ -91,7 +91,13 @@
 }
 
 - (IBAction)clickBack:(id)sender {
-    [self->_beeUIStack popViewControllerAnimated:YES];
+    int nCount = [_beeUIStack.viewControllers count];
+    
+    if ( nCount == 1 ) {
+        [self postNotification:@"showMenu"];
+    } else {
+        [self->_beeUIStack popViewControllerAnimated:YES];
+    }
 }
 
 @end

@@ -227,6 +227,13 @@ ON_SIGNAL3( MenuBoard_iPhone, team, signal )
 	[self hideMenu];
 }
 
+ON_SIGNAL3( MenuBoard_iPhone, busioness, signal )
+{
+	[[BeeUIRouter sharedInstance] open:@"busioness" animated:YES];
+	
+	[self hideMenu];
+}
+
 - (void)didMenuHidden
 {
 	_mask.hidden = YES;
