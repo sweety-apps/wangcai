@@ -199,9 +199,13 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self.view addSubview:tixianBtn];
         
         BaseTaskTableViewController* taskTableViewController = [[BaseTaskTableViewController alloc] initWithNibName:@"BaseTaskTableViewController" bundle:nil];
-        taskTableViewController.view.frame = CGRectMake(0, headBgImageView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         [self.view addSubview:taskTableViewController.view];
         _taskTableViewController = taskTableViewController;
+        
+        _taskTableViewController.view.frame = CGRectMake(0, headBgImageView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        //_taskTableViewController.containTableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - headBgImageView.frame.size.height);
+        CGSize tableViewSize = [UIApplication sharedApplication].keyWindow.frame.size;
+        _taskTableViewController.tableViewFrame = CGRectMake(0, 0, tableViewSize.width, tableViewSize.height - headBgImageView.frame.size.height);
         
         //[self.view addSubview:testImageView];
     }

@@ -12,8 +12,13 @@
 @interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 {
     TaskInfoTableViewCell* _infoCell;
+    UITableView* _containTableView;
+    CGRect _tableViewFrame;
 }
 
 @property (nonatomic,retain) IBOutlet TaskInfoTableViewCell* infoCell;
+@property (nonatomic,retain) IBOutlet UITableView* containTableView;
+@property (nonatomic,assign) CGRect tableViewFrame;
+
 
 @end

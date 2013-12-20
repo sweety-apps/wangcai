@@ -16,6 +16,8 @@
 @implementation BaseTaskTableViewController
 
 @synthesize infoCell = _infoCell;
+@synthesize containTableView = _containTableView;
+@synthesize tableViewFrame = _tableViewFrame;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +32,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self performSelector:@selector(resetTableViewFrame) withObject:nil afterDelay:0.05];
+    //[self performSelectorOnMainThread:@selector(resetTableViewFrame) withObject:nil waitUntilDone:NO];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,7 +50,25 @@
 - (void)dealloc
 {
     self.infoCell = nil;
+    self.containTableView = nil;
     [super dealloc];
+}
+
+-(void)setTableViewFrame:(CGRect)tableViewFrame
+{
+    //if (self.containTableView)
+    //{
+        //self.containTableView.frame = tableViewFrame;
+    //}
+    _tableViewFrame = tableViewFrame;
+}
+
+-(void)resetTableViewFrame
+{
+    if (!CGRectIsEmpty(_tableViewFrame))
+    {
+        self.containTableView.frame = _tableViewFrame;
+    }
 }
 
 #pragma mark - <UITableViewDataSource>
