@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "WebViewController.h"
 #import "TabController.h"
+#import <StoreKit/StoreKit.h>
 
-@interface TaskController : UIViewController {
+
+@interface TaskController : UIViewController<WebViewControllerDelegate, SKStoreProductViewControllerDelegate> {
     WebViewController* _webViewController;
     TabController* _tabController;
 }
 
 - (id)init:(NSBundle *)nibBundleOrNil;
+- (void) openAppWithIdentifier : (NSString*) appid;
 @end

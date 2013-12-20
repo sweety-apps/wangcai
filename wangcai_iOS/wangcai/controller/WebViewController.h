@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WebViewControllerDelegate <NSObject>
+- (void) openAppWithIdentifier : (NSString*) appid;
+@end
+
 @interface WebViewController : UIViewController<UIWebViewDelegate> {
     UIWebView* _webView;
     NSString*  _url;
@@ -15,7 +19,11 @@
     UIView*    _loadingView;
     
     BeeUIStack* _beeStack;
+    
+    id _delegate;
 }
+
+- (void) setDelegate:(id) delegate;
 
 - (id)init;
 - (void)setBeeUIStack:(BeeUIStack*) beeStack;

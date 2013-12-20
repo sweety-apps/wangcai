@@ -18,7 +18,7 @@
             </linear>
             <linear orientation="v" class="item-wrapper">
                 <label class="item-text">交易明细</label>
-                <button id="third" class="item-mask"/>
+                <button id="busioness" class="item-mask"/>
             </linear>
             <linear orientation="v" class="item-wrapper">
                 <label class="item-text">超值兑换</label>

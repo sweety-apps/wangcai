@@ -131,7 +131,7 @@ NSString * macaddress()
 + (NSString*) getTimestamp {
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval a = [dat timeIntervalSince1970]*1000;
-    NSString* timeString = [NSString stringWithFormat:@"%f", a];
+    NSString* timeString = [NSString stringWithFormat:@"%d", (int)(a / 1000)];
     
     return [[timeString copy] autorelease];
 }

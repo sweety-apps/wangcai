@@ -101,6 +101,11 @@
 		A68B55B4185EB61A0096C7AC /* tab_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68B5592185EB61A0096C7AC /* tab_bkg@2x.png */; };
 		A68B55B5185EB61A0096C7AC /* tab_highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68B5593185EB61A0096C7AC /* tab_highlight@2x.png */; };
 		A68B55B6185EB61A0096C7AC /* warn_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68B5594185EB61A0096C7AC /* warn_bkg@2x.png */; };
+		A6AA8FF918645A6F006DB7D2 /* right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AA8FF818645A6F006DB7D2 /* right@2x.png */; };
+		A6AA8FFB18645B0A006DB7D2 /* border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6AA8FFA18645B09006DB7D2 /* border@2x.png */; };
+		A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */; };
+		A6AA900118647E03006DB7D2 /* BusionessPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */; };
+		A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */; };
 		A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6DE671860287900D089C7 /* WebPageController.xib */; };
 		A6F6DE6B186028B700D089C7 /* WebPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6DE6A186028B700D089C7 /* WebPageController.m */; };
 		A6FD8A711861899500223772 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
@@ -554,6 +559,12 @@
 		A68B5592185EB61A0096C7AC /* tab_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_bkg@2x.png"; sourceTree = "<group>"; };
 		A68B5593185EB61A0096C7AC /* tab_highlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_highlight@2x.png"; sourceTree = "<group>"; };
 		A68B5594185EB61A0096C7AC /* warn_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warn_bkg@2x.png"; sourceTree = "<group>"; };
+		A6AA8FF818645A6F006DB7D2 /* right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right@2x.png"; sourceTree = "<group>"; };
+		A6AA8FFA18645B09006DB7D2 /* border@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "border@2x.png"; sourceTree = "<group>"; };
+		A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A6AA8FFE18647E03006DB7D2 /* BusionessPageBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusionessPageBoard_iPhone.h; sourceTree = "<group>"; };
+		A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusionessPageBoard_iPhone.m; sourceTree = "<group>"; };
+		A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BusionessPageBoard_iPhone.xml; sourceTree = "<group>"; };
 		A6F6DE671860287900D089C7 /* WebPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebPageController.xib; sourceTree = "<group>"; };
 		A6F6DE69186028B700D089C7 /* WebPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPageController.h; sourceTree = "<group>"; };
 		A6F6DE6A186028B700D089C7 /* WebPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPageController.m; sourceTree = "<group>"; };
@@ -1182,6 +1193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */,
 				59E42A171862986E00007461 /* TencentWeiboConnection.framework in Frameworks */,
 				59E42A241862986E00007461 /* Pinterest.framework in Frameworks */,
 				F3D9D5F9185D89A600392C40 /* libicucore.dylib in Frameworks */,
@@ -1429,6 +1441,7 @@
 			children = (
 				A68B5573185EB61A0096C7AC /* !@2x.png */,
 				A68B5574185EB61A0096C7AC /* arrow-down@2x.png */,
+				A6AA8FF818645A6F006DB7D2 /* right@2x.png */,
 				A68B5575185EB61A0096C7AC /* back@2x.png */,
 				A68B5576185EB61A0096C7AC /* body_bkg@2x.png */,
 				A68B5577185EB61A0096C7AC /* bottom_arraw@2x.png */,
@@ -1470,6 +1483,7 @@
 			children = (
 				A6FD8A7B18618E1A00223772 /* line@2x.png */,
 				A6FD8A7918618E1600223772 /* yellow_circle@2x.png */,
+				A6AA8FFA18645B09006DB7D2 /* border@2x.png */,
 				A66D0A7D1861D89200D0F79A /* exchange_btn@2x.png */,
 				A6FD8A7718618E1000223772 /* deal_btn@2x.png */,
 			);
@@ -1644,6 +1658,7 @@
 		F3F186BE18543A410098C852 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */,
 				F3D9D5F8185D89A600392C40 /* libicucore.dylib */,
 				F3D9D5F6185D893D00392C40 /* MessageUI.framework */,
 				F3D9D5F4185D892600392C40 /* CoreTelephony.framework */,
@@ -1773,6 +1788,9 @@
 		F3F186F118543A410098C852 /* templates */ = {
 			isa = PBXGroup;
 			children = (
+				A6AA8FFE18647E03006DB7D2 /* BusionessPageBoard_iPhone.h */,
+				A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */,
+				A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */,
 				F3F189FD18543A450098C852 /* FirstBoard_iPhone.h */,
 				F3F189FE18543A450098C852 /* FirstBoard_iPhone.m */,
 				F3F18A0018543A450098C852 /* SecondBoard_iPhone.h */,
@@ -2825,6 +2843,7 @@
 			files = (
 				F3F186E318543A410098C852 /* Default@2x.png in Resources */,
 				F3F18A45185763610098C852 /* testMain@2x.png in Resources */,
+				A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */,
 				F3D834A2185B486A003095D5 /* bottom_bg@2x.png in Resources */,
 				F3D9D566185D876D00392C40 /* WebViewController.xib in Resources */,
 				A68B55B5185EB61A0096C7AC /* tab_highlight@2x.png in Resources */,
@@ -2868,6 +2887,7 @@
 				F3F186E518543A410098C852 /* Default-568h@2x.png in Resources */,
 				F3D8349F185B486A003095D5 /* table_view_cell_icon_bg@2x.png in Resources */,
 				A68B55A5185EB61A0096C7AC /* phone_logo@2x.png in Resources */,
+				A6AA8FFB18645B0A006DB7D2 /* border@2x.png in Resources */,
 				A68B5598185EB61A0096C7AC /* body_bkg@2x.png in Resources */,
 				59E42A221862986E00007461 /* GooglePlus.bundle in Resources */,
 				59E42A1E1862986E00007461 /* ShareSDKLocalizable.strings in Resources */,
@@ -2888,6 +2908,7 @@
 				A68B55AA185EB61A0096C7AC /* sms_code_border@2x.png in Resources */,
 				A68B55AD185EB61A0096C7AC /* splash-logo@2x.png in Resources */,
 				F3F186E718543A410098C852 /* Icon.png in Resources */,
+				A6AA8FF918645A6F006DB7D2 /* right@2x.png in Resources */,
 				A68B55A2185EB61A0096C7AC /* navigation-back@2x.png in Resources */,
 				A6FD8A7C18618E1A00223772 /* line@2x.png in Resources */,
 				A68B5595185EB61A0096C7AC /* !@2x.png in Resources */,
@@ -3050,6 +3071,7 @@
 				F3F1887018543A430098C852 /* Bee_UITableView.m in Sources */,
 				F3F1897F18543A440098C852 /* NSArray+BeeActiveRecord.m in Sources */,
 				F3F1895E18543A440098C852 /* NSObject+BeeUserDefaults.mm in Sources */,
+				A6AA900118647E03006DB7D2 /* BusionessPageBoard_iPhone.m in Sources */,
 				F3F188F718543A440098C852 /* BeeUIQuery+AJAX.m in Sources */,
 				F3D9D571185D878800392C40 /* LoginAndRegister.m in Sources */,
 				F3F188C118543A430098C852 /* UIView+BeeUICell.m in Sources */,

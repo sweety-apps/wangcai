@@ -24,6 +24,7 @@
 {
 	BeeUIButton *	_mask;
 	CGRect			_origFrame;
+    BOOL            _hasPanOpened;
 }
 
 DEF_SINGLETON( AppBoard_iPhone )
@@ -77,6 +78,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		[self.view addSubview:_mask];
 
 		[menu selectItem:@"wc_main" animated:NO];
+        _hasPanOpened = NO;
 		[router open:@"wc_main"];
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
@@ -95,12 +97,14 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	else if ( [signal is:BeeUIBoard.DID_APPEAR] )
 	{
 		[BeeUIRouter sharedInstance].view.pannable = YES;
+        _mask.pannable = YES;
         
         _origFrame = [BeeUIRouter sharedInstance].view.frame;
 	}
 	else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
 	{
 		[BeeUIRouter sharedInstance].view.pannable = NO;
+        _mask.pannable = NO;
 	}
 	else if ( [signal is:BeeUIBoard.DID_DISAPPEAR] )
 	{
@@ -223,9 +227,17 @@ ON_SIGNAL3( MenuBoard_iPhone, team, signal )
 	[self hideMenu];
 }
 
+ON_SIGNAL3( MenuBoard_iPhone, busioness, signal )
+{
+	[[BeeUIRouter sharedInstance] open:@"busioness" animated:YES];
+	
+	[self hideMenu];
+}
+
 - (void)didMenuHidden
 {
 	_mask.hidden = YES;
+    _hasPanOpened = NO;
 }
 
 - (void)didMenuShown
@@ -234,6 +246,7 @@ ON_SIGNAL3( MenuBoard_iPhone, team, signal )
 
 	_mask.frame = CGRectMake( MENU_BOUNDS, 0.0, router.width - MENU_BOUNDS, router.height );
 	_mask.hidden = NO;
+    _hasPanOpened = YES;
 }
 
 - (void)syncPanPosition
@@ -242,11 +255,31 @@ ON_SIGNAL3( MenuBoard_iPhone, team, signal )
     
     router.view.transform = CGAffineTransformIdentity;
 	CGFloat panOffsetX = router.view.panOffset.x;
-    if((_origFrame.origin.x + panOffsetX) < 0.f)
+    if (_hasPanOpened)
     {
-        panOffsetX = 0.f;
+        panOffsetX = MENU_BOUNDS + _mask.panOffset.x;
+        if((MENU_BOUNDS + panOffsetX) < 0.f)
+        {
+            panOffsetX = 0.f;
+        }
     }
-	router.view.frame = CGRectOffset( _origFrame, panOffsetX, 0 );
+    else
+    {
+        panOffsetX = router.view.panOffset.x;
+        if((_origFrame.origin.x + panOffsetX) < 0.f)
+        {
+            panOffsetX = 0.f;
+        }
+    }
+    [self syncPanPositionWithOffsetX:panOffsetX];
+}
+
+- (void)syncPanPositionWithOffsetX:(CGFloat)panOffsetX
+{
+	BeeUIRouter * router = [BeeUIRouter sharedInstance];
+    router.view.transform = CGAffineTransformIdentity;
+    
+    router.view.frame = CGRectOffset( _origFrame, panOffsetX, 0 );
     router.view.bounds = router.view.frame;
     CGRect currentBounds = router.view.bounds;
     router.view.center = CGPointMake(CGRectGetMidX(currentBounds), CGRectGetMidY(currentBounds));
@@ -279,13 +312,13 @@ ON_SIGNAL3( MenuBoard_iPhone, team, signal )
 		_mask.hidden = NO;
         _mask.alpha = 1.0f - (MENU_BOUNDS - router.view.left) / MENU_BOUNDS;
 	}
-
+    
 	_mask.frame = CGRectMake( router.view.left, 0.0, router.width, router.height );
 }
 
 - (void)showMenu
 {
-	BeeUIRouter * router = [BeeUIRouter sharedInstance];
+	//BeeUIRouter * router = [BeeUIRouter sharedInstance];
 
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
@@ -293,19 +326,7 @@ ON_SIGNAL3( MenuBoard_iPhone, team, signal )
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(didMenuShown)];
 
-    router.view.transform = CGAffineTransformIdentity;
-    
-    CGFloat angle = (MENU_BOUNDS*M_PI/5120.f);
-    CGFloat boundsX = MENU_BOUNDS;
-	//router.view.left = MENU_BOUNDS;
-    router.view.transform = CGAffineTransformMakeRotation(angle);
-    CGRect rectNewBounds = router.view.bounds;
-    CGFloat offsetY = tan(0.5*angle) * boundsX;
-    rectNewBounds.origin.y = offsetY;
-    router.view.frame = rectNewBounds;
-	
-	_mask.frame = CGRectMake( MENU_BOUNDS, 0.0, router.width - MENU_BOUNDS, router.height );
-    _mask.alpha = 1.0f;
+    [self syncPanPositionWithOffsetX:MENU_BOUNDS];
 	
 	[UIView commitAnimations];
 }
