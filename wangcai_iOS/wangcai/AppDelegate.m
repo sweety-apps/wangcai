@@ -36,7 +36,11 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
-#import <TencentOpenApi/TencentOAuth.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WBApi.h"
+#import <RennSDK/RennSDK.h>
+#import "WeiboSDK.h"
+
 
 #pragma mark -
 
@@ -78,49 +82,39 @@
 
 - (void) initShareSDK {
     [ShareSDK registerApp:@"ebe1cada416"];
+
+    // 新浪微博
+    [ShareSDK connectSinaWeiboWithAppKey: @"338240125" appSecret: @"32ccbf2004d7f8d19e29978aacdc2904" redirectUri: @"https://api.weibo.com/oauth2/default.html" weiboSDKCls: [WeiboSDK class]];
     
-    //添加微信
-    [ShareSDK connectWeChatWithAppId:@"wxf3b81b618060b1fc" wechatCls:[WXApi class]];
-    
-    //添加QQ应用
-    [ShareSDK connectQQWithQZoneAppKey:@"100574922"                 //该参数填入申请的QQ AppId
-                     qqApiInterfaceCls:[QQApiInterface class]
-                       tencentOAuthCls:[TencentOAuth class]];
-    
-    // TODO APPKEY都需要修改
-    //添加新浪微博应用
-    [ShareSDK connectSinaWeiboWithAppKey:@"3201194191"
-                               appSecret:@"0334252914651e8f76bad63337b3b78f"
-                             redirectUri:@"http://appgo.cn"];
-    
-    //添加腾讯微博应用
-    [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
-                                  appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
-                                redirectUri:@"http://www.sharesdk.cn"];
+    // 添加QQ应用
+    [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
     
     //添加QQ空间应用
-    [ShareSDK connectQZoneWithAppKey:@"100371282"
-                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"];
+    [ShareSDK connectQZoneWithAppKey: @"100577453" appSecret: @"9454dd071c0dc94008caed4045ce5e39" qqApiInterfaceCls:[QQApiInterface class] tencentOAuthCls: [TencentOAuth class]];
     
-    //添加网易微博应用
-    [ShareSDK connect163WeiboWithAppKey:@"T5EI7BXe13vfyDuy"
-                              appSecret:@"gZxwyNOvjFYpxwwlnuizHRRtBRZ2lV1j"
-                            redirectUri:@"http://www.shareSDK.cn"];
+    // TX微博
+    [ShareSDK connectTencentWeiboWithAppKey: @"801457140" appSecret: @"08c6c07a58f40d2a9b06eabeaf86f6ba" redirectUri: @"http://www.meme-da.com/" wbApiCls: [WBApi class]];
     
-    //添加搜狐微博应用
-    [ShareSDK connectSohuWeiboWithConsumerKey:@"SAfmTG1blxZY3HztESWx"
-                               consumerSecret:@"yfTZf)!rVwh*3dqQuVJVsUL37!F)!yS9S!Orcsij"
-                                  redirectUri:@"http://www.sharesdk.cn"];
+    // 163微博
+    [ShareSDK connect163WeiboWithAppKey: @"la0pHcb8OZU5N2Xg" appSecret: @"UrTuNU32cSEfz789pUd0iSGQBJIBaVzh" redirectUri: @"http://www.meme-da.com/"];
     
-    //添加豆瓣应用
-    [ShareSDK connectDoubanWithAppKey:@"07d08fbfc1210e931771af3f43632bb9"
-                            appSecret:@"e32896161e72be91"
-                          redirectUri:@"http://dev.kumoway.com/braininference/infos.php"];
+    // 豆瓣
+    [ShareSDK connectDoubanWithAppKey: @"0f4b3d0120adb5472de1b70362091fd5" appSecret: @"54b911f9863bdbd7" redirectUri: @"http://www.meme-da.com/"];
     
-    //添加人人网应用
-    [ShareSDK connectRenRenWithAppKey:@"fc5b8aed373c4c27a05b712acba0f8c3"
-                            appSecret:@"f29df781abdd4f49beca5a2194676ca4"];
+    // 人人
+    [ShareSDK connectRenRenWithAppId: @"245528" appKey: @"a4825d92031b4a8495d7ef803b480373" appSecret: @"aa95c7e0575e4d8d8fd59cd31b32c76e" renrenClientClass: [RennClient class]];
     
+    // 微信
+    [ShareSDK connectWeChatWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+    
+    // 微信朋友圈
+    [ShareSDK connectWeChatFavWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+    
+    // 微信好友
+    [ShareSDK connectWeChatSessionWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+    
+    // 微信收藏
+    [ShareSDK connectWeChatFavWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
     //……
 }
 

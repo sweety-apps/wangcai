@@ -9,6 +9,7 @@
 #import "ExtractMoneyController.h"
 #import "Config.h"
 #import "PhoneValidationController.h"
+#import "TransferToAlipayAndPhoneController.h"
 
 @interface ExtractMoneyController ()
 
@@ -24,39 +25,17 @@
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"ExtractMoneyController" owner:self options:nil] firstObject];
         
         self->_webViewController = [[WebViewController alloc]init];
-        [self->_webViewController setDelegate:self];
         
         UIView* view = self->_webViewController.view;
         CGRect rect = [[UIScreen mainScreen]bounds];
-        rect.origin.y = 75;
-        rect.size.height -= 75;
+        rect.origin.y = 54;
+        rect.size.height -= 54;
         view.frame = rect;
         [self.view addSubview:view];
         
         [self->_webViewController setNavigateUrl:WEB_EXTRACT_MONEY];
     }
     return self;
-}
-
-
--(void) onAttachPhone {
-    PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
-    
-    [self->_beeStack pushViewController:phoneVal animated:YES];
-}
-
--(void) onPayToAlipay:(float) fCoin {
-    // 转帐到支付宝
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"转帐到支付宝" message:@"......" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-    [alert show];
-    [alert release];
-}
-
--(void) onPayToPhone:(float) fCoin {
-    // 花费充值
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"话费充值" message:@"......" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-    [alert show];
-    [alert release];
 }
 
 - (void)viewDidLoad
@@ -73,12 +52,17 @@
 
 - (void)setUIStack : (BeeUIStack*) beeStack {
     self->_beeStack = beeStack;
+    [_webViewController setBeeUIStack:beeStack];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)clickBack:(id)sender {
+    [self postNotification:@"showMenu"];
 }
 
 @end

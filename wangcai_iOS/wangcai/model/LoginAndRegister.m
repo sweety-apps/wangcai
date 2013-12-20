@@ -24,6 +24,8 @@ static LoginAndRegister* _sharedInstance;
     [super init];
     self->idArray = [[NSMutableArray alloc]init];
     self->loginStatus = Login_Error;
+    self->_phoneNum = nil;
+    
     return self;
 }
 
@@ -70,16 +72,43 @@ static LoginAndRegister* _sharedInstance;
     }
     
     self->loginStatus = Login_In;
-    self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
+
+    BeeHTTPRequest* req = self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
+    NSString* nsParam = [[NSString alloc]init];
+    
     if ( phoneNum != nil ) {
-        self.PARAM(@"Phone", phoneNum);
+        // 应该在登录成功后设置
+        self->_phoneNum = [[phoneNum copy] autorelease];
+        
+        nsParam = [nsParam stringByAppendingFormat:@"phone=%@&", phoneNum];
     }
     
-    self.PARAM(@"Idfa", [Common getIDFAAddress]);
-    self.PARAM(@"Mac", [Common getMACAddress]);
-    self.PARAM(@"Timestamp", [Common getTimestamp]);
     
-    self.TIMEOUT(10);
+    NSString* idfa = [Common getIDFAAddress];
+    nsParam = [nsParam stringByAppendingFormat:@"idfa=%@&", idfa];
+
+    NSString* mac = [Common getMACAddress];
+    nsParam = [nsParam stringByAppendingFormat:@"mac=%@&", mac];
+    
+    NSString* timestamp = [Common getTimestamp];
+    nsParam = [nsParam stringByAppendingFormat:@"timestamp=%@&", timestamp];
+
+    NSMutableData* data = [[NSMutableData alloc] init];
+    
+    
+    NSString* encodedString = [nsParam stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //[nsParam release];
+    
+    const char * a =[encodedString UTF8String];
+
+    req.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
+    [data appendBytes:a length:strlen(a)];
+    
+    req.postBody = [[data copy] autorelease];
+    
+    req.TIMEOUT(10);
+    
+    [data release];
 }
 
 - (void) setLoginStatus : (LoginStatus) status {
@@ -95,8 +124,22 @@ static LoginAndRegister* _sharedInstance;
         [self setLoginStatus:Login_Error];
     } else if ( req.succeed ) {
         // 判断返回数据是
-        [self setLoginStatus:Login_Success];
+        NSError* error;
+        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
+        if ( error != nil ) {
+            [self setLoginStatus:Login_Error];
+        } else {
+        
+            [self setLoginStatus:Login_Success];
+        }
     }
+}
+
+-(NSString*) getPhoneNum {
+    if ( self->_phoneNum == nil ) {
+        return nil;
+    }
+    return [[self->_phoneNum copy] autorelease];
 }
 
 @end

@@ -49,7 +49,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-		self.view.backgroundColor = [UIColor whiteColor];
+		//self.view.backgroundColor = [UIColor whiteColor];
 		[self hideNavigationBarAnimated:NO];		
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )

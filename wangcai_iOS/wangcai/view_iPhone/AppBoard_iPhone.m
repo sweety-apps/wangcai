@@ -56,7 +56,6 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 		MenuBoard_iPhone * menu = [MenuBoard_iPhone sharedInstance];
 		menu.parentBoard = self;
-		menu.view.backgroundColor = RGB(15, 15, 15);
 		[self.view addSubview:menu.view];
 
 		BeeUIRouter * router = [BeeUIRouter sharedInstance];

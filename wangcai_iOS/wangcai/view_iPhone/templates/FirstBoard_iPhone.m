@@ -19,6 +19,7 @@
 #import "AppBoard_iPhone.h"
 #import "PhoneValidationController.h"
 #import "InviteController.h"
+#import "UserInfoController.h"
 
 #pragma mark -
 
@@ -35,10 +36,16 @@ SUPPORT_RESOURCE_LOADING( YES );
 - (void)load
 {
 	[super load];
+    
+    self->_exchangeController = [[ExchangeController alloc] init];
+    
+    UIView* view = self->_exchangeController.view;
+    [self.view addSubview:view];
 }
 
 - (void)unload
 {
+    [self->_exchangeController release];
 	[super unload];
 }
 
@@ -70,9 +77,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
+        [self->_exchangeController setUIStack:self.stack];
+        [self hideNavigationBarAnimated:YES];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {
+        [self hideNavigationBarAnimated:NO];
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
@@ -116,7 +126,11 @@ ON_SIGNAL3( FirstBoard_iPhone, test, signal )
 
 ON_SIGNAL3( FirstBoard_iPhone, test2, signal )
 {
-    InviteController* controller = [[InviteController alloc]initWithNibName:@"InviteController" bundle:nil];
+    //InviteController* controller = [[InviteController alloc]initWithNibName:@"InviteController" bundle:nil];
+    
+    //[self.stack pushViewController:controller animated:YES];
+    
+    UserInfoController* controller = [[UserInfoController alloc]initWithNibName:@"UserInfoController" bundle:nil];
     
     [self.stack pushViewController:controller animated:YES];
 }

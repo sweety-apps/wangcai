@@ -16,11 +16,12 @@
 //
 
 #import "Bee.h"
+#import "ExchangeController.h"
 
-@interface FirstBoard_iPhone : BeeUIBoard
+@interface FirstBoard_iPhone : BeeUIBoard {
+    ExchangeController* _exchangeController;
+}
 
 AS_SINGLETON( FirstBoard_iPhone )
-
-- (void)selectItem:(NSString *)item animated:(BOOL)animated;
 
 @end

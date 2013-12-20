@@ -55,7 +55,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
     if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
     {
-        self.view.hintString = @"This is the third board";
+        self.view.hintString = @"This is the  board";
         self.view.backgroundColor = [UIColor colorWithRed:165.f/255.f green:0.f/255.f blue:0.f/255.f alpha:1.0f];
         self.view.clipsToBounds = NO;
 		
