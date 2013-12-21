@@ -10,7 +10,7 @@
 	<div class="product">
 	<div class="header">
 		<div id="noattach" class="noattach">
-			<img src="./img/right.png" width="17px" />
+			<img src="./img/warn.png" width="17px" />
 			<div class="info">您还没有绑定手机,为了有效兑换</div>
 		
 			<div class="attachphone" onClick="attachPhone()">
