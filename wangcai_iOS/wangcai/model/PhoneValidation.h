@@ -7,23 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HttpRequest.h"
 
 @protocol PhoneValidationDelegate <NSObject>
 -(void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg  token:(NSString*) token;
 
--(void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId Nickname:(NSString*)nickname;
+-(void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId;
 
--(void) attachPhoneCompleted : (BOOL) suc errMsg:(NSString*)errMsg;
+-(void) attachPhoneCompleted : (BOOL) suc Token:(NSString*)token errMsg:(NSString*)errMsg;
 @end
 
-@interface PhoneValidation : NSObject {
+@interface PhoneValidation : NSObject<HttpRequestDelegate> {
     id _smsDelegate;
     int _status; //0-绑定手机号, 1-校验短信验证码, 2-发送短信验证码
-    NSString* _phoneNum;
 }
 
-- (void) attachPhone : (NSString*) phoneNum delegate:(id) del;
+-(id) init;
 
+- (void) attachPhone : (NSString*) phoneNum delegate:(id) del;
 - (void) sendCheckNumToPhone : (NSString*) phoneNum delegate : (id) del;
-- (void) checkSmsCode : (NSString*)phoneNum smsCode:(NSString*)code Token:(NSString*)token delegate:(id)del;
+- (void) checkSmsCode : (NSString*)code Token:(NSString*)token delegate:(id)del;
 @end

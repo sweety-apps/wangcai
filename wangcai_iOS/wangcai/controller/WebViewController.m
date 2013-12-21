@@ -54,6 +54,11 @@
 - (void)dealloc {
     self->_webView = nil;
     self->_url = nil;
+    if (_url)
+    {
+        [_url release];
+        _url = nil;
+    }
     self->_loadingView = nil;
     self->_beeStack = nil;
     _delegate = nil;
@@ -61,7 +66,12 @@
 }
 
 - (void)setNavigateUrl:(NSString*)url {
-    self->_url = url;
+    if (_url)
+    {
+        [_url release];
+        _url = nil;
+    }
+    _url = [url retain];
     
     CGRect rect = self.view.frame;
     rect.origin.y = 0;

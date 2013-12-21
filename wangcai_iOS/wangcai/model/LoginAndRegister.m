@@ -22,7 +22,7 @@ static LoginAndRegister* _sharedInstance;
 
 - (id) init {
     [super init];
-    self->idArray = [[NSMutableArray alloc]init];
+    _delegate = nil;
     self->loginStatus = Login_Error;
     self->_phoneNum = nil;
     
@@ -30,7 +30,10 @@ static LoginAndRegister* _sharedInstance;
 }
 
 - (void) dealloc {
-    [self->idArray dealloc];
+    if ( _delegate != nil ) {
+        [_delegate release];
+    }
+    
     [super dealloc];
 }
 
@@ -39,29 +42,24 @@ static LoginAndRegister* _sharedInstance;
     self->loginStatus = Login_Timeout;
 }
 
--(void) attachCompleteEvent : (id) dele {
-    [self->idArray addObject:dele];
-}
-
--(void) deattchCompleteEvent : (id) dele {
-    [self->idArray removeObject:dele];
-}
-
-
--(void) sendEvent : (LoginStatus) status {
-    NSMutableArray* array = [self->idArray copy];
-    for ( int i = 0; i < [array count]; i ++) {
-        id dele = [array objectAtIndex:i];
-        if ( dele != nil ) {
-            [dele loginCompleted:status];
-        }
+-(void) sendEvent : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg {
+    if (_delegate != nil ) {
+        [_delegate loginCompleted:status HttpCode:httpCode Msg:msg];
     }
-    
-    [array release];
+}
+
+-(void) login: (id) delegate {
+    [self login];
+    _delegate = [delegate retain];
 }
 
 -(void) login {
     // 发起登录或注册请求
+    if ( _delegate != nil ) {
+        [_delegate release];
+        _delegate = nil;
+    }
+    
     self->loginStatus = Login_In;
 
     BeeHTTPRequest* req = self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
@@ -100,30 +98,38 @@ static LoginAndRegister* _sharedInstance;
     [data release];
 }
 
-- (void) setLoginStatus : (LoginStatus) status {
+- (void) setLoginStatus : (LoginStatus) status HttpCode:(int)code Msg:(NSString*) msg {
     self->loginStatus = status;
     
-    [self sendEvent:status];
+    [self sendEvent:status HttpCode:code Msg:msg];
 }
 
 - (void) handleRequest:(BeeHTTPRequest *)req {
     if ( req.sending) {
     } else if ( req.recving ) {
     } else if ( req.failed ) {
-        [self setLoginStatus:Login_Error];
+        [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:nil];
     } else if ( req.succeed ) {
         // 判断返回数据是
         NSError* error;
         NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
         if ( dict == nil || [dict count] == 0 ) {
-            [self setLoginStatus:Login_Error];
+            [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:nil];
         } else {
-            _userid = [dict valueForKey:@"userid"];
-            _session_id = [dict valueForKey:@"session_id"];
-            _nickname = [dict valueForKey:@"nickname"];
-            _device_id = [dict valueForKey:@"device_id"];
-            _phoneNum = [dict valueForKey:@"phone"];
-            [self setLoginStatus:Login_Success];
+            NSNumber* res = [dict valueForKey:@"res"];
+            if ( [res intValue] == 0 ) {
+                _userid = [[dict valueForKey:@"userid"] copy];
+                _session_id = [[dict valueForKey:@"session_id"] copy];
+                _nickname = [[dict valueForKey:@"nickname"] copy];
+                _device_id = [[dict valueForKey:@"device_id"] copy];
+                _phoneNum = [[dict valueForKey:@"phone"] copy];
+                _balance = [[dict valueForKey:@"balance"] copy];
+            
+                [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
+            } else {
+                NSString* err = [[dict valueForKey:@"msg"] copy];
+                [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:err];
+            }
         }
     }
 }
@@ -132,35 +138,42 @@ static LoginAndRegister* _sharedInstance;
     if ( self->_phoneNum == nil ) {
         return nil;
     }
-    return [[self->_phoneNum copy] autorelease];
+    return [self->_phoneNum copy];
 }
 
--(NSString*) getUserId  {
+-(NSNumber*) getUserId  {
     if ( self->_userid == nil ) {
         return nil;
     }
-    return [[self->_userid copy] autorelease];
+    return [self->_userid copy];
 }
 
 -(NSString*) getSessionId  {
     if ( self->_session_id == nil ) {
         return nil;
     }
-    return [[self->_session_id copy] autorelease];
+    return [self->_session_id copy];
 }
 
 -(NSString*) getNickName  {
     if ( self->_nickname == nil ) {
         return nil;
     }
-    return [[self->_nickname copy] autorelease];
+    return [self->_nickname copy];
 }
 
 -(NSString*) getDeviceId  {
     if ( self->_device_id == nil ) {
         return nil;
     }
-    return [[self->_device_id copy] autorelease];
+    return [self->_device_id copy];
+}
+
+-(NSNumber*) getBalance {
+    if ( self->_balance== nil ) {
+        return nil;
+    }
+    return [self->_balance copy];
 }
 
 @end
