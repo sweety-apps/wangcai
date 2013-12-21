@@ -175,6 +175,8 @@
 		F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F4185D892600392C40 /* CoreTelephony.framework */; };
 		F3D9D5F7185D893D00392C40 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F6185D893D00392C40 /* MessageUI.framework */; };
 		F3D9D5F9185D89A600392C40 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F8185D89A600392C40 /* libicucore.dylib */; };
+		F3D9D6AF1865791600392C40 /* UserInfoEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D6AD1865791600392C40 /* UserInfoEditorViewController.m */; };
+		F3D9D6B01865791600392C40 /* UserInfoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D6AE1865791600392C40 /* UserInfoEditorViewController.xib */; };
 		F3F186C018543A410098C852 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186BF18543A410098C852 /* UIKit.framework */; };
 		F3F186C218543A410098C852 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C118543A410098C852 /* Foundation.framework */; };
 		F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C318543A410098C852 /* CoreGraphics.framework */; };
@@ -662,6 +664,9 @@
 		F3D9D5F4185D892600392C40 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		F3D9D5F6185D893D00392C40 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F3D9D5F8185D89A600392C40 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		F3D9D6AC1865791600392C40 /* UserInfoEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoEditorViewController.h; sourceTree = "<group>"; };
+		F3D9D6AD1865791600392C40 /* UserInfoEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoEditorViewController.m; sourceTree = "<group>"; };
+		F3D9D6AE1865791600392C40 /* UserInfoEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoEditorViewController.xib; sourceTree = "<group>"; };
 		F3F186BC18543A410098C852 /* wangcai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wangcai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F186BF18543A410098C852 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F3F186C118543A410098C852 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1548,6 +1553,9 @@
 				F3D834D0185C2172003095D5 /* TaskInfoTableViewCell.m */,
 				F3D9D524185D71AE00392C40 /* CommonTaskTableViewCell.h */,
 				F3D9D525185D71AE00392C40 /* CommonTaskTableViewCell.m */,
+				F3D9D6AC1865791600392C40 /* UserInfoEditorViewController.h */,
+				F3D9D6AD1865791600392C40 /* UserInfoEditorViewController.m */,
+				F3D9D6AE1865791600392C40 /* UserInfoEditorViewController.xib */,
 			);
 			name = common;
 			path = view_iPhone/common;
@@ -2841,6 +2849,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D9D6B01865791600392C40 /* UserInfoEditorViewController.xib in Resources */,
 				F3F186E318543A410098C852 /* Default@2x.png in Resources */,
 				F3F18A45185763610098C852 /* testMain@2x.png in Resources */,
 				A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */,
@@ -3057,6 +3066,7 @@
 				F3F1896818543A440098C852 /* Bee_ActiveProtocol.m in Sources */,
 				F3F187E318543A420098C852 /* UILabel+BeeUIStyle.m in Sources */,
 				F3F18A25185472A90098C852 /* WCMainPageBoard_iPhone.m in Sources */,
+				F3D9D6AF1865791600392C40 /* UserInfoEditorViewController.m in Sources */,
 				F3F1892018543A440098C852 /* UIViewController+BeeUITemplate.m in Sources */,
 				F3F187EF18543A420098C852 /* UIView+BeeUIStyle.m in Sources */,
 				F3F187F918543A420098C852 /* Bee_UIAnimationBounce.m in Sources */,

@@ -95,7 +95,15 @@
             comCell = [[[CommonTaskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"taskCell"] autorelease];
         }
         
-        if (row < 4)
+        if (row == 0)
+        {
+            [comCell setTaskCellType:CommonTaskTableViewCellShowTypeRedTextUp];
+            [comCell setUpText:@"关注旺财"];
+            [comCell setDownText:@"用微信关注旺财"];
+            [comCell setRedBagIcon:@"package_icon_one"];
+            [comCell setLeftIconUrl:@"http://a1.mzstatic.com/us/r30/Purple/v4/a6/dc/ee/a6dceea2-ae77-1746-0dc3-1f6f7"];
+        }
+        else if (row < 4)
         {
             [comCell setTaskCellType:CommonTaskTableViewCellShowTypeRedTextUp];
             [comCell setUpText:@"关注旺财"];

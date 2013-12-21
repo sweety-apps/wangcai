@@ -1,0 +1,13 @@
+//
+//  UserInfoEditorViewController.h
+//  wangcai
+//
+//  Created by Lee Justin on 13-12-21.
+//  Copyright (c) 2013年 1528studio. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UserInfoEditorViewController : UIViewController
+
+@end
