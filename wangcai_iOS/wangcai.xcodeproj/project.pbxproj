@@ -62,6 +62,7 @@
 		59E42A331862986F00007461 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59E429FD1862986E00007461 /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
 		59E42A341862986F00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429FE1862986E00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
 		A60C876F1865949700F6889C /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A60C876E1865949700F6889C /* HttpRequest.m */; };
+		A60C87711865C68C00F6889C /* warn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C87701865C68B00F6889C /* warn@2x.png */; };
 		A6438ED7185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */; };
 		A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */; };
 		A6438EDC185F2381001A84AD /* UserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438EDB185F2381001A84AD /* UserInfoController.m */; };
@@ -522,6 +523,7 @@
 		59E429FE1862986E00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneSimpleShareViewUI.framework; sourceTree = "<group>"; };
 		A60C876D1865949700F6889C /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		A60C876E1865949700F6889C /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
+		A60C87701865C68B00F6889C /* warn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warn@2x.png"; sourceTree = "<group>"; };
 		A6438ED5185EF0F3001A84AD /* TransferToAlipayAndPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferToAlipayAndPhoneController.h; sourceTree = "<group>"; };
 		A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferToAlipayAndPhoneController.m; sourceTree = "<group>"; };
 		A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransferToAlipayAndPhoneController.xib; sourceTree = "<group>"; };
@@ -1452,6 +1454,7 @@
 				A6AA8FF818645A6F006DB7D2 /* right@2x.png */,
 				A68B5575185EB61A0096C7AC /* back@2x.png */,
 				A68B5576185EB61A0096C7AC /* body_bkg@2x.png */,
+				A60C87701865C68B00F6889C /* warn@2x.png */,
 				A68B5577185EB61A0096C7AC /* bottom_arraw@2x.png */,
 				A68B5578185EB61A0096C7AC /* btn_down@2x.png */,
 				A68B5579185EB61A0096C7AC /* btn_normal@2x.png */,
@@ -2912,6 +2915,7 @@
 				A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */,
 				F3D834A3185B486A003095D5 /* head_back@2x.png in Resources */,
 				F3D834A1185B486A003095D5 /* table_view_cell_line@2x.png in Resources */,
+				A60C87711865C68C00F6889C /* warn@2x.png in Resources */,
 				A68B55A1185EB61A0096C7AC /* nav_Header@2x.png in Resources */,
 				A68B55AF185EB61A0096C7AC /* tab-bar@2x.png in Resources */,
 				F3D8349C185B486A003095D5 /* package_icon_half@2x.png in Resources */,

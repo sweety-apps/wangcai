@@ -108,7 +108,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="right.png" translatesAutoresizingMaskIntoConstraints="NO" id="4u1-9e-iRP">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="warn.png" translatesAutoresizingMaskIntoConstraints="NO" id="4u1-9e-iRP">
                     <rect key="frame" x="15" y="15" width="17" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
@@ -141,7 +141,7 @@
         <image name="deal_btn.png" width="74" height="27"/>
         <image name="line.png" width="320" height="1"/>
         <image name="nav_Header.png" width="320" height="54"/>
-        <image name="right.png" width="17" height="17"/>
+        <image name="warn.png" width="17" height="17"/>
         <image name="yellow_circle.png" width="17" height="17"/>
     </resources>
 </document>
