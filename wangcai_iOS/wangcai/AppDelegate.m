@@ -62,7 +62,7 @@
     [self initShareSDK];
     
     // 登录
-    [[LoginAndRegister sharedInstance]login:nil];
+    [[LoginAndRegister sharedInstance] login];
 }
 
 - (void)unload

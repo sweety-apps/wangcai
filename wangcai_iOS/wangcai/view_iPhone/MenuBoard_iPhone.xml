@@ -9,7 +9,7 @@
         <linear orientation="v" class="wrapper">
             <image id="item-bg" class="item-bg"/>
             <linear orientation="v" class="item-wrapper">
-                <label class="item-text">我的旺财</label>
+                <label class="item-text">我家旺财</label>
                 <button id="wc_main" class="item-mask"/>
             </linear>
             <linear orientation="v" class="item-wrapper">
