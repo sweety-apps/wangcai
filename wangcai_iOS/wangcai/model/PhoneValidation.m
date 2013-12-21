@@ -84,7 +84,7 @@
     [dictionary setObject:token forKey:@"token"];
     [dictionary setObject:code forKey:@"sms_code"];
     
-    [request request:HTTP_SEND_SMS_CODE Param:dictionary];
+    [request request:HTTP_CHECK_SMS_CODE Param:dictionary];
     
     [dictionary release];
 }
