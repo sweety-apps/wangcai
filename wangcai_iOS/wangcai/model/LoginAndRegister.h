@@ -23,6 +23,10 @@ typedef enum LoginStatus {
     NSMutableArray* idArray;
     LoginStatus loginStatus;
     NSString*   _phoneNum;
+    NSString*   _userid;
+    NSString*   _session_id;
+    NSString*   _nickname;
+    NSString*   _device_id;
 }
 
 +(id) sharedInstance;
@@ -31,10 +35,14 @@ typedef enum LoginStatus {
 -(LoginStatus) getLoginStatus;
 // session超时后，需要先设置超时，然后login
 -(void) setTimeout; // 修改登录状态为已超时
--(void) login : (NSString*)phoneNum;
+-(void) login;
 
 -(void) attachCompleteEvent : (id) delegate;
 -(void) deattchCompleteEvent : (id) delegate;
 
 -(NSString*) getPhoneNum;
+-(NSString*) getUserId;
+-(NSString*) getSessionId;
+-(NSString*) getNickName;
+-(NSString*) getDeviceId;
 @end

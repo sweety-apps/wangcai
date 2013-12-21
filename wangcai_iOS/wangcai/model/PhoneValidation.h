@@ -12,12 +12,17 @@
 -(void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg  token:(NSString*) token;
 
 -(void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId Nickname:(NSString*)nickname;
+
+-(void) attachPhoneCompleted : (BOOL) suc errMsg:(NSString*)errMsg;
 @end
 
-@interface PhoneValidation : BeeHTTPRequest {
+@interface PhoneValidation : NSObject {
     id _smsDelegate;
-    BOOL _sendSmsCode;
+    int _status; //0-绑定手机号, 1-校验短信验证码, 2-发送短信验证码
+    NSString* _phoneNum;
 }
+
+- (void) attachPhone : (NSString*) phoneNum delegate:(id) del;
 
 - (void) sendCheckNumToPhone : (NSString*) phoneNum delegate : (id) del;
 - (void) checkSmsCode : (NSString*)phoneNum smsCode:(NSString*)code Token:(NSString*)token delegate:(id)del;

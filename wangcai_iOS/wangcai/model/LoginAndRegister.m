@@ -34,11 +34,6 @@ static LoginAndRegister* _sharedInstance;
     [super dealloc];
 }
 
-// 如果不是返回成功，可以attach事件，然后调用login接口，完成后回调，然后再调用相应的接口从服务器取数据
--(LoginStatus) getLoginStatus {
-    return self->loginStatus;
-}
-
 // session超时后，需要先设置超时，然后login
 -(void) setTimeout { // 修改登录状态为已超时
     self->loginStatus = Login_Timeout;
@@ -65,22 +60,16 @@ static LoginAndRegister* _sharedInstance;
     [array release];
 }
 
--(void) login : (NSString*)phoneNum {
+-(void) login {
     // 发起登录或注册请求
-    if ( self->loginStatus == Login_Success || self->loginStatus == Login_In ) {
-        return ;
-    }
-    
     self->loginStatus = Login_In;
 
     BeeHTTPRequest* req = self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
     NSString* nsParam = [[NSString alloc]init];
     
-    if ( phoneNum != nil ) {
+    if ( _phoneNum != nil ) {
         // 应该在登录成功后设置
-        self->_phoneNum = [[phoneNum copy] autorelease];
-        
-        nsParam = [nsParam stringByAppendingFormat:@"phone=%@&", phoneNum];
+        nsParam = [nsParam stringByAppendingFormat:@"phone=%@&", _phoneNum];
     }
     
     
@@ -126,10 +115,14 @@ static LoginAndRegister* _sharedInstance;
         // 判断返回数据是
         NSError* error;
         NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
-        if ( error != nil ) {
+        if ( dict == nil || [dict count] == 0 ) {
             [self setLoginStatus:Login_Error];
         } else {
-        
+            _userid = [dict valueForKey:@"userid"];
+            _session_id = [dict valueForKey:@"session_id"];
+            _nickname = [dict valueForKey:@"nickname"];
+            _device_id = [dict valueForKey:@"device_id"];
+            _phoneNum = [dict valueForKey:@"phone"];
             [self setLoginStatus:Login_Success];
         }
     }
@@ -140,6 +133,34 @@ static LoginAndRegister* _sharedInstance;
         return nil;
     }
     return [[self->_phoneNum copy] autorelease];
+}
+
+-(NSString*) getUserId  {
+    if ( self->_userid == nil ) {
+        return nil;
+    }
+    return [[self->_userid copy] autorelease];
+}
+
+-(NSString*) getSessionId  {
+    if ( self->_session_id == nil ) {
+        return nil;
+    }
+    return [[self->_session_id copy] autorelease];
+}
+
+-(NSString*) getNickName  {
+    if ( self->_nickname == nil ) {
+        return nil;
+    }
+    return [[self->_nickname copy] autorelease];
+}
+
+-(NSString*) getDeviceId  {
+    if ( self->_device_id == nil ) {
+        return nil;
+    }
+    return [[self->_device_id copy] autorelease];
 }
 
 @end

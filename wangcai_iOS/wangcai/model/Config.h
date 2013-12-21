@@ -12,6 +12,7 @@
 //#define HTTP_SEND_SMS_CODE @"http://wangcai.meme-da.com/0/account/send_sms_code"
 
 #define HTTP_LOGIN_AND_REGISTER @"http://getwangcai.com/0/register"
+#define HTTP_BIND_PHONE         @"http://getwangcai.com/0/account/bind_phone"
 
 #define HTTP_SEND_SMS_CODE @"http://wangcai.meme-da.com/send_sms_code.php"
 //#define HTTP_LOGIN_AND_REGISTER @"http://wangcai.meme-da.com/register.php"
