@@ -19,19 +19,20 @@
         // Initialization code
         _taskCellType = CommonTaskTableViewCellShowTypeRedTextUp;
         _leftIcon = [[BeeUIImageView alloc] initWithFrame:CGRectZero];
-        _backLabelImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _bottomLineImage = [[UIImageView alloc] initWithFrame:CGRectZero];
         _redBagIcon = [[UIImageView alloc] initWithFrame:CGRectZero];
         _redLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _blackLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         
-        _backLabelImage.image = [UIImage imageNamed:@"table_view_cell_label_bg"];
+        _bottomLineImage.image = [UIImage imageNamed:@"table_view_cell_line"];
         
-        _redLabel.textColor = [UIColor colorWithRed:255.f/255.f green:102.f/255.f blue:0.f/255.f alpha:1.0];
+        //_redLabel.textColor = [UIColor colorWithRed:255.f/255.f green:102.f/255.f blue:0.f/255.f alpha:1.0];
+        _redLabel.textColor = RGB(0, 0, 0);
         _redLabel.backgroundColor = [UIColor clearColor];
         _redLabel.textAlignment = NSTextAlignmentLeft;
         _redLabel.font = [UIFont systemFontOfSize:16];
         
-        _blackLabel.textColor = [UIColor colorWithRed:0.f/255.f green:0.f/255.f blue:0.f/255.f alpha:1.0];
+        _blackLabel.textColor = RGB(156, 156, 156);
         _blackLabel.backgroundColor = [UIColor clearColor];
         _blackLabel.textAlignment = NSTextAlignmentLeft;
         _blackLabel.font = [UIFont systemFontOfSize:9];
@@ -40,7 +41,7 @@
         self.backgroundColor = [UIColor clearColor];
         
         
-        [self.contentView addSubview:_backLabelImage];
+        [self.contentView addSubview:_bottomLineImage];
         [self.contentView addSubview:_leftIcon];
         [self.contentView addSubview:_redBagIcon];
         [self.contentView addSubview:_redLabel];
@@ -64,7 +65,7 @@
     [_redLabel release];
     [_blackLabel release];
     [_redBagIcon release];
-    [_backLabelImage release];
+    [_bottomLineImage release];
     [super dealloc];
 }
 
@@ -75,17 +76,17 @@
     rectFrame = CGRectMake(14, 21, 39, 39);
     _leftIcon.frame = rectFrame;
     
-    rectFrame = CGRectMake(56, 21, 253, 50);
-    _backLabelImage.frame = rectFrame;
+    rectFrame = CGRectMake(0, 73, 320, 1);
+    _bottomLineImage.frame = rectFrame;
     
-    rectFrame = CGRectMake(250, 3, 53, 60);
+    rectFrame = CGRectMake(250, 10, 53, 60);
     _redBagIcon.frame = rectFrame;
     
     if (_taskCellType == CommonTaskTableViewCellShowTypeRedTextUp)
     {
         rectFrame = CGRectMake(77, 25, 260, 16);
         _redLabel.frame = rectFrame;
-        rectFrame = CGRectMake(77, 50, 260, 9);
+        rectFrame = CGRectMake(77, 48, 260, 9);
         _blackLabel.frame = rectFrame;
     }
     else
@@ -152,13 +153,44 @@
 
 - (void)setLeftIconUrl:(NSString*)imageUrl
 {
-    [_leftIcon GET:imageUrl useCache:YES placeHolder:[UIImage imageNamed:@"table_view_cell_icon_bg"]];
+    UIImage* cachedImage = [[BeeImageCache sharedInstance] imageForURL:imageUrl];
+    if (cachedImage != nil)
+    {
+        [_leftIcon setImage:cachedImage];
+    }
+    else
+    {
+        [_leftIcon GET:imageUrl useCache:YES];
+    }
+}
+
+- (void)setLeftIconNamed:(NSString*)imageName
+{
+    [_leftIcon setImage:[UIImage imageNamed:imageName]];
 }
 
 - (void)setTaskCellType:(NSInteger)taskCellType
 {
     _taskCellType = taskCellType;
     [self resetSubViews];
+}
+
+- (UILabel*)getUpLabel
+{
+    if (_taskCellType == CommonTaskTableViewCellShowTypeRedTextUp)
+    {
+        return _redLabel;
+    }
+    return _blackLabel;
+}
+
+- (UILabel*)getDownLabel
+{
+    if (_taskCellType == CommonTaskTableViewCellShowTypeRedTextUp)
+    {
+        return _blackLabel;
+    }
+    return _redLabel;
 }
 
 @end
