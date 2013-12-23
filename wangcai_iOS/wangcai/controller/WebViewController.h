@@ -10,6 +10,7 @@
 
 @protocol WebViewControllerDelegate <NSObject>
 - (void) openAppWithIdentifier : (NSString*) appid;
+- (void) openUrl : (NSString*) url;
 @end
 
 @interface WebViewController : UIViewController<UIWebViewDelegate> {

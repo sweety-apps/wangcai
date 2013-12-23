@@ -22,7 +22,7 @@ static LoginAndRegister* _sharedInstance;
 
 - (id) init {
     [super init];
-    _delegate = nil;
+    self->_delegate = nil;
     self->loginStatus = Login_Error;
     self->_phoneNum = nil;
     

@@ -101,6 +101,7 @@
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSString* query = [request.mainDocumentURL query];
+    NSString* path = request.mainDocumentURL.relativePath;
     
     if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/query_attach_phone"] ) {
         // 查询手机是否已经绑定
@@ -147,6 +148,14 @@
         }
 
         return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/open_url"] ) {
+        NSString* value = [self getValueFromQuery:query Key:@"url"];
+        
+        if ( _delegate != nil ) {
+            [_delegate openUrl:value];
+        }
+        
+        return NO;
     }
     
     return YES;
@@ -182,21 +191,21 @@
 }
 
 -(void) onAttachPhone {
-    PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+    PhoneValidationController* phoneVal = [[[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil] autorelease];
     
     [self->_beeStack pushViewController:phoneVal animated:YES];
 }
 
 -(void) onPayToAlipay:(float) fCoin {
     // 转帐到支付宝
-    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:YES];
+    TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES] autorelease];
     
     [self->_beeStack pushViewController:controller animated:YES];
 }
 
 -(void) onPayToPhone:(float) fCoin {
     // 花费充值
-    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:NO];
+    TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO] autorelease];
     
     [self->_beeStack pushViewController:controller animated:YES];
 }
@@ -205,7 +214,7 @@
     NSString* url = [[WEB_ORDER_INFO copy] autorelease];
     url = [url stringByAppendingFormat:@"?ordernum=%@", orderNum];
     
-    WebPageController* controller = [[WebPageController alloc] initOrder:orderNum Url:url Stack:_beeStack];
+    WebPageController* controller = [[[WebPageController alloc] initOrder:orderNum Url:url Stack:_beeStack] autorelease];
     [_beeStack pushViewController:controller animated:YES];
 }
 @end
