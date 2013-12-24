@@ -17,7 +17,7 @@
 
 @property (nonatomic,retain) IBOutlet UIView* upSectionView;
 @property (nonatomic,retain) IBOutlet UIView* downSectionView;
-@property (nonatomic,assign) IBOutlet UIScrollView* scrollView;
+@property (nonatomic,retain) IBOutlet UIScrollView* scrollView;
 
 @property (nonatomic,retain) IBOutlet UISegmentedControl* segmentView;
 @property (nonatomic,retain) IBOutlet IZValueSelectorView* ageSelectorView;

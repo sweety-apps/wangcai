@@ -37,6 +37,17 @@
     // Do any additional setup after loading the view from its nib.
     self.ageSelectorView.backgroundColor = [UIColor clearColor];
     self.ageSelectorView.horizontalScrolling = YES;
+    
+}
+
+- (void)buildSelectorViews
+{
+    NSArray* selectorTexts = [NSArray arrayWithObjects:@"休闲游戏",@"升级打宝",@"打折促销",@"结交朋友",@"旅行生活",@"竞技游戏",@"强身健体",@"美丽达人", nil];
+    
+    for (NSString* selectText in selectorTexts)
+    {
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,6 +66,18 @@
 - (void)showUpSectionView:(BOOL)shouldShow
 {
     
+}
+
+- (void)dealloc
+{
+    self.upSectionView = nil;
+    self.downSectionView = nil;
+    self.scrollView = nil;
+    
+    self.segmentView = nil;
+    self.ageSelectorView = nil;
+    self.selectionContainerView = nil;
+    [super dealloc];
 }
 
 - (IBAction)onPressedAttachPhone:(id)btn

@@ -17,10 +17,12 @@ typedef NSInteger CommonTaskTableViewCellShowType;
 @interface CommonTaskTableViewCell : UITableViewCell
 {
     BeeUIImageView* _leftIcon;
+    UIImageView* _finshedIcon;
     UIImageView* _redBagIcon;
     UIImageView* _bottomLineImage;
     UILabel* _redLabel;
     UILabel* _blackLabel;
+    UILabel* _finishedLabel;
     NSInteger _taskCellType;
 }
 
@@ -35,6 +37,10 @@ typedef NSInteger CommonTaskTableViewCellShowType;
 - (void)setRedBagIcon:(NSString*)imageName;
 - (void)setLeftIconUrl:(NSString*)imageUrl;
 - (void)setLeftIconNamed:(NSString*)imageName;
+
+- (void)setFinishedIcon:(NSString*)imageName;
+- (void)hideFinishedIcon:(BOOL)hidden;
+- (BOOL)isFinishedIconHidden;
 
 - (UILabel*)getUpLabel;
 - (UILabel*)getDownLabel;

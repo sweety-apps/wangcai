@@ -20,6 +20,8 @@
 @synthesize zhanghuYuEHeaderCell = _zhanghuYuEHeaderCell;
 @synthesize infoCell = _infoCell;
 @synthesize containTableView = _containTableView;
+@synthesize containTableViewFooterView = _containTableViewFooterView;
+@synthesize containTableViewFooterJuhuaView = _containTableViewFooterJuhuaView;
 @synthesize tableViewFrame = _tableViewFrame;
 @synthesize beeStack = _beeStack;
 @synthesize staticCells = _staticCells;
@@ -37,18 +39,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _curCellCount = 10;
+    _hisCellCount = 20;
+    
     self.staticCells = [NSMutableArray array];
     _bounceHeader = NO;
+    _hasLoadedHistoricalFinishedList = NO;
+    [self resetFooter];
     [self performSelector:@selector(resetTableViewFrame) withObject:nil afterDelay:0.05];
     [self resetStaticCells];
-    if (_bounceHeader)
-    {
-        self.containTableView.bounces = YES;
-    }
-    else
-    {
-        self.containTableView.bounces = NO;
-    }
     //[self performSelectorOnMainThread:@selector(resetTableViewFrame) withObject:nil waitUntilDone:NO];
 }
 
@@ -68,6 +67,8 @@
     self.zhanghuYuEHeaderCell = nil;
     self.infoCell = nil;
     self.containTableView = nil;
+    self.containTableViewFooterView = nil;
+    self.containTableViewFooterJuhuaView = nil;
     self.staticCells = nil;
     [super dealloc];
 }
@@ -98,11 +99,24 @@
     [_staticCells addObject:self.infoCell];
 }
 
+- (void)onLoadHistoricalFinishedList
+{
+    //这里加载领取过的红包
+    
+    [self endFooter];
+    _hasLoadedHistoricalFinishedList = YES;
+    [self.containTableView reloadData];
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    if (!_hasLoadedHistoricalFinishedList)
+    {
+        return _curCellCount;
+    }
+    return _hisCellCount + _curCellCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,14 +129,6 @@
     if (row < [_staticCells count])
     {
         cell = [_staticCells objectAtIndex:row];
-        if (_bounceHeader)
-        {
-            tableView.bounces = YES;
-        }
-        else
-        {
-            tableView.bounces = NO;
-        }
     }
     else
     {
@@ -158,9 +164,16 @@
             [comCell setLeftIconUrl:@"http://a1.mzstatic.com/us/r30/Purple/v4/a6/dc/ee/a6dceea2-ae77-1746-0dc3-1f6f7a988a0d/icon170x170.png"];
         }
         
-        cell = comCell;
+        if (_hasLoadedHistoricalFinishedList && row >= _curCellCount)
+        {
+            [comCell hideFinishedIcon:NO];
+        }
+        else
+        {
+            [comCell hideFinishedIcon:YES];
+        }
         
-        tableView.bounces = _bounceHeader;
+        cell = comCell;
     }
     
     
@@ -207,6 +220,52 @@
         }
         [self.beeStack pushViewController:userInfoCtrl animated:YES];
     }
+}
+
+#pragma mark - <UIScrollViewDelegate<NSObject>
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y < 100)
+    {
+        if (_bounceHeader)
+        {
+            self.containTableView.bounces = YES;
+        }
+        else
+        {
+            self.containTableView.bounces = NO;
+        }
+    }
+    else
+    {
+        self.containTableView.bounces = YES;
+    }
+    
+    if (!_isUIZhuanJuhuaing && (scrollView.contentOffset.y+scrollView.frame.size.height) > scrollView.contentSize.height)
+    {
+        self.containTableViewFooterJuhuaView.hidden = NO;
+        [self.containTableViewFooterJuhuaView startAnimating];
+        _isUIZhuanJuhuaing = YES;
+        [self performSelector:@selector(onLoadHistoricalFinishedList) withObject:nil afterDelay:2.0];
+        //[self onLoadHistoricalFinishedList];
+    }
+}
+
+#pragma mark - other
+
+- (void)resetFooter
+{
+    self.containTableViewFooterJuhuaView.hidden = YES;
+    self.containTableView.tableFooterView = self.containTableViewFooterView;
+    _isUIZhuanJuhuaing = NO;
+}
+
+- (void)endFooter
+{
+    self.containTableViewFooterJuhuaView.hidden = YES;
+    self.containTableViewFooterView.hidden = YES;
+    //self.containTableView.tableFooterView = nil;
 }
 
 @end

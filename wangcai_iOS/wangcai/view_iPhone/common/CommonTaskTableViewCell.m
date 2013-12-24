@@ -21,8 +21,10 @@
         _leftIcon = [[BeeUIImageView alloc] initWithFrame:CGRectZero];
         _bottomLineImage = [[UIImageView alloc] initWithFrame:CGRectZero];
         _redBagIcon = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _finshedIcon = [[UIImageView alloc] initWithFrame:CGRectZero];
         _redLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _blackLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _finishedLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         
         _bottomLineImage.image = [UIImage imageNamed:@"table_view_cell_line"];
         
@@ -37,6 +39,9 @@
         _blackLabel.textAlignment = NSTextAlignmentLeft;
         _blackLabel.font = [UIFont systemFontOfSize:9];
         
+        _finishedLabel.backgroundColor = [UIColor greenColor];
+        _finishedLabel.text = @"完成";
+        
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
         
@@ -46,6 +51,8 @@
         [self.contentView addSubview:_redBagIcon];
         [self.contentView addSubview:_redLabel];
         [self.contentView addSubview:_blackLabel];
+        [self.contentView addSubview:_finshedIcon];
+        [self.contentView addSubview:_finishedLabel];
         
         [self resetSubViews];
     }
@@ -63,6 +70,7 @@
 {
     [_leftIcon release];
     [_redLabel release];
+    [_finshedIcon release];
     [_blackLabel release];
     [_redBagIcon release];
     [_bottomLineImage release];
@@ -81,6 +89,12 @@
     
     rectFrame = CGRectMake(250, 10, 53, 60);
     _redBagIcon.frame = rectFrame;
+    
+    rectFrame = CGRectMake(250, 10, 53, 60);
+    //_finshedIcon.frame = rectFrame;
+    
+    rectFrame = CGRectMake(165, 26, 50, 20);
+    _finishedLabel.frame = rectFrame;
     
     if (_taskCellType == CommonTaskTableViewCellShowTypeRedTextUp)
     {
@@ -167,6 +181,22 @@
 - (void)setLeftIconNamed:(NSString*)imageName
 {
     [_leftIcon setImage:[UIImage imageNamed:imageName]];
+}
+
+- (void)setFinishedIcon:(NSString*)imageName
+{
+    [_finshedIcon setImage:[UIImage imageNamed:imageName]];
+}
+
+- (void)hideFinishedIcon:(BOOL)hidden
+{
+    _finshedIcon.hidden = hidden;
+    _finishedLabel.hidden = hidden;
+}
+
+- (BOOL)isFinishedIconHidden
+{
+    return _finshedIcon.hidden;
 }
 
 - (void)setTaskCellType:(NSInteger)taskCellType
