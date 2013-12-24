@@ -101,7 +101,6 @@
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSString* query = [request.mainDocumentURL query];
-    NSString* path = request.mainDocumentURL.relativePath;
     
     if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/query_attach_phone"] ) {
         // 查询手机是否已经绑定
@@ -154,6 +153,17 @@
         if ( _delegate != nil ) {
             [_delegate openUrl:value];
         }
+        
+        return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/open_url_inside"] ) {
+        NSString* value = [self getValueFromQuery:query Key:@"url"];
+        NSString* title = [self getValueFromQuery:query Key:@"title"];
+        
+        title = [title stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+        WebPageController* webController = [[[WebPageController alloc] init:title Url:value Stack:_beeStack]autorelease];
+        
+        [self->_beeStack pushViewController:webController animated:YES];
         
         return NO;
     }
