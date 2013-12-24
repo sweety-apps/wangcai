@@ -10,14 +10,37 @@
 
 @implementation CommonYuENumView
 
+- (void)initClassVars
+{
+    _digitDict = [[NSMutableDictionary dictionaryWithObjectsAndKeys:@"yue_0",@"0",@"yue_1",@"1",@"yue_2",@"2",@"yue_3",@"3",@"yue_4",@"4",@"yue_5",@"5",@"yue_6",@"6",@"yue_7",@"7",@"yue_8",@"8",@"yue_9",@"9",@"yue_dot",@".", nil] retain];
+    _num = 0.f;
+    self.backgroundColor = [UIColor clearColor];
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [self initClassVars];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initClassVars];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _digitDict = [[NSMutableDictionary dictionaryWithObjectsAndKeys:@"yue_0",@"0",@"yue_1",@"1",@"yue_2",@"2",@"yue_3",@"3",@"yue_4",@"4",@"yue_5",@"5",@"yue_6",@"6",@"yue_7",@"7",@"yue_8",@"8",@"yue_9",@"9",@"yue_dot",@".", nil] retain];
-        _num = 0.f;
-        self.backgroundColor = [UIColor clearColor];
+        [self initClassVars];
     }
     return self;
 }

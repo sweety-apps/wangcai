@@ -18,7 +18,7 @@ typedef NSInteger CommonTaskTableViewCellShowType;
 {
     BeeUIImageView* _leftIcon;
     UIImageView* _redBagIcon;
-    UIImageView* _backLabelImage;
+    UIImageView* _bottomLineImage;
     UILabel* _redLabel;
     UILabel* _blackLabel;
     NSInteger _taskCellType;
@@ -34,5 +34,9 @@ typedef NSInteger CommonTaskTableViewCellShowType;
 
 - (void)setRedBagIcon:(NSString*)imageName;
 - (void)setLeftIconUrl:(NSString*)imageUrl;
+- (void)setLeftIconNamed:(NSString*)imageName;
+
+- (UILabel*)getUpLabel;
+- (UILabel*)getDownLabel;
 
 @end
