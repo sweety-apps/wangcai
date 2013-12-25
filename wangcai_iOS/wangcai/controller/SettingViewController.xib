@@ -209,8 +209,6 @@
     <resources>
         <image name="back.png" width="12" height="22"/>
         <image name="line.png" width="320" height="1"/>
-        <image name="line.png" width="320" height="1"/>
-        <image name="line.png" width="320" height="1"/>
         <image name="logo.png" width="147" height="167"/>
         <image name="nav_Header.png" width="320" height="54"/>
         <image name="setting_bell.png" width="29" height="29"/>

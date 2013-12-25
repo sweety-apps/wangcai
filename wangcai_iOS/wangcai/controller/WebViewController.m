@@ -33,6 +33,10 @@
         [self.view addSubview:self->_loadingView];
         
         [self->_webView setHidden:YES];
+        
+        _alert = nil;
+        _nsCallback = nil;
+        _nsBtn2ID = nil;
     }
     return self;
 }
@@ -64,6 +68,17 @@
     self->_loadingView = nil;
     self->_beeStack = nil;
     _delegate = nil;
+    
+    if ( _alert != nil ) {
+        [_alert release];
+    }
+    if ( _nsCallback != nil ) {
+        [_nsCallback release];
+    }
+    if ( _nsCallback != nil ) {
+        [_nsBtn2ID release];
+    }
+    
     [super dealloc];
 }
 
@@ -190,9 +205,33 @@
         info = [info stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         btntext = [btntext stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:info delegate:self cancelButtonTitle:btntext otherButtonTitles:nil, nil];
-        [alert show];
-        [alert release];
+        NSString* btn2 = [self getValueFromQuery:query Key:@"btn2"];
+        if ( btn2 != nil ) {
+            btn2 = [btn2 stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSString* btn2Id = [self getValueFromQuery:query Key:@"btn2id"];
+            NSString* callback = [self getValueFromQuery:query Key:@"callback"];
+            
+            if ( _alert != nil ) {
+                [_alert release];
+            }
+            if ( _nsCallback != nil ) {
+                [_nsCallback release];
+            }
+            if ( _nsCallback != nil ) {
+                [_nsBtn2ID release];
+            }
+            
+            _nsCallback = [callback copy];
+            _nsBtn2ID = [btn2Id copy];
+            
+            _alert = [[UIAlertView alloc] initWithTitle:title message:info delegate:self cancelButtonTitle:btntext otherButtonTitles:btn2, nil];
+            
+            [_alert show];
+        } else {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:info delegate:nil cancelButtonTitle:btntext otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
         
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/alert_loading"] ) {
@@ -211,6 +250,18 @@
     }
     
     return YES;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( _alert != nil ) {
+        if ( [_alert isEqual:alertView] ) {
+            if ( buttonIndex == 1 ) {
+                NSString* js = [[NSString alloc] initWithFormat:@"%@(%@)", self->_nsCallback, _nsBtn2ID];
+                [_webView stringByEvaluatingJavaScriptFromString:js];
+                [js release];
+            }
+        }
+    }
 }
 
 - (void) setDelegate:(id) delegate {

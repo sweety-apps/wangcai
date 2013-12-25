@@ -13,7 +13,7 @@
 - (void) openUrl : (NSString*) url;
 @end
 
-@interface WebViewController : UIViewController<UIWebViewDelegate> {
+@interface WebViewController : UIViewController<UIWebViewDelegate, UIAlertViewDelegate> {
     UIWebView* _webView;
     NSString*  _url;
     
@@ -22,6 +22,10 @@
     BeeUIStack* _beeStack;
     
     id _delegate;
+    
+    UIAlertView*    _alert;
+    NSString*       _nsCallback;
+    NSString*       _nsBtn2ID;
 }
 
 - (void) setDelegate:(id) delegate;
@@ -35,4 +39,7 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView;
 - (void)webViewDidFinishLoad:(UIWebView *)webView;
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+
 @end
