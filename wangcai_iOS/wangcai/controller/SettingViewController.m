@@ -35,7 +35,7 @@
         CGRect rect = [[UIScreen mainScreen]bounds];
         rect.origin.y = 54;
         rect.size.height -= 54;
-        _tableView.frame = rect;
+        [_tableView setFrame:rect];
         
         // 判断是否开了消息通知
         UIRemoteNotificationType type = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
