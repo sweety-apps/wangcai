@@ -16,7 +16,7 @@
 #define HTTP_SEND_SMS_CODE      @"http://getwangcai.com/0/account/send_sms_code"
 #define HTTP_CHECK_SMS_CODE     @"http://getwangcai.com/0/account/check_sms_code"
 
-
+#define HTTP_SERVICE_CENTER     @"http://yw2sc.ledzixun.com/mobile/consulting"
 
 #define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
 #define WEB_TASK          @"http://wangcai.meme-da.com/web/task/app_task.php"
