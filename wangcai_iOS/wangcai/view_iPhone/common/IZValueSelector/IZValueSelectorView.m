@@ -13,6 +13,7 @@
 @implementation IZValueSelectorView {
     UITableView *_contentTableView;
     CGRect _selectionRect;
+    NSInteger _selectedIndex;
 }
 
 @synthesize shouldBeTransparent = _shouldBeTransparent;
@@ -112,6 +113,16 @@
 }
 */
 
+- (void)selectItemAtIndex:(NSInteger)index
+{
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self scrollToTheCellAtIndex:indexPath];
+}
+
+- (NSInteger)currentSelectedIndex
+{
+    return _selectedIndex;
+}
 
 
 #pragma mark Table view methods
@@ -132,6 +143,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:CellIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -179,6 +191,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == _contentTableView) {
         [_contentTableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        _selectedIndex = indexPath.row;
         [self.delegate selector:self didSelectRowAtIndex:indexPath.row];
     }
 }
@@ -213,9 +226,17 @@
             intersectionHeight = intersectedRect.size.height;
         }
     }
+    [self scrollToTheCellAtIndex:selectedIndexPath];
+}
+
+- (void)scrollToTheCellAtIndex:(NSIndexPath*)indexPath
+{
+    NSIndexPath *selectedIndexPath = indexPath;
+    
     if (selectedIndexPath!=nil) {
         //As soon as we elected an indexpath we just have to scroll to it
         [_contentTableView scrollToRowAtIndexPath:selectedIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        _selectedIndex = selectedIndexPath.row;
         [self.delegate selector:self didSelectRowAtIndex:selectedIndexPath.row];
     }
 }

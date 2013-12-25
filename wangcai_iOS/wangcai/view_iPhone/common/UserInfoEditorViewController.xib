@@ -11,6 +11,8 @@
                 <outlet property="downSectionView" destination="Eae-O1-yNG" id="kPu-5Z-6Og"/>
                 <outlet property="scrollView" destination="A8H-uu-Lda" id="tm6-7d-nii"/>
                 <outlet property="selectionContainerView" destination="Eqa-nk-nYl" id="MrL-ZN-qyb"/>
+                <outlet property="sexFamaleButton" destination="ZrA-pI-483" id="mZS-AN-SIi"/>
+                <outlet property="sexMaleButton" destination="LQ7-DO-dJH" id="2uM-D2-Cox"/>
                 <outlet property="upSectionView" destination="uPm-zh-sC1" id="ySP-a1-zyw"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -41,7 +43,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="A8H-uu-Lda">
-                    <rect key="frame" x="0.0" y="54" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="54" width="320" height="514"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="uPm-zh-sC1" userLabel="UP">
@@ -52,7 +54,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BindTipsDuihao.png" id="HUY-iM-jb4">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warn.png" id="HUY-iM-jb4">
                                             <rect key="frame" x="5" y="7" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -60,24 +62,25 @@
                                             <rect key="frame" x="30" y="7" width="300" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ced-Gv-Uby">
                                             <rect key="frame" x="230" y="4" width="80" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="绑定手机号" backgroundImage="BindAttachphoneBtn.png">
+                                            <state key="normal" title="绑定手机号" backgroundImage="resend_normal.png">
+                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
-                                            <state key="selected" backgroundImage="BindAttachphoneBtn.png"/>
-                                            <state key="highlighted" backgroundImage="BindAttachphoneBtn.png"/>
+                                            <state key="selected" backgroundImage="resend_down.png"/>
+                                            <state key="highlighted" backgroundImage="resend_down.png"/>
                                             <connections>
                                                 <action selector="onPressedAttachPhone:" destination="-1" eventType="touchUpInside" id="mA0-zd-1rn"/>
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.39607846736907959" green="0.63137257099151611" blue="0.25490197539329529" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旺财等级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hHs-bn-Sf8">
                                     <rect key="frame" x="15" y="50" width="159" height="21"/>
@@ -97,14 +100,18 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="信息越准，越符合你的喜好" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G1a-oy-Ben">
-                                    <rect key="frame" x="15" y="179" width="277" height="21"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="信息越准确，越符合你的喜好" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G1a-oy-Ben">
+                                    <rect key="frame" x="95" y="160" width="164" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dengjiTmp.png" id="A8W-DJ-4yc">
                                     <rect key="frame" x="35" y="67" width="236" height="113"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="pH2-FA-rjX">
+                                    <rect key="frame" x="15" y="185" width="290" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
@@ -114,36 +121,72 @@
                             <rect key="frame" x="0.0" y="200" width="320" height="400"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ZcU-lq-QrW">
-                                    <rect key="frame" x="15" y="40" width="123" height="29"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LQ7-DO-dJH">
+                                    <rect key="frame" x="90" y="14" width="43" height="43"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <segments>
-                                        <segment title="男"/>
-                                        <segment title="女"/>
-                                    </segments>
-                                </segmentedControl>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="男">
+                                        <color key="titleColor" red="0.47058826684951782" green="0.47058826684951782" blue="0.47058826684951782" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="selected" backgroundImage="user_sex_selected.png">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted" backgroundImage="user_sex_selected.png">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onPressedMaleButton:" destination="-1" eventType="touchDown" id="4A8-PU-fc9"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZrA-pI-483">
+                                    <rect key="frame" x="160" y="14" width="43" height="43"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="女">
+                                        <color key="titleColor" red="0.47058826679999999" green="0.47058826679999999" blue="0.47058826679999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="selected" backgroundImage="user_sex_selected.png">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted" backgroundImage="user_sex_selected.png">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onPressedFamaleButton:" destination="-1" eventType="touchDown" id="k9d-H2-4a9"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年龄" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GU6-5c-aZ8">
-                                    <rect key="frame" x="160" y="10" width="42" height="21"/>
+                                    <rect key="frame" x="15" y="100" width="42" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择你感兴趣的关键字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="caI-dr-Ron">
-                                    <rect key="frame" x="15" y="100" width="200" height="21"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择你感兴趣的关键字（多选）" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="caI-dr-Ron">
+                                    <rect key="frame" x="15" y="180" width="300" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XBb-5v-1ze">
-                                    <rect key="frame" x="15" y="10" width="42" height="21"/>
+                                    <rect key="frame" x="15" y="25" width="42" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" id="mzq-Qu-qah" userLabel="SlideV" customClass="IZValueSelectorView">
-                                    <rect key="frame" x="160" y="40" width="150" height="40"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="kRP-IQ-4D7">
+                                    <rect key="frame" x="0.0" y="80" width="320" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="qjQ-nC-pCe">
+                                    <rect key="frame" x="0.0" y="140" width="320" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <view contentMode="scaleToFill" id="mzq-Qu-qah" userLabel="SlideV" customClass="IZValueSelectorView">
+                                    <rect key="frame" x="60" y="85" width="250" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="w3F-W6-dWI"/>
                                         <outlet property="delegate" destination="-1" id="2xG-BB-aj2"/>
@@ -167,10 +210,13 @@
         </view>
     </objects>
     <resources>
-        <image name="BindAttachphoneBtn.png" width="149" height="54"/>
-        <image name="BindTipsDuihao.png" width="34" height="34"/>
         <image name="back.png" width="12" height="22"/>
         <image name="dengjiTmp.png" width="1158" height="304"/>
         <image name="nav_Header.png" width="320" height="54"/>
+        <image name="resend_down.png" width="66" height="27"/>
+        <image name="resend_normal.png" width="66" height="27"/>
+        <image name="table_view_cell_line.png" width="320" height="1"/>
+        <image name="user_sex_selected.png" width="43" height="43"/>
+        <image name="warn.png" width="17" height="17"/>
     </resources>
 </document>
