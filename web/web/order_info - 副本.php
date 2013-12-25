@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 function getData($num) {
 	$obj = array();
 	$obj['title'] = "兑换迅雷会员30天";
@@ -106,7 +106,7 @@ $data = getData($_GET['ordernum']);
 	</div>
 	
 	<div class="userService">
-		<a href="/wangcai_js/service_center">
+		<a href="/wangcai_js/open_url_inside?url=http://yw2sc.ledzixun.com/mobile/consulting&title=联系客服">
 			<img src="./img/userservice.png" width="66px" />
 		</a>
 	</div>
