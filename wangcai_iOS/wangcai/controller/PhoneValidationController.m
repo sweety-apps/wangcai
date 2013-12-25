@@ -34,6 +34,8 @@
     if (self) {
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] firstObject];
+        _token = nil;
+        
         self->_timer = nil;
         self._viewInputNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:2];
         self._viewCheckNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:1];
@@ -92,6 +94,15 @@
     self._viewCheckNum = nil;
     self._viewRegSuccess = nil;
     
+    if ( _token != nil ) {
+        [_token release];
+        _token = nil;
+    }
+    
+    if ( _phoneNum != nil ) {
+        [_phoneNum release];
+        _phoneNum = nil;
+    }
     self.textNum = nil;
     self.nextNumBtn = nil;
     self.textCheck1 = nil;
@@ -312,13 +323,12 @@
         NSString* phoneNum = self.textNum.text;
         if ( [self checkPhoneNum : phoneNum] ) {
             // 发送验证码，进入loading
-            [self->phoneValidation sendCheckNumToPhone:phoneNum delegate:self ];
+            self->_phoneNum = [phoneNum copy];
+            [self->phoneValidation attachPhone:phoneNum delegate:self];
             [self showLoading];
         
             return ;
         }
-    
-        self->_phoneNum = phoneNum;
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入有效的手机号码" delegate:self cancelButtonTitle:@"重新输入" otherButtonTitles:nil, nil];
         [alert show];
@@ -337,7 +347,7 @@
             
             [self showLoading];
             // 给服务器发送验证请求
-            [self->phoneValidation checkSmsCode:self->_phoneNum smsCode:checkNum Token:self->_token delegate:self];
+            [self->phoneValidation checkSmsCode:checkNum Token:_token delegate:self];
         }
     }
 }
@@ -483,32 +493,6 @@
     [self hideWarn:NO];
 }
 
-- (void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg  token:(NSString*) token {
-    [self hideLoading];
-    if ( suc ) {
-        // 发送完成，进入下一步
-        self->_token = [token copy];
-        if ( self->curState != 1 ) {
-            [self showSecondPage];
-        }
-        
-        [self beginTime];
-    } else {
-        // 发送失败，错误提示
-        if ( errMsg == nil ) {
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"发送验证短信失败" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-        } else {
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:errMsg delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-        }
-        
-        [self endTime];
-    }
-}
-
 - (void) beginTime {
     self->_nTime = 30;
     self->_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
@@ -544,7 +528,7 @@
     [text release];
 }
 
-- (void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId Nickname:(NSString*)nickname {
+- (void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId {
     [self hideLoading];
     if ( suc ) {
         // 发送完成，进入下一步
@@ -568,4 +552,51 @@
     }
 }
 
+-(void) attachPhoneCompleted : (BOOL) suc Token:(NSString*)token errMsg:(NSString*)errMsg {
+    [self hideLoading];
+    if ( suc ) {
+        // 成功发送了验证码
+        if ( _token != nil ) {
+            [_token release];
+        }
+        _token = [token copy];
+        [self showSecondPage];
+        [self beginTime];
+    } else {
+        if ( errMsg == nil ) {
+            errMsg = @"手机号不正确";
+        }
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:errMsg delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+}
+
+- (void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg  token:(NSString*) token {
+    [self hideLoading];
+    if ( suc ) {
+        // 发送完成，进入下一步
+        if ( _token != nil ) {
+            [_token release];
+        }
+        
+        _token = [token copy];
+        
+        [self beginTime];
+    } else {
+        // 发送失败，错误提示
+        if ( errMsg == nil ) {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"发送验证短信失败" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        } else {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:errMsg delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
+        
+        [self endTime];
+    }
+}
 @end

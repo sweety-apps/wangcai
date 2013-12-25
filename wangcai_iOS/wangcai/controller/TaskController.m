@@ -86,6 +86,13 @@
         
             if (result) {
                 [self presentViewController:storeProductVC animated:YES completion:nil];
+            } else {
+                NSString* desc = [[error userInfo] valueForKey:@"NSLocalizedDescription"];
+                
+                
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示" message:desc delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+                [alert release];
             }
         }];
     } else {

@@ -83,6 +83,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
+        [self unobserveNotification:@"showMenu"];
 		SAFE_RELEASE_SUBVIEW( _mask );
 	}
 	else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
@@ -215,7 +216,13 @@ ON_SIGNAL3( MenuBoard_iPhone, third, signal )
 
 ON_SIGNAL3( MenuBoard_iPhone, wc_main, signal )
 {
+    //static BOOL isFirstShow = YES;
 	[[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
+    //if (!isFirstShow)
+    //{
+        [self postNotification:@"naviToUserInfoEditor"];
+    //}
+    //isFirstShow = NO;
 	
 	[self hideMenu];
 }

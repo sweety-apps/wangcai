@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WebViewController.h"
+#import <StoreKit/StoreKit.h>
 
-@interface WebPageController : UIViewController {
+@interface WebPageController : UIViewController<WebViewControllerDelegate> {
     BeeUIStack* _beeUIStack;
     UILabel* _titleLabel;
     WebViewController* _webViewController;

@@ -28,6 +28,8 @@
         self->_webViewController = [[WebViewController alloc]init];
         [self->_webViewController setBeeUIStack:stack];
         
+        [self->_webViewController setDelegate:self];
+        
         UIView* view = self->_webViewController.view;
         CGRect rect = [[UIScreen mainScreen]bounds];
         rect.origin.y = 54;
@@ -56,6 +58,7 @@
         
         self->_webViewController = [[WebViewController alloc]init];
         [self->_webViewController setBeeUIStack:stack];
+        [self->_webViewController setDelegate:self];
         
         UIView* view = self->_webViewController.view;
         CGRect rect = [[UIScreen mainScreen]bounds];
@@ -98,6 +101,10 @@
     } else {
         [self->_beeUIStack popViewControllerAnimated:YES];
     }
+}
+
+- (void) openUrl : (NSString*) url {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 @end

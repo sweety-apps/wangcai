@@ -35,9 +35,13 @@
         _tableView.separatorStyle = NO;
 
         CGRect rect = [[UIScreen mainScreen]bounds];
-        rect.origin.y = 102;
-        rect.size.height -= 102;
-        _tableView.frame = rect;
+        rect.origin.y = 101;
+        rect.size.height -= 101;
+        
+        //[_tableView setHeight:rect.size.height];
+        
+        [_tableView setFrame:rect];
+
         
         _noattachView = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] lastObject];
         rect = _noattachView.frame;
@@ -70,8 +74,6 @@
     NSInteger row = indexPath.row;
     if ( row == 0 ) {
         return _cell;
-    } else if ( row == 10 ) {
-        return _cellEnd;
     } else {
         ExchangeControllerCell* cell = [tableView dequeueReusableCellWithIdentifier:@"exchangeCell"];
         if (cell == nil)
@@ -104,7 +106,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 11;
+    return 10;
 }
 
 - (IBAction)clickExchangeInfo:(id)sender {
