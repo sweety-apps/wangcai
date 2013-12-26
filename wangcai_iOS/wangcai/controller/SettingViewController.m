@@ -29,8 +29,8 @@
         _tableView = (UITableView*)[self.view viewWithTag:99];
         _tableView.separatorStyle = NO;
         
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
+        //_tableView.delegate = self;
+        //_tableView.dataSource = self;
         
         CGRect rect = [[UIScreen mainScreen]bounds];
         rect.origin.y = 54;
