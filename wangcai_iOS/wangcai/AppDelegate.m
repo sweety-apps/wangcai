@@ -50,7 +50,18 @@
 - (void)load
 {
     StartupController* startup = [[StartupController alloc]init : self];
+    
+    [CATransaction begin];
+    CATransition *transition = [CATransition animation];
+    transition.type = kCATransitionFade;
+    transition.duration = 0.5f;
+    transition.fillMode = kCAFillModeForwards;
+    transition.removedOnCompletion = YES;
+    [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:@"transition"];
+    
     self.window.rootViewController = startup;
+    
+    [CATransaction commit];
 
     [UIApplication sharedApplication].statusBarHidden = YES;
 }
