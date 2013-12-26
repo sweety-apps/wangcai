@@ -45,11 +45,21 @@
 
 -(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg {
     if ( status == Login_Success ) {
+        [CATransaction begin];
+        CATransition *transition = [CATransition animation];
+        transition.type = kCATransitionFade;
+        transition.duration = 0.5f;
+        transition.fillMode = kCAFillModeForwards;
+        transition.removedOnCompletion = YES;
+        [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:@"transition"];
+        
         if ( [BeeSystemInfo isDevicePad] ) {
             _delegate.window.rootViewController = [AppBoard_iPad sharedInstance];
         } else {
             _delegate.window.rootViewController = [AppBoard_iPhone sharedInstance];
         }
+        
+        [CATransaction commit];
     } else {
         // 登陆错误
     }
