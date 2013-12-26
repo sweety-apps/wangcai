@@ -63,6 +63,8 @@
 		59E42A341862986F00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429FE1862986E00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
 		A60C876F1865949700F6889C /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A60C876E1865949700F6889C /* HttpRequest.m */; };
 		A60C87711865C68C00F6889C /* warn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C87701865C68B00F6889C /* warn@2x.png */; };
+		A63AC91F186C565B00A106A0 /* StartupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63AC91E186C565B00A106A0 /* StartupController.m */; };
+		A63AC921186C566B00A106A0 /* StartupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63AC920186C566B00A106A0 /* StartupController.xib */; };
 		A6438ED7185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */; };
 		A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */; };
 		A6438EDC185F2381001A84AD /* UserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438EDB185F2381001A84AD /* UserInfoController.m */; };
@@ -541,6 +543,9 @@
 		A60C876D1865949700F6889C /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		A60C876E1865949700F6889C /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
 		A60C87701865C68B00F6889C /* warn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warn@2x.png"; sourceTree = "<group>"; };
+		A63AC91D186C565B00A106A0 /* StartupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupController.h; sourceTree = "<group>"; };
+		A63AC91E186C565B00A106A0 /* StartupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupController.m; sourceTree = "<group>"; };
+		A63AC920186C566B00A106A0 /* StartupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupController.xib; sourceTree = "<group>"; };
 		A6438ED5185EF0F3001A84AD /* TransferToAlipayAndPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferToAlipayAndPhoneController.h; sourceTree = "<group>"; };
 		A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferToAlipayAndPhoneController.m; sourceTree = "<group>"; };
 		A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransferToAlipayAndPhoneController.xib; sourceTree = "<group>"; };
@@ -1860,6 +1865,9 @@
 				A6FA00ED186ABEF6008302F0 /* SettingViewController.xib */,
 				A6FA00EF186AC068008302F0 /* SettingViewController.h */,
 				A6FA00F0186AC068008302F0 /* SettingViewController.m */,
+				A63AC91D186C565B00A106A0 /* StartupController.h */,
+				A63AC91E186C565B00A106A0 /* StartupController.m */,
+				A63AC920186C566B00A106A0 /* StartupController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2950,6 +2958,7 @@
 				F3F186E318543A410098C852 /* Default@2x.png in Resources */,
 				F3F18A45185763610098C852 /* testMain@2x.png in Resources */,
 				A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */,
+				A63AC921186C566B00A106A0 /* StartupController.xib in Resources */,
 				F3D834A2185B486A003095D5 /* bottom_bg@2x.png in Resources */,
 				F3D9D566185D876D00392C40 /* WebViewController.xib in Resources */,
 				A68B55B5185EB61A0096C7AC /* tab_highlight@2x.png in Resources */,
@@ -3291,6 +3300,7 @@
 				F3F188CC18543A430098C852 /* BeeUISignal+SourceView.m in Sources */,
 				F3F187FC18543A420098C852 /* Bee_UIAnimationFade.m in Sources */,
 				F3F1885E18543A430098C852 /* Bee_UIScrollView.m in Sources */,
+				A63AC91F186C565B00A106A0 /* StartupController.m in Sources */,
 				F3F189FC18543A450098C852 /* AppBoard_iPad.m in Sources */,
 				F3F1878518543A420098C852 /* BeeMessage+BeeXML.mm in Sources */,
 				F3D9D55B185D876D00392C40 /* MBAlertViewItem.m in Sources */,

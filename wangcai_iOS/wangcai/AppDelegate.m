@@ -40,29 +40,88 @@
 #import "WBApi.h"
 #import <RennSDK/RennSDK.h>
 #import "WeiboSDK.h"
+#import "StartupController.h"
 
 
 #pragma mark -
 
 @implementation AppDelegate
 
+/*
+- (CAAnimation *)animationWithType:(KYNaviAnimationType)animationType direction:(KYNaviAnimationDirection)direction{
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:kAnimationDuration];
+    switch (animationType) {
+        case KYNaviAnimationTypeFade:
+            animation.type = kCATransitionFade; //淡化
+            break;
+        case KYNaviAnimationTypePush:
+            animation.type = kCATransitionPush; //推挤
+            break;
+        case KYNaviAnimationTypeReveal:
+            animation.type = kCATransitionReveal; //揭开
+            break;
+        case KYNaviAnimationTypeMoveIn:
+            animation.type = kCATransitionMoveIn;//覆盖
+            break;
+        case KYNaviAnimationTypeCube:
+            animation.type = @"cube";   //立方体
+            break;
+        case KYNaviAnimationTypeSuck:
+            animation.type = @"suckEffect"; //吸收
+            break;
+        case KYNaviAnimationTypeSpin:
+            animation.type = @"oglFlip";    //旋转
+            break;
+        case KYNaviAnimationTypeRipple:
+            animation.type = @"rippleEffect";   //波纹
+            break;
+        case KYNaviAnimationTypePageCurl:
+            animation.type = @"pageCurl";   //翻页
+            break;
+        case KYNaviAnimationTypePageUnCurl:
+            animation.type = @"pageUnCurl"; //反翻页
+            break;
+        case KYNaviAnimationTypeCameraOpen:
+            animation.type = @"cameraIrisHollowOpen";   //镜头开
+            break;
+        case KYNaviAnimationTypeCameraClose:
+            animation.type = @"cameraIrisHollowClose";  //镜头关
+            break;
+        default:
+            animation.type = kCATransitionPush; //推挤
+            break;
+    }
+    
+    switch (direction) {
+        case KYNaviAnimationDirectionFromLeft:
+            animation.subtype = kCATransitionFromLeft;
+            break;
+        case KYNaviAnimationDirectionFromRight:
+            animation.subtype = kCATransitionFromRight;
+            break;
+        case KYNaviAnimationDirectionFromTop:
+            animation.subtype = kCATransitionFromTop;
+            break;
+        case KYNaviAnimationDirectionFromBottom:
+            animation.subtype = kCATransitionFromBottom;
+            break;
+        default:
+            animation.subtype = kCATransitionFromRight;
+            break;
+    }
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    return animation;
+}
+*/
 - (void)load
 {
-	if ( [BeeSystemInfo isDevicePad] )
-	{
-		self.window.rootViewController = [AppBoard_iPad sharedInstance];
-	}
-	else
-	{
-		self.window.rootViewController = [AppBoard_iPhone sharedInstance];
-	}
-    
+    StartupController* startup = [[StartupController alloc]init : self];
+    self.window.rootViewController = startup;
+
     [UIApplication sharedApplication].statusBarHidden = YES;
-    // 初始化sharesdk
-    [self initShareSDK];
     
-    // 登录
-    [[LoginAndRegister sharedInstance] login];
+    //[UIApplication sharedApplication].keyWindow.layer addAnimation:<#(CAAnimation *)#> forKey:<#(NSString *)#>
 }
 
 - (void)unload
@@ -78,44 +137,6 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication
                         annotation:annotation wxDelegate:self];
-}
-
-- (void) initShareSDK {
-    [ShareSDK registerApp:@"ebe1cada416"];
-
-    // 新浪微博
-    [ShareSDK connectSinaWeiboWithAppKey: @"338240125" appSecret: @"32ccbf2004d7f8d19e29978aacdc2904" redirectUri: @"https://api.weibo.com/oauth2/default.html" weiboSDKCls: [WeiboSDK class]];
-    
-    // 添加QQ应用
-    [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
-    
-    //添加QQ空间应用
-    [ShareSDK connectQZoneWithAppKey: @"100577453" appSecret: @"9454dd071c0dc94008caed4045ce5e39" qqApiInterfaceCls:[QQApiInterface class] tencentOAuthCls: [TencentOAuth class]];
-    
-    // TX微博
-    [ShareSDK connectTencentWeiboWithAppKey: @"801457140" appSecret: @"08c6c07a58f40d2a9b06eabeaf86f6ba" redirectUri: @"http://www.meme-da.com/" wbApiCls: [WBApi class]];
-    
-    // 163微博
-    [ShareSDK connect163WeiboWithAppKey: @"la0pHcb8OZU5N2Xg" appSecret: @"UrTuNU32cSEfz789pUd0iSGQBJIBaVzh" redirectUri: @"http://www.meme-da.com/"];
-    
-    // 豆瓣
-    [ShareSDK connectDoubanWithAppKey: @"0f4b3d0120adb5472de1b70362091fd5" appSecret: @"54b911f9863bdbd7" redirectUri: @"http://www.meme-da.com/"];
-    
-    // 人人
-    [ShareSDK connectRenRenWithAppId: @"245528" appKey: @"a4825d92031b4a8495d7ef803b480373" appSecret: @"aa95c7e0575e4d8d8fd59cd31b32c76e" renrenClientClass: [RennClient class]];
-    
-    // 微信
-    [ShareSDK connectWeChatWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
-    
-    // 微信朋友圈
-    [ShareSDK connectWeChatFavWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
-    
-    // 微信好友
-    [ShareSDK connectWeChatSessionWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
-    
-    // 微信收藏
-    [ShareSDK connectWeChatFavWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
-    //……
 }
 
 @end

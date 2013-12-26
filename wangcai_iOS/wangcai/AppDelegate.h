@@ -30,8 +30,14 @@
 //
 
 #import "Bee.h"
+#import "LoginAndRegister.h"
 
 #pragma mark -
 
-@interface AppDelegate : BeeSkeleton
+@interface AppDelegate : BeeSkeleton {
+    
+}
+
+-(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg;
+
 @end
