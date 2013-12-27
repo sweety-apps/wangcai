@@ -24,13 +24,20 @@
                 <label class="item-text">超值兑换</label>
                 <button id="first" class="item-mask"/>
             </linear>
+            
             <linear orientation="v" class="item-wrapper">
-                <label class="item-text">土豪榜</label>
-                <button id="third" class="item-mask"/>
+                <label class="item-text">邀请送红包</label>
+                <button id="invite" class="item-mask"/>
             </linear>
+            
             <linear orientation="v" class="item-wrapper">
                 <label class="item-text">功能设置</label>
                 <button id="third" class="item-mask"/>
+            </linear>
+            
+            <linear orientation="v" class="item-wrapper">
+                <label class="item-text">客服帮助</label>
+                <button id="service" class="item-mask"/>
             </linear>
         </linear>
 	</linear>

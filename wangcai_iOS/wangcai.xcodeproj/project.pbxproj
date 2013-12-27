@@ -63,6 +63,8 @@
 		59E42A341862986F00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429FE1862986E00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
 		A60C876F1865949700F6889C /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A60C876E1865949700F6889C /* HttpRequest.m */; };
 		A60C87711865C68C00F6889C /* warn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C87701865C68B00F6889C /* warn@2x.png */; };
+		A62A940F186D6400001FD600 /* ServiceBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A940E186D6400001FD600 /* ServiceBoard_iPhone.m */; };
+		A62A9412186D6867001FD600 /* InviteBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A9411186D6867001FD600 /* InviteBoard_iPhone.m */; };
 		A63AC91F186C565B00A106A0 /* StartupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63AC91E186C565B00A106A0 /* StartupController.m */; };
 		A63AC921186C566B00A106A0 /* StartupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63AC920186C566B00A106A0 /* StartupController.xib */; };
 		A6438ED7185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */; };
@@ -543,6 +545,10 @@
 		A60C876D1865949700F6889C /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		A60C876E1865949700F6889C /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
 		A60C87701865C68B00F6889C /* warn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warn@2x.png"; sourceTree = "<group>"; };
+		A62A940D186D6400001FD600 /* ServiceBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceBoard_iPhone.h; sourceTree = "<group>"; };
+		A62A940E186D6400001FD600 /* ServiceBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceBoard_iPhone.m; sourceTree = "<group>"; };
+		A62A9410186D685D001FD600 /* InviteBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteBoard_iPhone.h; sourceTree = "<group>"; };
+		A62A9411186D6867001FD600 /* InviteBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteBoard_iPhone.m; sourceTree = "<group>"; };
 		A63AC91D186C565B00A106A0 /* StartupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupController.h; sourceTree = "<group>"; };
 		A63AC91E186C565B00A106A0 /* StartupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupController.m; sourceTree = "<group>"; };
 		A63AC920186C566B00A106A0 /* StartupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupController.xib; sourceTree = "<group>"; };
@@ -1898,6 +1904,10 @@
 		F3F186F118543A410098C852 /* templates */ = {
 			isa = PBXGroup;
 			children = (
+				A62A9411186D6867001FD600 /* InviteBoard_iPhone.m */,
+				A62A9410186D685D001FD600 /* InviteBoard_iPhone.h */,
+				A62A940D186D6400001FD600 /* ServiceBoard_iPhone.h */,
+				A62A940E186D6400001FD600 /* ServiceBoard_iPhone.m */,
 				A6AA8FFE18647E03006DB7D2 /* BusionessPageBoard_iPhone.h */,
 				A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */,
 				A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */,
@@ -3109,6 +3119,7 @@
 				F3F188A418543A430098C852 /* UIView+Visibility.m in Sources */,
 				F3F1871118543A410098C852 /* ASIHTTPRequest.m in Sources */,
 				F3D9D563185D876D00392C40 /* TaskController.m in Sources */,
+				A62A9412186D6867001FD600 /* InviteBoard_iPhone.m in Sources */,
 				F3F18A0518543A450098C852 /* ThirdBoard_iPhone.m in Sources */,
 				F3F1895B18543A440098C852 /* NSObject+BeeKeychain.mm in Sources */,
 				F3F188DD18543A430098C852 /* UIImageView+BeeUILayout.m in Sources */,
@@ -3308,6 +3319,7 @@
 				F3F187EC18543A420098C852 /* UITextView+BeeUIStyle.m in Sources */,
 				F3D834CD185C1E31003095D5 /* BaseTaskTableViewController.m in Sources */,
 				F3F188FD18543A440098C852 /* BeeUIQuery+Dimensions.m in Sources */,
+				A62A940F186D6400001FD600 /* ServiceBoard_iPhone.m in Sources */,
 				F3F1881018543A430098C852 /* Bee_UIDataBinding.m in Sources */,
 				F3F1879718543A420098C852 /* Bee_UIMetrics.m in Sources */,
 				F3F1873818543A420098C852 /* Reachability.m in Sources */,

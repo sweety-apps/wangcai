@@ -227,6 +227,20 @@ ON_SIGNAL3( MenuBoard_iPhone, wc_main, signal )
 	[self hideMenu];
 }
 
+ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
+{
+	[[BeeUIRouter sharedInstance] open:@"invite" animated:YES];
+
+	[self hideMenu];
+}
+
+ON_SIGNAL3( MenuBoard_iPhone, service, signal)
+{
+	[[BeeUIRouter sharedInstance] open:@"service" animated:YES];
+	
+	[self hideMenu];
+}
+
 ON_SIGNAL3( MenuBoard_iPhone, team, signal )
 {
 	[[BeeUIRouter sharedInstance] open:@"team" animated:YES];
