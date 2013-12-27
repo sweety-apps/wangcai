@@ -17,9 +17,6 @@
 @end
 
 @implementation ExchangeController
-@synthesize _cell;
-@synthesize _tableView;
-@synthesize _cellEnd;
 
 - (void) setUIStack :(BeeUIStack*) stack {
     _beeStack = stack;
@@ -32,6 +29,9 @@
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] firstObject];
         
+        _cell = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] objectAtIndex:1];
+
+        _tableView = (UITableView*)[self.view viewWithTag:89];
         _tableView.separatorStyle = NO;
 
         CGRect rect = [[UIScreen mainScreen]bounds];

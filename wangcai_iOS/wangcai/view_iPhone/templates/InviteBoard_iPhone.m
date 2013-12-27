@@ -54,6 +54,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self.view addSubview:_inviteController.view];
 
         self.navigationController.navigationBarHidden = YES;
+        
+        //self.view.hintString = @"";
+        //self.view.backgroundColor = [UIColor whiteColor];
+    
+        //[self setTitleString:@"我的旺财"];
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{

@@ -14,22 +14,21 @@
 @end
 
 @implementation InviteController
-@synthesize _myInviteLabel;
+//@synthesize _myInviteLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self->_inviteCode = @"inviteCode";
+        //self->_inviteCode = @"inviteCode";
         
-        self.title = @"邀请送红包";
+        //self.title = @"邀请送红包";
         
         UIView* view = [[[NSBundle mainBundle] loadNibNamed:nibNameOrNil owner:self options:nil] firstObject];
         self.view = view;
-        [view release];
         
-        [self->_myInviteLabel setText:self->_inviteCode];
+        //[self->_myInviteLabel setText:self->_inviteCode];
     }
     return self;
 }
@@ -47,13 +46,13 @@
 }
 
 - (void)dealloc {
-    [self->_inviteCode release];
+    //[self->_inviteCode release];
     [super dealloc];
 }
 
 - (IBAction) copyToClip:(id)sender {
-    UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = self->_inviteCode;
+    //UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
+    //pasteboard.string = self->_inviteCode;
 }
 
 -(void) ShareCompleted : (id) share State:(SSResponseState) state Err:(id<ICMErrorInfo>) error {
