@@ -9,8 +9,10 @@
 #import "BaseTaskTableViewController.h"
 #import "CommonTaskTableViewCell.h"
 #import "UserInfoEditorViewController.h"
+#import "CommonTaskList.h"
+#import "MBHUDView.h"
 
-@interface BaseTaskTableViewController ()
+@interface BaseTaskTableViewController () <CommonTaskListDelegate>
 
 @end
 
@@ -39,8 +41,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _curCellCount = 10;
-    _hisCellCount = 20;
+    _curCellCount = 2;
+    _hisCellCount = 0;
     
     self.staticCells = [NSMutableArray array];
     _bounceHeader = NO;
@@ -48,7 +50,10 @@
     [self resetFooter];
     [self performSelector:@selector(resetTableViewFrame) withObject:nil afterDelay:0.05];
     [self resetStaticCells];
-    //[self performSelectorOnMainThread:@selector(resetTableViewFrame) withObject:nil waitUntilDone:NO];
+    
+    [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:20.1];
+    
+    [self performSelector:@selector(refreshTaskList) withObject:nil afterDelay:2.0f];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -91,6 +96,11 @@
     }
 }
 
+-(void)refreshTaskList
+{
+    [[CommonTaskList sharedInstance] fetchTaskList:self];
+}
+
 -(void)resetStaticCells
 {
     [_staticCells removeAllObjects];
@@ -114,9 +124,9 @@
 {
     if (!_hasLoadedHistoricalFinishedList)
     {
-        return _curCellCount;
+        return [self.staticCells  count] + _curCellCount + [[[CommonTaskList sharedInstance] getUnfinishedTaskList] count];
     }
-    return _hisCellCount + _curCellCount;
+    return [self.staticCells  count] + _hisCellCount + _curCellCount + [[[CommonTaskList sharedInstance] getAllTaskList] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -156,12 +166,32 @@
         }
         else
         {
+            CommonTaskInfo* task = [[[CommonTaskList sharedInstance] getAllTaskList] objectAtIndex:rowExceptStaticCells - 2];
             [comCell setTaskCellType:CommonTaskTableViewCellShowTypeRedTextUp];
-            [comCell setUpText:@"安装窃听风云"];
-            [comCell setDownText:@"安装并使用3分钟"];
-            [comCell setRedBagIcon:@"package_icon_half"];
+            [comCell setUpText:task.taskTitle];
+            [comCell setDownText:task.taskDesc];
+            float moneyInYuan = [task.taskMoney floatValue]/100.f;
+            NSString* pic = nil;
+            if (moneyInYuan >= 0.5f && moneyInYuan < 1.0f)
+            {
+                pic = @"package_icon_half";
+            }
+            if (moneyInYuan >= 1.0f && moneyInYuan < 3.0f)
+            {
+                pic = @"package_icon_one";
+            }
+            if (moneyInYuan >= 3.0f && moneyInYuan < 8.0f)
+            {
+                pic = @"package_icon_3";
+            }
+            if (moneyInYuan >= 8.0f)
+            {
+                pic = @"package_icon_8";
+            }
+            
+            [comCell setRedBagIcon:pic];
             [comCell setLeftIconNamed:@"table_view_cell_icon_bg"];
-            [comCell setLeftIconUrl:@"http://a1.mzstatic.com/us/r30/Purple/v4/a6/dc/ee/a6dceea2-ae77-1746-0dc3-1f6f7a988a0d/icon170x170.png"];
+            [comCell setLeftIconUrl:task.taskIconUrl];
         }
         
         if (_hasLoadedHistoricalFinishedList && row >= _curCellCount)
@@ -267,5 +297,21 @@
     self.containTableViewFooterView.hidden = YES;
     //self.containTableView.tableFooterView = nil;
 }
+
+#pragma mark <CommonTaskListDelegate>
+
+- (void)onFinishedFetchTaskList:(CommonTaskList*)taskList resultCode:(NSInteger)result
+{
+    if (result >= 0)
+    {
+        [self.containTableView reloadData];
+        [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[taskList allMoneyCanBeEarnedInRMBYuan]];
+    }
+    else
+    {
+        [MBHUDView hudWithBody:@":(\n拉取失败" type:MBAlertViewHUDTypeImagePositive  hidesAfter:2.0 show:YES];
+    }
+}
+
 
 @end

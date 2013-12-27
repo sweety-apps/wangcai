@@ -13,5 +13,6 @@
 @property (nonatomic,retain) IBOutlet UILabel* jintianhainengzhuanLabel;
 
 - (void)setJinTianHaiNengZhuanNumLabelText:(NSString*)text;
+- (void)setJinTianHaiNengZhuanNumLabelTextNum:(float)num;
 
 @end

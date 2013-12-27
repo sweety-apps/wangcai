@@ -9,7 +9,9 @@
 #import "HttpRequest.h"
 
 
-@implementation HttpRequest 
+@implementation HttpRequest
+
+@synthesize extensionContext;
 
 - (id) init : (id) delegate {
     self = [super init];
@@ -36,13 +38,36 @@
     if ( _url != nil ) {
         [_url release];
     }
+    self.extensionContext = nil;
     [super dealloc];
 }
 
 - (void) request : (NSString*) url Param:(NSDictionary*) params {
+    [self request:url Param:params method:@"post"];
+}
+
+- (void) request : (NSString*) url Param:(NSDictionary*) params method:(NSString*)getOrPost
+{
+    if ([getOrPost length] == 0)
+    {
+        getOrPost = @"post";
+    }
+    
+    getOrPost = [getOrPost lowercaseString];
     NSString* newUrl = [self BuildURL:url];
     
-    _request = self.HTTP_POST(newUrl);
+    if ([getOrPost isEqualToString:@"get"])
+    {
+        _request = self.HTTP_GET(newUrl);
+    }
+    else if([getOrPost isEqualToString:@"post"])
+    {
+        _request = self.HTTP_POST(newUrl);
+    }
+    else
+    {
+        _request = self.HTTP_POST(newUrl);
+    }
     
     _url = [url copy];
     
@@ -70,7 +95,7 @@
     
     
     NSString* encodedString = [nsParam stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
+    
     const char * a =[encodedString UTF8String];
     
     _request.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");

@@ -8,8 +8,9 @@
 
 #import "UserInfoEditorViewController.h"
 #import "PhoneValidationController.h"
+#import "UserInfoAPI.h"
 
-@interface UserInfoEditorViewController ()
+@interface UserInfoEditorViewController () <UserInfoAPIDelegate>
 {
     UILabel* _labelAgeSelected;
 }
@@ -60,6 +61,8 @@
 {
     [self.ageSelectorView selectItemAtIndex:17];
     [self selectSex:YES];
+    
+    [[UserInfoAPI loginedUserInfo] fetchUserInfo:self];
 }
 
 - (void)buildSelectorViews
@@ -254,6 +257,18 @@
 - (void)selector:(IZValueSelectorView *)valueSelector didSelectRowAtIndex:(NSInteger)index {
     _labelAgeSelected.text = [NSString stringWithFormat:@"%d",index+1];
     NSLog(@"Selected index %d",index);
+}
+
+#pragma mark <UserInfoAPIDelegate>
+
+- (void)onFinishedFetchUserInfo:(UserInfoAPI*)userInfo isSucceed:(BOOL)succeed
+{
+    
+}
+
+- (void)onFinishedUpdateUserInfo:(UserInfoAPI*)userInfo isSucceed:(BOOL)succeed
+{
+    
 }
 
 @end

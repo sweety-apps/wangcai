@@ -129,6 +129,10 @@
 		F358E9DD186B2B7A00DC3ADA /* user_hobby_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F358E9DA186B2B7A00DC3ADA /* user_hobby_normal@2x.png */; };
 		F358E9DE186B2B7A00DC3ADA /* user_hobby_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F358E9DB186B2B7A00DC3ADA /* user_hobby_selected@2x.png */; };
 		F358E9DF186B2B7A00DC3ADA /* user_sex_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F358E9DC186B2B7A00DC3ADA /* user_sex_selected@2x.png */; };
+		F358E9EF186C1D8600DC3ADA /* UserInfoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */; };
+		F358E9F2186C583A00DC3ADA /* CommonTaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F1186C583A00DC3ADA /* CommonTaskList.m */; };
+		F358E9F6186D2AB700DC3ADA /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F5186D2AB700DC3ADA /* UtilityFunctions.m */; };
+		F358E9F9186D2ADA00DC3ADA /* NSString+FloatFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F8186D2ADA00DC3ADA /* NSString+FloatFormat.m */; };
 		F3D8349A185B486A003095D5 /* package_icon_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3D83485185B486A003095D5 /* package_icon_3@2x.png */; };
 		F3D8349B185B486A003095D5 /* package_icon_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3D83486185B486A003095D5 /* package_icon_8@2x.png */; };
 		F3D8349C185B486A003095D5 /* package_icon_half@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3D83487185B486A003095D5 /* package_icon_half@2x.png */; };
@@ -621,6 +625,14 @@
 		F358E9DA186B2B7A00DC3ADA /* user_hobby_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_hobby_normal@2x.png"; sourceTree = "<group>"; };
 		F358E9DB186B2B7A00DC3ADA /* user_hobby_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_hobby_selected@2x.png"; sourceTree = "<group>"; };
 		F358E9DC186B2B7A00DC3ADA /* user_sex_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_sex_selected@2x.png"; sourceTree = "<group>"; };
+		F358E9ED186C1D8600DC3ADA /* UserInfoAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoAPI.h; sourceTree = "<group>"; };
+		F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoAPI.m; sourceTree = "<group>"; };
+		F358E9F0186C583A00DC3ADA /* CommonTaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTaskList.h; sourceTree = "<group>"; };
+		F358E9F1186C583A00DC3ADA /* CommonTaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTaskList.m; sourceTree = "<group>"; };
+		F358E9F4186D2AB700DC3ADA /* UtilityFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
+		F358E9F5186D2AB700DC3ADA /* UtilityFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityFunctions.m; sourceTree = "<group>"; };
+		F358E9F7186D2ADA00DC3ADA /* NSString+FloatFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FloatFormat.h"; sourceTree = "<group>"; };
+		F358E9F8186D2ADA00DC3ADA /* NSString+FloatFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FloatFormat.m"; sourceTree = "<group>"; };
 		F3D83485185B486A003095D5 /* package_icon_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_3@2x.png"; sourceTree = "<group>"; };
 		F3D83486185B486A003095D5 /* package_icon_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_8@2x.png"; sourceTree = "<group>"; };
 		F3D83487185B486A003095D5 /* package_icon_half@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_half@2x.png"; sourceTree = "<group>"; };
@@ -1563,6 +1575,17 @@
 			path = UserInfo;
 			sourceTree = "<group>";
 		};
+		F358E9F3186D2AA200DC3ADA /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F358E9F4186D2AB700DC3ADA /* UtilityFunctions.h */,
+				F358E9F5186D2AB700DC3ADA /* UtilityFunctions.m */,
+				F358E9F7186D2ADA00DC3ADA /* NSString+FloatFormat.h */,
+				F358E9F8186D2ADA00DC3ADA /* NSString+FloatFormat.m */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
 		F3D83484185B486A003095D5 /* CommonIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1790,6 +1813,7 @@
 		F3F186D718543A410098C852 /* wangcai */ = {
 			isa = PBXGroup;
 			children = (
+				F358E9F3186D2AA200DC3ADA /* utilities */,
 				F3F18A41185762BD0098C852 /* Resources */,
 				F3F186EA18543A410098C852 /* AppDelegate.h */,
 				F3F186EB18543A410098C852 /* AppDelegate.m */,
@@ -1832,6 +1856,10 @@
 				F3D9D56D185D878800392C40 /* PhoneValidation.m */,
 				A60C876D1865949700F6889C /* HttpRequest.h */,
 				A60C876E1865949700F6889C /* HttpRequest.m */,
+				F358E9ED186C1D8600DC3ADA /* UserInfoAPI.h */,
+				F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */,
+				F358E9F0186C583A00DC3ADA /* CommonTaskList.h */,
+				F358E9F1186C583A00DC3ADA /* CommonTaskList.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3202,6 +3230,7 @@
 				F3F18A25185472A90098C852 /* WCMainPageBoard_iPhone.m in Sources */,
 				F3D9D6AF1865791600392C40 /* UserInfoEditorViewController.m in Sources */,
 				F3F1892018543A440098C852 /* UIViewController+BeeUITemplate.m in Sources */,
+				F358E9F2186C583A00DC3ADA /* CommonTaskList.m in Sources */,
 				F3F187EF18543A420098C852 /* UIView+BeeUIStyle.m in Sources */,
 				F3F187F918543A420098C852 /* Bee_UIAnimationBounce.m in Sources */,
 				F3D9D6BC1865982700392C40 /* IZValueSelectorView.m in Sources */,
@@ -3235,6 +3264,7 @@
 				F3F1897C18543A440098C852 /* BeeDatabase+BeeActiveRecord.m in Sources */,
 				F3F187C318543A420098C852 /* UIViewController+Metrics.m in Sources */,
 				F3F188E918543A430098C852 /* UITextView+BeeUILayout.m in Sources */,
+				F358E9F9186D2ADA00DC3ADA /* NSString+FloatFormat.m in Sources */,
 				F3D9D558185D876D00392C40 /* UIView+Animations.m in Sources */,
 				F3F1893418543A440098C852 /* UIImage+Theme.m in Sources */,
 				F3F189B718543A440098C852 /* NSDate+BeeExtension.mm in Sources */,
@@ -3335,6 +3365,7 @@
 				F3F187CC18543A420098C852 /* UIViewController+UINavigationBar.m in Sources */,
 				F3F1898518543A440098C852 /* NSObject+BeeActiveRecord.m in Sources */,
 				F3F187BA18543A420098C852 /* UIView+UINavigationController.m in Sources */,
+				F358E9F6186D2AB700DC3ADA /* UtilityFunctions.m in Sources */,
 				F3F1872318543A420098C852 /* FMDatabaseAdditions.m in Sources */,
 				F3F1888C18543A430098C852 /* UIView+LifeCycle.m in Sources */,
 				F3F189A118543A440098C852 /* Bee_SystemInfo.mm in Sources */,
@@ -3361,6 +3392,7 @@
 				A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */,
 				F3F1879B18543A420098C852 /* Bee_UIBoard.m in Sources */,
 				F3F1884C18543A430098C852 /* Bee_UIMenuController.m in Sources */,
+				F358E9EF186C1D8600DC3ADA /* UserInfoAPI.m in Sources */,
 				F3F189AA18543A440098C852 /* Bee_UnitTest.m in Sources */,
 				F3F189BA18543A450098C852 /* NSDictionary+BeeExtension.mm in Sources */,
 				F3F1889818543A430098C852 /* UIView+SwipeGesture.m in Sources */,

@@ -21,6 +21,9 @@
     NSString* _param;
 }
 
+@property (nonatomic,retain) id extensionContext;
+
 - (id) init : (id) delegate;
-- (void) request : (NSString*) url Param:(NSDictionary*) params;
+- (void) request : (NSString*) url Param:(NSDictionary*) params;//使用POST
+- (void) request : (NSString*) url Param:(NSDictionary*) params method:(NSString*)getOrPost;
 @end
