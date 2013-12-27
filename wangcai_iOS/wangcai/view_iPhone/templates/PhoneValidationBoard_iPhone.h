@@ -8,7 +8,7 @@
 //	Powered by BeeFramework
 //
 //
-//  AppBoard_iPhone.h
+//  ThirdBoard_iPhone.h
 //  wangcai
 //
 //  Created by Lee Justin on 13-12-8.
@@ -16,10 +16,9 @@
 //
 
 #import "Bee.h"
+#import "PhoneValidationController.h"
 
-@interface AppBoard_iPhone : BeeUIBoard <UIAlertViewDelegate> {
-    UIAlertView* _alertView;
+@interface PhoneValidationBoard_iPhone : BeeUIBoard {
+    PhoneValidationController* _phoneController;
 }
-
-AS_SINGLETON( AppBoard_iPhone )
 @end

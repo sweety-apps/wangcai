@@ -65,6 +65,7 @@
 		A60C87711865C68C00F6889C /* warn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C87701865C68B00F6889C /* warn@2x.png */; };
 		A62A940F186D6400001FD600 /* ServiceBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A940E186D6400001FD600 /* ServiceBoard_iPhone.m */; };
 		A62A9412186D6867001FD600 /* InviteBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A9411186D6867001FD600 /* InviteBoard_iPhone.m */; };
+		A62A9415186DB268001FD600 /* PhoneValidationBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A9414186DB268001FD600 /* PhoneValidationBoard_iPhone.m */; };
 		A63AC91F186C565B00A106A0 /* StartupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63AC91E186C565B00A106A0 /* StartupController.m */; };
 		A63AC921186C566B00A106A0 /* StartupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63AC920186C566B00A106A0 /* StartupController.xib */; };
 		A6438ED7185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */; };
@@ -553,6 +554,8 @@
 		A62A940E186D6400001FD600 /* ServiceBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceBoard_iPhone.m; sourceTree = "<group>"; };
 		A62A9410186D685D001FD600 /* InviteBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteBoard_iPhone.h; sourceTree = "<group>"; };
 		A62A9411186D6867001FD600 /* InviteBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteBoard_iPhone.m; sourceTree = "<group>"; };
+		A62A9413186DB268001FD600 /* PhoneValidationBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneValidationBoard_iPhone.h; sourceTree = "<group>"; };
+		A62A9414186DB268001FD600 /* PhoneValidationBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneValidationBoard_iPhone.m; sourceTree = "<group>"; };
 		A63AC91D186C565B00A106A0 /* StartupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupController.h; sourceTree = "<group>"; };
 		A63AC91E186C565B00A106A0 /* StartupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupController.m; sourceTree = "<group>"; };
 		A63AC920186C566B00A106A0 /* StartupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupController.xib; sourceTree = "<group>"; };
@@ -1932,6 +1935,8 @@
 		F3F186F118543A410098C852 /* templates */ = {
 			isa = PBXGroup;
 			children = (
+				A62A9413186DB268001FD600 /* PhoneValidationBoard_iPhone.h */,
+				A62A9414186DB268001FD600 /* PhoneValidationBoard_iPhone.m */,
 				A62A9411186D6867001FD600 /* InviteBoard_iPhone.m */,
 				A62A9410186D685D001FD600 /* InviteBoard_iPhone.h */,
 				A62A940D186D6400001FD600 /* ServiceBoard_iPhone.h */,
@@ -3320,6 +3325,7 @@
 				F3F189C918543A450098C852 /* NSObject+BeeTicker.mm in Sources */,
 				F3F1884F18543A430098C852 /* Bee_UINavigationBar.m in Sources */,
 				F3F188AE18543A430098C852 /* Bee_UICell.m in Sources */,
+				A62A9415186DB268001FD600 /* PhoneValidationBoard_iPhone.m in Sources */,
 				F3F187B718543A420098C852 /* BeeUIStack+BackwardCompatible.m in Sources */,
 				F3F1885518543A430098C852 /* Bee_UIPageViewController.m in Sources */,
 				F3F1872018543A420098C852 /* FMDatabase.m in Sources */,
