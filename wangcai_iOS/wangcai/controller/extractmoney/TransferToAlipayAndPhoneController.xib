@@ -310,22 +310,13 @@
     </objects>
     <resources>
         <image name="!.png" width="12" height="12"/>
-        <image name="!.png" width="12" height="12"/>
         <image name="back.png" width="12" height="22"/>
         <image name="body_bkg.png" width="320" height="415"/>
-        <image name="body_bkg.png" width="320" height="415"/>
-        <image name="body_bkg.png" width="320" height="415"/>
-        <image name="btn_normal.png" width="275" height="54"/>
-        <image name="btn_normal.png" width="275" height="54"/>
         <image name="btn_normal.png" width="275" height="54"/>
         <image name="nav_Header.png" width="320" height="54"/>
         <image name="phone_logo.png" width="11" height="19"/>
         <image name="phone_num_border.png" width="275" height="53"/>
         <image name="resend_normal.png" width="66" height="27"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
-        <image name="sms_code_border.png" width="45" height="43"/>
         <image name="sms_code_border.png" width="45" height="43"/>
         <image name="warn_bkg.png" width="275" height="30"/>
     </resources>

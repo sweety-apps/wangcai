@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ExchangeController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
-    UITableViewCell* _cell;
     UITableView* _tableView;
     BeeUIStack* _beeStack;
     

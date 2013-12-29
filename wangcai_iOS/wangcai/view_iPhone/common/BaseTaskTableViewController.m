@@ -155,7 +155,7 @@
         if (comCell == nil)
         {
             comCell = [[[CommonTaskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"taskCell"] autorelease];
-        }
+        } 
         
         if (rowExceptStaticCells == 0)
         {

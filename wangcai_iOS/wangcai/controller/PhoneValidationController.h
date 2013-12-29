@@ -12,9 +12,10 @@
 
 @interface PhoneValidationController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate, PhoneValidationDelegate> {
     UIView* _mainView;
-    IBOutlet UIView* _viewInputNum;
-    IBOutlet UIView* _viewCheckNum;
-    IBOutlet UIView* _viewRegSuccess;
+    
+    UIView* _viewInputNum;
+    UIView* _viewCheckNum;
+    UIView* _viewRegSuccess;
     
     // TAB
     UIImageView* _tab1;
@@ -22,18 +23,18 @@
     UIImageView* _tab3;
     
     // 输入手机号
-    IBOutlet UITextField* textNum;
-    IBOutlet UIButton* nextNumBtn;
+    UITextField* textNum;
+    UIButton* nextNumBtn;
     IBOutlet UIImageView* _imageArrow;
     
     // 输入验证码
-    IBOutlet UITextField* textCheck1;
-    IBOutlet UITextField* textCheck2;
-    IBOutlet UITextField* textCheck3;
-    IBOutlet UITextField* textCheck4;
-    IBOutlet UITextField* textCheck5;
+    UITextField* textCheck1;
+    UITextField* textCheck2;
+    UITextField* textCheck3;
+    UITextField* textCheck4;
+    UITextField* textCheck5;
     int        _nTime;
-    IBOutlet UIButton* btnCheckNum;
+    UIButton* btnCheckNum;
     UILabel* _phoneLabel;
     
     NSTimer*    _timer;
@@ -46,21 +47,10 @@
     
     PhoneValidation* phoneValidation;
     TabController* _tabController;
+    
+    BOOL          _bSend;
 }
 
-@property (nonatomic, retain) IBOutlet UIView* _viewInputNum;
-@property (nonatomic, retain) IBOutlet UIView* _viewCheckNum;
-@property (nonatomic, retain) IBOutlet UIView* _viewRegSuccess;
-
-@property (nonatomic, retain) IBOutlet UITextField* textNum;
-@property (nonatomic, retain) IBOutlet UIButton* nextNumBtn;
-@property (nonatomic, retain) IBOutlet UITextField* textCheck1;
-@property (nonatomic, retain) IBOutlet UITextField* textCheck2;
-@property (nonatomic, retain) IBOutlet UITextField* textCheck3;
-@property (nonatomic, retain) IBOutlet UITextField* textCheck4;
-@property (nonatomic, retain) IBOutlet UITextField* textCheck5;
-
-@property (nonatomic, retain) IBOutlet UIButton* btnCheckNum;
 @property (nonatomic, retain) IBOutlet UIImageView* _imageArrow;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;   // return NO to not change text
@@ -69,9 +59,14 @@
 - (IBAction)clickBack:(id)sender;
 - (IBAction)clickResend:(id)sender;
 
+- (void)setBackType:(BOOL)bSend;
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 -(void) attachPhoneCompleted : (BOOL) suc Token:(NSString*)token errMsg:(NSString*)errMsg;
 - (void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg token:(NSString*) token;
 - (void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId Nickname:(NSString*)nickname;
+
+-(void)attachEvent;
+-(void)detachEvent;
 @end
