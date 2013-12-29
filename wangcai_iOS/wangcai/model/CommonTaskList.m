@@ -172,6 +172,15 @@ static CommonTaskList* gInstance = nil;
             }
             self.taskList = resultTaskList;
             self.unfinishedTaskList = unfinishedTaskList;
+            NSMutableArray* reorderedTaskList = [NSMutableArray arrayWithArray:self.unfinishedTaskList];
+            for (CommonTaskInfo* task in resultTaskList)
+            {
+                if ([task.taskStatus intValue] != 0)
+                {
+                    [reorderedTaskList addObject:task];
+                }
+            }
+            self.taskList = reorderedTaskList;
         }
     }
     

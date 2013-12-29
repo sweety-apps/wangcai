@@ -39,8 +39,10 @@
         _blackLabel.textAlignment = NSTextAlignmentLeft;
         _blackLabel.font = [UIFont systemFontOfSize:9];
         
-        _finishedLabel.backgroundColor = [UIColor greenColor];
-        _finishedLabel.text = @"完成";
+        _finishedLabel.backgroundColor = [UIColor clearColor];
+        _finishedLabel.text = @"已完成";
+        _finishedLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+        _finishedLabel.textAlignment = NSTextAlignmentLeft;
         
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
@@ -53,6 +55,8 @@
         [self.contentView addSubview:_blackLabel];
         [self.contentView addSubview:_finshedIcon];
         [self.contentView addSubview:_finishedLabel];
+        
+        _taskState = CommonTaskTableViewCellStateUnfinish;
         
         [self resetSubViews];
     }
@@ -90,10 +94,7 @@
     rectFrame = CGRectMake(250, 10, 53, 60);
     _redBagIcon.frame = rectFrame;
     
-    rectFrame = CGRectMake(250, 10, 53, 60);
-    //_finshedIcon.frame = rectFrame;
-    
-    rectFrame = CGRectMake(165, 26, 50, 20);
+    rectFrame = CGRectMake(250, 24, 60, 30);
     _finishedLabel.frame = rectFrame;
     
     if (_taskCellType == CommonTaskTableViewCellShowTypeRedTextUp)
@@ -109,6 +110,29 @@
         _blackLabel.frame = rectFrame;
         rectFrame = CGRectMake(77, 41, 260, 16);
         _redLabel.frame = rectFrame;
+    }
+    
+    switch (_taskState)
+    {
+        case CommonTaskTableViewCellStateUnfinish:
+        case CommonTaskTableViewCellStateDoing:
+            [self getUpLabel].textColor = RGB(0, 0, 0);
+            [self getDownLabel].textColor = RGB(156, 156, 156);
+            _finishedLabel.textColor = RGB(156, 156, 156);
+            _finishedLabel.hidden = YES;
+            _redBagIcon.hidden = NO;
+            break;
+        case CommonTaskTableViewCellStateFinished:
+            [self getUpLabel].textColor = RGB(156, 156, 156);
+            [self getDownLabel].textColor = RGB(156, 156, 156);
+            _finishedLabel.textColor = RGB(156, 156, 156);
+            _finishedLabel.hidden = NO;
+            _redBagIcon.hidden = YES;
+            
+            break;
+            
+        default:
+            break;
     }
 }
 
@@ -221,6 +245,17 @@
         return _blackLabel;
     }
     return _redLabel;
+}
+
+- (CommonTaskTableViewCellState)getCellState
+{
+    return _taskState;
+}
+
+- (void)setCellState:(CommonTaskTableViewCellState)state
+{
+    _taskState = state;
+    [self resetSubViews];
 }
 
 @end

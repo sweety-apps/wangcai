@@ -206,11 +206,11 @@
             
             if ([task.taskStatus intValue] == 1)
             {
-                [comCell hideFinishedIcon:NO];
+                [comCell setCellState:CommonTaskTableViewCellStateUnfinish];
             }
             else
             {
-                [comCell hideFinishedIcon:YES];
+                [comCell setCellState:CommonTaskTableViewCellStateFinished];
             }
         }
         

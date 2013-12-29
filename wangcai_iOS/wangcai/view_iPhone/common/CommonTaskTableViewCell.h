@@ -14,6 +14,12 @@ typedef NSInteger CommonTaskTableViewCellShowType;
 #define CommonTaskTableViewCellShowTypeRedTextUp (0)
 #define CommonTaskTableViewCellShowTypeRedTextDown (1)
 
+typedef NSInteger CommonTaskTableViewCellState;
+
+#define CommonTaskTableViewCellStateUnfinish (0)
+#define CommonTaskTableViewCellStateFinished (1)
+#define CommonTaskTableViewCellStateDoing (2)
+
 @interface CommonTaskTableViewCell : UITableViewCell
 {
     BeeUIImageView* _leftIcon;
@@ -24,6 +30,7 @@ typedef NSInteger CommonTaskTableViewCellShowType;
     UILabel* _blackLabel;
     UILabel* _finishedLabel;
     NSInteger _taskCellType;
+    CommonTaskTableViewCellState _taskState;
 }
 
 @property (nonatomic,assign) NSInteger taskCellType;
@@ -44,5 +51,8 @@ typedef NSInteger CommonTaskTableViewCellShowType;
 
 - (UILabel*)getUpLabel;
 - (UILabel*)getDownLabel;
+
+- (CommonTaskTableViewCellState)getCellState;
+- (void)setCellState:(CommonTaskTableViewCellState)state;
 
 @end
