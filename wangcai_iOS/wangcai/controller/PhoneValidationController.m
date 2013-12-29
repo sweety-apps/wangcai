@@ -58,7 +58,7 @@
         [self.view addSubview:self->_viewCheckNum];
         [self.view addSubview:self->_viewRegSuccess];
         
-        [self->_tabController setTabInfo:@"输入手机号" Tab2:@"输入验证码" Tab3:@"领取" Purse:1];
+        [self->_tabController setTabInfo:@"输入手机号" Tab2:@"输入验证码" Tab3:@"领取" Purse:0];
         
         [self showFirstPage];
         

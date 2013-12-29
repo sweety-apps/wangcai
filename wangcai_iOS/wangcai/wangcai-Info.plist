@@ -33,20 +33,12 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wxf3b81b618060b1fc</string>
-				<dict>
-					<key>CFBundleURLSchemes</key>
-					<array>
-						<string>tencent100577453</string>
-						<string>rm2455281528studio.wangcai</string>
-						<string>wb801457140</string>
-						<string>wb338240125</string>
-						<string>wxb36cb2934f410866</string>
-						<string>QQ05FEB0AD</string>
-					</array>
-					<key>CFBundleURLName</key>
-					<string></string>
-				</dict>
+				<string>tencent100577453</string>
+				<string>rm2455281528studio.wangcai</string>
+				<string>wb801457140</string>
+				<string>wb338240125</string>
+				<string>wxb36cb2934f410866</string>
+				<string>QQ05FEB0AD</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string></string>

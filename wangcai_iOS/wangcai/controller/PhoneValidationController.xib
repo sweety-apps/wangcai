@@ -255,7 +255,7 @@
                     </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="领取1元" backgroundImage="btn_normal.png">
+                    <state key="normal" title="确定" backgroundImage="btn_normal.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

@@ -57,6 +57,11 @@
     [super dealloc];
 }
 
+- (IBAction)clickBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
