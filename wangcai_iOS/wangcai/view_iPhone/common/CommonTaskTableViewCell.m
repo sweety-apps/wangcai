@@ -122,13 +122,13 @@
             _finishedLabel.hidden = YES;
             _redBagIcon.hidden = NO;
             break;
+            
         case CommonTaskTableViewCellStateFinished:
             [self getUpLabel].textColor = RGB(156, 156, 156);
             [self getDownLabel].textColor = RGB(156, 156, 156);
             _finishedLabel.textColor = RGB(156, 156, 156);
             _finishedLabel.hidden = NO;
             _redBagIcon.hidden = YES;
-            
             break;
             
         default:
