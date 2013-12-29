@@ -28,12 +28,12 @@
     if (self) {
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] firstObject];
-        
-        _cell = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] objectAtIndex:1];
 
         _tableView = (UITableView*)[self.view viewWithTag:89];
         _tableView.separatorStyle = NO;
-
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        
         CGRect rect = [[UIScreen mainScreen]bounds];
         rect.origin.y = 101;
         rect.size.height -= 101;
@@ -73,7 +73,9 @@
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     if ( row == 0 ) {
-        return _cell;
+        UITableViewCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] objectAtIndex:1];
+        
+        return cell;
     } else {
         ExchangeControllerCell* cell = [tableView dequeueReusableCellWithIdentifier:@"exchangeCell"];
         if (cell == nil)
