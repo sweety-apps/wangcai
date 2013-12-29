@@ -13,6 +13,7 @@
 @interface UserInfoEditorViewController : BeeUIBoard <IZValueSelectorViewDataSource,IZValueSelectorViewDelegate>
 {
     CGRect _rectSelectBgView;
+    NSMutableArray* _interestIds;
 }
 
 @property (nonatomic,retain) IBOutlet UIView* upSectionView;
@@ -26,11 +27,16 @@
 @property (nonatomic,retain) IBOutlet UIButton* sexFamaleButton;
 @property (nonatomic,retain) NSMutableArray* hobbySelectorViews;
 
+@property (nonatomic,retain) IBOutlet UIView* commitButtonView;
+@property (nonatomic,retain) IBOutlet UIImageView* commitButtonRedBag;
+
 - (IBAction)onPressedAttachPhone:(id)btn;
 - (IBAction)onPressedBackPhone:(id)btn;
 
 - (IBAction)onPressedMaleButton:(id)btn;
 - (IBAction)onPressedFamaleButton:(id)btn;
+
+- (IBAction)onPressedCommitButton:(id)btn;
 
 - (void)showUpSectionView:(BOOL)shouldShow;
 

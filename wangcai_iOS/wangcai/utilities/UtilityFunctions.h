@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+DataParser.h"
+#import "NSString+FloatFormat.h"
 
 @interface UtilityFunctions : NSObject
 

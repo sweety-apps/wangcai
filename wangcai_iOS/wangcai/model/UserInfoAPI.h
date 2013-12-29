@@ -30,6 +30,11 @@
 
 +(UserInfoAPI*)loginedUserInfo;
 
+- (void)addInterest:(NSString*)interest;
+- (void)removeInterest:(NSString*)interest;
+- (NSInteger)getInterestCount;
+- (NSArray*)getInterests;
+
 - (void)saveUserInfoToLocal;
 - (void)fetchUserInfo:(id<UserInfoAPIDelegate>)delegate;
 - (void)updateUserInfo:(id<UserInfoAPIDelegate>)delegate;

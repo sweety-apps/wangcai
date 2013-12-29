@@ -9,6 +9,7 @@
 #import "UserInfoEditorViewController.h"
 #import "PhoneValidationController.h"
 #import "UserInfoAPI.h"
+#import "MBHUDView.h"
 
 @interface UserInfoEditorViewController () <UserInfoAPIDelegate>
 {
@@ -26,6 +27,9 @@
 @synthesize ageSelectorView;
 
 @synthesize hobbySelectorViews;
+
+@synthesize commitButtonView;
+@synthesize commitButtonRedBag;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,6 +75,8 @@
     
     NSArray* selectorTexts = [NSArray arrayWithObjects:@"休闲游戏",@"升级打宝",@"打折促销",@"结交朋友",@"旅行生活",@"竞技游戏",@"强身健体",@"美丽达人", nil];
     
+    _interestIds = [[NSMutableArray arrayWithObjects:@"leisure_game",@"level_up",@"discount",@"friends",@"trevel",@"compete_game",@"physic_ex",@"beauty", nil] retain];
+    
     CGRect rect = CGRectMake(15, 30, 140, 36);
     CGFloat maxY = 30.f;
     for (int i = 0; i < [selectorTexts count]; ++i)
@@ -113,9 +119,21 @@
     
     maxY += 20.f;
     
+    CGRect rectCommitButton = self.commitButtonView.frame;
+    rectCommitButton.origin.y = self.selectionContainerView.frame.origin.y + maxY;
+    self.commitButtonView.frame = rectCommitButton;
+    
+    maxY += self.commitButtonView.frame.size.height;
+    
+    maxY += 20.f;
+    
     CGSize scrollViewSize = CGSizeMake(320, self.upSectionView.frame.size.height + self.selectionContainerView.frame.origin.y + maxY);
     
     self.scrollView.contentSize = scrollViewSize;
+    
+    CGRect rectDownSection = self.downSectionView.frame;
+    rectDownSection.size.height = self.selectionContainerView.frame.origin.y + maxY;
+    self.downSectionView.frame = rectDownSection;
 }
 
 - (void)didReceiveMemoryWarning
@@ -148,6 +166,12 @@
     self.sexFamaleButton = nil;
     self.sexMaleButton = nil;
     self.hobbySelectorViews = nil;
+    
+    self.commitButtonView = nil;
+    self.commitButtonRedBag = nil;
+    
+    [_interestIds release];
+    
     [super dealloc];
 }
 
@@ -179,6 +203,32 @@
     [self selectSex:NO];
 }
 
+- (IBAction)onPressedCommitButton:(id)btn
+{
+    if (self.sexMaleButton.selected)
+    {
+        [UserInfoAPI loginedUserInfo].uiSex = [NSNumber numberWithInt:0];
+    }
+    else
+    {
+        [UserInfoAPI loginedUserInfo].uiSex = [NSNumber numberWithInt:1];
+    }
+    
+    [UserInfoAPI loginedUserInfo].uiAge = [NSNumber numberWithInt:[self.ageSelectorView currentSelectedIndex] + 1];
+    
+    [UserInfoAPI loginedUserInfo].uiInterest = @"";
+    for (int i = 0; i < [hobbySelectorViews count]; ++i)
+    {
+        UIButton* btn = [hobbySelectorViews objectAtIndex:i];
+        if (btn.selected)
+        {
+            [[UserInfoAPI loginedUserInfo] addInterest:[_interestIds objectAtIndex:i]];
+        }
+    }
+    
+    [[UserInfoAPI loginedUserInfo] updateUserInfo:self];
+}
+
 - (void)selectSex:(BOOL)isMale
 {
     if (isMale)
@@ -190,6 +240,27 @@
     {
         self.sexMaleButton.selected = NO;
         self.sexFamaleButton.selected = YES;
+    }
+}
+
+- (void)selectInterestsWithUserInfo:(UserInfoAPI*)userInfo
+{
+    NSArray* Interests = [userInfo getInterests];
+    for (UIButton* btn in self.hobbySelectorViews)
+    {
+        btn.selected = NO;
+    }
+    for (int i = 0; i < [Interests count]; ++i)
+    {
+        NSString* interest = [Interests objectAtIndex:i];
+        for (int j = 0; j < [_interestIds count]; ++j)
+        {
+            if ([interest isEqualToString:[_interestIds objectAtIndex:j]])
+            {
+                UIButton* btn = [self.hobbySelectorViews objectAtIndex:j];
+                btn.selected = YES;
+            }
+        }
     }
 }
 
@@ -263,12 +334,33 @@
 
 - (void)onFinishedFetchUserInfo:(UserInfoAPI*)userInfo isSucceed:(BOOL)succeed
 {
-    
+    if (succeed)
+    {
+        [self selectSex:([userInfo.uiSex intValue]==0?YES:NO)];
+        int ageIndex = [userInfo.uiAge intValue] - 1;
+        if (ageIndex < 0)
+        {
+            ageIndex = 17;
+        }
+        [self.ageSelectorView selectItemAtIndex:ageIndex];
+        [self selectInterestsWithUserInfo:userInfo];
+    }
+    else
+    {
+        [MBHUDView hudWithBody:@":(\n用户信息获取失败" type:MBAlertViewHUDTypeImagePositive  hidesAfter:2.0 show:YES];
+    }
 }
 
 - (void)onFinishedUpdateUserInfo:(UserInfoAPI*)userInfo isSucceed:(BOOL)succeed
 {
-    
+    if (succeed)
+    {
+        [MBHUDView hudWithBody:@"用户信息提交成功！" type:MBAlertViewHUDTypeCheckmark  hidesAfter:2.0 show:YES];
+    }
+    else
+    {
+        [MBHUDView hudWithBody:@":(\n用户信息提交失败" type:MBAlertViewHUDTypeImagePositive  hidesAfter:2.0 show:YES];
+    }
 }
 
 @end
