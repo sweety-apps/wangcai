@@ -9,6 +9,7 @@
 #import "UserInfoAPI.h"
 #import "LoginAndRegister.h"
 #import "Config.h"
+#import "UtilityFunctions.h"
 
 @interface UserInfoAPIRequestContext : NSObject
 
@@ -58,6 +59,9 @@ static UserInfoAPI* gDefaultUserInfo = nil;
 -(void)load
 {
     [super load];
+    self.uiAge = [NSNumber numberWithInt:18];
+    self.uiSex = [NSNumber numberWithInt:1];
+    self.uiInterest = @"";
 }
 
 - (id)init
@@ -93,6 +97,45 @@ static UserInfoAPI* gDefaultUserInfo = nil;
     return gDefaultUserInfo;
 }
 
+- (void)addInterest:(NSString*)interest
+{
+    [self removeInterest:interest];
+    NSMutableArray* interests = [NSMutableArray arrayWithArray:[self getInterests]];
+    [interests addObject:interest];
+    self.uiInterest = [NSString stringFromArray:interests withInterlacer:@"|"];
+}
+
+- (void)removeInterest:(NSString*)interest
+{
+    NSString* strToRemove = nil;
+    NSMutableArray* interests = [NSMutableArray arrayWithArray:[self getInterests]];
+    for (NSString* str in interests)
+    {
+        if ([str isEqualToString:interest])
+        {
+            strToRemove = str;
+            break;
+        }
+    }
+    
+    if (strToRemove)
+    {
+        [interests removeObject:strToRemove];
+        self.uiInterest = [NSString stringFromArray:interests withInterlacer:@"|"];
+    }
+}
+
+- (NSInteger)getInterestCount
+{
+    NSArray* interests = [self.uiInterest parseStringIntoArrayWithInterlacer:@"|"];
+    return [interests count];
+}
+
+- (NSArray*)getInterests
+{
+    return [self.uiInterest parseStringIntoArrayWithInterlacer:@"|"];
+}
+
 - (void)saveUserInfoToLocal
 {
     //self.primaryID = self.uiUserid;
@@ -112,12 +155,23 @@ static UserInfoAPI* gDefaultUserInfo = nil;
     
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
     
-    [req request:HTTP_READ_ACCOUNT_INFO_CODE Param:dictionary method:@"get"];
+    [req request:HTTP_READ_ACCOUNT_INFO Param:dictionary method:@"get"];
 }
 
 - (void)updateUserInfo:(id<UserInfoAPIDelegate>)delegate
 {
+    HttpRequest* req = [[HttpRequest alloc] init:self];
+    UserInfoAPIRequestContext* context = [[[UserInfoAPIRequestContext alloc] init]autorelease];
+    context.delegate = delegate;
+    context.type = @"updateUserInfo";
+    req.extensionContext = context;
     
+    NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
+    [dictionary setObject:self.uiAge forKey:@"age"];
+    [dictionary setObject:self.uiInterest forKey:@"interest"];
+    [dictionary setObject:self.uiSex forKey:@"sex"];
+    
+    [req request:HTTP_WRITE_ACCOUNT_INFO Param:dictionary method:@"post"];
 }
 
 #pragma mark <HttpRequestDelegate> 
@@ -125,13 +179,50 @@ static UserInfoAPI* gDefaultUserInfo = nil;
 -(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
     UserInfoAPIRequestContext* context = ((HttpRequest*)request).extensionContext;
     id<UserInfoAPIDelegate> delegate = context.delegate;
-    if ( [context.type isEqualToString:@"fetchUserInfo"] ) {
-        NSNumber* result = [body objectForKey:@"Res"];
-        self.uiAge = [body objectForKey:@""];
+    
+    if ( [context.type isEqualToString:@"fetchUserInfo"] )
+    {
+        BOOL succeed = NO;
         
-    } else  {
+        if (httpCode == 200)
+        {
+            NSNumber* result = [body objectForKey:@"res"];
+            //NSString* msg = [body objectForKey:@"msg"];
+            if ([result intValue] == 0)
+            {
+                self.uiAge = [body objectForKey:@"age"];
+                self.uiSex = [body objectForKey:@"sex"];
+                self.uiInterest = [body objectForKey:@"interest"];
+                succeed = YES;
+            }
+        }
+        
+        [delegate onFinishedFetchUserInfo:self isSucceed:succeed];
+    }
+    else  if ( [context.type isEqualToString:@"updateUserInfo"] )
+    {
+        BOOL succeed = NO;
+        
+        if (httpCode == 200)
+        {
+            NSNumber* result = [body objectForKey:@"res"];
+            //NSString* msg = [body objectForKey:@"msg"];
+            if ([result intValue] == 0)
+            {
+                succeed = YES;
+            }
+        }
+        
+        [delegate onFinishedUpdateUserInfo:self isSucceed:succeed];
         
     }
+    else
+    {
+        
+    }
+    
+    
+    
 }
 
 @end

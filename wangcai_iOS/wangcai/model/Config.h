@@ -13,9 +13,12 @@
 
 #define HTTP_LOGIN_AND_REGISTER @"http://getwangcai.com/0/register"
 #define HTTP_BIND_PHONE         @"http://getwangcai.com/0/account/bind_phone"
+
 #define HTTP_SEND_SMS_CODE      @"http://getwangcai.com/0/sms/resend_sms_code"
 #define HTTP_CHECK_SMS_CODE     @"http://getwangcai.com/0/account/bind_phone_confirm"
-#define HTTP_READ_ACCOUNT_INFO_CODE     @"http://getwangcai.com/0/account/info"
+#define HTTP_READ_ACCOUNT_INFO     @"http://getwangcai.com/0/account/info"
+#define HTTP_WRITE_ACCOUNT_INFO     @"http://getwangcai.com/0/account/update_user_info"
+
 #define HTTP_READ_TASK_LIST     @"http://getwangcai.com/0/task/list"
 
 

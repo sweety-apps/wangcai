@@ -23,6 +23,8 @@
 @synthesize infoCell = _infoCell;
 @synthesize containTableView = _containTableView;
 @synthesize containTableViewFooterView = _containTableViewFooterView;
+@synthesize containTableViewFooterViewTextLabel = _containTableViewFooterViewTextLabel;
+@synthesize containTableViewFooterViewButton = _containTableViewFooterViewButton;
 @synthesize containTableViewFooterJuhuaView = _containTableViewFooterJuhuaView;
 @synthesize tableViewFrame = _tableViewFrame;
 @synthesize beeStack = _beeStack;
@@ -51,9 +53,9 @@
     [self performSelector:@selector(resetTableViewFrame) withObject:nil afterDelay:0.05];
     [self resetStaticCells];
     
-    [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:20.1];
+    [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[[CommonTaskList sharedInstance] allMoneyCanBeEarnedInRMBYuan]];
     
-    [self performSelector:@selector(refreshTaskList) withObject:nil afterDelay:2.0f];
+    //[self performSelector:@selector(refreshTaskList) withObject:nil afterDelay:2.0f];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -73,7 +75,9 @@
     self.infoCell = nil;
     self.containTableView = nil;
     self.containTableViewFooterView = nil;
+    self.containTableViewFooterViewTextLabel = nil;
     self.containTableViewFooterJuhuaView = nil;
+    self.containTableViewFooterViewButton = nil;
     self.staticCells = nil;
     [super dealloc];
 }
@@ -118,6 +122,11 @@
     [self.containTableView reloadData];
 }
 
+- (IBAction)onPressedLoadHisButton:(id)sender
+{
+    [self onLoadHistoricalFinishedList];
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -155,6 +164,7 @@
             [comCell setDownText:@"让旺财知道你喜欢什么，赚更多的红包"];
             [comCell setRedBagIcon:@"package_icon_one"];
             [comCell setLeftIconNamed:@"person_info_icon"];
+            [comCell hideFinishedIcon:YES];
         }
         else if (rowExceptStaticCells == 1)
         {
@@ -163,6 +173,7 @@
             [comCell setDownText:@"用微信随时随地领红包"];
             [comCell setRedBagIcon:@"package_icon_8"];
             [comCell setLeftIconNamed:@"about_wangcai_cell_icon"];
+            [comCell hideFinishedIcon:YES];
         }
         else
         {
@@ -192,15 +203,15 @@
             [comCell setRedBagIcon:pic];
             [comCell setLeftIconNamed:@"table_view_cell_icon_bg"];
             [comCell setLeftIconUrl:task.taskIconUrl];
-        }
-        
-        if (_hasLoadedHistoricalFinishedList && row >= _curCellCount)
-        {
-            [comCell hideFinishedIcon:NO];
-        }
-        else
-        {
-            [comCell hideFinishedIcon:YES];
+            
+            if ([task.taskStatus intValue] == 1)
+            {
+                [comCell hideFinishedIcon:NO];
+            }
+            else
+            {
+                [comCell hideFinishedIcon:YES];
+            }
         }
         
         cell = comCell;
@@ -252,7 +263,7 @@
     }
 }
 
-#pragma mark - <UIScrollViewDelegate<NSObject>
+#pragma mark - <UIScrollViewDelegate>
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -288,6 +299,14 @@
 {
     self.containTableViewFooterJuhuaView.hidden = YES;
     self.containTableView.tableFooterView = self.containTableViewFooterView;
+    if (self.containTableView.contentSize.height < self.containTableView.frame.size.height)
+    {
+        self.containTableViewFooterViewTextLabel.text = @"点击查看已领取的红包";
+    }
+    else
+    {
+        self.containTableViewFooterViewTextLabel.text = @"继续向上拖动查看已领取的红包";
+    }
     _isUIZhuanJuhuaing = NO;
 }
 
@@ -306,6 +325,7 @@
     {
         [self.containTableView reloadData];
         [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[taskList allMoneyCanBeEarnedInRMBYuan]];
+        [self resetFooter];
     }
     else
     {

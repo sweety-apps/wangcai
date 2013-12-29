@@ -8,6 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserInfoEditorViewController">
             <connections>
                 <outlet property="ageSelectorView" destination="mzq-Qu-qah" id="eI3-J1-weM"/>
+                <outlet property="commitButtonRedBag" destination="Zac-UH-vCs" id="ZRl-ND-buw"/>
+                <outlet property="commitButtonView" destination="rhM-gr-c1k" id="yto-CE-Bc8"/>
                 <outlet property="downSectionView" destination="Eae-O1-yNG" id="kPu-5Z-6Og"/>
                 <outlet property="scrollView" destination="A8H-uu-Lda" id="tm6-7d-nii"/>
                 <outlet property="selectionContainerView" destination="Eqa-nk-nYl" id="MrL-ZN-qyb"/>
@@ -198,6 +200,29 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                                 </view>
+                                <view contentMode="scaleToFill" id="rhM-gr-c1k">
+                                    <rect key="frame" x="0.0" y="200" width="320" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pRc-DY-fsH">
+                                            <rect key="frame" x="80" y="10" width="160" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.47058826679999999" green="0.47058826679999999" blue="0.47058826679999999" alpha="1" colorSpace="deviceRGB"/>
+                                            <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                                            <state key="normal" title="确认并领取">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onPressedCommitButton:" destination="-1" eventType="touchUpInside" id="Zns-qB-S2R"/>
+                                            </connections>
+                                        </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_icon_one.png" id="Zac-UH-vCs">
+                                            <rect key="frame" x="185" y="0.0" width="60" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -213,6 +238,7 @@
         <image name="back.png" width="12" height="22"/>
         <image name="dengjiTmp.png" width="1158" height="304"/>
         <image name="nav_Header.png" width="320" height="54"/>
+        <image name="package_icon_one.png" width="52" height="54"/>
         <image name="resend_down.png" width="66" height="27"/>
         <image name="resend_normal.png" width="66" height="27"/>
         <image name="table_view_cell_line.png" width="320" height="1"/>

@@ -17,8 +17,9 @@
 #import "WBApi.h"
 #import <RennSDK/RennSDK.h>
 #import "WeiboSDK.h"
+#import "CommonTaskList.h"
 
-@interface StartupController ()
+@interface StartupController () <CommonTaskListDelegate>
 
 @end
 
@@ -53,11 +54,7 @@
         transition.removedOnCompletion = YES;
         [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:@"transition"];
         
-        if ( [BeeSystemInfo isDevicePad] ) {
-            _delegate.window.rootViewController = [AppBoard_iPad sharedInstance];
-        } else {
-            _delegate.window.rootViewController = [AppBoard_iPhone sharedInstance];
-        }
+        [[CommonTaskList sharedInstance] fetchTaskList:self];
         
         [CATransaction commit];
     } else {
@@ -134,6 +131,27 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+
+#pragma mark <CommonTaskListDelegate>
+
+- (void)onFinishedFetchTaskList:(CommonTaskList*)taskList resultCode:(NSInteger)result
+{
+    if (result >= 0)
+    {
+        
+    }
+    else
+    {
+        
+    }
+    
+    if ( [BeeSystemInfo isDevicePad] ) {
+        _delegate.window.rootViewController = [AppBoard_iPad sharedInstance];
+    } else {
+        _delegate.window.rootViewController = [AppBoard_iPhone sharedInstance];
+    }
 }
 
 @end

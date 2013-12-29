@@ -31,11 +31,15 @@
 @property (nonatomic,retain) IBOutlet TaskInfoTableViewCell* infoCell;
 @property (nonatomic,retain) IBOutlet UITableView* containTableView;
 @property (nonatomic,retain) IBOutlet UIView* containTableViewFooterView;
+@property (nonatomic,retain) IBOutlet UILabel* containTableViewFooterViewTextLabel;
+@property (nonatomic,retain) IBOutlet UIButton* containTableViewFooterViewButton;
 @property (nonatomic,retain) IBOutlet UIActivityIndicatorView* containTableViewFooterJuhuaView;
 @property (nonatomic,assign) CGRect tableViewFrame;
 @property (nonatomic,retain) BeeUIStack* beeStack;
 
 @property (nonatomic,assign) BOOL bounceHeader;
 @property (nonatomic,retain) NSMutableArray* staticCells;
+
+- (IBAction)onPressedLoadHisButton:(id)sender;
 
 @end

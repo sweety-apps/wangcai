@@ -166,8 +166,9 @@
 		A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */; };
 		F358E9EF186C1D8600DC3ADA /* UserInfoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */; };
 		F358E9F2186C583A00DC3ADA /* CommonTaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F1186C583A00DC3ADA /* CommonTaskList.m */; };
-		F358E9F6186D2AB700DC3ADA /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F5186D2AB700DC3ADA /* UtilityFunctions.m */; };
-		F358E9F9186D2ADA00DC3ADA /* NSString+FloatFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F8186D2ADA00DC3ADA /* NSString+FloatFormat.m */; };
+		F3604927187016C200FAD1F3 /* NSString+DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604922187016C200FAD1F3 /* NSString+DataParser.m */; };
+		F3604928187016C200FAD1F3 /* NSString+FloatFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604924187016C200FAD1F3 /* NSString+FloatFormat.m */; };
+		F3604929187016C200FAD1F3 /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604926187016C200FAD1F3 /* UtilityFunctions.m */; };
 		F3D834AF185B517B003095D5 /* CommonYuENumView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834AE185B517B003095D5 /* CommonYuENumView.m */; };
 		F3D834CD185C1E31003095D5 /* BaseTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834CB185C1E31003095D5 /* BaseTaskTableViewController.m */; };
 		F3D834CE185C1E31003095D5 /* BaseTaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D834CC185C1E31003095D5 /* BaseTaskTableViewController.xib */; };
@@ -664,10 +665,12 @@
 		F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoAPI.m; sourceTree = "<group>"; };
 		F358E9F0186C583A00DC3ADA /* CommonTaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTaskList.h; sourceTree = "<group>"; };
 		F358E9F1186C583A00DC3ADA /* CommonTaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTaskList.m; sourceTree = "<group>"; };
-		F358E9F4186D2AB700DC3ADA /* UtilityFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
-		F358E9F5186D2AB700DC3ADA /* UtilityFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityFunctions.m; sourceTree = "<group>"; };
-		F358E9F7186D2ADA00DC3ADA /* NSString+FloatFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FloatFormat.h"; sourceTree = "<group>"; };
-		F358E9F8186D2ADA00DC3ADA /* NSString+FloatFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FloatFormat.m"; sourceTree = "<group>"; };
+		F3604921187016C200FAD1F3 /* NSString+DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DataParser.h"; sourceTree = "<group>"; };
+		F3604922187016C200FAD1F3 /* NSString+DataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DataParser.m"; sourceTree = "<group>"; };
+		F3604923187016C200FAD1F3 /* NSString+FloatFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FloatFormat.h"; sourceTree = "<group>"; };
+		F3604924187016C200FAD1F3 /* NSString+FloatFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FloatFormat.m"; sourceTree = "<group>"; };
+		F3604925187016C200FAD1F3 /* UtilityFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
+		F3604926187016C200FAD1F3 /* UtilityFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityFunctions.m; sourceTree = "<group>"; };
 		F3D834AD185B517B003095D5 /* CommonYuENumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonYuENumView.h; sourceTree = "<group>"; };
 		F3D834AE185B517B003095D5 /* CommonYuENumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonYuENumView.m; sourceTree = "<group>"; };
 		F3D834CA185C1E31003095D5 /* BaseTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTaskTableViewController.h; path = wangcai/view_iPhone/common/BaseTaskTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1653,10 +1656,12 @@
 		F358E9F3186D2AA200DC3ADA /* utilities */ = {
 			isa = PBXGroup;
 			children = (
-				F358E9F4186D2AB700DC3ADA /* UtilityFunctions.h */,
-				F358E9F5186D2AB700DC3ADA /* UtilityFunctions.m */,
-				F358E9F7186D2ADA00DC3ADA /* NSString+FloatFormat.h */,
-				F358E9F8186D2ADA00DC3ADA /* NSString+FloatFormat.m */,
+				F3604921187016C200FAD1F3 /* NSString+DataParser.h */,
+				F3604922187016C200FAD1F3 /* NSString+DataParser.m */,
+				F3604923187016C200FAD1F3 /* NSString+FloatFormat.h */,
+				F3604924187016C200FAD1F3 /* NSString+FloatFormat.m */,
+				F3604925187016C200FAD1F3 /* UtilityFunctions.h */,
+				F3604926187016C200FAD1F3 /* UtilityFunctions.m */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -3118,6 +3123,7 @@
 			files = (
 				F3F1889218543A430098C852 /* UIView+Metrics.m in Sources */,
 				F3D9D565185D876D00392C40 /* WebViewController.m in Sources */,
+				F3604927187016C200FAD1F3 /* NSString+DataParser.m in Sources */,
 				F3D9D55C185D876D00392C40 /* MBAlertViewButton.m in Sources */,
 				F3F188FA18543A440098C852 /* BeeUIQuery+CSS.m in Sources */,
 				F3F188E018543A430098C852 /* UILabel+BeeUILayout.m in Sources */,
@@ -3253,7 +3259,6 @@
 				F3F1897C18543A440098C852 /* BeeDatabase+BeeActiveRecord.m in Sources */,
 				F3F187C318543A420098C852 /* UIViewController+Metrics.m in Sources */,
 				F3F188E918543A430098C852 /* UITextView+BeeUILayout.m in Sources */,
-				F358E9F9186D2ADA00DC3ADA /* NSString+FloatFormat.m in Sources */,
 				F3D9D558185D876D00392C40 /* UIView+Animations.m in Sources */,
 				F3F1893418543A440098C852 /* UIImage+Theme.m in Sources */,
 				F3F189B718543A440098C852 /* NSDate+BeeExtension.mm in Sources */,
@@ -3272,6 +3277,7 @@
 				F3F188BA18543A430098C852 /* Bee_UIZoomView.m in Sources */,
 				F3F1870B18543A410098C852 /* ASIDownloadCache.m in Sources */,
 				F3F189A418543A440098C852 /* Bee_Thread.mm in Sources */,
+				F3604929187016C200FAD1F3 /* UtilityFunctions.m in Sources */,
 				F3F1893B18543A440098C852 /* Bee.mm in Sources */,
 				F3F1893818543A440098C852 /* Bee_Skeleton.m in Sources */,
 				F3F1871618543A410098C852 /* ASIInputStream.m in Sources */,
@@ -3340,6 +3346,7 @@
 				F3D834CD185C1E31003095D5 /* BaseTaskTableViewController.m in Sources */,
 				F3F188FD18543A440098C852 /* BeeUIQuery+Dimensions.m in Sources */,
 				A62A940F186D6400001FD600 /* ServiceBoard_iPhone.m in Sources */,
+				F3604928187016C200FAD1F3 /* NSString+FloatFormat.m in Sources */,
 				F3F1881018543A430098C852 /* Bee_UIDataBinding.m in Sources */,
 				F3F1879718543A420098C852 /* Bee_UIMetrics.m in Sources */,
 				F3F1873818543A420098C852 /* Reachability.m in Sources */,
@@ -3355,7 +3362,6 @@
 				F3F187CC18543A420098C852 /* UIViewController+UINavigationBar.m in Sources */,
 				F3F1898518543A440098C852 /* NSObject+BeeActiveRecord.m in Sources */,
 				F3F187BA18543A420098C852 /* UIView+UINavigationController.m in Sources */,
-				F358E9F6186D2AB700DC3ADA /* UtilityFunctions.m in Sources */,
 				F3F1872318543A420098C852 /* FMDatabaseAdditions.m in Sources */,
 				F3F1888C18543A430098C852 /* UIView+LifeCycle.m in Sources */,
 				F3F189A118543A440098C852 /* Bee_SystemInfo.mm in Sources */,
