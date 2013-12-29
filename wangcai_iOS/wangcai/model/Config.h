@@ -18,6 +18,7 @@
 #define HTTP_CHECK_SMS_CODE     @"http://getwangcai.com/0/account/bind_phone_confirm"
 #define HTTP_READ_ACCOUNT_INFO     @"http://getwangcai.com/0/account/info"
 #define HTTP_WRITE_ACCOUNT_INFO     @"http://getwangcai.com/0/account/update_user_info"
+#define HTTP_UPDATE_INVITER     @"http://getwangcai.com/0/account/update_inviter"
 
 #define HTTP_READ_TASK_LIST     @"http://getwangcai.com/0/task/list"
 

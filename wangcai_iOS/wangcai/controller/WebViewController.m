@@ -121,7 +121,18 @@
     
     if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/query_attach_phone"] ) {
         // 查询手机是否已经绑定
-        [self notifyPhoneStatus:NO Phone:@"但是发生地发生地"];
+        NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+        if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+            if ( phoneNum != nil ) {
+                [phoneNum release];
+            }
+            
+            [self notifyPhoneStatus:NO Phone:@""];
+        } else {
+            [self notifyPhoneStatus:YES Phone:phoneNum];
+            [phoneNum release];
+        }
+        
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/attach_phone"] ) {
         // 点击了绑定手机
@@ -194,6 +205,11 @@
         WebPageController* webController = [[[WebPageController alloc] init:title Url:value Stack:_beeStack]autorelease];
         
         [self->_beeStack pushViewController:webController animated:YES];
+        
+        return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/exchange_info"] ) {
+        WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:WEB_EXCHANGE_INFO Stack:_beeStack];
+        [_beeStack pushViewController:controller animated:YES];
         
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/alert"] ) {

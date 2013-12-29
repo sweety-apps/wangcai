@@ -216,4 +216,17 @@ static LoginAndRegister* _sharedInstance;
     return [self->_balance copy];
 }
 
+-(NSString*) getInviteCode {
+    if ( self->_invite_code== nil ) {
+        return nil;
+    }
+    return [self->_invite_code copy];
+}
+
+-(NSString*) getInviter {
+    if ( self->_inviter== nil ) {
+        return nil;
+    }
+    return [self->_inviter copy];
+}
 @end

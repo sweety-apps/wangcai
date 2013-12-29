@@ -54,6 +54,8 @@ typedef enum LoginStatus {
 -(NSString*) getNickName;
 -(NSString*) getDeviceId;
 -(NSNumber*) getBalance;
+-(NSString*) getInviteCode;
+-(NSString*) getInviter;
 
 -(void) attachPhone : (NSString*) phoneNum UserId:(NSString*) userid InviteCode:(NSString*) inviteCode;
 

@@ -129,13 +129,24 @@
 
 - (IBAction)clickBack:(id)sender {
     // 收起键盘
-    
+    [self hideKeyboard];
     if ( _bSend ) {
         [self postNotification:@"showMenu"];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
+
+- (IBAction)clickGetMoney:(id)sender {
+    [self hideKeyboard];
+    if ( _bSend ) {
+        [self postNotification:@"showMenu"];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
 
 - (void) dealloc {
     _viewInputNum = nil;
