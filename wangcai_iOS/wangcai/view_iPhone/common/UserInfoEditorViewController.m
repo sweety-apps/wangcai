@@ -63,7 +63,7 @@
 
 -(void)_doAgeInitSelections
 {
-    [self.ageSelectorView selectItemAtIndex:17];
+    [self.ageSelectorView selectItemAtIndex:17 animated:NO];
     [self selectSex:YES];
     
     [[UserInfoAPI loginedUserInfo] fetchUserInfo:self];
@@ -342,7 +342,7 @@
         {
             ageIndex = 17;
         }
-        [self.ageSelectorView selectItemAtIndex:ageIndex];
+        [self.ageSelectorView selectItemAtIndex:ageIndex animated:NO];
         [self selectInterestsWithUserInfo:userInfo];
     }
     else

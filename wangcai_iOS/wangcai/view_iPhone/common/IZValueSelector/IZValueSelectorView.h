@@ -35,6 +35,7 @@
 @property (nonatomic,assign) BOOL debugEnabled;
 
 - (void)selectItemAtIndex:(NSInteger)index;
+- (void)selectItemAtIndex:(NSInteger)index animated:(BOOL)animated;
 - (NSInteger)currentSelectedIndex;
 - (void)reloadData;
 

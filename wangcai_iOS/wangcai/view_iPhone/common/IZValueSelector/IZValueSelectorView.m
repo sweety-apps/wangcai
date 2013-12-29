@@ -119,6 +119,12 @@
     [self scrollToTheCellAtIndex:indexPath];
 }
 
+- (void)selectItemAtIndex:(NSInteger)index animated:(BOOL)animated
+{
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self scrollToTheCellAtIndex:indexPath animated:animated];
+}
+
 - (NSInteger)currentSelectedIndex
 {
     return _selectedIndex;
@@ -231,17 +237,20 @@
 
 - (void)scrollToTheCellAtIndex:(NSIndexPath*)indexPath
 {
+    [self scrollToTheCellAtIndex:indexPath animated:YES];
+}
+
+- (void)scrollToTheCellAtIndex:(NSIndexPath*)indexPath animated:(BOOL)animated
+{
     NSIndexPath *selectedIndexPath = indexPath;
     
     if (selectedIndexPath!=nil) {
         //As soon as we elected an indexpath we just have to scroll to it
-        [_contentTableView scrollToRowAtIndexPath:selectedIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        [_contentTableView scrollToRowAtIndexPath:selectedIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
         _selectedIndex = selectedIndexPath.row;
         [self.delegate selector:self didSelectRowAtIndex:selectedIndexPath.row];
     }
 }
-
-
 
 - (void)reloadData {
     [_contentTableView reloadData];

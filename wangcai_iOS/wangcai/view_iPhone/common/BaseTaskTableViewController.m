@@ -11,6 +11,7 @@
 #import "UserInfoEditorViewController.h"
 #import "CommonTaskList.h"
 #import "MBHUDView.h"
+#import "TaskController.h"
 
 @interface BaseTaskTableViewController () <CommonTaskListDelegate>
 
@@ -43,7 +44,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _curCellCount = 2;
+    _curCellCount = 0;
     _hisCellCount = 0;
     
     self.staticCells = [NSMutableArray array];
@@ -157,6 +158,7 @@
             comCell = [[[CommonTaskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"taskCell"] autorelease];
         } 
         
+        /*
         if (rowExceptStaticCells == 0)
         {
             [comCell setTaskCellType:CommonTaskTableViewCellShowTypeRedTextUp];
@@ -175,9 +177,14 @@
             [comCell setLeftIconNamed:@"about_wangcai_cell_icon"];
             [comCell hideFinishedIcon:YES];
         }
+         */
+        if (0)
+        {
+            
+        }
         else
         {
-            CommonTaskInfo* task = [[[CommonTaskList sharedInstance] getAllTaskList] objectAtIndex:rowExceptStaticCells - 2];
+            CommonTaskInfo* task = [[[CommonTaskList sharedInstance] getAllTaskList] objectAtIndex:rowExceptStaticCells];
             [comCell setTaskCellType:CommonTaskTableViewCellShowTypeRedTextUp];
             [comCell setUpText:task.taskTitle];
             [comCell setDownText:task.taskDesc];
@@ -202,15 +209,22 @@
             
             [comCell setRedBagIcon:pic];
             [comCell setLeftIconNamed:@"table_view_cell_icon_bg"];
-            [comCell setLeftIconUrl:task.taskIconUrl];
-            
-            if ([task.taskStatus intValue] == 1)
+            if (task.taskIsLocalIcon)
             {
-                [comCell setCellState:CommonTaskTableViewCellStateUnfinish];
+                [comCell setLeftIconNamed:task.taskIconUrl];
             }
             else
             {
+                [comCell setLeftIconUrl:task.taskIconUrl];
+            }
+            
+            if ([task.taskStatus intValue] == 1)
+            {
                 [comCell setCellState:CommonTaskTableViewCellStateFinished];
+            }
+            else
+            {
+                [comCell setCellState:CommonTaskTableViewCellStateUnfinish];
             }
         }
         
@@ -254,12 +268,46 @@
     }
     else
     {
-        UserInfoEditorViewController* userInfoCtrl = [[UserInfoEditorViewController alloc] initWithNibName:@"UserInfoEditorViewController" bundle:nil];
-        if (self.beeStack == nil)
+        int taskIndex = row - [_staticCells count];
+        CommonTaskInfo* task = [[[CommonTaskList sharedInstance] taskList] objectAtIndex:taskIndex];
+        switch ([task.taskType intValue])
         {
-            NSLog(@"靠！！！stack空的");
+            case kTaskTypeUserInfo:
+            {
+                UserInfoEditorViewController* userInfoCtrl = [[UserInfoEditorViewController alloc] initWithNibName:@"UserInfoEditorViewController" bundle:nil];
+                if (self.beeStack == nil)
+                {
+                    NSLog(@"靠！！！stack空的");
+                }
+                [self.beeStack pushViewController:userInfoCtrl animated:YES];
+            }
+                break;
+            case kTaskTypeInstallWangcai:
+            case kTaskTypeIntallApp:
+            {
+                NSString* tabs[3] = {0};
+                for (int i = 0; i < 3; ++i)
+                {
+                    if ([task.taskStepStrings count] > i)
+                    {
+                        tabs[i] = [task.taskStepStrings objectAtIndex:i];
+                    }
+                }
+                TaskController* taskCtrl = [[[TaskController alloc] init:task.taskId Tab1:tabs[0] Tab2:tabs[1] Tab3:tabs[2] Purse:[task.taskMoney floatValue]] autorelease];
+                [self.beeStack pushViewController:taskCtrl animated:YES];
+            }
+                break;
+            case kTaskTypeEverydaySign:
+                
+                break;
+            case kTaskTypeInviteFriends:
+                
+                break;
+                
+            default:
+                break;
         }
-        [self.beeStack pushViewController:userInfoCtrl animated:YES];
+        
     }
 }
 

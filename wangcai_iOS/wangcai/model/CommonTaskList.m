@@ -38,6 +38,7 @@
 @synthesize taskMoney;
 @synthesize taskDesc;
 @synthesize taskStepStrings;
+@synthesize taskIsLocalIcon;
 //@synthesize taskStartTime;
 //@synthesize taskEndTime;
 
@@ -134,6 +135,28 @@ static CommonTaskList* gInstance = nil;
     return 0.0f;
 }
 
+- (NSArray*)_buildLocalTestTask
+{
+    //本地测试数据
+    NSMutableArray* tasks = [NSMutableArray array];
+    
+    CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
+    task.taskId = [NSNumber numberWithInt:10];
+    task.taskType = [NSNumber numberWithInt:kTaskTypeUserInfo];
+    task.taskTitle = @"补充个人信息";
+    task.taskStatus = [NSNumber numberWithInt:0];
+    task.taskMoney = [NSNumber numberWithInt:100];
+    task.taskIconUrl = @"person_info_icon";
+    task.taskIntro = @"";
+    task.taskDesc = @"让旺财知道你喜欢什么，赚更多的红包";
+    task.taskIsLocalIcon = YES;
+    task.taskStepStrings = [NSArray array];
+    
+    [tasks addObject:task];
+    
+    return tasks;
+}
+
 #pragma mark <HttpRequestDelegate>
 
 -(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
@@ -152,6 +175,14 @@ static CommonTaskList* gInstance = nil;
             NSArray* taskList = [body objectForKey:@"task_list"];
             NSMutableArray* resultTaskList = [NSMutableArray array];
             NSMutableArray* unfinishedTaskList = [NSMutableArray array];
+            
+            if (YES)
+            {
+                NSArray* localTestTask = [self _buildLocalTestTask];
+                [resultTaskList addObjectsFromArray:localTestTask];
+                [unfinishedTaskList addObjectsFromArray:localTestTask];
+            }
+            
             for (NSDictionary* taskDict in taskList)
             {
                 CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
@@ -164,6 +195,35 @@ static CommonTaskList* gInstance = nil;
                 task.taskIntro = [taskDict objectForKey:@"intro"];
                 task.taskDesc = [taskDict objectForKey:@"desc"];
                 task.taskStepStrings = [taskDict objectForKey:@"steps"];
+                
+                NSInteger taskType = [task.taskType intValue];
+                switch (taskType)
+                {
+                    case kTaskTypeInstallWangcai:
+                        task.taskIsLocalIcon = YES;
+                        task.taskIconUrl = @"about_wangcai_cell_icon";
+                        break;
+                    case kTaskTypeUserInfo:
+                        task.taskIsLocalIcon = YES;
+                        task.taskIconUrl = @"person_info_icon";
+                        break;
+                    case kTaskTypeInviteFriends:
+                        task.taskIsLocalIcon = NO;
+                        //task.taskIconUrl = @"";
+                        break;
+                    case kTaskTypeEverydaySign:
+                        task.taskIsLocalIcon = NO;
+                        //task.taskIconUrl = @"";
+                        break;
+                    case kTaskTypeIntallApp:
+                        task.taskIsLocalIcon = NO;
+                        //task.taskIconUrl = @"";
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
                 [resultTaskList addObject:task];
                 if ([task.taskStatus intValue] == 0)
                 {

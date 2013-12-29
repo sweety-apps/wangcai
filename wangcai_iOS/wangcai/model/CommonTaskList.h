@@ -8,6 +8,12 @@
 
 #import "HttpRequest.h"
 
+#define kTaskTypeInstallWangcai (1)
+#define kTaskTypeUserInfo (2)
+#define kTaskTypeInviteFriends (3)
+#define kTaskTypeEverydaySign (4)
+#define kTaskTypeIntallApp (10000)
+
 @class CommonTaskList;
 
 @protocol CommonTaskListDelegate <NSObject>
@@ -27,6 +33,7 @@
 @property (nonatomic,retain) NSArray* taskStepStrings;
 @property (nonatomic,retain) NSNumber* taskStatus;
 @property (nonatomic,retain) NSNumber* taskMoney;
+@property (nonatomic,assign) BOOL taskIsLocalIcon;
 //@property (nonatomic,retain) NSNumber* taskStartTime;
 //@property (nonatomic,retain) NSNumber* taskEndTime;
 

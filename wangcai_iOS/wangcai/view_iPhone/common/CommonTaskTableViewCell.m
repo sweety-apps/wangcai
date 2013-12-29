@@ -99,16 +99,16 @@
     
     if (_taskCellType == CommonTaskTableViewCellShowTypeRedTextUp)
     {
-        rectFrame = CGRectMake(77, 25, 260, 16);
+        rectFrame = CGRectMake(77, 25, 170, 16);
         _redLabel.frame = rectFrame;
-        rectFrame = CGRectMake(77, 48, 260, 9);
+        rectFrame = CGRectMake(77, 48, 170, 9);
         _blackLabel.frame = rectFrame;
     }
     else
     {
-        rectFrame = CGRectMake(77, 25, 260, 9);
+        rectFrame = CGRectMake(77, 25, 170, 9);
         _blackLabel.frame = rectFrame;
-        rectFrame = CGRectMake(77, 41, 260, 16);
+        rectFrame = CGRectMake(77, 41, 170, 16);
         _redLabel.frame = rectFrame;
     }
     
@@ -192,6 +192,7 @@
 - (void)setLeftIconUrl:(NSString*)imageUrl
 {
     UIImage* cachedImage = [[BeeImageCache sharedInstance] imageForURL:imageUrl];
+    _leftIcon.layer.cornerRadius = 8.0f;
     if (cachedImage != nil)
     {
         [_leftIcon setImage:cachedImage];
@@ -204,6 +205,7 @@
 
 - (void)setLeftIconNamed:(NSString*)imageName
 {
+    _leftIcon.layer.cornerRadius = 0.0f;
     [_leftIcon setImage:[UIImage imageNamed:imageName]];
 }
 
