@@ -185,6 +185,14 @@
 		F3604927187016C200FAD1F3 /* NSString+DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604922187016C200FAD1F3 /* NSString+DataParser.m */; };
 		F3604928187016C200FAD1F3 /* NSString+FloatFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604924187016C200FAD1F3 /* NSString+FloatFormat.m */; };
 		F3604929187016C200FAD1F3 /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604926187016C200FAD1F3 /* UtilityFunctions.m */; };
+		F36049311870491500FAD1F3 /* ֵmenu_icon_chaozhiduihua@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F360492A1870491500FAD1F3 /* ֵmenu_icon_chaozhiduihua@2x.png */; };
+		F36049321870491500FAD1F3 /* ֵmenu_icon_jiaoyimingxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F360492B1870491500FAD1F3 /* ֵmenu_icon_jiaoyimingxi@2x.png */; };
+		F36049331870491500FAD1F3 /* ֵmenu_icon_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F360492C1870491500FAD1F3 /* ֵmenu_icon_line@2x.png */; };
+		F36049341870491500FAD1F3 /* ֵmenu_icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F360492D1870491500FAD1F3 /* ֵmenu_icon_setting@2x.png */; };
+		F36049351870491500FAD1F3 /* ֵmenu_icon_tixian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F360492E1870491500FAD1F3 /* ֵmenu_icon_tixian@2x.png */; };
+		F36049361870491500FAD1F3 /* ֵmenu_icon_tuhaobang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F360492F1870491500FAD1F3 /* ֵmenu_icon_tuhaobang@2x.png */; };
+		F36049371870491500FAD1F3 /* ֵmenu_icon_wodewangcai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F36049301870491500FAD1F3 /* ֵmenu_icon_wodewangcai@2x.png */; };
+		F36049391870492000FAD1F3 /* main_menu_bg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F36049381870492000FAD1F3 /* main_menu_bg@2x.jpg */; };
 		F3D834AF185B517B003095D5 /* CommonYuENumView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834AE185B517B003095D5 /* CommonYuENumView.m */; };
 		F3D834CD185C1E31003095D5 /* BaseTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834CB185C1E31003095D5 /* BaseTaskTableViewController.m */; };
 		F3D834CE185C1E31003095D5 /* BaseTaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D834CC185C1E31003095D5 /* BaseTaskTableViewController.xib */; };
@@ -705,6 +713,14 @@
 		F3604924187016C200FAD1F3 /* NSString+FloatFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FloatFormat.m"; sourceTree = "<group>"; };
 		F3604925187016C200FAD1F3 /* UtilityFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityFunctions.h; sourceTree = "<group>"; };
 		F3604926187016C200FAD1F3 /* UtilityFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityFunctions.m; sourceTree = "<group>"; };
+		F360492A1870491500FAD1F3 /* ֵmenu_icon_chaozhiduihua@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ֵmenu_icon_chaozhiduihua@2x.png"; sourceTree = "<group>"; };
+		F360492B1870491500FAD1F3 /* ֵmenu_icon_jiaoyimingxi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ֵmenu_icon_jiaoyimingxi@2x.png"; sourceTree = "<group>"; };
+		F360492C1870491500FAD1F3 /* ֵmenu_icon_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ֵmenu_icon_line@2x.png"; sourceTree = "<group>"; };
+		F360492D1870491500FAD1F3 /* ֵmenu_icon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ֵmenu_icon_setting@2x.png"; sourceTree = "<group>"; };
+		F360492E1870491500FAD1F3 /* ֵmenu_icon_tixian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ֵmenu_icon_tixian@2x.png"; sourceTree = "<group>"; };
+		F360492F1870491500FAD1F3 /* ֵmenu_icon_tuhaobang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ֵmenu_icon_tuhaobang@2x.png"; sourceTree = "<group>"; };
+		F36049301870491500FAD1F3 /* ֵmenu_icon_wodewangcai@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ֵmenu_icon_wodewangcai@2x.png"; sourceTree = "<group>"; };
+		F36049381870492000FAD1F3 /* main_menu_bg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main_menu_bg@2x.jpg"; sourceTree = "<group>"; };
 		F3D834AD185B517B003095D5 /* CommonYuENumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonYuENumView.h; sourceTree = "<group>"; };
 		F3D834AE185B517B003095D5 /* CommonYuENumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonYuENumView.m; sourceTree = "<group>"; };
 		F3D834CA185C1E31003095D5 /* BaseTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTaskTableViewController.h; path = wangcai/view_iPhone/common/BaseTaskTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1555,6 +1571,13 @@
 		A60C57E6186FF8A30068425C /* CommonIcons */ = {
 			isa = PBXGroup;
 			children = (
+				F360492A1870491500FAD1F3 /* ֵmenu_icon_chaozhiduihua@2x.png */,
+				F360492B1870491500FAD1F3 /* ֵmenu_icon_jiaoyimingxi@2x.png */,
+				F360492C1870491500FAD1F3 /* ֵmenu_icon_line@2x.png */,
+				F360492D1870491500FAD1F3 /* ֵmenu_icon_setting@2x.png */,
+				F360492E1870491500FAD1F3 /* ֵmenu_icon_tixian@2x.png */,
+				F360492F1870491500FAD1F3 /* ֵmenu_icon_tuhaobang@2x.png */,
+				F36049301870491500FAD1F3 /* ֵmenu_icon_wodewangcai@2x.png */,
 				A60C57E7186FF8A30068425C /* package_icon_3@2x.png */,
 				A60C57E8186FF8A30068425C /* package_icon_8@2x.png */,
 				A60C57E9186FF8A30068425C /* package_icon_half@2x.png */,
@@ -1617,6 +1640,7 @@
 		A60C5818186FF8A30068425C /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
+				F36049381870492000FAD1F3 /* main_menu_bg@2x.jpg */,
 				A60C5819186FF8A30068425C /* main_menu_title_text@2x.png */,
 			);
 			path = MainMenu;
@@ -3057,6 +3081,7 @@
 				A60C586F186FF8A30068425C /* warn@2x.png in Resources */,
 				A63AC921186C566B00A106A0 /* StartupController.xib in Resources */,
 				A60C5841186FF8A30068425C /* package_icon_3@2x.png in Resources */,
+				F36049361870491500FAD1F3 /* ֵmenu_icon_tuhaobang@2x.png in Resources */,
 				A60C5872186FF8A30068425C /* yue_0@2x.png in Resources */,
 				A60C5852186FF8A30068425C /* menu-icon-blue@2x.png in Resources */,
 				A60C5843186FF8A30068425C /* package_icon_half@2x.png in Resources */,
@@ -3071,17 +3096,20 @@
 				A60C58AA18703AE60068425C /* invite_seg_normal@2x.png in Resources */,
 				A60C5858186FF8A30068425C /* navigation-bar@2x.png in Resources */,
 				A60C585B186FF8A30068425C /* phone_num_border@2x.png in Resources */,
+				F36049341870491500FAD1F3 /* ֵmenu_icon_setting@2x.png in Resources */,
 				A60C5851186FF8A30068425C /* menu-button@2x.png in Resources */,
 				A6438EDE185F239E001A84AD /* UserInfoController.xib in Resources */,
 				A60C5849186FF8A30068425C /* border@2x.png in Resources */,
 				59E42A2E1862986F00007461 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				A60C584F186FF8A30068425C /* line@2x.png in Resources */,
 				A60C587A186FF8A30068425C /* yue_8@2x.png in Resources */,
+				F36049351870491500FAD1F3 /* ֵmenu_icon_tixian@2x.png in Resources */,
 				A60C5859186FF8A30068425C /* navigation_bar@2x.png in Resources */,
 				A60C584A186FF8A30068425C /* bottom_arraw@2x.png in Resources */,
 				A60C58A818703AE60068425C /* invite_invited_edit@2x.png in Resources */,
 				59E42A311862986F00007461 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				A60C587D186FF8A30068425C /* table_view_cell_icon_bg@2x.png in Resources */,
+				F36049321870491500FAD1F3 /* ֵmenu_icon_jiaoyimingxi@2x.png in Resources */,
 				A60C5887186FF8A30068425C /* head_extension_part@2x.png in Resources */,
 				A60C5866186FF8A30068425C /* splash-logo@2x.png in Resources */,
 				A60C588F186FF8A30068425C /* tiquxianjin_icon@2x.png in Resources */,
@@ -3116,6 +3144,7 @@
 				A60C58A718703AE60068425C /* invite_invite_code_bkg@2x.png in Resources */,
 				A60C5881186FF8A30068425C /* user_hobby_normal@2x.png in Resources */,
 				A60C5853186FF8A30068425C /* menu-icon-green@2x.png in Resources */,
+				F36049331870491500FAD1F3 /* ֵmenu_icon_line@2x.png in Resources */,
 				59E42A331862986F00007461 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				F3F186E518543A410098C852 /* Default-568h@2x.png in Resources */,
 				59E42A221862986E00007461 /* GooglePlus.bundle in Resources */,
@@ -3160,6 +3189,8 @@
 				A60C5873186FF8A30068425C /* yue_1@2x.png in Resources */,
 				A60C585D186FF8A30068425C /* resend_down@2x.png in Resources */,
 				59E42A081862986E00007461 /* InstapaperResource.bundle in Resources */,
+				F36049391870492000FAD1F3 /* main_menu_bg@2x.jpg in Resources */,
+				F36049311870491500FAD1F3 /* ֵmenu_icon_chaozhiduihua@2x.png in Resources */,
 				A60C58A918703AE60068425C /* invite_nav_bar@2x.png in Resources */,
 				A60C58A518703AE60068425C /* invite_edit_bkg@2x.png in Resources */,
 				A60C5854186FF8A30068425C /* menu-icon-red@2x.png in Resources */,
@@ -3167,6 +3198,7 @@
 				F3F18A26185472A90098C852 /* WCMainPageBoard_iPhone.xml in Resources */,
 				A60C58AE18703AE60068425C /* invite_seg_unsel_sel@2x.png in Resources */,
 				A60C5890186FF8A30068425C /* zhanghuyue@2x.png in Resources */,
+				F36049371870491500FAD1F3 /* ֵmenu_icon_wodewangcai@2x.png in Resources */,
 				F3D9D560185D876D00392C40 /* PhoneValidationController.xib in Resources */,
 				F3D9D564185D876D00392C40 /* TaskController.xib in Resources */,
 				A60C588E186FF8A30068425C /* recommand_task_icon@2x.png in Resources */,
