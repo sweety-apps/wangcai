@@ -16,17 +16,18 @@ typedef enum LoginStatus {
 } LoginStatus;
 
 @protocol LoginAndRegisterDelegate <NSObject>
--(void) loginCompleted : (LoginStatus) status;
+-(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg;
 @end
 
 @interface LoginAndRegister : NSObject {
-    NSMutableArray* idArray;
+    id          _delegate;
     LoginStatus loginStatus;
     NSString*   _phoneNum;
-    NSString*   _userid;
+    NSNumber*   _userid;
     NSString*   _session_id;
     NSString*   _nickname;
     NSString*   _device_id;
+    NSNumber*   _balance;
 }
 
 +(id) sharedInstance;
@@ -37,12 +38,12 @@ typedef enum LoginStatus {
 -(void) setTimeout; // 修改登录状态为已超时
 -(void) login;
 
--(void) attachCompleteEvent : (id) delegate;
--(void) deattchCompleteEvent : (id) delegate;
+-(void) login: (id) delegate;
 
 -(NSString*) getPhoneNum;
--(NSString*) getUserId;
+-(NSNumber*) getUserId;
 -(NSString*) getSessionId;
 -(NSString*) getNickName;
 -(NSString*) getDeviceId;
+-(NSNumber*) getBalance;
 @end

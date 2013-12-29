@@ -9,17 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ExchangeController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
-    IBOutlet UITableViewCell* _cell;
-    IBOutlet UITableView* _tableView;
-    IBOutlet UITableViewCell* _cellEnd;
+    UITableView* _tableView;
     BeeUIStack* _beeStack;
     
     UIView*  _noattachView;
 }
-
-@property (nonatomic, retain) IBOutlet UITableView* _tableView;
-@property (nonatomic, retain) IBOutlet UITableViewCell* _cell;
-@property (nonatomic, retain) IBOutlet UITableViewCell* _cellEnd;
 
 - (id)init;
 

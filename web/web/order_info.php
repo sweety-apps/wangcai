@@ -1,30 +1,30 @@
-<?php
+ï»¿<?php
 function getData($num) {
 	$obj = array();
-	$obj['title'] = "¶Ò»»Ñ¸À×»áÔ±30Ìì";
+	$obj['title'] = "å…‘æ¢è¿…é›·ä¼šå‘˜30å¤©";
 	$obj['id'] = "13687878787";
 	$obj['coin'] = 30;
-	$obj['status'] = 2;	// 1´¦ÀíÖĞ,2Íê³É
+	$obj['status'] = 2;	// 1å¤„ç†ä¸­,2å®Œæˆ
 	
 	$obj['details'] = array();	
 	
 	$tmp = array();
 	$tmp[0] = "2013-11-01 21:33";
-	$tmp[1] = "Ìá½»";
+	$tmp[1] = "æäº¤";
 	array_push($obj['details'], $tmp);
 	
 	$tmp = array();
 	$tmp[0] = "2013-11-02 21:33";
-	$tmp[1] = "¶©µ¥È·ÈÏ";
+	$tmp[1] = "è®¢å•ç¡®è®¤";
 	array_push($obj['details'], $tmp);
 	
 	$tmp = array();
 	$tmp[0] = "2013-11-03 21:33";
-	$tmp[1] = "ÒÑ×ª¿î";
+	$tmp[1] = "å·²è½¬æ¬¾";
 	array_push($obj['details'], $tmp);
 	
 	$obj['code'] = array();
-	$obj['code'][0] = "ÑûÇëÂë£º";
+	$obj['code'][0] = "é‚€è¯·ç ï¼š";
 	$obj['code'][1] = "11213213213213214324";
 	
 	return $obj;
@@ -35,7 +35,7 @@ $data = getData($_GET['ordernum']);
 
 <!DOCTYPE html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="order_info.css" />
 <!-- <script src="exchange_info.js"></script> -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -47,27 +47,27 @@ $data = getData($_GET['ordernum']);
 			<?php echo $data['title']; ?>
 		</div>
 		<div class="status">
-			<div class="label">×´Ì¬£º</div>
+			<div class="label">çŠ¶æ€ï¼š</div>
 		<?php
 		if ( $data['status'] == '1' ) {
 		?>
-			<div class="info process">´¦ÀíÖĞ</div>
+			<div class="info process">å¤„ç†ä¸­</div>
 		<?php
 		} else {
 		?>
-			<div class="info completed">Íê³É</div>
+			<div class="info completed">å®Œæˆ</div>
 		<?php
 		}
 		?>
 			<div class="clear"></div>
 		</div>
 		<div class="loginid">
-			<div class="label">ÕËºÅ£º</div>
+			<div class="label">è´¦å·ï¼š</div>
 			<div class="info"><?php echo $data['id']; ?></div>
 			<div class="clear"></div>
 		</div>
 		<div class="coin">
-			<div class="label">½ğ¶î£º</div>
+			<div class="label">é‡‘é¢ï¼š</div>
 			<div class="info"><?php echo $data['coin']; ?></div>
 			<div class="clear"></div>
 		</div>
@@ -98,15 +98,15 @@ $data = getData($_GET['ordernum']);
 			<?php echo $data['code'][0]; ?>
 			<?php echo $data['code'][1]; ?>
 		</div>
-		<a href="#"><div class="help">Ê¹ÓÃ°ïÖú</div></a>
-		<a href="/wangcai_js/copy_to_clip?context=<?php echo $data['code'][1]; ?>"><div class="copy">¸´ÖÆµ½¼ôÌù°å</div></a>
+		<a href="/wangcai_js/open_url?url=http://www.qq.com"><div class="help">ä½¿ç”¨å¸®åŠ©</div></a>
+		<a href="/wangcai_js/copy_to_clip?context=<?php echo $data['code'][1]; ?>"><div class="copy">å¤åˆ¶åˆ°å‰ªè´´æ¿</div></a>
 	<?php
 	}
 	?>
 	</div>
 	
 	<div class="userService">
-		<a href="">
+		<a href="/wangcai_js/service_center">
 			<img src="./img/userservice.png" width="66px" />
 		</a>
 	</div>

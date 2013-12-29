@@ -17,6 +17,9 @@
 
 #import "Bee.h"
 
-@interface AppBoard_iPhone : BeeUIBoard
+@interface AppBoard_iPhone : BeeUIBoard <UIAlertViewDelegate> {
+    UIAlertView* _alertView;
+}
+
 AS_SINGLETON( AppBoard_iPhone )
 @end

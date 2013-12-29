@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface InviteController : UIViewController {
-    NSString* _inviteCode;
-    IBOutlet UILabel* _myInviteLabel;
+    //NSString* _inviteCode;
+    //IBOutlet UILabel* _myInviteLabel;
 }
 
 - (IBAction) copyToClip:(id)sender;
 - (IBAction) clickShare:(id)sender;
 
-@property (nonatomic, retain) UILabel* _myInviteLabel;
+//@property (nonatomic, retain) UILabel* _myInviteLabel;
 
 @end

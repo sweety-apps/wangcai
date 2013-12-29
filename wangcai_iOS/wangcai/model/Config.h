@@ -13,12 +13,13 @@
 
 #define HTTP_LOGIN_AND_REGISTER @"http://getwangcai.com/0/register"
 #define HTTP_BIND_PHONE         @"http://getwangcai.com/0/account/bind_phone"
+#define HTTP_SEND_SMS_CODE      @"http://getwangcai.com/0/account/send_sms_code"
+#define HTTP_CHECK_SMS_CODE     @"http://getwangcai.com/0/account/check_sms_code"
+#define HTTP_READ_ACCOUNT_INFO_CODE     @"http://getwangcai.com/0/account/info"
+#define HTTP_READ_TASK_LIST     @"http://getwangcai.com/0/task/list"
 
-#define HTTP_SEND_SMS_CODE @"http://wangcai.meme-da.com/send_sms_code.php"
-//#define HTTP_LOGIN_AND_REGISTER @"http://wangcai.meme-da.com/register.php"
-#define HTTP_CHECK_SMS_CODE @"http://wangcai.meme-da.com/check_sms_code.php"
 
-
+#define HTTP_SERVICE_CENTER     @"http://yw2sc.ledzixun.com/mobile/consulting"
 
 #define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
 #define WEB_TASK          @"http://wangcai.meme-da.com/web/task/app_task.php"

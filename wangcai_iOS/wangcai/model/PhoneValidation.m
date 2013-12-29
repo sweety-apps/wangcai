@@ -12,117 +12,170 @@
 
 @implementation PhoneValidation
 
+-(id) init {
+    self = [super init];
+    if ( self != nil ) {
+    }
+    return self;
+}
+
 //int _status;  0-绑定手机号, 1-校验短信验证码, 2-发送短信验证码
 - (void) attachPhone : (NSString*) phoneNum delegate:(id) del {
     _status = 0;
-    _smsDelegate = del;
-    _phoneNum = phoneNum;
     
-    LoginStatus status = [[LoginAndRegister sharedInstance] getLoginStatus];
-    
-    BeeHTTPRequest* request = self.HTTP_POST(HTTP_BIND_PHONE);
-    
-    
-    
-    NSString* nsParam = [[NSString alloc]init];
-    nsParam = [nsParam stringByAppendingFormat:@"phone=%@&", phoneNum];
-    
+    if ( del != nil ) {
+        if ( _smsDelegate != nil ) {
+            [_smsDelegate release];
+        }
         
-    /*
-    NSString* idfa = [Common getIDFAAddress];
-    nsParam = [nsParam stringByAppendingFormat:@"idfa=%@&", idfa];
+        _smsDelegate = [del retain];
+    }
     
-    NSString* mac = [Common getMACAddress];
-    nsParam = [nsParam stringByAppendingFormat:@"mac=%@&", mac];
+    HttpRequest* request = [[HttpRequest alloc] init:self];
     
-    NSString* timestamp = [Common getTimestamp];
-    nsParam = [nsParam stringByAppendingFormat:@"timestamp=%@&", timestamp];
+    NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
     
-    NSMutableData* data = [[NSMutableData alloc] init];
+    [dictionary setObject:phoneNum forKey:@"phone"];
+
+    [request request:HTTP_BIND_PHONE Param:dictionary];
     
-    
-    NSString* encodedString = [nsParam stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    //[nsParam release];
-    
-    const char * a =[encodedString UTF8String];
-    
-    req.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
-    [data appendBytes:a length:strlen(a)];
-    
-    req.postBody = [[data copy] autorelease];
-    
-    req.TIMEOUT(10);
-    
-    [data release];
-     */
+    [dictionary release];
 }
 
 - (void) sendCheckNumToPhone : (NSString*) phoneNum delegate : (id) del {
- /*   self->_smsDelegate = del;
-    self->_sendSmsCode = NO;
+    _status = 2;
     
-    self.HTTP_POST(HTTP_SEND_SMS_CODE);
-    self.PARAM(@"phone_num", phoneNum);
+    if ( del != nil ) {
+        if ( _smsDelegate != nil ) {
+            [_smsDelegate release];
+        }
+        
+        _smsDelegate = [del retain];
+    }
     
-    self.TIMEOUT(10);   */
+    HttpRequest* request = [[HttpRequest alloc] init:self];
+    
+    NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
+    
+    [dictionary setObject:phoneNum forKey:@"phone"];
+    [dictionary setObject:@"5" forKey:@"code_length"];
+    
+    [request request:HTTP_SEND_SMS_CODE Param:dictionary];
+    
+    [dictionary release];
 }
 
 
-- (void) checkSmsCode : (NSString*)phoneNum smsCode:(NSString*)code Token:(NSString*)token delegate:(id)del {
-/*    self->_smsDelegate = del;
-    self->_sendSmsCode = YES;
+- (void) checkSmsCode : (NSString*)code Token:(NSString*)token delegate:(id)del {
+    _status = 1;
     
-    self.HTTP_POST(HTTP_CHECK_SMS_CODE);
-    self.PARAM(@"sms_code", code);
-    self.PARAM(@"token", token);
+    if ( del != nil ) {
+        if ( _smsDelegate != nil ) {
+            [_smsDelegate release];
+        }
+        
+        _smsDelegate = [del retain];
+    }
     
-    self.TIMEOUT(10); */
+    HttpRequest* request = [[HttpRequest alloc] init:self];
+    
+    NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
+    
+    [dictionary setObject:token forKey:@"token"];
+    [dictionary setObject:code forKey:@"sms_code"];
+    
+    [request request:HTTP_CHECK_SMS_CODE Param:dictionary];
+    
+    [dictionary release];
 }
 
-- (void) handleRequest:(BeeHTTPRequest *)req {
- /*   if ( self->_sendSmsCode ) {
-        if ( req.failed ) {
-            [self->_smsDelegate checkSmsCodeCompleted:NO errMsg:@"访问服务器错误" UserId:nil Nickname:nil];
-        } else if ( req.succeed ) {
-            NSData* response = req.responseData;
+-(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
+     if ( _status == 0 ) {
+         [self bindHandleRequest:httpCode Body:body];
+     } else if ( _status == 2 ) {
+         [self sendSmsHandleRequest:httpCode Body:body];
+     } else if ( _status == 1 ) {
+         [self checkSmsHandleRequest:httpCode Body:body];
+     }
+}
+
+- (void) sendSmsHandleRequest:(int)httpCode Body:(NSDictionary*) body{
+    if ( httpCode == 200 ) {
+        // 服务器成功返回数据
+        NSNumber* res = [body valueForKey:@"res"];
+        int nRes = [res intValue];
+        if ( nRes == 0 ) {
+            // 调用成功
+            NSString* token = [[body valueForKey:@"token"] copy];
             
-            NSData* aData = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
-            NSString* res = [[aData asNSDictionary] objectForKey:@"res"];
-            if ( [res isEqualToString:@"0"] ) {
-                // 返回成功
-                [self->_smsDelegate checkSmsCodeCompleted:YES
-                                                   errMsg:nil
-                                                   UserId:[[aData asNSDictionary] objectForKey:@"userId"]
-                                                   Nickname:[[aData asNSDictionary] objectForKey:@"nickname"]];
-            } else {
-                // 返回失败
-                [self->_smsDelegate checkSmsCodeCompleted:NO
-                                                   errMsg:[[aData asNSDictionary] objectForKey:@"msg"]
-                                                   UserId:nil Nickname:nil];
-            }
+            [_smsDelegate sendSMSCompleted:YES errMsg:nil token:token];
+            
+            [token release];
+        } else {
+            // 错误
+            NSString* msg = [[body valueForKey:@"msg"] copy];
+            
+            // 重新登录过了，返回错误
+            [_smsDelegate sendSMSCompleted:NO errMsg:msg token:nil];
+            
+            [msg release];
         }
     } else {
-        if ( req.failed ) {
-            [self->_smsDelegate sendSMSCompleted:NO errMsg:@"访问服务器错误" token:nil];
-        } else if ( req.succeed ) {
-            NSData* response = req.responseData;
-        
-            NSData* aData = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
-            NSString* res = [[aData asNSDictionary] objectForKey:@"res"];
-            if ( [res isEqualToString:@"0"] ) {
-                // 返回成功
-                [self->_smsDelegate sendSMSCompleted:YES
-                                          errMsg:nil
-                                           token:[[aData asNSDictionary] objectForKey:@"token"]];
-            } else {
-                // 返回失败
-                [self->_smsDelegate sendSMSCompleted:NO
-                                          errMsg:[[aData asNSDictionary] objectForKey:@"msg"]
-                                           token:[[aData asNSDictionary] objectForKey:@"token"]];
-            }
-        }
+        [_smsDelegate sendSMSCompleted:NO errMsg:@"访问服务器错误" token:nil];
     }
-*/
+}
+
+- (void) bindHandleRequest:(int)httpCode Body:(NSDictionary*) body{
+    if ( httpCode == 200 ) {
+        // 服务器成功返回数据
+        NSNumber* res = [body valueForKey:@"res"];
+        int nRes = [res intValue];
+        if ( nRes == 0 ) {
+            // 调用成功
+            NSString* token = [[body valueForKey:@"token"] copy];
+            
+            [_smsDelegate attachPhoneCompleted:YES Token:token errMsg:nil];
+            
+            [token release];
+        } else {
+            // 错误
+            NSString* msg = [[body valueForKey:@"msg"] copy];
+            
+            // 重新登录过了，返回错误
+            [_smsDelegate attachPhoneCompleted:NO Token:nil errMsg:msg];
+            
+            [msg release];
+        }
+    } else {
+        [_smsDelegate attachPhoneCompleted:NO Token:nil errMsg:@"访问服务器错误"];
+    }
+}
+
+
+- (void) checkSmsHandleRequest:(int)httpCode Body:(NSDictionary*) body{
+    if ( httpCode == 200 ) {
+        // 服务器成功返回数据
+        NSNumber* res = [body valueForKey:@"res"];
+        int nRes = [res intValue];
+        if ( nRes == 0 ) {
+            // 调用成功
+            NSString* userid = [[body valueForKey:@"userid"] copy];
+            
+            [_smsDelegate checkSmsCodeCompleted:NO errMsg:nil UserId:userid];
+            
+            [userid release];
+        } else {
+            // 错误
+            NSString* msg = [[body valueForKey:@"msg"] copy];
+            
+            // 重新登录过了，返回错误
+            [_smsDelegate checkSmsCodeCompleted:NO errMsg:msg UserId:nil];
+            
+            [msg release];
+        }
+    } else {
+        [_smsDelegate checkSmsCodeCompleted:NO errMsg:@"访问服务器错误" UserId:nil];
+    }
 }
 
 - (void) dealloc {

@@ -7,6 +7,7 @@
 //
 
 #import "TaskInfoTableViewCell.h"
+#import "NSString+FloatFormat.h"
 
 @implementation TaskInfoTableViewCell
 
@@ -37,6 +38,11 @@
 - (void)setJinTianHaiNengZhuanNumLabelText:(NSString*)text
 {
     self.jintianhainengzhuanLabel.text = text;
+}
+
+- (void)setJinTianHaiNengZhuanNumLabelTextNum:(float)num
+{
+    self.jintianhainengzhuanLabel.text = [NSString stringWithFloatRoundToPrecision:num precision:1 ignoreBackZeros:YES];
 }
 
 @end

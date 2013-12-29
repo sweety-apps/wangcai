@@ -31,10 +31,14 @@
 {
 	[super load];
     
-    self->_taskController = [[TaskController alloc]init:nil];
-    
-    UIView* view = self->_taskController.view;
+    self->_settingController = [[SettingViewController alloc] init];
+    UIView* view = _settingController.view;
     [self.view addSubview:view];
+    
+    //TaskController* _taskController = [[TaskController alloc]init:nil];
+    
+    //UIView* view = _taskController.view;
+    //[self.view addSubview:view];
 }
 
 - (void)unload

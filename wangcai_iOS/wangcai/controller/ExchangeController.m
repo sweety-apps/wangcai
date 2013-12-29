@@ -17,9 +17,6 @@
 @end
 
 @implementation ExchangeController
-@synthesize _cell;
-@synthesize _tableView;
-@synthesize _cellEnd;
 
 - (void) setUIStack :(BeeUIStack*) stack {
     _beeStack = stack;
@@ -31,13 +28,20 @@
     if (self) {
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] firstObject];
-        
-        _tableView.separatorStyle = NO;
 
+        _tableView = (UITableView*)[self.view viewWithTag:89];
+        _tableView.separatorStyle = NO;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        
         CGRect rect = [[UIScreen mainScreen]bounds];
-        rect.origin.y = 102;
-        rect.size.height -= 102;
-        _tableView.frame = rect;
+        rect.origin.y = 101;
+        rect.size.height -= 101;
+        
+        //[_tableView setHeight:rect.size.height];
+        
+        [_tableView setFrame:rect];
+
         
         _noattachView = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] lastObject];
         rect = _noattachView.frame;
@@ -69,9 +73,9 @@
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     if ( row == 0 ) {
-        return _cell;
-    } else if ( row == 10 ) {
-        return _cellEnd;
+        UITableViewCell* cell = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] objectAtIndex:1];
+        
+        return cell;
     } else {
         ExchangeControllerCell* cell = [tableView dequeueReusableCellWithIdentifier:@"exchangeCell"];
         if (cell == nil)
@@ -104,7 +108,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 11;
+    return 10;
 }
 
 - (IBAction)clickExchangeInfo:(id)sender {

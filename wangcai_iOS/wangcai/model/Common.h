@@ -17,4 +17,6 @@
 + (NSString*) getMACAddress;
 + (NSString*) getTimestamp;
 
+
+
 @end

@@ -11,6 +11,8 @@
 #import "TransferToAlipayAndPhoneController.h"
 #import "WebPageController.h"
 #import "Config.h"
+#import "Common.h"
+#import "MBHUDView.h"
 
 @interface WebViewController ()
 
@@ -31,6 +33,10 @@
         [self.view addSubview:self->_loadingView];
         
         [self->_webView setHidden:YES];
+        
+        _alert = nil;
+        _nsCallback = nil;
+        _nsBtn2ID = nil;
     }
     return self;
 }
@@ -54,14 +60,35 @@
 - (void)dealloc {
     self->_webView = nil;
     self->_url = nil;
+    if (_url)
+    {
+        [_url release];
+        _url = nil;
+    }
     self->_loadingView = nil;
     self->_beeStack = nil;
     _delegate = nil;
+    
+    if ( _alert != nil ) {
+        [_alert release];
+    }
+    if ( _nsCallback != nil ) {
+        [_nsCallback release];
+    }
+    if ( _nsCallback != nil ) {
+        [_nsBtn2ID release];
+    }
+    
     [super dealloc];
 }
 
 - (void)setNavigateUrl:(NSString*)url {
-    self->_url = url;
+    if (_url)
+    {
+        [_url release];
+        _url = nil;
+    }
+    _url = [url retain];
     
     CGRect rect = self.view.frame;
     rect.origin.y = 0;
@@ -137,9 +164,104 @@
         }
 
         return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/open_url"] ) {
+        NSString* value = [self getValueFromQuery:query Key:@"url"];
+        
+        if ( _delegate != nil ) {
+            [_delegate openUrl:value];
+        }
+        
+        return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/service_center"] ) {
+        NSString* num = [[LoginAndRegister sharedInstance] getPhoneNum];
+        if ( num == nil ) {
+            num = @"";
+        }
+        NSString* url = [[NSString alloc] initWithFormat:@"%@?mobile=%@&mobile_num=%@---%@",
+                         HTTP_SERVICE_CENTER, num, [Common getMACAddress], [Common getIDFAAddress] ];
+        
+        WebPageController* webController = [[[WebPageController alloc] init:@"客户服务" Url:url Stack:_beeStack]autorelease];
+        
+        [self->_beeStack pushViewController:webController animated:YES];
+        return NO;
+        
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/open_url_inside"] ) {
+        NSString* value = [self getValueFromQuery:query Key:@"url"];
+        NSString* title = [self getValueFromQuery:query Key:@"title"];
+        
+        title = [title stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+        WebPageController* webController = [[[WebPageController alloc] init:title Url:value Stack:_beeStack]autorelease];
+        
+        [self->_beeStack pushViewController:webController animated:YES];
+        
+        return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/alert"] ) {
+        NSString* title = [self getValueFromQuery:query Key:@"title"];
+        NSString* info = [self getValueFromQuery:query Key:@"info"];
+        NSString* btntext = [self getValueFromQuery:query Key:@"btntext"];
+        
+        title = [title stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        info = [info stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        btntext = [btntext stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSString* btn2 = [self getValueFromQuery:query Key:@"btn2"];
+        if ( btn2 != nil ) {
+            btn2 = [btn2 stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSString* btn2Id = [self getValueFromQuery:query Key:@"btn2id"];
+            NSString* callback = [self getValueFromQuery:query Key:@"callback"];
+            
+            if ( _alert != nil ) {
+                [_alert release];
+            }
+            if ( _nsCallback != nil ) {
+                [_nsCallback release];
+            }
+            if ( _nsCallback != nil ) {
+                [_nsBtn2ID release];
+            }
+            
+            _nsCallback = [callback copy];
+            _nsBtn2ID = [btn2Id copy];
+            
+            _alert = [[UIAlertView alloc] initWithTitle:title message:info delegate:self cancelButtonTitle:btntext otherButtonTitles:btn2, nil];
+            
+            [_alert show];
+        } else {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:info delegate:nil cancelButtonTitle:btntext otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
+        }
+        
+        return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/alert_loading"] ) {
+        NSString* show = [self getValueFromQuery:query Key:@"show"];
+        if ( [show isEqualToString:@"1"] ) {
+            NSString* info = [self getValueFromQuery:query Key:@"info"];
+            info = [info stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+            // 显示loading
+            [MBHUDView hudWithBody:info type:MBAlertViewHUDTypeActivityIndicator hidesAfter:-1 show:YES];
+        } else {
+            [MBHUDView dismissCurrentHUD];
+        }
+        
+        return NO;
     }
     
     return YES;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( _alert != nil ) {
+        if ( [_alert isEqual:alertView] ) {
+            if ( buttonIndex == 1 ) {
+                NSString* js = [[NSString alloc] initWithFormat:@"%@(%@)", self->_nsCallback, _nsBtn2ID];
+                [_webView stringByEvaluatingJavaScriptFromString:js];
+                [js release];
+            }
+        }
+    }
 }
 
 - (void) setDelegate:(id) delegate {
@@ -172,21 +294,21 @@
 }
 
 -(void) onAttachPhone {
-    PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+    PhoneValidationController* phoneVal = [[[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil] autorelease];
     
     [self->_beeStack pushViewController:phoneVal animated:YES];
 }
 
 -(void) onPayToAlipay:(float) fCoin {
     // 转帐到支付宝
-    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:YES];
+    TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES] autorelease];
     
     [self->_beeStack pushViewController:controller animated:YES];
 }
 
 -(void) onPayToPhone:(float) fCoin {
     // 花费充值
-    TransferToAlipayAndPhoneController* controller = [[TransferToAlipayAndPhoneController alloc]init:NO];
+    TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO] autorelease];
     
     [self->_beeStack pushViewController:controller animated:YES];
 }
@@ -195,7 +317,7 @@
     NSString* url = [[WEB_ORDER_INFO copy] autorelease];
     url = [url stringByAppendingFormat:@"?ordernum=%@", orderNum];
     
-    WebPageController* controller = [[WebPageController alloc] initOrder:orderNum Url:url Stack:_beeStack];
+    WebPageController* controller = [[[WebPageController alloc] initOrder:orderNum Url:url Stack:_beeStack] autorelease];
     [_beeStack pushViewController:controller animated:YES];
 }
 @end

@@ -8,7 +8,8 @@
 
 #import "AppBoard_iPhone.h"
 #import "MenuBoard_iPhone.h"
-
+#import "LoginAndRegister.h"
+#import "PhoneValidationController.h"
 #define SHOW_MASK (0)
 
 #pragma mark -
@@ -36,10 +37,14 @@ DEF_SINGLETON( AppBoard_iPhone )
 - (void)load
 {
 	[super load];
+    _alertView = nil;
 }
 
 - (void)unload
 {
+    if ( _alertView != nil ) {
+        [_alertView release];
+    }
 	[super unload];
 }
 
@@ -83,6 +88,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
+        [self unobserveNotification:@"showMenu"];
 		SAFE_RELEASE_SUBVIEW( _mask );
 	}
 	else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
@@ -215,7 +221,52 @@ ON_SIGNAL3( MenuBoard_iPhone, third, signal )
 
 ON_SIGNAL3( MenuBoard_iPhone, wc_main, signal )
 {
+    //static BOOL isFirstShow = YES;
 	[[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
+    //if (!isFirstShow)
+    //{
+        [self postNotification:@"naviToUserInfoEditor"];
+    //}
+    //isFirstShow = NO;
+	
+	[self hideMenu];
+}
+
+ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
+{   // 判断是否绑定了手机
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+        if ( _alertView != nil ) {
+            [_alertView release];
+        }
+        
+        if ( phoneNum != nil ) {
+            [phoneNum release];
+        }
+        
+        _alertView = [[UIAlertView alloc] initWithTitle:@"邀请送红包" message:@"您还没有绑定手机，请先绑定手机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"绑定手机", nil];
+        [_alertView show];
+    } else {
+        [phoneNum release];
+        [[BeeUIRouter sharedInstance] open:@"invite" animated:YES];
+
+        [self hideMenu];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( [_alertView isEqual:alertView] ) {
+        if ( buttonIndex == 1 ) {
+            [[BeeUIRouter sharedInstance] open:@"phone_validation" animated:YES];
+            
+            [self hideMenu];
+        }
+    }
+}
+
+ON_SIGNAL3( MenuBoard_iPhone, service, signal)
+{
+	[[BeeUIRouter sharedInstance] open:@"service" animated:YES];
 	
 	[self hideMenu];
 }

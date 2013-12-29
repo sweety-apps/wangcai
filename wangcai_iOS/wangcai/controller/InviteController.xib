@@ -5,11 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InviteController">
-            <connections>
-                <outlet property="_myInviteLabel" destination="65Q-7m-cNN" id="CE0-pa-KLf"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InviteController"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -62,7 +58,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="copyToClip:" destination="-2" eventType="touchUpInside" id="ajo-aP-0Oa"/>
+                        <action selector="copyToClip:" destination="-1" eventType="touchUpInside" id="fi0-02-7kD"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我的邀请码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCx-gU-rRx">
@@ -92,7 +88,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="clickShare:" destination="-2" eventType="touchUpInside" id="WBj-gq-Jn8"/>
+                        <action selector="clickShare:" destination="-1" eventType="touchUpInside" id="Mcw-h9-oGf"/>
                     </connections>
                 </button>
             </subviews>
