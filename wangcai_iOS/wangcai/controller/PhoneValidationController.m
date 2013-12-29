@@ -28,10 +28,15 @@
         _token = nil;
         
         self->_timer = nil;
-        _viewInputNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:2];
-        _viewCheckNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:1];
-        _viewRegSuccess = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:3];
+        self->_viewInputNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:2];
+        self->_viewCheckNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:1];
+        self->_viewRegSuccess = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:3];
         
+        CGRect rect = CGRectMake( 0.0f, 153.0f, self->_viewInputNum.frame.size.width, self->_viewInputNum.frame.size.height);
+        _viewInputNum.frame = rect;
+        _viewCheckNum.frame = rect;
+        _viewRegSuccess.frame = rect;
+       
         self->_tab1 = (UIImageView*)[self.view viewWithTag:54];
         self->_tab2 = (UIImageView*)[self.view viewWithTag:55];
         self->_tab3 = (UIImageView*)[self.view viewWithTag:56];
@@ -46,7 +51,12 @@
         CGRect rectTab = viewTab.frame;
         rectTab.origin.y = 54;
         viewTab.frame = rectTab;
+        
         [self.view addSubview:viewTab];
+        
+        [self.view addSubview:self->_viewInputNum];
+        [self.view addSubview:self->_viewCheckNum];
+        [self.view addSubview:self->_viewRegSuccess];
         
         [self->_tabController setTabInfo:@"输入手机号" Tab2:@"输入验证码" Tab3:@"领取" Purse:1];
         
@@ -91,7 +101,35 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void) hideKeyboard {
+    if ( [textNum isFirstResponder] ) {
+        [textNum resignFirstResponder];
+    }
+    
+    if ( [textCheck1 isFirstResponder] ) {
+        [textCheck1 resignFirstResponder];
+    }
+    
+    if ( [textCheck2 isFirstResponder] ) {
+        [textCheck2 resignFirstResponder];
+    }
+    
+    if ( [textCheck3 isFirstResponder] ) {
+        [textCheck3 resignFirstResponder];
+    }
+    
+    if ( [textCheck4 isFirstResponder] ) {
+        [textCheck4 resignFirstResponder];
+    }
+    
+    if ( [textCheck5 isFirstResponder] ) {
+        [textCheck5 resignFirstResponder];
+    }
+}
+
 - (IBAction)clickBack:(id)sender {
+    // 收起键盘
+    
     if ( _bSend ) {
         [self postNotification:@"showMenu"];
     } else {
@@ -331,7 +369,7 @@
     [[_viewCheckNum viewWithTag:53] setHidden:YES];
     [[_viewCheckNum viewWithTag:54] setHidden:YES];
     
-    [self->phoneValidation sendCheckNumToPhone:self->_phoneNum delegate:self ];
+    [self->phoneValidation sendCheckNumToPhone:self->_token delegate:self ];
     [self showLoading];
 }
 
@@ -445,16 +483,13 @@
 - (void) showFirstPage {
     [_viewCheckNum setHidden:YES];
     [_viewInputNum setHidden:NO];
-    [_viewRegSuccess setHidden:NO];
+    [_viewRegSuccess setHidden:YES];
     
-    _viewInputNum.frame = CGRectMake( 0.0f, 153.0f, self->_viewInputNum.frame.size.width, self->_viewInputNum.frame.size.height);
-
     [UIView beginAnimations:@"view curldown" context:nil];
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self->_viewInputNum cache:YES];
     
     self->curState = 0;
-    [self.view addSubview:self->_viewInputNum];
     
     [UIView setAnimationDelegate:self];
     [UIView commitAnimations];
@@ -466,14 +501,11 @@
     [_viewInputNum setHidden:YES];
     [_viewRegSuccess setHidden:NO];
     
-    _viewRegSuccess.frame = CGRectMake( 0.0f, 153.0f, self->_viewRegSuccess.frame.size.width, self->_viewRegSuccess.frame.size.height);
-    
     [UIView beginAnimations:@"view curldown" context:nil];
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self->_viewRegSuccess cache:YES];
     
     self->curState = 3;
-    [self.view addSubview:self->_viewRegSuccess];
     
     [UIView setAnimationDelegate:self];
     [UIView commitAnimations];
@@ -481,18 +513,15 @@
 }
 
 - (void) showSecondPage {
-    [_viewCheckNum setHidden:NO];
-    [_viewInputNum setHidden:YES];
-    [_viewRegSuccess setHidden:YES];
-    
-    _viewCheckNum.frame = CGRectMake( 0.0f, 153.0f, self->_viewCheckNum.frame.size.width, self->_viewCheckNum.frame.size.height);
-    
+    [self->_viewCheckNum setHidden:NO];
+    [self->_viewInputNum setHidden:YES];
+    [self->_viewRegSuccess setHidden:YES];
+
     [UIView beginAnimations:@"view curlup" context:nil];
     [UIView setAnimationDuration:0.5];
     [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:_viewCheckNum cache:YES];
     
     self->curState = 1;
-    [self.view addSubview:_viewCheckNum];
     
     [UIView setAnimationDelegate:self];
     [UIView commitAnimations];
@@ -511,7 +540,7 @@
 }
 
 - (void) beginTime {
-    self->_nTime = 30;
+    self->_nTime = 120;
     self->_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
     [[_viewCheckNum viewWithTag:53] setHidden:YES];
     [[_viewCheckNum viewWithTag:54] setHidden:NO];
@@ -545,10 +574,12 @@
     [text release];
 }
 
-- (void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId {
+- (void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId InviteCode:(NSString *)inviteCode {
     [self hideLoading];
     if ( suc ) {
         // 发送完成，进入下一步
+        [[LoginAndRegister sharedInstance] attachPhone:_phoneNum UserId:userId InviteCode:inviteCode];
+        
         [self showThirdPage];
     } else {
         // 发送失败，错误提示

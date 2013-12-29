@@ -23,13 +23,7 @@
 - (void) attachPhone : (NSString*) phoneNum delegate:(id) del {
     _status = 0;
     
-    if ( del != nil ) {
-        if ( _smsDelegate != nil ) {
-            [_smsDelegate release];
-        }
-        
-        _smsDelegate = [del retain];
-    }
+    _smsDelegate = del;
     
     HttpRequest* request = [[HttpRequest alloc] init:self];
     
@@ -42,22 +36,16 @@
     [dictionary release];
 }
 
-- (void) sendCheckNumToPhone : (NSString*) phoneNum delegate : (id) del {
+- (void) sendCheckNumToPhone : (NSString*) token delegate : (id) del {
     _status = 2;
     
-    if ( del != nil ) {
-        if ( _smsDelegate != nil ) {
-            [_smsDelegate release];
-        }
-        
-        _smsDelegate = [del retain];
-    }
+    _smsDelegate = del;
     
     HttpRequest* request = [[HttpRequest alloc] init:self];
     
     NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
     
-    [dictionary setObject:phoneNum forKey:@"phone"];
+    [dictionary setObject:token forKey:@"token"];
     [dictionary setObject:@"5" forKey:@"code_length"];
     
     [request request:HTTP_SEND_SMS_CODE Param:dictionary];
@@ -69,13 +57,7 @@
 - (void) checkSmsCode : (NSString*)code Token:(NSString*)token delegate:(id)del {
     _status = 1;
     
-    if ( del != nil ) {
-        if ( _smsDelegate != nil ) {
-            [_smsDelegate release];
-        }
-        
-        _smsDelegate = [del retain];
-    }
+    _smsDelegate = del;
     
     HttpRequest* request = [[HttpRequest alloc] init:self];
     
@@ -160,21 +142,22 @@
         if ( nRes == 0 ) {
             // 调用成功
             NSString* userid = [[body valueForKey:@"userid"] copy];
-            
-            [_smsDelegate checkSmsCodeCompleted:NO errMsg:nil UserId:userid];
+            NSString* inviteCode = [[body valueForKey:@"invite_code"] copy];
+            [_smsDelegate checkSmsCodeCompleted:YES errMsg:nil UserId:userid InviteCode:nil];
             
             [userid release];
+            [inviteCode release];
         } else {
             // 错误
             NSString* msg = [[body valueForKey:@"msg"] copy];
             
             // 重新登录过了，返回错误
-            [_smsDelegate checkSmsCodeCompleted:NO errMsg:msg UserId:nil];
+            [_smsDelegate checkSmsCodeCompleted:NO errMsg:msg UserId:nil InviteCode:nil];
             
             [msg release];
         }
     } else {
-        [_smsDelegate checkSmsCodeCompleted:NO errMsg:@"访问服务器错误" UserId:nil];
+        [_smsDelegate checkSmsCodeCompleted:NO errMsg:@"访问服务器错误" UserId:nil InviteCode:nil];
     }
 }
 

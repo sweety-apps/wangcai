@@ -19,6 +19,10 @@ typedef enum LoginStatus {
 -(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg;
 @end
 
+@protocol BindPhoneDelegate <NSObject>
+-(void) bindPhoneCompeted;
+@end
+
 @interface LoginAndRegister : NSObject {
     id          _delegate;
     LoginStatus loginStatus;
@@ -28,6 +32,10 @@ typedef enum LoginStatus {
     NSString*   _nickname;
     NSString*   _device_id;
     NSNumber*   _balance;
+    NSString*   _invite_code;
+    NSString*   _inviter;
+    
+    NSMutableArray* _delegateArray;
 }
 
 +(id) sharedInstance;
@@ -46,4 +54,9 @@ typedef enum LoginStatus {
 -(NSString*) getNickName;
 -(NSString*) getDeviceId;
 -(NSNumber*) getBalance;
+
+-(void) attachPhone : (NSString*) phoneNum UserId:(NSString*) userid InviteCode:(NSString*) inviteCode;
+
+-(void) attachBindPhoneEvent : (id) delegate;
+-(void) detachBindPhoneEvent : (id) delegate;
 @end

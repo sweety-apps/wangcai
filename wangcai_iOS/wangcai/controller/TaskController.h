@@ -17,6 +17,6 @@
     TabController* _tabController;
 }
 
-- (id)init:(NSBundle *)nibBundleOrNil;
+- (id)init:(NSNumber*)taskId Tab1:(NSString*) tab1 Tab2:(NSString*) tab2 Tab3:(NSString*) tab3 Purse:(float) purse;
 - (void) openAppWithIdentifier : (NSString*) appid;
 @end

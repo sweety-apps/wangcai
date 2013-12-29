@@ -12,7 +12,7 @@
 @protocol PhoneValidationDelegate <NSObject>
 -(void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg  token:(NSString*) token;
 
--(void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId;
+-(void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId InviteCode:(NSString*)inviteCode;
 
 -(void) attachPhoneCompleted : (BOOL) suc Token:(NSString*)token errMsg:(NSString*)errMsg;
 @end
@@ -25,6 +25,6 @@
 -(id) init;
 
 - (void) attachPhone : (NSString*) phoneNum delegate:(id) del;
-- (void) sendCheckNumToPhone : (NSString*) phoneNum delegate : (id) del;
+- (void) sendCheckNumToPhone : (NSString*) token delegate : (id) del;
 - (void) checkSmsCode : (NSString*)code Token:(NSString*)token delegate:(id)del;
 @end

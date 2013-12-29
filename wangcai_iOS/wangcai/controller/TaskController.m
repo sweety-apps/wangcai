@@ -16,9 +16,9 @@
 
 @implementation TaskController
 
-- (id)init:(NSBundle *)nibBundleOrNil
+- (id)init:(NSNumber*)taskId Tab1:(NSString*) tab1 Tab2:(NSString*) tab2 Tab3:(NSString*) tab3 Purse:(float) purse
 {
-    self = [super initWithNibName:@"TaskController" bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"TaskController" bundle:nil];
     if (self) {
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"TaskController" owner:self options:nil] firstObject];
@@ -44,7 +44,7 @@
         
         [self->_webViewController setNavigateUrl:WEB_TASK];
         
-        [self->_tabController setTabInfo:@"在AppStore安装" Tab2:@"游戏内注册" Tab3:@"领取" Purse:1];
+        [self->_tabController setTabInfo:tab1 Tab2:tab2 Tab3:tab3 Purse:purse];
         [self->_tabController selectTab:1];
     }
     

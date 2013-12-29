@@ -25,7 +25,7 @@ static LoginAndRegister* _sharedInstance;
     self->_delegate = nil;
     self->loginStatus = Login_Error;
     self->_phoneNum = nil;
-    
+    self->_delegateArray = [[NSMutableArray alloc]init];
     return self;
 }
 
@@ -124,7 +124,9 @@ static LoginAndRegister* _sharedInstance;
                 _device_id = [[dict valueForKey:@"device_id"] copy];
                 _phoneNum = [[dict valueForKey:@"phone"] copy];
                 _balance = [[dict valueForKey:@"balance"] copy];
-            
+                _inviter = [[dict valueForKey:@"inviter"] copy];
+                _invite_code = [[dict valueForKey:@"invite_code"] copy];
+                
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
             } else {
                 NSString* err = [[dict valueForKey:@"msg"] copy];
@@ -132,6 +134,44 @@ static LoginAndRegister* _sharedInstance;
             }
         }
     }
+}
+
+-(void) fire_bindPhoneEvent {
+    for ( int i = 0; i < [_delegateArray count]; i ++ ) {
+        id delegate = [_delegateArray objectAtIndex:i];
+        [delegate bindPhoneCompeted];
+    }
+}
+
+-(void) attachBindPhoneEvent : (id) delegate {
+    [_delegateArray addObject:[delegate retain]];
+}
+
+-(void) detachBindPhoneEvent : (id) delegate {
+    [_delegateArray removeObject:delegate];
+    [delegate release];
+}
+
+-(void) attachPhone : (NSString*) phoneNum UserId:(NSString*) userid InviteCode:(NSString*) inviteCode {
+    if ( _invite_code != nil ) {
+        [_invite_code release];
+    }
+    
+    _invite_code = [inviteCode copy];
+    
+    if ( _phoneNum != nil ) {
+        [_phoneNum release];
+    }
+    
+    _phoneNum = [phoneNum copy];
+    
+    if ( _userid != nil ) {
+        [_userid release];
+    }
+    
+    _userid = [userid copy];
+    
+    [self fire_bindPhoneEvent];
 }
 
 -(NSString*) getPhoneNum {
