@@ -18,6 +18,13 @@
 				<div class="attachphonetext">绑定手机号</div>
 			</div>
 		</div>
+		<div id="isattach" class="isattach">
+			<img src="./img/BindTipsDuihao.png" width="17px" />
+			<div class="info">可用余额：<span>22.3</span></div>
+			<a href="/wangcai_js/exchange_info">
+				<img class="btn" src="./img/exchange.png" width="74px" />
+			</a>
+		</div>
 	</div>
 	
 	<div class="bdy">

@@ -1,15 +1,29 @@
 <?php
-// ╥╣╩ьхннЯпео╒
+include_once "../config.php";
+include_once "../common.php";
+
+parseParam();
+
+// Х©■Е⌡·Д╩╩Е┼║Д©║Ф│╞
 function getAppTaskInfo() {
+	$data = get(TASK_DETAIL);
+	$jsonObj = json_decode($data);
+
 	$obj = array();
-	$obj['stepNum'] = 3;	// вэ╣д╡╫жХйЩ
-	$obj['curStep'] = 1;	// ╣╠г╟╫ЬхК╣╫╣з╪╦╡╫
-	$obj['title'] = "рвпе-цБ╥яадлЛ";	// хннЯ╠ЙлБ
-	$obj['ico'] = "../img/ico.png";	// хннЯп║м╪╠Й
-	$obj['class'] = "╪рм╔сно╥";
-	$obj['desc'] = "рвпейгdjskfjdskfjsdрвпейгdjskfjdskfjsdрвпейгdjskfjdskfjsdрвпейгdjskfjdskfjsdрвпейгdjskfjdskfjsdрвпейгdjskfjdskfjsdрвпейгdjskfjdskfjsd";
-	$obj['appid'] = "723564814";
-	$obj['thumb'] = "../img/test.jpg";
+	if ( $jsonObj->res == 0 ) {
+		$task = $jsonObj->task;
+		$obj['title'] = $task->app_name;
+		$obj['ico'] = $task->icon;
+		$obj['desc'] = $task->intro;
+		$obj['appid'] = $task->appid;
+		$obj['thumb'] = $task->screenshots;
+		$obj['class'] = $task->genre;
+		$obj['redirect_url'] = $task->redirect_url;
+	}
+	
+	$obj['stepNum'] = 3;	// Ф─╩Г └Ф╜╔И╙╓Ф∙╟
+	$obj['curStep'] = 1;	// Е╫⌠Е┴█Х©⌡Е┘╔Е┬╟Г╛╛Е┤═Ф╜╔
+
 	return $obj;
 }
 
@@ -18,7 +32,7 @@ $appInfo = getAppTaskInfo();
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="app_task.css" />
 <script src="app_task.js"></script>
 <script>
@@ -35,8 +49,8 @@ var step = <?php echo $appInfo['curStep']; ?>;
 		</div>
 		<div class="info">
 			<div class="title"><?php echo $appInfo['title']; ?></div>
-			<div class="class">юЮ╠Пё╨<?php echo $appInfo['class']; ?></div>
-			<div class="descTitle">╫Ииэ</div>
+			<div class="class">Г╠╩Е┬╚О╪ <?php echo $appInfo['class']; ?></div>
+			<div class="descTitle">Д╩▀Г╩█</div>
 			<div class="desc"><?php echo $appInfo['desc']; ?></div>
 		</div>
 		<div class="clear">
@@ -58,7 +72,7 @@ if ( $appInfo['stepNum'] == 3 ) {
 		</div>
 		<div class="info">
 			<div class="title"><?php echo $appInfo['title']; ?></div><br />
-			<div class="tip">╟╡в╟Ёи╧╕ё╛<br/>гК╪лпЬмЙЁив╒╡А</div>
+			<div class="tip">Е╝┴Хё┘Ф┬░Е┼÷О╪▄<br/>Х╞╥Г╩╖Г╩╜Е╝▄Ф┬░ФЁ╗Е├▄</div>
 		</div>
 		<div class="clear">
 		</div>

@@ -1,5 +1,5 @@
 window.onload = function () {
-	//window.location.href = "/wangcai_js/query_attach_phone";
+	window.location.href = "/wangcai_js/query_attach_phone";
 };
 
 function notifyPhoneStatus(isAttach, phone) {
