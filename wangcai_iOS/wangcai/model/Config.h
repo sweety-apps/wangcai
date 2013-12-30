@@ -23,7 +23,7 @@
 #define HTTP_READ_TASK_LIST     @"http://getwangcai.com/0/task/list"
 
 
-#define HTTP_SERVICE_CENTER     @"http://yw2sc.ledzixun.com/mobile/consulting"
+#define HTTP_SERVICE_CENTER     @"http://service.meme-da.com/index.php/mobile/consulting"
 
 #define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
 #define WEB_TASK          @"http://wangcai.meme-da.com/web/task/app_task.php"

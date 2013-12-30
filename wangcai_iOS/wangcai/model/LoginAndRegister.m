@@ -26,6 +26,8 @@ static LoginAndRegister* _sharedInstance;
     self->loginStatus = Login_Error;
     self->_phoneNum = nil;
     self->_delegateArray = [[NSMutableArray alloc]init];
+    self->_balance = 0;
+    
     return self;
 }
 
@@ -123,7 +125,10 @@ static LoginAndRegister* _sharedInstance;
                 _nickname = [[dict valueForKey:@"nickname"] copy];
                 _device_id = [[dict valueForKey:@"device_id"] copy];
                 _phoneNum = [[dict valueForKey:@"phone"] copy];
-                _balance = [[dict valueForKey:@"balance"] copy];
+                
+                NSNumber* num = [dict valueForKey:@"balance"];
+                _balance = [num floatValue];
+                
                 _inviter = [[dict valueForKey:@"inviter"] copy];
                 _invite_code = [[dict valueForKey:@"invite_code"] copy];
                 
@@ -209,11 +214,8 @@ static LoginAndRegister* _sharedInstance;
     return [self->_device_id copy];
 }
 
--(NSNumber*) getBalance {
-    if ( self->_balance== nil ) {
-        return nil;
-    }
-    return [self->_balance copy];
+-(float) getBalance {
+    return _balance;
 }
 
 -(NSString*) getInviteCode {

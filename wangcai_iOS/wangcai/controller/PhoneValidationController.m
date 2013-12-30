@@ -131,7 +131,7 @@
     // 收起键盘
     [self hideKeyboard];
     if ( _bSend ) {
-        [self postNotification:@"showMenu"];
+        [[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }

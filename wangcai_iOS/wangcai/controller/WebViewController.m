@@ -328,6 +328,7 @@
 
 -(void) onPayToAlipay:(float) fCoin {
     // 转帐到支付宝
+    
     TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES] autorelease];
     
     [self->_beeStack pushViewController:controller animated:YES];

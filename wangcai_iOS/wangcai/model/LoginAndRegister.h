@@ -31,7 +31,7 @@ typedef enum LoginStatus {
     NSString*   _session_id;
     NSString*   _nickname;
     NSString*   _device_id;
-    NSNumber*   _balance;
+    float       _balance;
     NSString*   _invite_code;
     NSString*   _inviter;
     
@@ -53,7 +53,7 @@ typedef enum LoginStatus {
 -(NSString*) getSessionId;
 -(NSString*) getNickName;
 -(NSString*) getDeviceId;
--(NSNumber*) getBalance;
+-(float) getBalance;
 -(NSString*) getInviteCode;
 -(NSString*) getInviter;
 
