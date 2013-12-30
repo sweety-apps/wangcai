@@ -17,6 +17,7 @@
 #include <net/if_dl.h>
 #include <sys/sysctl.h>
 #include <AdSupport/AdSupport.h>
+#include "LoginAndRegister.h"
 
 @implementation Common
 
@@ -134,6 +135,29 @@ NSString * macaddress()
     NSString* timeString = [NSString stringWithFormat:@"%d", (int)(a / 1000)];
     
     return [[timeString copy] autorelease];
+}
+
++ (NSString*) buildURL:(NSString*) url Params:(NSMutableDictionary*) params {
+    id userid = [[LoginAndRegister sharedInstance] getUserId];
+    id sessionid = [[LoginAndRegister sharedInstance]getSessionId];
+    id deviceid = [[LoginAndRegister sharedInstance] getDeviceId];
+    
+    NSString* newUrl = [[NSString alloc] initWithFormat:@"%@?session_id=%@&device_id=%@&userid=%@", url, sessionid, deviceid, userid];
+    
+    [userid release];
+    [sessionid release];
+    [deviceid release];
+    
+    NSArray* keys = [params allKeys];
+    int nCount = [keys count];
+    for (int i = 0; i < nCount; i ++ ) {
+        id key = [keys objectAtIndex:i];
+        id value = [params objectForKey:key];
+        
+        newUrl = [newUrl stringByAppendingFormat:@"&%@=%@", key, value];
+    }
+    
+    return newUrl;
 }
 
 @end

@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginAndRegister.h"
 
 @protocol WebViewControllerDelegate <NSObject>
 - (void) openAppWithIdentifier : (NSString*) appid;
 - (void) openUrl : (NSString*) url;
 @end
 
-@interface WebViewController : UIViewController<UIWebViewDelegate, UIAlertViewDelegate> {
+@interface WebViewController : UIViewController<UIWebViewDelegate, UIAlertViewDelegate, BindPhoneDelegate> {
     UIWebView* _webView;
     NSString*  _url;
     

@@ -9,6 +9,7 @@
 #import "TaskController.h"
 #import "Config.h"
 #import "MBHUDView.h"
+#import "Common.h"
 
 @interface TaskController ()
 
@@ -42,7 +43,15 @@
         
         [self->_webViewController setDelegate:self];
         
-        [self->_webViewController setNavigateUrl:WEB_TASK];
+        NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+        [params setValue:taskId forKey:@"task_id"];
+        
+        NSString* url = [Common buildURL:WEB_TASK Params:params];
+        
+        [self->_webViewController setNavigateUrl:url];
+        
+        [url release];
+        [params release];
         
         [self->_tabController setTabInfo:tab1 Tab2:tab2 Tab3:tab3 Purse:purse];
         [self->_tabController selectTab:1];

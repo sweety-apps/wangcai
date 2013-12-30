@@ -97,7 +97,7 @@
     int nCount = [_beeUIStack.viewControllers count];
     
     if ( nCount == 1 ) {
-        [self postNotification:@"showMenu"];
+        [[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
     } else {
         [self->_beeUIStack popViewControllerAnimated:YES];
     }

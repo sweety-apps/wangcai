@@ -16,6 +16,7 @@
 
 @property (assign, nonatomic) IBOutlet UIView *containerView;
 @property (assign, nonatomic) IBOutlet UISegmentedControl *segment;
+@property (assign, nonatomic) IBOutlet UIImageView *adView;
 
 @property (retain, nonatomic) IBOutlet UIView *inviteView;
 @property (assign, nonatomic) IBOutlet UITextField *inviteUrlTextField;
@@ -29,7 +30,7 @@
 @property (assign, nonatomic) IBOutlet UILabel *errorMessage;
 @property (assign, nonatomic) IBOutlet UIButton *invitedButton;
 @property (assign, nonatomic) IBOutlet UILabel *inviterLabel;
-@property (retain, nonatomic) IBOutlet UIImageView *errorImage;
+@property (assign, nonatomic) IBOutlet UIImageView *errorImage;
 
 @property (retain, nonatomic) NSArray* priorConstraints;
 

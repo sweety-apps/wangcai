@@ -37,6 +37,9 @@
         _alert = nil;
         _nsCallback = nil;
         _nsBtn2ID = nil;
+        
+        //
+        [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
     }
     return self;
 }
@@ -57,7 +60,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) bindPhoneCompeted {
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    [self notifyPhoneStatus:YES Phone:phoneNum];
+    [phoneNum release];
+}
+
 - (void)dealloc {
+    [[LoginAndRegister sharedInstance] detachBindPhoneEvent:self];
+    
     self->_webView = nil;
     self->_url = nil;
     if (_url)

@@ -75,10 +75,6 @@
     [self.segment setDividerImage: segmentSelectedSelected forLeftSegmentState: UIControlStateHighlighted rightSegmentState: UIControlStateSelected barMetrics: UIBarMetricsDefault];
     [self.segment setDividerImage: segmentSelectedSelected forLeftSegmentState: UIControlStateSelected rightSegmentState: UIControlStateHighlighted barMetrics: UIBarMetricsDefault];
     
-    CGRect segmentFrame = [self.segment frame];
-    segmentFrame.size.height = 38;
-    [self.segment setFrame: segmentFrame];
-    
     NSDictionary* textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:17], UITextAttributeFont, [UIColor grayColor], UITextAttributeTextColor, nil];
     [self.segment setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
     
@@ -103,6 +99,23 @@
     }
     
     [self updateErrorMsg: NO msg: nil];
+}
+
+- (void)updateViewConstraints
+{
+    [super updateViewConstraints];
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    if (screenBound.size.height == 480)
+    {
+        // iphone4
+        UIImageView* adView = self.adView;
+        
+        NSDictionary* viewsDictionary = NSDictionaryOfVariableBindings(adView);
+        
+        NSArray* constraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:[adView(0)]" options: 0 metrics: nil views: viewsDictionary];
+        [self.view addConstraints: constraints];
+    }
 }
 
 - (void)updateErrorMsg: (BOOL)error msg: (NSString *)errMsg
@@ -145,7 +158,6 @@
     [self.inviteCode release];
     [self.invitedPeople release];
     [_inviterUpdate release];
-    [_errorImage release];
     [super dealloc];
 }
 
@@ -156,6 +168,10 @@
 {
     UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.inviteUrlTextField.text;
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle: @"复制成功" message: nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [alertView show];
+    [alertView release];
 }
 
 - (IBAction)share:(id)sender
@@ -233,8 +249,8 @@
     UIImage* ret = nil;
     QRcode* qr = QRcode_encodeString([iData UTF8String], 0, QR_ECLEVEL_L, QR_MODE_8, 1);
     int logQRSize = qr->width;
-    int phyQRSize = logQRSize + (2 * iQuietZone);
-    int scale = iSize / phyQRSize;
+    int phyQRSize = (int)(logQRSize + (2 * iQuietZone));
+    int scale = (int)(iSize / phyQRSize);
     int imgSize = phyQRSize * scale;
     
     if (scale < 1)
@@ -272,7 +288,7 @@
 
 - (IBAction)clickBack:(id)sender
 {
-    [self postNotification: @"showMenu"];
+	[[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
 }
 
 - (IBAction)hideKeyboard:(id)sender
@@ -305,6 +321,11 @@
         // 发送成功
         [self setInvitedPeople: self.invitedPeopleTextfield.text];
         [self updateInvitersControls: YES];
+        [self updateErrorMsg: NO msg: nil];
+        
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle: @"绑定成功" message: nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alertView show];
+        [alertView release];
     }
     else
     {
