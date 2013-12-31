@@ -58,6 +58,17 @@ ON_SIGNAL2( BeeUIBoard, signal )
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
 	{
         self.view.backgroundColor = [UIColor colorWithRed:33.f/255.f green:33.f/255.f blue:33.f/255.f alpha:1.0];
+        
+        [((BeeUIImageView*)$(@"item-left-icon-wodewangcai").view) setImage:[UIImage imageNamed:@"menu_icon_wodewangcai"]];
+        
+        [((BeeUIImageView*)$(@"item-left-icon-tixian").view) setImage:[UIImage imageNamed:@"menu_icon_tixian"]];
+        [((BeeUIImageView*)$(@"item-left-icon-jiaoyimingxi").view) setImage:[UIImage imageNamed:@"menu_icon_jiaoyimingxi"]];
+        [((BeeUIImageView*)$(@"item-left-icon-chaozhiduihuan").view) setImage:[UIImage imageNamed:@"menu_icon_chaozhiduihua"]];
+        [((BeeUIImageView*)$(@"item-left-icon-tuhaobang").view) setImage:[UIImage imageNamed:@"menu_icon_tuhaobang"]];
+        [((BeeUIImageView*)$(@"item-left-icon-setting").view) setImage:[UIImage imageNamed:@"menu_icon_setting"]];
+        [((BeeUIImageView*)$(@"item-left-icon-setting1").view) setImage:[UIImage imageNamed:@"menu_icon_setting"]];
+        
+        $(@"item-bg").view.hidden = YES;
 	}
 }
 
