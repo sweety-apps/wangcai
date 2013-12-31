@@ -34,6 +34,9 @@
         
         [self->_webView setHidden:YES];
         
+        self->_alertBindPhone = nil;
+        self->_alertNoBalance = nil;
+        
         _alert = nil;
         _nsCallback = nil;
         _nsBtn2ID = nil;
@@ -62,7 +65,8 @@
 
 -(void) bindPhoneCompeted {
     NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
-    [self notifyPhoneStatus:YES Phone:phoneNum];
+    float banlance = [[LoginAndRegister sharedInstance] getBalance];
+    [self notifyPhoneStatus:YES Phone:phoneNum Balance:banlance];
     [phoneNum release];
 }
 
@@ -88,6 +92,14 @@
     }
     if ( _nsCallback != nil ) {
         [_nsBtn2ID release];
+    }
+    
+    if ( _alertBindPhone != nil ) {
+        [_alertBindPhone release];
+    }
+    
+    if ( _alertNoBalance != nil ) {
+        [_alertNoBalance release];
     }
     
     [super dealloc];
@@ -138,9 +150,11 @@
                 [phoneNum release];
             }
             
-            [self notifyPhoneStatus:NO Phone:@""];
+            float banlance = [[LoginAndRegister sharedInstance] getBalance];
+            [self notifyPhoneStatus:NO Phone:@"" Balance:banlance];
         } else {
-            [self notifyPhoneStatus:YES Phone:phoneNum];
+            float banlance = [[LoginAndRegister sharedInstance] getBalance];
+            [self notifyPhoneStatus:YES Phone:phoneNum Balance:banlance];
             [phoneNum release];
         }
         
@@ -289,18 +303,26 @@
             }
         }
     }
+    
+    if ( _alertBindPhone != nil ) {
+        if ( [_alertBindPhone isEqual:alertView] ) {
+            if ( buttonIndex == 1 ) {
+                [self onAttachPhone];
+            }
+        }
+    }
 }
 
 - (void) setDelegate:(id) delegate {
     _delegate = delegate;
 }
 
-- (void)notifyPhoneStatus:(BOOL)isAttach Phone:(NSString*)phone {
+- (void)notifyPhoneStatus:(BOOL)isAttach Phone:(NSString*)phone Balance:(float)banlance {
     NSString* js;
     if ( isAttach ) {
-        js = [NSString stringWithFormat:@"notifyPhoneStatus(true, \"%@\")", phone];
+        js = [NSString stringWithFormat:@"notifyPhoneStatus(true, \"%@\", %f)", phone, banlance];
     } else {
-        js = [NSString stringWithFormat:@"notifyPhoneStatus(false)"];
+        js = [NSString stringWithFormat:@"notifyPhoneStatus(false, \"\", %f)", banlance];
     }
     [self->_webView stringByEvaluatingJavaScriptFromString:js];
 }
@@ -326,19 +348,57 @@
     [self->_beeStack pushViewController:phoneVal animated:YES];
 }
 
+-(BOOL) checkBalanceAndBindPhone :(float) fCoin {
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+        // 没有绑定手机号
+        if ( _alertBindPhone != nil ) {
+            [_alertBindPhone release];
+        }
+        
+        _alertBindPhone = [[UIAlertView alloc] initWithTitle:@"提示" message:@"尚未绑定手机，请先绑定手机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"绑定手机", nil];
+        
+        [_alertBindPhone show];
+        
+        if ( phoneNum != nil ) {
+            [phoneNum release];
+        }
+        return NO;
+    }
+    
+    [phoneNum release];
+    
+    float balance = [[LoginAndRegister sharedInstance] getBalance];
+    if ( fCoin > balance ) {
+        if ( _alertNoBalance != nil ) {
+            [_alertNoBalance release];
+        }
+        
+        _alertNoBalance = [[UIAlertView alloc] initWithTitle:@"提示" message:@"现金不足，无法完成该操作" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+        [_alertNoBalance show];
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
 -(void) onPayToAlipay:(float) fCoin {
     // 转帐到支付宝
-    
-    TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES] autorelease];
-    
-    [self->_beeStack pushViewController:controller animated:YES];
+    if ( [self checkBalanceAndBindPhone:fCoin] ) {
+        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES] autorelease];
+        
+        [self->_beeStack pushViewController:controller animated:YES];
+    }
 }
 
 -(void) onPayToPhone:(float) fCoin {
     // 花费充值
-    TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO] autorelease];
+    if ( [self checkBalanceAndBindPhone:fCoin] ) {
+        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO] autorelease];
     
-    [self->_beeStack pushViewController:controller animated:YES];
+        [self->_beeStack pushViewController:controller animated:YES];
+    }
 }
 
 -(void) onShowOrder:(NSString*) orderNum {

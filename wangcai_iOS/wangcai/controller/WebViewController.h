@@ -27,6 +27,9 @@
     UIAlertView*    _alert;
     NSString*       _nsCallback;
     NSString*       _nsBtn2ID;
+    
+    UIAlertView*    _alertBindPhone;
+    UIAlertView*    _alertNoBalance;
 }
 
 - (void) setDelegate:(id) delegate;
@@ -35,7 +38,7 @@
 - (void)setBeeUIStack:(BeeUIStack*) beeStack;
 - (void)setNavigateUrl:(NSString*)url;
 
-- (void)notifyPhoneStatus:(BOOL)isAttach Phone:(NSString*)phone;
+- (void)notifyPhoneStatus:(BOOL)isAttach Phone:(NSString*)phone Balance:(float)banlance;
 
 - (void)webViewDidStartLoad:(UIWebView *)webView;
 - (void)webViewDidFinishLoad:(UIWebView *)webView;
