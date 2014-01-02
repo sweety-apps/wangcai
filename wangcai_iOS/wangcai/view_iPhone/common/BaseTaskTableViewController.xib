@@ -116,6 +116,9 @@
                         <state key="normal">
                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="onPressedQiandaoChoujiangButton:" destination="-1" eventType="touchUpInside" id="r5u-f5-8Zi"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qiandao_button_icon.png" id="eX6-8g-Bt8">
                         <rect key="frame" x="240" y="112" width="20" height="20"/>
@@ -136,6 +139,9 @@
                         <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="onPressedTiquxianjinButton:" destination="-1" eventType="touchUpInside" id="Etv-U7-GXT"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

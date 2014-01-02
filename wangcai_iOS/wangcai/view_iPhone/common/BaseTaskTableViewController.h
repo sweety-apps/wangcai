@@ -41,5 +41,7 @@
 @property (nonatomic,retain) NSMutableArray* staticCells;
 
 - (IBAction)onPressedLoadHisButton:(id)sender;
+- (IBAction)onPressedQiandaoChoujiangButton:(id)sender;
+- (IBAction)onPressedTiquxianjinButton:(id)sender;
 
 @end

@@ -169,7 +169,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self.view superview].clipsToBounds = NO;
         [[self.view superview] superview].clipsToBounds = NO;
         
-        [_taskTableViewController.zhanghuYuEHeaderCell.yuENumView setNum:48.8];
+        //[_taskTableViewController.zhanghuYuEHeaderCell.yuENumView setNum:48.8];
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {

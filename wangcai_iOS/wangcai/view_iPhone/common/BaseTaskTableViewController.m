@@ -12,6 +12,7 @@
 #import "CommonTaskList.h"
 #import "MBHUDView.h"
 #import "TaskController.h"
+#import "ChoujiangViewController.h"
 
 @interface BaseTaskTableViewController () <CommonTaskListDelegate>
 
@@ -55,6 +56,8 @@
     [self resetStaticCells];
     
     [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[[CommonTaskList sharedInstance] allMoneyCanBeEarnedInRMBYuan]];
+    
+    [self.zhanghuYuEHeaderCell.yuENumView setNum:[[LoginAndRegister sharedInstance] getBalance]];
     
     //[self performSelector:@selector(refreshTaskList) withObject:nil afterDelay:2.0f];
 }
@@ -126,6 +129,17 @@
 - (IBAction)onPressedLoadHisButton:(id)sender
 {
     [self onLoadHistoricalFinishedList];
+}
+
+- (IBAction)onPressedQiandaoChoujiangButton:(id)sender
+{
+    ChoujiangViewController* choujiangCtrl = [[ChoujiangViewController alloc] init];
+    [self.beeStack pushViewController:choujiangCtrl animated:YES];
+}
+
+- (IBAction)onPressedTiquxianjinButton:(id)sender
+{
+    [[BeeUIRouter sharedInstance] open:@"second" animated:YES];
 }
 
 #pragma mark - <UITableViewDataSource>
@@ -373,6 +387,7 @@
     {
         [self.containTableView reloadData];
         [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[taskList allMoneyCanBeEarnedInRMBYuan]];
+        [self.zhanghuYuEHeaderCell.yuENumView setNum:[[LoginAndRegister sharedInstance] getBalance]];
         [self resetFooter];
     }
     else
