@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginAndRegister.h"
 
-@interface ExchangeController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
+@interface ExchangeController : UIViewController<UITableViewDataSource, UITableViewDelegate, BindPhoneDelegate> {
     UITableView* _tableView;
     BeeUIStack* _beeStack;
     
     UIView*  _noattachView;
+    UILabel* _labelBalance;
 }
 
 - (id)init;

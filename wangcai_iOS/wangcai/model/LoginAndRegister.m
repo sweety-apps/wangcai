@@ -129,6 +129,15 @@ static LoginAndRegister* _sharedInstance;
                 NSNumber* num = [dict valueForKey:@"balance"];
                 _balance = [num floatValue];
                 
+                num = [dict valueForKey:@"income"];
+                _income = [num floatValue];
+                
+                num = [dict valueForKey:@"outgo"];
+                _outgo = [num floatValue];
+                
+                num = [dict valueForKey:@"recent_income"];
+                _recentIncome = [num floatValue];
+                
                 _inviter = [[dict valueForKey:@"inviter"] copy];
                 _invite_code = [[dict valueForKey:@"invite_code"] copy];
                 
@@ -231,4 +240,17 @@ static LoginAndRegister* _sharedInstance;
     }
     return [self->_inviter copy];
 }
+
+-(float) getIncome {
+    return _income;
+}
+
+-(float) getOutgo {
+    return _outgo;
+}
+
+-(float) getRecentIncome {
+    return _recentIncome;
+}
+
 @end

@@ -10,6 +10,8 @@
 #import "MenuBoard_iPhone.h"
 #import "LoginAndRegister.h"
 #import "PhoneValidationController.h"
+#import "OnlineWallViewController.h"
+
 #define SHOW_MASK (0)
 
 #pragma mark -
@@ -234,6 +236,12 @@ ON_SIGNAL3( MenuBoard_iPhone, wc_main, signal )
 
 ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
 {   // 判断是否绑定了手机
+    
+    //
+    [[OnlineWallViewController sharedInstance] showWithModal];
+    
+    return ;
+    
     NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
     if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
         if ( _alertView != nil ) {
