@@ -32,6 +32,9 @@ typedef enum LoginStatus {
     NSString*   _nickname;
     NSString*   _device_id;
     float       _balance;
+    float       _income;    // 总收入
+    float       _outgo;     // 总支出
+    float       _recentIncome;  // 最近赚到
     NSString*   _invite_code;
     NSString*   _inviter;
     
@@ -56,6 +59,11 @@ typedef enum LoginStatus {
 -(float) getBalance;
 -(NSString*) getInviteCode;
 -(NSString*) getInviter;
+
+-(float) getIncome;
+-(float) getOutgo;
+-(float) getRecentIncome;
+
 
 -(void) attachPhone : (NSString*) phoneNum UserId:(NSString*) userid InviteCode:(NSString*) inviteCode;
 
