@@ -29,6 +29,7 @@
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] firstObject];
 
+        _labelBalance = (UILabel*) [self.view viewWithTag:55];
         _tableView = (UITableView*)[self.view viewWithTag:89];
         _tableView.separatorStyle = NO;
         _tableView.dataSource = self;
@@ -43,15 +44,54 @@
         [_tableView setFrame:rect];
 
         
-        _noattachView = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] lastObject];
-        rect = _noattachView.frame;
-        rect.origin.y = 54;
-        _noattachView.frame = rect;
+        NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+        if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+            _noattachView = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] lastObject];
+            rect = _noattachView.frame;
+            rect.origin.y = 54;
+            _noattachView.frame = rect;
+            
+            [self.view addSubview:_noattachView];
+        } else {
+            _noattachView = nil;
+        }
         
-        //[self.view addSubview:_noattachView];
+        if ( phoneNum != nil ) {
+            [phoneNum release];
+        }
         
+        float fBalance = [[LoginAndRegister sharedInstance] getBalance];
+        NSString* balance = [[NSString alloc] initWithFormat:@"%.1f", fBalance];
+        [_labelBalance setText:balance];
+        [balance release];
+        
+        [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
     }
     return self;
+}
+
+- (void) dealloc {
+    [[LoginAndRegister sharedInstance] detachBindPhoneEvent:self];
+    if ( _noattachView != nil ) {
+        [_noattachView release];
+    }
+    
+    [super dealloc];
+}
+
+-(void) bindPhoneCompeted {
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    float fBalance = [[LoginAndRegister sharedInstance] getBalance];
+    
+    NSString* balance = [[NSString alloc] initWithFormat:@"%.1f", fBalance];
+    [_labelBalance setText:balance];
+    [balance release];
+    
+    if ( _noattachView != nil ) {
+        [_noattachView setHidden:YES];
+    }
+    
+    [phoneNum release];
 }
 
 - (void)viewDidLoad

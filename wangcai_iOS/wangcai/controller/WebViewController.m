@@ -47,6 +47,14 @@
     return self;
 }
 
+- (void)setSize:(CGSize) size {
+    CGRect rect;
+    rect.origin.x = 0;
+    rect.origin.y = 0;
+    rect.size = size;
+    self->_webView.frame = rect;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

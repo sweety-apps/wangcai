@@ -37,6 +37,7 @@
         view.frame = rect;
         [self.view addSubview:view];
         
+        [_webViewController setSize:rect.size];
         [self->_webViewController setNavigateUrl:url];
         
         [[self.view viewWithTag:97] setHidden:YES];
@@ -67,6 +68,8 @@
         view.frame = rect;
         [self.view addSubview:view];
 
+        [_webViewController setSize:rect.size];
+        
         [self->_webViewController setNavigateUrl:url];
         
         [[self.view viewWithTag:99] setHidden:YES];

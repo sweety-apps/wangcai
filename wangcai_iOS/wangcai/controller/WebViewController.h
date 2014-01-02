@@ -46,4 +46,5 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
+- (void)setSize:(CGSize) size;
 @end
