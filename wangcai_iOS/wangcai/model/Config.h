@@ -9,6 +9,8 @@
 #ifndef wangcai_Config_h
 #define wangcai_Config_h
 
+#define UMENG_KEY   @"52c65fc056240b00c1128d1e"
+
 //#define HTTP_SEND_SMS_CODE @"http://wangcai.meme-da.com/0/account/send_sms_code"
 
 #define HTTP_LOGIN_AND_REGISTER @"http://getwangcai.com/0/register"

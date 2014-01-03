@@ -169,6 +169,7 @@
 		A62A940F186D6400001FD600 /* ServiceBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A940E186D6400001FD600 /* ServiceBoard_iPhone.m */; };
 		A62A9412186D6867001FD600 /* InviteBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A9411186D6867001FD600 /* InviteBoard_iPhone.m */; };
 		A62A9415186DB268001FD600 /* PhoneValidationBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A9414186DB268001FD600 /* PhoneValidationBoard_iPhone.m */; };
+		A62C5F54187697E300172334 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A62C5F53187697E300172334 /* libMobClickLibrary.a */; };
 		A63AC91F186C565B00A106A0 /* StartupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63AC91E186C565B00A106A0 /* StartupController.m */; };
 		A63AC921186C566B00A106A0 /* StartupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63AC920186C566B00A106A0 /* StartupController.xib */; };
 		A6438ED7185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */; };
@@ -724,6 +725,8 @@
 		A62A9411186D6867001FD600 /* InviteBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteBoard_iPhone.m; sourceTree = "<group>"; };
 		A62A9413186DB268001FD600 /* PhoneValidationBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneValidationBoard_iPhone.h; sourceTree = "<group>"; };
 		A62A9414186DB268001FD600 /* PhoneValidationBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneValidationBoard_iPhone.m; sourceTree = "<group>"; };
+		A62C5F53187697E300172334 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		A62C5F55187697F600172334 /* MobClick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		A63AC91D186C565B00A106A0 /* StartupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupController.h; sourceTree = "<group>"; };
 		A63AC91E186C565B00A106A0 /* StartupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupController.m; sourceTree = "<group>"; };
 		A63AC920186C566B00A106A0 /* StartupController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupController.xib; sourceTree = "<group>"; };
@@ -1393,6 +1396,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62C5F54187697E300172334 /* libMobClickLibrary.a in Frameworks */,
 				A60A438C1872A19B00B5C319 /* libDomobOfferWallSDK.a in Frameworks */,
 				F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
@@ -2066,6 +2070,7 @@
 		F3F186ED18543A410098C852 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				A62C5F55187697F600172334 /* MobClick.h */,
 				A60C58B118703B030068425C /* InviterUpdate.h */,
 				A60C58B218703B030068425C /* InviterUpdate.m */,
 				F3D9D567185D878800392C40 /* Common.h */,
@@ -2211,6 +2216,7 @@
 		F3F186F518543A410098C852 /* library */ = {
 			isa = PBXGroup;
 			children = (
+				A62C5F53187697E300172334 /* libMobClickLibrary.a */,
 				A60C589218703AD80068425C /* libqrencode.a */,
 				F3F186F618543A410098C852 /* libz.dylib */,
 				F3F186F818543A410098C852 /* libsqlite3.dylib */,

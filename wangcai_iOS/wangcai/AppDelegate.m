@@ -41,7 +41,8 @@
 #import <RennSDK/RennSDK.h>
 #import "WeiboSDK.h"
 #import "StartupController.h"
-
+#import "model/MobClick.h"
+#import "Config.h"
 
 #pragma mark -
 
@@ -64,6 +65,8 @@
     [CATransaction commit];
 
     [UIApplication sharedApplication].statusBarHidden = YES;
+    
+    [MobClick startWithAppkey:UMENG_KEY];
 }
 
 - (void)unload
