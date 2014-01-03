@@ -54,9 +54,9 @@
     [self.shareButton setBackgroundImage: shareButtonBkg forState:UIControlStateNormal];
     [self.invitedButton setBackgroundImage: shareButtonBkg forState: UIControlStateNormal];
     
-    UIImage* segmentSelected = [[UIImage imageNamed: @"invite_seg_select"] resizableImageWithCapInsets: UIEdgeInsetsMake(0, 8, 0, 8)];
+    UIImage* segmentSelected = [[UIImage imageNamed: @"invite_seg_select"] resizableImageWithCapInsets: UIEdgeInsetsMake(9, 8, 9, 8)];
     
-    UIImage* segmentUnselected = [[UIImage imageNamed: @"invite_seg_normal"] resizableImageWithCapInsets: UIEdgeInsetsMake(0, 8, 0, 8)];
+    UIImage* segmentUnselected = [[UIImage imageNamed: @"invite_seg_normal"] resizableImageWithCapInsets: UIEdgeInsetsMake(9, 8, 9, 8)];
     
     UIImage* segmentSelectedUnselected = [UIImage imageNamed: @"invite_seg_sel_unsel"];
     
@@ -68,6 +68,8 @@
     
     [self.segment setBackgroundImage: segmentUnselected forState: UIControlStateNormal barMetrics: UIBarMetricsDefault];
     [self.segment setBackgroundImage: segmentSelected forState: UIControlStateSelected barMetrics: UIBarMetricsDefault];
+    [self.segment setBackgroundImage: segmentSelected forState: UIControlStateHighlighted barMetrics: UIBarMetricsDefault];
+    
     [self.segment setDividerImage: segmentSelectedUnselected forLeftSegmentState: UIControlStateSelected rightSegmentState: UIControlStateNormal barMetrics: UIBarMetricsDefault];
     [self.segment setDividerImage: segmentUnselectedSelected forLeftSegmentState: UIControlStateNormal rightSegmentState: UIControlStateSelected barMetrics: UIBarMetricsDefault];
     [self.segment setDividerImage: segmentUnselectedUnselected forLeftSegmentState: UIControlStateNormal rightSegmentState: UIControlStateNormal barMetrics: UIBarMetricsDefault];
@@ -99,6 +101,10 @@
     }
     
     [self updateErrorMsg: NO msg: nil];
+    
+    [self.adView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: @"http://www.5566.net"]]];
+    
+    self.adView.scrollView.bounces = NO;
 }
 
 - (void)updateViewConstraints
@@ -109,7 +115,7 @@
     if (screenBound.size.height == 480)
     {
         // iphone4
-        UIImageView* adView = self.adView;
+        UIWebView* adView = self.adView;
         
         NSDictionary* viewsDictionary = NSDictionaryOfVariableBindings(adView);
         
@@ -288,7 +294,7 @@
 
 - (IBAction)clickBack:(id)sender
 {
-	[[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
+    [self postNotification: @"showMenu"];
 }
 
 - (IBAction)hideKeyboard:(id)sender

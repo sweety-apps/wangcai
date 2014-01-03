@@ -16,7 +16,7 @@
 
 @property (assign, nonatomic) IBOutlet UIView *containerView;
 @property (assign, nonatomic) IBOutlet UISegmentedControl *segment;
-@property (assign, nonatomic) IBOutlet UIImageView *adView;
+@property (assign, nonatomic) IBOutlet UIWebView *adView;
 
 @property (retain, nonatomic) IBOutlet UIView *inviteView;
 @property (assign, nonatomic) IBOutlet UITextField *inviteUrlTextField;
