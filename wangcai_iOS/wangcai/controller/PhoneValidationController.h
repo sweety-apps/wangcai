@@ -10,7 +10,7 @@
 #import "PhoneValidation.h"
 #import "TabController.h"
 
-@interface PhoneValidationController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate, PhoneValidationDelegate> {
+@interface PhoneValidationController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate, PhoneValidationDelegate, BindPhoneDelegate> {
     UIView* _mainView;
     
     UIView* _viewInputNum;

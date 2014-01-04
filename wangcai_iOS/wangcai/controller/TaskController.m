@@ -28,6 +28,8 @@
         
         self->_tabController = [[TabController alloc] init:nil];
         
+        _taskId = [taskId copy];
+        
         UIView* viewTab = self->_tabController.view;
         CGRect rectTab = viewTab.frame;
         rectTab.origin.y = 54;
@@ -63,6 +65,9 @@
 - (void) dealloc {
     self->_webViewController = nil;
     self->_tabController = nil;
+    if ( _taskId != nil ) {
+        [_taskId release];
+    }
     [super dealloc];
 }
 
@@ -99,10 +104,14 @@
             [self hideLoading];
         
             if (result) {
+                // HttpGet
+                NSString* reportUrl = [self BuildURL:HTTP_DOWNLOAD_APP AppId:appId];
+                [self HttpGet:reportUrl];
+                [reportUrl release];
+                
                 [self presentViewController:storeProductVC animated:YES completion:nil];
             } else {
                 NSString* desc = [[error userInfo] valueForKey:@"NSLocalizedDescription"];
-                
                 
                 UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示" message:desc delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alert show];
@@ -110,10 +119,35 @@
             }
         }];
     } else {
+        NSString* reportUrl = [self BuildURL:HTTP_DOWNLOAD_APP AppId:appId];
+        [self HttpGet:reportUrl];
+        [reportUrl release];
+        
         NSString* urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/us/app/id%@?mt=8", appId];
         NSURL* url = [NSURL URLWithString:urlStr];
         [[UIApplication sharedApplication] openURL:url];
     }
+}
+
+- (NSString*) BuildURL :(NSString*) url  AppId:(NSString*)appId {
+    id userid = [[LoginAndRegister sharedInstance] getUserId];
+    id sessionid = [[LoginAndRegister sharedInstance]getSessionId];
+    id deviceid = [[LoginAndRegister sharedInstance] getDeviceId];
+    
+    NSString* newUrl = [[NSString alloc] initWithFormat:@"%@?session_id=%@&device_id=%@&userid=%@&appid=%@",
+                        url, sessionid, deviceid, userid, appId];
+    
+    [userid release];
+    [sessionid release];
+    [deviceid release];
+    
+    return newUrl;
+}
+
+- (void) HttpGet:(NSString*) url {
+    BeeHTTPRequest* request = self.HTTP_POST(url);
+ 
+    request.TIMEOUT(10);
 }
 
 - (void) showLoading {

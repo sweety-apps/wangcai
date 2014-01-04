@@ -203,7 +203,7 @@
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/install_app"] ) {
         NSString* value = [self getValueFromQuery:query Key:@"appid"];
-        
+
         if ( _delegate != nil ) {
             [_delegate openAppWithIdentifier:value];
         }

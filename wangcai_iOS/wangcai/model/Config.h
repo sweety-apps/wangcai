@@ -25,6 +25,7 @@
 #define HTTP_READ_TASK_LIST     @"http://getwangcai.com/0/task/list"
 #define HTTP_TAKE_AWARD     @"http://getwangcai.com/0/task/check-in"
 
+#define HTTP_DOWNLOAD_APP       @"http://getwangcai.com/0/task/download_app"
 
 #define HTTP_SERVICE_QUESTION   @"http://service.meme-da.com/index.php/mobile/shouce/list/hc_id/76"
 #define HTTP_SERVICE_CENTER     @"http://service.meme-da.com/index.php/mobile/consulting"

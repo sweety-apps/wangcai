@@ -143,7 +143,7 @@
             // 调用成功
             NSString* userid = [[body valueForKey:@"userid"] copy];
             NSString* inviteCode = [[body valueForKey:@"invite_code"] copy];
-            [_smsDelegate checkSmsCodeCompleted:YES errMsg:nil UserId:userid InviteCode:nil];
+            [_smsDelegate checkSmsCodeCompleted:YES errMsg:nil UserId:userid InviteCode:inviteCode];
             
             [userid release];
             [inviteCode release];

@@ -37,6 +37,8 @@
         _viewCheckNum.frame = rect;
         _viewRegSuccess.frame = rect;
        
+        [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
+        
         self->_tab1 = (UIImageView*)[self.view viewWithTag:54];
         self->_tab2 = (UIImageView*)[self.view viewWithTag:55];
         self->_tab3 = (UIImageView*)[self.view viewWithTag:56];
@@ -149,6 +151,8 @@
 
 
 - (void) dealloc {
+    [[LoginAndRegister sharedInstance] detachBindPhoneEvent:self];
+    
     _viewInputNum = nil;
     _viewCheckNum = nil;
     _viewRegSuccess = nil;
@@ -590,8 +594,6 @@
     if ( suc ) {
         // 发送完成，进入下一步
         [[LoginAndRegister sharedInstance] attachPhone:_phoneNum UserId:userId InviteCode:inviteCode];
-        
-        [self showThirdPage];
     } else {
         // 发送失败，错误提示
         [self hideWarn:NO];
@@ -658,4 +660,9 @@
         [self endTime];
     }
 }
+
+-(void) bindPhoneCompeted {
+    [self showThirdPage];
+}
+
 @end
