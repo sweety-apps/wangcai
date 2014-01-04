@@ -44,4 +44,7 @@
 - (IBAction)onPressedQiandaoChoujiangButton:(id)sender;
 - (IBAction)onPressedTiquxianjinButton:(id)sender;
 
+- (void)enableQiandaoButton:(BOOL)enabled;
+- (void)enableTixianButton:(BOOL)enabled;
+
 @end

@@ -12,6 +12,14 @@
 
 @synthesize yuENumView;
 
+@synthesize tixianButton;
+@synthesize tixianIcon;
+@synthesize tixianLabel;
+
+@synthesize qiandaoButton;
+@synthesize qiandaoIcon;
+@synthesize qiandaoLabel;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

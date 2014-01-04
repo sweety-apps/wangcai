@@ -100,6 +100,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qiandao_button_icon.png" id="YzB-Mv-rlg">
                         <rect key="frame" x="156" y="112" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到捡钱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kip-bl-lHU">
                         <rect key="frame" x="173" y="108" width="70" height="20"/>
@@ -120,7 +121,7 @@
                             <action selector="onPressedQiandaoChoujiangButton:" destination="-1" eventType="touchUpInside" id="r5u-f5-8Zi"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qiandao_button_icon.png" id="eX6-8g-Bt8">
+                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tiquxianjin_icon.png" id="eX6-8g-Bt8">
                         <rect key="frame" x="240" y="112" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -149,6 +150,12 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="qiandaoButton" destination="r1d-Do-os4" id="CYJ-cL-X32"/>
+                <outlet property="qiandaoIcon" destination="YzB-Mv-rlg" id="NQZ-Vq-O2a"/>
+                <outlet property="qiandaoLabel" destination="kip-bl-lHU" id="hCT-8c-G72"/>
+                <outlet property="tixianButton" destination="dne-wZ-XnH" id="91U-o6-Zt7"/>
+                <outlet property="tixianIcon" destination="eX6-8g-Bt8" id="wit-I4-oBd"/>
+                <outlet property="tixianLabel" destination="aka-nt-GkD" id="RV0-4e-4QL"/>
                 <outlet property="yuENumView" destination="mX3-pt-3Er" id="2K2-Tu-KIN"/>
             </connections>
         </tableViewCell>
@@ -216,6 +223,7 @@
         <image name="head_top_part.png" width="320" height="134"/>
         <image name="qiandao_button_icon.png" width="11" height="12"/>
         <image name="table_view_cell_line.png" width="320" height="1"/>
+        <image name="tiquxianjin_icon.png" width="11" height="12"/>
         <image name="zhanghuyue.png" width="41" height="49"/>
     </resources>
 </document>

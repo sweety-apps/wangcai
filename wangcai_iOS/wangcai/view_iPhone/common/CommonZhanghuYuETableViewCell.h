@@ -13,4 +13,12 @@
 
 @property (nonatomic,retain) IBOutlet CommonYuENumView* yuENumView;
 
+@property (nonatomic,retain) IBOutlet UIButton* tixianButton;
+@property (nonatomic,retain) IBOutlet UIImageView* tixianIcon;
+@property (nonatomic,retain) IBOutlet UILabel* tixianLabel;
+
+@property (nonatomic,retain) IBOutlet UIButton* qiandaoButton;
+@property (nonatomic,retain) IBOutlet UIImageView* qiandaoIcon;
+@property (nonatomic,retain) IBOutlet UILabel* qiandaoLabel;
+
 @end

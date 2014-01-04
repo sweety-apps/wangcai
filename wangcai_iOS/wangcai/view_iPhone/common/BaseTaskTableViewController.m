@@ -13,6 +13,7 @@
 #import "MBHUDView.h"
 #import "TaskController.h"
 #import "ChoujiangViewController.h"
+#import "ChoujiangLogic.h"
 
 @interface BaseTaskTableViewController () <CommonTaskListDelegate>
 
@@ -65,6 +66,19 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([[ChoujiangLogic sharedInstance] getAwardCode] == kGetAwardTypeNotGet)
+    {
+        [self enableQiandaoButton:YES];
+    }
+    else
+    {
+        [self enableQiandaoButton:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,13 +147,31 @@
 
 - (IBAction)onPressedQiandaoChoujiangButton:(id)sender
 {
-    ChoujiangViewController* choujiangCtrl = [[ChoujiangViewController alloc] init];
-    [self.beeStack pushViewController:choujiangCtrl animated:YES];
+    if ([ChoujiangLogic sharedInstance].getAwardCode == kGetAwardTypeNotGet) {
+        ChoujiangViewController* choujiangCtrl = [[ChoujiangViewController alloc] init];
+        [self.beeStack pushViewController:choujiangCtrl animated:YES];
+    }
 }
 
 - (IBAction)onPressedTiquxianjinButton:(id)sender
 {
     [[BeeUIRouter sharedInstance] open:@"second" animated:YES];
+}
+
+- (void)enableQiandaoButton:(BOOL)enabled
+{
+    self.zhanghuYuEHeaderCell.qiandaoButton.enabled = enabled;
+    BOOL hidden = enabled ? NO : YES;
+    self.zhanghuYuEHeaderCell.qiandaoIcon.hidden = hidden;
+    self.zhanghuYuEHeaderCell.qiandaoLabel.hidden = hidden;
+}
+
+- (void)enableTixianButton:(BOOL)enabled
+{
+    self.zhanghuYuEHeaderCell.tixianButton.enabled = enabled;
+    BOOL hidden = enabled ? NO : YES;
+    self.zhanghuYuEHeaderCell.tixianIcon.hidden = hidden;
+    self.zhanghuYuEHeaderCell.tixianLabel.hidden = hidden;
 }
 
 #pragma mark - <UITableViewDataSource>

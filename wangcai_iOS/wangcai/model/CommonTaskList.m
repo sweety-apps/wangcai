@@ -176,8 +176,9 @@ static CommonTaskList* gInstance = nil;
             NSMutableArray* resultTaskList = [NSMutableArray array];
             NSMutableArray* unfinishedTaskList = [NSMutableArray array];
             
-            if (YES)
+            if (NO)
             {
+                //本地测试数据
                 NSArray* localTestTask = [self _buildLocalTestTask];
                 [resultTaskList addObjectsFromArray:localTestTask];
                 [unfinishedTaskList addObjectsFromArray:localTestTask];

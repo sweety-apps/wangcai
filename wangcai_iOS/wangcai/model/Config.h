@@ -23,6 +23,7 @@
 #define HTTP_UPDATE_INVITER     @"http://getwangcai.com/0/account/update_inviter"
 
 #define HTTP_READ_TASK_LIST     @"http://getwangcai.com/0/task/list"
+#define HTTP_TAKE_AWARD     @"http://getwangcai.com/0/task/check-in"
 
 
 #define HTTP_SERVICE_QUESTION   @"http://service.meme-da.com/index.php/mobile/shouce/list/hc_id/76"

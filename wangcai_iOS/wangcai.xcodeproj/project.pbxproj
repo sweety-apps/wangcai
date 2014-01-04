@@ -62,7 +62,6 @@
 		59E42A331862986F00007461 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59E429FD1862986E00007461 /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
 		59E42A341862986F00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429FE1862986E00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
 		A60A438B1872A19B00B5C319 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A60A43891872A19B00B5C319 /* DomobOfferWallBundle.bundle */; };
-		A60A438C1872A19B00B5C319 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438A1872A19B00B5C319 /* libDomobOfferWallSDK.a */; };
 		A60A438E1872A1BB00B5C319 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438D1872A1BB00B5C319 /* libsqlite3.dylib */; };
 		A60A43901872A1CF00B5C319 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438F1872A1CF00B5C319 /* AdSupport.framework */; };
 		A60A43921872A1E400B5C319 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A43911872A1E400B5C319 /* CoreLocation.framework */; };
@@ -230,6 +229,8 @@
 		F3813D2D1875662A00350C27 /* choujiang_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D2B1875662A00350C27 /* choujiang_bg@2x.png */; };
 		F3813D30187566CC00350C27 /* choujiang_guize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D2F187566CC00350C27 /* choujiang_guize@2x.png */; };
 		F3813D321875796F00350C27 /* choujiang_back_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D311875796F00350C27 /* choujiang_back_btn@2x.png */; };
+		F3813D351877FD7100350C27 /* ChoujiangLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F3813D341877FD7100350C27 /* ChoujiangLogic.m */; };
+		F3813D3618780A6000350C27 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438A1872A19B00B5C319 /* libDomobOfferWallSDK.a */; };
 		F3D834AF185B517B003095D5 /* CommonYuENumView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834AE185B517B003095D5 /* CommonYuENumView.m */; };
 		F3D834CD185C1E31003095D5 /* BaseTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834CB185C1E31003095D5 /* BaseTaskTableViewController.m */; };
 		F3D834CE185C1E31003095D5 /* BaseTaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D834CC185C1E31003095D5 /* BaseTaskTableViewController.xib */; };
@@ -802,6 +803,8 @@
 		F3813D2B1875662A00350C27 /* choujiang_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choujiang_bg@2x.png"; sourceTree = "<group>"; };
 		F3813D2F187566CC00350C27 /* choujiang_guize@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choujiang_guize@2x.png"; sourceTree = "<group>"; };
 		F3813D311875796F00350C27 /* choujiang_back_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choujiang_back_btn@2x.png"; sourceTree = "<group>"; };
+		F3813D331877FD7100350C27 /* ChoujiangLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoujiangLogic.h; sourceTree = "<group>"; };
+		F3813D341877FD7100350C27 /* ChoujiangLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoujiangLogic.m; sourceTree = "<group>"; };
 		F3D834AD185B517B003095D5 /* CommonYuENumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonYuENumView.h; sourceTree = "<group>"; };
 		F3D834AE185B517B003095D5 /* CommonYuENumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonYuENumView.m; sourceTree = "<group>"; };
 		F3D834CA185C1E31003095D5 /* BaseTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTaskTableViewController.h; path = wangcai/view_iPhone/common/BaseTaskTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1396,8 +1399,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3813D3618780A6000350C27 /* libDomobOfferWallSDK.a in Frameworks */,
 				A62C5F54187697E300172334 /* libMobClickLibrary.a in Frameworks */,
-				A60A438C1872A19B00B5C319 /* libDomobOfferWallSDK.a in Frameworks */,
 				F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
 				F3F186C018543A410098C852 /* UIKit.framework in Frameworks */,
@@ -2086,6 +2089,8 @@
 				F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */,
 				F358E9F0186C583A00DC3ADA /* CommonTaskList.h */,
 				F358E9F1186C583A00DC3ADA /* CommonTaskList.m */,
+				F3813D331877FD7100350C27 /* ChoujiangLogic.h */,
+				F3813D341877FD7100350C27 /* ChoujiangLogic.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3648,6 +3653,7 @@
 				F3D9D561185D876D00392C40 /* TabController.m in Sources */,
 				F3F189DC18543A450098C852 /* Bee_HTTPMockServer.m in Sources */,
 				F3F1894818543A440098C852 /* Bee_Cache.mm in Sources */,
+				F3813D351877FD7100350C27 /* ChoujiangLogic.m in Sources */,
 				F3D834D1185C2172003095D5 /* TaskInfoTableViewCell.m in Sources */,
 				F3F1885218543A430098C852 /* Bee_UIPageControl.m in Sources */,
 				F3F189E918543A450098C852 /* NSObject+BeeHTTPRequest.m in Sources */,
@@ -3872,6 +3878,7 @@
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai,
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -3929,6 +3936,7 @@
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai,
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

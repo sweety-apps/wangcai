@@ -7,6 +7,9 @@
 //
 
 #import "ChoujiangViewController.h"
+#import "ChoujiangLogic.h"
+#import "MBHUDView.h"
+#import <ShareSDK/ShareSDK.h>
 
 @interface ChoiceMoveNode : NSObject
 
@@ -21,11 +24,12 @@
 @end
 
 
-@interface ChoujiangViewController () {
+@interface ChoujiangViewController () <ChoujiangLogicDelegate> {
     NSArray* _choiceViews;
     int _beilv;
     NSMutableArray* _animaNodes;
     int _shineCount;
+    int _choiceIndex;
 }
 
 @end
@@ -78,9 +82,17 @@
 
 - (IBAction)onPressedStartButton:(id)sender
 {
-    srand(time(NULL));
-    int target = rand()%12;
-    [self startChoiceAnimations:target];
+    if ([[ChoujiangLogic sharedInstance] getAwardCode] == kGetAwardTypeNotGet)
+    {
+        self.startButton.enabled = NO;
+        [MBHUDView hudWithBody:@"" type:MBAlertViewHUDTypeActivityIndicator hidesAfter:10000000000.f show:YES];
+        [[ChoujiangLogic sharedInstance] requestChoujiang:self];
+    }
+    else
+    {
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"您今天已经签到过了" message:@"明天记得再来签到哟！" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
+        [alert show];
+    }
 }
 
 - (IBAction)onPressedBackButton:(id)sender
@@ -128,6 +140,7 @@
     if (!_hasStarted)
     {
         _hasStarted = YES;
+        _choiceIndex = targetNum;
         srand(time(NULL));
         int round = rand()%2;
         round += 3;
@@ -239,15 +252,154 @@
 
 - (void)onFinishedChoice
 {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"恭喜您中奖了！" message:@"中了好多好多钱啊！！！" delegate:self cancelButtonTitle:@"好的" otherButtonTitles: nil];
+    NSString* title = @"";
+    NSString* msg = @"";
+    switch (_choiceIndex)
+    {
+        case 2:
+        case 5:
+        case 6:
+        case 8:
+        case 11:
+            //没中
+            title = @"旺财你不给力啊:(";
+            msg = @"两手空空";
+            break;
+        case 10:
+            //1毛
+            title = @"恭喜您中奖了！";
+            msg = @"1毛";
+            break;
+        case 1:
+            //5毛
+            title = @"恭喜您中奖了！";
+            msg = @"5毛";
+            break;
+        case 7:
+            //3元
+            title = @"恭喜您中奖了！";
+            msg = @"3元";
+            break;
+        case 4:
+            //8元
+            title = @"恭喜您中奖了！";
+            msg = @"8元";
+            break;
+            
+        default:
+            break;
+    }
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"分享", nil];
     
     [alertView show];
 }
 
-#pragma mark -- <UIAlertViewDelegate>
+
+#pragma mark - <UIAlertViewDelegate>
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
+    switch (buttonIndex)
+    {
+        case 0:
+            //返回
+            [self onPressedBackButton:self.backButton];
+            break;
+        case 1:
+            //分享
+        {
+            id<ISSContent> publishContent = [ShareSDK content:@"http://wangcai.meme-da.com" defaultContent:@"http://wangcai.meme-da.com" image: nil title: @"旺财分享" url:@"http://wangcai.meme-da.com" description: @"旺财分享" mediaType:SSPublishContentMediaTypeNews];
+            
+            [ShareSDK showShareActionSheet: nil shareList: nil content: publishContent statusBarTips: YES authOptions: nil shareOptions: nil result: ^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
+             {
+                 if (state == SSResponseStateSuccess)
+                 {
+                     // todo 分享成功
+                 }
+                 else if (state == SSResponseStateFail)
+                 {
+                     // todo 分享失败
+                 }
+             }];
+        }
+            break;
+        default:
+            break;
+    }
 }
+
+#pragma mark - <ChoujiangLogicDelegate>
+
+- (void)onFinishedChoujiangRequest:(ChoujiangLogic*)logic isRequestSucceed:(BOOL)isSucceed awardCode:(GetAwardType)awardCode resultCode:(NSInteger)result msg:(NSString*)msg
+{
+    [MBHUDView dismissCurrentHUD];
+    if (isSucceed)
+    {
+        if (result == 0)
+        {
+            if (awardCode == kGetAwardTypeAlreadyGot)
+            {
+                UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"您今天已经签到过了" message:@"明天记得再来签到哟！" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
+                [alert show];
+            }
+            else
+            {
+                int target = 0;
+                switch (awardCode)
+                {
+                    case kGetAwardTypeNothing:
+                    {
+                        int indexs[5] = {2,5,6,8,11};
+                        srand(time(NULL));
+                        target = indexs[rand()%5];
+                    }
+                        break;
+                    case kGetAwardType1Mao:
+                    {
+                        int indexs[1] = {10};
+                        srand(time(NULL));
+                        target = indexs[rand()%1];
+                    }
+                        break;
+                    case kGetAwardType5Mao:
+                    {
+                        int indexs[1] = {1};
+                        srand(time(NULL));
+                        target = indexs[rand()%1];
+                    }
+                        break;
+                    case kGetAwardType3Yuan:
+                    {
+                        int indexs[1] = {7};
+                        srand(time(NULL));
+                        target = indexs[rand()%1];
+                    }
+                        break;
+                    case kGetAwardType8Yuan:
+                    {
+                        int indexs[1] = {4};
+                        srand(time(NULL));
+                        target = indexs[rand()%1];
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+                [self startChoiceAnimations:target];
+            }
+        }
+        else
+        {
+            UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"请求失败" message:msg delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
+            [alert show];
+        }
+    }
+    else
+    {
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"网络请求失败" message:@"网络有点问题，请过一会儿再试:(" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil] autorelease];
+        [alert show];
+    }
+}
+
 @end
