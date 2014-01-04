@@ -231,6 +231,7 @@
 		F3813D321875796F00350C27 /* choujiang_back_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D311875796F00350C27 /* choujiang_back_btn@2x.png */; };
 		F3813D351877FD7100350C27 /* ChoujiangLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F3813D341877FD7100350C27 /* ChoujiangLogic.m */; };
 		F3813D3618780A6000350C27 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438A1872A19B00B5C319 /* libDomobOfferWallSDK.a */; };
+		F3813D3B18783CE800350C27 /* gotcoins.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F3813D3A18783CE800350C27 /* gotcoins.aiff */; };
 		F3D834AF185B517B003095D5 /* CommonYuENumView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834AE185B517B003095D5 /* CommonYuENumView.m */; };
 		F3D834CD185C1E31003095D5 /* BaseTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834CB185C1E31003095D5 /* BaseTaskTableViewController.m */; };
 		F3D834CE185C1E31003095D5 /* BaseTaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D834CC185C1E31003095D5 /* BaseTaskTableViewController.xib */; };
@@ -805,6 +806,7 @@
 		F3813D311875796F00350C27 /* choujiang_back_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choujiang_back_btn@2x.png"; sourceTree = "<group>"; };
 		F3813D331877FD7100350C27 /* ChoujiangLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoujiangLogic.h; sourceTree = "<group>"; };
 		F3813D341877FD7100350C27 /* ChoujiangLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoujiangLogic.m; sourceTree = "<group>"; };
+		F3813D3A18783CE800350C27 /* gotcoins.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = gotcoins.aiff; sourceTree = "<group>"; };
 		F3D834AD185B517B003095D5 /* CommonYuENumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonYuENumView.h; sourceTree = "<group>"; };
 		F3D834AE185B517B003095D5 /* CommonYuENumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonYuENumView.m; sourceTree = "<group>"; };
 		F3D834CA185C1E31003095D5 /* BaseTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTaskTableViewController.h; path = wangcai/view_iPhone/common/BaseTaskTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1890,6 +1892,14 @@
 				F3813D1118753ED400350C27 /* choujiang_zhongjiangbeilv@2x.png */,
 			);
 			path = Choujiang;
+			sourceTree = "<group>";
+		};
+		F3813D3718783A5000350C27 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F3813D3A18783CE800350C27 /* gotcoins.aiff */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		F3D834AC185B5146003095D5 /* common */ = {
@@ -3141,6 +3151,7 @@
 		F3F18A41185762BD0098C852 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F3813D3718783A5000350C27 /* Sounds */,
 				F3813CF818753ED400350C27 /* Choujiang */,
 				A60C589418703AE60068425C /* InviteBoard */,
 				A60C57E3186FF8A30068425C /* BindPhoneTips */,
@@ -3288,6 +3299,7 @@
 				F3813D2A18753ED400350C27 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
 				F3813D2018753ED400350C27 /* choujiang_thanks3@2x.png in Resources */,
 				A60C585F186FF8A30068425C /* right@2x.png in Resources */,
+				F3813D3B18783CE800350C27 /* gotcoins.aiff in Resources */,
 				A60C5870186FF8A30068425C /* warn_bkg@2x.png in Resources */,
 				A60C5876186FF8A30068425C /* yue_4@2x.png in Resources */,
 				A60C587C186FF8A30068425C /* yue_dot@2x.png in Resources */,

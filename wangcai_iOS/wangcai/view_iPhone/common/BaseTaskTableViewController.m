@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 1528studio. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import "BaseTaskTableViewController.h"
 #import "CommonTaskTableViewCell.h"
 #import "UserInfoEditorViewController.h"
@@ -174,6 +176,27 @@
     self.zhanghuYuEHeaderCell.tixianLabel.hidden = hidden;
 }
 
+//带动画和声音设置余额
+- (void)setYuENumberWithAnimationFrom:(float)oldNum toNum:(float)newNum
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"gotcoins" ofType:@"aiff"];
+    
+    
+    if (path) {
+        SystemSoundID soundID;
+        
+        NSURL* pathUrl = [NSURL fileURLWithPath:path];
+        
+        
+        AudioServicesCreateSystemSoundID((CFURLRef)pathUrl,&soundID);
+        
+        AudioServicesPlaySystemSound(soundID);
+    }
+    
+    
+    [self.zhanghuYuEHeaderCell.yuENumView animateNumFrom:oldNum to:newNum withAnimation:YES];
+}
+
 #pragma mark - <UITableViewDataSource>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -310,7 +333,8 @@
     NSInteger row = indexPath.row;
     if (row < [_staticCells count])
     {
-        
+        //测试数字动画
+        [self setYuENumberWithAnimationFrom:0.1 toNum:29.8];
     }
     else
     {

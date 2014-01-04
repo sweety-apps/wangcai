@@ -47,4 +47,7 @@
 - (void)enableQiandaoButton:(BOOL)enabled;
 - (void)enableTixianButton:(BOOL)enabled;
 
+//带动画和声音设置余额
+- (void)setYuENumberWithAnimationFrom:(float)oldNum toNum:(float)newNum;
+
 @end

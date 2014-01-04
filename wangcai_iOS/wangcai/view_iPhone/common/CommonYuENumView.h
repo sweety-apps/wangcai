@@ -12,9 +12,14 @@
 {
     float _num;
     NSMutableDictionary* _digitDict;
+    NSMutableArray* _animaArray;
 }
 
 -(void)setNum:(float)num;
 -(float)getNum;
+
+-(void)setNum:(float)num withAnimation:(BOOL)animated;
+
+-(void)animateNumFrom:(float)oldNum to:(float)num withAnimation:(BOOL)animated;
 
 @end
