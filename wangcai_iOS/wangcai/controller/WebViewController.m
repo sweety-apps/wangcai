@@ -13,6 +13,7 @@
 #import "Config.h"
 #import "Common.h"
 #import "MBHUDView.h"
+#import "MobClick.h"
 
 @interface WebViewController ()
 
@@ -394,6 +395,15 @@
 -(void) onPayToAlipay:(float) fCoin {
     // 转帐到支付宝
     if ( [self checkBalanceAndBindPhone:fCoin] ) {
+        NSMutableDictionary* dict = [[NSMutableDictionary alloc]init];
+        NSString* rmb = [[NSString alloc] initWithFormat:@"%.1f", fCoin];
+        
+        [dict setObject:rmb forKey:@"RMB"];
+        [MobClick event:@"pay_to_alipay" attributes:dict];
+        
+        [dict release];
+        [rmb release];
+        
         TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES] autorelease];
         
         [self->_beeStack pushViewController:controller animated:YES];
@@ -401,8 +411,17 @@
 }
 
 -(void) onPayToPhone:(float) fCoin {
-    // 花费充值
+    // 话费充值
     if ( [self checkBalanceAndBindPhone:fCoin] ) {
+        NSMutableDictionary* dict = [[NSMutableDictionary alloc]init];
+        NSString* rmb = [[NSString alloc] initWithFormat:@"%.1f", fCoin];
+        
+        [dict setObject:rmb forKey:@"RMB"];
+        [MobClick event:@"pay_to_phone" attributes:dict];
+        
+        [dict release];
+        [rmb release];
+        
         TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO] autorelease];
     
         [self->_beeStack pushViewController:controller animated:YES];

@@ -52,10 +52,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         if ( num == nil ) {
             num = @"";
         }
-        NSString* url = [[NSString alloc] initWithFormat:@"%@?mobile=%@&mobile_num=%@---%@",
-                         HTTP_SERVICE_CENTER, num, [Common getMACAddress], [Common getIDFAAddress] ];
-        
-        _webPageController = [[WebPageController alloc] init:@"客户服务" Url:url Stack:self.stack];
+
+        _webPageController = [[WebPageController alloc] init:@"常见问题" Url:HTTP_SERVICE_QUESTION Stack:self.stack];
         
         [self.view addSubview:_webPageController.view];
         

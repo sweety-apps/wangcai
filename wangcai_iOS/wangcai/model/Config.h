@@ -25,6 +25,7 @@
 #define HTTP_READ_TASK_LIST     @"http://getwangcai.com/0/task/list"
 
 
+#define HTTP_SERVICE_QUESTION   @"http://service.meme-da.com/index.php/mobile/shouce/list/hc_id/76"
 #define HTTP_SERVICE_CENTER     @"http://service.meme-da.com/index.php/mobile/consulting"
 
 #define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
