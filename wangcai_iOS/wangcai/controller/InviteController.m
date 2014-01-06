@@ -191,7 +191,7 @@
 
 - (IBAction)share:(id)sender
 {
-    id<ISSContent> publishContent = [ShareSDK content: [NSString stringWithFormat: @"http://wangcai.meme-da.com/invite/index.php?code=%@", _inviteCode] defaultContent: [NSString stringWithFormat: @"http://wangcai.meme-da.com/invite/index.php?code=%@", _inviteCode] image: nil title: @"旺财分享" url: [NSString stringWithFormat: @"http://wangcai.meme-da.com/invite/index.php?code=%@", _inviteCode] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
+    id<ISSContent> publishContent = [ShareSDK content: @"妈妈再也不用担心我的花费了" defaultContent: @"" image: nil title: @"新年旺财，玩应用领红包" url: [NSString stringWithFormat: @"http://wangcai.meme-da.com/invite/index.php?code=%@", _inviteCode] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
     
     [ShareSDK showShareActionSheet: nil shareList: nil content: publishContent statusBarTips: YES authOptions: nil shareOptions: nil result: ^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
      {
@@ -303,7 +303,7 @@
 
 - (IBAction)clickBack:(id)sender
 {
-    [self postNotification: @"showMenu"];
+    [[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
 }
 
 - (IBAction)hideKeyboard:(id)sender

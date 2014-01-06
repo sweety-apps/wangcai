@@ -50,7 +50,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
-        _phoneController = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+        _phoneController = [PhoneValidationController shareInstance];
         [_phoneController setBackType:YES];
         
         [self.view addSubview:_phoneController.view];

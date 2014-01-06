@@ -76,6 +76,8 @@ typedef enum LoginStatus {
 -(float) getOutgo;
 -(float) getRecentIncome;
 
+-(void) setIncome:(float) income;
+-(void) setOutgo:(float) outgo;
 
 -(void) attachPhone : (NSString*) phoneNum UserId:(NSString*) userid InviteCode:(NSString*) inviteCode;
 

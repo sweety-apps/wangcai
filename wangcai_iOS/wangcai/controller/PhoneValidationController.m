@@ -17,6 +17,27 @@
 
 @synthesize _imageArrow;
 
++ (PhoneValidationController*) shareInstance {
+    static PhoneValidationController* phoneVal = nil;
+    if ( phoneVal == nil ) {
+        phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+    }
+    
+    // 查stack列表，从当前的stack中去掉
+    NSMutableArray* mArray = [[NSMutableArray alloc] init];
+    NSArray* array = [phoneVal.navigationController viewControllers];
+    for (int i = 0; i < [array count]; i ++) {
+        id obj = [array objectAtIndex:i];
+        if ( ![obj isEqual:phoneVal] ) {
+            [mArray addObject:obj];
+        }
+    }
+    
+    phoneVal.navigationController.viewControllers = mArray;
+    
+    [phoneVal setBackType:NO];
+    return [phoneVal retain];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -234,14 +255,14 @@
         newViewFrame.origin.y = _viewInputNum.frame.origin.y - 98; // 头部高度98
         
         newBtnFrame = nextNumBtn.frame;
-        newBtnFrame.origin.y = nextNumBtn.frame.origin.y - 78;
+        newBtnFrame.origin.y = nextNumBtn.frame.origin.y - 108;
         [self._imageArrow setHidden:YES];
     } else if ( self->curState == 1 ) {
         newViewFrame = _viewCheckNum.frame;
         newViewFrame.origin.y = _viewCheckNum.frame.origin.y - 98; // 头部高度98
         
         newBtnFrame = btnCheckNum.frame;
-        newBtnFrame.origin.y = btnCheckNum.frame.origin.y - 78;
+        newBtnFrame.origin.y = btnCheckNum.frame.origin.y - 108;
         [self._imageArrow setHidden:YES];
         [[_viewCheckNum viewWithTag:31] setHidden:YES];
     }
@@ -303,7 +324,7 @@
         newViewFrame.origin.y = 98 + _viewInputNum.frame.origin.y;
     
         newBtnFrame = nextNumBtn.frame;
-        newBtnFrame.origin.y = 78 + nextNumBtn.frame.origin.y;
+        newBtnFrame.origin.y = 108 + nextNumBtn.frame.origin.y;
         
         _viewInputNum.frame = newViewFrame;
         if ( !DEVICE_IS_IPHONE5 ) {
@@ -315,7 +336,7 @@
         newViewFrame.origin.y = 98 + _viewCheckNum.frame.origin.y;
         
         newBtnFrame = btnCheckNum.frame;
-        newBtnFrame.origin.y = 78 + btnCheckNum.frame.origin.y;
+        newBtnFrame.origin.y = 108 + btnCheckNum.frame.origin.y;
         
         _viewCheckNum.frame = newViewFrame;
         

@@ -145,9 +145,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button autoresizesSubviews="NO" opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CLZ-Rh-Zwn">
-                    <rect key="frame" x="23" y="202" width="275" height="54"/>
+                    <rect key="frame" x="23" y="239" width="275" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.80784313730000001" green="0.35686274509999999" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                         <bool key="isElement" value="NO"/>
@@ -190,9 +189,8 @@
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <button autoresizesSubviews="NO" opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gEs-0V-m3Z">
-                    <rect key="frame" x="23" y="202" width="275" height="54"/>
+                    <rect key="frame" x="23" y="241" width="275" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.80784313725490198" green="0.35686274509803922" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                         <bool key="isElement" value="NO"/>
@@ -215,8 +213,8 @@
                     <rect key="frame" x="39" y="46" width="11" height="19"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="28" id="Ob2-Xx-eW8">
-                    <rect key="frame" x="65" y="41" width="217" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="28" id="Ob2-Xx-eW8">
+                    <rect key="frame" x="39" y="41" width="242" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -246,9 +244,8 @@
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JRd-fi-2pZ">
-                    <rect key="frame" x="23" y="200" width="275" height="54"/>
+                    <rect key="frame" x="23" y="241" width="275" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.80784313730000001" green="0.35686274509999999" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                         <bool key="isElement" value="NO"/>
@@ -264,9 +261,16 @@
                     </connections>
                 </button>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reg_success.png" id="5TP-7S-UCC">
-                    <rect key="frame" x="77" y="77" width="166" height="31"/>
+                    <rect key="frame" x="79" y="20" width="163" height="163"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册成功" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fjJ-m3-u3u">
+                    <rect key="frame" x="85" y="197" width="150" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
@@ -279,7 +283,7 @@
         <image name="nav_Header.png" width="320" height="54"/>
         <image name="phone_logo.png" width="11" height="19"/>
         <image name="phone_num_border.png" width="275" height="53"/>
-        <image name="reg_success.png" width="166" height="31"/>
+        <image name="reg_success.png" width="163" height="163"/>
         <image name="resend_normal.png" width="66" height="27"/>
         <image name="sms_code_border.png" width="45" height="43"/>
         <image name="warn_bkg.png" width="275" height="30"/>

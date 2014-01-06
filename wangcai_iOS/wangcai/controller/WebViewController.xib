@@ -21,13 +21,12 @@
             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
         </view>
         <view contentMode="scaleToFill" id="0xQ-Ox-Zhu">
-            <rect key="frame" x="0.0" y="0.0" width="311" height="193"/>
+            <rect key="frame" x="0.0" y="0.0" width="311" height="307"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="vGi-Ik-H0g">
-                    <rect key="frame" x="138" y="77" width="37" height="37"/>
+                    <rect key="frame" x="137" y="135" width="37" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </activityIndicatorView>
             </subviews>

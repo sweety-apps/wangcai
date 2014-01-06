@@ -141,6 +141,17 @@
         int nRes = [res intValue];
         if ( nRes == 0 ) {
             // 调用成功
+            NSNumber* income = [[body valueForKey:@"income"] copy];
+            NSNumber* outgo = [[body valueForKey:@"outgo"] copy];
+            NSNumber* balance = [[body valueForKey:@"balance"] copy];
+            float fIncome = [income floatValue] / 100;
+            float fOutgo = [outgo floatValue] / 100;
+            float fBalance = [balance floatValue] / 100;
+            
+            [[LoginAndRegister sharedInstance] setIncome:fIncome];
+            [[LoginAndRegister sharedInstance] setOutgo:fOutgo];
+            [[LoginAndRegister sharedInstance] setBalance:fBalance];
+            
             NSString* userid = [[body valueForKey:@"userid"] copy];
             NSString* inviteCode = [[body valueForKey:@"invite_code"] copy];
             [_smsDelegate checkSmsCodeCompleted:YES errMsg:nil UserId:userid InviteCode:inviteCode];

@@ -131,18 +131,17 @@ static LoginAndRegister* _sharedInstance;
                 _nickname = [[dict valueForKey:@"nickname"] copy];
                 _device_id = [[dict valueForKey:@"device_id"] copy];
                 _phoneNum = [[dict valueForKey:@"phone"] copy];
-                
+
                 NSNumber* num = [dict valueForKey:@"balance"];
                 _balance = [num floatValue] / 100;
-                
                 num = [dict valueForKey:@"income"];
-                _income = [num floatValue];
+                _income = [num floatValue] / 100;
                 
                 num = [dict valueForKey:@"outgo"];
-                _outgo = [num floatValue];
+                _outgo = [num floatValue] / 100;
                 
                 num = [dict valueForKey:@"recent_income"];
-                _recentIncome = [num floatValue];
+                _recentIncome = [num floatValue] / 100;
                 
                 _inviter = [[dict valueForKey:@"inviter"] copy];
                 _invite_code = [[dict valueForKey:@"invite_code"] copy];
@@ -164,10 +163,12 @@ static LoginAndRegister* _sharedInstance;
 }
 
 -(void) setBalance:(float) balance {
-    float oldBalance = _balance;
-    _balance = balance;
+    if ( balance != _balance ) {
+        float oldBalance = _balance;
+        _balance = balance;
     
-    [self fire_balanceChanged:oldBalance New:_balance];
+        [self fire_balanceChanged:oldBalance New:_balance];
+    }
 }
 
 -(void) fire_balanceChanged:(float) old New:(float) balance {
@@ -289,6 +290,14 @@ static LoginAndRegister* _sharedInstance;
 
 -(float) getOutgo {
     return _outgo;
+}
+
+-(void) setIncome:(float) income {
+    _income = income;
+}
+
+-(void) setOutgo:(float) outgo {
+    _outgo = outgo;
 }
 
 -(float) getRecentIncome {

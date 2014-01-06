@@ -53,6 +53,8 @@
 
 @property (nonatomic, retain) IBOutlet UIImageView* _imageArrow;
 
++ (PhoneValidationController*) shareInstance;
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;   // return NO to not change text
 
 - (IBAction)clickNext:(id)sender;

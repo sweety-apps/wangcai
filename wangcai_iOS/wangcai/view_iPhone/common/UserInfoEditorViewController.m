@@ -179,7 +179,7 @@
 {
     if (self.stack)
     {
-        PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+        PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
         
         [self.stack pushViewController:phoneVal animated:YES];
     }

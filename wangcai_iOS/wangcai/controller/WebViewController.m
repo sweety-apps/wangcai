@@ -44,6 +44,7 @@
         
         //
         [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
+        [[LoginAndRegister sharedInstance] attachBalanceChangeEvent:self];
     }
     return self;
 }
@@ -79,8 +80,23 @@
     [phoneNum release];
 }
 
+-(void) balanceChanged:(float) oldBalance New:(float) balance {
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+        if ( phoneNum != nil ) {
+            [phoneNum release];
+        }
+        
+        [self notifyPhoneStatus:NO Phone:@"" Balance:balance];
+    } else {
+        [self notifyPhoneStatus:YES Phone:phoneNum Balance:balance];
+        [phoneNum release];
+    }
+}
+
 - (void)dealloc {
     [[LoginAndRegister sharedInstance] detachBindPhoneEvent:self];
+    [[LoginAndRegister sharedInstance] detachBalanceChangeEvent:self];
     
     self->_webView = nil;
     self->_url = nil;
@@ -329,9 +345,9 @@
 - (void)notifyPhoneStatus:(BOOL)isAttach Phone:(NSString*)phone Balance:(float)banlance {
     NSString* js;
     if ( isAttach ) {
-        js = [NSString stringWithFormat:@"notifyPhoneStatus(true, \"%@\", %f)", phone, banlance];
+        js = [NSString stringWithFormat:@"notifyPhoneStatus(true, \"%@\", %.1f)", phone, banlance];
     } else {
-        js = [NSString stringWithFormat:@"notifyPhoneStatus(false, \"\", %f)", banlance];
+        js = [NSString stringWithFormat:@"notifyPhoneStatus(false, \"\", %.1f)", banlance];
     }
     [self->_webView stringByEvaluatingJavaScriptFromString:js];
 }
@@ -352,8 +368,7 @@
 }
 
 -(void) onAttachPhone {
-    PhoneValidationController* phoneVal = [[[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil] autorelease];
-    
+    PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     [self->_beeStack pushViewController:phoneVal animated:YES];
 }
 

@@ -14,7 +14,7 @@
 - (void) openUrl : (NSString*) url;
 @end
 
-@interface WebViewController : UIViewController<UIWebViewDelegate, UIAlertViewDelegate, BindPhoneDelegate> {
+@interface WebViewController : UIViewController<UIWebViewDelegate, UIAlertViewDelegate, BindPhoneDelegate, BalanceChangeDelegate> {
     UIWebView* _webView;
     NSString*  _url;
     

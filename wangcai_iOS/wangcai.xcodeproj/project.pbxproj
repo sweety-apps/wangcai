@@ -77,7 +77,6 @@
 		A60C5848186FF8A30068425C /* body_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57EF186FF8A30068425C /* body_bkg@2x.png */; };
 		A60C5849186FF8A30068425C /* border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F0186FF8A30068425C /* border@2x.png */; };
 		A60C584A186FF8A30068425C /* bottom_arraw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F1186FF8A30068425C /* bottom_arraw@2x.png */; };
-		A60C584B186FF8A30068425C /* btn_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F2186FF8A30068425C /* btn_down@2x.png */; };
 		A60C584C186FF8A30068425C /* btn_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F3186FF8A30068425C /* btn_normal@2x.png */; };
 		A60C584D186FF8A30068425C /* deal_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F4186FF8A30068425C /* deal_btn@2x.png */; };
 		A60C584E186FF8A30068425C /* exchange_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F5186FF8A30068425C /* exchange_btn@2x.png */; };
@@ -631,7 +630,6 @@
 		A60C57EF186FF8A30068425C /* body_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "body_bkg@2x.png"; sourceTree = "<group>"; };
 		A60C57F0186FF8A30068425C /* border@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "border@2x.png"; sourceTree = "<group>"; };
 		A60C57F1186FF8A30068425C /* bottom_arraw@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_arraw@2x.png"; sourceTree = "<group>"; };
-		A60C57F2186FF8A30068425C /* btn_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_down@2x.png"; sourceTree = "<group>"; };
 		A60C57F3186FF8A30068425C /* btn_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_normal@2x.png"; sourceTree = "<group>"; };
 		A60C57F4186FF8A30068425C /* deal_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deal_btn@2x.png"; sourceTree = "<group>"; };
 		A60C57F5186FF8A30068425C /* exchange_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_btn@2x.png"; sourceTree = "<group>"; };
@@ -1712,7 +1710,6 @@
 				A60C57EF186FF8A30068425C /* body_bkg@2x.png */,
 				A60C57F0186FF8A30068425C /* border@2x.png */,
 				A60C57F1186FF8A30068425C /* bottom_arraw@2x.png */,
-				A60C57F2186FF8A30068425C /* btn_down@2x.png */,
 				A60C57F3186FF8A30068425C /* btn_normal@2x.png */,
 				A60C57F4186FF8A30068425C /* deal_btn@2x.png */,
 				A60C57F5186FF8A30068425C /* exchange_btn@2x.png */,
@@ -3415,7 +3412,6 @@
 				F3813D1E18753ED400350C27 /* choujiang_thanks1@2x.png in Resources */,
 				F3813D2818753ED400350C27 /* choujiang_x3selected@2x.png in Resources */,
 				A60C5855186FF8A30068425C /* menu-icon@2x.png in Resources */,
-				A60C584B186FF8A30068425C /* btn_down@2x.png in Resources */,
 				A60C584D186FF8A30068425C /* deal_btn@2x.png in Resources */,
 				A60C5888186FF8A30068425C /* head_left_icon@2x.png in Resources */,
 				A60C5886186FF8A30068425C /* head_back@2x.png in Resources */,
@@ -3959,6 +3955,7 @@
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

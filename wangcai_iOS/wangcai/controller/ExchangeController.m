@@ -158,7 +158,7 @@
 }
 
 - (IBAction)clickAttachPhone:(id)sender {
-    PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+    PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     
     [self->_beeStack pushViewController:phoneVal animated:YES];
 }

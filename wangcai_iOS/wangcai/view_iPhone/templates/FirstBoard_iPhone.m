@@ -119,7 +119,7 @@ ON_MESSAGE( message )
 
 ON_SIGNAL3( FirstBoard_iPhone, test, signal )
 {
-    PhoneValidationController* phoneVal = [[PhoneValidationController alloc]initWithNibName:@"PhoneValidationController" bundle:nil];
+    PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     
     [self.stack pushViewController:phoneVal animated:YES];
 }
