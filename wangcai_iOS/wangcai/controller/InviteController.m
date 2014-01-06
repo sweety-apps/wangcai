@@ -24,12 +24,11 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
         self.view = [[[NSBundle mainBundle] loadNibNamed:nibNameOrNil owner:self options:nil] firstObject];
-        /*
+        
         [self load:nibNameOrNil];
         
         self.title = @"邀请送红包";
         _inviterUpdate = [[InviterUpdate alloc] init];
-         */
     }
     return self;
 }

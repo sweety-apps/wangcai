@@ -34,56 +34,40 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="invite_nav_bar.png" translatesAutoresizingMaskIntoConstraints="NO" id="Avn-aK-Rjf">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nav_Header.png" translatesAutoresizingMaskIntoConstraints="NO" id="JWo-Gy-xdb">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="QG1-52-Aho"/>
-                        <constraint firstAttribute="height" constant="54" id="nLd-lz-nT0"/>
-                    </constraints>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邀请送红包" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXZ-Z6-vvM">
-                    <rect key="frame" x="182" y="10" width="118" height="33"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="33" id="0ms-yf-ajG"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZO-Nf-nRL">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lt5-VN-ZQG">
                     <rect key="frame" x="0.0" y="12" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="46" id="eZH-dY-v9f"/>
-                        <constraint firstAttribute="height" constant="30" id="zM4-He-hC1"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" image="back.png"/>
                     <connections>
-                        <action selector="clickBack:" destination="-1" eventType="touchUpInside" id="6hA-59-wqx"/>
+                        <action selector="clickBack:" destination="-1" eventType="touchUpInside" id="Htf-8U-1wy"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="邀请送红包" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lg-wG-Atp">
+                    <rect key="frame" x="182" y="10" width="118" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Avn-aK-Rjf" secondAttribute="trailing" id="4QV-Pj-CiV"/>
                 <constraint firstItem="C07-pL-sbi" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="ABO-CF-cIQ"/>
-                <constraint firstItem="Avn-aK-Rjf" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="B48-d1-YNy"/>
                 <constraint firstAttribute="trailing" secondItem="C07-pL-sbi" secondAttribute="trailing" id="DBE-Rk-qWa"/>
                 <constraint firstItem="C07-pL-sbi" firstAttribute="top" secondItem="Lhc-2F-Cg4" secondAttribute="bottom" constant="9" id="F8E-gN-M7C"/>
                 <constraint firstItem="Lhc-2F-Cg4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="Ys8-73-UJ7"/>
-                <constraint firstItem="Avn-aK-Rjf" firstAttribute="top" secondItem="1" secondAttribute="top" id="gaq-Y1-7qN"/>
-                <constraint firstItem="aXZ-Z6-vvM" firstAttribute="leading" secondItem="ZZO-Nf-nRL" secondAttribute="trailing" constant="136" id="hgA-gm-Meh"/>
-                <constraint firstAttribute="trailing" secondItem="aXZ-Z6-vvM" secondAttribute="trailing" constant="20" id="jQW-jD-cyo"/>
-                <constraint firstItem="ZZO-Nf-nRL" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="oxd-hX-o2h"/>
-                <constraint firstItem="aXZ-Z6-vvM" firstAttribute="top" secondItem="1" secondAttribute="top" constant="10" id="u4q-sJ-ZqQ"/>
-                <constraint firstItem="ZZO-Nf-nRL" firstAttribute="top" secondItem="1" secondAttribute="top" constant="12" id="wV3-TH-Qgf"/>
                 <constraint firstAttribute="bottom" secondItem="C07-pL-sbi" secondAttribute="bottom" id="yrV-ve-3ZN"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="CWb-UR-iVv" appends="YES" id="BFy-62-iAr"/>
+            </connections>
         </view>
         <view contentMode="scaleToFill" id="dAQ-Tf-erb">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -228,6 +212,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <tapGestureRecognizer id="CWb-UR-iVv">
+            <connections>
+                <action selector="hideKeyboard:" destination="-1" id="i1b-CC-2Sx"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="back.png" width="12" height="22"/>
@@ -236,6 +225,6 @@
         <image name="invite_error.png" width="12" height="12"/>
         <image name="invite_invite_code_bkg.png" width="275" height="48"/>
         <image name="invite_invited_edit.png" width="275" height="48"/>
-        <image name="invite_nav_bar.png" width="320" height="54"/>
+        <image name="nav_Header.png" width="320" height="54"/>
     </resources>
 </document>
