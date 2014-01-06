@@ -133,7 +133,7 @@ static LoginAndRegister* _sharedInstance;
                 _phoneNum = [[dict valueForKey:@"phone"] copy];
                 
                 NSNumber* num = [dict valueForKey:@"balance"];
-                _balance = [num floatValue];
+                _balance = [num floatValue] / 100;
                 
                 num = [dict valueForKey:@"income"];
                 _income = [num floatValue];

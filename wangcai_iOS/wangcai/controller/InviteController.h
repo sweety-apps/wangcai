@@ -14,23 +14,22 @@
     InviterUpdate* _inviterUpdate;
 }
 
-@property (assign, nonatomic) IBOutlet UIView *containerView;
-@property (assign, nonatomic) IBOutlet UISegmentedControl *segment;
-@property (assign, nonatomic) IBOutlet UIWebView *adView;
+@property (assign, nonatomic) UIView *containerView;
+@property (assign, nonatomic) UISegmentedControl *segment;
 
 @property (retain, nonatomic) IBOutlet UIView *inviteView;
-@property (assign, nonatomic) IBOutlet UITextField *inviteUrlTextField;
-@property (assign, nonatomic) IBOutlet UIImageView *qrcodeView;
+@property (assign, nonatomic) UITextField *inviteUrlTextField;
+@property (assign, nonatomic) UIImageView *qrcodeView;
 @property (assign, nonatomic) IBOutlet UILabel *receiveMoneyLabel;
-@property (assign, nonatomic) IBOutlet UILabel *inviteCodeLabel;
-@property (assign, nonatomic) IBOutlet UIButton *shareButton;
+@property (assign, nonatomic) UILabel *inviteCodeLabel;
+@property (assign, nonatomic) UIButton *shareButton;
 
 @property (retain, nonatomic) IBOutlet UIView *invitedView;
-@property (assign, nonatomic) IBOutlet UITextField *invitedPeopleTextfield;
-@property (assign, nonatomic) IBOutlet UILabel *errorMessage;
-@property (assign, nonatomic) IBOutlet UIButton *invitedButton;
-@property (assign, nonatomic) IBOutlet UILabel *inviterLabel;
-@property (assign, nonatomic) IBOutlet UIImageView *errorImage;
+@property (assign, nonatomic) UITextField *invitedPeopleTextfield;
+@property (assign, nonatomic) UILabel *errorMessage;
+@property (assign, nonatomic) UIButton *invitedButton;
+@property (assign, nonatomic) UILabel *inviterLabel;
+@property (assign, nonatomic) UIImageView *errorImage;
 
 @property (retain, nonatomic) NSArray* priorConstraints;
 

@@ -46,6 +46,20 @@
 {
     [super viewDidLoad];
     
+    self.containerView = [self.view viewWithTag:11];
+    self.errorImage = (UIImageView*)[self.invitedView viewWithTag:12];
+    self.errorMessage = (UILabel*)[self.invitedView viewWithTag:13];
+    self.inviteCodeLabel = (UILabel*)[self.inviteView viewWithTag:14];
+    self.invitedButton = (UIButton*)[self.invitedView viewWithTag:15];
+    self.invitedPeopleTextfield = (UITextField*)[self.invitedView viewWithTag:16];
+    self.inviterLabel = (UILabel*)[self.invitedView viewWithTag:17];
+    self.inviteUrlTextField = (UITextField*)[self.inviteView viewWithTag:18];
+    self.qrcodeView = (UIImageView*)[self.inviteView viewWithTag:20];
+    self.segment = (UISegmentedControl*)[self.view viewWithTag:21];
+    self.shareButton = (UIButton*)[self.inviteView viewWithTag:22];
+    
+    self.invitedPeopleTextfield.delegate = self;
+    
     [self.containerView addSubview: self.inviteView];
     
     self.priorConstraints = [self constrainSubview: self.inviteView toMatchWithSuperview: self.containerView];
@@ -101,27 +115,11 @@
     }
     
     [self updateErrorMsg: NO msg: nil];
-    
-//    [self.adView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: @"http://www.5566.net"]]];
-    
-    self.adView.scrollView.bounces = NO;
 }
 
 - (void)updateViewConstraints
 {
     [super updateViewConstraints];
-    
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    if (screenBound.size.height == 480)
-    {
-        // iphone4
-        UIWebView* adView = self.adView;
-        
-        NSDictionary* viewsDictionary = NSDictionaryOfVariableBindings(adView);
-        
-        NSArray* constraints = [NSLayoutConstraint constraintsWithVisualFormat: @"V:[adView(0)]" options: 0 metrics: nil views: viewsDictionary];
-        [self.view addConstraints: constraints];
-    }
 }
 
 - (void)updateErrorMsg: (BOOL)error msg: (NSString *)errMsg
