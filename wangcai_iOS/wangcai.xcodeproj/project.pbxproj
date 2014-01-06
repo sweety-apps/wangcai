@@ -181,6 +181,7 @@
 		A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */; };
 		A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6DE671860287900D089C7 /* WebPageController.xib */; };
 		A6F6DE6B186028B700D089C7 /* WebPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6DE6A186028B700D089C7 /* WebPageController.m */; };
+		A6F96CDD187A5F290067D785 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F96CDC187A5F290067D785 /* XMLReader.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		A6FA00EE186ABEF6008302F0 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FA00ED186ABEF6008302F0 /* SettingViewController.xib */; };
 		A6FA00F1186AC068008302F0 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FA00F0186AC068008302F0 /* SettingViewController.m */; };
 		A6FD8A711861899500223772 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
@@ -747,6 +748,9 @@
 		A6F6DE671860287900D089C7 /* WebPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebPageController.xib; sourceTree = "<group>"; };
 		A6F6DE69186028B700D089C7 /* WebPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPageController.h; sourceTree = "<group>"; };
 		A6F6DE6A186028B700D089C7 /* WebPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPageController.m; sourceTree = "<group>"; };
+		A6F96CDB187A5F290067D785 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		A6F96CDC187A5F290067D785 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		A6F96CE0187A60A20067D785 /* XMLReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = wangcai/model/XMLReader.m; sourceTree = "<group>"; };
 		A6FA00ED186ABEF6008302F0 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		A6FA00EF186AC068008302F0 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		A6FA00F0186AC068008302F0 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
@@ -2001,6 +2005,7 @@
 		F3F186B318543A410098C852 = {
 			isa = PBXGroup;
 			children = (
+				A6F96CE0187A60A20067D785 /* XMLReader.m */,
 				A60A43831872A19B00B5C319 /* DMOfferWallSDK */,
 				59E429B51862986E00007461 /* ShareSDK_v2.6.1 */,
 				F3F186D718543A410098C852 /* wangcai */,
@@ -2083,6 +2088,8 @@
 		F3F186ED18543A410098C852 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				A6F96CDB187A5F290067D785 /* XMLReader.h */,
+				A6F96CDC187A5F290067D785 /* XMLReader.m */,
 				A62C5F55187697F600172334 /* MobClick.h */,
 				A60C58B118703B030068425C /* InviterUpdate.h */,
 				A60C58B218703B030068425C /* InviterUpdate.m */,
@@ -3430,6 +3437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F96CDD187A5F290067D785 /* XMLReader.m in Sources */,
 				F3F1889218543A430098C852 /* UIView+Metrics.m in Sources */,
 				F3D9D565185D876D00392C40 /* WebViewController.m in Sources */,
 				F3604927187016C200FAD1F3 /* NSString+DataParser.m in Sources */,
