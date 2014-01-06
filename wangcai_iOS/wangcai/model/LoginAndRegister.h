@@ -27,6 +27,13 @@ typedef enum LoginStatus {
 -(void) balanceChanged:(float) oldBalance New:(float) balance;
 @end
 
+@interface BalanceInfo : NSObject {
+}
+
+@property float _oldBalance;
+@property float _newBalance;
+@end
+
 @interface LoginAndRegister : NSObject {
     id          _delegate;
     LoginStatus loginStatus;

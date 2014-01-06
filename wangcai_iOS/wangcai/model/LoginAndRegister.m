@@ -10,6 +10,11 @@
 #import "Config.h"
 #import "Common.h"
 
+@implementation BalanceInfo
+@synthesize _newBalance;
+@synthesize _oldBalance;
+@end
+
 @implementation LoginAndRegister
 static LoginAndRegister* _sharedInstance;
 
@@ -166,6 +171,12 @@ static LoginAndRegister* _sharedInstance;
 }
 
 -(void) fire_balanceChanged:(float) old New:(float) balance {
+    BalanceInfo* info = [[BalanceInfo alloc]init];
+    info._newBalance = balance;
+    info._newBalance = old;
+    [self postNotification:@"balanceChanged" withObject:info];
+    [info release];
+    
     for ( int i = 0; i < [_delegateBalanceArray count]; i ++ ) {
         id delegate = [_delegateBalanceArray objectAtIndex:i];
         [delegate balanceChanged:old New:balance];
