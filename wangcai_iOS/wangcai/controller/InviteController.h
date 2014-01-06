@@ -17,14 +17,14 @@
 @property (assign, nonatomic) UIView *containerView;
 @property (assign, nonatomic) UISegmentedControl *segment;
 
-@property (retain, nonatomic) IBOutlet UIView *inviteView;
+@property (retain, nonatomic) UIView *inviteView;
 @property (assign, nonatomic) UITextField *inviteUrlTextField;
 @property (assign, nonatomic) UIImageView *qrcodeView;
-@property (assign, nonatomic) IBOutlet UILabel *receiveMoneyLabel;
+@property (assign, nonatomic) UILabel *receiveMoneyLabel;
 @property (assign, nonatomic) UILabel *inviteCodeLabel;
 @property (assign, nonatomic) UIButton *shareButton;
 
-@property (retain, nonatomic) IBOutlet UIView *invitedView;
+@property (retain, nonatomic) UIView *invitedView;
 @property (assign, nonatomic) UITextField *invitedPeopleTextfield;
 @property (assign, nonatomic) UILabel *errorMessage;
 @property (assign, nonatomic) UIButton *invitedButton;
@@ -32,6 +32,7 @@
 @property (assign, nonatomic) UIImageView *errorImage;
 
 @property (retain, nonatomic) NSArray* priorConstraints;
+@property (retain, nonatomic) UILabel* inputInviteTip;
 
 @property (assign, nonatomic) NSUInteger receiveMoney;
 @property (copy, nonatomic) NSString* inviteCode;

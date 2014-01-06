@@ -23,9 +23,13 @@
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
+        self.view = [[[NSBundle mainBundle] loadNibNamed:nibNameOrNil owner:self options:nil] firstObject];
+        /*
+        [self load:nibNameOrNil];
+        
         self.title = @"邀请送红包";
         _inviterUpdate = [[InviterUpdate alloc] init];
-
+         */
     }
     return self;
 }
@@ -42,9 +46,9 @@
     return constraints;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void) load:(NSString*)nibNameOrNil {
+    self.inviteView = [[[NSBundle mainBundle] loadNibNamed:nibNameOrNil owner:self options:nil] objectAtIndex:1];
+    self.invitedView = [[[NSBundle mainBundle] loadNibNamed:nibNameOrNil owner:self options:nil] objectAtIndex:2];
     
     self.containerView = [self.view viewWithTag:11];
     self.errorImage = (UIImageView*)[self.invitedView viewWithTag:12];
@@ -57,6 +61,7 @@
     self.qrcodeView = (UIImageView*)[self.inviteView viewWithTag:20];
     self.segment = (UISegmentedControl*)[self.view viewWithTag:21];
     self.shareButton = (UIButton*)[self.inviteView viewWithTag:22];
+    self.inputInviteTip = (UILabel*)[self.invitedView viewWithTag:33];
     
     self.invitedPeopleTextfield.delegate = self;
     
@@ -106,15 +111,22 @@
     NSString* inviter = [[LoginAndRegister sharedInstance] getInviter];
     if (!(inviter == nil || [inviter length] == 0))
     {
+        [self.inputInviteTip setHidden:YES];
         [self setInvitedPeople: inviter];
         [self updateInvitersControls: YES];
     }
     else
     {
+        [self.inputInviteTip setHidden:NO];
         [self updateInvitersControls: NO];
     }
     
     [self updateErrorMsg: NO msg: nil];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
 }
 
 - (void)updateViewConstraints
@@ -354,12 +366,18 @@
 #pragma mark - Text Field Delegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [textField setPlaceholder: @"                                           "];
+    [self.inputInviteTip setHidden:YES];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [textField setPlaceholder: @"请输入邀请码"];
+    NSString* text = textField.text;
+    NSUInteger n = text.length;
+    if ( n == 0 ) {
+        [self.inputInviteTip setHidden:NO];
+    } else {
+        [self.inputInviteTip setHidden:YES];
+    }
 }
 
 @end
