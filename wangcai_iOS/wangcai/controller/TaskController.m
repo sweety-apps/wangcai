@@ -91,7 +91,7 @@
 - (void)openAppWithIdentifier:(NSString *)appId {
     NSString* strVersion = [[UIDevice currentDevice] systemVersion];
     float version = [strVersion floatValue];
-    if ( version >= 6 ) {
+    if ( version >= 9 ) {
         SKStoreProductViewController *storeProductVC = [[SKStoreProductViewController alloc] init];
         storeProductVC.delegate = self;
     
@@ -145,7 +145,7 @@
 }
 
 - (void) HttpGet:(NSString*) url {
-    BeeHTTPRequest* request = self.HTTP_POST(url);
+    BeeHTTPRequest* request = self.HTTP_GET(url);
  
     request.TIMEOUT(10);
 }

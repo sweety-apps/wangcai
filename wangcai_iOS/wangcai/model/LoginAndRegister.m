@@ -26,6 +26,7 @@ static LoginAndRegister* _sharedInstance;
     self->loginStatus = Login_Error;
     self->_phoneNum = nil;
     self->_delegateArray = [[NSMutableArray alloc]init];
+    self->_delegateBalanceArray = [[NSMutableArray alloc]init];
     self->_balance = 0;
     
     return self;
@@ -150,6 +151,27 @@ static LoginAndRegister* _sharedInstance;
     }
 }
 
+-(void) increaseBalance:(float) inc {
+    float oldBalance = _balance;
+    _balance = _balance + inc;
+    
+    [self fire_balanceChanged:oldBalance New:_balance];
+}
+
+-(void) setBalance:(float) balance {
+    float oldBalance = _balance;
+    _balance = balance;
+    
+    [self fire_balanceChanged:oldBalance New:_balance];
+}
+
+-(void) fire_balanceChanged:(float) old New:(float) balance {
+    for ( int i = 0; i < [_delegateBalanceArray count]; i ++ ) {
+        id delegate = [_delegateBalanceArray objectAtIndex:i];
+        [delegate balanceChanged:old New:balance];
+    }
+}
+
 -(void) fire_bindPhoneEvent {
     for ( int i = 0; i < [_delegateArray count]; i ++ ) {
         id delegate = [_delegateArray objectAtIndex:i];
@@ -163,6 +185,15 @@ static LoginAndRegister* _sharedInstance;
 
 -(void) detachBindPhoneEvent : (id) delegate {
     [_delegateArray removeObject:delegate];
+    [delegate release];
+}
+
+-(void) attachBalanceChangeEvent : (id) delegate {
+    [_delegateBalanceArray addObject:[delegate retain]];
+}
+
+-(void) detachBalanceChangeEvent : (id) delegate {
+    [_delegateBalanceArray removeObject:delegate];
     [delegate release];
 }
 

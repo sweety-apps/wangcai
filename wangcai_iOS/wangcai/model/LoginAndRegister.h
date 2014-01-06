@@ -23,6 +23,10 @@ typedef enum LoginStatus {
 -(void) bindPhoneCompeted;
 @end
 
+@protocol BalanceChangeDelegate <NSObject>
+-(void) balanceChanged:(float) oldBalance New:(float) balance;
+@end
+
 @interface LoginAndRegister : NSObject {
     id          _delegate;
     LoginStatus loginStatus;
@@ -39,6 +43,7 @@ typedef enum LoginStatus {
     NSString*   _inviter;
     
     NSMutableArray* _delegateArray;
+    NSMutableArray* _delegateBalanceArray;
 }
 
 +(id) sharedInstance;
@@ -69,4 +74,10 @@ typedef enum LoginStatus {
 
 -(void) attachBindPhoneEvent : (id) delegate;
 -(void) detachBindPhoneEvent : (id) delegate;
+
+-(void) attachBalanceChangeEvent : (id) delegate;
+-(void) detachBalanceChangeEvent : (id) delegate;
+
+-(void) increaseBalance:(float) inc;
+-(void) setBalance:(float) balance;
 @end

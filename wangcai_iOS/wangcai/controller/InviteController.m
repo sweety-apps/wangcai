@@ -335,6 +335,9 @@
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle: @"绑定成功" message: nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alertView show];
         [alertView release];
+        
+        // 给用户加一块钱
+        [[LoginAndRegister sharedInstance] increaseBalance:1];
     }
     else
     {

@@ -17,7 +17,7 @@ typedef NSInteger CommonTaskTableViewCellShowType;
 typedef NSInteger CommonTaskTableViewCellState;
 
 #define CommonTaskTableViewCellStateUnfinish (0)
-#define CommonTaskTableViewCellStateFinished (1)
+#define CommonTaskTableViewCellStateFinished (10)
 #define CommonTaskTableViewCellStateDoing (2)
 
 @interface CommonTaskTableViewCell : UITableViewCell
