@@ -102,7 +102,7 @@
     
     [self updateErrorMsg: NO msg: nil];
     
-    [self.adView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: @"http://www.5566.net"]]];
+//    [self.adView loadRequest: [NSURLRequest requestWithURL: [NSURL URLWithString: @"http://www.5566.net"]]];
     
     self.adView.scrollView.bounces = NO;
 }
@@ -170,7 +170,7 @@
 -(void) ShareCompleted : (id) share State:(SSResponseState) state Err:(id<ICMErrorInfo>) error {
 }
 
-- (IBAction)copy:(id)sender
+- (IBAction)copyUrl:(id)sender
 {
     UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.inviteUrlTextField.text;
@@ -315,8 +315,11 @@
 - (IBAction)updateInviter:(id)sender
 {
     NSString* inviter = self.invitedPeopleTextfield.text;
-    [_inviterUpdate updateInviter: inviter delegate: self];
-    [self showLoading];
+    if (inviter != nil)
+    {
+        [_inviterUpdate updateInviter: inviter delegate: self];
+        [self showLoading];
+    }
 }
 
 - (void)updateInviterCompleted:(BOOL)suc errMsg:(NSString *)errMsg
@@ -345,6 +348,17 @@
             [self updateErrorMsg: YES msg: errMsg];
         }
     }
+}
+
+#pragma mark - Text Field Delegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [textField setPlaceholder: @"                                           "];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [textField setPlaceholder: @"请输入邀请码"];
 }
 
 @end

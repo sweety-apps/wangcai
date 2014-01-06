@@ -18,6 +18,7 @@
 #import <RennSDK/RennSDK.h>
 #import "WeiboSDK.h"
 #import "CommonTaskList.h"
+#import "XMLReader.h"
 
 @interface StartupController () <CommonTaskListDelegate>
 
@@ -93,38 +94,216 @@
 - (void) initShareSDK {
     [ShareSDK registerApp:@"ebe1cada416"];
     
-    // 新浪微博
-    [ShareSDK connectSinaWeiboWithAppKey: @"338240125" appSecret: @"32ccbf2004d7f8d19e29978aacdc2904" redirectUri: @"https://api.weibo.com/oauth2/default.html" weiboSDKCls: [WeiboSDK class]];
+    dispatch_queue_t defaultQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
-    // 添加QQ应用
-    [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
+    dispatch_async(defaultQueue, ^
+    {
+        NSURL* url = [NSURL URLWithString: @"http://wangcai.meme-da.com/invite/share.xml"];
+        NSData* xmlData = [NSData dataWithContentsOfURL: url];
+        
+        if (xmlData)
+        {
+            NSError* error = nil;
+            NSDictionary* shareDict = [XMLReader dictionaryForXMLData: xmlData error: &error];
+            if (shareDict)
+            {
+                NSDictionary* rootObject = (NSDictionary *)[shareDict objectForKey: @"share"];
+                if (rootObject)
+                {
+                    if ([rootObject count] > 0)
+                    {
+                        // 豆瓣
+                        NSDictionary* doubanObject = (NSDictionary *)[rootObject objectForKey: @"Douban"];
+                        if (doubanObject)
+                        {
+                            NSString* state = (NSString *)[doubanObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectDoubanWithAppKey: @"0f4b3d0120adb5472de1b70362091fd5" appSecret: @"54b911f9863bdbd7" redirectUri: @"http://www.meme-da.com/"];
+                            }
+                        }
+                        
+                        // 163微博
+                        NSDictionary* netBaseWeiboObject = (NSDictionary *)[rootObject objectForKey: @"NetbaseWeibo"];
+                        if (netBaseWeiboObject)
+                        {
+                            NSString* state = (NSString *)[netBaseWeiboObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connect163WeiboWithAppKey: @"la0pHcb8OZU5N2Xg" appSecret: @"UrTuNU32cSEfz789pUd0iSGQBJIBaVzh" redirectUri: @"http://www.meme-da.com/"];
+                            }
+                        }
+                        
+                        // QQ应用
+                        NSDictionary* qqObject = (NSDictionary *)[rootObject objectForKey: @"QQ"];
+                        if (qqObject)
+                        {
+                            NSString* state = (NSString *)[qqObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
+                            }
+                        }
+                        
+                        // QQ空间
+                        NSDictionary* qzoneObject = (NSDictionary *)[rootObject objectForKey: @"QZone"];
+                        if (qzoneObject)
+                        {
+                            NSString* state = (NSString *)[qzoneObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectQZoneWithAppKey: @"100577453" appSecret: @"9454dd071c0dc94008caed4045ce5e39" qqApiInterfaceCls:[QQApiInterface class] tencentOAuthCls: [TencentOAuth class]];
+                            }
+                        }
+                        
+                        // 人人
+                        NSDictionary* renrenObject = (NSDictionary *)[rootObject objectForKey: @"RenRen"];
+                        if (renrenObject)
+                        {
+                            NSString* state = (NSString *)[renrenObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectRenRenWithAppId: @"245528" appKey: @"a4825d92031b4a8495d7ef803b480373" appSecret: @"aa95c7e0575e4d8d8fd59cd31b32c76e" renrenClientClass: [RennClient class]];
+                            }
+                        }
+                        
+                        // 新浪微博
+                        NSDictionary* sinaWeiboObject = (NSDictionary *)[rootObject objectForKey: @"SinaWeibo"];
+                        if (sinaWeiboObject)
+                        {
+                            NSString* state = (NSString *)[sinaWeiboObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectSinaWeiboWithAppKey: @"338240125" appSecret: @"32ccbf2004d7f8d19e29978aacdc2904" redirectUri: @"https://api.weibo.com/oauth2/default.html" weiboSDKCls: [WeiboSDK class]];
+                            }
+                        }
+                        
+                        // 腾讯微博
+                        NSDictionary* tencentWeiboObject = (NSDictionary *)[rootObject objectForKey: @"TencentWeibo"];
+                        if (tencentWeiboObject)
+                        {
+                            NSString* state = (NSString *)[tencentWeiboObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectTencentWeiboWithAppKey: @"801457140" appSecret: @"08c6c07a58f40d2a9b06eabeaf86f6ba" redirectUri: @"http://www.meme-da.com/" wbApiCls: [WBApi class]];
+                            }
+                        }
+                        
+                        // 微信
+                        NSDictionary* wechatObject = (NSDictionary *)[rootObject objectForKey: @"WeChat"];
+                        if (wechatObject)
+                        {
+                            NSString* state = (NSString *)[wechatObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectWeChatWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+                            }
+                        }
+                        
+                        // 微信收藏
+                        NSDictionary* wechatFavObject = (NSDictionary *)[rootObject objectForKey: @"WeChatFav"];
+                        if (wechatFavObject)
+                        {
+                            NSString* state = (NSString *)[wechatFavObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectWeChatFavWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+                            }
+                        }
+                        
+                        // 微信好友
+                        NSDictionary* wechatSessionObject = (NSDictionary *)[rootObject objectForKey: @"WeChatSession"];
+                        if (wechatSessionObject)
+                        {
+                            NSString* state = (NSString *)[wechatSessionObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectWeChatSessionWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+                            }
+                        }
+                        
+                        // 微信朋友圈
+                        NSDictionary* wechatTimelineObject = (NSDictionary *)[rootObject objectForKey: @"WeChatTimeline"];
+                        if (wechatTimelineObject)
+                        {
+                            NSString* state = (NSString *)[wechatTimelineObject objectForKey: @"text"];
+                            if ([state intValue])
+                            {
+                                [ShareSDK connectWeChatTimelineWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+                            }
+                        }
+                        
+                    }
+                    else
+                    {
+                        // xml有问题，share节点下无子节点，只分享到QQ应用平台
+                        dispatch_async(dispatch_get_main_queue(), ^
+                        {
+                            [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
+                        });
+                    }
+                }
+                else
+                {
+                    // xml有问题，无share根节点，只分享到QQ应用平台
+                    dispatch_async(dispatch_get_main_queue(), ^
+                    {
+                        [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
+                    });
+                }
+                
+            }
+            else
+            {
+                // 解析xml失败，则只分享到QQ应用平台
+                dispatch_async(dispatch_get_main_queue(), ^
+                {
+                    [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
+                });
+            }
+        }
+        else
+        {
+            // 读取不到xml，则只分享到QQ应用平台
+            dispatch_async(dispatch_get_main_queue(), ^
+            {
+                [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
+            });
+        }
+    });
     
-    //添加QQ空间应用
-    [ShareSDK connectQZoneWithAppKey: @"100577453" appSecret: @"9454dd071c0dc94008caed4045ce5e39" qqApiInterfaceCls:[QQApiInterface class] tencentOAuthCls: [TencentOAuth class]];
-    
-    // TX微博
-    [ShareSDK connectTencentWeiboWithAppKey: @"801457140" appSecret: @"08c6c07a58f40d2a9b06eabeaf86f6ba" redirectUri: @"http://www.meme-da.com/" wbApiCls: [WBApi class]];
-    
-    // 163微博
-    [ShareSDK connect163WeiboWithAppKey: @"la0pHcb8OZU5N2Xg" appSecret: @"UrTuNU32cSEfz789pUd0iSGQBJIBaVzh" redirectUri: @"http://www.meme-da.com/"];
-    
-    // 豆瓣
-    [ShareSDK connectDoubanWithAppKey: @"0f4b3d0120adb5472de1b70362091fd5" appSecret: @"54b911f9863bdbd7" redirectUri: @"http://www.meme-da.com/"];
-    
-    // 人人
-    [ShareSDK connectRenRenWithAppId: @"245528" appKey: @"a4825d92031b4a8495d7ef803b480373" appSecret: @"aa95c7e0575e4d8d8fd59cd31b32c76e" renrenClientClass: [RennClient class]];
-    
-    // 微信
-    [ShareSDK connectWeChatWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
-    
-    // 微信朋友圈
-    [ShareSDK connectWeChatFavWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
-    
-    // 微信好友
-    [ShareSDK connectWeChatSessionWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
-    
-    // 微信收藏
-    [ShareSDK connectWeChatFavWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+//    // 新浪微博
+//    [ShareSDK connectSinaWeiboWithAppKey: @"338240125" appSecret: @"32ccbf2004d7f8d19e29978aacdc2904" redirectUri: @"https://api.weibo.com/oauth2/default.html" weiboSDKCls: [WeiboSDK class]];
+//
+//    // 添加QQ应用
+//    [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
+//    
+//    //添加QQ空间应用
+//    [ShareSDK connectQZoneWithAppKey: @"100577453" appSecret: @"9454dd071c0dc94008caed4045ce5e39" qqApiInterfaceCls:[QQApiInterface class] tencentOAuthCls: [TencentOAuth class]];
+//    
+//    // TX微博
+//    [ShareSDK connectTencentWeiboWithAppKey: @"801457140" appSecret: @"08c6c07a58f40d2a9b06eabeaf86f6ba" redirectUri: @"http://www.meme-da.com/" wbApiCls: [WBApi class]];
+//    
+//    // 163微博
+//    [ShareSDK connect163WeiboWithAppKey: @"la0pHcb8OZU5N2Xg" appSecret: @"UrTuNU32cSEfz789pUd0iSGQBJIBaVzh" redirectUri: @"http://www.meme-da.com/"];
+//    
+//    // 豆瓣
+//    [ShareSDK connectDoubanWithAppKey: @"0f4b3d0120adb5472de1b70362091fd5" appSecret: @"54b911f9863bdbd7" redirectUri: @"http://www.meme-da.com/"];
+//    
+//    // 人人
+//    [ShareSDK connectRenRenWithAppId: @"245528" appKey: @"a4825d92031b4a8495d7ef803b480373" appSecret: @"aa95c7e0575e4d8d8fd59cd31b32c76e" renrenClientClass: [RennClient class]];
+//    
+//    // 微信
+//    [ShareSDK connectWeChatWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+//    
+//    // 微信朋友圈
+//    [ShareSDK connectWeChatTimelineWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+//    
+//    // 微信好友
+//    [ShareSDK connectWeChatSessionWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+//    
+//    // 微信收藏
+//    [ShareSDK connectWeChatFavWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
     //……
 }
 

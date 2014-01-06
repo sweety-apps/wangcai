@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "InviterUpdate.h"
 
-@interface InviteController : UIViewController <InviterUpdateDelegate>
+@interface InviteController : UIViewController <InviterUpdateDelegate, UITextFieldDelegate>
 {
     InviterUpdate* _inviterUpdate;
 }
@@ -38,7 +38,7 @@
 @property (copy, nonatomic) NSString* inviteCode;
 @property (copy, nonatomic) NSString* invitedPeople;
 
-- (IBAction)copy:(id)sender;
+- (IBAction)copyUrl:(id)sender;
 - (IBAction)share:(id)sender;
 - (IBAction)switchView:(id)sender;
 - (IBAction)clickBack:(id)sender;
