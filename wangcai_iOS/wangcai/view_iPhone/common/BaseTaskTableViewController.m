@@ -68,6 +68,15 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    if ([[LoginAndRegister sharedInstance] getBalance] > [self.zhanghuYuEHeaderCell.yuENumView getNum])
+    {
+        [self setYuENumberWithAnimationFrom:[self.zhanghuYuEHeaderCell.yuENumView getNum] toNum:[[LoginAndRegister sharedInstance] getBalance]];
+    }
+    else
+    {
+        [self.zhanghuYuEHeaderCell.yuENumView setNum:[[LoginAndRegister sharedInstance] getBalance]];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -153,6 +162,11 @@
         ChoujiangViewController* choujiangCtrl = [[ChoujiangViewController alloc] init];
         [self.beeStack pushViewController:choujiangCtrl animated:YES];
     }
+    else
+    {
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"您今天已签到" message:@"明天记得再来签到哟！" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
+        [alert show];
+    }
 }
 
 - (IBAction)onPressedTiquxianjinButton:(id)sender
@@ -162,18 +176,19 @@
 
 - (void)enableQiandaoButton:(BOOL)enabled
 {
-    self.zhanghuYuEHeaderCell.qiandaoButton.enabled = enabled;
+    //self.zhanghuYuEHeaderCell.qiandaoButton.enabled = enabled;
     BOOL hidden = enabled ? NO : YES;
-    self.zhanghuYuEHeaderCell.qiandaoIcon.hidden = hidden;
-    self.zhanghuYuEHeaderCell.qiandaoLabel.hidden = hidden;
+    self.zhanghuYuEHeaderCell.qiandaoRedDotBubble.hidden = hidden;
+    //self.zhanghuYuEHeaderCell.qiandaoIcon.hidden = hidden;
+    //self.zhanghuYuEHeaderCell.qiandaoLabel.hidden = hidden;
 }
 
 - (void)enableTixianButton:(BOOL)enabled
 {
-    self.zhanghuYuEHeaderCell.tixianButton.enabled = enabled;
+    //self.zhanghuYuEHeaderCell.tixianButton.enabled = enabled;
     BOOL hidden = enabled ? NO : YES;
-    self.zhanghuYuEHeaderCell.tixianIcon.hidden = hidden;
-    self.zhanghuYuEHeaderCell.tixianLabel.hidden = hidden;
+    //self.zhanghuYuEHeaderCell.tixianIcon.hidden = hidden;
+    //self.zhanghuYuEHeaderCell.tixianLabel.hidden = hidden;
 }
 
 //带动画和声音设置余额

@@ -25,6 +25,8 @@
     BOOL _hasLoadedHistoricalFinishedList;
     NSInteger _curCellCount;
     NSInteger _hisCellCount;
+    
+    float _increasedNum;
 }
 
 @property (nonatomic,retain) IBOutlet CommonZhanghuYuETableViewCell* zhanghuYuEHeaderCell;

@@ -289,7 +289,7 @@
         default:
             break;
     }
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"返回" otherButtonTitles:@"分享", nil];
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"返回" otherButtonTitles:/*@"分享",*/ nil];
     
     [alertView show];
 }

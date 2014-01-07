@@ -81,15 +81,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wZR-Ly-O02">
-                        <rect key="frame" x="275" y="62" width="30" height="21"/>
+                        <rect key="frame" x="275" y="48" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" id="mX3-pt-3Er" customClass="CommonYuENumView">
-                        <rect key="frame" x="130" y="27" width="160" height="56"/>
+                        <rect key="frame" x="120" y="27" width="160" height="56"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -98,20 +98,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qiandao_button_icon.png" id="YzB-Mv-rlg">
-                        <rect key="frame" x="156" y="112" width="20" height="20"/>
+                        <rect key="frame" x="120" y="108" width="83" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签到捡钱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kip-bl-lHU">
-                        <rect key="frame" x="173" y="108" width="70" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qiandao_button_red_dot.png" id="8EZ-iY-bfQ">
+                        <rect key="frame" x="128" y="97" width="83" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r1d-Do-os4" userLabel="qiandaoBtn">
-                        <rect key="frame" x="156" y="100" width="70" height="30"/>
+                        <rect key="frame" x="120" y="100" width="90" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal">
@@ -122,19 +118,11 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tiquxianjin_icon.png" id="eX6-8g-Bt8">
-                        <rect key="frame" x="240" y="112" width="20" height="20"/>
+                        <rect key="frame" x="223" y="109" width="83" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提取现金" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aka-nt-GkD">
-                        <rect key="frame" x="257" y="108" width="70" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dne-wZ-XnH" userLabel="tixianBtn">
-                        <rect key="frame" x="240" y="100" width="70" height="30"/>
+                        <rect key="frame" x="225" y="100" width="90" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal">
@@ -152,10 +140,9 @@
             <connections>
                 <outlet property="qiandaoButton" destination="r1d-Do-os4" id="CYJ-cL-X32"/>
                 <outlet property="qiandaoIcon" destination="YzB-Mv-rlg" id="NQZ-Vq-O2a"/>
-                <outlet property="qiandaoLabel" destination="kip-bl-lHU" id="hCT-8c-G72"/>
+                <outlet property="qiandaoRedDotBubble" destination="8EZ-iY-bfQ" id="BVc-rF-txz"/>
                 <outlet property="tixianButton" destination="dne-wZ-XnH" id="91U-o6-Zt7"/>
                 <outlet property="tixianIcon" destination="eX6-8g-Bt8" id="wit-I4-oBd"/>
-                <outlet property="tixianLabel" destination="aka-nt-GkD" id="RV0-4e-4QL"/>
                 <outlet property="yuENumView" destination="mX3-pt-3Er" id="2K2-Tu-KIN"/>
             </connections>
         </tableViewCell>
@@ -221,9 +208,10 @@
     </objects>
     <resources>
         <image name="head_top_part.png" width="320" height="134"/>
-        <image name="qiandao_button_icon.png" width="11" height="12"/>
+        <image name="qiandao_button_icon.png" width="82" height="16"/>
+        <image name="qiandao_button_red_dot.png" width="12" height="12"/>
         <image name="table_view_cell_line.png" width="320" height="1"/>
-        <image name="tiquxianjin_icon.png" width="11" height="12"/>
+        <image name="tiquxianjin_icon.png" width="82" height="16"/>
         <image name="zhanghuyue.png" width="41" height="49"/>
     </resources>
 </document>

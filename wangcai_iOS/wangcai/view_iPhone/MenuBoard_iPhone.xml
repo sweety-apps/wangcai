@@ -11,12 +11,6 @@
         <linear orientation="v" class="wrapper">
             <image id="item-bg" class="item-bg"/>
             <linear orientation="v" class="item-wrapper">
-                <label class="item-text">我家旺财</label>
-                <button id="wc_main" class="item-mask"/>
-                <image id="item-left-icon-wodewangcai" class="item-left-icon"/>
-                <image id="item-line-image0" class="item-line-image"/>
-            </linear>
-            <linear orientation="v" class="item-wrapper">
                 <label class="item-text">现金提取</label>
                 <button id="second" class="item-mask"/>
                 <image id="item-left-icon-tixian" class="item-left-icon"/>

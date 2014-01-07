@@ -19,6 +19,7 @@
 @synthesize qiandaoButton;
 @synthesize qiandaoIcon;
 @synthesize qiandaoLabel;
+@synthesize qiandaoRedDotBubble;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

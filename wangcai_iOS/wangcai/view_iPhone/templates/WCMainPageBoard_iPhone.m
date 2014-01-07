@@ -57,6 +57,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
     {
         [self observeNotification:@"naviToUserInfoEditor"];
+        [self observeNotification:@"balanceChanged"];
         
         self.view.hintString = @"This is the  board";
         self.view.backgroundColor = [UIColor whiteColor];
@@ -150,6 +151,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
         [self unobserveNotification:@"naviToUserInfoEditor"];
+        [self unobserveNotification:@"balanceChanged"];
     }
     else if ( [signal is:BeeUIBoard.LAYOUT_VIEWS] )
     {
@@ -252,6 +254,10 @@ ON_NOTIFICATION( notification )
 	if ([notification.name isEqualToString:@"naviToUserInfoEditor"])
     {
         [self naviToUserInfoEditor];
+    }
+    else if ([notification.name isEqualToString:@"balanceChanged"])
+    {
+        //[_taskTableViewController ]
     }
 }
 

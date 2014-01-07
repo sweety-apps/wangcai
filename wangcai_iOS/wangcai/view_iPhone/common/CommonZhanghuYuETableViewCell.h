@@ -19,6 +19,7 @@
 
 @property (nonatomic,retain) IBOutlet UIButton* qiandaoButton;
 @property (nonatomic,retain) IBOutlet UIImageView* qiandaoIcon;
+@property (nonatomic,retain) IBOutlet UIImageView* qiandaoRedDotBubble;
 @property (nonatomic,retain) IBOutlet UILabel* qiandaoLabel;
 
 @end

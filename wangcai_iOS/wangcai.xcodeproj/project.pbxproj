@@ -537,6 +537,7 @@
 		F3F18A26185472A90098C852 /* WCMainPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3F18A24185472A90098C852 /* WCMainPageBoard_iPhone.xml */; };
 		F3FB9293187AF5F7001D702E /* user_info_commit_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FB9292187AF5F7001D702E /* user_info_commit_btn@2x.png */; };
 		F3FB9295187AF825001D702E /* head_left_menu_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */; };
+		F3FB92AF187C5AB5001D702E /* qiandao_button_red_dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FB92AE187C5AB5001D702E /* qiandao_button_red_dot@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1399,6 +1400,7 @@
 		F3F18A24185472A90098C852 /* WCMainPageBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WCMainPageBoard_iPhone.xml; sourceTree = "<group>"; };
 		F3FB9292187AF5F7001D702E /* user_info_commit_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_info_commit_btn@2x.png"; sourceTree = "<group>"; };
 		F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head_left_menu_btn@2x.png"; sourceTree = "<group>"; };
+		F3FB92AE187C5AB5001D702E /* qiandao_button_red_dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qiandao_button_red_dot@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1811,6 +1813,7 @@
 		A60C5830186FF8A30068425C /* WCMainPageBoard */ = {
 			isa = PBXGroup;
 			children = (
+				F3FB92AE187C5AB5001D702E /* qiandao_button_red_dot@2x.png */,
 				F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */,
 				A60C5831186FF8A30068425C /* about_wangcai_cell_icon@2x.png */,
 				A60C5832186FF8A30068425C /* bottom_bg@2x.png */,
@@ -3312,6 +3315,7 @@
 				F3813D3B18783CE800350C27 /* gotcoins.aiff in Resources */,
 				A60C5870186FF8A30068425C /* warn_bkg@2x.png in Resources */,
 				A60C5876186FF8A30068425C /* yue_4@2x.png in Resources */,
+				F3FB92AF187C5AB5001D702E /* qiandao_button_red_dot@2x.png in Resources */,
 				A60C587C186FF8A30068425C /* yue_dot@2x.png in Resources */,
 				A60C587E186FF8A30068425C /* table_view_cell_label_bg@2x.png in Resources */,
 				F3D834CE185C1E31003095D5 /* BaseTaskTableViewController.xib in Resources */,
@@ -3853,6 +3857,7 @@
 		F3F18A1C18543A450098C852 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3903,6 +3908,7 @@
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3910,6 +3916,7 @@
 		F3F18A1D18543A450098C852 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3962,6 +3969,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = NO;
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

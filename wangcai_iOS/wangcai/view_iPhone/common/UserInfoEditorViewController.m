@@ -409,6 +409,9 @@
     if (succeed)
     {
         [MBHUDView hudWithBody:@"用户信息提交成功！" type:MBAlertViewHUDTypeCheckmark  hidesAfter:2.0 show:YES];
+        // 给用户加一块钱
+        [[LoginAndRegister sharedInstance] increaseBalance:1];
+        [self onPressedBackPhone:nil];
     }
     else
     {

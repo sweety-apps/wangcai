@@ -138,7 +138,7 @@ static CommonTaskList* gInstance = nil;
     return 0.0f;
 }
 
-- (BOOL)containsUserInfoTask
+- (BOOL)containsUnfinishedUserInfoTask
 {
     return _containsUserInfoTask;
 }
