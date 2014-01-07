@@ -49,5 +49,6 @@
 - (NSArray*)getUnfinishedTaskList;
 - (NSArray*)getAllTaskList;
 - (float)allMoneyCanBeEarnedInRMBYuan;
+- (BOOL)containsUnfinishedUserInfoTask;
 
 @end

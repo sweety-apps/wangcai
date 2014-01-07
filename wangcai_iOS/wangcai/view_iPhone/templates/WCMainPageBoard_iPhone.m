@@ -91,17 +91,17 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //上面旺财ICON
         UIImageView* headWangcaiIconImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head_left_icon"]] autorelease];
         rectFrame = headWangcaiIconImageView.frame;
-        rectFrame.origin.x = 42;
+        rectFrame.origin.x = 58;
         rectFrame.origin.y = 14;
         headWangcaiIconImageView.frame = rectFrame;
         [self.view addSubview:headWangcaiIconImageView];
         
         //左上角按钮
-        UIImageView* headLeftBtnImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head_back"]] autorelease];
+        UIImageView* headLeftBtnImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head_left_menu_btn"]] autorelease];
         headLeftBtnImageView.contentMode = UIViewContentModeTopLeft;
         rectFrame = headLeftBtnImageView.frame;
         rectFrame.origin.x = 14;
-        rectFrame.origin.y = 12;
+        rectFrame.origin.y = 15;
         headLeftBtnImageView.frame = rectFrame;
         
         rectFrame = CGRectMake(0, 0, 107, 48);
@@ -227,6 +227,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 -(void)onTouchUpInsideRightBtn:(id)sender
 {
     [self onTouchReleaseRightBtn:sender];
+    [self naviToExchangeController];
 }
 
 -(void)naviToUserInfoEditor
@@ -237,6 +238,11 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
         NSLog(@"靠！！！stack空的");
     }
     [self.stack pushViewController:userInfoCtrl animated:NO];
+}
+
+-(void)naviToExchangeController
+{
+    [[BeeUIRouter sharedInstance] open:@"first" animated:YES];
 }
 
 #pragma mark Notification

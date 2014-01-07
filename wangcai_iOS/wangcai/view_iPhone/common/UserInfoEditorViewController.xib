@@ -8,7 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserInfoEditorViewController">
             <connections>
                 <outlet property="ageSelectorView" destination="mzq-Qu-qah" id="eI3-J1-weM"/>
-                <outlet property="commitButtonRedBag" destination="Zac-UH-vCs" id="ZRl-ND-buw"/>
+                <outlet property="bindPhoneView" destination="Hh2-Lg-VYb" id="Bkr-RO-ZqS"/>
+                <outlet property="commitButton" destination="pRc-DY-fsH" id="JYM-Hr-HKJ"/>
                 <outlet property="commitButtonView" destination="rhM-gr-c1k" id="yto-CE-Bc8"/>
                 <outlet property="downSectionView" destination="Eae-O1-yNG" id="kPu-5Z-6Og"/>
                 <outlet property="scrollView" destination="A8H-uu-Lda" id="tm6-7d-nii"/>
@@ -52,38 +53,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" id="Hh2-Lg-VYb" userLabel="BindTips">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warn.png" id="HUY-iM-jb4">
-                                            <rect key="frame" x="5" y="7" width="20" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您还没有绑定手机,为了有效兑换" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iJQ-FU-TCn">
-                                            <rect key="frame" x="30" y="7" width="300" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ced-Gv-Uby">
-                                            <rect key="frame" x="230" y="4" width="80" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="绑定手机号" backgroundImage="resend_normal.png">
-                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="selected" backgroundImage="resend_down.png"/>
-                                            <state key="highlighted" backgroundImage="resend_down.png"/>
-                                            <connections>
-                                                <action selector="onPressedAttachPhone:" destination="-1" eventType="touchUpInside" id="mA0-zd-1rn"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旺财等级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hHs-bn-Sf8">
                                     <rect key="frame" x="15" y="50" width="159" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -205,21 +174,19 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pRc-DY-fsH">
-                                            <rect key="frame" x="80" y="10" width="160" height="44"/>
+                                            <rect key="frame" x="23" y="8" width="274" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.47058826679999999" green="0.47058826679999999" blue="0.47058826679999999" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
-                                            <state key="normal" title="确认并领取">
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <state key="normal" title="确认并领取1元" backgroundImage="user_info_commit_btn.png">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
                                                 <action selector="onPressedCommitButton:" destination="-1" eventType="touchUpInside" id="Zns-qB-S2R"/>
                                             </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_icon_one.png" id="Zac-UH-vCs">
-                                            <rect key="frame" x="185" y="0.0" width="60" height="60"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -228,6 +195,38 @@
                         </view>
                     </subviews>
                 </scrollView>
+                <view contentMode="scaleToFill" id="Hh2-Lg-VYb" userLabel="BindTips">
+                    <rect key="frame" x="0.0" y="54" width="320" height="35"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warn.png" id="HUY-iM-jb4">
+                            <rect key="frame" x="5" y="7" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您还没有绑定手机,为了有效兑换" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iJQ-FU-TCn">
+                            <rect key="frame" x="30" y="7" width="300" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ced-Gv-Uby">
+                            <rect key="frame" x="230" y="4" width="80" height="27"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="绑定手机号" backgroundImage="resend_normal.png">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" backgroundImage="resend_down.png"/>
+                            <state key="highlighted" backgroundImage="resend_down.png"/>
+                            <connections>
+                                <action selector="onPressedAttachPhone:" destination="-1" eventType="touchUpInside" id="mA0-zd-1rn"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -238,10 +237,10 @@
         <image name="back.png" width="12" height="22"/>
         <image name="dengjiTmp.png" width="1158" height="304"/>
         <image name="nav_Header.png" width="320" height="54"/>
-        <image name="package_icon_one.png" width="52" height="54"/>
         <image name="resend_down.png" width="66" height="27"/>
         <image name="resend_normal.png" width="66" height="27"/>
         <image name="table_view_cell_line.png" width="320" height="1"/>
+        <image name="user_info_commit_btn.png" width="275" height="54"/>
         <image name="user_sex_selected.png" width="43" height="43"/>
         <image name="warn.png" width="17" height="17"/>
     </resources>

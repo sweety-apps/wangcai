@@ -10,6 +10,7 @@
 #import "PhoneValidationController.h"
 #import "UserInfoAPI.h"
 #import "MBHUDView.h"
+#import "CommonTaskList.h"
 
 @interface UserInfoEditorViewController () <UserInfoAPIDelegate>
 {
@@ -29,7 +30,10 @@
 @synthesize hobbySelectorViews;
 
 @synthesize commitButtonView;
+@synthesize commitButton;
 @synthesize commitButtonRedBag;
+
+@synthesize bindPhoneView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -134,6 +138,16 @@
     CGRect rectDownSection = self.downSectionView.frame;
     rectDownSection.size.height = self.selectionContainerView.frame.origin.y + maxY;
     self.downSectionView.frame = rectDownSection;
+    
+    
+    if ([[CommonTaskList sharedInstance] containsUnfinishedUserInfoTask])
+    {
+        [self.commitButton setTitle:@"确认并领取1元" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.commitButton setTitle:@"确认" forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -146,6 +160,45 @@
 {
     [super viewWillAppear:animated];
     [self hideNavigationBarAnimated:NO];
+    [self resetContent];
+}
+
+- (void)resetContent
+{
+    CGRect rect = self.upSectionView.frame;
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    
+    if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+        self.bindPhoneView.hidden = NO;
+        
+        CGFloat Y = 0;
+        
+        rect = self.upSectionView.frame;
+        rect.origin.y = Y;
+        
+        self.upSectionView.frame = rect;
+        Y = CGRectGetMaxY(self.upSectionView.frame);
+        
+        rect = self.downSectionView.frame;
+        rect.origin.y = Y;
+        
+        self.downSectionView.frame = rect;
+    } else {
+        self.bindPhoneView.hidden = YES;
+        
+        CGFloat Y = -CGRectGetHeight(self.bindPhoneView.frame);
+        
+        rect = self.upSectionView.frame;
+        rect.origin.y = Y;
+        
+        self.upSectionView.frame = rect;
+        Y = CGRectGetMaxY(self.upSectionView.frame);
+        
+        rect = self.downSectionView.frame;
+        rect.origin.y = Y;
+        
+        self.downSectionView.frame = rect;
+    }
 }
 
 

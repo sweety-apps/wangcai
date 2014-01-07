@@ -64,6 +64,9 @@ static CommonTaskList* gInstance = nil;
 
 
 @interface CommonTaskList ()
+{
+    BOOL _containsUserInfoTask;
+}
 
 @property (nonatomic,retain) NSMutableArray* unfinishedTaskList;
 
@@ -78,7 +81,7 @@ static CommonTaskList* gInstance = nil;
 {
     self = [super init];
     if (self) {
-        
+        _containsUserInfoTask = NO;
     }
     return self;
 }
@@ -135,6 +138,11 @@ static CommonTaskList* gInstance = nil;
     return 0.0f;
 }
 
+- (BOOL)containsUserInfoTask
+{
+    return _containsUserInfoTask;
+}
+
 - (NSArray*)_buildLocalTestTask
 {
     //本地测试数据
@@ -172,6 +180,8 @@ static CommonTaskList* gInstance = nil;
         msg = [body objectForKey:@"msg"];
         if ([result integerValue] == 0)
         {
+            _containsUserInfoTask = NO;
+            
             NSArray* taskList = [body objectForKey:@"task_list"];
             NSMutableArray* resultTaskList = [NSMutableArray array];
             NSMutableArray* unfinishedTaskList = [NSMutableArray array];
@@ -207,6 +217,14 @@ static CommonTaskList* gInstance = nil;
                     case kTaskTypeUserInfo:
                         task.taskIsLocalIcon = YES;
                         task.taskIconUrl = @"person_info_icon";
+                        if ([task.taskStatus integerValue] != 1)
+                        {
+                            _containsUserInfoTask = YES;
+                        }
+                        else
+                        {
+                            _containsUserInfoTask = NO;
+                        }
                         break;
                     case kTaskTypeInviteFriends:
                         task.taskIsLocalIcon = NO;

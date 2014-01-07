@@ -28,7 +28,10 @@
 @property (nonatomic,retain) NSMutableArray* hobbySelectorViews;
 
 @property (nonatomic,retain) IBOutlet UIView* commitButtonView;
+@property (nonatomic,retain) IBOutlet UIButton* commitButton;
 @property (nonatomic,retain) IBOutlet UIImageView* commitButtonRedBag;
+
+@property (nonatomic,retain) IBOutlet UIView* bindPhoneView;
 
 - (IBAction)onPressedAttachPhone:(id)btn;
 - (IBAction)onPressedBackPhone:(id)btn;

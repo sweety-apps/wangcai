@@ -536,6 +536,8 @@
 		F3F18A1818543A450098C852 /* wangcaiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F18A1718543A450098C852 /* wangcaiTests.m */; };
 		F3F18A25185472A90098C852 /* WCMainPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F18A23185472A90098C852 /* WCMainPageBoard_iPhone.m */; };
 		F3F18A26185472A90098C852 /* WCMainPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3F18A24185472A90098C852 /* WCMainPageBoard_iPhone.xml */; };
+		F3FB9293187AF5F7001D702E /* user_info_commit_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FB9292187AF5F7001D702E /* user_info_commit_btn@2x.png */; };
+		F3FB9295187AF825001D702E /* head_left_menu_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1396,6 +1398,8 @@
 		F3F18A22185472A90098C852 /* WCMainPageBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCMainPageBoard_iPhone.h; sourceTree = "<group>"; };
 		F3F18A23185472A90098C852 /* WCMainPageBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCMainPageBoard_iPhone.m; sourceTree = "<group>"; };
 		F3F18A24185472A90098C852 /* WCMainPageBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WCMainPageBoard_iPhone.xml; sourceTree = "<group>"; };
+		F3FB9292187AF5F7001D702E /* user_info_commit_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_info_commit_btn@2x.png"; sourceTree = "<group>"; };
+		F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head_left_menu_btn@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1799,6 +1803,7 @@
 		A60C582C186FF8A30068425C /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
+				F3FB9292187AF5F7001D702E /* user_info_commit_btn@2x.png */,
 				A60C582D186FF8A30068425C /* user_hobby_normal@2x.png */,
 				A60C582E186FF8A30068425C /* user_hobby_selected@2x.png */,
 				A60C582F186FF8A30068425C /* user_sex_selected@2x.png */,
@@ -1809,6 +1814,7 @@
 		A60C5830186FF8A30068425C /* WCMainPageBoard */ = {
 			isa = PBXGroup;
 			children = (
+				F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */,
 				A60C5831186FF8A30068425C /* about_wangcai_cell_icon@2x.png */,
 				A60C5832186FF8A30068425C /* bottom_bg@2x.png */,
 				A60C5833186FF8A30068425C /* head_back@2x.png */,
@@ -3357,6 +3363,7 @@
 				A60C587F186FF8A30068425C /* table_view_cell_line@2x.png in Resources */,
 				A60C5863186FF8A30068425C /* sms_code_border@2x.png in Resources */,
 				A60C5850186FF8A30068425C /* logo@2x.png in Resources */,
+				F3FB9293187AF5F7001D702E /* user_info_commit_btn@2x.png in Resources */,
 				A60C5882186FF8A30068425C /* user_hobby_selected@2x.png in Resources */,
 				A60C58AD18703AE60068425C /* invite_seg_select@2x.png in Resources */,
 				F36049AE1871A9AE00FAD1F3 /* menu_icon_chaozhiduihua@2x.png in Resources */,
@@ -3384,6 +3391,7 @@
 				A60C583F186FF8A30068425C /* BindAttachphoneBtn.png in Resources */,
 				A60C5875186FF8A30068425C /* yue_3@2x.png in Resources */,
 				A60C5871186FF8A30068425C /* main_menu_title_text@2x.png in Resources */,
+				F3FB9295187AF825001D702E /* head_left_menu_btn@2x.png in Resources */,
 				F3813D1618753ED400350C27 /* choujiang_baojie@2x.png in Resources */,
 				A60C5873186FF8A30068425C /* yue_1@2x.png in Resources */,
 				F3813D2518753ED400350C27 /* choujiang_x2@2x.png in Resources */,
