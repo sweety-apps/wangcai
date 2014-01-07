@@ -131,7 +131,7 @@ static LoginAndRegister* _sharedInstance;
                 _nickname = [[dict valueForKey:@"nickname"] copy];
                 _device_id = [[dict valueForKey:@"device_id"] copy];
                 _phoneNum = [[dict valueForKey:@"phone"] copy];
-
+                
                 NSNumber* num = [dict valueForKey:@"balance"];
                 _balance = [num floatValue] / 100;
                 num = [dict valueForKey:@"income"];
@@ -145,6 +145,11 @@ static LoginAndRegister* _sharedInstance;
                 
                 _inviter = [[dict valueForKey:@"inviter"] copy];
                 _invite_code = [[dict valueForKey:@"invite_code"] copy];
+                
+                // test
+                //_phoneNum = @"13632729763";
+                //_balance = 100;
+                //
                 
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
             } else {

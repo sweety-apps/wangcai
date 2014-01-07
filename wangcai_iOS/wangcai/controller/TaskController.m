@@ -38,8 +38,8 @@
         
         UIView* view = self->_webViewController.view;
         CGRect rect = [[UIScreen mainScreen]bounds];
-        rect.origin.y = 153;
-        rect.size.height -= 153;
+        rect.origin.y = 134.0f;
+        rect.size.height -= 134.0f;
         view.frame = rect;
         [self.view addSubview:view];
         

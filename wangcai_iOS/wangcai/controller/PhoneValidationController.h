@@ -61,6 +61,7 @@
 - (IBAction)clickBack:(id)sender;
 - (IBAction)clickResend:(id)sender;
 - (IBAction)clickGetMoney:(id)sender;
+- (IBAction)hideKeyboard:(id)sender;
 
 - (void)setBackType:(BOOL)bSend;
 

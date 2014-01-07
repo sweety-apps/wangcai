@@ -39,6 +39,12 @@
 - (void) setTabInfo:(NSString*)tab1 Tab2:(NSString*)tab2 Tab3:(NSString*)tab3 Purse:(float) purse {
     if ( tab3 == nil ) {
         // 调整项目位置
+        [[self.view viewWithTag:77] setHidden:YES];
+        UIView* split = [self.view viewWithTag:76];
+        CGRect rect = split.frame;
+        rect.origin.x += 54;
+        [split setFrame:rect];
+        
         for (int i = 21; i <= 22; i ++) {
             UIView* view = [self.view viewWithTag:i];
             [view setHidden:YES];
@@ -47,7 +53,7 @@
         for (int i = 11; i <= 12; i ++ ) {
             UIView* view = [self.view viewWithTag:i];
             CGRect rect = view.frame;
-            rect.origin.x += 60;
+            rect.origin.x += 40;
             [view setFrame:rect];
         }
         
@@ -72,8 +78,12 @@
     }
     
     if ( purse == 0 ) {
+        label3.textAlignment = UITextAlignmentCenter;
+        
         [[self.view viewWithTag:33] setHidden:YES];
     } else {
+        label3.textAlignment = UITextAlignmentLeft;
+        
         UIImageView* imageView = (UIImageView*)[self.view viewWithTag:33];
         UIImage* image = nil;
         if ( purse == 1 ) {
@@ -97,7 +107,6 @@
 - (void) selectTab:(int)index {
     UIView* view = [self.view viewWithTag:1];
     CGRect rect = view.frame;
-    UIView* destView = nil;
     UIView* viewText = nil;
     
     if ( [[self.view viewWithTag:21] isHidden] ) {
@@ -107,10 +116,8 @@
         }
         
         if ( index == 1 ) {
-            destView = [self.view viewWithTag:12];
             viewText = [self.view viewWithTag:11];
         } else if ( index == 2 ) {
-            destView = [self.view viewWithTag:32];
             viewText = [self.view viewWithTag:31];
         }
     } else {
@@ -120,27 +127,18 @@
         }
     
         if ( index == 1 ) {
-            destView = [self.view viewWithTag:12];
             viewText = [self.view viewWithTag:11];
         } else if ( index == 2 ) {
-            destView = [self.view viewWithTag:22];
             viewText = [self.view viewWithTag:21];
         } else if ( index == 3 ) {
-            destView = [self.view viewWithTag:32];
             viewText = [self.view viewWithTag:31];
         }
     }
     
-    CGRect destRect = destView.frame;
+    CGRect destRect = viewText.frame;
     rect.origin.x = destRect.origin.x + destRect.size.width  / 2 - rect.size.width / 2;
     
     [view setFrame:rect];
-    
-    [((UIImageView*)[self.view viewWithTag:12]) setHighlighted:NO];
-    [((UIImageView*)[self.view viewWithTag:22]) setHighlighted:NO];
-    [((UIImageView*)[self.view viewWithTag:32]) setHighlighted:NO];
-    
-    [((UIImageView*)destView) setHighlighted:YES];
     
     [((UILabel*)[self.view viewWithTag:11]) setTextColor:[UIColor colorWithRed:103.0/255 green:103.0/255 blue:103.0/255 alpha:1]];
     [((UILabel*)[self.view viewWithTag:21]) setTextColor:[UIColor colorWithRed:103.0/255 green:103.0/255 blue:103.0/255 alpha:1]];

@@ -53,7 +53,7 @@
         self->_viewCheckNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:1];
         self->_viewRegSuccess = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:3];
         
-        CGRect rect = CGRectMake( 0.0f, 153.0f, self->_viewInputNum.frame.size.width, self->_viewInputNum.frame.size.height);
+        CGRect rect = CGRectMake( 0.0f, 134.0f, self->_viewInputNum.frame.size.width, self->_viewInputNum.frame.size.height);
         _viewInputNum.frame = rect;
         _viewCheckNum.frame = rect;
         _viewRegSuccess.frame = rect;
@@ -122,6 +122,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (IBAction)hideKeyboard:(id)sender
+{
+    [self hideKeyboard];
 }
 
 - (void) hideKeyboard {
@@ -252,14 +257,14 @@
     
     if ( self->curState == 0 ) {
         newViewFrame = _viewInputNum.frame;
-        newViewFrame.origin.y = _viewInputNum.frame.origin.y - 98; // 头部高度98
+        newViewFrame.origin.y = _viewInputNum.frame.origin.y - 80; // 头部高度98
         
         newBtnFrame = nextNumBtn.frame;
         newBtnFrame.origin.y = nextNumBtn.frame.origin.y - 108;
         [self._imageArrow setHidden:YES];
     } else if ( self->curState == 1 ) {
         newViewFrame = _viewCheckNum.frame;
-        newViewFrame.origin.y = _viewCheckNum.frame.origin.y - 98; // 头部高度98
+        newViewFrame.origin.y = _viewCheckNum.frame.origin.y - 80; // 头部高度98
         
         newBtnFrame = btnCheckNum.frame;
         newBtnFrame.origin.y = btnCheckNum.frame.origin.y - 108;
@@ -321,7 +326,7 @@
     CGRect newBtnFrame;
     if ( self->curState == 0 ) {
         newViewFrame = _viewInputNum.frame;
-        newViewFrame.origin.y = 98 + _viewInputNum.frame.origin.y;
+        newViewFrame.origin.y = 80 + _viewInputNum.frame.origin.y;
     
         newBtnFrame = nextNumBtn.frame;
         newBtnFrame.origin.y = 108 + nextNumBtn.frame.origin.y;
@@ -333,7 +338,7 @@
         [self._imageArrow setHidden:NO];
     } else {
         newViewFrame = _viewCheckNum.frame;
-        newViewFrame.origin.y = 98 + _viewCheckNum.frame.origin.y;
+        newViewFrame.origin.y = 80 + _viewCheckNum.frame.origin.y;
         
         newBtnFrame = btnCheckNum.frame;
         newBtnFrame.origin.y = 108 + btnCheckNum.frame.origin.y;

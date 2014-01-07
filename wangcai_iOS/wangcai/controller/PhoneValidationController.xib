@@ -34,6 +34,9 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="sFW-Wt-hao" appends="YES" id="gP8-aP-W97"/>
+            </connections>
         </view>
         <view contentMode="scaleToFill" id="rcj-Ju-r7j">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -274,6 +277,11 @@
             </subviews>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <tapGestureRecognizer id="sFW-Wt-hao">
+            <connections>
+                <action selector="hideKeyboard:" destination="-1" id="fix-bC-1sw"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="!.png" width="12" height="12"/>

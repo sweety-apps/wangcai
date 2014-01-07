@@ -214,7 +214,7 @@
         </view>
         <tapGestureRecognizer id="CWb-UR-iVv">
             <connections>
-                <action selector="hideKeyboard:" destination="-1" id="i1b-CC-2Sx"/>
+                <action selector="hideKeyboard:" destination="-1" id="l7V-1M-jPs"/>
             </connections>
         </tapGestureRecognizer>
     </objects>
