@@ -13,6 +13,7 @@
 #define kTaskTypeInviteFriends (3)
 #define kTaskTypeEverydaySign (4)
 #define kTaskTypeIntallApp (10000)
+#define kTaskTypeCommon (10001)
 
 @class CommonTaskList;
 
