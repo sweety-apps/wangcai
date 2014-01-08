@@ -10,16 +10,16 @@
 
 @interface CommonYuENumView : UIView
 {
-    float _num;
+    int _num;
     NSMutableDictionary* _digitDict;
     NSMutableArray* _animaArray;
 }
 
--(void)setNum:(float)num;
--(float)getNum;
+-(void)setNum:(int)num;
+-(int)getNum;
 
--(void)setNum:(float)num withAnimation:(BOOL)animated;
+-(void)setNum:(int)num withAnimation:(BOOL)animated;
 
--(void)animateNumFrom:(float)oldNum to:(float)num withAnimation:(BOOL)animated;
+-(void)animateNumFrom:(int)oldNum to:(int)num withAnimation:(BOOL)animated;
 
 @end

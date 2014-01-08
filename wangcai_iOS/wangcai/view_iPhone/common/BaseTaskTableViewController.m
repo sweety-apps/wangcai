@@ -192,7 +192,7 @@
 }
 
 //带动画和声音设置余额
-- (void)setYuENumberWithAnimationFrom:(float)oldNum toNum:(float)newNum
+- (void)setYuENumberWithAnimationFrom:(int)oldNum toNum:(int)newNum
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"gotcoins" ofType:@"aiff"];
     

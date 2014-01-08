@@ -106,9 +106,9 @@
         
         float fVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
         if ( fVersion >= 6 ) {
-            url = [ios6Url stringByAppendingString:@"723564814"];
+            url = [ios6Url stringByAppendingString:@"776787173"];
         } else {
-            url = [oldUrl stringByAppendingString:@"723564814"];
+            url = [oldUrl stringByAppendingString:@"776787173"];
         }
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];

@@ -11,10 +11,13 @@
 #import "TabController.h"
 #import "UICustomAlertView.h"
 
-@interface TransferToAlipayAndPhoneController : UIViewController<UITextFieldDelegate> {
+@interface TransferToAlipayAndPhoneController : UIViewController<UITextFieldDelegate, HttpRequestDelegate> {
     BOOL _bAlipay;
-    float _price;
+    int _nDiscount;
+    int _nAmount;
     UICustomAlertView* _alertView;
+    
+    NSString* _orderId;
 }
 
 @property (assign, nonatomic) UIView *_completeView;
@@ -25,7 +28,7 @@
 @property (assign, nonatomic) UILabel *_textFieldTip;
 @property (assign, nonatomic) UILabel *_textCheckTip;
 
-- (id) init:(BOOL) isAlipay Price:(float) price;
+- (id) init:(BOOL) isAlipay Discount:(int)nDiscount Amount:(int)nAmount;
 
 - (IBAction)clickBack:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;

@@ -24,7 +24,7 @@ typedef enum LoginStatus {
 @end
 
 @protocol BalanceChangeDelegate <NSObject>
--(void) balanceChanged:(float) oldBalance New:(float) balance;
+-(void) balanceChanged:(int) oldBalance New:(int) balance;
 @end
 
 @interface BalanceInfo : NSObject {
@@ -42,10 +42,10 @@ typedef enum LoginStatus {
     NSString*   _session_id;
     NSString*   _nickname;
     NSString*   _device_id;
-    float       _balance;
-    float       _income;    // 总收入
-    float       _outgo;     // 总支出
-    float       _recentIncome;  // 最近赚到
+    int       _balance;
+    int       _income;    // 总收入
+    int       _outgo;     // 总支出
+    int       _recentIncome;  // 最近赚到
     NSString*   _invite_code;
     NSString*   _inviter;
     
@@ -68,16 +68,16 @@ typedef enum LoginStatus {
 -(NSString*) getSessionId;
 -(NSString*) getNickName;
 -(NSString*) getDeviceId;
--(float) getBalance;
+-(int) getBalance;
 -(NSString*) getInviteCode;
 -(NSString*) getInviter;
 
--(float) getIncome;
--(float) getOutgo;
--(float) getRecentIncome;
+-(int) getIncome;
+-(int) getOutgo;
+-(int) getRecentIncome;
 
--(void) setIncome:(float) income;
--(void) setOutgo:(float) outgo;
+-(void) setIncome:(int) income;
+-(void) setOutgo:(int) outgo;
 
 -(void) attachPhone : (NSString*) phoneNum UserId:(NSString*) userid InviteCode:(NSString*) inviteCode;
 
@@ -87,6 +87,6 @@ typedef enum LoginStatus {
 -(void) attachBalanceChangeEvent : (id) delegate;
 -(void) detachBalanceChangeEvent : (id) delegate;
 
--(void) increaseBalance:(float) inc;
--(void) setBalance:(float) balance;
+-(void) increaseBalance:(int) inc;
+-(void) setBalance:(int) balance;
 @end

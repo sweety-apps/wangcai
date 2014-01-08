@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ExchangeControllerCellDelegate <NSObject>
+-(void) onClickExchange : (id) sender;
+@end
+
 @interface ExchangeControllerCell : UITableViewCell {
     UIImageView* _imageView;
     UILabel* _labelTitle;
@@ -18,7 +22,8 @@
     UIView* _view;
 }
 
-- (IBAction)onClick:(id)sender;
+@property (assign, nonatomic) id delegate;
+
 - (void)setBkgColor:(UIColor*) clr;
 
 @end

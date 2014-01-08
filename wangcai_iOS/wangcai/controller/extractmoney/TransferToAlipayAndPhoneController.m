@@ -19,14 +19,17 @@
 
 @implementation TransferToAlipayAndPhoneController
 
-- (id) init:(BOOL) isAlipay Price:(float) price
+- (id) init:(BOOL) isAlipay Discount:(int)nDiscount Amount:(int)nAmount
 {
     self = [super initWithNibName:@"TransferToAlipayAndPhoneController" bundle:nil];
     if (self) {
         // Custom initialization
         self->_bAlipay = isAlipay;
-        self->_price = price;
+        self->_nDiscount = nDiscount;
+        self->_nAmount = nAmount;
+        
         self->_alertView = nil;
+        self->_orderId = nil;
         
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] firstObject];
 
@@ -59,11 +62,25 @@
         
         UIButton* btn = (UIButton*)[self._containerView viewWithTag:14];
         if ( self->_bAlipay ) {
-            NSString* text = [[NSString alloc]initWithFormat:@"提取%.0f元", price];
+            NSString* text = nil;
+            
+            if ( self->_nAmount == self->_nDiscount ) {
+                text = [[NSString alloc]initWithFormat:@"提取%.0f元", (1.0*self->_nDiscount/100)];
+            } else {
+                text = [[NSString alloc]initWithFormat:@"提取%.0f元，实际到帐%.0f元", (1.0*self->_nDiscount/100), (1.0*self->_nAmount/100)];
+            }
+            
             [btn setTitle:text forState:UIControlStateNormal];
             [text release];
         } else {
-            NSString* text = [[NSString alloc]initWithFormat:@"充值%.0f元", price];
+            NSString* text = nil;
+            
+            if ( self->_nAmount == self->_nDiscount ) {
+                text = [[NSString alloc]initWithFormat:@"充值%.0f元", (1.0*self->_nAmount/100)];
+            } else {
+                text = [[NSString alloc]initWithFormat:@"充值%.0f元，实际花费%.0f元", (1.0*self->_nAmount/100), (1.0*self->_nDiscount/100)];
+            }
+            
             [btn setTitle:text forState:UIControlStateNormal];
             [text release];
         }
@@ -106,6 +123,10 @@
         _alertView = nil;
     }
     
+    if ( _orderId != nil ) {
+        [_orderId release];
+        _orderId = nil;
+    }
     [super dealloc];
 }
 
@@ -250,7 +271,13 @@
         }
         
         NSString* info1 = [[NSString alloc] initWithFormat:@"提现帐号：%@", text1];
-        NSString* info2 = [[NSString alloc] initWithFormat:@"提现金额：%.0f元", _price];
+        NSString* info2 = nil;
+        
+        if ( self->_nAmount == self->_nDiscount ) {
+            info2 = [[NSString alloc] initWithFormat:@"提现金额：%.0f元", (1.0*self->_nDiscount/100)];
+        } else {
+            info2 = [[NSString alloc]initWithFormat:@"提现金额：%.0f元，实际到帐%.0f元", (1.0*self->_nDiscount/100), (1.0*self->_nAmount/100)];
+        }
         
         [self checkExchange:info1 Text:info2 Tip:@"注：提现在一个工作日内到账，请耐心等待" Button:@"确认提现"];
         
@@ -267,7 +294,13 @@
         }
         
         NSString* info1 = [[NSString alloc] initWithFormat:@"充值帐号：%@", text1];
-        NSString* info2 = [[NSString alloc] initWithFormat:@"充值金额：%.0f元", _price];
+        NSString* info2 = nil;
+        
+        if ( self->_nAmount == self->_nDiscount ) {
+            info2 = [[NSString alloc] initWithFormat:@"充值金额：%.0f元", (1.0*self->_nAmount/100)];
+        } else {
+            info2 = [[NSString alloc]initWithFormat:@"充值金额：%.0f元，实际花费%.0f元", (1.0*self->_nAmount/100), (1.0*self->_nDiscount/100)];
+        }
         
         [self checkExchange:info1 Text:info2 Tip:@"注：提现在一个工作日内到账，请耐心等待" Button:@"确认充值"];
         
@@ -321,7 +354,87 @@
         [_alertView hideAlertView];
     }
     
+    // 发起请求
+    [self sendRequest];
+}
+
+- (IBAction)clickOrderInfo:(id)sender {
+    NSString* url = [[WEB_ORDER_INFO copy] autorelease];
+    url = [url stringByAppendingFormat:@"?ordernum=%@", _orderId];
+    
+    BeeUIStack* stack = self.stack;
+    WebPageController* controller = [[[WebPageController alloc] initOrder:_orderId Url:url Stack:stack] autorelease];
+    [stack pushViewController:controller animated:YES];
+}
+
+- (void) sendRequest {
+    [self showLoading];
+    
+    HttpRequest* request = [[HttpRequest alloc] init:self];
+    
+    NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
+    
+    NSString* discount = [[NSString alloc] initWithFormat:@"%d", self->_nDiscount];
+    NSString* amount = [[NSString alloc] initWithFormat:@"%d", self->_nAmount];
+
+    [dictionary setObject:discount forKey:@"discount"];
+    [dictionary setObject:amount forKey:@"amount"];
+    
+    if ( self->_bAlipay ) {
+        NSString* account = self._textField.text;
+        
+        [dictionary setObject:account forKey:@"alipay_account"];
+        
+        [request request:HTTP_ALIPAY_PAY Param:dictionary];
+    } else {
+        NSString* phoneNum = self._textField.text;
+        
+        [dictionary setObject:phoneNum forKey:@"phone_num"];
+        
+        [request request:HTTP_PHONE_PAY Param:dictionary];
+    }
+    
+    [dictionary release];
+}
+
+-(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
+    [self hideLoading];
+    
+    if ( httpCode == 200 ) {
+        // 请求成功
+        NSNumber* res = [body valueForKey:@"res"];
+        int nRes = [res intValue];
+        if ( nRes == 0 ) {
+            // 调用成功
+            NSString* orderId = [[body valueForKey:@"order_id"] copy];
+            [self onRequestSuccessed:orderId];
+        } else {
+            NSString* err = [body valueForKey:@"msg"];
+            [self onRequestFailed:err];
+        }
+    } else {
+        // 请求失败
+        [self onRequestFailed:@"连接服务器失败"];
+    }
+}
+
+- (void) onRequestFailed:(NSString*) err {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"请求失败" message:err delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+}
+
+- (void) onRequestSuccessed:(NSString*) orderId {
     // 切换显示
+    if ( _orderId != nil ) {
+        [_orderId release];
+    }
+    
+    _orderId = [orderId copy];
+    
+    UIButton* btn = (UIButton*)[self._completeView viewWithTag:33];
+    [btn setTitle:_orderId forState:UIControlStateNormal];
+    
     [UIView beginAnimations:@"view curldown" context:nil];
     [UIView setAnimationDuration:0.5];
     
@@ -330,15 +443,6 @@
     
     [UIView setAnimationDelegate:self];
     [UIView commitAnimations];
-}
-
-- (IBAction)clickOrderInfo:(id)sender {
-    NSString* url = [[WEB_ORDER_INFO copy] autorelease];
-    url = [url stringByAppendingFormat:@"?ordernum=%@", @"12342342"];
-    
-    BeeUIStack* stack = self.stack;
-    WebPageController* controller = [[[WebPageController alloc] initOrder:@"12342342" Url:url Stack:stack] autorelease];
-    [stack pushViewController:controller animated:YES];
 }
 
 @end

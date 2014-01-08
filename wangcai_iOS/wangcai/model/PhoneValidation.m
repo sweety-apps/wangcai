@@ -144,13 +144,13 @@
             NSNumber* income = [[body valueForKey:@"income"] copy];
             NSNumber* outgo = [[body valueForKey:@"outgo"] copy];
             NSNumber* balance = [[body valueForKey:@"balance"] copy];
-            float fIncome = [income floatValue] / 100;
-            float fOutgo = [outgo floatValue] / 100;
-            float fBalance = [balance floatValue] / 100;
+            int nIncome = [income intValue];
+            int nOutgo = [outgo intValue];
+            int nBalance = [balance intValue];
             
-            [[LoginAndRegister sharedInstance] setIncome:fIncome];
-            [[LoginAndRegister sharedInstance] setOutgo:fOutgo];
-            [[LoginAndRegister sharedInstance] setBalance:fBalance];
+            [[LoginAndRegister sharedInstance] setIncome:nIncome];
+            [[LoginAndRegister sharedInstance] setOutgo:nOutgo];
+            [[LoginAndRegister sharedInstance] setBalance:nBalance];
             
             NSString* userid = [[body valueForKey:@"userid"] copy];
             NSString* inviteCode = [[body valueForKey:@"invite_code"] copy];

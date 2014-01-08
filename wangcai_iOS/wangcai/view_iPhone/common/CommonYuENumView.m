@@ -15,7 +15,7 @@
 - (void)initClassVars
 {
     _digitDict = [[NSMutableDictionary dictionaryWithObjectsAndKeys:@"yue_0",@"0",@"yue_1",@"1",@"yue_2",@"2",@"yue_3",@"3",@"yue_4",@"4",@"yue_5",@"5",@"yue_6",@"6",@"yue_7",@"7",@"yue_8",@"8",@"yue_9",@"9",@"yue_dot",@".", nil] retain];
-    _num = 0.f;
+    _num = 0;
     _animaArray = [[NSMutableArray array] retain];
     self.backgroundColor = [UIColor clearColor];
 }
@@ -63,7 +63,7 @@
 -(void)_refreshViewWithNum:(float)num
 {
     [self removeAllSubviews];
-    NSString* numString = [NSString stringWithFormat:@"%.1f",num];
+    NSString* numString = [NSString stringWithFormat:@"%.1f", 1.0*num/100];
     CGFloat offsetX = self.frame.size.width;
     for (int i = [numString length] - 1; i >= 0; i--)
     {
@@ -101,16 +101,16 @@
     }
 }
 
--(void)setNum:(float)num
+-(void)setNum:(int)num
 {
     [self setNum:num withAnimation:NO];
 }
 
--(void)setNum:(float)num withAnimation:(BOOL)animated
+-(void)setNum:(int)num withAnimation:(BOOL)animated
 {
     if (animated)
     {
-        int count = abs((int)(num * 10.f) - (int)(_num * 10.f));
+        int count = abs((int)(num / 10.f) - (int)(_num / 10.f));
         if (count > 0)
         {
             float currentNum = _num;
@@ -138,13 +138,13 @@
     }
 }
 
--(void)animateNumFrom:(float)oldNum to:(float)num withAnimation:(BOOL)animated
+-(void)animateNumFrom:(int)oldNum to:(int)num withAnimation:(BOOL)animated
 {
     [self setNum:oldNum];
     [self setNum:num withAnimation:animated];
 }
 
--(float)getNum
+-(int)getNum
 {
     return _num;
 }

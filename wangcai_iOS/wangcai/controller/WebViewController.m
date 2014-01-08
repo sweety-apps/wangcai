@@ -75,21 +75,21 @@
 
 -(void) bindPhoneCompeted {
     NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
-    float banlance = [[LoginAndRegister sharedInstance] getBalance];
+    float banlance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
     [self notifyPhoneStatus:YES Phone:phoneNum Balance:banlance];
     [phoneNum release];
 }
 
--(void) balanceChanged:(float) oldBalance New:(float) balance {
+-(void) balanceChanged:(int) oldBalance New:(int) balance {
     NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
     if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
         if ( phoneNum != nil ) {
             [phoneNum release];
         }
         
-        [self notifyPhoneStatus:NO Phone:@"" Balance:balance];
+        [self notifyPhoneStatus:NO Phone:@"" Balance:(1.0*balance/100)];
     } else {
-        [self notifyPhoneStatus:YES Phone:phoneNum Balance:balance];
+        [self notifyPhoneStatus:YES Phone:phoneNum Balance:(1.0*balance/100)];
         [phoneNum release];
     }
 }
@@ -175,10 +175,10 @@
                 [phoneNum release];
             }
             
-            float banlance = [[LoginAndRegister sharedInstance] getBalance];
+            float banlance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
             [self notifyPhoneStatus:NO Phone:@"" Balance:banlance];
         } else {
-            float banlance = [[LoginAndRegister sharedInstance] getBalance];
+            float banlance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
             [self notifyPhoneStatus:YES Phone:phoneNum Balance:banlance];
             [phoneNum release];
         }
@@ -190,15 +190,21 @@
 
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/pay_to_alipay"] ) {
-        NSString* value = [self getValueFromQuery:query Key:@"coin"];
-        float fCoin = [value floatValue];
-        [self onPayToAlipay:fCoin];
+        NSString* discount = [self getValueFromQuery:query Key:@"discount"];
+        NSString* amount = [self getValueFromQuery:query Key:@"amount"];
+        int nDiscount = [discount intValue];
+        int nAmount = [amount intValue];
+        
+        [self onPayToAlipay:nDiscount Amount:nAmount];
         
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/pay_to_phone"] ) {
-        NSString* value = [self getValueFromQuery:query Key:@"coin"];
-        float fCoin = [value floatValue];
-        [self onPayToPhone:fCoin];
+        NSString* discount = [self getValueFromQuery:query Key:@"discount"];
+        NSString* amount = [self getValueFromQuery:query Key:@"amount"];
+        int nDiscount = [discount intValue];
+        int nAmount = [amount intValue];
+        
+        [self onPayToPhone:nDiscount Amount:nAmount];
 
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/order_info"] ) {
@@ -392,7 +398,7 @@
     
     [phoneNum release];
     
-    float balance = [[LoginAndRegister sharedInstance] getBalance];
+    float balance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
     if ( fCoin > balance ) {
         if ( _alertNoBalance != nil ) {
             [_alertNoBalance release];
@@ -407,11 +413,11 @@
     return YES;
 }
 
--(void) onPayToAlipay:(float) fCoin {
+-(void) onPayToAlipay:(int) nDiscount Amount:(int) nAmount {
     // 转帐到支付宝
-    if ( [self checkBalanceAndBindPhone:fCoin] ) {
+    if ( [self checkBalanceAndBindPhone:(1.0*nDiscount/100)] ) {
         NSMutableDictionary* dict = [[NSMutableDictionary alloc]init];
-        NSString* rmb = [[NSString alloc] initWithFormat:@"%.1f", fCoin];
+        NSString* rmb = [[NSString alloc] initWithFormat:@"%d", nDiscount];
         
         [dict setObject:rmb forKey:@"RMB"];
         [MobClick event:@"pay_to_alipay" attributes:dict];
@@ -419,17 +425,17 @@
         [dict release];
         [rmb release];
 
-        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES Price:fCoin] autorelease];
+        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES Discount:nDiscount Amount:nAmount] autorelease];
         
         [self->_beeStack pushViewController:controller animated:YES];
     }
 }
 
--(void) onPayToPhone:(float) fCoin {
+-(void) onPayToPhone:(int) nDiscount Amount:(int) nAmount {
     // 话费充值
-    if ( [self checkBalanceAndBindPhone:fCoin] ) {
+    if ( [self checkBalanceAndBindPhone:(1.0*nDiscount/100)] ) {
         NSMutableDictionary* dict = [[NSMutableDictionary alloc]init];
-        NSString* rmb = [[NSString alloc] initWithFormat:@"%.1f", fCoin];
+        NSString* rmb = [[NSString alloc] initWithFormat:@"%d", nDiscount];
         
         [dict setObject:rmb forKey:@"RMB"];
         [MobClick event:@"pay_to_phone" attributes:dict];
@@ -437,7 +443,7 @@
         [dict release];
         [rmb release];
         
-        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO Price:fCoin] autorelease];
+        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO Discount:nDiscount Amount:nAmount] autorelease];
         [self->_beeStack pushViewController:controller animated:YES];
     }
 }

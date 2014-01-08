@@ -133,22 +133,22 @@ static LoginAndRegister* _sharedInstance;
                 _phoneNum = [[dict valueForKey:@"phone"] copy];
                 
                 NSNumber* num = [dict valueForKey:@"balance"];
-                _balance = [num floatValue] / 100;
+                _balance = [num intValue];
                 num = [dict valueForKey:@"income"];
-                _income = [num floatValue] / 100;
+                _income = [num intValue];
                 
                 num = [dict valueForKey:@"outgo"];
-                _outgo = [num floatValue] / 100;
+                _outgo = [num intValue];
                 
                 num = [dict valueForKey:@"recent_income"];
-                _recentIncome = [num floatValue] / 100;
+                _recentIncome = [num intValue];
                 
                 _inviter = [[dict valueForKey:@"inviter"] copy];
                 _invite_code = [[dict valueForKey:@"invite_code"] copy];
                 
                 // test
-                //_phoneNum = @"13632729763";
-                //_balance = 100;
+                _phoneNum = @"13632729763";
+                _balance = 10000;
                 //
                 
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
@@ -160,23 +160,23 @@ static LoginAndRegister* _sharedInstance;
     }
 }
 
--(void) increaseBalance:(float) inc {
-    float oldBalance = _balance;
+-(void) increaseBalance:(int) inc {
+    int oldBalance = _balance;
     _balance = _balance + inc;
     
     [self fire_balanceChanged:oldBalance New:_balance];
 }
 
--(void) setBalance:(float) balance {
+-(void) setBalance:(int) balance {
     if ( balance != _balance ) {
-        float oldBalance = _balance;
+        int oldBalance = _balance;
         _balance = balance;
     
         [self fire_balanceChanged:oldBalance New:_balance];
     }
 }
 
--(void) fire_balanceChanged:(float) old New:(float) balance {
+-(void) fire_balanceChanged:(int) old New:(int) balance {
     BalanceInfo* info = [[BalanceInfo alloc]init];
     info._newBalance = balance;
     info._newBalance = old;
@@ -271,7 +271,7 @@ static LoginAndRegister* _sharedInstance;
     return [self->_device_id copy];
 }
 
--(float) getBalance {
+-(int) getBalance {
     return _balance;
 }
 
@@ -289,19 +289,19 @@ static LoginAndRegister* _sharedInstance;
     return [self->_inviter copy];
 }
 
--(float) getIncome {
+-(int) getIncome {
     return _income;
 }
 
--(float) getOutgo {
+-(int) getOutgo {
     return _outgo;
 }
 
--(void) setIncome:(float) income {
+-(void) setIncome:(int) income {
     _income = income;
 }
 
--(void) setOutgo:(float) outgo {
+-(void) setOutgo:(int) outgo {
     _outgo = outgo;
 }
 

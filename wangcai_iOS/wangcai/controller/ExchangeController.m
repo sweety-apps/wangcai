@@ -28,7 +28,10 @@
     if (self) {
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] firstObject];
-
+        self->_alertView = nil;
+        self->_alertBindPhone = nil;
+        self->_alertNoBalance = nil;
+        
         _labelBalance = (UILabel*) [self.view viewWithTag:55];
         _tableView = (UITableView*)[self.view viewWithTag:89];
         _tableView.separatorStyle = NO;
@@ -46,7 +49,7 @@
         
         NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
         if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
-            _noattachView = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] lastObject];
+            _noattachView = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] objectAtIndex:3];
             rect = _noattachView.frame;
             rect.origin.y = 54;
             _noattachView.frame = rect;
@@ -60,7 +63,7 @@
             [phoneNum release];
         }
         
-        float fBalance = [[LoginAndRegister sharedInstance] getBalance];
+        float fBalance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
         NSString* balance = [[NSString alloc] initWithFormat:@"%.1f", fBalance];
         [_labelBalance setText:balance];
         [balance release];
@@ -76,12 +79,25 @@
         [_noattachView release];
     }
     
+    if ( _alertView != nil ) {
+        [_alertView release];
+        _alertView = nil;
+    }
+    
+    if ( _alertBindPhone != nil ) {
+        [_alertBindPhone release];
+    }
+    
+    if ( _alertNoBalance != nil ) {
+        [_alertNoBalance release];
+    }
+    
     [super dealloc];
 }
 
 -(void) bindPhoneCompeted {
     NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
-    float fBalance = [[LoginAndRegister sharedInstance] getBalance];
+    float fBalance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
     
     NSString* balance = [[NSString alloc] initWithFormat:@"%.1f", fBalance];
     [_labelBalance setText:balance];
@@ -122,6 +138,7 @@
         if (cell == nil)
         {
             cell = [[[ExchangeControllerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"exchangeCell"] autorelease];
+            cell.delegate = self;
         }
         
         if ( cell ) {
@@ -160,6 +177,113 @@
 - (IBAction)clickAttachPhone:(id)sender {
     PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     
+    [self->_beeStack pushViewController:phoneVal animated:YES];
+}
+
+
+-(void) checkExchange:(NSString*) text1 Text:(NSString*) text2 Tip:(NSString*) tip Button:(NSString*) btnText {
+    if ( _alertView != nil ) {
+        [_alertView release];
+    }
+    
+    UIView* view = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] lastObject];
+    view.layer.masksToBounds = YES;
+    view.layer.cornerRadius = 10.0;
+    view.layer.borderWidth = 0.0;
+    view.layer.borderColor = [[UIColor whiteColor] CGColor];
+    
+    UIColor *color = [UIColor colorWithRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1];
+    
+    UIButton* btn = (UIButton*)[view viewWithTag:11];
+    [btn.layer setBorderWidth:0.5];
+    [btn.layer setBorderColor:[color CGColor]];
+    
+    btn = (UIButton*)[view viewWithTag:12];
+    [btn.layer setBorderWidth:0.5];
+    [btn.layer setBorderColor:[color CGColor]];
+    
+    
+    [btn setTitle:btnText forState:UIControlStateNormal];
+    
+    ((UILabel*)[view viewWithTag:21]).text = text1;
+    ((UILabel*)[view viewWithTag:22]).text = text2;
+    ((UILabel*)[view viewWithTag:23]).text = tip;
+    
+    _alertView = [[UICustomAlertView alloc]init:view];
+    
+    [view release];
+    [_alertView show];
+}
+
+- (IBAction)clickCancel:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+}
+
+- (IBAction)clickContinue:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+}
+
+
+
+-(BOOL) checkBalanceAndBindPhone :(float) fCoin {
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+        // 没有绑定手机号
+        if ( _alertBindPhone != nil ) {
+            [_alertBindPhone release];
+        }
+        
+        _alertBindPhone = [[UIAlertView alloc] initWithTitle:@"提示" message:@"尚未绑定手机，请先绑定手机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"绑定手机", nil];
+        
+        [_alertBindPhone show];
+        
+        if ( phoneNum != nil ) {
+            [phoneNum release];
+        }
+        return NO;
+    }
+    
+    [phoneNum release];
+    
+    float balance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
+    if ( fCoin > balance ) {
+        if ( _alertNoBalance != nil ) {
+            [_alertNoBalance release];
+        }
+        
+        _alertNoBalance = [[UIAlertView alloc] initWithTitle:@"提示" message:@"现金不足，无法完成该操作" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+        [_alertNoBalance show];
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
+-(void) onClickExchange : (id) sender {
+    int nDiscount = 100;
+    
+    if ( [self checkBalanceAndBindPhone:(1.0*nDiscount/100)] ) {
+        [self checkExchange:@"3123" Text:@"3123" Tip:@"3123" Button:@"ok"];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( _alertBindPhone != nil ) {
+        if ( [_alertBindPhone isEqual:alertView] ) {
+            if ( buttonIndex == 1 ) {
+                [self onAttachPhone];
+            }
+        }
+    }
+}
+
+-(void) onAttachPhone {
+    PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     [self->_beeStack pushViewController:phoneVal animated:YES];
 }
 

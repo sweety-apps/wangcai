@@ -37,7 +37,7 @@
         
         _btnExchange = [[UIButton alloc]initWithFrame:CGRectMake(225, 12, 75, 27)];
         [_view addSubview:_btnExchange];
-        
+        [_btnExchange addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
         [_btnExchange setImage:[UIImage imageNamed:@"exchange_btn"] forState:UIControlStateNormal];
         
         
@@ -57,6 +57,8 @@
 }
 
 - (void)dealloc {
+    self.delegate = nil;
+    
     [_imageView release];
     _imageView = nil;
     
@@ -84,7 +86,9 @@
 
 
 - (IBAction)onClick:(id)sender {
-    
+    if ( self.delegate != nil ) {
+        [self.delegate onClickExchange:self];
+    }
 }
 
 @end

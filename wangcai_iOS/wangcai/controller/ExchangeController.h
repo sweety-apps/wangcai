@@ -8,13 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginAndRegister.h"
+#import "UICustomAlertView.h"
+#import "ExchangeControllerCell.h"
 
-@interface ExchangeController : UIViewController<UITableViewDataSource, UITableViewDelegate, BindPhoneDelegate> {
+@interface ExchangeController : UIViewController<UITableViewDataSource, UITableViewDelegate,
+            BindPhoneDelegate, ExchangeControllerCellDelegate, UIAlertViewDelegate> {
     UITableView* _tableView;
     BeeUIStack* _beeStack;
     
     UIView*  _noattachView;
     UILabel* _labelBalance;
+    
+    UICustomAlertView* _alertView;
+    
+    UIAlertView*    _alertBindPhone;
+    UIAlertView*    _alertNoBalance;
 }
 
 - (id)init;
