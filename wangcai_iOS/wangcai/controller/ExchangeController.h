@@ -10,9 +10,11 @@
 #import "LoginAndRegister.h"
 #import "UICustomAlertView.h"
 #import "ExchangeControllerCell.h"
+#import "EGORefreshTableHeaderView.h"
 
 @interface ExchangeController : UIViewController<UITableViewDataSource, UITableViewDelegate,
-            BindPhoneDelegate, ExchangeControllerCellDelegate, UIAlertViewDelegate, BalanceChangeDelegate> {
+            BindPhoneDelegate, ExchangeControllerCellDelegate,
+            UIAlertViewDelegate, BalanceChangeDelegate, EGORefreshTableHeaderDelegate> {
     UITableView* _tableView;
     BeeUIStack* _beeStack;
     
@@ -23,6 +25,9 @@
     
     UIAlertView*    _alertBindPhone;
     UIAlertView*    _alertNoBalance;
+                
+    BOOL _reloading;
+    EGORefreshTableHeaderView* _refreshHeaderView;
 }
 
 - (id)init;
@@ -36,4 +41,8 @@
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+
+- (void)reloadTableViewDataSource;
+- (void)doneLoadingTableViewData;
+
 @end

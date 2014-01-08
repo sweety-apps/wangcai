@@ -185,6 +185,15 @@
 		A6FD8A711861899500223772 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
 		A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A72186189B500223772 /* ExchangeController.xib */; };
 		A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */; };
+		A6FEE27D187D971D00E5AF3E /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FEE27C187D971C00E5AF3E /* EGORefreshTableHeaderView.m */; };
+		A6FEE287187D9AB800E5AF3E /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE27F187D9AB800E5AF3E /* blackArrow.png */; };
+		A6FEE288187D9AB800E5AF3E /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE280187D9AB800E5AF3E /* blackArrow@2x.png */; };
+		A6FEE289187D9AB800E5AF3E /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE281187D9AB800E5AF3E /* blueArrow.png */; };
+		A6FEE28A187D9AB800E5AF3E /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE282187D9AB800E5AF3E /* blueArrow@2x.png */; };
+		A6FEE28B187D9AB800E5AF3E /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE283187D9AB800E5AF3E /* grayArrow.png */; };
+		A6FEE28C187D9AB800E5AF3E /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE284187D9AB800E5AF3E /* grayArrow@2x.png */; };
+		A6FEE28D187D9AB800E5AF3E /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE285187D9AB800E5AF3E /* whiteArrow.png */; };
+		A6FEE28E187D9AB800E5AF3E /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE286187D9AB800E5AF3E /* whiteArrow@2x.png */; };
 		F358E9EF186C1D8600DC3ADA /* UserInfoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */; };
 		F358E9F2186C583A00DC3ADA /* CommonTaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F1186C583A00DC3ADA /* CommonTaskList.m */; };
 		F3604927187016C200FAD1F3 /* NSString+DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604922187016C200FAD1F3 /* NSString+DataParser.m */; };
@@ -759,6 +768,16 @@
 		A6FD8A72186189B500223772 /* ExchangeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeController.xib; sourceTree = "<group>"; };
 		A6FD8A7D1861C36700223772 /* ExchangeControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeControllerCell.h; sourceTree = "<group>"; };
 		A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeControllerCell.m; sourceTree = "<group>"; };
+		A6FEE27B187D971C00E5AF3E /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		A6FEE27C187D971C00E5AF3E /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		A6FEE27F187D9AB800E5AF3E /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		A6FEE280187D9AB800E5AF3E /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		A6FEE281187D9AB800E5AF3E /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		A6FEE282187D9AB800E5AF3E /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		A6FEE283187D9AB800E5AF3E /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		A6FEE284187D9AB800E5AF3E /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		A6FEE285187D9AB800E5AF3E /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		A6FEE286187D9AB800E5AF3E /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		F358E9ED186C1D8600DC3ADA /* UserInfoAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoAPI.h; sourceTree = "<group>"; };
 		F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoAPI.m; sourceTree = "<group>"; };
 		F358E9F0186C583A00DC3ADA /* CommonTaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTaskList.h; sourceTree = "<group>"; };
@@ -1853,6 +1872,21 @@
 			path = InviteBoard;
 			sourceTree = "<group>";
 		};
+		A6FEE27E187D9AB800E5AF3E /* EGORefreshTableHeader */ = {
+			isa = PBXGroup;
+			children = (
+				A6FEE27F187D9AB800E5AF3E /* blackArrow.png */,
+				A6FEE280187D9AB800E5AF3E /* blackArrow@2x.png */,
+				A6FEE281187D9AB800E5AF3E /* blueArrow.png */,
+				A6FEE282187D9AB800E5AF3E /* blueArrow@2x.png */,
+				A6FEE283187D9AB800E5AF3E /* grayArrow.png */,
+				A6FEE284187D9AB800E5AF3E /* grayArrow@2x.png */,
+				A6FEE285187D9AB800E5AF3E /* whiteArrow.png */,
+				A6FEE286187D9AB800E5AF3E /* whiteArrow@2x.png */,
+			);
+			path = EGORefreshTableHeader;
+			sourceTree = "<group>";
+		};
 		F358E9F3186D2AA200DC3ADA /* utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -2118,6 +2152,8 @@
 		F3F186EE18543A410098C852 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				A6FEE27B187D971C00E5AF3E /* EGORefreshTableHeaderView.h */,
+				A6FEE27C187D971C00E5AF3E /* EGORefreshTableHeaderView.m */,
 				A60C58B418703B0C0068425C /* qrencode.h */,
 				F3D9D527185D876D00392C40 /* extractmoney */,
 				F3D9D52B185D876D00392C40 /* InviteController.h */,
@@ -3163,6 +3199,7 @@
 		F3F18A41185762BD0098C852 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A6FEE27E187D9AB800E5AF3E /* EGORefreshTableHeader */,
 				F3813D3718783A5000350C27 /* Sounds */,
 				F3813CF818753ED400350C27 /* Choujiang */,
 				A60C589418703AE60068425C /* InviteBoard */,
@@ -3274,6 +3311,7 @@
 				A60C5862186FF8A30068425C /* setting_right@2x.PNG in Resources */,
 				F3813D1518753ED400350C27 /* choujiang_8yuan@2x.png in Resources */,
 				F3D9D566185D876D00392C40 /* WebViewController.xib in Resources */,
+				A6FEE287187D9AB800E5AF3E /* blackArrow.png in Resources */,
 				F3813D1318753ED400350C27 /* choujiang_3yuan@2x.png in Resources */,
 				F3813D2718753ED400350C27 /* choujiang_x3@2x.png in Resources */,
 				F3F186E918543A410098C852 /* Icon@2x.png in Resources */,
@@ -3297,6 +3335,7 @@
 				A60C587A186FF8A30068425C /* yue_8@2x.png in Resources */,
 				A60C5859186FF8A30068425C /* navigation_bar@2x.png in Resources */,
 				A60C584A186FF8A30068425C /* bottom_arraw@2x.png in Resources */,
+				A6FEE28B187D9AB800E5AF3E /* grayArrow.png in Resources */,
 				A60C58A818703AE60068425C /* invite_invited_edit@2x.png in Resources */,
 				59E42A311862986F00007461 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				A60C587D186FF8A30068425C /* table_view_cell_icon_bg@2x.png in Resources */,
@@ -3312,6 +3351,7 @@
 				F3813D2A18753ED400350C27 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
 				F3813D2018753ED400350C27 /* choujiang_thanks3@2x.png in Resources */,
 				A60C585F186FF8A30068425C /* right@2x.png in Resources */,
+				A6FEE28E187D9AB800E5AF3E /* whiteArrow@2x.png in Resources */,
 				F3813D3B18783CE800350C27 /* gotcoins.aiff in Resources */,
 				A60C5870186FF8A30068425C /* warn_bkg@2x.png in Resources */,
 				A60C5876186FF8A30068425C /* yue_4@2x.png in Resources */,
@@ -3347,6 +3387,7 @@
 				A60C5853186FF8A30068425C /* menu-icon-green@2x.png in Resources */,
 				59E42A331862986F00007461 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				F3F186E518543A410098C852 /* Default-568h@2x.png in Resources */,
+				A6FEE28C187D9AB800E5AF3E /* grayArrow@2x.png in Resources */,
 				59E42A221862986E00007461 /* GooglePlus.bundle in Resources */,
 				A60C5891186FF8A30068425C /* yellow_circle@2x.png in Resources */,
 				59E42A1E1862986E00007461 /* ShareSDKLocalizable.strings in Resources */,
@@ -3357,6 +3398,7 @@
 				A60C5879186FF8A30068425C /* yue_7@2x.png in Resources */,
 				59E42A251862986E00007461 /* PinterestSDKResources.bundle in Resources */,
 				A60C5844186FF8A30068425C /* package_icon_one@2x.png in Resources */,
+				A6FEE289187D9AB800E5AF3E /* blueArrow.png in Resources */,
 				A6FA00EE186ABEF6008302F0 /* SettingViewController.xib in Resources */,
 				F3813D1918753ED400350C27 /* choujiang_border_selected2@2x.png in Resources */,
 				F3813D2218753ED400350C27 /* choujiang_title@2x.png in Resources */,
@@ -3374,6 +3416,7 @@
 				F3F186DC18543A410098C852 /* InfoPlist.strings in Resources */,
 				A60C588B186FF8A30068425C /* main_page_head@2x.png in Resources */,
 				A60C5846186FF8A30068425C /* arrow-down@2x.png in Resources */,
+				A6FEE28D187D9AB800E5AF3E /* whiteArrow.png in Resources */,
 				A60C588C186FF8A30068425C /* person_info_icon@2x.png in Resources */,
 				A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */,
 				A60C5878186FF8A30068425C /* yue_6@2x.png in Resources */,
@@ -3414,6 +3457,7 @@
 				F3D9D560185D876D00392C40 /* PhoneValidationController.xib in Resources */,
 				F3D9D564185D876D00392C40 /* TaskController.xib in Resources */,
 				A60C588E186FF8A30068425C /* recommand_task_icon@2x.png in Resources */,
+				A6FEE28A187D9AB800E5AF3E /* blueArrow@2x.png in Resources */,
 				59E42A1F1862986E00007461 /* Resource.bundle in Resources */,
 				A60C5868186FF8A30068425C /* tab-bar@2x.png in Resources */,
 				A60C588D186FF8A30068425C /* qiandao_button_icon@2x.png in Resources */,
@@ -3423,6 +3467,7 @@
 				A60C5855186FF8A30068425C /* menu-icon@2x.png in Resources */,
 				A60C584D186FF8A30068425C /* deal_btn@2x.png in Resources */,
 				A60C5888186FF8A30068425C /* head_left_icon@2x.png in Resources */,
+				A6FEE288187D9AB800E5AF3E /* blackArrow@2x.png in Resources */,
 				A60C5886186FF8A30068425C /* head_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3653,6 +3698,7 @@
 				F3F1888618543A430098C852 /* UIView+Background.m in Sources */,
 				F3F1892A18543A440098C852 /* Bee_UITemplateXML.m in Sources */,
 				F3F1870818543A410098C852 /* ASIDataDecompressor.m in Sources */,
+				A6FEE27D187D971D00E5AF3E /* EGORefreshTableHeaderView.m in Sources */,
 				F3F1886418543A430098C852 /* Bee_UISegmentedControl.m in Sources */,
 				F3D9D570185D878800392C40 /* Common.m in Sources */,
 				F3F1890318543A440098C852 /* BeeUIQuery+Events.m in Sources */,

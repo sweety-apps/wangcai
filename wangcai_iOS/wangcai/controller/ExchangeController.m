@@ -70,8 +70,25 @@
         
         [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
         [[LoginAndRegister sharedInstance] attachBalanceChangeEvent:self];
+        
+        CGRect rt = CGRectMake(0.0f,
+                                 0.0f-_tableView.bounds.size.height,
+                                 _tableView.frame.size.width,
+                                 _tableView.frame.size.height);
+        EGORefreshTableHeaderView* view1 = [[EGORefreshTableHeaderView alloc]
+                                            initWithFrame:rt];
+        view1.delegate = self;
+        [_tableView addSubview:view1];
+        _refreshHeaderView = view1;
+        [view1 release];
+        
+        [_refreshHeaderView refreshLastUpdatedDate];
     }
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
 -(void) balanceChanged:(int) oldBalance New:(int) balance {
@@ -84,6 +101,8 @@
 - (void) dealloc {
     [[LoginAndRegister sharedInstance] detachBalanceChangeEvent:self];
     [[LoginAndRegister sharedInstance] detachBindPhoneEvent:self];
+    
+    _refreshHeaderView = nil;
     
     if ( _noattachView != nil ) {
         [_noattachView release];
@@ -120,11 +139,6 @@
     [phoneNum release];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
 
 - (void)didReceiveMemoryWarning
 {
