@@ -147,8 +147,8 @@ static LoginAndRegister* _sharedInstance;
                 _invite_code = [[dict valueForKey:@"invite_code"] copy];
                 
                 // test
-                _phoneNum = @"13632729763";
-                _balance = 10000;
+                //_phoneNum = @"13632729763";
+                //_balance = 10000;
                 //
                 
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
@@ -305,7 +305,7 @@ static LoginAndRegister* _sharedInstance;
     _outgo = outgo;
 }
 
--(float) getRecentIncome {
+-(int) getRecentIncome {
     return _recentIncome;
 }
 

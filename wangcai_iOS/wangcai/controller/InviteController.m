@@ -379,4 +379,14 @@
     }
 }
 
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {  // return NO to not change text
+    if ([@"\n" isEqualToString:string] ) {
+        [_invitedPeopleTextfield resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+
 @end

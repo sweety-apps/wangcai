@@ -149,6 +149,11 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {  // return NO to not change text
+    if ([@"\n" isEqualToString:string] ) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    
     if ( self->_bAlipay ) {
         // 手机充值
         NSString* str = [string trim];
@@ -430,6 +435,7 @@
         [_orderId release];
     }
     
+    [[LoginAndRegister sharedInstance] increaseBalance:(-1*self->_nDiscount)];
     _orderId = [orderId copy];
     
     UIButton* btn = (UIButton*)[self._completeView viewWithTag:33];

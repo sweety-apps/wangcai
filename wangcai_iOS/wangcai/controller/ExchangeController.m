@@ -268,7 +268,7 @@
     int nDiscount = 100;
     
     if ( [self checkBalanceAndBindPhone:(1.0*nDiscount/100)] ) {
-        [self checkExchange:@"3123" Text:@"3123" Tip:@"3123" Button:@"ok"];
+        [self checkExchange:@"产品：小米3激活码" Text:@"价格：150元" Tip:@"兑换需要3个工作日，请耐心等待" Button:@"继续兑换"];
     }
 }
 

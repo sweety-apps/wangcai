@@ -91,7 +91,7 @@
 - (void)openAppWithIdentifier:(NSString *)appId {
     NSString* strVersion = [[UIDevice currentDevice] systemVersion];
     float version = [strVersion floatValue];
-    if ( version >= 9 ) {
+    if ( version >= 6 ) {
         SKStoreProductViewController *storeProductVC = [[SKStoreProductViewController alloc] init];
         storeProductVC.delegate = self;
     
