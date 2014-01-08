@@ -12,7 +12,7 @@
 #import "ExchangeControllerCell.h"
 
 @interface ExchangeController : UIViewController<UITableViewDataSource, UITableViewDelegate,
-            BindPhoneDelegate, ExchangeControllerCellDelegate, UIAlertViewDelegate> {
+            BindPhoneDelegate, ExchangeControllerCellDelegate, UIAlertViewDelegate, BalanceChangeDelegate> {
     UITableView* _tableView;
     BeeUIStack* _beeStack;
     

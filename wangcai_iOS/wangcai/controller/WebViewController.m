@@ -184,6 +184,10 @@
         }
         
         return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/query_device_info"] ) {
+        // 查询设备信息
+        [self notifyDeviceInfo];
+        return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/attach_phone"] ) {
         // 点击了绑定手机
         [self onAttachPhone];
@@ -358,6 +362,20 @@
     [self->_webView stringByEvaluatingJavaScriptFromString:js];
 }
 
+- (void)notifyDeviceInfo {
+    NSString* device = [[LoginAndRegister sharedInstance] getDeviceId];
+    NSString* sessionId = [[LoginAndRegister sharedInstance] getSessionId];
+    NSNumber* userid = [[LoginAndRegister sharedInstance] getUserId];
+    
+    NSString* js = [NSString stringWithFormat:@"notifyDeviceInfo(\"%@\", \"%@\", %@)", device, sessionId, userid];
+    
+    [self->_webView stringByEvaluatingJavaScriptFromString:js];
+    
+    [device release];
+    [sessionId release];
+    [userid release];
+}
+ 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [self->_loadingView setHidden:NO];
     [self->_webView setHidden:YES];

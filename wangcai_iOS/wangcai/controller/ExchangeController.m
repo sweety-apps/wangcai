@@ -69,12 +69,22 @@
         [balance release];
         
         [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
+        [[LoginAndRegister sharedInstance] attachBalanceChangeEvent:self];
     }
     return self;
 }
 
+-(void) balanceChanged:(int) oldBalance New:(int) balance {
+    float fBalance = (1.0*balance) / 100;
+    NSString* bal = [[NSString alloc] initWithFormat:@"%.1f", fBalance];
+    [_labelBalance setText:bal];
+    [bal release];
+}
+
 - (void) dealloc {
+    [[LoginAndRegister sharedInstance] detachBalanceChangeEvent:self];
     [[LoginAndRegister sharedInstance] detachBindPhoneEvent:self];
+    
     if ( _noattachView != nil ) {
         [_noattachView release];
     }
