@@ -16,8 +16,13 @@
 #import "TaskController.h"
 #import "ChoujiangViewController.h"
 #import "ChoujiangLogic.h"
+#import "NSString+FloatFormat.h"
+
 
 @interface BaseTaskTableViewController () <CommonTaskListDelegate>
+{
+    NSTimer* _checkOfferWallTimer;
+}
 
 @end
 
@@ -64,13 +69,27 @@
     
     [self.zhanghuYuEHeaderCell.yuENumView setNum:[[LoginAndRegister sharedInstance] getBalance]];
     
+    _checkOfferWallTimer = [NSTimer scheduledTimerWithTimeInterval:15.f target:self selector:@selector(checkDMOfferWall) userInfo:nil repeats:NO];
+    
     //[self performSelector:@selector(refreshTaskList) withObject:nil afterDelay:2.0f];
+}
+
+- (void)checkDMOfferWall
+{
+    [OnlineWallViewController sharedInstance].delegate = self;
+    [[OnlineWallViewController sharedInstance] requestAndConsumePoint];
+    _checkOfferWallTimer = [NSTimer scheduledTimerWithTimeInterval:15.f target:self selector:@selector(checkDMOfferWall) userInfo:nil repeats:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
+    [self checkBalanceAndAnimateYuE];
+}
+
+- (void)checkBalanceAndAnimateYuE
+{
     if ([[LoginAndRegister sharedInstance] getBalance] > [self.zhanghuYuEHeaderCell.yuENumView getNum])
     {
         [self setYuENumberWithAnimationFrom:[self.zhanghuYuEHeaderCell.yuENumView getNum] toNum:[[LoginAndRegister sharedInstance] getBalance]];
@@ -110,6 +129,7 @@
     self.containTableViewFooterJuhuaView = nil;
     self.containTableViewFooterViewButton = nil;
     self.staticCells = nil;
+    [_checkOfferWallTimer invalidate];
     [super dealloc];
 }
 
@@ -522,5 +542,17 @@
     }
 }
 
+#pragma mark <OnlineWallViewControllerDelegate>
+
+- (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume
+{
+    if (suc && consume > 0)
+    {
+        [[LoginAndRegister sharedInstance] increaseBalance:consume];
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"使用积分墙赚到钱啦！！！" message:[NSString stringWithFormat:@"赚了 %@ 元！YEAH！",[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:1 ignoreBackZeros:YES]] delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
+        [alert show];
+        [self checkBalanceAndAnimateYuE];
+    }
+}
 
 @end

@@ -16,6 +16,8 @@
 
 @implementation OnlineWallViewController
 
+@synthesize delegate = _delegate;
+
 static OnlineWallViewController* _sharedInstance;
 
 +(OnlineWallViewController*) sharedInstance {

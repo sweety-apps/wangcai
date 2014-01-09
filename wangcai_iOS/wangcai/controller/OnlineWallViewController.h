@@ -18,8 +18,10 @@
     DMOfferWallViewController* _offerWallController;
     DMOfferWallManager*        _offerWallManager;
     NSInteger                  _nConsume;
-    id                         _delegate;
+    id<OnlineWallViewControllerDelegate>        _delegate;
 }
+
+@property (nonatomic,assign) id<OnlineWallViewControllerDelegate>  delegate;
 
 + (OnlineWallViewController*) sharedInstance;
 

@@ -10,8 +10,9 @@
 #import "TaskInfoTableViewCell.h"
 #import "CommonZhanghuYuETableViewCell.h"
 #import "MJRefresh.h"
+#import "OnlineWallViewController.h"
 
-@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate>
 {
     CommonZhanghuYuETableViewCell* _zhanghuYuEHeaderCell;
     TaskInfoTableViewCell* _infoCell;
