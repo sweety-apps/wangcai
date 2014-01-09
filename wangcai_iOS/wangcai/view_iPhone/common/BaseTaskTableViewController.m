@@ -440,7 +440,7 @@
                 break;
             case kTaskTypeOfferWall:
             {
-                [self.beeStack pushViewController:[OnlineWallViewController sharedInstance] animated:YES];
+                [[OnlineWallViewController sharedInstance] showWithModal];
             }
                 break;
             case kTaskTypeInstallWangcai:
