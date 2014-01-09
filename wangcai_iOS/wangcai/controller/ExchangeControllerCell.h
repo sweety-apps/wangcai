@@ -13,17 +13,20 @@
 @end
 
 @interface ExchangeControllerCell : UITableViewCell {
-    UIImageView* _imageView;
+    BeeUIImageView* _imageView;
     UILabel* _labelTitle;
     UILabel* _labelPrice;
     UILabel* _labelNum;
     UIButton* _btnExchange;
     
     UIView* _view;
+    
+    NSDictionary* _info;
 }
 
 @property (assign, nonatomic) id delegate;
 
 - (void)setBkgColor:(UIColor*) clr;
-
+- (void)setInfo:(NSDictionary*) info;
+- (NSDictionary*)getInfo;
 @end

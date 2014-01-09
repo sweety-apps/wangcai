@@ -18,19 +18,21 @@
         _view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 64)];
         [self addSubview:_view];
         
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 8, 48, 48)];
+        _info = nil;
+        
+        _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(12, 8, 48, 48)];
         [_view addSubview:_imageView];
         
-        _labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(66, 9, 160, 20)];
+        _labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(72, 9, 160, 20)];
         [_view addSubview:_labelTitle];
-        _labelTitle.font = [UIFont systemFontOfSize:12];
+        _labelTitle.font = [UIFont systemFontOfSize:14];
         
-        _labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(66, 37, 76, 20)];
+        _labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(72, 37, 76, 20)];
         [_view addSubview:_labelPrice];
         _labelPrice.font = [UIFont systemFontOfSize:12];
         [_labelPrice setTextColor:[UIColor colorWithRed:164.0/255 green:164.0/255 blue:164.0/255 alpha:1]];
         
-        _labelNum = [[UILabel alloc] initWithFrame:CGRectMake(150, 37, 76, 20)];
+        _labelNum = [[UILabel alloc] initWithFrame:CGRectMake(156, 37, 76, 20)];
         [_view addSubview:_labelNum];
         _labelNum.font = [UIFont systemFontOfSize:12];
         [_labelNum setTextColor:[UIColor colorWithRed:164.0/255 green:164.0/255 blue:164.0/255 alpha:1]];
@@ -39,12 +41,6 @@
         [_view addSubview:_btnExchange];
         [_btnExchange addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
         [_btnExchange setImage:[UIImage imageNamed:@"exchange_btn"] forState:UIControlStateNormal];
-        
-        
-        _imageView.image = [UIImage imageNamed:@"menu-icon-red"];
-        _labelTitle.text = @"小米3 F码 购买资格";
-        _labelNum.text = @"剩余：56个";
-        _labelPrice.text = @"价格：150";
     }
     return self;
 }
@@ -58,6 +54,11 @@
 
 - (void)dealloc {
     self.delegate = nil;
+    
+    if ( _info != nil ) {
+        [_info release];
+        _info = nil;
+    }
     
     [_imageView release];
     _imageView = nil;
@@ -91,4 +92,39 @@
     }
 }
 
+- (void)setInfo:(NSDictionary*) info {
+    if ( _info != nil ) {
+        [_info release];
+    }
+    
+    _info = [info copy];
+    
+    
+    _labelTitle.text = [_info objectAtPath:@"name"];
+    
+    NSString* icon = [_info objectAtPath:@"icon"];
+    NSNumber* price = [_info objectAtPath:@"price"];
+    NSNumber* remain = [_info objectAtPath:@"remain"];
+    int nPrice = [price intValue];
+    
+    _labelPrice.text = [[NSString alloc] initWithFormat:@"价格：%.1f元", 1.0*nPrice/100];
+    _labelNum.text = [[NSString alloc] initWithFormat:@"剩余：%@", remain];
+
+    _imageView.image = [UIImage imageNamed:@"menu-icon-red"];
+    
+    UIImage* cachedImage = [[BeeImageCache sharedInstance] imageForURL:icon];
+    _imageView.layer.cornerRadius = 8.0f;
+    if (cachedImage != nil)
+    {
+        [_imageView setImage:cachedImage];
+    }
+    else
+    {
+        [_imageView GET:icon useCache:YES];
+    }
+}
+
+- (NSDictionary*)getInfo {
+    return [[_info copy] autorelease];
+}
 @end

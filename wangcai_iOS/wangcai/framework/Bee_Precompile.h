@@ -88,7 +88,7 @@
 // Global compile option
 // ----------------------------------
 
-#define __BEE_DEVELOPMENT__			(__YES__)				// Whether the development model?
+#define __BEE_DEVELOPMENT__			(__ON__)				// Whether the development model?
 
 #define __BEE_LOG__					(__BEE_DEVELOPMENT__)	// Whether enable logging?
 #define __BEE_ASSERT__				(__BEE_DEVELOPMENT__)	// Whether enable assertion?

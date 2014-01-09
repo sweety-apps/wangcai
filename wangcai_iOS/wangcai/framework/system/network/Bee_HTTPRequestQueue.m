@@ -259,16 +259,16 @@ DEF_SINGLETON( BeeHTTPRequestQueue )
 	}
 	else
 	{
-		if ( _delay )
-		{
-			[request performSelector:@selector(startAsynchronous)
-						  withObject:nil
-						  afterDelay:_delay];		
-		}
-		else
-		{
+		//if ( _delay )
+		//{
+		//	[request performSelector:@selector(startAsynchronous)
+		//				  withObject:nil
+		//				  afterDelay:_delay];
+		//}
+		//else
+		//{
 			[request startAsynchronous];
-		}
+		//}
 	}
 
 	return [request autorelease];

@@ -35,6 +35,8 @@
         
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"StartupController" owner:self options:nil] firstObject];
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        _alertError = nil;
+        _alertForceUpdate = nil;
         
         // 初始化sharesdk
         [self initShareSDK];
@@ -45,38 +47,67 @@
     return self;
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( _alertError != nil && [alertView isEqual:_alertError] ) {
+        // 重试
+        [[self.view viewWithTag:11] setHidden:NO];
+        [[LoginAndRegister sharedInstance] login:self];
+    } else if ( _alertForceUpdate != nil && [alertView isEqual:_alertForceUpdate] ) {
+        // 升级
+        NSString* urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/us/app/id776787173?mt=8"];
+        NSURL* url = [NSURL URLWithString:urlStr];
+        [[UIApplication sharedApplication] openURL:url];
+        
+        exit(0);
+    }
+}
+
 -(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg {
+    [[self.view viewWithTag:11] setHidden:YES];
+    
     if ( status == Login_Success ) {
-        [CATransaction begin];
-        CATransition *transition = [CATransition animation];
-        transition.type = kCATransitionFade;
-        transition.duration = 0.5f;
-        transition.fillMode = kCAFillModeForwards;
-        transition.removedOnCompletion = YES;
-        [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:@"transition"];
-        
-        [[CommonTaskList sharedInstance] fetchTaskList:self];
-        
-        [CATransaction commit];
-    } else {
-        // 登陆错误
-        
-        [CATransaction begin];
-        CATransition *transition = [CATransition animation];
-        transition.type = kCATransitionFade;
-        transition.duration = 0.5f;
-        transition.fillMode = kCAFillModeForwards;
-        transition.removedOnCompletion = YES;
-        [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:@"transition"];
-        
-        if ( [BeeSystemInfo isDevicePad] ) {
-            _delegate.window.rootViewController = [AppBoard_iPad sharedInstance];
+        int forceUpdate = [[LoginAndRegister sharedInstance] getForceUpdate];
+        if ( forceUpdate == 1 ) {
+            // 强制升级
+            if ( _alertForceUpdate != nil ) {
+                [_alertForceUpdate release];
+            }
+            
+            _alertForceUpdate = [[UIAlertView alloc]initWithTitle:@"升级" message:@"为了您红包的安全，需要升级之后才能继续使用。" delegate:self cancelButtonTitle:@"升级" otherButtonTitles:nil, nil];
+            [_alertForceUpdate show];
         } else {
-            _delegate.window.rootViewController = [AppBoard_iPhone sharedInstance];
+            [CATransaction begin];
+            CATransition *transition = [CATransition animation];
+            transition.type = kCATransitionFade;
+            transition.duration = 0.5f;
+            transition.fillMode = kCAFillModeForwards;
+            transition.removedOnCompletion = YES;
+            [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:@"transition"];
+        
+            [[CommonTaskList sharedInstance] fetchTaskList:self];
+        
+            [CATransaction commit];
+        }
+    } else {
+        // 登陆错误，必须登陆成功才能进入下一步
+        if ( _alertError != nil ) {
+            [_alertError release];
         }
         
-        [CATransaction commit];
+        _alertError = [[UIAlertView alloc]initWithTitle:@"错误" message:@"无法访问服务器，请确保网络连接正常" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil];
+        [_alertError show];
     }
+}
+
+- (void) dealloc {
+    if ( _alertError != nil ) {
+        [_alertError release];
+    }
+    
+    if ( _alertForceUpdate != nil ) {
+        [_alertForceUpdate release];
+    }
+    [super dealloc];
 }
 
 - (void)viewDidLoad

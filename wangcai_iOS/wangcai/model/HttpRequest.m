@@ -26,9 +26,6 @@
 }
 
 - (void) dealloc {
-    if ( _request != nil ) {
-        [_request release];
-    }
     if ( _delegate != nil ) {
         [_delegate release];
     }
@@ -46,6 +43,43 @@
     [self request:url Param:params method:@"post"];
 }
 
+
+
+- (NSString*) getNetworkInfo {
+    Reachability* r = [Reachability reachabilityWithHostName:@"app.getwangcai.com"];
+    NSInteger state = [r currentReachabilityStatus];
+    if ( state == 1 ) {
+        return [[@"wifi" copy] autorelease];
+    } else if ( state == 2 ) {
+        return [[@"3g" copy] autorelease];
+    }
+    
+    return [[@"none" copy] autorelease];
+}
+
+- (NSHTTPCookie*) getCookie {
+    NSMutableDictionary* properties = [[[NSMutableDictionary alloc] init] autorelease];
+    
+    [properties setValue:@".getwangcai.com" forKey:NSHTTPCookieDomain];
+    [properties setValue:[NSDate dateWithTimeIntervalSinceNow:60*60] forKey:NSHTTPCookieExpires];
+    [properties setValue:@"/asi-http-request/wangcai" forKey:NSHTTPCookiePath];
+    
+    [properties setValue:@"p" forKey:NSHTTPCookieName];
+    
+    NSString* sysModel = [[UIDevice currentDevice] model];
+    NSString* sysVer = [[UIDevice currentDevice] systemVersion];
+    NSDictionary* dic = [[NSBundle mainBundle] infoDictionary];
+    NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
+    NSString* network = [self getNetworkInfo];
+    
+    NSString* info = [[[NSString alloc] initWithFormat:@"%@_%@; app=%@; net=%@", sysModel, sysVer, appVersion, network] autorelease];
+    [properties setValue:info forKey:NSHTTPCookieValue];
+    
+    NSHTTPCookie* cookie = [[[NSHTTPCookie alloc] initWithProperties:properties] autorelease];
+    
+    return cookie;
+}
+
 - (void) request : (NSString*) url Param:(NSDictionary*) params method:(NSString*)getOrPost
 {
     if ([getOrPost length] == 0)
@@ -54,7 +88,18 @@
     }
     
     getOrPost = [getOrPost lowercaseString];
-    NSString* newUrl = [self BuildURL:url];
+    NSString* newUrl = [[self BuildURL:url] autorelease];
+    
+    if ([getOrPost isEqualToString:@"get"] && params != nil ) {
+        NSArray* keys = [params allKeys];
+        int nCount = [keys count];
+        for (int i = 0; i < nCount; i ++ ) {
+            id key = [keys objectAtIndex:i];
+            id value = [params objectForKey:key];
+            
+            newUrl = [newUrl stringByAppendingFormat:@"&%@=%@", key, value];
+        }
+    }
     
     if ([getOrPost isEqualToString:@"get"])
     {
@@ -69,44 +114,44 @@
         _request = self.HTTP_POST(newUrl);
     }
     
+    NSHTTPCookie* cookie = [self getCookie];
+    [_request setRequestCookies:[NSMutableArray arrayWithObject:cookie]];
+    
     _url = [url copy];
+    if([getOrPost isEqualToString:@"post"]) {
+        NSString* nsParam = [[NSString alloc]init];
     
-    NSString* nsParam = [[NSString alloc]init];
-    
-    if ( params != nil ) {
-        NSArray* keys = [params allKeys];
-        int nCount = [keys count];
-        for (int i = 0; i < nCount; i ++ ) {
-            id key = [keys objectAtIndex:i];
-            id value = [params objectForKey:key];
-            
-            if ( i == nCount - 1 ) {
-                nsParam = [nsParam stringByAppendingFormat:@"%@=%@", key, value];
-            } else {
-                nsParam = [nsParam stringByAppendingFormat:@"%@=%@&", key, value];
+        if ( params != nil ) {
+            NSArray* keys = [params allKeys];
+            int nCount = [keys count];
+            for (int i = 0; i < nCount; i ++ ) {
+                id key = [keys objectAtIndex:i];
+                id value = [params objectForKey:key];
+        
+                if ( i == nCount - 1 ) {
+                    nsParam = [nsParam stringByAppendingFormat:@"%@=%@", key, value];
+                } else {
+                    nsParam = [nsParam stringByAppendingFormat:@"%@=%@&", key, value];
+                }
             }
-            
         }
+    
+        _param = [nsParam copy];
+    
+        NSMutableData* data = [[[NSMutableData alloc] init] autorelease];
+    
+    
+        NSString* encodedString = [nsParam stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+        const char * a =[encodedString UTF8String];
+    
+        _request.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
+        [data appendBytes:a length:strlen(a)];
+    
+        _request.postBody = [[data copy] autorelease];
     }
     
-    _param = [nsParam copy];
-    
-    NSMutableData* data = [[NSMutableData alloc] init];
-    
-    
-    NSString* encodedString = [nsParam stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    const char * a =[encodedString UTF8String];
-    
-    _request.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
-    [data appendBytes:a length:strlen(a)];
-    
-    _request.postBody = [[data copy] autorelease];
-    
     _request.TIMEOUT(10);
-    
-    [data release];
-    [newUrl release];
 }
 
 

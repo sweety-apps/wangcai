@@ -46,11 +46,14 @@ typedef enum LoginStatus {
     int       _income;    // 总收入
     int       _outgo;     // 总支出
     int       _recentIncome;  // 最近赚到
+    int       _inviteIncome;
     NSString*   _invite_code;
     NSString*   _inviter;
     
     NSMutableArray* _delegateArray;
     NSMutableArray* _delegateBalanceArray;
+    
+    int        _force_update;
 }
 
 +(id) sharedInstance;
@@ -89,4 +92,7 @@ typedef enum LoginStatus {
 
 -(void) increaseBalance:(int) inc;
 -(void) setBalance:(int) balance;
+
+-(int) getInviteIncome;
+-(int) getForceUpdate;
 @end

@@ -11,7 +11,8 @@
 #import "WebPageController.h"
 #import "Config.h"
 #import "PhoneValidationController.h"
-
+#import "MBHUDView.h"
+#import "Common.h"
 @interface ExchangeController ()
 
 @end
@@ -28,9 +29,16 @@
     if (self) {
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] firstObject];
+        self->_firstRequest = YES;
+        self->_request = nil;
         self->_alertView = nil;
         self->_alertBindPhone = nil;
         self->_alertNoBalance = nil;
+        self->_list = nil;
+        self->_prtType = nil;
+        self->_requestExchange = nil;
+        self->_exchange_code = nil;
+        self->_alertExchange = nil;
         
         _labelBalance = (UILabel*) [self.view viewWithTag:55];
         _tableView = (UITableView*)[self.view viewWithTag:89];
@@ -82,7 +90,7 @@
         _refreshHeaderView = view1;
         [view1 release];
         
-        [_refreshHeaderView refreshLastUpdatedDate];
+        [self requestList];
     }
     return self;
 }
@@ -103,6 +111,31 @@
     [[LoginAndRegister sharedInstance] detachBindPhoneEvent:self];
     
     _refreshHeaderView = nil;
+    
+    if ( _prtType != nil ) {
+        [_prtType release];
+        _prtType = nil;
+    }
+    
+    if ( _request != nil ) {
+        [_request release];
+        _request = nil;
+    }
+    
+    if ( _alertExchange != nil ) {
+        [_alertExchange release];
+        _alertExchange = nil;
+    }
+    
+    if ( _exchange_code != nil ) {
+        [_exchange_code release];
+        _exchange_code = nil;
+    }
+    
+    if ( _requestExchange != nil ) {
+        [_requestExchange release];
+        _requestExchange = nil;
+    }
     
     if ( _noattachView != nil ) {
         [_noattachView release];
@@ -171,6 +204,9 @@
             } else {
                 [cell setBkgColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
             }
+            
+            NSDictionary *info = [_list objectAtIndex:(row-1)];
+            [cell setInfo:info];
         }
         
         return cell;
@@ -182,7 +218,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     if ( row == 0 ) {
-        return 40;
+        return 28;
     }
     
     return 64;
@@ -190,7 +226,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    if ( _list == nil ) {
+        return 1;
+    }
+    
+    return 1 + [_list count];
 }
 
 - (IBAction)clickExchangeInfo:(id)sender {
@@ -249,6 +289,20 @@
     if ( _alertView != nil ) {
         [_alertView hideAlertView];
     }
+    
+    [self showLoading:@"处理中..."];
+    
+    // 提交请求到服务器
+    if ( _requestExchange != nil ) {
+        [_requestExchange release];
+    }
+    
+    _requestExchange = [[HttpRequest alloc] init:self];
+    
+    NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
+    [dictionary setObject:_prtType forKey:@"exchange_type"];
+    
+    [_requestExchange request:HTTP_EXCHANGE_CODE Param:dictionary];
 }
 
 
@@ -289,11 +343,38 @@
 }
 
 -(void) onClickExchange : (id) sender {
-    int nDiscount = 100;
+    NSDictionary* info = [sender getInfo];
     
-    if ( [self checkBalanceAndBindPhone:(1.0*nDiscount/100)] ) {
-        [self checkExchange:@"产品：小米3激活码" Text:@"价格：150元" Tip:@"兑换需要3个工作日，请耐心等待" Button:@"继续兑换"];
+    NSString* name = [info objectAtPath:@"name"];
+    NSNumber* price = [info objectAtPath:@"price"];
+    NSNumber* type = [info objectAtPath:@"type"];
+    
+    int nPrice = [price intValue];
+    _price = nPrice;
+    
+    if ( _prtType != nil ) {
+        [_prtType release];
     }
+    
+    _prtType = [type copy];
+
+    if ( [self checkBalanceAndBindPhone:(1.0*nPrice/100)] ) {
+        NSString* nsTitle = [[NSString alloc] initWithFormat:@"产品：%@", name];
+        NSString* nsPrice = [[NSString alloc] initWithFormat:@"价格：%.1f元", 1.0*nPrice/100];
+        
+        [self checkExchange:nsTitle Text:nsPrice Tip:@"兑换需要1-3个工作日，请耐心等待" Button:@"继续兑换"];
+        
+        [nsTitle release];
+        [nsPrice release];
+    }
+}
+
+-(void) onShowOrder:(NSString*) orderNum {
+    NSString* url = [[WEB_ORDER_INFO copy] autorelease];
+    url = [url stringByAppendingFormat:@"?ordernum=%@", orderNum];
+    
+    WebPageController* controller = [[[WebPageController alloc] initOrder:orderNum Url:url Stack:_beeStack] autorelease];
+    [_beeStack pushViewController:controller animated:YES];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -303,12 +384,153 @@
                 [self onAttachPhone];
             }
         }
+    } else if ( _alertExchange != nil ) {
+        if ( [_alertExchange isEqual:alertView] ) {
+            if ( buttonIndex == 1 ) {
+                // 显示交易详情
+                [self onShowOrder:_exchange_code];
+            }
+        }
     }
 }
 
 -(void) onAttachPhone {
     PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     [self->_beeStack pushViewController:phoneVal animated:YES];
+}
+
+- (void) reloadTableViewDataSource{
+    _reloading = NO;
+    //这里引用你加载数据的方法
+    
+    [self requestList];
+}
+
+//加载结束事件
+- (void)doneLoadingTableViewData{
+    
+    //  model should call this when its done loading
+    _reloading = NO;
+    
+    if (/*得到的数组数是大于0的*/ YES) {
+        [self->_tableView reloadData];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取数据失败或网络异常" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self->_tableView];
+}
+
+#pragma mark -#pragma mark UIScrollViewDelegate Methods
+//table也是scrollview所以只要滚动就会调用这个方法
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+//滚动结束就会调用这个方法
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    
+}
+
+//释放更新
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+    //
+    //  [self reloadTableViewDataSource];
+    [NSThread detachNewThreadSelector:@selector(reloadTableViewDataSource) toTarget:self withObject:nil];
+    //  [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+    
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+    return _reloading; // should return if data source model is reloading
+    
+}
+
+- (void) showLoading:(NSString*) tip {
+    [MBHUDView hudWithBody:tip type:MBAlertViewHUDTypeActivityIndicator hidesAfter:-1 show:YES];
+}
+
+- (void) hideLoading {
+    [MBHUDView dismissCurrentHUD];
+}
+
+- (void) requestList {
+    if ( _firstRequest ) {
+        [self showLoading:@"请等待..."];
+    }
+    
+    if ( _request != nil ) {
+        [_request  release];
+    }
+    
+    _request = [[HttpRequest alloc] init:self];
+    NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
+    NSString* timestamp = [Common getTimestamp];
+    [dictionary setObject:timestamp forKey:@"stamp"];
+    [_request request:HTTP_EXCHANGE_LIST Param:dictionary method:@"get"];
+}
+
+-(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
+    if ( _requestExchange != nil && [request isEqual:_requestExchange] ) {
+        [self hideLoading];
+        if ( httpCode == 200 ) {
+            [self onExchangeCompleted:body];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取数据失败或网络异常" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
+    } else if ( _request != nil && [request isEqual:_request] ) {
+        if ( _firstRequest ) {
+            [self hideLoading];
+            _firstRequest = NO;
+        }
+    
+        if ( httpCode == 200 ) {
+            // 获取到返回的列表
+            NSNumber* res = [body valueForKey: @"res"];
+            int nRes = [res intValue];
+            if (nRes == 0) {
+                NSArray* list = [body valueForKey: @"exchange_list"];
+                if ( _list != nil ) {
+                    [_list release];
+                }
+            
+                _list = [list copy];
+            }
+        }
+    
+        [self doneLoadingTableViewData];
+    }
+}
+
+- (void) onExchangeCompleted:(NSDictionary*) infos {
+    NSNumber* res = [infos valueForKey: @"res"];
+    int nRes = [res intValue];
+    if (nRes == 0) {
+        if ( _exchange_code != nil ) {
+            [_exchange_code release];
+        }
+        
+        _exchange_code = [[infos valueForKey: @"exchange_code"] copy];
+        
+        if ( _alertExchange != nil ) {
+            [_alertExchange release];
+            _alertExchange = nil;
+        }
+        
+        [[LoginAndRegister sharedInstance] increaseBalance:(-1*_price)];
+        
+        _alertExchange = [[UIAlertView alloc] initWithTitle:@"交易完成" message:@"恭喜您，换购请求已确认，请您耐心等待。" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"查看详细", nil];
+        [_alertExchange show];
+    } else {
+        NSString* err = [infos valueForKey: @"msg"];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:err delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 @end

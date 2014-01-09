@@ -61,6 +61,41 @@ static LoginAndRegister* _sharedInstance;
     _delegate = [delegate retain];
 }
 
+- (NSString*) getNetworkInfo {
+    Reachability* r = [Reachability reachabilityWithHostName:@"app.getwangcai.com"];
+    NSInteger state = [r currentReachabilityStatus];
+    if ( state == 1 ) {
+        return [[@"wifi" copy] autorelease];
+    } else if ( state == 2 ) {
+        return [[@"3g" copy] autorelease];
+    }
+    
+    return [[@"none" copy] autorelease];
+}
+
+- (NSHTTPCookie*) getCookie {
+    NSMutableDictionary* properties = [[[NSMutableDictionary alloc] init] autorelease];
+    
+    [properties setValue:@".getwangcai.com" forKey:NSHTTPCookieDomain];
+    [properties setValue:[NSDate dateWithTimeIntervalSinceNow:60*60] forKey:NSHTTPCookieExpires];
+    [properties setValue:@"/asi-http-request/wangcai" forKey:NSHTTPCookiePath];
+    
+    [properties setValue:@"p" forKey:NSHTTPCookieName];
+    
+    NSString* sysModel = [[UIDevice currentDevice] model];
+    NSString* sysVer = [[UIDevice currentDevice] systemVersion];
+    NSDictionary* dic = [[NSBundle mainBundle] infoDictionary];
+    NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
+    NSString* network = [self getNetworkInfo];
+    
+    NSString* info = [[[NSString alloc] initWithFormat:@"%@_%@; app=%@; net=%@", sysModel, sysVer, appVersion, network] autorelease];
+    [properties setValue:info forKey:NSHTTPCookieValue];
+    
+    NSHTTPCookie* cookie = [[[NSHTTPCookie alloc] initWithProperties:properties] autorelease];
+    
+    return cookie;
+}
+
 -(void) login {
     // 发起登录或注册请求
     if ( _delegate != nil ) {
@@ -72,6 +107,9 @@ static LoginAndRegister* _sharedInstance;
 
     BeeHTTPRequest* req = self.HTTP_POST(HTTP_LOGIN_AND_REGISTER);
     NSString* nsParam = [[NSString alloc]init];
+    
+    NSHTTPCookie* cookie = [self getCookie];
+    [req setRequestCookies:[NSMutableArray arrayWithObject:cookie]];
     
     if ( _phoneNum != nil ) {
         // 应该在登录成功后设置
@@ -146,11 +184,9 @@ static LoginAndRegister* _sharedInstance;
                 _inviter = [[dict valueForKey:@"inviter"] copy];
                 _invite_code = [[dict valueForKey:@"invite_code"] copy];
                 
-                // test
-                //_phoneNum = @"13632729763";
-                //_balance = 10000;
-                //
-                
+                _inviteIncome = [[dict valueForKey:@"shared_income"] intValue];
+                _force_update = [[dict valueForKey:@"force_update"] intValue];
+
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
             } else {
                 NSString* err = [[dict valueForKey:@"msg"] copy];
@@ -158,6 +194,10 @@ static LoginAndRegister* _sharedInstance;
             }
         }
     }
+}
+
+-(int) getForceUpdate {
+    return _force_update;
 }
 
 -(void) increaseBalance:(int) inc {
@@ -308,5 +348,10 @@ static LoginAndRegister* _sharedInstance;
 -(int) getRecentIncome {
     return _recentIncome;
 }
+
+-(int) getInviteIncome {
+    return _inviteIncome;
+}
+
 
 @end

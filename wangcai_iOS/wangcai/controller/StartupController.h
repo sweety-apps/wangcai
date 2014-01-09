@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface StartupController : UIViewController< LoginAndRegisterDelegate> {
+@interface StartupController : UIViewController< LoginAndRegisterDelegate, UIAlertViewDelegate> {
     AppDelegate* _delegate;
+    UIAlertView* _alertForceUpdate;
+    UIAlertView* _alertError;
 }
 
 - (id) init : (AppDelegate*) delegate;

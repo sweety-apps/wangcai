@@ -11,10 +11,11 @@
 #import "UICustomAlertView.h"
 #import "ExchangeControllerCell.h"
 #import "EGORefreshTableHeaderView.h"
+#import "HttpRequest.h"
 
 @interface ExchangeController : UIViewController<UITableViewDataSource, UITableViewDelegate,
             BindPhoneDelegate, ExchangeControllerCellDelegate,
-            UIAlertViewDelegate, BalanceChangeDelegate, EGORefreshTableHeaderDelegate> {
+            UIAlertViewDelegate, BalanceChangeDelegate, EGORefreshTableHeaderDelegate, HttpRequestDelegate> {
     UITableView* _tableView;
     BeeUIStack* _beeStack;
     
@@ -25,9 +26,22 @@
     
     UIAlertView*    _alertBindPhone;
     UIAlertView*    _alertNoBalance;
+              
+    UIAlertView*    _alertExchange;
                 
     BOOL _reloading;
     EGORefreshTableHeaderView* _refreshHeaderView;
+                
+    BOOL _firstRequest;
+                
+    HttpRequest* _request;
+    HttpRequest* _requestExchange;
+                
+    NSArray* _list;
+                
+    NSNumber* _prtType;
+    NSString* _exchange_code;
+    int             _price;
 }
 
 - (id)init;

@@ -148,13 +148,15 @@ NSString * macaddress()
     [sessionid release];
     [deviceid release];
     
-    NSArray* keys = [params allKeys];
-    int nCount = [keys count];
-    for (int i = 0; i < nCount; i ++ ) {
-        id key = [keys objectAtIndex:i];
-        id value = [params objectForKey:key];
+    if ( params != nil ) {
+        NSArray* keys = [params allKeys];
+        int nCount = [keys count];
+        for (int i = 0; i < nCount; i ++ ) {
+            id key = [keys objectAtIndex:i];
+            id value = [params objectForKey:key];
         
-        newUrl = [newUrl stringByAppendingFormat:@"&%@=%@", key, value];
+            newUrl = [newUrl stringByAppendingFormat:@"&%@=%@", key, value];
+        }
     }
     
     return newUrl;

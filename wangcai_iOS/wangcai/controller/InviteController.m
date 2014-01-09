@@ -62,6 +62,10 @@
     self.shareButton = (UIButton*)[self.inviteView viewWithTag:22];
     self.inputInviteTip = (UILabel*)[self.invitedView viewWithTag:33];
     
+    
+    self.inviteIncome = (UILabel*)[self.inviteView viewWithTag:41];
+    self.inviteIncomeTip = (UILabel*)[self.inviteView viewWithTag:42];
+    
     self.invitedPeopleTextfield.delegate = self;
     
     [self.containerView addSubview: self.inviteView];
@@ -121,6 +125,20 @@
     }
     
     [self updateErrorMsg: NO msg: nil];
+    
+    
+    int income = [[LoginAndRegister sharedInstance] getInviteIncome];
+    if ( income < 0 ) {
+        [[self.view viewWithTag:40] setHidden:YES];
+        [[self.view viewWithTag:41] setHidden:YES];
+    } else {
+        NSString* nsIncome = [[NSString alloc]initWithFormat:@"%.1f元", 1.0*income/100];
+    
+        self.inviteIncome.text = nsIncome;
+        [nsIncome release];
+    }
+    
+    self.inviteIncomeTip.text = @"获得额外10%的好友任务奖励";
 }
 
 - (void)viewDidLoad

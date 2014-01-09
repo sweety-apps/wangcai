@@ -38,6 +38,9 @@
 @property (copy, nonatomic) NSString* inviteCode;
 @property (copy, nonatomic) NSString* invitedPeople;
 
+@property (assign, nonatomic) UILabel* inviteIncome;
+@property (assign, nonatomic) UILabel* inviteIncomeTip;
+
 - (IBAction)copyUrl:(id)sender;
 - (IBAction)share:(id)sender;
 - (IBAction)switchView:(id)sender;
