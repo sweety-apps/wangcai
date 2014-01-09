@@ -103,10 +103,11 @@ static OnlineWallViewController* _sharedInstance;
 - (void)offerWallDidFinishCheckPointWithTotalPoint:(NSInteger)totalPoint
                              andTotalConsumedPoint:(NSInteger)consumed {
     _nConsume = totalPoint - consumed;
+
     if ( _nConsume > 0 ) {
         // 有能消费的积分
         // 报给自己的服务器获取能消费的积分数
-        HttpRequest* request = [[[HttpRequest alloc] init:self] autorelease];
+        HttpRequest* request = [[HttpRequest alloc] init:self];
         
         NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
         NSString* nsPoint = [[[NSString alloc] initWithFormat:@"%d", totalPoint] autorelease];
@@ -154,8 +155,12 @@ static OnlineWallViewController* _sharedInstance;
     if ( httpCode == 200 ) {
         int res = [[body objectForKey:@"res"] intValue];
         if ( res == 0 ) {
+            int inc = [[body objectForKey:@"increment"] intValue];
+            if ( inc > 0 ) {
+                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:inc];
+            }
             
-           [_offerWallManager requestOnlineConsumeWithPoint:_nConsume];
+            [_offerWallManager requestOnlineConsumeWithPoint:_nConsume];
         }
         
     }
