@@ -18,6 +18,7 @@
 #import "WCMainPageBoard_iPhone.h"
 #import "CommonYuENumView.h"
 #import "UserInfoEditorViewController.h"
+#import "AppBoard_iPhone.h"
 
 #pragma mark -
 
@@ -173,9 +174,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [[self.view superview] superview].clipsToBounds = NO;
         
         [_taskTableViewController viewDidAppear:NO];
+        
+        [[AppBoard_iPhone sharedInstance] setPanable:YES];
     }
     else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
     {
+        [[AppBoard_iPhone sharedInstance] setPanable:NO];
         [_taskTableViewController viewWillDisappear:NO];
     }
     else if ( [signal is:BeeUIBoard.DID_DISAPPEAR] )

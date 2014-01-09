@@ -214,9 +214,9 @@
     }
 }
 
-- (void)scrollToTheSelectedCell {
-    
-    CGRect selectionRectConverted = [self convertRect:_selectionRect toView:_contentTableView];        
+- (NSIndexPath*)getCoverdCell
+{
+    CGRect selectionRectConverted = [self convertRect:_selectionRect toView:_contentTableView];
     NSArray *indexPathArray = [_contentTableView indexPathsForRowsInRect:selectionRectConverted];
     
     CGFloat intersectionHeight = 0.0;
@@ -226,12 +226,18 @@
         //looping through the closest cells to get the closest one
         UITableViewCell *cell = [_contentTableView cellForRowAtIndexPath:index];
         CGRect intersectedRect = CGRectIntersection(cell.frame, selectionRectConverted);
-      
+        
         if (intersectedRect.size.height>=intersectionHeight) {
             selectedIndexPath = index;
             intersectionHeight = intersectedRect.size.height;
         }
     }
+    return selectedIndexPath;
+}
+
+- (void)scrollToTheSelectedCell {
+    
+    NSIndexPath *selectedIndexPath = [self getCoverdCell];
     [self scrollToTheCellAtIndex:selectedIndexPath];
 }
 
@@ -256,7 +262,17 @@
     [_contentTableView reloadData];
 }
 
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSIndexPath *selectedIndexPath = [self getCoverdCell];
+    if (selectedIndexPath)
+    {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(selector:selectorPassRowAtIndex:)])
+        {
+            [self.delegate selector:self selectorPassRowAtIndex:selectedIndexPath.row];
+        }
+    }
+}
 
 
 @end

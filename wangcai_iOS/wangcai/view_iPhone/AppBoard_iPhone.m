@@ -12,7 +12,7 @@
 #import "PhoneValidationController.h"
 #import "OnlineWallViewController.h"
 
-#define SHOW_MASK (0)
+#define SHOW_MASK (1)
 
 #pragma mark -
 
@@ -104,19 +104,26 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	}
 	else if ( [signal is:BeeUIBoard.DID_APPEAR] )
 	{
-		[BeeUIRouter sharedInstance].view.pannable = YES;
-        _mask.pannable = YES;
+		//[BeeUIRouter sharedInstance].view.pannable = YES;
+        //_mask.pannable = YES;
         
         _origFrame = [BeeUIRouter sharedInstance].view.frame;
 	}
 	else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
 	{
-		[BeeUIRouter sharedInstance].view.pannable = NO;
-        _mask.pannable = NO;
+		//[BeeUIRouter sharedInstance].view.pannable = NO;
+        //_mask.pannable = NO;
 	}
 	else if ( [signal is:BeeUIBoard.DID_DISAPPEAR] )
 	{
 	}
+}
+
+
+- (void)setPanable:(BOOL)panable
+{
+    [BeeUIRouter sharedInstance].view.pannable = panable;
+    _mask.pannable = panable;
 }
 
 ON_SIGNAL2( UIView, signal )

@@ -12,7 +12,8 @@
 @protocol IZValueSelectorViewDelegate <NSObject>
 
 - (void)selector:(IZValueSelectorView *)valueSelector didSelectRowAtIndex:(NSInteger)index;
-
+@optional
+- (void)selector:(IZValueSelectorView *)valueSelector selectorPassRowAtIndex:(NSInteger)index;
 @end
 
 @protocol IZValueSelectorViewDataSource <NSObject>

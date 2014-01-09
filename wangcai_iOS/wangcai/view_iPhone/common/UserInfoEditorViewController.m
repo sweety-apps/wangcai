@@ -68,7 +68,7 @@
 -(void)_doAgeInitSelections
 {
     [self.ageSelectorView selectItemAtIndex:17 animated:NO];
-    [self selectSex:YES];
+    //[self selectSex:YES];
     
     [[UserInfoAPI loginedUserInfo] fetchUserInfo:self];
 }
@@ -383,13 +383,22 @@
     NSLog(@"Selected index %d",index);
 }
 
+- (void)selector:(IZValueSelectorView *)valueSelector selectorPassRowAtIndex:(NSInteger)index
+{
+    _labelAgeSelected.text = [NSString stringWithFormat:@"%d",index+1];
+    //NSLog(@"Pass-over index %d",index);
+}
+
 #pragma mark <UserInfoAPIDelegate>
 
 - (void)onFinishedFetchUserInfo:(UserInfoAPI*)userInfo isSucceed:(BOOL)succeed
 {
     if (succeed)
     {
-        [self selectSex:([userInfo.uiSex intValue]==0?YES:NO)];
+        if (userInfo.uiSex)
+        {
+            [self selectSex:([userInfo.uiSex intValue]==0?YES:NO)];
+        }
         int ageIndex = [userInfo.uiAge intValue] - 1;
         if (ageIndex < 0)
         {

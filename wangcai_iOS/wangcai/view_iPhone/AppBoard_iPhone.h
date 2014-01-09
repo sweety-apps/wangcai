@@ -22,4 +22,7 @@
 }
 
 AS_SINGLETON( AppBoard_iPhone )
+
+- (void)setPanable:(BOOL)panable;
+
 @end

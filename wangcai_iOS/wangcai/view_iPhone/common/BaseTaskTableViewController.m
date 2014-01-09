@@ -147,7 +147,8 @@
 
         // 模拟延迟加载数据，因此2秒后才调用）
         // 这里的refreshView其实就是header
-        [self performSelector:@selector(doneWithView:) withObject:refreshView afterDelay:2.0];
+        //[self performSelector:@selector(doneWithView:) withObject:refreshView afterDelay:2.0];
+        [self refreshTaskList];
         
         NSLog(@"%@----开始进入刷新状态", refreshView.class);
     };
@@ -377,7 +378,7 @@
                 [comCell setLeftIconUrl:task.taskIconUrl];
             }
             
-            if ([task.taskStatus intValue] == 1)
+            if ([task.taskStatus intValue] == CommonTaskTableViewCellStateFinished)
             {
                 [comCell setCellState:CommonTaskTableViewCellStateFinished];
             }
@@ -544,7 +545,9 @@
         [self.containTableView reloadData];
         [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[taskList allMoneyCanBeEarnedInRMBYuan]];
         [self.zhanghuYuEHeaderCell.yuENumView setNum:[[LoginAndRegister sharedInstance] getBalance]];
+        [self doneWithView:_header];
         [self resetFooter];
+        [self.containTableView reloadData];
     }
     else
     {
