@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "DMOfferWallViewController.h"
 #import "DMOfferWallManager.h"
+#import "HttpRequest.h"
 
 @protocol OnlineWallViewControllerDelegate <NSObject>
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume;
 @end
 
-@interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate> {
+@interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, HttpRequestDelegate> {
     DMOfferWallViewController* _offerWallController;
     DMOfferWallManager*        _offerWallManager;
     NSInteger                  _nConsume;

@@ -7,8 +7,11 @@
 //
 
 #import "OnlineWallViewController.h"
+#import "LoginAndRegister.h"
+#import "HttpRequest.h"
+#import "config.h"
 
-#define PUBLISHER_ID @"96ZJ39xwzegKfwTA/L"
+#define PUBLISHER_ID @"96ZJ2I4gzeykPwTACk"
 
 @interface OnlineWallViewController ()
 
@@ -33,11 +36,15 @@ static OnlineWallViewController* _sharedInstance;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID];
+        NSString* deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
+        
+        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:deviceId];
         _offerWallController.delegate = self;
         
-        _offerWallManager = [[DMOfferWallManager alloc] initWithPublishId:PUBLISHER_ID];
+        _offerWallManager = [[DMOfferWallManager alloc] initWithPublishId:PUBLISHER_ID userId:deviceId];
         _offerWallManager.delegate = self;
+        
+        [deviceId release];
     }
     return self;
 }
@@ -98,7 +105,14 @@ static OnlineWallViewController* _sharedInstance;
     _nConsume = totalPoint - consumed;
     if ( _nConsume > 0 ) {
         // 有能消费的积分
-        [_offerWallManager requestOnlineConsumeWithPoint:_nConsume];
+        // 报给自己的服务器获取能消费的积分数
+        HttpRequest* request = [[[HttpRequest alloc] init:self] autorelease];
+        
+        NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
+        NSString* nsPoint = [[[NSString alloc] initWithFormat:@"%d", totalPoint] autorelease];
+        [dictionary setObject:nsPoint forKey:@"point"];
+      
+        [request request:HTTP_TASK_DOMOB Param:dictionary];
     }
 }
 
@@ -135,4 +149,16 @@ static OnlineWallViewController* _sharedInstance;
 - (void)offerWallDidCheckEnableState:(BOOL)enable {
     
 }
+
+-(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
+    if ( httpCode == 200 ) {
+        int res = [[body objectForKey:@"res"] intValue];
+        if ( res == 0 ) {
+            
+           [_offerWallManager requestOnlineConsumeWithPoint:_nConsume];
+        }
+        
+    }
+}
+
 @end
