@@ -135,8 +135,12 @@
 
 - (void)addHeader
 {
+    UIView* longView = [[[UIView alloc] initWithFrame:CGRectMake(0, -300, 320, 320)] autorelease];
+    longView.backgroundColor = RGB(25, 138, 191);
     MJRefreshHeaderView *header = [MJRefreshHeaderView header];
-    self.containTableView.backgroundColor = RGB(25, 138, 191);
+    header.backgroundColor = RGB(25, 138, 191);
+    [header insertSubview:longView atIndex:0];
+    //self.containTableView.backgroundColor = RGB(25, 138, 191);
     header.scrollView = self.containTableView;
     header.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
         // 进入刷新状态就会回调这个Block

@@ -81,7 +81,7 @@
         [self addSubview:_arrowImage = arrowImage];
         
         // 5.指示器
-        UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         activityView.bounds = arrowImage.bounds;
         activityView.autoresizingMask = arrowImage.autoresizingMask;
         [self addSubview:_activityView = activityView];
