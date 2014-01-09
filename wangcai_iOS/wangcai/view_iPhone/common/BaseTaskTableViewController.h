@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TaskInfoTableViewCell.h"
 #import "CommonZhanghuYuETableViewCell.h"
+#import "MJRefresh.h"
 
 @interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 {
@@ -25,6 +26,8 @@
     BOOL _hasLoadedHistoricalFinishedList;
     NSInteger _curCellCount;
     NSInteger _hisCellCount;
+    
+    MJRefreshHeaderView *_header;
     
     float _increasedNum;
 }

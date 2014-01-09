@@ -144,7 +144,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //_taskTableViewController.containTableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - headBgImageView.frame.size.height);
         CGSize tableViewSize = [UIApplication sharedApplication].keyWindow.frame.size;
         _taskTableViewController.tableViewFrame = CGRectMake(0, 0, tableViewSize.width, tableViewSize.height - headBgImageView.frame.size.height);
-        _taskTableViewController.containTableView.bounces = NO;
+        _taskTableViewController.containTableView.bounces = YES;
         
         //[self.view addSubview:testImageView];
     }

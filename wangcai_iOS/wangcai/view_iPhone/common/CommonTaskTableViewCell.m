@@ -47,6 +47,7 @@
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
         
+        self.contentView.backgroundColor = [UIColor whiteColor];
         
         [self.contentView addSubview:_bottomLineImage];
         [self.contentView addSubview:_leftIcon];
