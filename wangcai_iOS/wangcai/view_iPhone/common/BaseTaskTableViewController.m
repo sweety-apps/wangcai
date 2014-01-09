@@ -438,6 +438,11 @@
                 [self.beeStack pushViewController:userInfoCtrl animated:YES];
             }
                 break;
+            case kTaskTypeOfferWall:
+            {
+                [self.beeStack pushViewController:[OnlineWallViewController sharedInstance] animated:YES];
+            }
+                break;
             case kTaskTypeInstallWangcai:
             case kTaskTypeIntallApp:
             case kTaskTypeCommon:
@@ -454,6 +459,7 @@
                 [self.beeStack pushViewController:taskCtrl animated:YES];
             }
                 break;
+            
             case kTaskTypeEverydaySign:
                 
                 break;

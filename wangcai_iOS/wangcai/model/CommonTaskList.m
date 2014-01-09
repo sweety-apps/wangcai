@@ -238,8 +238,20 @@ static CommonTaskList* gInstance = nil;
                         task.taskIsLocalIcon = NO;
                         //task.taskIconUrl = @"";
                         break;
+                    case kTaskTypeCommon:
+                        task.taskIsLocalIcon = NO;
+                        //task.taskIconUrl = @"";
+                        break;
+                    case kTaskTypeOfferWall:
+                        task.taskIsLocalIcon = NO;
+                        //task.taskIconUrl = @"";
+                        break;
                         
                     default:
+                        if ([task.taskIconUrl rangeOfString:@"http://"].length > 0)
+                        {
+                            task.taskIsLocalIcon = NO;
+                        }
                         break;
                 }
                 

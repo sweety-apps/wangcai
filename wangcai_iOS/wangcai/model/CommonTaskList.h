@@ -12,6 +12,7 @@
 #define kTaskTypeUserInfo (2)
 #define kTaskTypeInviteFriends (3)
 #define kTaskTypeEverydaySign (4)
+#define kTaskTypeOfferWall (5)
 #define kTaskTypeIntallApp (10000)
 #define kTaskTypeCommon (10001)
 
