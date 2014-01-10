@@ -19,6 +19,7 @@
     NSString*  _url;
     
     UIView*    _loadingView;
+    UIView*    _errView;
     
     BeeUIStack* _beeStack;
     
@@ -49,4 +50,6 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 - (void)setSize:(CGSize) size;
+
+- (IBAction)onRequest:(id)sender;
 @end

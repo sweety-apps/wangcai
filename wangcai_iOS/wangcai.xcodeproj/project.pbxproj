@@ -168,8 +168,6 @@
 		A63AC921186C566B00A106A0 /* StartupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63AC920186C566B00A106A0 /* StartupController.xib */; };
 		A6438ED7185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */; };
 		A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */; };
-		A6438EDC185F2381001A84AD /* UserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438EDB185F2381001A84AD /* UserInfoController.m */; };
-		A6438EDE185F239E001A84AD /* UserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438EDD185F239E001A84AD /* UserInfoController.xib */; };
 		A65A728B1872A7CE006B08FB /* OnlineWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65A728A1872A7CE006B08FB /* OnlineWallViewController.m */; };
 		A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */; };
 		A6AA900118647E03006DB7D2 /* BusionessPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */; };
@@ -746,9 +744,6 @@
 		A6438ED5185EF0F3001A84AD /* TransferToAlipayAndPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferToAlipayAndPhoneController.h; sourceTree = "<group>"; };
 		A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferToAlipayAndPhoneController.m; sourceTree = "<group>"; };
 		A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransferToAlipayAndPhoneController.xib; sourceTree = "<group>"; };
-		A6438EDA185F2381001A84AD /* UserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoController.h; sourceTree = "<group>"; };
-		A6438EDB185F2381001A84AD /* UserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoController.m; sourceTree = "<group>"; };
-		A6438EDD185F239E001A84AD /* UserInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoController.xib; sourceTree = "<group>"; };
 		A65A72891872A7CE006B08FB /* OnlineWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineWallViewController.h; sourceTree = "<group>"; };
 		A65A728A1872A7CE006B08FB /* OnlineWallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineWallViewController.m; sourceTree = "<group>"; };
 		A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -2205,9 +2200,6 @@
 				F3D9D54F185D876D00392C40 /* WebViewController.h */,
 				F3D9D550185D876D00392C40 /* WebViewController.m */,
 				F3D9D551185D876D00392C40 /* WebViewController.xib */,
-				A6438EDA185F2381001A84AD /* UserInfoController.h */,
-				A6438EDB185F2381001A84AD /* UserInfoController.m */,
-				A6438EDD185F239E001A84AD /* UserInfoController.xib */,
 				A6F6DE671860287900D089C7 /* WebPageController.xib */,
 				A6F6DE69186028B700D089C7 /* WebPageController.h */,
 				A6F6DE6A186028B700D089C7 /* WebPageController.m */,
@@ -3361,7 +3353,6 @@
 				A60C5858186FF8A30068425C /* navigation-bar@2x.png in Resources */,
 				A60C585B186FF8A30068425C /* phone_num_border@2x.png in Resources */,
 				A60C5851186FF8A30068425C /* menu-button@2x.png in Resources */,
-				A6438EDE185F239E001A84AD /* UserInfoController.xib in Resources */,
 				F3813D30187566CC00350C27 /* choujiang_guize@2x.png in Resources */,
 				A60C5849186FF8A30068425C /* border@2x.png in Resources */,
 				59E42A2E1862986F00007461 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
@@ -3699,7 +3690,6 @@
 				F3F187A118543A420098C852 /* Bee_UIStack.m in Sources */,
 				F3F1870518543A410098C852 /* ASIDataCompressor.m in Sources */,
 				F3F188B418543A430098C852 /* Bee_UIPullLoader.m in Sources */,
-				A6438EDC185F2381001A84AD /* UserInfoController.m in Sources */,
 				F36049B81871B0C500FAD1F3 /* ChoujiangViewController.m in Sources */,
 				F3F187F318543A420098C852 /* Bee_UIAnimation.m in Sources */,
 				F3F189D218543A450098C852 /* NSString+BeeExtension.mm in Sources */,

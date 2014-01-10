@@ -19,7 +19,6 @@
 #import "AppBoard_iPhone.h"
 #import "PhoneValidationController.h"
 #import "InviteController.h"
-#import "UserInfoController.h"
 
 #pragma mark -
 
@@ -124,14 +123,4 @@ ON_SIGNAL3( FirstBoard_iPhone, test, signal )
     [self.stack pushViewController:phoneVal animated:YES];
 }
 
-ON_SIGNAL3( FirstBoard_iPhone, test2, signal )
-{
-    //InviteController* controller = [[InviteController alloc]initWithNibName:@"InviteController" bundle:nil];
-    
-    //[self.stack pushViewController:controller animated:YES];
-    
-    UserInfoController* controller = [[UserInfoController alloc]initWithNibName:@"UserInfoController" bundle:nil];
-    
-    [self.stack pushViewController:controller animated:YES];
-}
 @end

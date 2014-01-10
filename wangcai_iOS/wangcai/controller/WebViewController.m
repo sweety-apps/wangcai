@@ -30,10 +30,15 @@
         self->_webView = (UIWebView*)[self.view viewWithTag:11];
         self->_webView.delegate = self;
         _delegate = nil;
-        self->_loadingView = [[[NSBundle mainBundle] loadNibNamed:@"WebViewController" owner:self options:nil] lastObject];
+        
+        self->_loadingView = [[[NSBundle mainBundle] loadNibNamed:@"WebViewController" owner:self options:nil] objectAtIndex:1];
         [self.view addSubview:self->_loadingView];
         
+        self->_errView = [[[NSBundle mainBundle] loadNibNamed:@"WebViewController" owner:self options:nil] objectAtIndex:2];
+        [self.view addSubview:self->_errView];
+        
         [self->_webView setHidden:YES];
+        [self->_errView setHidden:YES];
         
         self->_alertBindPhone = nil;
         self->_alertNoBalance = nil;
@@ -91,7 +96,13 @@
         [_url release];
         _url = nil;
     }
+    
+    [self->_loadingView release];
     self->_loadingView = nil;
+    
+    [self->_errView release];
+    self->_errView = nil;
+    
     self->_beeStack = nil;
     _delegate = nil;
     
@@ -386,22 +397,34 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [self->_loadingView setHidden:NO];
     [self->_webView setHidden:YES];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self->_loadingView setHidden:YES];
-    [self->_webView setHidden:NO];
+    [self->_errView setHidden:YES];
     
     CGRect rect;
     rect.origin.y = 0;
     rect.origin.x = 0;
     rect.size = _size;
-    _webView.frame = rect;
+    
+    if ( rect.size.height != 0 && rect.size.width != 0 ) {
+        _webView.frame = rect;
+    }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self->_loadingView setHidden:YES];
+    [self->_webView setHidden:NO];
+    [self->_errView setHidden:YES];
+}
+
+- (IBAction)onRequest:(id)sender {
+    NSURL* nsurl = [[NSURL alloc] initWithString:_url];
+    [self->_webView loadRequest:[NSURLRequest requestWithURL:nsurl]];
+    [nsurl release];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [self->_loadingView setHidden:YES];
-    [self->_webView setHidden:NO];
+    [self->_errView setHidden:NO];
+    [self->_webView setHidden:YES];
 }
 
 -(void) onAttachPhone {
