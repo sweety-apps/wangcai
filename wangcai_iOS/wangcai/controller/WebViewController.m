@@ -50,11 +50,7 @@
 }
 
 - (void)setSize:(CGSize) size {
-    CGRect rect;
-    rect.origin.x = 0;
-    rect.origin.y = 0;
-    rect.size = size;
-    self->_webView.frame = rect;
+    _size = size;
 }
 
 - (void)viewDidLoad
@@ -81,17 +77,7 @@
 }
 
 -(void) balanceChanged:(int) oldBalance New:(int) balance {
-    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
-    if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
-        if ( phoneNum != nil ) {
-            [phoneNum release];
-        }
-        
-        [self notifyPhoneStatus:NO Phone:@"" Balance:(1.0*balance/100)];
-    } else {
-        [self notifyPhoneStatus:YES Phone:phoneNum Balance:(1.0*balance/100)];
-        [phoneNum release];
-    }
+    [self notifyBalanceToWeb];
 }
 
 - (void)dealloc {
@@ -184,6 +170,10 @@
         }
         
         return NO;
+    } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/query_balance"] ) {
+        // 把钱的信息返回给页面
+        [self notifyBalanceToWeb];
+        return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/query_device_info"] ) {
         // 查询设备信息
         [self notifyDeviceInfo];
@@ -268,7 +258,13 @@
         
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/exchange_info"] ) {
-        WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:WEB_EXCHANGE_INFO Stack:_beeStack];
+        NSString* device = [[[LoginAndRegister sharedInstance] getDeviceId] autorelease];
+        NSString* sessionid = [[[LoginAndRegister sharedInstance] getSessionId] autorelease];
+        NSNumber* userid = [[[LoginAndRegister sharedInstance] getUserId] autorelease];
+        
+        NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@", WEB_EXCHANGE_INFO, device, sessionid, userid] autorelease];
+    
+        WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:url Stack:_beeStack];
         [_beeStack pushViewController:controller animated:YES];
         
         return NO;
@@ -362,6 +358,17 @@
     [self->_webView stringByEvaluatingJavaScriptFromString:js];
 }
 
+- (void)notifyBalanceToWeb {
+    int balance = [[LoginAndRegister sharedInstance] getBalance];
+    int income = [[LoginAndRegister sharedInstance] getIncome];
+    int outgo = [[LoginAndRegister sharedInstance] getOutgo];
+    
+    NSString* js = [NSString stringWithFormat:@"notifyBalance(%.1f, %.1f, %.1f)",
+                    1.0*balance/100, 1.0*income/100, 1.0*outgo/100];
+    
+    [self->_webView stringByEvaluatingJavaScriptFromString:js];
+}
+ 
 - (void)notifyDeviceInfo {
     NSString* device = [[LoginAndRegister sharedInstance] getDeviceId];
     NSString* sessionId = [[LoginAndRegister sharedInstance] getSessionId];
@@ -384,6 +391,12 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self->_loadingView setHidden:YES];
     [self->_webView setHidden:NO];
+    
+    CGRect rect;
+    rect.origin.y = 0;
+    rect.origin.x = 0;
+    rect.size = _size;
+    _webView.frame = rect;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {

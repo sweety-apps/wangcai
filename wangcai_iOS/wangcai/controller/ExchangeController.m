@@ -234,7 +234,13 @@
 }
 
 - (IBAction)clickExchangeInfo:(id)sender {
-    WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:WEB_EXCHANGE_INFO Stack:_beeStack];
+    NSString* device = [[[LoginAndRegister sharedInstance] getDeviceId] autorelease];
+    NSString* sessionid = [[[LoginAndRegister sharedInstance] getSessionId] autorelease];
+    NSNumber* userid = [[[LoginAndRegister sharedInstance] getUserId] autorelease];
+    
+    NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@", WEB_EXCHANGE_INFO, device, sessionid, userid] autorelease];
+    
+    WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:url Stack:_beeStack];
     [_beeStack pushViewController:controller animated:YES];
 }
 

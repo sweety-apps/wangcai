@@ -18,6 +18,7 @@
 #import "BusionessPageBoard_iPhone.h"
 #import "CommonYuENumView.h"
 #import "Config.h"
+#import "LoginAndRegister.h"
 
 #pragma mark -
 
@@ -56,7 +57,13 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
     if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
     {
-        _webController = [[WebPageController alloc] init:@"交易详情" Url:WEB_EXCHANGE_INFO Stack:self.stack];
+        NSString* device = [[[LoginAndRegister sharedInstance] getDeviceId] autorelease];
+        NSString* sessionid = [[[LoginAndRegister sharedInstance] getSessionId] autorelease];
+        NSNumber* userid = [[[LoginAndRegister sharedInstance] getUserId] autorelease];
+        
+        NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@", WEB_EXCHANGE_INFO, device, sessionid, userid] autorelease];
+        
+        _webController = [[WebPageController alloc] init:@"交易详情" Url:url Stack:self.stack];
         
         [self.view addSubview:_webController.view];
     }

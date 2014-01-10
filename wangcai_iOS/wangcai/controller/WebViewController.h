@@ -30,6 +30,8 @@
     
     UIAlertView*    _alertBindPhone;
     UIAlertView*    _alertNoBalance;
+    
+    CGSize          _size;
 }
 
 - (void) setDelegate:(id) delegate;

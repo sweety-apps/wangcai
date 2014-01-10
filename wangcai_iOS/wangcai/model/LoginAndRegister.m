@@ -204,6 +204,12 @@ static LoginAndRegister* _sharedInstance;
     int oldBalance = _balance;
     _balance = _balance + inc;
     
+    if ( inc > 0 ) { //总收入
+        _income = _income + inc;
+    } else {
+        _outgo = _outgo - inc;
+    }
+    
     [self fire_balanceChanged:oldBalance New:_balance];
 }
 
