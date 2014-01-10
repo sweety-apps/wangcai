@@ -183,7 +183,7 @@
     CGRect rect = self.upSectionView.frame;
     NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
     
-    if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+    if (NO/* phoneNum == nil || [phoneNum isEqualToString:@""] */) {
         self.bindPhoneView.hidden = NO;
         
         CGFloat Y = 0;

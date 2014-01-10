@@ -40,17 +40,29 @@
 #import "WBApi.h"
 #import <RennSDK/RennSDK.h>
 #import "WeiboSDK.h"
-#import "StartupController.h"
 #import "model/MobClick.h"
 #import "Config.h"
+#import "StartupController.h"
 
 #pragma mark -
 
+@interface AppDelegate ()
+{
+    StartupController* _startupController;
+}
+@property (nonatomic,assign) StartupController* startupController;
+
+@end
+
 @implementation AppDelegate
+
+@synthesize startupController = _startupController;
 
 - (void)load
 {
     StartupController* startup = [[StartupController alloc]init : self];
+    
+    _startupController = startup;
     
     [CATransaction begin];
     CATransition *transition = [CATransition animation];
