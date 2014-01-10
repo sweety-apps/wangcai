@@ -12,12 +12,14 @@
 #import "PhoneValidationController.h"
 #import "OnlineWallViewController.h"
 
-#define SHOW_MASK (1)
+#define SHOW_MASK (0)
 
 #pragma mark -
 
 #undef	MENU_BOUNDS
 #define	MENU_BOUNDS	(240.0f)
+#undef	MASK_LEFT_X
+#define	MASK_LEFT_X	(160.0f)
 #undef MENU_TRIGER_BOUNDS
 #define	MENU_TRIGER_BOUNDS	(100.0f)
 
@@ -182,7 +184,7 @@ ON_SIGNAL2( UIView, signal )
             rectNewBounds.origin.y = offsetY;
             router.view.frame = rectNewBounds;
             
-			_mask.frame = CGRectMake( MENU_BOUNDS, 0.0, _origFrame.size.width - MENU_BOUNDS, _origFrame.size.height );
+			_mask.frame = CGRectMake( MASK_LEFT_X, 0.0, _origFrame.size.width - MASK_LEFT_X, _origFrame.size.height );
 			_mask.alpha = 1.0f;
             
 			[UIView setAnimationDelegate:self];
@@ -304,7 +306,7 @@ ON_SIGNAL3( MenuBoard_iPhone, busioness, signal )
 {
 	BeeUIRouter * router = [BeeUIRouter sharedInstance];
 
-	_mask.frame = CGRectMake( MENU_BOUNDS, 0.0, router.width - MENU_BOUNDS, router.height );
+	_mask.frame = CGRectMake( MASK_LEFT_X, 0.0, router.width - MASK_LEFT_X, router.height );
 	_mask.hidden = NO;
     _hasPanOpened = YES;
 }
