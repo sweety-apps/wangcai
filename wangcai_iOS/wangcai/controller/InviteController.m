@@ -11,6 +11,8 @@
 #import "MBHUDView.h"
 #import <ShareSDK/ShareSDK.h>
 #import "qrencode.h"
+#import "WebPageController.h"
+#import "Config.h"
 
 @interface InviteController ()
 
@@ -27,6 +29,7 @@
         
         [self load:nibNameOrNil];
         
+        self._beeStack = nil;
         self.title = @"邀请送红包";
         _inviterUpdate = [[InviterUpdate alloc] init];
     }
@@ -186,6 +189,7 @@
 }
 
 - (void)dealloc {
+    self._beeStack = nil;
     [self.inviteView release];
     [self.invitedView release];
     [self.inviteCode release];
@@ -406,5 +410,14 @@
     return YES;
 }
 
+- (IBAction)clickTextLink:(id)sender {
+    BeeUIStack* stack = self._beeStack;
+    
+    NSString* url = [[[NSString alloc] initWithFormat:@"%@123", WEB_SERVICE_VIEW] autorelease];
+    
+    WebPageController* controller = [[[WebPageController alloc] init:@"如何成为推广员"
+                                                                 Url:url Stack:stack] autorelease];
+    [stack pushViewController:controller animated:YES];
+}
 
 @end

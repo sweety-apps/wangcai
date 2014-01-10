@@ -52,7 +52,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	{
         _inviteController = [[InviteController alloc] initWithNibName:@"InviteController" bundle:nil];
         [self.view addSubview:_inviteController.view];
-
+        _inviteController._beeStack = self.stack;
+        
         self.navigationController.navigationBarHidden = YES;
         
         //self.view.hintString = @"";

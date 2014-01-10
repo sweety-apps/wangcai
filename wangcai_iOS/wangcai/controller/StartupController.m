@@ -21,7 +21,6 @@
 #import "XMLReader.h"
 #import "Config.h"
 
-
 @interface StartupController () <CommonTaskListDelegate>
 
 @end
@@ -126,6 +125,93 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)handleShareXml: (NSData *)xmlData
+{
+    NSError* error = nil;
+    NSDictionary* shareDict = [XMLReader dictionaryForXMLData: xmlData error: &error];
+    if (shareDict)
+    {
+        NSDictionary* rootObject = (NSDictionary *)[shareDict objectForKey: @"share"];
+        if (rootObject)
+        {
+            if ([rootObject count] > 0)
+            {
+                // 豆瓣
+                NSDictionary* doubanObject = (NSDictionary *)[rootObject objectForKey: @"Douban"];
+                if (doubanObject)
+                {
+                    NSString* state = (NSString *)[doubanObject objectForKey: @"text"];
+                    if ([state intValue])
+                    {
+                        [ShareSDK connectDoubanWithAppKey: @"0f4b3d0120adb5472de1b70362091fd5" appSecret: @"54b911f9863bdbd7" redirectUri: @"http://www.meme-da.com/"];
+                    }
+                }
+                
+                // 163微博
+                NSDictionary* netBaseWeiboObject = (NSDictionary *)[rootObject objectForKey: @"NetbaseWeibo"];
+                if (netBaseWeiboObject)
+                {
+                    NSString* state = (NSString *)[netBaseWeiboObject objectForKey: @"text"];
+                    if ([state intValue])
+                    {
+                        [ShareSDK connect163WeiboWithAppKey: @"la0pHcb8OZU5N2Xg" appSecret: @"UrTuNU32cSEfz789pUd0iSGQBJIBaVzh" redirectUri: @"http://www.meme-da.com/"];
+                    }
+                }
+                
+                // QQ空间
+                NSDictionary* qzoneObject = (NSDictionary *)[rootObject objectForKey: @"QZone"];
+                if (qzoneObject)
+                {
+                    NSString* state = (NSString *)[qzoneObject objectForKey: @"text"];
+                    if ([state intValue])
+                    {
+                        [ShareSDK connectQZoneWithAppKey: @"100577453" appSecret: @"9454dd071c0dc94008caed4045ce5e39" qqApiInterfaceCls:[QQApiInterface class] tencentOAuthCls: [TencentOAuth class]];
+                    }
+                }
+                
+                // 人人
+                NSDictionary* renrenObject = (NSDictionary *)[rootObject objectForKey: @"RenRen"];
+                if (renrenObject)
+                {
+                    NSString* state = (NSString *)[renrenObject objectForKey: @"text"];
+                    if ([state intValue])
+                    {
+                        [ShareSDK connectRenRenWithAppId: @"245528" appKey: @"a4825d92031b4a8495d7ef803b480373" appSecret: @"aa95c7e0575e4d8d8fd59cd31b32c76e" renrenClientClass: [RennClient class]];
+                    }
+                }
+                
+                // 新浪微博
+                NSDictionary* sinaWeiboObject = (NSDictionary *)[rootObject objectForKey: @"SinaWeibo"];
+                if (sinaWeiboObject)
+                {
+                    NSString* state = (NSString *)[sinaWeiboObject objectForKey: @"text"];
+                    if ([state intValue])
+                    {
+                        [ShareSDK connectSinaWeiboWithAppKey: @"338240125" appSecret: @"32ccbf2004d7f8d19e29978aacdc2904" redirectUri: @"https://api.weibo.com/oauth2/default.html" weiboSDKCls: [WeiboSDK class]];
+                    }
+                }
+                
+                // 腾讯微博
+                NSDictionary* tencentWeiboObject = (NSDictionary *)[rootObject objectForKey: @"TencentWeibo"];
+                if (tencentWeiboObject)
+                {
+                    NSString* state = (NSString *)[tencentWeiboObject objectForKey: @"text"];
+                    if ([state intValue])
+                    {
+                        [ShareSDK connectTencentWeiboWithAppKey: @"801457140" appSecret: @"08c6c07a58f40d2a9b06eabeaf86f6ba" redirectUri: @"http://www.meme-da.com/" wbApiCls: [WBApi class]];
+                    }
+                }
+                
+                // xml解析没问题，并且合法，那么就缓存一份
+                NSArray* directoryPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                NSString* documentDirectory = [directoryPaths objectAtIndex: 0];
+                NSString* filePath = [documentDirectory stringByAppendingPathComponent: @"share.xml"];
+                [xmlData writeToFile: filePath atomically: YES];
+            }
+        }
+    }
+}
+
 - (void) initShareSDK {
     [ShareSDK registerApp:@"ebe1cada416"];
     
@@ -138,112 +224,23 @@
         
         if (xmlData)
         {
-            NSError* error = nil;
-            NSDictionary* shareDict = [XMLReader dictionaryForXMLData: xmlData error: &error];
-            if (shareDict)
-            {
-                NSDictionary* rootObject = (NSDictionary *)[shareDict objectForKey: @"share"];
-                if (rootObject)
-                {
-                    if ([rootObject count] > 0)
-                    {
-                        // 豆瓣
-                        NSDictionary* doubanObject = (NSDictionary *)[rootObject objectForKey: @"Douban"];
-                        if (doubanObject)
-                        {
-                            NSString* state = (NSString *)[doubanObject objectForKey: @"text"];
-                            if ([state intValue])
-                            {
-                                [ShareSDK connectDoubanWithAppKey: @"0f4b3d0120adb5472de1b70362091fd5" appSecret: @"54b911f9863bdbd7" redirectUri: @"http://www.meme-da.com/"];
-                            }
-                        }
-                        
-                        // 163微博
-                        NSDictionary* netBaseWeiboObject = (NSDictionary *)[rootObject objectForKey: @"NetbaseWeibo"];
-                        if (netBaseWeiboObject)
-                        {
-                            NSString* state = (NSString *)[netBaseWeiboObject objectForKey: @"text"];
-                            if ([state intValue])
-                            {
-                                [ShareSDK connect163WeiboWithAppKey: @"la0pHcb8OZU5N2Xg" appSecret: @"UrTuNU32cSEfz789pUd0iSGQBJIBaVzh" redirectUri: @"http://www.meme-da.com/"];
-                            }
-                        }
-                        
-                        // QQ空间
-                        NSDictionary* qzoneObject = (NSDictionary *)[rootObject objectForKey: @"QZone"];
-                        if (qzoneObject)
-                        {
-                            NSString* state = (NSString *)[qzoneObject objectForKey: @"text"];
-                            if ([state intValue])
-                            {
-                                [ShareSDK connectQZoneWithAppKey: @"100577453" appSecret: @"9454dd071c0dc94008caed4045ce5e39" qqApiInterfaceCls:[QQApiInterface class] tencentOAuthCls: [TencentOAuth class]];
-                            }
-                        }
-                        
-                        // 人人
-                        NSDictionary* renrenObject = (NSDictionary *)[rootObject objectForKey: @"RenRen"];
-                        if (renrenObject)
-                        {
-                            NSString* state = (NSString *)[renrenObject objectForKey: @"text"];
-                            if ([state intValue])
-                            {
-                                [ShareSDK connectRenRenWithAppId: @"245528" appKey: @"a4825d92031b4a8495d7ef803b480373" appSecret: @"aa95c7e0575e4d8d8fd59cd31b32c76e" renrenClientClass: [RennClient class]];
-                            }
-                        }
-                        
-                        // 新浪微博
-                        NSDictionary* sinaWeiboObject = (NSDictionary *)[rootObject objectForKey: @"SinaWeibo"];
-                        if (sinaWeiboObject)
-                        {
-                            NSString* state = (NSString *)[sinaWeiboObject objectForKey: @"text"];
-                            if ([state intValue])
-                            {
-                                [ShareSDK connectSinaWeiboWithAppKey: @"338240125" appSecret: @"32ccbf2004d7f8d19e29978aacdc2904" redirectUri: @"https://api.weibo.com/oauth2/default.html" weiboSDKCls: [WeiboSDK class]];
-                            }
-                        }
-                        
-                        // 腾讯微博
-                        NSDictionary* tencentWeiboObject = (NSDictionary *)[rootObject objectForKey: @"TencentWeibo"];
-                        if (tencentWeiboObject)
-                        {
-                            NSString* state = (NSString *)[tencentWeiboObject objectForKey: @"text"];
-                            if ([state intValue])
-                            {
-                                [ShareSDK connectTencentWeiboWithAppKey: @"801457140" appSecret: @"08c6c07a58f40d2a9b06eabeaf86f6ba" redirectUri: @"http://www.meme-da.com/" wbApiCls: [WBApi class]];
-                            }
-                        }
-                    }
-                    else
-                    {
-                        // xml有问题，share节点下无子节点
-                        dispatch_async(dispatch_get_main_queue(), ^
-                        {
-                        });
-                    }
-                }
-                else
-                {
-                    // xml有问题，无share根节点
-                    dispatch_async(dispatch_get_main_queue(), ^
-                    {
-                    });
-                }
-                
-            }
-            else
-            {
-                // 解析xml失败，则只分享到QQ应用平台
-                dispatch_async(dispatch_get_main_queue(), ^
-                {
-                });
-            }
+            [self handleShareXml: xmlData];
         }
         else
         {
             // 读取不到xml
-            dispatch_async(dispatch_get_main_queue(), ^
+            NSArray* directoryPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString* documentDirectory = [directoryPaths objectAtIndex: 0];
+            NSString* filePath = [documentDirectory stringByAppendingPathComponent: @"share.xml"];
+            if ([[NSFileManager defaultManager] fileExistsAtPath: filePath])
             {
-            });
+                // 有上一次缓存文件
+                NSData* xmlData = [NSData dataWithContentsOfFile: filePath];
+                if (xmlData)
+                {
+                    [self handleShareXml: xmlData];
+                }
+            }
         }
     });
     

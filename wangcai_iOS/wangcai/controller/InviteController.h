@@ -14,6 +14,8 @@
     InviterUpdate* _inviterUpdate;
 }
 
+@property (assign, nonatomic) BeeUIStack* _beeStack;
+
 @property (assign, nonatomic) UIView *containerView;
 @property (assign, nonatomic) UISegmentedControl *segment;
 
@@ -47,5 +49,7 @@
 - (IBAction)clickBack:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
 - (IBAction)updateInviter:(id)sender;
+
+- (IBAction)clickTextLink:(id)sender;
 
 @end
