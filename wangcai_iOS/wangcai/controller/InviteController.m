@@ -367,8 +367,8 @@
         [alertView show];
         [alertView release];
         
-        // 给用户加一块钱
-        [[LoginAndRegister sharedInstance] increaseBalance:100];
+        // 给用户加二块钱
+        [[LoginAndRegister sharedInstance] increaseBalance:200];
     }
     else
     {
