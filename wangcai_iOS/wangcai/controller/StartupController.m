@@ -19,6 +19,8 @@
 #import "WeiboSDK.h"
 #import "CommonTaskList.h"
 #import "XMLReader.h"
+#import "Config.h"
+
 
 @interface StartupController () <CommonTaskListDelegate>
 
@@ -54,7 +56,9 @@
         [[LoginAndRegister sharedInstance] login:self];
     } else if ( _alertForceUpdate != nil && [alertView isEqual:_alertForceUpdate] ) {
         // 升级
-        NSString* urlStr = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/us/app/id776787173?mt=8"];
+        NSString* sysVer = [[UIDevice currentDevice] systemVersion];
+        NSString* urlStr = [[[NSString alloc] initWithFormat:@"%@?sysVer=%@", WEB_FORCE_UPDATE, sysVer] autorelease];
+        
         NSURL* url = [NSURL URLWithString:urlStr];
         [[UIApplication sharedApplication] openURL:url];
         

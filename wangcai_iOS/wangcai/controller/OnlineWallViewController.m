@@ -128,14 +128,6 @@ static OnlineWallViewController* _sharedInstance;
 - (void)offerWallDidFinishConsumePointWithStatusCode:(DMOfferWallConsumeStatusCode)statusCode
                                           totalPoint:(NSInteger)totalPoint
                                   totalConsumedPoint:(NSInteger)consumed {
-    switch (statusCode) {
-    case DMOfferWallConsumeStatusCodeSuccess:
-        [_delegate onRequestAndConsumePointCompleted:YES Consume:_nConsume];
-        break;
-    default:
-        [_delegate onRequestAndConsumePointCompleted:NO Consume:0];
-        break;
-    }
 }
 
 // 消费请求异常应答后，回调该接口，并返回异常的错误原因。

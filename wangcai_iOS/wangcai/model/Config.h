@@ -42,4 +42,7 @@
 #define WEB_TASK          @"http://wangcai.meme-da.com/web/task/app_task.php"
 #define WEB_EXCHANGE_INFO @"http://wangcai.meme-da.com/web/exchange_info.php"
 #define WEB_ORDER_INFO    @"http://wangcai.meme-da.com/web/order_info.php"
+
+#define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php"
+
 #endif
