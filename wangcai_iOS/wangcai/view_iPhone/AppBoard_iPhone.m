@@ -85,10 +85,13 @@ ON_SIGNAL2( BeeUIBoard, signal )
 		_mask.signal = @"mask";
         _mask.alpha = 1.0;
 		[self.view addSubview:_mask];
-
+        
 		[menu selectItem:@"wc_main" animated:NO];
         _hasPanOpened = NO;
+        
 		[router open:@"wc_main"];
+        
+        //[self _preOpenBoards:router];
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
@@ -103,6 +106,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	}
 	else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
 	{
+        
 	}
 	else if ( [signal is:BeeUIBoard.DID_APPEAR] )
 	{
@@ -211,27 +215,25 @@ ON_SIGNAL3( BeeUIRouter, DID_CHANGED, signal )
 
 ON_SIGNAL3( MenuBoard_iPhone, first, signal )
 {
+    [self hideMenu];
 	[[BeeUIRouter sharedInstance] open:@"first" animated:YES];
-
-	[self hideMenu];
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, second, signal )
 {
+    [self hideMenu];
 	[[BeeUIRouter sharedInstance] open:@"second" animated:YES];
-	
-	[self hideMenu];
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, third, signal )
 {
+    [self hideMenu];
 	[[BeeUIRouter sharedInstance] open:@"third" animated:YES];
-	
-	[self hideMenu];
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, wc_main, signal )
 {
+    [self hideMenu];
     //static BOOL isFirstShow = YES;
 	[[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
     //if (!isFirstShow)
@@ -240,7 +242,7 @@ ON_SIGNAL3( MenuBoard_iPhone, wc_main, signal )
     //}
     //isFirstShow = NO;
 	
-	[self hideMenu];
+	
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
@@ -259,41 +261,43 @@ ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
         [_alertView show];
     } else {
         [phoneNum release];
+        [self hideMenu];
         [[BeeUIRouter sharedInstance] open:@"invite" animated:YES];
 
-        [self hideMenu];
+        
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ( [_alertView isEqual:alertView] ) {
         if ( buttonIndex == 1 ) {
+            [self hideMenu];
             [[BeeUIRouter sharedInstance] open:@"phone_validation" animated:YES];
             
-            [self hideMenu];
+            
         }
     }
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, service, signal)
 {
+    [self hideMenu];
 	[[BeeUIRouter sharedInstance] open:@"service" animated:YES];
 	
-	[self hideMenu];
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, team, signal )
 {
+    [self hideMenu];
 	[[BeeUIRouter sharedInstance] open:@"team" animated:YES];
 	
-	[self hideMenu];
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, busioness, signal )
 {
+    [self hideMenu];
 	[[BeeUIRouter sharedInstance] open:@"busioness" animated:YES];
 	
-	[self hideMenu];
 }
 
 - (void)didMenuHidden

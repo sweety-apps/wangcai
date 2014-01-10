@@ -92,6 +92,8 @@
 {
     if ([[LoginAndRegister sharedInstance] getBalance] > [self.zhanghuYuEHeaderCell.yuENumView getNum])
     {
+        NSIndexPath* pathTop = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.containTableView scrollToRowAtIndexPath:pathTop atScrollPosition:UITableViewScrollPositionTop animated:YES];
         [self setYuENumberWithAnimationFrom:[self.zhanghuYuEHeaderCell.yuENumView getNum] toNum:[[LoginAndRegister sharedInstance] getBalance]];
     }
     else
