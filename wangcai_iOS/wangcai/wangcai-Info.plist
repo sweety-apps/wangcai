@@ -23,8 +23,16 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLName</key>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
 			<string></string>
+			<key>CFBundleURLName</key>
+			<string>1528studio.wangcai</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>1528wangcai</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleURLName</key>
@@ -42,6 +50,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
