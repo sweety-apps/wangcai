@@ -243,7 +243,8 @@ static CommonTaskList* gInstance = nil;
                         //task.taskIconUrl = @"";
                         break;
                     case kTaskTypeOfferWall:
-                        task.taskIsLocalIcon = NO;
+                        task.taskIsLocalIcon = YES;
+                        task.taskIconUrl = @"tiyanzhongxin_cell_icon";
                         //task.taskIconUrl = @"";
                         break;
                         

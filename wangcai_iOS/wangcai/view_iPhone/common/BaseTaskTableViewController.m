@@ -431,49 +431,52 @@
     {
         int taskIndex = row - [_staticCells count];
         CommonTaskInfo* task = [[[CommonTaskList sharedInstance] taskList] objectAtIndex:taskIndex];
-        switch ([task.taskType intValue])
+        if ([task.taskStatus intValue] == 0)
         {
-            case kTaskTypeUserInfo:
+            switch ([task.taskType intValue])
             {
-                UserInfoEditorViewController* userInfoCtrl = [[UserInfoEditorViewController alloc] initWithNibName:@"UserInfoEditorViewController" bundle:nil];
-                if (self.beeStack == nil)
+                case kTaskTypeUserInfo:
                 {
-                    NSLog(@"靠！！！stack空的");
-                }
-                [self.beeStack pushViewController:userInfoCtrl animated:YES];
-            }
-                break;
-            case kTaskTypeOfferWall:
-            {
-                [[OnlineWallViewController sharedInstance] showWithModal];
-            }
-                break;
-            case kTaskTypeInstallWangcai:
-            case kTaskTypeIntallApp:
-            case kTaskTypeCommon:
-            {
-                NSString* tabs[3] = {0};
-                for (int i = 0; i < 3; ++i)
-                {
-                    if ([task.taskStepStrings count] > i)
+                    UserInfoEditorViewController* userInfoCtrl = [[UserInfoEditorViewController alloc] initWithNibName:@"UserInfoEditorViewController" bundle:nil];
+                    if (self.beeStack == nil)
                     {
-                        tabs[i] = [task.taskStepStrings objectAtIndex:i];
+                        NSLog(@"靠！！！stack空的");
                     }
+                    [self.beeStack pushViewController:userInfoCtrl animated:YES];
                 }
-                TaskController* taskCtrl = [[[TaskController alloc] init:task.taskId Tab1:tabs[0] Tab2:tabs[1] Tab3:tabs[2] Purse:[task.taskMoney floatValue]] autorelease];
-                [self.beeStack pushViewController:taskCtrl animated:YES];
+                    break;
+                case kTaskTypeOfferWall:
+                {
+                    [[OnlineWallViewController sharedInstance] showWithModal];
+                }
+                    break;
+                case kTaskTypeInstallWangcai:
+                case kTaskTypeIntallApp:
+                case kTaskTypeCommon:
+                {
+                    NSString* tabs[3] = {0};
+                    for (int i = 0; i < 3; ++i)
+                    {
+                        if ([task.taskStepStrings count] > i)
+                        {
+                            tabs[i] = [task.taskStepStrings objectAtIndex:i];
+                        }
+                    }
+                    TaskController* taskCtrl = [[[TaskController alloc] init:task.taskId Tab1:tabs[0] Tab2:tabs[1] Tab3:tabs[2] Purse:[task.taskMoney floatValue]] autorelease];
+                    [self.beeStack pushViewController:taskCtrl animated:YES];
+                }
+                    break;
+                    
+                case kTaskTypeEverydaySign:
+                    
+                    break;
+                case kTaskTypeInviteFriends:
+                    
+                    break;
+                    
+                default:
+                    break;
             }
-                break;
-            
-            case kTaskTypeEverydaySign:
-                
-                break;
-            case kTaskTypeInviteFriends:
-                
-                break;
-                
-            default:
-                break;
         }
         
     }

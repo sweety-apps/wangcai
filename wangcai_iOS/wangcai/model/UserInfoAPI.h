@@ -8,6 +8,9 @@
 
 #import "HttpRequest.h"
 
+#define kUserSexMale (1)
+#define kUserSexFemale (2)
+
 @class UserInfoAPI;
 
 @protocol UserInfoAPIDelegate <NSObject>

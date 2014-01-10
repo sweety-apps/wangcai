@@ -59,8 +59,8 @@ static UserInfoAPI* gDefaultUserInfo = nil;
 -(void)load
 {
     [super load];
-    self.uiAge = [NSNumber numberWithInt:18];
-    self.uiSex = [NSNumber numberWithInt:1];
+    self.uiAge = [NSNumber numberWithInt:-1];
+    self.uiSex = [NSNumber numberWithInt:0];
     self.uiInterest = @"";
 }
 

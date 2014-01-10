@@ -15,6 +15,8 @@
 @interface UserInfoEditorViewController () <UserInfoAPIDelegate>
 {
     UILabel* _labelAgeSelected;
+    UIView* _selectorView;
+    BOOL _shouldAddMoney;
 }
 
 @end
@@ -57,7 +59,7 @@
     selectorView.contentMode = UIViewContentModeCenter;
     selectorView.clipsToBounds = NO;
     selectorView.image = [UIImage imageNamed:@"user_sex_selected"];
-    [[self.ageSelectorView superview] insertSubview:selectorView belowSubview:self.ageSelectorView];
+    //[[self.ageSelectorView superview] insertSubview:selectorView belowSubview:self.ageSelectorView];
     
     [self buildSelectorViews];
     
@@ -67,10 +69,23 @@
 
 -(void)_doAgeInitSelections
 {
-    [self.ageSelectorView selectItemAtIndex:17 animated:NO];
+    //[self.ageSelectorView selectItemAtIndex:17 animated:NO];
+    [self _doSelectAgeAtIndex:-1];
     //[self selectSex:YES];
     
     [[UserInfoAPI loginedUserInfo] fetchUserInfo:self];
+}
+
+- (void)_doSelectAgeAtIndex:(NSInteger)index
+{
+    if (index < 0)
+    {
+        _selectorView.alpha = 0.0f;
+    }
+    else
+    {
+        [self.ageSelectorView selectItemAtIndex:index animated:NO];
+    }
 }
 
 - (void)buildSelectorViews
@@ -258,28 +273,72 @@
 
 - (IBAction)onPressedCommitButton:(id)btn
 {
-    if (self.sexMaleButton.selected)
+    BOOL isInfoValide = YES;
+    
+    NSString* errTitle = @"";
+    NSString* errContent = @"";
+    
+    BOOL interestSelected = NO;
+    for (UIButton* btn in self.hobbySelectorViews)
     {
-        [UserInfoAPI loginedUserInfo].uiSex = [NSNumber numberWithInt:0];
+        if (btn.selected)
+        {
+            interestSelected = YES;
+            break;
+        }
+    }
+    if (!interestSelected)
+    {
+        errTitle = @"请选择至少一个兴趣";
+        errContent = @"";
+        isInfoValide = NO;
+    }
+    
+    if (_selectorView.alpha < 0.1f)
+    {
+        errTitle = @"请选择年龄";
+        errContent = @"";
+        isInfoValide = NO;
+    }
+    
+    if (!self.sexMaleButton.selected && !self.sexFamaleButton.selected)
+    {
+        errTitle = @"请选择性别";
+        errContent = @"";
+        isInfoValide = NO;
+    }
+    
+    if (isInfoValide)
+    {
+        if (self.sexMaleButton.selected)
+        {
+            [UserInfoAPI loginedUserInfo].uiSex = [NSNumber numberWithInt:kUserSexMale];
+        }
+        else
+        {
+            [UserInfoAPI loginedUserInfo].uiSex = [NSNumber numberWithInt:kUserSexFemale];
+        }
+        
+        [UserInfoAPI loginedUserInfo].uiAge = [NSNumber numberWithInt:[self.ageSelectorView currentSelectedIndex] + 1];
+        
+        [UserInfoAPI loginedUserInfo].uiInterest = @"";
+        for (int i = 0; i < [hobbySelectorViews count]; ++i)
+        {
+            UIButton* btn = [hobbySelectorViews objectAtIndex:i];
+            if (btn.selected)
+            {
+                [[UserInfoAPI loginedUserInfo] addInterest:[_interestIds objectAtIndex:i]];
+            }
+        }
+        
+        [[UserInfoAPI loginedUserInfo] updateUserInfo:self];
     }
     else
     {
-        [UserInfoAPI loginedUserInfo].uiSex = [NSNumber numberWithInt:1];
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:errTitle message:errContent delegate:nil cancelButtonTitle:@"重来" otherButtonTitles:nil] autorelease];
+        [alert show];
     }
     
-    [UserInfoAPI loginedUserInfo].uiAge = [NSNumber numberWithInt:[self.ageSelectorView currentSelectedIndex] + 1];
-    
-    [UserInfoAPI loginedUserInfo].uiInterest = @"";
-    for (int i = 0; i < [hobbySelectorViews count]; ++i)
-    {
-        UIButton* btn = [hobbySelectorViews objectAtIndex:i];
-        if (btn.selected)
-        {
-            [[UserInfoAPI loginedUserInfo] addInterest:[_interestIds objectAtIndex:i]];
-        }
-    }
-    
-    [[UserInfoAPI loginedUserInfo] updateUserInfo:self];
 }
 
 - (void)selectSex:(BOOL)isMale
@@ -373,6 +432,8 @@
     label.backgroundColor = [UIColor clearColor];
     [selectorView addSubview:label];
     _labelAgeSelected = label;
+    _selectorView = selectorView;
+    _selectorView.alpha = 0.0f;
     
     return selectorView;
 }
@@ -386,6 +447,11 @@
 - (void)selector:(IZValueSelectorView *)valueSelector selectorPassRowAtIndex:(NSInteger)index
 {
     _labelAgeSelected.text = [NSString stringWithFormat:@"%d",index+1];
+    if (_selectorView.alpha < 0.1f)
+    {
+        [UIView animateWithDuration:0.3 animations:^(){_selectorView.alpha = 1.0f;} completion:^(BOOL finished){}];
+    }
+    
     //NSLog(@"Pass-over index %d",index);
 }
 
@@ -397,19 +463,33 @@
     {
         if (userInfo.uiSex)
         {
-            [self selectSex:([userInfo.uiSex intValue]==0?YES:NO)];
+            if ([userInfo.uiSex intValue] == kUserSexMale)
+            {
+                [self selectSex:YES];
+            }
+            else if([userInfo.uiSex intValue] == kUserSexFemale)
+            {
+                [self selectSex:NO];
+            }
         }
         int ageIndex = [userInfo.uiAge intValue] - 1;
+        [self _doSelectAgeAtIndex:ageIndex];
+        [self selectInterestsWithUserInfo:userInfo];
+        
         if (ageIndex < 0)
         {
-            ageIndex = 17;
+            [self.commitButton setTitle:@"确认并领取1元" forState:UIControlStateNormal];
+            _shouldAddMoney = YES;
         }
-        [self.ageSelectorView selectItemAtIndex:ageIndex animated:NO];
-        [self selectInterestsWithUserInfo:userInfo];
+        else
+        {
+            [self.commitButton setTitle:@"确认" forState:UIControlStateNormal];
+        }
     }
     else
     {
         [MBHUDView hudWithBody:@":(\n用户信息获取失败" type:MBAlertViewHUDTypeImagePositive  hidesAfter:2.0 show:YES];
+        [self.commitButton setTitle:@"确认" forState:UIControlStateNormal];
     }
 }
 
@@ -419,7 +499,10 @@
     {
         [MBHUDView hudWithBody:@"用户信息提交成功！" type:MBAlertViewHUDTypeCheckmark  hidesAfter:2.0 show:YES];
         // 给用户加一块钱
-        [[LoginAndRegister sharedInstance] increaseBalance:100];
+        if (_shouldAddMoney)
+        {
+            [[LoginAndRegister sharedInstance] increaseBalance:100];
+        }
         [self onPressedBackPhone:nil];
     }
     else

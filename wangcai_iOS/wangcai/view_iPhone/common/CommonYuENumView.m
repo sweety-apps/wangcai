@@ -118,11 +118,11 @@
             {
                 if (num > _num)
                 {
-                    currentNum += 0.1;
+                    currentNum += 10;
                 }
                 else
                 {
-                    currentNum -= 0.1;
+                    currentNum -= 10;
                 }
                 NSNumber* number = [NSNumber numberWithFloat:currentNum];
                 [_animaArray addObject:number];
