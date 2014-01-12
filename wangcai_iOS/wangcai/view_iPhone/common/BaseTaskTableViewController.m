@@ -17,7 +17,7 @@
 #import "ChoujiangViewController.h"
 #import "ChoujiangLogic.h"
 #import "NSString+FloatFormat.h"
-
+#import "PhoneValidationController.h"
 
 @interface BaseTaskTableViewController () <CommonTaskListDelegate>
 {
@@ -58,6 +58,8 @@
     
     self.staticCells = [NSMutableArray array];
     _bounceHeader = NO;
+    _alertBalanceTip = nil;
+    
     _hasLoadedHistoricalFinishedList = NO;
     
     [self addHeader];
@@ -85,7 +87,30 @@
 {
     [super viewDidAppear:animated];
     
+    [OnlineWallViewController sharedInstance].delegate = self;
+    [[OnlineWallViewController sharedInstance] requestAndConsumePoint];
+    
     [self checkBalanceAndAnimateYuE];
+    
+    // 超过5元
+    if ( _alertBalanceTip == nil ) {
+        if ( [[LoginAndRegister sharedInstance] getBalance] >= 500 ) {
+            _alertBalanceTip = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的余额超过5元，为了您的帐号安全，推荐您绑定手机" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"绑定手机", nil];
+            
+            [_alertBalanceTip show];
+        }
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( buttonIndex == 1 ) {
+        if ( [alertView isEqual:_alertBalanceTip] ) {
+            // 绑定手机
+            PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
+            
+            [self.beeStack pushViewController:phoneVal animated:YES];
+        }
+    }
 }
 
 - (void)checkBalanceAndAnimateYuE
@@ -132,6 +157,12 @@
     self.containTableViewFooterViewButton = nil;
     self.staticCells = nil;
     [_checkOfferWallTimer invalidate];
+    
+    if ( _alertBalanceTip != nil ) {
+        [_alertBalanceTip release];
+        _alertBalanceTip = nil;
+    }
+    
     [super dealloc];
 }
 
