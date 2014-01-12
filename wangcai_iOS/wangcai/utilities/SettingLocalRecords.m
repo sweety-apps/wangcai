@@ -11,6 +11,7 @@
 
 #define kLastCheckInTime @"lastCheckInTime"
 #define kLastShareTime @"lastShareTime"
+#define kLastOfferWallAlertView @"offerWallAlertView"
 
 #define NKEY(x) ([SettingLocalRecords getUserNamedKey:(x)])
 
@@ -56,6 +57,23 @@
 + (NSDate*)getLastShareDateTime
 {
     NSDate* ret = [[NSUserDefaults standardUserDefaults] objectForKey:NKEY(kLastShareTime)];
+    return ret;
+}
+
++ (void)saveOfferWallAlertViewShowed:(BOOL)showed
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:showed] forKey:kLastOfferWallAlertView];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL)getOfferWallAlertViewShowed
+{
+    BOOL ret = NO;
+    NSNumber* boolNum = [[NSUserDefaults standardUserDefaults] objectForKey:kLastOfferWallAlertView];
+    if (boolNum)
+    {
+        ret = [boolNum boolValue];
+    }
     return ret;
 }
 

@@ -435,6 +435,7 @@
         }
         else
         {
+            [SettingLocalRecords saveLastCheckInDateTime:[NSDate date]];
             UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"请求失败" message:msg delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
             [alert show];
         }

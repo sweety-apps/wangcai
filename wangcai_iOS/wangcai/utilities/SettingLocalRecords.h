@@ -12,8 +12,12 @@
 
 + (void)saveLastCheckInDateTime:(NSDate*)dateTime;
 + (NSDate*)getLastCheckInDateTime;
+
 + (void)saveLastShareDateTime:(NSDate*)dateTime;
 + (NSDate*)getLastShareDateTime;
+
++ (void)saveOfferWallAlertViewShowed:(BOOL)showed;
++ (BOOL)getOfferWallAlertViewShowed;
 
 + (BOOL)hasCheckInYesterday;
 + (BOOL)hasCheckInToday;

@@ -18,6 +18,7 @@
 #import "ChoujiangLogic.h"
 #import "NSString+FloatFormat.h"
 #import "PhoneValidationController.h"
+#import "SettingLocalRecords.h"
 
 static BOOL gNeedReloadTaskList = NO;
 
@@ -496,7 +497,16 @@ static BOOL gNeedReloadTaskList = NO;
                     break;
                 case kTaskTypeOfferWall:
                 {
-                    [[OnlineWallViewController sharedInstance] showWithModal];
+                    if (![SettingLocalRecords getOfferWallAlertViewShowed])
+                    {
+                        [[OnlineWallViewController sharedInstance] showWithModal];
+                        [SettingLocalRecords saveOfferWallAlertViewShowed:YES];
+                    }
+                    else
+                    {
+                        [[OnlineWallViewController sharedInstance] clickConinue:nil];
+                    }
+                    
                 }
                     break;
                 case kTaskTypeInstallWangcai:
