@@ -18,6 +18,7 @@
 @synthesize _bellCell;
 @synthesize _gradeCell;
 @synthesize _msgSwitch;
+@synthesize _musicSwitch;
 
 - (id)init
 {
@@ -44,6 +45,17 @@
             [_msgSwitch setOn:NO];
         } else {
             [_msgSwitch setOn:YES];
+        }
+        
+        float fVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+        if ( fVersion < 7 ) {
+            rect = _msgSwitch.frame;
+            rect.origin.x -= 20;
+            _msgSwitch.frame = rect;
+            
+            rect = _musicSwitch.frame;
+            rect.origin.x -= 20;
+            _musicSwitch.frame = rect;
         }
     }
     return self;
