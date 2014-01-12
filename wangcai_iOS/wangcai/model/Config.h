@@ -46,4 +46,5 @@
 #define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php"
 
 #define WEB_SERVICE_VIEW @"http://service.meme-da.com/index.php/mobile/shouce/view/h_id/"
+
 #endif
