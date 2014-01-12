@@ -99,7 +99,7 @@
     
     _interestIds = [[NSMutableArray arrayWithObjects:@"leisure_game",@"level_up",@"discount",@"friends",@"trevel",@"compete_game",@"physic_ex",@"beauty", nil] retain];
     
-    CGRect rect = CGRectMake(15, 30, 140, 36);
+    CGRect rect = CGRectMake(15, 0, 140, 36);
     CGFloat maxY = 30.f;
     for (int i = 0; i < [selectorTexts count]; ++i)
     {
@@ -107,12 +107,12 @@
         
         if (i%2 == 1)
         {
-            rect.origin.x = CGRectGetMaxX(rect)+10;
+            rect.origin.x = CGRectGetMaxX(rect)+4;
         }
         else
         {
-            rect.origin.x = 15;
-            rect.origin.y = CGRectGetMaxY(rect)+15;
+            rect.origin.x = 17;
+            rect.origin.y = CGRectGetMaxY(rect)+5;
         }
         
         if (CGRectGetMaxY(rect) > maxY)
@@ -139,7 +139,7 @@
         [self.hobbySelectorViews addObject:btn];
     }
     
-    maxY += 20.f;
+    maxY += 10.f;
     
     CGRect rectCommitButton = self.commitButtonView.frame;
     rectCommitButton.origin.y = self.selectionContainerView.frame.origin.y + maxY;
@@ -204,7 +204,7 @@
     } else {
         self.bindPhoneView.hidden = YES;
         
-        CGFloat Y = -CGRectGetHeight(self.bindPhoneView.frame);
+        CGFloat Y = 0;//-CGRectGetHeight(self.bindPhoneView.frame);
         
         rect = self.upSectionView.frame;
         rect.origin.y = Y;

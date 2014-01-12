@@ -49,20 +49,25 @@
                     <rect key="frame" x="0.0" y="54" width="320" height="514"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_bg_paper.png" id="Fp9-Wr-KWH">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="576"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <view contentMode="scaleToFill" id="uPm-zh-sC1" userLabel="UP">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的信息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EUf-Tv-Q9s">
-                                    <rect key="frame" x="15" y="39" width="159" height="21"/>
+                                    <rect key="frame" x="25" y="39" width="159" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="信息越准确，越符合你的喜好" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G1a-oy-Ben">
-                                    <rect key="frame" x="95" y="40" width="164" height="21"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="信息越准确，任务越符合你的喜好" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G1a-oy-Ben">
+                                    <rect key="frame" x="105" y="40" width="164" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                    <color key="textColor" red="0.47058826679999999" green="0.47058826679999999" blue="0.47058826679999999" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="pH2-FA-rjX">
@@ -77,7 +82,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LQ7-DO-dJH">
-                                    <rect key="frame" x="90" y="14" width="43" height="43"/>
+                                    <rect key="frame" x="95" y="19" width="43" height="43"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal" title="男">
@@ -95,11 +100,11 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZrA-pI-483">
-                                    <rect key="frame" x="160" y="14" width="43" height="43"/>
+                                    <rect key="frame" x="165" y="19" width="43" height="43"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal" title="女">
-                                        <color key="titleColor" red="0.47058826679999999" green="0.47058826679999999" blue="0.47058826679999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="titleColor" red="0.47058826684951782" green="0.47058826684951782" blue="0.47058826684951782" alpha="1" colorSpace="deviceRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <state key="selected" backgroundImage="user_sex_selected.png">
@@ -113,33 +118,33 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年龄" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GU6-5c-aZ8">
-                                    <rect key="frame" x="15" y="100" width="42" height="21"/>
+                                    <rect key="frame" x="25" y="100" width="42" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择你感兴趣的关键字（多选）" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="caI-dr-Ron">
-                                    <rect key="frame" x="15" y="180" width="300" height="21"/>
+                                    <rect key="frame" x="25" y="153" width="300" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XBb-5v-1ze">
-                                    <rect key="frame" x="15" y="25" width="42" height="21"/>
+                                    <rect key="frame" x="25" y="30" width="42" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="kRP-IQ-4D7">
-                                    <rect key="frame" x="0.0" y="80" width="320" height="1"/>
+                                    <rect key="frame" x="30" y="80" width="265" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="qjQ-nC-pCe">
-                                    <rect key="frame" x="0.0" y="140" width="320" height="1"/>
+                                    <rect key="frame" x="30" y="140" width="265" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" id="mzq-Qu-qah" userLabel="SlideV" customClass="IZValueSelectorView">
-                                    <rect key="frame" x="60" y="85" width="250" height="50"/>
+                                    <rect key="frame" x="75" y="85" width="215" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <connections>
@@ -154,11 +159,15 @@
                                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="rhM-gr-c1k">
-                                    <rect key="frame" x="0.0" y="200" width="320" height="60"/>
+                                    <rect key="frame" x="0.0" y="180" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="756-g3-wjI">
+                                            <rect key="frame" x="30" y="0.0" width="265" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pRc-DY-fsH">
-                                            <rect key="frame" x="23" y="8" width="274" height="44"/>
+                                            <rect key="frame" x="23" y="15" width="274" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
@@ -223,6 +232,7 @@
         <image name="resend_down.png" width="66" height="27"/>
         <image name="resend_normal.png" width="66" height="27"/>
         <image name="table_view_cell_line.png" width="320" height="1"/>
+        <image name="user_info_bg_paper.png" width="320" height="514"/>
         <image name="user_info_commit_btn.png" width="275" height="54"/>
         <image name="user_sex_selected.png" width="43" height="43"/>
         <image name="warn.png" width="17" height="17"/>
