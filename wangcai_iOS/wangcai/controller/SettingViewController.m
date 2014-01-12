@@ -95,7 +95,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     if ( row == 0 ) {
-        return 216;
+        return 218;
     } else if ( row == 1 ) {
         return 130;
     } else if ( row == 2 || row == 3 ) {
