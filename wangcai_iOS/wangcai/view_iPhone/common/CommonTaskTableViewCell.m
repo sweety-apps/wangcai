@@ -53,6 +53,8 @@
         _redBagIcon.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
         _redBagIcon.layer.masksToBounds = YES;
         
+        _redBagIcon.contentMode = UIViewContentModeCenter;
+        
         
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
@@ -102,7 +104,7 @@
     rectFrame = CGRectMake(0, 73, 320, 1);
     _bottomLineImage.frame = rectFrame;
     
-    rectFrame = CGRectMake(250, 10, 53, 60);
+    rectFrame = CGRectMake(224, 10, 79, 60);
     _redBagIcon.frame = rectFrame;
     
     rectFrame = CGRectMake(250, 24, 60, 30);

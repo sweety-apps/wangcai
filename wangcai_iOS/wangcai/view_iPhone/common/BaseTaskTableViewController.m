@@ -418,9 +418,13 @@ static BOOL gNeedReloadTaskList = NO;
             {
                 pic = @"package_icon_3";
             }
-            if (moneyInYuan >= 8.0f)
+            if (moneyInYuan >= 8.0f && moneyInYuan < 9.0f)
             {
                 pic = @"package_icon_8";
+            }
+            if (moneyInYuan >= 9.0f)
+            {
+                pic = @"package_icon_many";
             }
             
             [comCell setRedBagIcon:pic];

@@ -66,7 +66,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [((BeeUIImageView*)$(@"item-left-icon-chaozhiduihuan").view) setImage:[UIImage imageNamed:@"menu_icon_chaozhiduihua"]];
         [((BeeUIImageView*)$(@"item-left-icon-tuhaobang").view) setImage:[UIImage imageNamed:@"menu_icon_tuhaobang"]];
         [((BeeUIImageView*)$(@"item-left-icon-setting").view) setImage:[UIImage imageNamed:@"menu_icon_setting"]];
-        [((BeeUIImageView*)$(@"item-left-icon-setting1").view) setImage:[UIImage imageNamed:@"menu_icon_setting"]];
+        [((BeeUIImageView*)$(@"item-left-icon-setting1").view) setImage:[UIImage imageNamed:@"menu_icon_help"]];
         
         $(@"item-bg").view.hidden = YES;
 	}
