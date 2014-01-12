@@ -280,11 +280,11 @@
         
     }
     
-    if ( [BeeSystemInfo isDevicePad] ) {
-        _delegate.window.rootViewController = [AppBoard_iPad sharedInstance];
-    } else {
+    //if ( [BeeSystemInfo isDevicePad] ) {
+    //    _delegate.window.rootViewController = [AppBoard_iPad sharedInstance];
+    //} else {
         _delegate.window.rootViewController = [AppBoard_iPhone sharedInstance];
-    }
+    //}
 }
 
 @end
