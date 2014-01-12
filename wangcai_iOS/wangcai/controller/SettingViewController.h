@@ -16,6 +16,7 @@
     IBOutlet UITableViewCell* _gradeCell;
     
     IBOutlet UISwitch*        _msgSwitch;
+    IBOutlet UISwitch*        _musicSwitch;
 }
 
 @property (nonatomic, retain) IBOutlet UITableViewCell* _logoCell;
@@ -23,6 +24,7 @@
 @property (nonatomic, retain) IBOutlet UITableViewCell* _bellCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell* _gradeCell;
 @property (nonatomic, retain) IBOutlet UISwitch* _msgSwitch;
+@property (nonatomic, retain) IBOutlet UISwitch* _musicSwitch;
 
 - (id)init;
 

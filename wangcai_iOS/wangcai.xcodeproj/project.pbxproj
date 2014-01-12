@@ -171,6 +171,7 @@
 		A6FA6A591882547B003F8399 /* OnlineWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A581882547B003F8399 /* OnlineWallViewController.xib */; };
 		A6FA6A5C18827C88003F8399 /* cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A5A18827C88003F8399 /* cloud@2x.png */; };
 		A6FA6A5D18827C88003F8399 /* update@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A5B18827C88003F8399 /* update@2x.png */; };
+		A6FA6A611882D0FD003F8399 /* default568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A601882D0FD003F8399 /* default568@2x.png */; };
 		A6FD8A711861899500223772 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
 		A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A72186189B500223772 /* ExchangeController.xib */; };
 		A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */; };
@@ -758,6 +759,7 @@
 		A6FA6A581882547B003F8399 /* OnlineWallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnlineWallViewController.xib; sourceTree = "<group>"; };
 		A6FA6A5A18827C88003F8399 /* cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud@2x.png"; sourceTree = "<group>"; };
 		A6FA6A5B18827C88003F8399 /* update@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update@2x.png"; sourceTree = "<group>"; };
+		A6FA6A601882D0FD003F8399 /* default568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default568@2x.png"; sourceTree = "<group>"; };
 		A6FD8A6F1861899500223772 /* ExchangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeController.h; sourceTree = "<group>"; };
 		A6FD8A701861899500223772 /* ExchangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeController.m; sourceTree = "<group>"; };
 		A6FD8A72186189B500223772 /* ExchangeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeController.xib; sourceTree = "<group>"; };
@@ -1710,6 +1712,7 @@
 			isa = PBXGroup;
 			children = (
 				A60C57EC186FF8A30068425C /* !@2x.png */,
+				A6FA6A601882D0FD003F8399 /* default568@2x.png */,
 				A6FA6A5A18827C88003F8399 /* cloud@2x.png */,
 				A6FA6A5B18827C88003F8399 /* update@2x.png */,
 				A60C57ED186FF8A30068425C /* arrow-down@2x.png */,
@@ -3451,6 +3454,7 @@
 				F36049B11871A9AE00FAD1F3 /* menu_icon_setting@2x.png in Resources */,
 				F36049391870492000FAD1F3 /* main_menu_bg@2x.jpg in Resources */,
 				A60C58A918703AE60068425C /* invite_nav_bar@2x.png in Resources */,
+				A6FA6A611882D0FD003F8399 /* default568@2x.png in Resources */,
 				F3813D1418753ED400350C27 /* choujiang_5mao@2x.png in Resources */,
 				A60C58A518703AE60068425C /* invite_edit_bkg@2x.png in Resources */,
 				F3813D2918753ED400350C27 /* choujiang_xiaomi@2x.png in Resources */,

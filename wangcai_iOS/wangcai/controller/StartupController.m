@@ -34,7 +34,13 @@
         // Custom initialization
         _delegate = delegate;
         
-        self.view = [[[NSBundle mainBundle] loadNibNamed:@"StartupController" owner:self options:nil] firstObject];
+        CGSize size = [[UIScreen mainScreen] bounds].size;
+        if ( 1.0 * size.height / size.width > 1.0 * 960 / 640 ) {
+            self.view = [[[NSBundle mainBundle] loadNibNamed:@"StartupController" owner:self options:nil] lastObject];
+        } else {
+            self.view = [[[NSBundle mainBundle] loadNibNamed:@"StartupController" owner:self options:nil] firstObject];
+        }
+        
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
         _alertError = nil;
         _alertForceUpdate = nil;
@@ -248,16 +254,18 @@
     // 添加QQ应用
     [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
     // 微信
-    [ShareSDK connectWeChatWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+    // wxb36cb2934f410866
+    
+    [ShareSDK connectWeChatWithAppId: @"wxf3b81b618060b1fc" wechatCls: [WXApi class]];
     
     // 微信朋友圈
-    [ShareSDK connectWeChatTimelineWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+    [ShareSDK connectWeChatTimelineWithAppId: @"wxf3b81b618060b1fc" wechatCls: [WXApi class]];
     
     // 微信好友
-    [ShareSDK connectWeChatSessionWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+    [ShareSDK connectWeChatSessionWithAppId: @"wxf3b81b618060b1fc" wechatCls: [WXApi class]];
     
     // 微信收藏
-    [ShareSDK connectWeChatFavWithAppId: @"wxb36cb2934f410866" wechatCls: [WXApi class]];
+    [ShareSDK connectWeChatFavWithAppId: @"wxf3b81b618060b1fc" wechatCls: [WXApi class]];
     //……
 }
 

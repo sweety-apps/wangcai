@@ -12,6 +12,7 @@
                 <outlet property="_logoCell" destination="ryT-Rb-UpE" id="3yT-FL-1OL"/>
                 <outlet property="_msgCell" destination="gq6-Je-ZHK" id="8AP-jx-Qqs"/>
                 <outlet property="_msgSwitch" destination="bSs-Um-LES" id="h5A-dP-sFt"/>
+                <outlet property="_musicSwitch" destination="eHH-6c-lrm" id="uam-Zy-4uT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
