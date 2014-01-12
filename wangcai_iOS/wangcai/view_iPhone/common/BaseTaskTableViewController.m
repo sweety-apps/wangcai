@@ -178,7 +178,7 @@ static BOOL gNeedReloadTaskList = NO;
 
 - (void)addHeader
 {
-    UIView* longView = [[[UIView alloc] initWithFrame:CGRectMake(0, -300, 320, 320)] autorelease];
+    UIView* longView = [[[UIView alloc] initWithFrame:CGRectMake(0, -300, 320, 370)] autorelease];
     longView.backgroundColor = RGB(25, 138, 191);
     MJRefreshHeaderView *header = [MJRefreshHeaderView header];
     header.backgroundColor = RGB(25, 138, 191);
@@ -581,6 +581,11 @@ static BOOL gNeedReloadTaskList = NO;
         self.containTableViewFooterViewTextLabel.text = @"继续向上拖动查看已领取的红包";
     }
     _isUIZhuanJuhuaing = NO;
+    
+    if ([[[CommonTaskList sharedInstance] getAllTaskList] count] <= 5)
+    {
+        [self onLoadHistoricalFinishedList];
+    }
 }
 
 - (void)endFooter
@@ -618,7 +623,7 @@ static BOOL gNeedReloadTaskList = NO;
     if (suc && consume > 0)
     {
         [[LoginAndRegister sharedInstance] increaseBalance:consume];
-        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"使用积分墙赚到钱啦！！！" message:[NSString stringWithFormat:@"赚了 %@ 元！YEAH！",[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:1 ignoreBackZeros:YES]] delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"收到应用体验红包 %@ 元！",[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:1 ignoreBackZeros:YES]] message:@"" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
         [alert show];
         [self checkBalanceAndAnimateYuE];
     }

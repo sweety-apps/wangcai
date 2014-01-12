@@ -44,6 +44,16 @@
         _finishedLabel.font = [UIFont boldSystemFontOfSize:20.0f];
         _finishedLabel.textAlignment = NSTextAlignmentLeft;
         
+        //抗锯齿
+        _leftIcon.layer.shouldRasterize = YES;
+        _leftIcon.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
+        _leftIcon.layer.masksToBounds = YES;
+        
+        _redBagIcon.layer.shouldRasterize = YES;
+        _redBagIcon.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
+        _redBagIcon.layer.masksToBounds = YES;
+        
+        
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
         

@@ -148,6 +148,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         _taskTableViewController.containTableView.bounces = YES;
         
         //[self.view addSubview:testImageView];
+        
+        //抗锯齿
+        //self.view.layer.shouldRasterize = YES;
+        //self.view.layer.edgeAntialiasingMask = kCALayerLeftEdge ;
+        //self.view.layer.masksToBounds = YES;
+        
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
