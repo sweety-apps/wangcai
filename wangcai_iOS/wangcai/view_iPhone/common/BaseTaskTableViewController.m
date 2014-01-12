@@ -18,10 +18,12 @@
 #import "ChoujiangLogic.h"
 #import "NSString+FloatFormat.h"
 
+static BOOL gNeedReloadTaskList = NO;
 
 @interface BaseTaskTableViewController () <CommonTaskListDelegate>
 {
     NSTimer* _checkOfferWallTimer;
+    BOOL _justOnePage;
 }
 
 @end
@@ -53,6 +55,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _justOnePage = NO;
     _curCellCount = 0;
     _hisCellCount = 0;
     
@@ -71,6 +74,7 @@
     
     _checkOfferWallTimer = [NSTimer scheduledTimerWithTimeInterval:15.f target:self selector:@selector(checkDMOfferWall) userInfo:nil repeats:NO];
     
+    
     //[self performSelector:@selector(refreshTaskList) withObject:nil afterDelay:2.0f];
 }
 
@@ -86,6 +90,11 @@
     [super viewDidAppear:animated];
     
     [self checkBalanceAndAnimateYuE];
+    
+    if (gNeedReloadTaskList)
+    {
+        [self refreshTaskList];
+    }
 }
 
 - (void)checkBalanceAndAnimateYuE
@@ -209,6 +218,7 @@
 
 -(void)refreshTaskList
 {
+    [MBHUDView hudWithBody:@"" type:MBAlertViewHUDTypeActivityIndicator hidesAfter:10000000000.f show:YES];
     [[CommonTaskList sharedInstance] fetchTaskList:self];
 }
 
@@ -288,6 +298,11 @@
     
     
     [self.zhanghuYuEHeaderCell.yuENumView animateNumFrom:oldNum to:newNum withAnimation:YES];
+}
+
++ (void)setNeedReloadTaskList
+{
+    gNeedReloadTaskList = YES;
 }
 
 #pragma mark - <UITableViewDataSource>
@@ -506,12 +521,12 @@
     }
      */
     
-    if (!_isUIZhuanJuhuaing && (scrollView.contentOffset.y+scrollView.frame.size.height) > scrollView.contentSize.height)
+    if (!_justOnePage && !_isUIZhuanJuhuaing && (scrollView.contentOffset.y+scrollView.frame.size.height) > scrollView.contentSize.height)
     {
         self.containTableViewFooterJuhuaView.hidden = NO;
         [self.containTableViewFooterJuhuaView startAnimating];
         _isUIZhuanJuhuaing = YES;
-        [self performSelector:@selector(onLoadHistoricalFinishedList) withObject:nil afterDelay:2.0];
+        [self performSelector:@selector(onLoadHistoricalFinishedList) withObject:nil afterDelay:0.5];
         //[self onLoadHistoricalFinishedList];
     }
 }
@@ -525,10 +540,12 @@
     
     if (self.containTableView.contentSize.height < self.containTableView.frame.size.height)
     {
+        _justOnePage = YES;
         self.containTableViewFooterViewTextLabel.text = @"点击查看已领取的红包";
     }
     else
     {
+        _justOnePage = NO;
         self.containTableViewFooterViewTextLabel.text = @"继续向上拖动查看已领取的红包";
     }
     _isUIZhuanJuhuaing = NO;
@@ -545,6 +562,8 @@
 
 - (void)onFinishedFetchTaskList:(CommonTaskList*)taskList resultCode:(NSInteger)result
 {
+    [MBHUDView dismissCurrentHUD];
+    gNeedReloadTaskList = NO;
     if (result >= 0)
     {
         [self.containTableView reloadData];

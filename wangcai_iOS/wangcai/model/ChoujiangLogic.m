@@ -8,6 +8,7 @@
 
 #import "ChoujiangLogic.h"
 #import "Config.h"
+#import "SettingLocalRecords.h"
 
 @implementation ChoujiangLogic
 
@@ -18,6 +19,10 @@ DEF_SINGLETON( ChoujiangLogic )
     self = [super init];
     if (self) {
         _awardCode = kGetAwardTypeNotGet;
+        if ([SettingLocalRecords hasCheckInToday])
+        {
+            _awardCode = kGetAwardTypeAlreadyGot;
+        }
     }
     return self;
 }

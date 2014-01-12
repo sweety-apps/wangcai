@@ -11,6 +11,7 @@
 #import "UserInfoAPI.h"
 #import "MBHUDView.h"
 #import "CommonTaskList.h"
+#import "BaseTaskTableViewController.h"
 
 @interface UserInfoEditorViewController () <UserInfoAPIDelegate>
 {
@@ -60,6 +61,8 @@
     selectorView.clipsToBounds = NO;
     selectorView.image = [UIImage imageNamed:@"user_sex_selected"];
     //[[self.ageSelectorView superview] insertSubview:selectorView belowSubview:self.ageSelectorView];
+    
+    [MBHUDView hudWithBody:@"" type:MBAlertViewHUDTypeActivityIndicator hidesAfter:10000000000.f show:YES];
     
     [self buildSelectorViews];
     
@@ -332,6 +335,8 @@
         }
         
         [[UserInfoAPI loginedUserInfo] updateUserInfo:self];
+        
+        self.commitButton.enabled = NO;
     }
     else
     {
@@ -459,6 +464,7 @@
 
 - (void)onFinishedFetchUserInfo:(UserInfoAPI*)userInfo isSucceed:(BOOL)succeed
 {
+    [MBHUDView dismissCurrentHUD];
     if (succeed)
     {
         if (userInfo.uiSex)
@@ -495,8 +501,10 @@
 
 - (void)onFinishedUpdateUserInfo:(UserInfoAPI*)userInfo isSucceed:(BOOL)succeed
 {
+    self.commitButton.enabled = YES;
     if (succeed)
     {
+        [BaseTaskTableViewController setNeedReloadTaskList];
         [MBHUDView hudWithBody:@"用户信息提交成功！" type:MBAlertViewHUDTypeCheckmark  hidesAfter:2.0 show:YES];
         // 给用户加一块钱
         if (_shouldAddMoney)

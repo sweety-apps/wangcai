@@ -9,6 +9,7 @@
 #import "ChoujiangViewController.h"
 #import "ChoujiangLogic.h"
 #import "MBHUDView.h"
+#import "SettingLocalRecords.h"
 #import <ShareSDK/ShareSDK.h>
 
 @interface ChoiceMoveNode : NSObject
@@ -51,11 +52,40 @@
     // Do any additional setup after loading the view from its nib.
     _choiceViews = [[NSArray arrayWithObjects:self.choice0,self.choice1,self.choice2,self.choice3,self.choice4,self.choice5,self.choice6,self.choice7,self.choice8,self.choice9,self.choice10,self.choice11, nil] retain];
     _beilv = 1;
+    if ([SettingLocalRecords hasCheckInYesterday])
+    {
+        _beilv += 1;
+    }
+    if ([SettingLocalRecords hasShareToday])
+    {
+        _beilv += 1;
+    }
     
     self.choiceBorder.hidden = YES;
     self.choiceCover.hidden = YES;
     
     [self resetViews];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.infoImage = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"choujiang_guize"]] autorelease];
+    self.cloudImage = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"choujiang_bottom_cloud"]] autorelease];
+    
+    [self.backButton.superview insertSubview:self.cloudImage aboveSubview:self.backButton];
+    [self.backButton.superview insertSubview:self.infoImage aboveSubview:self.cloudImage];
+    
+    CGFloat screenHeight = [[UIApplication sharedApplication] keyWindow].frame.size.height;
+    
+    CGRect rect = self.cloudImage.frame;
+    rect.origin.y = screenHeight - rect.size.height;
+    self.cloudImage.frame = rect;
+    
+    rect = self.infoImage.frame;
+    rect.origin.y = screenHeight - rect.size.height;
+    self.infoImage.frame = rect;
 }
 
 - (void)dealloc
@@ -95,6 +125,8 @@
     }
 }
 
+
+
 - (IBAction)onPressedBackButton:(id)sender
 {
     [self.stack popViewControllerAnimated:YES];
@@ -114,16 +146,16 @@
     
     //奖项
     NSString* jiangxiang[12] = {
-        @"choujiang_shaxuan",
+        @"choujiang_1mao",
         @"choujiang_5mao",
         @"choujiang_thanks1",
-        @"choujiang_baojie",
+        @"choujiang_thanks4",
         @"choujiang_8yuan",
         @"choujiang_thanks2",
         @"choujiang_thanks1",
         @"choujiang_3yuan",
         @"choujiang_thanks3",
-        @"choujiang_xiaomi",
+        @"choujiang_5mao",
         @"choujiang_1mao",
         @"choujiang_thanks4"
     };
@@ -257,6 +289,7 @@
     switch (_choiceIndex)
     {
         case 2:
+        case 3:
         case 5:
         case 6:
         case 8:
@@ -265,25 +298,35 @@
             title = @"旺财你不给力啊:(";
             msg = @"两手空空";
             break;
+        case 0:
         case 10:
             //1毛
             title = @"恭喜您中奖了！";
             msg = @"1毛";
+            //加钱
+            [[LoginAndRegister sharedInstance] increaseBalance:10];
             break;
         case 1:
+        case 9:
             //5毛
             title = @"恭喜您中奖了！";
             msg = @"5毛";
+            //加钱
+            [[LoginAndRegister sharedInstance] increaseBalance:50];
             break;
         case 7:
             //3元
             title = @"恭喜您中奖了！";
             msg = @"3元";
+            //加钱
+            [[LoginAndRegister sharedInstance] increaseBalance:300];
             break;
         case 4:
             //8元
             title = @"恭喜您中奖了！";
             msg = @"8元";
+            //加钱
+            [[LoginAndRegister sharedInstance] increaseBalance:800];
             break;
             
         default:
@@ -337,6 +380,7 @@
     {
         if (result == 0)
         {
+            [SettingLocalRecords saveLastCheckInDateTime:[NSDate date]];
             if (awardCode == kGetAwardTypeAlreadyGot)
             {
                 UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"您今天已经签到过了" message:@"明天记得再来签到哟！" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
@@ -349,23 +393,23 @@
                 {
                     case kGetAwardTypeNothing:
                     {
-                        int indexs[5] = {2,5,6,8,11};
+                        int indexs[6] = {2,3,5,6,8,11};
                         srand(time(NULL));
-                        target = indexs[rand()%5];
+                        target = indexs[rand()%6];
                     }
                         break;
                     case kGetAwardType1Mao:
                     {
-                        int indexs[1] = {10};
+                        int indexs[2] = {0,10};
                         srand(time(NULL));
-                        target = indexs[rand()%1];
+                        target = indexs[rand()%2];
                     }
                         break;
                     case kGetAwardType5Mao:
                     {
-                        int indexs[1] = {1};
+                        int indexs[2] = {1,9};
                         srand(time(NULL));
-                        target = indexs[rand()%1];
+                        target = indexs[rand()%2];
                     }
                         break;
                     case kGetAwardType3Yuan:

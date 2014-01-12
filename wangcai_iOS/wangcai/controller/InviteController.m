@@ -13,6 +13,7 @@
 #import "qrencode.h"
 #import "WebPageController.h"
 #import "Config.h"
+#import "SettingLocalRecords.h"
 
 @interface InviteController ()
 
@@ -220,6 +221,7 @@
          if (state == SSResponseStateSuccess)
          {
              // todo 分享成功
+             [SettingLocalRecords saveLastShareDateTime:[NSDate date]];
          }
          else if (state == SSResponseStateFail)
          {

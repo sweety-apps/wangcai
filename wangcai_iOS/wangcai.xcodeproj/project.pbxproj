@@ -276,6 +276,7 @@
 		F3D9D6BC1865982700392C40 /* IZValueSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D6BB1865982700392C40 /* IZValueSelectorView.m */; };
 		F3D9D6D018681CAD00392C40 /* CommonZhanghuYuETableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D6CF18681CAD00392C40 /* CommonZhanghuYuETableViewCell.m */; };
 		F3DD64131880251B00E56A0B /* tiyanzhongxin_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3DD64121880251B00E56A0B /* tiyanzhongxin_cell_icon@2x.png */; };
+		F3DD6416188270E500E56A0B /* SettingLocalRecords.m in Sources */ = {isa = PBXBuildFile; fileRef = F3DD6415188270E500E56A0B /* SettingLocalRecords.m */; };
 		F3F186C018543A410098C852 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186BF18543A410098C852 /* UIKit.framework */; };
 		F3F186C218543A410098C852 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C118543A410098C852 /* Foundation.framework */; };
 		F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C318543A410098C852 /* CoreGraphics.framework */; };
@@ -898,6 +899,8 @@
 		F3D9D6CE18681CAD00392C40 /* CommonZhanghuYuETableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonZhanghuYuETableViewCell.h; sourceTree = "<group>"; };
 		F3D9D6CF18681CAD00392C40 /* CommonZhanghuYuETableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonZhanghuYuETableViewCell.m; sourceTree = "<group>"; };
 		F3DD64121880251B00E56A0B /* tiyanzhongxin_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiyanzhongxin_cell_icon@2x.png"; sourceTree = "<group>"; };
+		F3DD6414188270E500E56A0B /* SettingLocalRecords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingLocalRecords.h; sourceTree = "<group>"; };
+		F3DD6415188270E500E56A0B /* SettingLocalRecords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingLocalRecords.m; sourceTree = "<group>"; };
 		F3F186BC18543A410098C852 /* wangcai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wangcai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F186BF18543A410098C852 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F3F186C118543A410098C852 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1869,6 +1872,8 @@
 				F3604924187016C200FAD1F3 /* NSString+FloatFormat.m */,
 				F3604925187016C200FAD1F3 /* UtilityFunctions.h */,
 				F3604926187016C200FAD1F3 /* UtilityFunctions.m */,
+				F3DD6414188270E500E56A0B /* SettingLocalRecords.h */,
+				F3DD6415188270E500E56A0B /* SettingLocalRecords.m */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -3510,6 +3515,7 @@
 				F3F1872618543A420098C852 /* FMDatabasePool.m in Sources */,
 				F3F1887918543A430098C852 /* Bee_UIToolbar.m in Sources */,
 				F3F189F718543A450098C852 /* MenuBoard_iPhone.m in Sources */,
+				F3DD6416188270E500E56A0B /* SettingLocalRecords.m in Sources */,
 				F3F189ED18543A450098C852 /* Bee_Resource.mm in Sources */,
 				F3F1894B18543A440098C852 /* Bee_CacheProtocol.mm in Sources */,
 				F3F1891918543A440098C852 /* Bee_UITemplate.m in Sources */,

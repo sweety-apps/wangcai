@@ -56,4 +56,6 @@
 //带动画和声音设置余额
 - (void)setYuENumberWithAnimationFrom:(int)oldNum toNum:(int)newNum;
 
++ (void)setNeedReloadTaskList;
+
 @end

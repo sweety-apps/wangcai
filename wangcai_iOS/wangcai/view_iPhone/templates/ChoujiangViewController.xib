@@ -122,14 +122,6 @@
                     <rect key="frame" x="4" y="115" width="90" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="choujiang_bottom_cloud.png" translatesAutoresizingMaskIntoConstraints="NO" id="MWA-KT-m9A">
-                    <rect key="frame" x="0.0" y="446" width="320" height="122"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="choujiang_guize.png" translatesAutoresizingMaskIntoConstraints="NO" id="vah-qr-3U3">
-                    <rect key="frame" x="0.0" y="501" width="320" height="67"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="choujiang_zhongjiangbeilv.png" translatesAutoresizingMaskIntoConstraints="NO" id="QYs-MR-GCs">
                     <rect key="frame" x="85" y="84" width="70" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -158,8 +150,6 @@
         <image name="choujiang_bg.png" width="320" height="568"/>
         <image name="choujiang_border_moving.png" width="76" height="76"/>
         <image name="choujiang_border_selected1.png" width="84" height="84"/>
-        <image name="choujiang_bottom_cloud.png" width="320" height="122"/>
-        <image name="choujiang_guize.png" width="320" height="67"/>
         <image name="choujiang_start_btn.png" width="153" height="153"/>
         <image name="choujiang_start_btn_selected.png" width="153" height="153"/>
         <image name="choujiang_title.png" width="320" height="101"/>

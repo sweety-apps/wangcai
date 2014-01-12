@@ -34,6 +34,9 @@
 @property (nonatomic,retain) IBOutlet UIImageView* choiceBorder;
 @property (nonatomic,retain) IBOutlet UIImageView* choiceCover;
 
+@property (nonatomic,retain) IBOutlet UIImageView* cloudImage;
+@property (nonatomic,retain) IBOutlet UIImageView* infoImage;
+
 - (void)setBeiLv:(int)beilvNum;//1-3
 - (int)getBeiLv;
 
