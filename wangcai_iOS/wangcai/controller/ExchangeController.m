@@ -256,7 +256,7 @@
         [_alertView release];
     }
     
-    UIView* view = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] lastObject];
+    UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] lastObject] autorelease];
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = 10.0;
     view.layer.borderWidth = 0.0;
@@ -267,11 +267,12 @@
     UIButton* btn = (UIButton*)[view viewWithTag:11];
     [btn.layer setBorderWidth:0.5];
     [btn.layer setBorderColor:[color CGColor]];
+    [btn setTitleColor:color forState:UIControlStateHighlighted];
     
     btn = (UIButton*)[view viewWithTag:12];
     [btn.layer setBorderWidth:0.5];
     [btn.layer setBorderColor:[color CGColor]];
-    
+    [btn setTitleColor:color forState:UIControlStateHighlighted];
     
     [btn setTitle:btnText forState:UIControlStateNormal];
     
@@ -280,8 +281,7 @@
     ((UILabel*)[view viewWithTag:23]).text = tip;
     
     _alertView = [[UICustomAlertView alloc]init:view];
-    
-    [view release];
+
     [_alertView show];
 }
 
@@ -418,9 +418,9 @@
     //  model should call this when its done loading
     _reloading = NO;
     
-    if (/*得到的数组数是大于0的*/ YES) {
+    if ( _list != nil ) {
         [self->_tableView reloadData];
-    }else{
+    }else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取数据失败或网络异常" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
         [alert release];
@@ -533,7 +533,13 @@
         [_alertExchange show];
     } else {
         NSString* err = [infos valueForKey: @"msg"];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:err delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        UIAlertView *alert;
+        if ( err == nil || [err length] == 0 ) {
+            alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"兑换失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        } else {
+            alert = [[UIAlertView alloc] initWithTitle:@"提示" message:err delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        }
+        
         [alert show];
         [alert release];
     }

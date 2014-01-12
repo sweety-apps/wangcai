@@ -373,9 +373,10 @@
     int balance = [[LoginAndRegister sharedInstance] getBalance];
     int income = [[LoginAndRegister sharedInstance] getIncome];
     int outgo = [[LoginAndRegister sharedInstance] getOutgo];
-    
-    NSString* js = [NSString stringWithFormat:@"notifyBalance(%.1f, %.1f, %.1f)",
-                    1.0*balance/100, 1.0*income/100, 1.0*outgo/100];
+    int sharedIncome = [[LoginAndRegister sharedInstance] getInviteIncome];
+
+    NSString* js = [NSString stringWithFormat:@"notifyBalance(%.1f, %.1f, %.1f, %.1f)",
+                    1.0*balance/100, 1.0*income/100, 1.0*outgo/100, 1.0*sharedIncome/100];
     
     [self->_webView stringByEvaluatingJavaScriptFromString:js];
 }

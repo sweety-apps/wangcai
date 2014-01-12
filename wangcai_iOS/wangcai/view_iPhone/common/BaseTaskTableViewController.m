@@ -100,10 +100,16 @@ static BOOL gNeedReloadTaskList = NO;
     
     // 超过5元
     if ( _alertBalanceTip == nil ) {
-        if ( [[LoginAndRegister sharedInstance] getBalance] >= 500 ) {
+        NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+        
+        if ( [[LoginAndRegister sharedInstance] getBalance] >= 500 && (phoneNum == nil || [phoneNum length] == 0) ) {
             _alertBalanceTip = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的余额超过5元，为了您的帐号安全，推荐您绑定手机" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"绑定手机", nil];
             
             [_alertBalanceTip show];
+        }
+        
+        if ( phoneNum != nil ) {
+            [phoneNum release];
         }
     }
     

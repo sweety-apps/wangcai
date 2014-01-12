@@ -55,7 +55,7 @@ static OnlineWallViewController* _sharedInstance;
         [_alertView release];
     }
         
-    UIView* view = [[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject];
+    UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = 10.0;
     view.layer.borderWidth = 0.0;
@@ -64,12 +64,14 @@ static OnlineWallViewController* _sharedInstance;
     UIColor *color = [UIColor colorWithRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1];
         
     UIButton* btn = (UIButton*)[view viewWithTag:11];
+    [btn setTitleColor:color forState:UIControlStateHighlighted];
+    
     [btn.layer setBorderWidth:0.5];
     [btn.layer setBorderColor:[color CGColor]];
         
     _alertView = [[UICustomAlertView alloc]init:view];
         
-    [view release];
+    //[view release];
     [_alertView show];
 }
 

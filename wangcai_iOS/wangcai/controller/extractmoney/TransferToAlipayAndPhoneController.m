@@ -319,7 +319,7 @@
         [_alertView release];
     }
     
-    UIView* view = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] lastObject];
+    UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] lastObject] autorelease];
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = 10.0;
     view.layer.borderWidth = 0.0;
@@ -330,11 +330,12 @@
     UIButton* btn = (UIButton*)[view viewWithTag:11];
     [btn.layer setBorderWidth:0.5];
     [btn.layer setBorderColor:[color CGColor]];
+    [btn setTitleColor:color forState:UIControlStateHighlighted];
     
     btn = (UIButton*)[view viewWithTag:12];
     [btn.layer setBorderWidth:0.5];
     [btn.layer setBorderColor:[color CGColor]];
-    
+    [btn setTitleColor:color forState:UIControlStateHighlighted];
     
     [btn setTitle:btnText forState:UIControlStateNormal];
     
@@ -344,7 +345,6 @@
     
     _alertView = [[UICustomAlertView alloc]init:view];
     
-    [view release];
     [_alertView show];
 }
 

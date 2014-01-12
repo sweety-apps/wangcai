@@ -30,7 +30,7 @@
         [_bgView release];
         
         CGRect alertRect = [self getAlertBounds:alertView];
-        _alertView = alertView;
+        _alertView = [alertView retain];
         _alertView.frame = alertRect;
         
         UIImageView *alertBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, alertRect.size.width, alertRect.size.height)];
