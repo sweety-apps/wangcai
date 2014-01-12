@@ -53,19 +53,15 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
         <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="187" id="ryT-Rb-UpE">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ryT-Rb-UpE" id="x5C-Nc-QSD">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="199"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="215"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" id="WxL-33-9pp">
-                        <rect key="frame" x="87" y="16" width="147" height="167"/>
+                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about.png" id="WxL-33-9pp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line.png" id="x65-C4-v0E">
-                        <rect key="frame" x="8" y="199" width="304" height="1"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
@@ -212,9 +208,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="about.png" width="320" height="216"/>
         <image name="back.png" width="12" height="22"/>
         <image name="line.png" width="320" height="1"/>
-        <image name="logo.png" width="147" height="167"/>
         <image name="nav_Header.png" width="320" height="54"/>
         <image name="setting_bell.png" width="29" height="29"/>
         <image name="setting_message.PNG" width="29" height="29"/>

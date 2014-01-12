@@ -69,7 +69,6 @@
 		A60C584D186FF8A30068425C /* deal_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F4186FF8A30068425C /* deal_btn@2x.png */; };
 		A60C584E186FF8A30068425C /* exchange_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F5186FF8A30068425C /* exchange_btn@2x.png */; };
 		A60C584F186FF8A30068425C /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F6186FF8A30068425C /* line@2x.png */; };
-		A60C5850186FF8A30068425C /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F7186FF8A30068425C /* logo@2x.png */; };
 		A60C5851186FF8A30068425C /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F8186FF8A30068425C /* menu-button@2x.png */; };
 		A60C5852186FF8A30068425C /* menu-icon-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F9186FF8A30068425C /* menu-icon-blue@2x.png */; };
 		A60C5853186FF8A30068425C /* menu-icon-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57FA186FF8A30068425C /* menu-icon-green@2x.png */; };
@@ -174,6 +173,7 @@
 		A6FA6A611882D0FD003F8399 /* default568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A601882D0FD003F8399 /* default568@2x.png */; };
 		A6FA6A641882E284003F8399 /* apptask_rmb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A621882E284003F8399 /* apptask_rmb@2x.png */; };
 		A6FA6A651882E284003F8399 /* apptask_tip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A631882E284003F8399 /* apptask_tip@2x.png */; };
+		A6FA6A671882E6F3003F8399 /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A661882E6F3003F8399 /* about@2x.png */; };
 		A6FD8A711861899500223772 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
 		A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A72186189B500223772 /* ExchangeController.xib */; };
 		A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */; };
@@ -643,7 +643,6 @@
 		A60C57F4186FF8A30068425C /* deal_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deal_btn@2x.png"; sourceTree = "<group>"; };
 		A60C57F5186FF8A30068425C /* exchange_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_btn@2x.png"; sourceTree = "<group>"; };
 		A60C57F6186FF8A30068425C /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
-		A60C57F7186FF8A30068425C /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		A60C57F8186FF8A30068425C /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button@2x.png"; sourceTree = "<group>"; };
 		A60C57F9186FF8A30068425C /* menu-icon-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-blue@2x.png"; sourceTree = "<group>"; };
 		A60C57FA186FF8A30068425C /* menu-icon-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon-green@2x.png"; sourceTree = "<group>"; };
@@ -764,6 +763,7 @@
 		A6FA6A601882D0FD003F8399 /* default568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default568@2x.png"; sourceTree = "<group>"; };
 		A6FA6A621882E284003F8399 /* apptask_rmb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apptask_rmb@2x.png"; sourceTree = "<group>"; };
 		A6FA6A631882E284003F8399 /* apptask_tip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apptask_tip@2x.png"; sourceTree = "<group>"; };
+		A6FA6A661882E6F3003F8399 /* about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@2x.png"; sourceTree = "<group>"; };
 		A6FD8A6F1861899500223772 /* ExchangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeController.h; sourceTree = "<group>"; };
 		A6FD8A701861899500223772 /* ExchangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeController.m; sourceTree = "<group>"; };
 		A6FD8A72186189B500223772 /* ExchangeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeController.xib; sourceTree = "<group>"; };
@@ -1731,12 +1731,12 @@
 				A60C57F4186FF8A30068425C /* deal_btn@2x.png */,
 				A60C57F5186FF8A30068425C /* exchange_btn@2x.png */,
 				A60C57F6186FF8A30068425C /* line@2x.png */,
-				A60C57F7186FF8A30068425C /* logo@2x.png */,
 				A60C57F8186FF8A30068425C /* menu-button@2x.png */,
 				A60C57F9186FF8A30068425C /* menu-icon-blue@2x.png */,
 				A60C57FA186FF8A30068425C /* menu-icon-green@2x.png */,
 				A60C57FB186FF8A30068425C /* menu-icon-red@2x.png */,
 				A60C57FC186FF8A30068425C /* menu-icon@2x.png */,
+				A6FA6A661882E6F3003F8399 /* about@2x.png */,
 				A60C57FD186FF8A30068425C /* nav_Header@2x.png */,
 				A60C57FE186FF8A30068425C /* navigation-back@2x.png */,
 				A60C57FF186FF8A30068425C /* navigation-bar@2x.png */,
@@ -3379,6 +3379,7 @@
 				F3813D1F18753ED400350C27 /* choujiang_thanks2@2x.png in Resources */,
 				F36049B91871B0C500FAD1F3 /* ChoujiangViewController.xib in Resources */,
 				F3D9D555185D876D00392C40 /* InviteController.xib in Resources */,
+				A6FA6A671882E6F3003F8399 /* about@2x.png in Resources */,
 				A60C585C186FF8A30068425C /* reg_success@2x.png in Resources */,
 				A60C585E186FF8A30068425C /* resend_normal@2x.png in Resources */,
 				A60C5842186FF8A30068425C /* package_icon_8@2x.png in Resources */,
@@ -3421,7 +3422,6 @@
 				F36049B41871A9AE00FAD1F3 /* menu_icon_wodewangcai@2x.png in Resources */,
 				A60C587F186FF8A30068425C /* table_view_cell_line@2x.png in Resources */,
 				A60C5863186FF8A30068425C /* sms_code_border@2x.png in Resources */,
-				A60C5850186FF8A30068425C /* logo@2x.png in Resources */,
 				F3FB9293187AF5F7001D702E /* user_info_commit_btn@2x.png in Resources */,
 				A60C5882186FF8A30068425C /* user_hobby_selected@2x.png in Resources */,
 				A60C58AD18703AE60068425C /* invite_seg_select@2x.png in Resources */,
