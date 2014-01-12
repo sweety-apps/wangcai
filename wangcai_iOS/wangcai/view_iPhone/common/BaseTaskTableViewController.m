@@ -516,7 +516,6 @@ static BOOL gNeedReloadTaskList = NO;
                     {
                         [[OnlineWallViewController sharedInstance] clickConinue:nil];
                     }
-                    
                 }
                     break;
                 case kTaskTypeInstallWangcai:

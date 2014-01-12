@@ -172,6 +172,8 @@
 		A6FA6A5C18827C88003F8399 /* cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A5A18827C88003F8399 /* cloud@2x.png */; };
 		A6FA6A5D18827C88003F8399 /* update@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A5B18827C88003F8399 /* update@2x.png */; };
 		A6FA6A611882D0FD003F8399 /* default568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A601882D0FD003F8399 /* default568@2x.png */; };
+		A6FA6A641882E284003F8399 /* apptask_rmb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A621882E284003F8399 /* apptask_rmb@2x.png */; };
+		A6FA6A651882E284003F8399 /* apptask_tip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A631882E284003F8399 /* apptask_tip@2x.png */; };
 		A6FD8A711861899500223772 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
 		A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A72186189B500223772 /* ExchangeController.xib */; };
 		A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */; };
@@ -760,6 +762,8 @@
 		A6FA6A5A18827C88003F8399 /* cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud@2x.png"; sourceTree = "<group>"; };
 		A6FA6A5B18827C88003F8399 /* update@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update@2x.png"; sourceTree = "<group>"; };
 		A6FA6A601882D0FD003F8399 /* default568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default568@2x.png"; sourceTree = "<group>"; };
+		A6FA6A621882E284003F8399 /* apptask_rmb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apptask_rmb@2x.png"; sourceTree = "<group>"; };
+		A6FA6A631882E284003F8399 /* apptask_tip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apptask_tip@2x.png"; sourceTree = "<group>"; };
 		A6FD8A6F1861899500223772 /* ExchangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeController.h; sourceTree = "<group>"; };
 		A6FD8A701861899500223772 /* ExchangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeController.m; sourceTree = "<group>"; };
 		A6FD8A72186189B500223772 /* ExchangeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeController.xib; sourceTree = "<group>"; };
@@ -1715,6 +1719,8 @@
 				A6FA6A601882D0FD003F8399 /* default568@2x.png */,
 				A6FA6A5A18827C88003F8399 /* cloud@2x.png */,
 				A6FA6A5B18827C88003F8399 /* update@2x.png */,
+				A6FA6A621882E284003F8399 /* apptask_rmb@2x.png */,
+				A6FA6A631882E284003F8399 /* apptask_tip@2x.png */,
 				A60C57ED186FF8A30068425C /* arrow-down@2x.png */,
 				A60C57EE186FF8A30068425C /* back@2x.png */,
 				A6D591BD187C00BB004DF4E0 /* alipay@2x.png */,
@@ -3459,6 +3465,7 @@
 				A60C58A518703AE60068425C /* invite_edit_bkg@2x.png in Resources */,
 				F3813D2918753ED400350C27 /* choujiang_xiaomi@2x.png in Resources */,
 				A60C5854186FF8A30068425C /* menu-icon-red@2x.png in Resources */,
+				A6FA6A641882E284003F8399 /* apptask_rmb@2x.png in Resources */,
 				F3F186E118543A410098C852 /* Default.png in Resources */,
 				F3F18A26185472A90098C852 /* WCMainPageBoard_iPhone.xml in Resources */,
 				A60C58AE18703AE60068425C /* invite_seg_unsel_sel@2x.png in Resources */,
@@ -3466,6 +3473,7 @@
 				F3D9D560185D876D00392C40 /* PhoneValidationController.xib in Resources */,
 				F3D9D564185D876D00392C40 /* TaskController.xib in Resources */,
 				A60C588E186FF8A30068425C /* recommand_task_icon@2x.png in Resources */,
+				A6FA6A651882E284003F8399 /* apptask_tip@2x.png in Resources */,
 				A6FEE28A187D9AB800E5AF3E /* blueArrow@2x.png in Resources */,
 				59E42A1F1862986E00007461 /* Resource.bundle in Resources */,
 				A60C5868186FF8A30068425C /* tab-bar@2x.png in Resources */,
