@@ -37,6 +37,7 @@ static OnlineWallViewController* _sharedInstance;
     if (self) {
         // Custom initialization
         NSString* deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
+        _alertView = nil;
         
         _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:deviceId];
         _offerWallController.delegate = self;
@@ -50,6 +51,33 @@ static OnlineWallViewController* _sharedInstance;
 }
 
 - (void)showWithModal {
+    if ( _alertView != nil ) {
+        [_alertView release];
+    }
+        
+    UIView* view = [[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject];
+    view.layer.masksToBounds = YES;
+    view.layer.cornerRadius = 10.0;
+    view.layer.borderWidth = 0.0;
+    view.layer.borderColor = [[UIColor whiteColor] CGColor];
+        
+    UIColor *color = [UIColor colorWithRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1];
+        
+    UIButton* btn = (UIButton*)[view viewWithTag:11];
+    [btn.layer setBorderWidth:0.5];
+    [btn.layer setBorderColor:[color CGColor]];
+        
+    _alertView = [[UICustomAlertView alloc]init:view];
+        
+    [view release];
+    [_alertView show];
+}
+
+- (IBAction)clickConinue:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
     [_offerWallController presentOfferWall];
 }
 
@@ -64,6 +92,10 @@ static OnlineWallViewController* _sharedInstance;
     [_offerWallController release];
     _offerWallController = nil;
     
+    if ( self->_alertView != nil ) {
+        [self->_alertView release];
+        self->_alertView = nil;
+    }
     [super dealloc];
 }
 

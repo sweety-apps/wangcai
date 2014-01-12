@@ -175,6 +175,7 @@
 		A6F96CDD187A5F290067D785 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F96CDC187A5F290067D785 /* XMLReader.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		A6FA00EE186ABEF6008302F0 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FA00ED186ABEF6008302F0 /* SettingViewController.xib */; };
 		A6FA00F1186AC068008302F0 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FA00F0186AC068008302F0 /* SettingViewController.m */; };
+		A6FA6A591882547B003F8399 /* OnlineWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A581882547B003F8399 /* OnlineWallViewController.xib */; };
 		A6FD8A711861899500223772 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
 		A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A72186189B500223772 /* ExchangeController.xib */; };
 		A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */; };
@@ -754,6 +755,7 @@
 		A6FA00ED186ABEF6008302F0 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		A6FA00EF186AC068008302F0 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		A6FA00F0186AC068008302F0 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		A6FA6A581882547B003F8399 /* OnlineWallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnlineWallViewController.xib; sourceTree = "<group>"; };
 		A6FD8A6F1861899500223772 /* ExchangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeController.h; sourceTree = "<group>"; };
 		A6FD8A701861899500223772 /* ExchangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeController.m; sourceTree = "<group>"; };
 		A6FD8A72186189B500223772 /* ExchangeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeController.xib; sourceTree = "<group>"; };
@@ -2179,6 +2181,7 @@
 				A65A728A1872A7CE006B08FB /* OnlineWallViewController.m */,
 				A6D591C6187C0FD4004DF4E0 /* UICustomAlertView.h */,
 				A6D591C7187C0FD4004DF4E0 /* UICustomAlertView.m */,
+				A6FA6A581882547B003F8399 /* OnlineWallViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3347,6 +3350,7 @@
 				A60C587C186FF8A30068425C /* yue_dot@2x.png in Resources */,
 				A60C587E186FF8A30068425C /* table_view_cell_label_bg@2x.png in Resources */,
 				F3D834CE185C1E31003095D5 /* BaseTaskTableViewController.xib in Resources */,
+				A6FA6A591882547B003F8399 /* OnlineWallViewController.xib in Resources */,
 				F3813D2318753ED400350C27 /* choujiang_x1@2x.png in Resources */,
 				A60C58A618703AE60068425C /* invite_error@2x.png in Resources */,
 				F3813D1F18753ED400350C27 /* choujiang_thanks2@2x.png in Resources */,

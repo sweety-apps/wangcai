@@ -10,6 +10,7 @@
 #import "DMOfferWallViewController.h"
 #import "DMOfferWallManager.h"
 #import "HttpRequest.h"
+#import "UICustomAlertView.h"
 
 @protocol OnlineWallViewControllerDelegate <NSObject>
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume;
@@ -20,6 +21,8 @@
     DMOfferWallManager*        _offerWallManager;
     NSInteger                  _nConsume;
     id<OnlineWallViewControllerDelegate>        _delegate;
+    
+    UICustomAlertView* _alertView;
 }
 
 @property (nonatomic,assign) id<OnlineWallViewControllerDelegate>  delegate;
@@ -28,4 +31,6 @@
 
 - (void)showWithModal;
 - (void)requestAndConsumePoint;
+
+- (IBAction)clickConinue:(id)sender;
 @end
