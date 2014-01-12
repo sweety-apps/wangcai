@@ -70,7 +70,12 @@
 
         [_webViewController setSize:rect.size];
         
-        [self->_webViewController setNavigateUrl:url];
+        NSString* device = [[[LoginAndRegister sharedInstance] getDeviceId] autorelease];
+        NSString* sessionid = [[[LoginAndRegister sharedInstance] getSessionId] autorelease];
+        NSNumber* userid = [[[LoginAndRegister sharedInstance] getUserId] autorelease];
+        NSString* tmpUrl = [[[NSString alloc] initWithFormat:@"%@&device_id=%@&session_id=%@&userid=%@", url, device, sessionid, userid] autorelease];
+        
+        [self->_webViewController setNavigateUrl:tmpUrl];
         
         [[self.view viewWithTag:99] setHidden:YES];
     }
