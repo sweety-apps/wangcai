@@ -12,7 +12,7 @@
 #import "MJRefresh.h"
 #import "OnlineWallViewController.h"
 
-@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate>
+@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate, UIAlertViewDelegate>
 {
     CommonZhanghuYuETableViewCell* _zhanghuYuEHeaderCell;
     TaskInfoTableViewCell* _infoCell;
@@ -31,6 +31,8 @@
     MJRefreshHeaderView *_header;
     
     float _increasedNum;
+    
+    UIAlertView* _alertBalanceTip;
 }
 
 @property (nonatomic,retain) IBOutlet CommonZhanghuYuETableViewCell* zhanghuYuEHeaderCell;

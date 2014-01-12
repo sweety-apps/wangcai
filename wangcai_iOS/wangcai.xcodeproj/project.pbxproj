@@ -176,6 +176,8 @@
 		A6FA00EE186ABEF6008302F0 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FA00ED186ABEF6008302F0 /* SettingViewController.xib */; };
 		A6FA00F1186AC068008302F0 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FA00F0186AC068008302F0 /* SettingViewController.m */; };
 		A6FA6A591882547B003F8399 /* OnlineWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A581882547B003F8399 /* OnlineWallViewController.xib */; };
+		A6FA6A5C18827C88003F8399 /* cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A5A18827C88003F8399 /* cloud@2x.png */; };
+		A6FA6A5D18827C88003F8399 /* update@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A5B18827C88003F8399 /* update@2x.png */; };
 		A6FD8A711861899500223772 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
 		A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A72186189B500223772 /* ExchangeController.xib */; };
 		A6FD8A7F1861C36700223772 /* ExchangeControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */; };
@@ -757,6 +759,8 @@
 		A6FA00EF186AC068008302F0 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		A6FA00F0186AC068008302F0 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		A6FA6A581882547B003F8399 /* OnlineWallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnlineWallViewController.xib; sourceTree = "<group>"; };
+		A6FA6A5A18827C88003F8399 /* cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud@2x.png"; sourceTree = "<group>"; };
+		A6FA6A5B18827C88003F8399 /* update@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update@2x.png"; sourceTree = "<group>"; };
 		A6FD8A6F1861899500223772 /* ExchangeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExchangeController.h; sourceTree = "<group>"; };
 		A6FD8A701861899500223772 /* ExchangeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExchangeController.m; sourceTree = "<group>"; };
 		A6FD8A72186189B500223772 /* ExchangeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExchangeController.xib; sourceTree = "<group>"; };
@@ -1704,6 +1708,8 @@
 			isa = PBXGroup;
 			children = (
 				A60C57EC186FF8A30068425C /* !@2x.png */,
+				A6FA6A5A18827C88003F8399 /* cloud@2x.png */,
+				A6FA6A5B18827C88003F8399 /* update@2x.png */,
 				A60C57ED186FF8A30068425C /* arrow-down@2x.png */,
 				A60C57EE186FF8A30068425C /* back@2x.png */,
 				A6D591BD187C00BB004DF4E0 /* alipay@2x.png */,
@@ -3317,6 +3323,7 @@
 				A60C58A418703AE60068425C /* invite_copy_button@2x.png in Resources */,
 				F3F189F918543A450098C852 /* MenuBoard_iPhone.xml in Resources */,
 				A60C584C186FF8A30068425C /* btn_normal@2x.png in Resources */,
+				A6FA6A5D18827C88003F8399 /* update@2x.png in Resources */,
 				F36049B31871A9AE00FAD1F3 /* menu_icon_tuhaobang@2x.png in Resources */,
 				A60C58AA18703AE60068425C /* invite_seg_normal@2x.png in Resources */,
 				A60C5858186FF8A30068425C /* navigation-bar@2x.png in Resources */,
@@ -3379,6 +3386,7 @@
 				A60C5848186FF8A30068425C /* body_bkg@2x.png in Resources */,
 				A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */,
 				F36049B21871A9AE00FAD1F3 /* menu_icon_tixian@2x.png in Resources */,
+				A6FA6A5C18827C88003F8399 /* cloud@2x.png in Resources */,
 				A60C58A718703AE60068425C /* invite_invite_code_bkg@2x.png in Resources */,
 				A60C5881186FF8A30068425C /* user_hobby_normal@2x.png in Resources */,
 				A60C5853186FF8A30068425C /* menu-icon-green@2x.png in Resources */,
@@ -3968,8 +3976,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
+				CODE_SIGN_IDENTITY = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
