@@ -64,9 +64,9 @@ static LoginAndRegister* _sharedInstance;
 - (NSString*) getNetworkInfo {
     Reachability* r = [Reachability reachabilityWithHostName:@"app.getwangcai.com"];
     NSInteger state = [r currentReachabilityStatus];
-    if ( state == 1 ) {
+    if ( state == kReachableViaWiFi ) {
         return [[@"wifi" copy] autorelease];
-    } else if ( state == 2 ) {
+    } else if ( state == kReachableViaWWAN ) {
         return [[@"3g" copy] autorelease];
     }
     
