@@ -60,6 +60,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self observeNotification:@"naviToUserInfoEditor"];
         [self observeNotification:@"balanceChanged"];
         
+        _alertView = nil;
         self.view.hintString = @"This is the  board";
         self.view.backgroundColor = [UIColor whiteColor];
         self.view.clipsToBounds = NO;
@@ -154,6 +155,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //self.view.layer.edgeAntialiasingMask = kCALayerLeftEdge ;
         //self.view.layer.masksToBounds = YES;
         
+        
+        // 亲友提示
+        [self showFirendMsg];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -271,4 +275,35 @@ ON_NOTIFICATION( notification )
     }
 }
 
+
+- (void) showFirendMsg {
+    if ( _alertView != nil ) {
+        [_alertView release];
+    }
+    
+    UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"StartupController" owner:self options:nil] lastObject] autorelease];
+    view.layer.masksToBounds = YES;
+    view.layer.cornerRadius = 10.0;
+    view.layer.borderWidth = 0.0;
+    view.layer.borderColor = [[UIColor whiteColor] CGColor];
+    
+    UIColor *color = [UIColor colorWithRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1];
+    
+    UIButton* btn = (UIButton*)[view viewWithTag:11];
+    [btn setTitleColor:color forState:UIControlStateHighlighted];
+    
+    [btn.layer setBorderWidth:0.5];
+    [btn.layer setBorderColor:[color CGColor]];
+    
+    [btn addTarget:self action:@selector(clickContinue:) forControlEvents:UIControlEventTouchUpInside];
+    _alertView = [[UICustomAlertView alloc]init:view];
+    
+    [_alertView show];
+}
+
+- (IBAction)clickContinue:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+}
 @end

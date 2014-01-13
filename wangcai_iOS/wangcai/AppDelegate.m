@@ -43,6 +43,7 @@
 #import "model/MobClick.h"
 #import "Config.h"
 #import "StartupController.h"
+#import "OnlineWallViewController.h"
 
 #pragma mark -
 
@@ -79,6 +80,9 @@
     [UIApplication sharedApplication].statusBarHidden = YES;
     
     [MobClick startWithAppkey:UMENG_KEY];
+    
+    UIWindow* window = self.window;
+    [[OnlineWallViewController sharedInstance] setFullScreenWindow:window];
 }
 
 - (void)unload

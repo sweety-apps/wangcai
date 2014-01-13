@@ -11,6 +11,7 @@
 #import "DMOfferWallManager.h"
 #import "HttpRequest.h"
 #import "UICustomAlertView.h"
+#import "YouMiConfig.h"
 
 @protocol OnlineWallViewControllerDelegate <NSObject>
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume;
@@ -29,8 +30,10 @@
 
 + (OnlineWallViewController*) sharedInstance;
 
+- (void)setFullScreenWindow:(UIWindow*) window;
 - (void)showWithModal;
 - (void)requestAndConsumePoint;
 
-- (IBAction)clickConinue:(id)sender;
+- (IBAction)clickDomob:(id)sender;
+- (IBAction)clickYoumi:(id)sender;
 @end

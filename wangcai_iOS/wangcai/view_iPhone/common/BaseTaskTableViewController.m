@@ -507,15 +507,7 @@ static BOOL gNeedReloadTaskList = NO;
                     break;
                 case kTaskTypeOfferWall:
                 {
-                    if (![SettingLocalRecords getOfferWallAlertViewShowed])
-                    {
-                        [[OnlineWallViewController sharedInstance] showWithModal];
-                        [SettingLocalRecords saveOfferWallAlertViewShowed:YES];
-                    }
-                    else
-                    {
-                        [[OnlineWallViewController sharedInstance] clickConinue:nil];
-                    }
+                    [[OnlineWallViewController sharedInstance] showWithModal];
                 }
                     break;
                 case kTaskTypeInstallWangcai:

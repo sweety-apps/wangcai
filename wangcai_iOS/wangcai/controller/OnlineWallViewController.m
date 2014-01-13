@@ -10,6 +10,10 @@
 #import "LoginAndRegister.h"
 #import "HttpRequest.h"
 #import "config.h"
+#import "YouMiConfig.h"
+#import "YouMiWall.h"
+#import "YouMiWallAppModel.h"
+#import "YouMiPointsManager.h"
 
 #define PUBLISHER_ID @"96ZJ2I4gzeykPwTACk"
 
@@ -45,9 +49,20 @@ static OnlineWallViewController* _sharedInstance;
         _offerWallManager = [[DMOfferWallManager alloc] initWithPublishId:PUBLISHER_ID userId:deviceId];
         _offerWallManager.delegate = self;
         
+        // 有米积分墙
+        [YouMiConfig setUserID:deviceId];
+        [YouMiConfig setUseInAppStore:YES];
+        [YouMiConfig launchWithAppID:@"a33a9f68b3eb6147" appSecret:@"02b5609f193b2828"];
+        [YouMiWall enable];
+        [YouMiPointsManager enable];
+        
         [deviceId release];
     }
     return self;
+}
+
+- (void)setFullScreenWindow:(UIWindow*) window {
+    [YouMiConfig setFullScreenWindow:window];
 }
 
 - (void)showWithModal {
@@ -66,16 +81,30 @@ static OnlineWallViewController* _sharedInstance;
     UIButton* btn = (UIButton*)[view viewWithTag:11];
     [btn setTitleColor:color forState:UIControlStateHighlighted];
     
-    [btn.layer setBorderWidth:0.5];
-    [btn.layer setBorderColor:[color CGColor]];
-        
+    [btn.layer setBorderWidth:0];
+    
+    btn = (UIButton*)[view viewWithTag:12];
+    [btn setTitleColor:color forState:UIControlStateHighlighted];
+    
+    [btn.layer setBorderWidth:0];
+
     _alertView = [[UICustomAlertView alloc]init:view];
         
     //[view release];
     [_alertView show];
 }
 
-- (IBAction)clickConinue:(id)sender {
+- (IBAction)clickYoumi:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    [YouMiWall showOffers:YES didShowBlock:^{
+    }didDismissBlock:^{
+    }];
+}
+
+- (IBAction)clickDomob:(id)sender {
     if ( _alertView != nil ) {
         [_alertView hideAlertView];
     }
@@ -137,8 +166,8 @@ static OnlineWallViewController* _sharedInstance;
 - (void)offerWallDidFinishCheckPointWithTotalPoint:(NSInteger)totalPoint
                              andTotalConsumedPoint:(NSInteger)consumed {
     _nConsume = totalPoint - consumed;
-
-    if ( _nConsume > 0 ) {
+    NSUInteger remained = [YouMiPointsManager pointsRemained];
+    if ( _nConsume > 0 || remained > 0 ) {
         // 有能消费的积分
         // 报给自己的服务器获取能消费的积分数
         HttpRequest* request = [[HttpRequest alloc] init:self];
@@ -180,10 +209,13 @@ static OnlineWallViewController* _sharedInstance;
 -(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
     if ( httpCode == 200 ) {
         int res = [[body objectForKey:@"res"] intValue];
-        if ( res == 0 ) {
+        if ( res == 0 /*测试*/|| [YouMiPointsManager pointsRemained] > 0 ) {
             int inc = [[body objectForKey:@"increment"] intValue];
+            NSUInteger remained = [YouMiPointsManager pointsRemained];
+            inc = (inc+remained*10);
             if ( inc > 0 ) {
-                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:inc];
+                [YouMiPointsManager spendPoints:remained];
+                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:(inc+remained*10)];
             }
             
             [_offerWallManager requestOnlineConsumeWithPoint:_nConsume];

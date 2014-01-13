@@ -156,7 +156,7 @@
 		A6438ED7185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */; };
 		A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */; };
 		A65A728B1872A7CE006B08FB /* OnlineWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65A728A1872A7CE006B08FB /* OnlineWallViewController.m */; };
-		A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */; };
+		A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A6AA900118647E03006DB7D2 /* BusionessPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */; };
 		A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */; };
 		A6D591BC187BDD4E004DF4E0 /* tab_split@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = A6D591BB187BDD4E004DF4E0 /* tab_split@2x.PNG */; };
@@ -164,6 +164,7 @@
 		A6D591C8187C0FD4004DF4E0 /* UICustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D591C7187C0FD4004DF4E0 /* UICustomAlertView.m */; };
 		A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6DE671860287900D089C7 /* WebPageController.xib */; };
 		A6F6DE6B186028B700D089C7 /* WebPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6DE6A186028B700D089C7 /* WebPageController.m */; };
+		A6F8BC6E1883CCE2000E5E55 /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F8BC6D1883CCE2000E5E55 /* libYouMi.a */; };
 		A6F96CDD187A5F290067D785 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F96CDC187A5F290067D785 /* XMLReader.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		A6FA00EE186ABEF6008302F0 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FA00ED186ABEF6008302F0 /* SettingViewController.xib */; };
 		A6FA00F1186AC068008302F0 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FA00F0186AC068008302F0 /* SettingViewController.m */; };
@@ -752,6 +753,16 @@
 		A6F6DE671860287900D089C7 /* WebPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebPageController.xib; sourceTree = "<group>"; };
 		A6F6DE69186028B700D089C7 /* WebPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPageController.h; sourceTree = "<group>"; };
 		A6F6DE6A186028B700D089C7 /* WebPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPageController.m; sourceTree = "<group>"; };
+		A6F8BC641883CCE2000E5E55 /* YouMiConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiConfig.h; sourceTree = "<group>"; };
+		A6F8BC651883CCE2000E5E55 /* YouMiDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiDelegateProtocol.h; sourceTree = "<group>"; };
+		A6F8BC661883CCE2000E5E55 /* YouMiPointsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiPointsManager.h; sourceTree = "<group>"; };
+		A6F8BC671883CCE2000E5E55 /* YouMiSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiSpot.h; sourceTree = "<group>"; };
+		A6F8BC681883CCE2000E5E55 /* YouMiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiView.h; sourceTree = "<group>"; };
+		A6F8BC691883CCE2000E5E55 /* YouMiWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiWall.h; sourceTree = "<group>"; };
+		A6F8BC6A1883CCE2000E5E55 /* YouMiWallAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiWallAppModel.h; sourceTree = "<group>"; };
+		A6F8BC6B1883CCE2000E5E55 /* YouMiWallSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiWallSpot.h; sourceTree = "<group>"; };
+		A6F8BC6C1883CCE2000E5E55 /* YouMiWallSpotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiWallSpotView.h; sourceTree = "<group>"; };
+		A6F8BC6D1883CCE2000E5E55 /* libYouMi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYouMi.a; sourceTree = "<group>"; };
 		A6F96CDB187A5F290067D785 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		A6F96CDC187A5F290067D785 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		A6F96CE0187A60A20067D785 /* XMLReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = wangcai/model/XMLReader.m; sourceTree = "<group>"; };
@@ -1447,19 +1458,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */,
+				A60A438E1872A1BB00B5C319 /* libsqlite3.dylib in Frameworks */,
+				F3F186D218543A410098C852 /* QuartzCore.framework in Frameworks */,
+				F3F186C818543A410098C852 /* CFNetwork.framework in Frameworks */,
+				F3F186D618543A410098C852 /* SystemConfiguration.framework in Frameworks */,
 				F3813D3618780A6000350C27 /* libDomobOfferWallSDK.a in Frameworks */,
 				A62C5F54187697E300172334 /* libMobClickLibrary.a in Frameworks */,
 				F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
 				F3F186C018543A410098C852 /* UIKit.framework in Frameworks */,
-				F3F186D218543A410098C852 /* QuartzCore.framework in Frameworks */,
 				A60A43921872A1E400B5C319 /* CoreLocation.framework in Frameworks */,
-				F3F186D618543A410098C852 /* SystemConfiguration.framework in Frameworks */,
-				A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */,
 				A60A43901872A1CF00B5C319 /* AdSupport.framework in Frameworks */,
 				F3F186C618543A410098C852 /* AVFoundation.framework in Frameworks */,
 				F3F186CA18543A410098C852 /* CoreMedia.framework in Frameworks */,
-				A60A438E1872A1BB00B5C319 /* libsqlite3.dylib in Frameworks */,
 				F3F186D418543A410098C852 /* Security.framework in Frameworks */,
 				59E42A171862986E00007461 /* TencentWeiboConnection.framework in Frameworks */,
 				F3D9D5F9185D89A600392C40 /* libicucore.dylib in Frameworks */,
@@ -1468,6 +1480,7 @@
 				59E42A321862986F00007461 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
 				59E42A031862986E00007461 /* FacebookConnection.framework in Frameworks */,
 				59E42A0E1862986E00007461 /* PrintConnection.framework in Frameworks */,
+				A6F8BC6E1883CCE2000E5E55 /* libYouMi.a in Frameworks */,
 				59E42A111862986E00007461 /* RenRenConnection.framework in Frameworks */,
 				59E42A2F1862986F00007461 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
 				F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */,
@@ -1505,7 +1518,6 @@
 				59E42A001862986E00007461 /* DouBanConnection.framework in Frameworks */,
 				F3F186CC18543A410098C852 /* CoreText.framework in Frameworks */,
 				F3F186D018543A410098C852 /* MobileCoreServices.framework in Frameworks */,
-				F3F186C818543A410098C852 /* CFNetwork.framework in Frameworks */,
 				59E42A2A1862986F00007461 /* libWeChatSDK.a in Frameworks */,
 				F3F186CE18543A410098C852 /* CoreVideo.framework in Frameworks */,
 				F3F186FB18543A410098C852 /* libxml2.dylib in Frameworks */,
@@ -1868,6 +1880,32 @@
 			path = InviteBoard;
 			sourceTree = "<group>";
 		};
+		A6F8BC621883CCE2000E5E55 /* libYouMi */ = {
+			isa = PBXGroup;
+			children = (
+				A6F8BC631883CCE2000E5E55 /* include */,
+				A6F8BC6D1883CCE2000E5E55 /* libYouMi.a */,
+			);
+			name = libYouMi;
+			path = wangcai/libYouMi;
+			sourceTree = "<group>";
+		};
+		A6F8BC631883CCE2000E5E55 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A6F8BC641883CCE2000E5E55 /* YouMiConfig.h */,
+				A6F8BC651883CCE2000E5E55 /* YouMiDelegateProtocol.h */,
+				A6F8BC661883CCE2000E5E55 /* YouMiPointsManager.h */,
+				A6F8BC671883CCE2000E5E55 /* YouMiSpot.h */,
+				A6F8BC681883CCE2000E5E55 /* YouMiView.h */,
+				A6F8BC691883CCE2000E5E55 /* YouMiWall.h */,
+				A6F8BC6A1883CCE2000E5E55 /* YouMiWallAppModel.h */,
+				A6F8BC6B1883CCE2000E5E55 /* YouMiWallSpot.h */,
+				A6F8BC6C1883CCE2000E5E55 /* YouMiWallSpotView.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		A6FEE27E187D9AB800E5AF3E /* EGORefreshTableHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -2058,6 +2096,7 @@
 		F3F186B318543A410098C852 = {
 			isa = PBXGroup;
 			children = (
+				A6F8BC621883CCE2000E5E55 /* libYouMi */,
 				A6F96CE0187A60A20067D785 /* XMLReader.m */,
 				A60A43831872A19B00B5C319 /* DMOfferWallSDK */,
 				59E429B51862986E00007461 /* ShareSDK_v2.6.1 */,
@@ -3981,6 +4020,8 @@
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/libYouMi,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/libYouMi,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3994,8 +4035,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
+				CODE_SIGN_IDENTITY = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
@@ -4043,6 +4084,8 @@
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/libYouMi,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/libYouMi,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

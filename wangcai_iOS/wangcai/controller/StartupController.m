@@ -36,7 +36,7 @@
         
         CGSize size = [[UIScreen mainScreen] bounds].size;
         if ( 1.0 * size.height / size.width > 1.0 * 960 / 640 ) {
-            self.view = [[[NSBundle mainBundle] loadNibNamed:@"StartupController" owner:self options:nil] lastObject];
+            self.view = [[[NSBundle mainBundle] loadNibNamed:@"StartupController" owner:self options:nil] objectAtIndex:1];
         } else {
             self.view = [[[NSBundle mainBundle] loadNibNamed:@"StartupController" owner:self options:nil] firstObject];
         }
@@ -294,5 +294,4 @@
         _delegate.window.rootViewController = [AppBoard_iPhone sharedInstance];
     //}
 }
-
 @end

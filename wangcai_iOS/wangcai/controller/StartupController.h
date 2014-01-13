@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "UICustomAlertView.h"
 
 @interface StartupController : UIViewController< LoginAndRegisterDelegate, UIAlertViewDelegate> {
     AppDelegate* _delegate;
