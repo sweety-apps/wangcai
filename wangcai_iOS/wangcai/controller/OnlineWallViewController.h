@@ -24,6 +24,11 @@
     id<OnlineWallViewControllerDelegate>        _delegate;
     
     UICustomAlertView* _alertView;
+    
+    NSInteger                  _remained;
+    
+    BOOL               _request;
+    NSInteger          _allConsume;
 }
 
 @property (nonatomic,assign) id<OnlineWallViewControllerDelegate>  delegate;

@@ -14,6 +14,7 @@
 #import "YouMiWall.h"
 #import "YouMiWallAppModel.h"
 #import "YouMiPointsManager.h"
+#import "SettingLocalRecords.h"
 
 #define PUBLISHER_ID @"96ZJ2I4gzeykPwTACk"
 
@@ -42,6 +43,7 @@ static OnlineWallViewController* _sharedInstance;
         // Custom initialization
         NSString* deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
         _alertView = nil;
+        _request = NO;
         
         _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:deviceId];
         _offerWallController.delegate = self;
@@ -158,6 +160,11 @@ static OnlineWallViewController* _sharedInstance;
 }
 
 - (void)requestAndConsumePoint {
+    if ( _request ) {
+        return ;
+    }
+    
+    _request = YES;
     [_offerWallManager requestOnlinePointCheck];
 }
 
@@ -166,24 +173,37 @@ static OnlineWallViewController* _sharedInstance;
 - (void)offerWallDidFinishCheckPointWithTotalPoint:(NSInteger)totalPoint
                              andTotalConsumedPoint:(NSInteger)consumed {
     _nConsume = totalPoint - consumed;
-    NSUInteger remained = [YouMiPointsManager pointsRemained];
-    if ( _nConsume > 0 || remained > 0 ) {
+    
+    int clearPoint = [SettingLocalRecords getDomobPoint];
+    _allConsume = _nConsume;
+    _nConsume -= clearPoint;    // 实际可消费的点数
+    
+    _remained = [YouMiPointsManager pointsRemained];
+    
+    // 能消费的积分
+    if ( _nConsume > 0 || _remained > 0 ) {
         // 有能消费的积分
         // 报给自己的服务器获取能消费的积分数
         HttpRequest* request = [[HttpRequest alloc] init:self];
         
         NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
-        NSString* nsPoint = [[[NSString alloc] initWithFormat:@"%d", totalPoint] autorelease];
-        [dictionary setObject:nsPoint forKey:@"point"];
-      
-        [request request:HTTP_TASK_DOMOB Param:dictionary];
+        NSString* nsPoint = [[[NSString alloc] initWithFormat:@"%d", _nConsume] autorelease];
+        NSString* nsYoumi = [[[NSString alloc] initWithFormat:@"%d", _remained] autorelease];
+        
+        [dictionary setObject:nsPoint forKey:@"domob_point"];
+        [dictionary setObject:nsYoumi forKey:@"youmi_point"];
+        
+        [request request:HTTP_TASK_OFFERWALL Param:dictionary];
+    } else {
+        // 不继续往下请求
+        _request = NO;
     }
 }
 
 // 积分查询失败之后，回调该接口，返回查询失败的错误原因。
 // Called when failed to do point check.
 - (void)offerWallDidFailCheckPointWithError:(NSError *)error {
-    
+    _request = NO;
 }
 
 #pragma mark Consume Callbacks
@@ -191,12 +211,27 @@ static OnlineWallViewController* _sharedInstance;
 - (void)offerWallDidFinishConsumePointWithStatusCode:(DMOfferWallConsumeStatusCode)statusCode
                                           totalPoint:(NSInteger)totalPoint
                                   totalConsumedPoint:(NSInteger)consumed {
+    switch (statusCode) {
+        case DMOfferWallConsumeStatusCodeSuccess:
+            [SettingLocalRecords setDomobPoint:0];
+            break;
+        default:
+            [SettingLocalRecords setDomobPoint:_allConsume];
+            _allConsume = 0;
+            break;
+    }
+    
+    _request = NO;
 }
 
 // 消费请求异常应答后，回调该接口，并返回异常的错误原因。
 // Called when failed to do consume request.
 - (void)offerWallDidFailConsumePointWithError:(NSError *)error {
+    // 从多盟那消费积分失败
+    [SettingLocalRecords setDomobPoint:_allConsume];
+    _allConsume = 0;
     
+    _request = NO;
 }
 
 #pragma mark CheckOfferWall Enable Callbacks
@@ -209,18 +244,21 @@ static OnlineWallViewController* _sharedInstance;
 -(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
     if ( httpCode == 200 ) {
         int res = [[body objectForKey:@"res"] intValue];
-        if ( res == 0 /*测试*/|| [YouMiPointsManager pointsRemained] > 0 ) {
-            int inc = [[body objectForKey:@"increment"] intValue];
-            NSUInteger remained = [YouMiPointsManager pointsRemained];
-            inc = (inc+remained*10);
-            if ( inc > 0 ) {
-                [YouMiPointsManager spendPoints:remained];
-                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:(inc+remained*10)];
-            }
+        if ( res == 0 ) {
+            [SettingLocalRecords setDomobPoint:_allConsume];
             
-            [_offerWallManager requestOnlineConsumeWithPoint:_nConsume];
+            int inc = [[body objectForKey:@"income"] intValue];
+            if ( inc > 0 ) {
+                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:inc];
+            }
+            // 消费掉多余的积分
+            [YouMiPointsManager spendPoints:_remained];
+            [_offerWallManager requestOnlineConsumeWithPoint:_allConsume];
+        } else {
+            _request = NO;
         }
-        
+    } else {
+        _request = NO;
     }
 }
 

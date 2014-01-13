@@ -12,6 +12,7 @@
 #define kLastCheckInTime @"lastCheckInTime"
 #define kLastShareTime @"lastShareTime"
 #define kLastOfferWallAlertView @"offerWallAlertView"
+#define kLastOfferWallAlertView @"offerWallClearPoint"
 
 #define NKEY(x) ([SettingLocalRecords getUserNamedKey:(x)])
 
@@ -149,4 +150,18 @@
     return NO;
 }
 
++ (int)getDomobPoint
+{
+    NSNumber* point = [[NSUserDefaults standardUserDefaults] objectForKey:kLastOfferWallAlertView];
+    
+    return [point intValue];
+}
+
++ (void)setDomobPoint:(int) point
+{
+    NSNumber* number = [NSNumber numberWithInt:point];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:number forKey:NKEY(kLastOfferWallAlertView)];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 @end

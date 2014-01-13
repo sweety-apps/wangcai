@@ -23,4 +23,6 @@
 + (BOOL)hasCheckInToday;
 + (BOOL)hasShareToday;
 
++ (int)getDomobPoint;
++ (void)setDomobPoint:(int) point;
 @end
