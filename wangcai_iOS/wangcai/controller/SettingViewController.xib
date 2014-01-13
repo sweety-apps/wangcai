@@ -63,7 +63,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9074874E-B782-42AB-A7CB-B4B211489685" id="x65-C4-v0E">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F26B45AA-554B-4786-A0A5-024AC68A39AE" id="x65-C4-v0E">
                         <rect key="frame" x="8" y="216" width="304" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -212,7 +212,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="9074874E-B782-42AB-A7CB-B4B211489685" width="320" height="1">
+        <image name="F26B45AA-554B-4786-A0A5-024AC68A39AE" width="320" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -286,7 +286,6 @@ AAAAAAACAQAAAAAAAABCAAAAAAAAAAAAAAAAAAAPLw
         </image>
         <image name="about.png" width="320" height="216"/>
         <image name="back.png" width="12" height="22"/>
-        <image name="line.png" width="320" height="1"/>
         <image name="line.png" width="320" height="1"/>
         <image name="nav_Header.png" width="320" height="54"/>
         <image name="setting_bell.png" width="29" height="29"/>
