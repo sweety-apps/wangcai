@@ -218,7 +218,10 @@
     
     NSMutableData* data = [[NSMutableData alloc] init];
     
-    
+    if(_param == nil)
+    {
+        _param = @"";
+    }
     NSString* encodedString = [_param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     const char * a =[encodedString UTF8String];

@@ -1480,7 +1480,6 @@
 				59E42A321862986F00007461 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
 				59E42A031862986E00007461 /* FacebookConnection.framework in Frameworks */,
 				59E42A0E1862986E00007461 /* PrintConnection.framework in Frameworks */,
-				A6F8BC6E1883CCE2000E5E55 /* libYouMi.a in Frameworks */,
 				59E42A111862986E00007461 /* RenRenConnection.framework in Frameworks */,
 				59E42A2F1862986F00007461 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
 				F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */,
@@ -1519,6 +1518,7 @@
 				F3F186CC18543A410098C852 /* CoreText.framework in Frameworks */,
 				F3F186D018543A410098C852 /* MobileCoreServices.framework in Frameworks */,
 				59E42A2A1862986F00007461 /* libWeChatSDK.a in Frameworks */,
+				A6F8BC6E1883CCE2000E5E55 /* libYouMi.a in Frameworks */,
 				F3F186CE18543A410098C852 /* CoreVideo.framework in Frameworks */,
 				F3F186FB18543A410098C852 /* libxml2.dylib in Frameworks */,
 				59E42A2B1862986F00007461 /* ShareSDK.framework in Frameworks */,
@@ -4022,6 +4022,7 @@
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/1528/Documents/wangcai/wangcai_iOS/libYouMi,
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/libYouMi,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4035,8 +4036,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
@@ -4086,6 +4087,7 @@
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/1528/Documents/wangcai/wangcai_iOS/libYouMi,
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/libYouMi,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
