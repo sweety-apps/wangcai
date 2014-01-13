@@ -520,7 +520,7 @@
             [_exchange_code release];
         }
         
-        _exchange_code = [[infos valueForKey: @"exchange_code"] copy];
+        _exchange_code = [[infos valueForKey: @"order_id"] copy];
         
         if ( _alertExchange != nil ) {
             [_alertExchange release];
