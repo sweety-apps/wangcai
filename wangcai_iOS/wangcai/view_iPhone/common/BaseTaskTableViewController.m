@@ -491,28 +491,28 @@ static BOOL gNeedReloadTaskList = NO;
     {
         int taskIndex = row - [_staticCells count];
         CommonTaskInfo* task = [[[CommonTaskList sharedInstance] taskList] objectAtIndex:taskIndex];
-        if ([task.taskStatus intValue] == 0)
+        switch ([task.taskType intValue])
         {
-            switch ([task.taskType intValue])
+            case kTaskTypeUserInfo:
             {
-                case kTaskTypeUserInfo:
+                UserInfoEditorViewController* userInfoCtrl = [[UserInfoEditorViewController alloc] initWithNibName:@"UserInfoEditorViewController" bundle:nil];
+                if (self.beeStack == nil)
                 {
-                    UserInfoEditorViewController* userInfoCtrl = [[UserInfoEditorViewController alloc] initWithNibName:@"UserInfoEditorViewController" bundle:nil];
-                    if (self.beeStack == nil)
-                    {
-                        NSLog(@"靠！！！stack空的");
-                    }
-                    [self.beeStack pushViewController:userInfoCtrl animated:YES];
+                    NSLog(@"靠！！！stack空的");
                 }
-                    break;
-                case kTaskTypeOfferWall:
-                {
-                    [[OnlineWallViewController sharedInstance] showWithModal];
-                }
-                    break;
-                case kTaskTypeInstallWangcai:
-                case kTaskTypeIntallApp:
-                case kTaskTypeCommon:
+                [self.beeStack pushViewController:userInfoCtrl animated:YES];
+            }
+                break;
+            case kTaskTypeOfferWall:
+            {
+                [[OnlineWallViewController sharedInstance] showWithModal];
+            }
+                break;
+            case kTaskTypeInstallWangcai:
+            case kTaskTypeIntallApp:
+            case kTaskTypeCommon:
+            {
+                if ([task.taskStatus intValue] == 0)
                 {
                     NSString* tabs[3] = {0};
                     for (int i = 0; i < 3; ++i)
@@ -525,19 +525,21 @@ static BOOL gNeedReloadTaskList = NO;
                     TaskController* taskCtrl = [[[TaskController alloc] init:task.taskId Tab1:tabs[0] Tab2:tabs[1] Tab3:tabs[2] Purse:[task.taskMoney floatValue]] autorelease];
                     [self.beeStack pushViewController:taskCtrl animated:YES];
                 }
-                    break;
-                    
-                case kTaskTypeEverydaySign:
-                    
-                    break;
-                case kTaskTypeInviteFriends:
-                    
-                    break;
-                    
-                default:
-                    break;
             }
+                break;
+                
+            case kTaskTypeEverydaySign:
+                
+                break;
+            case kTaskTypeInviteFriends:
+                
+                break;
+                
+            default:
+                break;
         }
+        
+        
         
     }
 }
