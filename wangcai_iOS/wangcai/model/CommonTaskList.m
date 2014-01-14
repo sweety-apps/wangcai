@@ -7,6 +7,7 @@
 //
 
 #import "CommonTaskList.h"
+#import "SettingLocalRecords.h"
 #import "Config.h"
 
 @interface CommonTaskInfoContext : NSObject
@@ -148,15 +149,42 @@ static CommonTaskList* gInstance = nil;
     //本地测试数据
     NSMutableArray* tasks = [NSMutableArray array];
     
-    CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
+    BOOL finished = NO;
+    CommonTaskInfo* task = nil;
+    
+    NSString* inviter = [[LoginAndRegister sharedInstance] getInviter];
+    if (!(inviter == nil || [inviter length] == 0))
+    {
+        finished = YES;
+    }
+    else
+    {
+        finished = NO;
+    }
+    task = [[[CommonTaskInfo alloc] init] autorelease];
     task.taskId = [NSNumber numberWithInt:10];
-    task.taskType = [NSNumber numberWithInt:kTaskTypeUserInfo];
-    task.taskTitle = @"补充个人信息";
-    task.taskStatus = [NSNumber numberWithInt:0];
-    task.taskMoney = [NSNumber numberWithInt:100];
-    task.taskIconUrl = @"person_info_icon";
+    task.taskType = [NSNumber numberWithInt:kTaskTypeInviteFriends];
+    task.taskTitle = @"填写邀请码拿红包";
+    task.taskStatus = finished ? [NSNumber numberWithInt:10] : [NSNumber numberWithInt:0];
+    task.taskMoney = [NSNumber numberWithInt:200];
+    task.taskIconUrl = @"about_wangcai_cell_icon";
     task.taskIntro = @"";
-    task.taskDesc = @"让旺财知道你喜欢什么，赚更多的红包";
+    task.taskDesc = @"填写好友的邀请码领取红包";
+    task.taskIsLocalIcon = YES;
+    task.taskStepStrings = [NSArray array];
+    
+    [tasks addObject:task];
+    
+    finished = [SettingLocalRecords getRatedApp];
+    task = [[[CommonTaskInfo alloc] init] autorelease];
+    task.taskId = [NSNumber numberWithInt:10];
+    task.taskType = [NSNumber numberWithInt:kTaskTypeCommetWangcai];
+    task.taskTitle = @"评价旺财";
+    task.taskStatus = finished ? [NSNumber numberWithInt:10] : [NSNumber numberWithInt:0];
+    task.taskMoney = [NSNumber numberWithInt:200];
+    task.taskIconUrl = @"about_wangcai_cell_icon";
+    task.taskIntro = @"";
+    task.taskDesc = @"评价旺财，给旺财打个赏";
     task.taskIsLocalIcon = YES;
     task.taskStepStrings = [NSArray array];
     
@@ -186,12 +214,11 @@ static CommonTaskList* gInstance = nil;
             NSMutableArray* resultTaskList = [NSMutableArray array];
             NSMutableArray* unfinishedTaskList = [NSMutableArray array];
             
-            if (NO)
+            if (YES)
             {
                 //本地测试数据
                 NSArray* localTestTask = [self _buildLocalTestTask];
                 [resultTaskList addObjectsFromArray:localTestTask];
-                [unfinishedTaskList addObjectsFromArray:localTestTask];
             }
             
             for (NSDictionary* taskDict in taskList)
@@ -227,7 +254,7 @@ static CommonTaskList* gInstance = nil;
                         }
                         break;
                     case kTaskTypeInviteFriends:
-                        task.taskIsLocalIcon = NO;
+                        task.taskIsLocalIcon = YES;
                         //task.taskIconUrl = @"";
                         break;
                     case kTaskTypeEverydaySign:
@@ -247,6 +274,10 @@ static CommonTaskList* gInstance = nil;
                         task.taskIconUrl = @"tiyanzhongxin_cell_icon";
                         //task.taskIconUrl = @"";
                         break;
+                    case kTaskTypeCommetWangcai:
+                        task.taskIsLocalIcon = YES;
+                        //task.taskIconUrl = @"";
+                        break;
                         
                     default:
                         if ([task.taskIconUrl rangeOfString:@"http://"].length > 0)
@@ -257,11 +288,16 @@ static CommonTaskList* gInstance = nil;
                 }
                 
                 [resultTaskList addObject:task];
+            }
+            
+            for (CommonTaskInfo* task in resultTaskList)
+            {
                 if ([task.taskStatus intValue] == 0)
                 {
                     [unfinishedTaskList addObject:task];
                 }
             }
+            
             self.taskList = resultTaskList;
             self.unfinishedTaskList = unfinishedTaskList;
             NSMutableArray* reorderedTaskList = [NSMutableArray arrayWithArray:self.unfinishedTaskList];

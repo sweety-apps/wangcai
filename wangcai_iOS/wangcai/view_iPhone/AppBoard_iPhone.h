@@ -24,5 +24,6 @@
 AS_SINGLETON( AppBoard_iPhone )
 
 - (void)setPanable:(BOOL)panable;
+- (void)onTouchedInvite:(BOOL)switchToFillInvitedCodeView;
 
 @end

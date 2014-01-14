@@ -19,6 +19,9 @@
 + (void)saveOfferWallAlertViewShowed:(BOOL)showed;
 + (BOOL)getOfferWallAlertViewShowed;
 
++ (void)setRatedApp:(BOOL)rated;
++ (BOOL)getRatedApp;
+
 + (BOOL)hasCheckInYesterday;
 + (BOOL)hasCheckInToday;
 + (BOOL)hasShareToday;

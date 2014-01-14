@@ -19,6 +19,9 @@
 #import "NSString+FloatFormat.h"
 #import "PhoneValidationController.h"
 #import "SettingLocalRecords.h"
+#import "AppBoard_iPhone.h"
+#import "MenuBoard_iPhone.h"
+#import "SettingViewController.h"
 
 static BOOL gNeedReloadTaskList = NO;
 
@@ -93,6 +96,11 @@ static BOOL gNeedReloadTaskList = NO;
 {
     [super viewDidAppear:animated];
     
+    [self onViewDidAppearLogic];
+}
+
+- (void)onViewDidAppearLogic
+{
     [OnlineWallViewController sharedInstance].delegate = self;
     [[OnlineWallViewController sharedInstance] requestAndConsumePoint];
     
@@ -495,12 +503,15 @@ static BOOL gNeedReloadTaskList = NO;
         {
             case kTaskTypeUserInfo:
             {
-                UserInfoEditorViewController* userInfoCtrl = [[UserInfoEditorViewController alloc] initWithNibName:@"UserInfoEditorViewController" bundle:nil];
-                if (self.beeStack == nil)
+                if ([task.taskStatus intValue] == 0)
                 {
-                    NSLog(@"靠！！！stack空的");
+                    UserInfoEditorViewController* userInfoCtrl = [[UserInfoEditorViewController alloc] initWithNibName:@"UserInfoEditorViewController" bundle:nil];
+                    if (self.beeStack == nil)
+                    {
+                        NSLog(@"靠！！！stack空的");
+                    }
+                    [self.beeStack pushViewController:userInfoCtrl animated:YES];
                 }
-                [self.beeStack pushViewController:userInfoCtrl animated:YES];
             }
                 break;
             case kTaskTypeOfferWall:
@@ -532,7 +543,24 @@ static BOOL gNeedReloadTaskList = NO;
                 
                 break;
             case kTaskTypeInviteFriends:
-                
+            {
+                if ([task.taskStatus intValue] == 0)
+                {
+                    [[AppBoard_iPhone sharedInstance] onTouchedInvite:YES];
+                }
+            }
+                break;
+            
+            case kTaskTypeCommetWangcai:
+            {
+                if ([task.taskStatus intValue] == 0)
+                {
+                    [SettingViewController jumpToAppStoreAndRate];
+                    [SettingLocalRecords setRatedApp:YES];
+                    [BaseTaskTableViewController setNeedReloadTaskList];
+                    [self onViewDidAppearLogic];
+                }
+            }
                 break;
                 
             default:

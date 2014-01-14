@@ -28,6 +28,7 @@
 + (void)load
 {
 	[[BeeUIRouter sharedInstance] map:@"invite" toClass:self];
+    [[BeeUIRouter sharedInstance] map:@"invite_fill_code" toClass:self];
 }
 
 - (void)load
@@ -60,6 +61,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //self.view.backgroundColor = [UIColor whiteColor];
     
         //[self setTitleString:@"我的旺财"];
+        if ([[[self stack] name] isEqualToString:@"invite_fill_code"])
+        {
+            [_inviteController switchView:nil];
+        }
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{

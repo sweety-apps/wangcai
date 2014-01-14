@@ -245,8 +245,9 @@ ON_SIGNAL3( MenuBoard_iPhone, wc_main, signal )
 	
 }
 
-ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
-{   // 判断是否绑定了手机
+- (void)onTouchedInvite:(BOOL)switchToFillInvitedCodeView
+{
+    // 判断是否绑定了手机
     NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
     if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
         if ( _alertView != nil ) {
@@ -262,10 +263,22 @@ ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
     } else {
         [phoneNum release];
         [self hideMenu];
-        [[BeeUIRouter sharedInstance] open:@"invite" animated:YES];
-
+        
+        if (!switchToFillInvitedCodeView)
+        {
+            [[BeeUIRouter sharedInstance] open:@"invite" animated:YES];
+        }
+        else
+        {
+            [[BeeUIRouter sharedInstance] open:@"invite_fill_code" animated:YES];
+        }
         
     }
+}
+
+ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
+{
+    [self onTouchedInvite:NO];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

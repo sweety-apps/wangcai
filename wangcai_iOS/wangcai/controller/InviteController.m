@@ -14,6 +14,7 @@
 #import "WebPageController.h"
 #import "Config.h"
 #import "SettingLocalRecords.h"
+#import "BaseTaskTableViewController.h"
 
 @interface InviteController ()
 
@@ -240,11 +241,13 @@
     {
         fromView = self.inviteView;
         toView = self.invitedView;
+        self.segment.selectedSegmentIndex = 1;
     }
     else
     {
         fromView = self.invitedView;
         toView = self.inviteView;
+        self.segment.selectedSegmentIndex = 0;
     }
     
     NSArray* priorConstraints = self.priorConstraints;
@@ -373,6 +376,7 @@
         
         // 给用户加二块钱
         [[LoginAndRegister sharedInstance] increaseBalance:200];
+        [BaseTaskTableViewController setNeedReloadTaskList];
     }
     else
     {

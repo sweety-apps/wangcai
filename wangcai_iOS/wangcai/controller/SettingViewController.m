@@ -112,20 +112,26 @@
     NSInteger row = indexPath.row;
     if ( row == 3 ) {
         // 评分
-        NSString* oldUrl = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?mt=8&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software&id=";
-        NSString* ios6Url = @"itms-apps://itunes.apple.com/app/id";
-        NSString* url;
-        
-        float fVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-        if ( fVersion >= 6 ) {
-            url = [ios6Url stringByAppendingString:@"776787173"];
-        } else {
-            url = [oldUrl stringByAppendingString:@"776787173"];
-        }
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        [[self class] jumpToAppStoreAndRate];
     }
     
     return nil;
+}
+
++ (void)jumpToAppStoreAndRate
+{
+    // 评分
+    NSString* oldUrl = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?mt=8&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software&id=";
+    NSString* ios6Url = @"itms-apps://itunes.apple.com/app/id";
+    NSString* url;
+    
+    float fVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if ( fVersion >= 6 ) {
+        url = [ios6Url stringByAppendingString:@"776787173"];
+    } else {
+        url = [oldUrl stringByAppendingString:@"776787173"];
+    }
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 @end
