@@ -21,6 +21,7 @@
         _relogin = NO;
         _param = nil;
         _url = nil;
+        _method = nil;
     }
     return self;
 }
@@ -90,6 +91,12 @@
     getOrPost = [getOrPost lowercaseString];
     NSString* newUrl = [[self BuildURL:url] autorelease];
     
+    if ( _method != nil ) {
+        [_method release];
+    }
+    
+    _method = [getOrPost copy];
+    
     if ([getOrPost isEqualToString:@"get"] && params != nil ) {
         NSArray* keys = [params allKeys];
         int nCount = [keys count];
@@ -117,7 +124,16 @@
     NSHTTPCookie* cookie = [self getCookie];
     [_request setRequestCookies:[NSMutableArray arrayWithObject:cookie]];
     
-    _url = [url copy];
+    if ( _url != nil ) {
+        [_url release];
+    }
+    _url = [newUrl copy];
+    
+    if ( _param != nil ) {
+        [_param release];
+        _param = nil;
+    }
+    
     if([getOrPost isEqualToString:@"post"]) {
         NSString* nsParam = [[NSString alloc]init];
     
@@ -162,6 +178,7 @@
         if ( _delegate != nil ) {
             [_delegate HttpRequestCompleted:self HttpCode:req.responseStatusCode Body:nil];
         }
+        _relogin = NO;
     } else if ( req.succeed ) {
         // 判断返回数据是
         NSError* error;
@@ -170,12 +187,14 @@
             if ( _delegate != nil ) {
                 [_delegate HttpRequestCompleted:self HttpCode:req.responseStatusCode Body:nil];
             }
+            _relogin = NO;
         } else {
             NSNumber* res = [dict valueForKey:@"res"];
             if ( [res intValue] == 0 ) {
                 if ( _delegate != nil ) {
                     [_delegate HttpRequestCompleted:self HttpCode:req.responseStatusCode Body:dict];
                 }
+                _relogin = NO;
             } else {
                 if ( [res intValue] == 401 && !_relogin ) {
                     [self relogin];
@@ -183,12 +202,11 @@
                     if ( _delegate != nil ) {
                         [_delegate HttpRequestCompleted:self HttpCode:req.responseStatusCode Body:dict];
                     }
+                    _relogin = NO;
                 }
             }
         }
     }
-    
-    _relogin = NO;
 }
 
 -(void) relogin {
@@ -212,9 +230,11 @@
 }
 
 - (void) request {
-    NSString* url = [self BuildURL:_url];
-    
-    _request = self.HTTP_POST(url);
+    if ( [_method isEqualToString:@"get"] ) {
+        _request = self.HTTP_GET(_url);
+    } else {
+        _request = self.HTTP_POST(_url);
+    }
     
     NSMutableData* data = [[NSMutableData alloc] init];
     
@@ -234,7 +254,6 @@
     _request.TIMEOUT(10);
     
     [data release];
-    [url release];
 }
 
 

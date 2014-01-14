@@ -19,6 +19,7 @@
     BOOL    _relogin;
     NSString* _url;
     NSString* _param;
+    NSString* _method;
 }
 
 @property (nonatomic,retain) id extensionContext;
