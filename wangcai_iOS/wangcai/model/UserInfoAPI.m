@@ -188,12 +188,18 @@ static UserInfoAPI* gDefaultUserInfo = nil;
         {
             NSNumber* result = [body objectForKey:@"res"];
             //NSString* msg = [body objectForKey:@"msg"];
+            succeed = YES;
             if ([result intValue] == 0)
             {
                 self.uiAge = [body objectForKey:@"age"];
                 self.uiSex = [body objectForKey:@"sex"];
                 self.uiInterest = [body objectForKey:@"interest"];
-                succeed = YES;
+            }
+            else
+            {
+                self.uiAge = nil;
+                self.uiSex = [NSNumber numberWithInt:0];
+                self.uiInterest = @"";
             }
         }
         
