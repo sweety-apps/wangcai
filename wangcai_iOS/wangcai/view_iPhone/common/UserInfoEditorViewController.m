@@ -147,7 +147,7 @@
     
     maxY += self.commitButtonView.frame.size.height;
     
-    maxY += 20.f;
+    maxY += 10.f;
     
     CGSize scrollViewSize = CGSizeMake(320, self.upSectionView.frame.size.height + self.selectionContainerView.frame.origin.y + maxY);
     
