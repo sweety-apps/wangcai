@@ -230,10 +230,22 @@
 }
 
 - (void) request {
+    // 替换url中session
+    NSString* url = [[_url copy] autorelease];
+    NSRange range = [url rangeOfString:@"session_id="];
+    if ( range.length != 0 ) {
+        NSString* left = [url substringToIndex:range.location + range.length];
+        NSString* right = [url substringFromIndex:range.location + range.length];
+        NSRange range2 = [right rangeOfString:@"&"];
+        NSString* right2 = [right substringFromIndex:range2.location];
+        id sessionid = [[[LoginAndRegister sharedInstance]getSessionId] autorelease];
+        url = [[[NSString alloc]initWithFormat:@"%@%@%@", left, sessionid, right2] autorelease];
+    }
+    
     if ( [_method isEqualToString:@"get"] ) {
-        _request = self.HTTP_GET(_url);
+        _request = self.HTTP_GET(url);
     } else {
-        _request = self.HTTP_POST(_url);
+        _request = self.HTTP_POST(url);
     }
     
     NSMutableData* data = [[NSMutableData alloc] init];
