@@ -1237,6 +1237,7 @@ static NSOperationQueue *sharedQueue = nil;
             [sslProperties setObject:certificates forKey:(NSString *)kCFStreamSSLCertificates];
         }
 
+        [sslProperties setObject:(NSString*)(CFStringRef*)kCFStreamSocketSecurityLevelSSLv3 forKey:(NSString*)kCFStreamSSLLevel];
         CFReadStreamSetProperty((CFReadStreamRef)[self readStream], kCFStreamPropertySSLSettings, sslProperties);
     }
 

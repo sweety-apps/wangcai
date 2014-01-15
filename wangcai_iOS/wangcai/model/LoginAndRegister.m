@@ -124,7 +124,7 @@ static LoginAndRegister* _sharedInstance;
     nsParam = [nsParam stringByAppendingFormat:@"mac=%@&", mac];
     
     NSString* timestamp = [Common getTimestamp];
-    nsParam = [nsParam stringByAppendingFormat:@"timestamp=%@&", timestamp];
+    nsParam = [nsParam stringByAppendingFormat:@"timestamp=%@", timestamp];
 
     NSMutableData* data = [[NSMutableData alloc] init];
     
@@ -136,6 +136,8 @@ static LoginAndRegister* _sharedInstance;
 
     req.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
     [data appendBytes:a length:strlen(a)];
+    
+    [req setValidatesSecureCertificate:NO];
     
     req.postBody = [[data copy] autorelease];
     
