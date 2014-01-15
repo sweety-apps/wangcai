@@ -14,15 +14,22 @@
     IBOutlet UITableViewCell* _msgCell;
     IBOutlet UITableViewCell* _bellCell;
     IBOutlet UITableViewCell* _gradeCell;
+    IBOutlet UITableViewCell* _aboutCell;
     
     IBOutlet UISwitch*        _msgSwitch;
     IBOutlet UISwitch*        _musicSwitch;
+    
+    BeeUIStack* _stack;
 }
+
+-(void) setUIStack:(BeeUIStack*) stack;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell* _logoCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell* _msgCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell* _bellCell;
 @property (nonatomic, retain) IBOutlet UITableViewCell* _gradeCell;
+@property (nonatomic, retain) IBOutlet UITableViewCell* _aboutCell;
+
 @property (nonatomic, retain) IBOutlet UISwitch* _msgSwitch;
 @property (nonatomic, retain) IBOutlet UISwitch* _musicSwitch;
 
@@ -36,4 +43,5 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 + (void)jumpToAppStoreAndRate;
+- (IBAction)clickAbout:(id)sender;
 @end

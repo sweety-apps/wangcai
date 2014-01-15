@@ -74,6 +74,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
     }
     else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
     {
+        [self->_settingController setUIStack:self.stack];
     }
     else if ( [signal is:BeeUIBoard.DID_APPEAR] )
     {

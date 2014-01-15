@@ -163,6 +163,7 @@
 		A6D591BE187C00BB004DF4E0 /* alipay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D591BD187C00BB004DF4E0 /* alipay@2x.png */; };
 		A6D591C8187C0FD4004DF4E0 /* UICustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D591C7187C0FD4004DF4E0 /* UICustomAlertView.m */; };
 		A6E0515F1886B4C500780F02 /* client.p12 in Resources */ = {isa = PBXBuildFile; fileRef = A6E0515E1886B4C500780F02 /* client.p12 */; };
+		A6E051611886CF0E00780F02 /* about2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E051601886CF0E00780F02 /* about2@2x.png */; };
 		A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6DE671860287900D089C7 /* WebPageController.xib */; };
 		A6F6DE6B186028B700D089C7 /* WebPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6DE6A186028B700D089C7 /* WebPageController.m */; };
 		A6F8BC6E1883CCE2000E5E55 /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F8BC6D1883CCE2000E5E55 /* libYouMi.a */; };
@@ -752,6 +753,7 @@
 		A6D591C6187C0FD4004DF4E0 /* UICustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICustomAlertView.h; sourceTree = "<group>"; };
 		A6D591C7187C0FD4004DF4E0 /* UICustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomAlertView.m; sourceTree = "<group>"; };
 		A6E0515E1886B4C500780F02 /* client.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = client.p12; sourceTree = "<group>"; };
+		A6E051601886CF0E00780F02 /* about2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about2@2x.png"; sourceTree = "<group>"; };
 		A6F6DE671860287900D089C7 /* WebPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebPageController.xib; sourceTree = "<group>"; };
 		A6F6DE69186028B700D089C7 /* WebPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPageController.h; sourceTree = "<group>"; };
 		A6F6DE6A186028B700D089C7 /* WebPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPageController.m; sourceTree = "<group>"; };
@@ -1742,6 +1744,7 @@
 				A6D591BD187C00BB004DF4E0 /* alipay@2x.png */,
 				A60C57EF186FF8A30068425C /* body_bkg@2x.png */,
 				A60C57F0186FF8A30068425C /* border@2x.png */,
+				A6E051601886CF0E00780F02 /* about2@2x.png */,
 				A60C57F1186FF8A30068425C /* bottom_arraw@2x.png */,
 				A60C57F3186FF8A30068425C /* btn_normal@2x.png */,
 				A60C57F4186FF8A30068425C /* deal_btn@2x.png */,
@@ -3519,6 +3522,7 @@
 				A60C5890186FF8A30068425C /* zhanghuyue@2x.png in Resources */,
 				F3D9D560185D876D00392C40 /* PhoneValidationController.xib in Resources */,
 				F3D9D564185D876D00392C40 /* TaskController.xib in Resources */,
+				A6E051611886CF0E00780F02 /* about2@2x.png in Resources */,
 				A60C588E186FF8A30068425C /* recommand_task_icon@2x.png in Resources */,
 				A6FA6A651882E284003F8399 /* apptask_tip@2x.png in Resources */,
 				A6FEE28A187D9AB800E5AF3E /* blueArrow@2x.png in Resources */,
