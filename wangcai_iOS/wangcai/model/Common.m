@@ -162,4 +162,45 @@ NSString * macaddress()
     return newUrl;
 }
 
++ (SecIdentityRef) getSecIdentityRef {
+    SecIdentityRef identity = NULL;
+    SecTrustRef trust = NULL;
+    
+    //绑定证书，证书放在Resources文件夹中
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"client" ofType:@"p12"];
+    
+    NSData *PKCS12Data = [NSData dataWithContentsOfFile:path];
+    [self extractIdentity:&identity andTrust:&trust fromPKCS12Data:PKCS12Data];
+    
+    return identity;
+}
+
+
++ (BOOL)extractIdentity:(SecIdentityRef *)outIdentity andTrust:(SecTrustRef*)outTrust fromPKCS12Data:(NSData *)inPKCS12Data {
+    OSStatus securityError = errSecSuccess;
+    
+    CFStringRef password = CFSTR("1528memeda"); //证书密码
+    const void *keys[] =   { kSecImportExportPassphrase };
+    const void *values[] = { password };
+    
+    CFDictionaryRef optionsDictionary = CFDictionaryCreate(NULL, keys,values, 1,NULL, NULL);
+    
+    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);
+    //securityError = SecPKCS12Import((CFDataRef)inPKCS12Data,(CFDictionaryRef)optionsDictionary,&items);
+    securityError = SecPKCS12Import((CFDataRef)inPKCS12Data,optionsDictionary,&items);
+    
+    if (securityError == 0) {
+        CFDictionaryRef myIdentityAndTrust = CFArrayGetValueAtIndex (items, 0);
+        const void *tempIdentity = NULL;
+        tempIdentity = CFDictionaryGetValue (myIdentityAndTrust, kSecImportItemIdentity);
+        *outIdentity = (SecIdentityRef)tempIdentity;
+        const void *tempTrust = NULL;
+        tempTrust = CFDictionaryGetValue (myIdentityAndTrust, kSecImportItemTrust);
+        *outTrust = (SecTrustRef)tempTrust;
+    } else {
+        NSLog(@"Failed with error code %d",(int)securityError);
+        return NO;
+    }
+    return YES;
+}
 @end

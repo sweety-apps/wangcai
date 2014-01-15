@@ -11,6 +11,8 @@
 #import "NSString+FloatFormat.h"
 #import "LoginAndRegister.h"
 #import "BaseTaskTableViewController.h"
+#import "WebPageController.h"
+#import "Config.h"
 
 @interface SettingViewController () <RateAppLogicDelegate>
 
@@ -23,6 +25,7 @@
 @synthesize _gradeCell;
 @synthesize _msgSwitch;
 @synthesize _musicSwitch;
+@synthesize _aboutCell;
 
 - (id)init
 {
@@ -61,6 +64,12 @@
             rect.origin.x -= 20;
             _musicSwitch.frame = rect;
         }
+        
+        UILabel* label = (UILabel*)[_aboutCell viewWithTag:11];
+        NSDictionary* dic = [[NSBundle mainBundle] infoDictionary];
+        NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
+        NSString* version = [[[NSString alloc] initWithFormat:@"版本号：%@", appVersion] autorelease];
+        [label setText:version];
     }
     return self;
 }
@@ -91,6 +100,8 @@
         return _bellCell;
     } else if ( row == 3 ) {
         return _gradeCell;
+    } else if ( row == 4 ) {
+        return _aboutCell;
     }
     
     return nil;
@@ -104,12 +115,18 @@
         return 130;
     } else if ( row == 2 || row == 3 ) {
         return 90;
+    } else {
+        return 70;
     }
     return 0;
 }
 
+-(void) setUIStack:(BeeUIStack*) stack {
+    _stack = stack;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -164,6 +181,17 @@
         UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价失败" message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil] autorelease];
         [alertView show];
     }
+    
+}
+
+- (IBAction)clickAbout:(id)sender {
+    BeeUIStack* stack = _stack;
+    
+    NSString* url = [[[NSString alloc] initWithFormat:@"%@128", WEB_SERVICE_VIEW] autorelease];
+    
+    WebPageController* controller = [[[WebPageController alloc] init:@"使用条款和隐私政策"
+                                                                 Url:url Stack:stack] autorelease];
+    [stack pushViewController:controller animated:YES];
 }
 
 @end

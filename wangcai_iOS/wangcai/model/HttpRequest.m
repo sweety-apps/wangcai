@@ -7,7 +7,7 @@
 //
 
 #import "HttpRequest.h"
-
+#import "Common.h"
 
 @implementation HttpRequest
 
@@ -120,6 +120,11 @@
     {
         _request = self.HTTP_POST(newUrl);
     }
+    
+    // 设置https访问证书
+    //[_request setValidatesSecureCertificate:YES];
+    //[_request setClientCertificateIdentity: [Common getSecIdentityRef]];
+    //
     
     NSHTTPCookie* cookie = [self getCookie];
     [_request setRequestCookies:[NSMutableArray arrayWithObject:cookie]];
@@ -260,6 +265,11 @@
     
     _request.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
     [data appendBytes:a length:strlen(a)];
+    
+    // 设置https访问证书
+    //[_request setValidatesSecureCertificate:YES];
+    //[_request setClientCertificateIdentity: [Common getSecIdentityRef]];
+    //
     
     _request.postBody = [[data copy] autorelease];
     

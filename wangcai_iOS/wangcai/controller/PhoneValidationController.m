@@ -168,7 +168,7 @@
 - (IBAction)clickGetMoney:(id)sender {
     [self hideKeyboard];
     if ( _bSend ) {
-        [self postNotification:@"showMenu"];
+        [[BeeUIRouter sharedInstance] open:@"invite" animated:YES];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }

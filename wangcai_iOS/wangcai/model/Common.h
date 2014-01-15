@@ -18,4 +18,5 @@
 + (NSString*) getTimestamp;
 + (NSString*) buildURL:(NSString*) url Params:(NSMutableDictionary*) params;
 
++ (SecIdentityRef) getSecIdentityRef;
 @end

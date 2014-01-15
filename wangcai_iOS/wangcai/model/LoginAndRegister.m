@@ -33,6 +33,7 @@ static LoginAndRegister* _sharedInstance;
     self->_delegateArray = [[NSMutableArray alloc]init];
     self->_delegateBalanceArray = [[NSMutableArray alloc]init];
     self->_balance = 0;
+    self->_firstLogin = YES;
     
     return self;
 }
@@ -137,7 +138,10 @@ static LoginAndRegister* _sharedInstance;
     req.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
     [data appendBytes:a length:strlen(a)];
     
-    [req setValidatesSecureCertificate:NO];
+    // 设置https访问证书
+    //[req setValidatesSecureCertificate:YES];
+    //[req setClientCertificateIdentity: [Common getSecIdentityRef]];
+    //
     
     req.postBody = [[data copy] autorelease];
     
@@ -173,6 +177,8 @@ static LoginAndRegister* _sharedInstance;
                 _phoneNum = [[dict valueForKey:@"phone"] copy];
                 
                 NSNumber* num = [dict valueForKey:@"balance"];
+                int nOldBalance = _balance;
+                
                 _balance = [num intValue];
                 num = [dict valueForKey:@"income"];
                 _income = [num intValue];
@@ -190,6 +196,15 @@ static LoginAndRegister* _sharedInstance;
                 _force_update = [[dict valueForKey:@"force_update"] intValue];
 
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
+                
+                if ( _firstLogin ) {
+                    _firstLogin = NO;
+                } else {
+                    // 钱币变化的通知
+                    if ( nOldBalance != _balance ) {
+                        [self fire_balanceChanged:nOldBalance New:_balance];
+                    }
+                }
             } else {
                 NSString* err = [[dict valueForKey:@"msg"] copy];
                 [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:err];

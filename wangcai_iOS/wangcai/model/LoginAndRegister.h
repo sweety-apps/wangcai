@@ -54,6 +54,8 @@ typedef enum LoginStatus {
     NSMutableArray* _delegateBalanceArray;
     
     int        _force_update;
+    
+    BOOL       _firstLogin;
 }
 
 +(id) sharedInstance;
