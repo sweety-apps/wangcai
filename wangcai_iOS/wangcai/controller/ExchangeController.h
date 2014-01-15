@@ -37,7 +37,7 @@
     HttpRequest* _request;
     HttpRequest* _requestExchange;
                 
-    NSArray* _list;
+    NSMutableArray* _list;
                 
     NSNumber* _prtType;
     NSString* _exchange_code;

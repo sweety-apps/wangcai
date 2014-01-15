@@ -26,6 +26,7 @@
         [self setBackgroundColor:[UIColor clearColor]];
         _bgView = [[UIView alloc] initWithFrame:self.frame];
         [_bgView setBackgroundColor:[UIColor blackColor]];
+        
         [self addSubview:_bgView];
         [_bgView release];
         
@@ -40,11 +41,18 @@
         
         [self addSubview:_alertView];
 
+        UITapGestureRecognizer* TapGesturRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer)];
+        [self addGestureRecognizer:TapGesturRecognizer];
+        
         [self showBackground];
         [self showAlertAnmation];
         
     }
     return self;
+}
+
+-(void) tapGestureRecognizer {
+    [self hideAlertView];
 }
 
 -(void) show

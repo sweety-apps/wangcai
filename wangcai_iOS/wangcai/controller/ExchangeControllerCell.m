@@ -23,6 +23,8 @@
         _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(12, 8, 48, 48)];
         [_view addSubview:_imageView];
         
+        _imageView.contentMode = UIViewContentModeScaleToFill;
+        
         _labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(72, 9, 160, 20)];
         [_view addSubview:_labelTitle];
         _labelTitle.font = [UIFont systemFontOfSize:14];
@@ -40,7 +42,7 @@
         [_labelNum setTextColor:[UIColor colorWithRed:164.0/255 green:164.0/255 blue:164.0/255 alpha:1]];
         _labelNum.backgroundColor = [UIColor clearColor];
         
-        _btnExchange = [[UIButton alloc]initWithFrame:CGRectMake(225, 12, 75, 27)];
+        _btnExchange = [[UIButton alloc]initWithFrame:CGRectMake(225, 18, 75, 27)];
         [_view addSubview:_btnExchange];
         [_btnExchange addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
         [_btnExchange setImage:[UIImage imageNamed:@"exchange_btn"] forState:UIControlStateNormal];
@@ -112,8 +114,6 @@
     
     _labelPrice.text = [[NSString alloc] initWithFormat:@"价格：%.1f元", 1.0*nPrice/100];
     _labelNum.text = [[NSString alloc] initWithFormat:@"剩余：%@", remain];
-
-    _imageView.image = [UIImage imageNamed:@"menu-icon-red"];
     
     UIImage* cachedImage = [[BeeImageCache sharedInstance] imageForURL:icon];
     _imageView.layer.cornerRadius = 8.0f;

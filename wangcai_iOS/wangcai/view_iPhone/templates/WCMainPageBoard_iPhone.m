@@ -60,7 +60,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self observeNotification:@"naviToUserInfoEditor"];
         [self observeNotification:@"balanceChanged"];
         
-        _alertView = nil;
+        //_alertView = nil;
         self.view.hintString = @"This is the  board";
         self.view.backgroundColor = [UIColor whiteColor];
         self.view.clipsToBounds = NO;
@@ -157,7 +157,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         
         // 亲友提示
-        [self showFirendMsg];
+        //[self showFirendMsg];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
@@ -275,7 +275,7 @@ ON_NOTIFICATION( notification )
     }
 }
 
-
+/*
 - (void) showFirendMsg {
     if ( _alertView != nil ) {
         [_alertView release];
@@ -306,4 +306,5 @@ ON_NOTIFICATION( notification )
         [_alertView hideAlertView];
     }
 }
+*/
 @end

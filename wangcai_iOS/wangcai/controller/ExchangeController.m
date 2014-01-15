@@ -72,7 +72,7 @@
         }
         
         float fBalance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
-        NSString* balance = [[NSString alloc] initWithFormat:@"%.1f", fBalance];
+        NSString* balance = [[NSString alloc] initWithFormat:@"%.1f元", fBalance];
         [_labelBalance setText:balance];
         [balance release];
         
@@ -101,7 +101,7 @@
 
 -(void) balanceChanged:(int) oldBalance New:(int) balance {
     float fBalance = (1.0*balance) / 100;
-    NSString* bal = [[NSString alloc] initWithFormat:@"%.1f", fBalance];
+    NSString* bal = [[NSString alloc] initWithFormat:@"%.1f元", fBalance];
     [_labelBalance setText:bal];
     [bal release];
 }
@@ -161,7 +161,7 @@
     NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
     float fBalance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
     
-    NSString* balance = [[NSString alloc] initWithFormat:@"%.1f", fBalance];
+    NSString* balance = [[NSString alloc] initWithFormat:@"%.1f元", fBalance];
     [_labelBalance setText:balance];
     [balance release];
     
@@ -354,6 +354,7 @@
     NSString* name = [info objectAtPath:@"name"];
     NSNumber* price = [info objectAtPath:@"price"];
     NSNumber* type = [info objectAtPath:@"type"];
+    NSNumber* remain = [info objectAtPath:@"remain"];
     
     int nPrice = [price intValue];
     _price = nPrice;
@@ -365,6 +366,15 @@
     _prtType = [type copy];
 
     if ( [self checkBalanceAndBindPhone:(1.0*nPrice/100)] ) {
+        // 判断数量是否为0
+        if ( [remain intValue] <= 0 ) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前数量为0，无法完成兑换！" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            
+            return ;
+        }
+        
         NSString* nsTitle = [[NSString alloc] initWithFormat:@"产品：%@", name];
         NSString* nsPrice = [[NSString alloc] initWithFormat:@"价格：%.1f元", 1.0*nPrice/100];
         
@@ -504,12 +514,24 @@
                     [_list release];
                 }
             
-                _list = [list copy];
+                _list = [self copyList:list];
             }
         }
     
         [self doneLoadingTableViewData];
     }
+}
+
+- (NSMutableArray*) copyList:(NSArray*) list {
+    NSMutableArray* retList = [[NSMutableArray alloc] init];
+    for ( int i = 0; i < [list count]; i ++ ) {
+        NSDictionary* tmp = [list objectAtIndex:i];
+        NSMutableDictionary* dict = [[[NSMutableDictionary alloc] initWithDictionary:tmp] autorelease];
+        
+        [retList addObject:dict];
+    }
+    
+    return retList;
 }
 
 - (void) onExchangeCompleted:(NSDictionary*) infos {
@@ -529,6 +551,8 @@
         
         [[LoginAndRegister sharedInstance] increaseBalance:(-1*_price)];
         
+        [self exchangeCompleted:[_prtType intValue]];
+        
         _alertExchange = [[UIAlertView alloc] initWithTitle:@"交易完成" message:@"恭喜您，换购请求已确认，请您耐心等待。" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"查看详细", nil];
         [_alertExchange show];
     } else {
@@ -542,6 +566,23 @@
         
         [alert show];
         [alert release];
+    }
+}
+
+-(void) exchangeCompleted:(int) type {
+    int count = [_list count];
+    for (int i = 0; i < count; i ++ ) {
+        NSMutableDictionary* dict = [_list objectAtIndex:i];
+        NSNumber* tmp = [dict objectAtPath:@"type"];
+        if ( [tmp intValue] == type ) {
+            NSNumber* remain = [dict objectAtPath:@"remain"];
+            int nRemain = [remain intValue];
+
+            [dict setValue:[NSNumber numberWithInt:nRemain-1] forKey:@"remain"];
+            
+            [self->_tableView reloadData];
+            break;
+        }
     }
 }
 
