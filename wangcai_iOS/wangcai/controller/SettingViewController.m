@@ -7,8 +7,12 @@
 //
 
 #import "SettingViewController.h"
+#import "RateAppLogic.h"
+#import "NSString+FloatFormat.h"
+#import "LoginAndRegister.h"
+#import "BaseTaskTableViewController.h"
 
-@interface SettingViewController ()
+@interface SettingViewController () <RateAppLogicDelegate>
 
 @end
 
@@ -113,6 +117,7 @@
     if ( row == 3 ) {
         // 评分
         [[self class] jumpToAppStoreAndRate];
+        [[RateAppLogic sharedInstance] requestRated:self];
     }
     
     return nil;
@@ -134,4 +139,31 @@
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
+
+#pragma mark <RateAppLogicDelegate>
+
+- (void)onRateAppLogicFinished:(RateAppLogic*)logic isRequestSucceed:(BOOL)isSucceed income:(NSInteger)income resultCode:(NSInteger)result msg:(NSString*)msg
+{
+    if (isSucceed && income > 0)
+    {
+        NSString* strIncome = [NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:1 ignoreBackZeros:YES];
+        NSString* btnStr = [NSString stringWithFormat:@"领取 %@ 元",strIncome];
+        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价成功" message:@"" delegate:self cancelButtonTitle:btnStr otherButtonTitles:nil] autorelease];
+        [alertView show];
+        
+        [[LoginAndRegister sharedInstance] increaseBalance:income];
+        [BaseTaskTableViewController setNeedReloadTaskList];
+    }
+    else
+    {
+        NSString* msgStr = @"服务器失败";
+        if ([msg length] > 0)
+        {
+            msgStr = msg;
+        }
+        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价失败" message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil] autorelease];
+        [alertView show];
+    }
+}
+
 @end

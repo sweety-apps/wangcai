@@ -22,6 +22,8 @@
 #import "AppBoard_iPhone.h"
 #import "MenuBoard_iPhone.h"
 #import "SettingViewController.h"
+#import "Config.h"
+#import "NSString+FloatFormat.h"
 
 static BOOL gNeedReloadTaskList = NO;
 
@@ -111,6 +113,8 @@ static BOOL gNeedReloadTaskList = NO;
         NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
         
         if ( [[LoginAndRegister sharedInstance] getBalance] >= 500 && (phoneNum == nil || [phoneNum length] == 0) ) {
+            
+            _needBindPhone = YES;
             _alertBalanceTip = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的余额超过5元，为了您的帐号安全，推荐您绑定手机" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"绑定手机", nil];
             
             [_alertBalanceTip show];
@@ -124,17 +128,6 @@ static BOOL gNeedReloadTaskList = NO;
     if (gNeedReloadTaskList)
     {
         [self refreshTaskList];
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if ( buttonIndex == 1 ) {
-        if ( [alertView isEqual:_alertBalanceTip] ) {
-            // 绑定手机
-            PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
-            
-            [self.beeStack pushViewController:phoneVal animated:YES];
-        }
     }
 }
 
@@ -266,7 +259,8 @@ static BOOL gNeedReloadTaskList = NO;
 -(void)refreshTaskList
 {
     [MBHUDView hudWithBody:@"" type:MBAlertViewHUDTypeActivityIndicator hidesAfter:10000000000.f show:YES];
-    [[CommonTaskList sharedInstance] fetchTaskList:self];
+    // 重登陆刷
+    [[LoginAndRegister sharedInstance] login:self];
 }
 
 -(void)resetStaticCells
@@ -414,13 +408,21 @@ static BOOL gNeedReloadTaskList = NO;
             [comCell setDownText:task.taskDesc];
             float moneyInYuan = [task.taskMoney floatValue]/100.f;
             NSString* pic = nil;
+            if (moneyInYuan >= 0.001f && moneyInYuan < 0.5)
+            {
+                pic = @"package_icon_1mao";
+            }
             if (moneyInYuan >= 0.5f && moneyInYuan < 1.0f)
             {
                 pic = @"package_icon_half";
             }
-            if (moneyInYuan >= 1.0f && moneyInYuan < 3.0f)
+            if (moneyInYuan >= 1.0f && moneyInYuan < 2.0f)
             {
                 pic = @"package_icon_one";
+            }
+            if (moneyInYuan >= 2.0f && moneyInYuan < 3.0f)
+            {
+                pic = @"package_icon_2";
             }
             if (moneyInYuan >= 3.0f && moneyInYuan < 8.0f)
             {
@@ -556,9 +558,7 @@ static BOOL gNeedReloadTaskList = NO;
                 if ([task.taskStatus intValue] == 0)
                 {
                     [SettingViewController jumpToAppStoreAndRate];
-                    [SettingLocalRecords setRatedApp:YES];
-                    [BaseTaskTableViewController setNeedReloadTaskList];
-                    [self onViewDidAppearLogic];
+                    [[RateAppLogic sharedInstance] requestRated:self];
                 }
             }
                 break;
@@ -667,6 +667,93 @@ static BOOL gNeedReloadTaskList = NO;
         UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"收到应用体验红包 %@ 元！",[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:1 ignoreBackZeros:YES]] message:@"" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
         [alert show];
         [self checkBalanceAndAnimateYuE];
+    }
+}
+
+#pragma mark <LoginAndRegisterDelegate>
+
+-(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg
+{
+    if ( status == Login_Success ) {
+        int forceUpdate = [[LoginAndRegister sharedInstance] getForceUpdate];
+        if ( forceUpdate == 1 ) {
+            // 强制升级
+            _needUpdateApp = YES;
+            UIAlertView* alertForceUpdate = [[[UIAlertView alloc]initWithTitle:@"升级" message:@"为了您红包的安全，需要升级之后才能继续使用。" delegate:self cancelButtonTitle:@"升级" otherButtonTitles:nil, nil] autorelease];
+            [alertForceUpdate show];
+        } else {
+            [[CommonTaskList sharedInstance] fetchTaskList:self];
+        }
+    } else {
+        // 登陆错误，必须登陆成功才能进入下一步
+        _needRetry = YES;
+        UIAlertView* alertError = [[[UIAlertView alloc] initWithTitle:@"错误" message:@"无法访问服务器，请确保网络连接正常" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil] autorelease];
+        [alertError show];
+    }
+}
+
+#pragma mark <UIAlertViewDelegate>
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( _needBindPhone) {
+        if (buttonIndex == 1)
+        {
+            if ( [alertView isEqual:_alertBalanceTip] ) {
+                // 绑定手机
+                PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
+                
+                [self.beeStack pushViewController:phoneVal animated:YES];
+            }
+        }
+    }
+    else if ( _needRetry ) {
+        // 重试
+        [[LoginAndRegister sharedInstance] login:self];
+    } else if ( _needUpdateApp ) {
+        // 升级
+        NSString* sysVer = [[UIDevice currentDevice] systemVersion];
+        NSString* urlStr = [[[NSString alloc] initWithFormat:@"%@?sysVer=%@", WEB_FORCE_UPDATE, sysVer] autorelease];
+        
+        NSURL* url = [NSURL URLWithString:urlStr];
+        [[UIApplication sharedApplication] openURL:url];
+        
+        exit(0);
+    }
+    if (_needAddCommentIncome)
+    {
+        [BaseTaskTableViewController setNeedReloadTaskList];
+        [self onViewDidAppearLogic];
+    }
+    
+    _needBindPhone = NO;
+    _needRetry = NO;
+    _needUpdateApp = NO;
+    _needAddCommentIncome = NO;
+}
+
+#pragma mark <RateAppLogicDelegate>
+
+- (void)onRateAppLogicFinished:(RateAppLogic*)logic isRequestSucceed:(BOOL)isSucceed income:(NSInteger)income resultCode:(NSInteger)result msg:(NSString*)msg
+{
+    if (isSucceed && income > 0)
+    {
+        _needAddCommentIncome = YES;
+        NSString* strIncome = [NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:1 ignoreBackZeros:YES];
+        NSString* btnStr = [NSString stringWithFormat:@"领取 %@ 元",strIncome];
+        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价成功" message:@"" delegate:self cancelButtonTitle:btnStr otherButtonTitles:nil] autorelease];
+        [alertView show];
+        
+        [[LoginAndRegister sharedInstance] increaseBalance:income];
+    }
+    else
+    {
+        NSString* msgStr = @"服务器失败";
+        if ([msg length] > 0)
+        {
+            msgStr = msg;
+        }
+        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价失败" message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil] autorelease];
+        [alertView show];
     }
 }
 

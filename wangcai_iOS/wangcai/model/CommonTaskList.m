@@ -9,6 +9,7 @@
 #import "CommonTaskList.h"
 #import "SettingLocalRecords.h"
 #import "Config.h"
+#import "SettingLocalRecords.h"
 
 @interface CommonTaskInfoContext : NSObject
 
@@ -214,7 +215,7 @@ static CommonTaskList* gInstance = nil;
             NSMutableArray* resultTaskList = [NSMutableArray array];
             NSMutableArray* unfinishedTaskList = [NSMutableArray array];
             
-            if (YES)
+            if (NO)
             {
                 //本地测试数据
                 NSArray* localTestTask = [self _buildLocalTestTask];
@@ -255,7 +256,7 @@ static CommonTaskList* gInstance = nil;
                         break;
                     case kTaskTypeInviteFriends:
                         task.taskIsLocalIcon = YES;
-                        //task.taskIconUrl = @"";
+                        task.taskIconUrl = @"qrcode_cell_icon";
                         break;
                     case kTaskTypeEverydaySign:
                         task.taskIsLocalIcon = NO;
@@ -276,7 +277,15 @@ static CommonTaskList* gInstance = nil;
                         break;
                     case kTaskTypeCommetWangcai:
                         task.taskIsLocalIcon = YES;
-                        //task.taskIconUrl = @"";
+                        task.taskIconUrl = @"rate_app_cell_icon";
+                        if ([task.taskStatus intValue] == 10)
+                        {
+                            [SettingLocalRecords setRatedApp:YES];
+                        }
+                        else
+                        {
+                            [SettingLocalRecords setRatedApp:NO];
+                        }
                         break;
                         
                     default:

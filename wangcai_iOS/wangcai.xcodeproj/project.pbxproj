@@ -187,6 +187,11 @@
 		A6FEE28C187D9AB800E5AF3E /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE284187D9AB800E5AF3E /* grayArrow@2x.png */; };
 		A6FEE28D187D9AB800E5AF3E /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE285187D9AB800E5AF3E /* whiteArrow.png */; };
 		A6FEE28E187D9AB800E5AF3E /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE286187D9AB800E5AF3E /* whiteArrow@2x.png */; };
+		F3359E4C1886C0F000C1E636 /* RateAppLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F3359E4B1886C0F000C1E636 /* RateAppLogic.m */; };
+		F3359E4E1886C0FB00C1E636 /* package_icon_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E4D1886C0FB00C1E636 /* package_icon_2@2x.png */; };
+		F3359E511886C11100C1E636 /* qrcode_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */; };
+		F3359E521886C11100C1E636 /* rate_app_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E501886C11100C1E636 /* rate_app_cell_icon@2x.png */; };
+		F3359E571886D2A800C1E636 /* package_icon_1mao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E561886D2A800C1E636 /* package_icon_1mao@2x.png */; };
 		F358E9EF186C1D8600DC3ADA /* UserInfoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */; };
 		F358E9F2186C583A00DC3ADA /* CommonTaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F1186C583A00DC3ADA /* CommonTaskList.m */; };
 		F3604927187016C200FAD1F3 /* NSString+DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604922187016C200FAD1F3 /* NSString+DataParser.m */; };
@@ -791,6 +796,12 @@
 		A6FEE284187D9AB800E5AF3E /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
 		A6FEE285187D9AB800E5AF3E /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		A6FEE286187D9AB800E5AF3E /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		F3359E4A1886C0F000C1E636 /* RateAppLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateAppLogic.h; sourceTree = "<group>"; };
+		F3359E4B1886C0F000C1E636 /* RateAppLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateAppLogic.m; sourceTree = "<group>"; };
+		F3359E4D1886C0FB00C1E636 /* package_icon_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_2@2x.png"; sourceTree = "<group>"; };
+		F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode_cell_icon@2x.png"; sourceTree = "<group>"; };
+		F3359E501886C11100C1E636 /* rate_app_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rate_app_cell_icon@2x.png"; sourceTree = "<group>"; };
+		F3359E561886D2A800C1E636 /* package_icon_1mao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_1mao@2x.png"; sourceTree = "<group>"; };
 		F358E9ED186C1D8600DC3ADA /* UserInfoAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoAPI.h; sourceTree = "<group>"; };
 		F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoAPI.m; sourceTree = "<group>"; };
 		F358E9F0186C583A00DC3ADA /* CommonTaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTaskList.h; sourceTree = "<group>"; };
@@ -1707,6 +1718,8 @@
 		A60C57E6186FF8A30068425C /* CommonIcons */ = {
 			isa = PBXGroup;
 			children = (
+				F3359E561886D2A800C1E636 /* package_icon_1mao@2x.png */,
+				F3359E4D1886C0FB00C1E636 /* package_icon_2@2x.png */,
 				F3DD641F1882D7B400E56A0B /* package_icon_many@2x.png */,
 				F3DD64171882D36500E56A0B /* menu_icon_help@2x.png */,
 				F3DD64181882D36500E56A0B /* testIconSetting@2x.png */,
@@ -1839,6 +1852,8 @@
 		A60C5830186FF8A30068425C /* WCMainPageBoard */ = {
 			isa = PBXGroup;
 			children = (
+				F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */,
+				F3359E501886C11100C1E636 /* rate_app_cell_icon@2x.png */,
 				F3DD64121880251B00E56A0B /* tiyanzhongxin_cell_icon@2x.png */,
 				F3FB92AE187C5AB5001D702E /* qiandao_button_red_dot@2x.png */,
 				F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */,
@@ -2200,6 +2215,8 @@
 				F358E9F1186C583A00DC3ADA /* CommonTaskList.m */,
 				F3813D331877FD7100350C27 /* ChoujiangLogic.h */,
 				F3813D341877FD7100350C27 /* ChoujiangLogic.m */,
+				F3359E4A1886C0F000C1E636 /* RateAppLogic.h */,
+				F3359E4B1886C0F000C1E636 /* RateAppLogic.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3381,6 +3398,7 @@
 				A60C58AA18703AE60068425C /* invite_seg_normal@2x.png in Resources */,
 				A60C5858186FF8A30068425C /* navigation-bar@2x.png in Resources */,
 				A60C585B186FF8A30068425C /* phone_num_border@2x.png in Resources */,
+				F3359E571886D2A800C1E636 /* package_icon_1mao@2x.png in Resources */,
 				A60C5851186FF8A30068425C /* menu-button@2x.png in Resources */,
 				F3813D30187566CC00350C27 /* choujiang_guize@2x.png in Resources */,
 				A60C5849186FF8A30068425C /* border@2x.png in Resources */,
@@ -3466,6 +3484,7 @@
 				A60C5863186FF8A30068425C /* sms_code_border@2x.png in Resources */,
 				F3FB9293187AF5F7001D702E /* user_info_commit_btn@2x.png in Resources */,
 				A60C5882186FF8A30068425C /* user_hobby_selected@2x.png in Resources */,
+				F3359E4E1886C0FB00C1E636 /* package_icon_2@2x.png in Resources */,
 				A60C58AD18703AE60068425C /* invite_seg_select@2x.png in Resources */,
 				F36049AE1871A9AE00FAD1F3 /* menu_icon_chaozhiduihua@2x.png in Resources */,
 				F3F186DC18543A410098C852 /* InfoPlist.strings in Resources */,
@@ -3485,6 +3504,7 @@
 				A60C5840186FF8A30068425C /* BindTipsDuihao.png in Resources */,
 				A60C588A186FF8A30068425C /* head_top_part@2x.png in Resources */,
 				A60C584E186FF8A30068425C /* exchange_btn@2x.png in Resources */,
+				F3359E511886C11100C1E636 /* qrcode_cell_icon@2x.png in Resources */,
 				F3813D1B18753ED400350C27 /* choujiang_shaxuan@2x.png in Resources */,
 				A60C585A186FF8A30068425C /* phone_logo@2x.png in Resources */,
 				A60C583F186FF8A30068425C /* BindAttachphoneBtn.png in Resources */,
@@ -3494,6 +3514,7 @@
 				F3813D1618753ED400350C27 /* choujiang_baojie@2x.png in Resources */,
 				A60C5873186FF8A30068425C /* yue_1@2x.png in Resources */,
 				F3DD641D1882D36500E56A0B /* testIconSetting222@2x.jpg in Resources */,
+				F3359E521886C11100C1E636 /* rate_app_cell_icon@2x.png in Resources */,
 				F3813D2518753ED400350C27 /* choujiang_x2@2x.png in Resources */,
 				A60A438B1872A19B00B5C319 /* DomobOfferWallBundle.bundle in Resources */,
 				A60C585D186FF8A30068425C /* resend_down@2x.png in Resources */,
@@ -3553,6 +3574,7 @@
 				F3F1889218543A430098C852 /* UIView+Metrics.m in Sources */,
 				F3D9D565185D876D00392C40 /* WebViewController.m in Sources */,
 				F3604927187016C200FAD1F3 /* NSString+DataParser.m in Sources */,
+				F3359E4C1886C0F000C1E636 /* RateAppLogic.m in Sources */,
 				F3D9D55C185D876D00392C40 /* MBAlertViewButton.m in Sources */,
 				F3F188FA18543A440098C852 /* BeeUIQuery+CSS.m in Sources */,
 				F3F188E018543A430098C852 /* UILabel+BeeUILayout.m in Sources */,

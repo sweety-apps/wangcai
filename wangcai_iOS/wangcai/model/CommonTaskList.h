@@ -13,9 +13,10 @@
 #define kTaskTypeInviteFriends (3)
 #define kTaskTypeEverydaySign (4)
 #define kTaskTypeOfferWall (5)
+#define kTaskTypeCommetWangcai (6)
 #define kTaskTypeIntallApp (10000)
 #define kTaskTypeCommon (10001)
-#define kTaskTypeCommetWangcai (1007)
+
 
 @class CommonTaskList;
 

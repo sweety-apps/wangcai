@@ -11,8 +11,9 @@
 #import "CommonZhanghuYuETableViewCell.h"
 #import "MJRefresh.h"
 #import "OnlineWallViewController.h"
+#import "RateAppLogic.h"
 
-@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate, UIAlertViewDelegate>
+@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate, UIAlertViewDelegate,RateAppLogicDelegate>
 {
     CommonZhanghuYuETableViewCell* _zhanghuYuEHeaderCell;
     TaskInfoTableViewCell* _infoCell;
@@ -33,6 +34,11 @@
     float _increasedNum;
     
     UIAlertView* _alertBalanceTip;
+    
+    BOOL _needUpdateApp;
+    BOOL _needRetry;
+    BOOL _needBindPhone;
+    BOOL _needAddCommentIncome;
 }
 
 @property (nonatomic,retain) IBOutlet CommonZhanghuYuETableViewCell* zhanghuYuEHeaderCell;

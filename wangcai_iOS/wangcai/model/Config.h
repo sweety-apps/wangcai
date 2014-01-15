@@ -35,6 +35,8 @@
 
 #define HTTP_TASK_OFFERWALL         @"http://getwangcai.com/0/task/offerwall"
 
+#define HTTP_TASK_COMMENT         @"http://getwangcai.com/0/task/comment"
+
 #define HTTP_SERVICE_QUESTION   @"http://service.meme-da.com/index.php/mobile/shouce/list/hc_id/76"
 #define HTTP_SERVICE_CENTER     @"http://service.meme-da.com/index.php/mobile/consulting"
 
