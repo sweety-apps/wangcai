@@ -137,7 +137,10 @@ static LoginAndRegister* _sharedInstance;
     req.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
     [data appendBytes:a length:strlen(a)];
     
-    [req setValidatesSecureCertificate:NO];
+    // 设置https访问证书
+    [req setValidatesSecureCertificate:YES];
+    [req setClientCertificateIdentity: [Common getSecIdentityRef]];
+    //
     
     req.postBody = [[data copy] autorelease];
     

@@ -25,7 +25,7 @@
     BaseTaskTableViewController* _taskTableViewController;
     UIImageView* _headRightBtnImageView;
     
-    //UICustomAlertView* _alertView;
+    UICustomAlertView* _alertView;
 }
 
 @end
