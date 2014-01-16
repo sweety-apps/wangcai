@@ -44,6 +44,7 @@
 #import "Config.h"
 #import "StartupController.h"
 #import "OnlineWallViewController.h"
+#import "JPushlib/APService.h"
 
 #pragma mark -
 
@@ -98,6 +99,28 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication
                         annotation:annotation wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [super application:application didFinishLaunchingWithOptions:launchOptions];
+    
+    
+    [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                   UIRemoteNotificationTypeSound |
+                                                   UIRemoteNotificationTypeAlert)];
+    
+    [APService setupWithOption:launchOptions];
+    
+    return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [APService registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // Required
+    [APService handleRemoteNotification:userInfo];
 }
 
 @end
