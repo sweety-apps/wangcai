@@ -93,7 +93,9 @@
             transition.removedOnCompletion = YES;
             [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:@"transition"];
         
-            [[CommonTaskList sharedInstance] fetchTaskList:self];
+            //任务列表改到登陆协议中去了，已不用单独再拉列表了
+            //[[CommonTaskList sharedInstance] fetchTaskList:self];
+            [self onFinishedFetchTaskList:[CommonTaskList sharedInstance] resultCode:0];
         
             [CATransaction commit];
         }

@@ -111,7 +111,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         UIButton* headLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         headLeftBtn.backgroundColor = [UIColor clearColor];
         headLeftBtn.frame = rectFrame;
-        [headLeftBtn addTarget:self action:@selector(onPressedLeftBackBtn:) forControlEvents:UIControlEventTouchDown];
+        [headLeftBtn addTarget:self action:@selector(onPressedLeftBackBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:headLeftBtnImageView];
         [self.view addSubview:headLeftBtn];

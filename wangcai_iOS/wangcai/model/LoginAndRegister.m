@@ -9,6 +9,7 @@
 #import "LoginAndRegister.h"
 #import "Config.h"
 #import "Common.h"
+#import "CommonTaskList.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -194,6 +195,10 @@ static LoginAndRegister* _sharedInstance;
                 
                 _inviteIncome = [[dict valueForKey:@"shared_income"] intValue];
                 _force_update = [[dict valueForKey:@"force_update"] intValue];
+                
+                NSArray* taskList = [dict objectForKey:@"task_list"];
+                
+                [[CommonTaskList sharedInstance] resetTaskListWithJsonArray:taskList];
 
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
                 

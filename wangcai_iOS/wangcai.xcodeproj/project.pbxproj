@@ -198,6 +198,557 @@
 		F3359E511886C11100C1E636 /* qrcode_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */; };
 		F3359E521886C11100C1E636 /* rate_app_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E501886C11100C1E636 /* rate_app_cell_icon@2x.png */; };
 		F3359E571886D2A800C1E636 /* package_icon_1mao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E561886D2A800C1E636 /* package_icon_1mao@2x.png */; };
+		F3359E6518882F8000C1E636 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F96CDC187A5F290067D785 /* XMLReader.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F3359E6618882F8000C1E636 /* UIView+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1889118543A430098C852 /* UIView+Metrics.m */; };
+		F3359E6718882F8000C1E636 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D550185D876D00392C40 /* WebViewController.m */; };
+		F3359E6818882F8000C1E636 /* NSString+DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604922187016C200FAD1F3 /* NSString+DataParser.m */; };
+		F3359E6918882F8000C1E636 /* RateAppLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F3359E4B1886C0F000C1E636 /* RateAppLogic.m */; };
+		F3359E6A18882F8000C1E636 /* MBAlertViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D541185D876D00392C40 /* MBAlertViewButton.m */; };
+		F3359E6B18882F8000C1E636 /* BeeUIQuery+CSS.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188F918543A440098C852 /* BeeUIQuery+CSS.m */; };
+		F3359E6C18882F8000C1E636 /* UILabel+BeeUILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188DF18543A430098C852 /* UILabel+BeeUILayout.m */; };
+		F3359E6D18882F8000C1E636 /* UIView+Wireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188A618543A430098C852 /* UIView+Wireframe.m */; };
+		F3359E6E18882F8000C1E636 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BD471B187EDFF2009F3673 /* MJRefreshFooterView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F3359E6F18882F8000C1E636 /* UIImageView+UIDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1881618543A430098C852 /* UIImageView+UIDataBinding.m */; };
+		F3359E7018882F8000C1E636 /* Bee_UIAnimationAlpha.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187F518543A420098C852 /* Bee_UIAnimationAlpha.m */; };
+		F3359E7118882F8000C1E636 /* UIView+BeeUITemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1891C18543A440098C852 /* UIView+BeeUITemplate.m */; };
+		F3359E7218882F8000C1E636 /* CommonTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D525185D71AE00392C40 /* CommonTaskTableViewCell.m */; };
+		F3359E7318882F8000C1E636 /* SecondBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F18A0118543A450098C852 /* SecondBoard_iPhone.m */; };
+		F3359E7418882F8000C1E636 /* NSObject+Resource.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189F018543A450098C852 /* NSObject+Resource.mm */; };
+		F3359E7518882F8000C1E636 /* UIView+BeeUISignal.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188CE18543A430098C852 /* UIView+BeeUISignal.m */; };
+		F3359E7618882F8000C1E636 /* Bee_MessageQueue.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1877118543A420098C852 /* Bee_MessageQueue.mm */; };
+		F3359E7718882F8000C1E636 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1870D18543A410098C852 /* ASIFormDataRequest.m */; };
+		F3359E7818882F8000C1E636 /* Bee_UIMatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188B018543A430098C852 /* Bee_UIMatrixView.m */; };
+		F3359E7918882F8000C1E636 /* Bee_UIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1888118543A430098C852 /* Bee_UIWebView.m */; };
+		F3359E7A18882F8000C1E636 /* UIView+Visibility.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188A318543A430098C852 /* UIView+Visibility.m */; };
+		F3359E7B18882F8000C1E636 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BD471D187EDFF2009F3673 /* MJRefreshHeaderView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F3359E7C18882F8000C1E636 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1871018543A410098C852 /* ASIHTTPRequest.m */; };
+		F3359E7D18882F8000C1E636 /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D54D185D876D00392C40 /* TaskController.m */; };
+		F3359E7E18882F8000C1E636 /* InviteBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A9411186D6867001FD600 /* InviteBoard_iPhone.m */; };
+		F3359E7F18882F8000C1E636 /* ThirdBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F18A0418543A450098C852 /* ThirdBoard_iPhone.m */; };
+		F3359E8018882F8000C1E636 /* NSObject+BeeKeychain.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1895A18543A440098C852 /* NSObject+BeeKeychain.mm */; };
+		F3359E8118882F8000C1E636 /* UIImageView+BeeUILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188DC18543A430098C852 /* UIImageView+BeeUILayout.m */; };
+		F3359E8218882F8000C1E636 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1872518543A420098C852 /* FMDatabasePool.m */; };
+		F3359E8318882F8000C1E636 /* Bee_UIToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1887818543A430098C852 /* Bee_UIToolbar.m */; };
+		F3359E8418882F8000C1E636 /* MenuBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189F618543A450098C852 /* MenuBoard_iPhone.m */; };
+		F3359E8518882F8000C1E636 /* SettingLocalRecords.m in Sources */ = {isa = PBXBuildFile; fileRef = F3DD6415188270E500E56A0B /* SettingLocalRecords.m */; };
+		F3359E8618882F8000C1E636 /* Bee_Resource.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189EC18543A450098C852 /* Bee_Resource.mm */; };
+		F3359E8718882F8000C1E636 /* Bee_CacheProtocol.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1894A18543A440098C852 /* Bee_CacheProtocol.mm */; };
+		F3359E8818882F8000C1E636 /* Bee_UITemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1891818543A440098C852 /* Bee_UITemplate.m */; };
+		F3359E8918882F8000C1E636 /* Bee_MVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1876718543A420098C852 /* Bee_MVC.mm */; };
+		F3359E8A18882F8000C1E636 /* UIButton+BeeUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187D918543A420098C852 /* UIButton+BeeUIStyle.m */; };
+		F3359E8B18882F8000C1E636 /* NSDictionary+BeeActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1898118543A440098C852 /* NSDictionary+BeeActiveRecord.m */; };
+		F3359E8C18882F8000C1E636 /* MBHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D539185D876D00392C40 /* MBHUDView.m */; };
+		F3359E8D18882F8000C1E636 /* Bee_UserDefaults.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1895618543A440098C852 /* Bee_UserDefaults.mm */; };
+		F3359E8E18882F8000C1E636 /* WebPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6DE6A186028B700D089C7 /* WebPageController.m */; };
+		F3359E8F18882F8000C1E636 /* Bee_Database.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1896D18543A440098C852 /* Bee_Database.mm */; };
+		F3359E9018882F8000C1E636 /* Bee_Controller.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1876B18543A420098C852 /* Bee_Controller.mm */; };
+		F3359E9118882F8000C1E636 /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1874D18543A420098C852 /* CXMLElement_CreationExtensions.m */; };
+		F3359E9218882F8000C1E636 /* UIView+Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1889A18543A430098C852 /* UIView+Tag.m */; };
+		F3359E9318882F8000C1E636 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1872818543A420098C852 /* FMDatabaseQueue.m */; };
+		F3359E9418882F8000C1E636 /* Bee_ActiveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1896418543A440098C852 /* Bee_ActiveObject.m */; };
+		F3359E9518882F8000C1E636 /* BeeUIQuery+Traversing.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1891118543A440098C852 /* BeeUIQuery+Traversing.m */; };
+		F3359E9618882F8000C1E636 /* Bee_MemoryCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1895318543A440098C852 /* Bee_MemoryCache.mm */; };
+		F3359E9718882F8000C1E636 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1873318543A420098C852 /* OpenUDID.m */; };
+		F3359E9818882F8000C1E636 /* CommonZhanghuYuETableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D6CF18681CAD00392C40 /* CommonZhanghuYuETableViewCell.m */; };
+		F3359E9918882F8000C1E636 /* Bee_View.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1878F18543A420098C852 /* Bee_View.mm */; };
+		F3359E9A18882F8000C1E636 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F186EB18543A410098C852 /* AppDelegate.m */; };
+		F3359E9B18882F8000C1E636 /* NSNumber+BeeExtension.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189BC18543A450098C852 /* NSNumber+BeeExtension.mm */; };
+		F3359E9C18882F8000C1E636 /* NSArray+BeeExtension.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189AD18543A440098C852 /* NSArray+BeeExtension.mm */; };
+		F3359E9D18882F8000C1E636 /* UIViewController+Traversing.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187C818543A420098C852 /* UIViewController+Traversing.m */; };
+		F3359E9E18882F8000C1E636 /* Bee_UIAnimationZoom.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1880118543A430098C852 /* Bee_UIAnimationZoom.m */; };
+		F3359E9F18882F8000C1E636 /* UIScrollView+BeeUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187E518543A420098C852 /* UIScrollView+BeeUIStyle.m */; };
+		F3359EA018882F8000C1E636 /* BeeUIBoard+Popover.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187B018543A420098C852 /* BeeUIBoard+Popover.m */; };
+		F3359EA118882F8000C1E636 /* BeeUIQuery+Miscellaneous.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1890818543A440098C852 /* BeeUIQuery+Miscellaneous.m */; };
+		F3359EA218882F8000C1E636 /* UIView+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1880818543A430098C852 /* UIView+Transition.m */; };
+		F3359EA318882F8000C1E636 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1874A18543A420098C852 /* CXMLElement.m */; };
+		F3359EA418882F8000C1E636 /* MBSpinningCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D545185D876D00392C40 /* MBSpinningCircle.m */; };
+		F3359EA518882F8000C1E636 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A701861899500223772 /* ExchangeController.m */; };
+		F3359EA618882F8000C1E636 /* Bee_UIActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1883318543A430098C852 /* Bee_UIActivityIndicatorView.m */; };
+		F3359EA718882F8000C1E636 /* Bee_ActiveBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1896118543A440098C852 /* Bee_ActiveBuilder.m */; };
+		F3359EA818882F8000C1E636 /* Bee_MYSQL.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1897418543A440098C852 /* Bee_MYSQL.m */; };
+		F3359EA918882F8000C1E636 /* CXHTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1873E18543A420098C852 /* CXHTMLDocument.m */; };
+		F3359EAA18882F8000C1E636 /* Bee_UIVideoEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1887B18543A430098C852 /* Bee_UIVideoEditorController.m */; };
+		F3359EAB18882F8000C1E636 /* Bee_UISearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1886018543A430098C852 /* Bee_UISearchBar.m */; };
+		F3359EAC18882F8000C1E636 /* Bee_SQLITE.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1897718543A440098C852 /* Bee_SQLITE.m */; };
+		F3359EAD18882F8000C1E636 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1874418543A420098C852 /* CXMLDocument_CreationExtensions.m */; };
+		F3359EAE18882F8000C1E636 /* Bee_HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189DE18543A450098C852 /* Bee_HTTPRequest.m */; };
+		F3359EAF18882F8000C1E636 /* Bee_UIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1884218543A430098C852 /* Bee_UIImageView.m */; };
+		F3359EB018882F8000C1E636 /* Bee_UITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1887518543A430098C852 /* Bee_UITextView.m */; };
+		F3359EB118882F8000C1E636 /* InviterUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = A60C58B218703B030068425C /* InviterUpdate.m */; };
+		F3359EB218882F8000C1E636 /* UIImageView+BeeUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187DF18543A420098C852 /* UIImageView+BeeUIStyle.m */; };
+		F3359EB318882F8000C1E636 /* Bee_UIPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1885718543A430098C852 /* Bee_UIPickerView.m */; };
+		F3359EB418882F8000C1E636 /* BeeMessage+BeeJSON.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1877E18543A420098C852 /* BeeMessage+BeeJSON.mm */; };
+		F3359EB518882F8000C1E636 /* Bee_UIActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1882D18543A430098C852 /* Bee_UIActionSheet.m */; };
+		F3359EB618882F8000C1E636 /* BeeUIBoard+ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187AD18543A420098C852 /* BeeUIBoard+ModalView.m */; };
+		F3359EB718882F8000C1E636 /* Bee_Model.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1878B18543A420098C852 /* Bee_Model.mm */; };
+		F3359EB818882F8000C1E636 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1870018543A410098C852 /* ASIAuthenticationDialog.m */; };
+		F3359EB918882F8000C1E636 /* UIView+HoldGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1888818543A430098C852 /* UIView+HoldGesture.m */; };
+		F3359EBA18882F8000C1E636 /* BeeMessage+BeeActiveRecord.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1877B18543A420098C852 /* BeeMessage+BeeActiveRecord.mm */; };
+		F3359EBB18882F8000C1E636 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1873B18543A420098C852 /* CTidy.m */; };
+		F3359EBC18882F8000C1E636 /* Bee_UIImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1883F18543A430098C852 /* Bee_UIImagePickerController.m */; };
+		F3359EBD18882F8000C1E636 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FA00F0186AC068008302F0 /* SettingViewController.m */; };
+		F3359EBE18882F8000C1E636 /* Bee_Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1897018543A440098C852 /* Bee_Storage.m */; };
+		F3359EBF18882F8000C1E636 /* Bee_UIRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1879D18543A420098C852 /* Bee_UIRouter.m */; };
+		F3359EC018882F8000C1E636 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1872F18543A420098C852 /* JSONKit.m */; };
+		F3359EC118882F8000C1E636 /* AppBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189F318543A450098C852 /* AppBoard_iPhone.m */; };
+		F3359EC218882F8000C1E636 /* UITextView+UIDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1881F18543A430098C852 /* UITextView+UIDataBinding.m */; };
+		F3359EC318882F8000C1E636 /* NSBundle+BeeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189B018543A440098C852 /* NSBundle+BeeExtension.m */; };
+		F3359EC418882F8000C1E636 /* Bee_UIDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1883C18543A430098C852 /* Bee_UIDatePicker.m */; };
+		F3359EC518882F8000C1E636 /* BeeMessage+BeeNetwork.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1878118543A420098C852 /* BeeMessage+BeeNetwork.mm */; };
+		F3359EC618882F8000C1E636 /* UIView+Traversing.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188A018543A430098C852 /* UIView+Traversing.m */; };
+		F3359EC718882F8000C1E636 /* UITextField+BeeUILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188E518543A430098C852 /* UITextField+BeeUILayout.m */; };
+		F3359EC818882F8000C1E636 /* Bee_UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1887E18543A430098C852 /* Bee_UIView.m */; };
+		F3359EC918882F8000C1E636 /* Bee_UITemplateAndroid.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1892318543A440098C852 /* Bee_UITemplateAndroid.m */; };
+		F3359ECA18882F8000C1E636 /* BeeUIBoard+BackwardCompatible.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187A418543A420098C852 /* BeeUIBoard+BackwardCompatible.m */; };
+		F3359ECB18882F8000C1E636 /* BeeUIBoard+ModalBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187A718543A420098C852 /* BeeUIBoard+ModalBoard.m */; };
+		F3359ECC18882F8000C1E636 /* UIViewController+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1880B18543A430098C852 /* UIViewController+Transition.m */; };
+		F3359ECD18882F8000C1E636 /* Bee_UIAccelerometer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1882A18543A430098C852 /* Bee_UIAccelerometer.m */; };
+		F3359ECE18882F8000C1E636 /* Bee_ActiveProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1896718543A440098C852 /* Bee_ActiveProtocol.m */; };
+		F3359ECF18882F8000C1E636 /* UILabel+BeeUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187E218543A420098C852 /* UILabel+BeeUIStyle.m */; };
+		F3359ED018882F8000C1E636 /* WCMainPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F18A23185472A90098C852 /* WCMainPageBoard_iPhone.m */; };
+		F3359ED118882F8000C1E636 /* UserInfoEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D6AD1865791600392C40 /* UserInfoEditorViewController.m */; };
+		F3359ED218882F8000C1E636 /* UIViewController+BeeUITemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1891F18543A440098C852 /* UIViewController+BeeUITemplate.m */; };
+		F3359ED318882F8000C1E636 /* CommonTaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F1186C583A00DC3ADA /* CommonTaskList.m */; };
+		F3359ED418882F8000C1E636 /* UIView+BeeUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187EE18543A420098C852 /* UIView+BeeUIStyle.m */; };
+		F3359ED518882F8000C1E636 /* Bee_UIAnimationBounce.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187F818543A420098C852 /* Bee_UIAnimationBounce.m */; };
+		F3359ED618882F8000C1E636 /* IZValueSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D6BB1865982700392C40 /* IZValueSelectorView.m */; };
+		F3359ED718882F8000C1E636 /* Bee_UITipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188B618543A430098C852 /* Bee_UITipsView.m */; };
+		F3359ED818882F8000C1E636 /* CXMLElement_ElementTreeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1875018543A420098C852 /* CXMLElement_ElementTreeExtensions.m */; };
+		F3359ED918882F8000C1E636 /* Bee_HTTPRequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189E118543A450098C852 /* Bee_HTTPRequestQueue.m */; };
+		F3359EDA18882F8000C1E636 /* UIActivityIndicatorView+BeeUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187D618543A420098C852 /* UIActivityIndicatorView+BeeUIStyle.m */; };
+		F3359EDB18882F8000C1E636 /* NSObject+BeeTimer.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189CB18543A450098C852 /* NSObject+BeeTimer.mm */; };
+		F3359EDC18882F8000C1E636 /* CXMLNamespaceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1875318543A420098C852 /* CXMLNamespaceNode.m */; };
+		F3359EDD18882F8000C1E636 /* Bee_UITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1887218543A430098C852 /* Bee_UITextField.m */; };
+		F3359EDE18882F8000C1E636 /* UIScrollView+BeeUILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188E218543A430098C852 /* UIScrollView+BeeUILayout.m */; };
+		F3359EDF18882F8000C1E636 /* Bee_UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1886F18543A430098C852 /* Bee_UITableView.m */; };
+		F3359EE018882F8000C1E636 /* NSArray+BeeActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1897E18543A440098C852 /* NSArray+BeeActiveRecord.m */; };
+		F3359EE118882F8000C1E636 /* NSObject+BeeUserDefaults.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1895D18543A440098C852 /* NSObject+BeeUserDefaults.mm */; };
+		F3359EE218882F8000C1E636 /* BusionessPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */; };
+		F3359EE318882F8000C1E636 /* BeeUIQuery+AJAX.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188F618543A440098C852 /* BeeUIQuery+AJAX.m */; };
+		F3359EE418882F8000C1E636 /* LoginAndRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D56B185D878800392C40 /* LoginAndRegister.m */; };
+		F3359EE518882F8000C1E636 /* UIView+BeeUICell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188C018543A430098C852 /* UIView+BeeUICell.m */; };
+		F3359EE618882F8000C1E636 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1875F18543A420098C852 /* CXMLNode_XPathExtensions.m */; };
+		F3359EE718882F8000C1E636 /* UIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1880518543A430098C852 /* UIView+Animation.m */; };
+		F3359EE818882F8000C1E636 /* ExtractMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D529185D876D00392C40 /* ExtractMoneyController.m */; };
+		F3359EE918882F8000C1E636 /* Bee_Foundation.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1898E18543A440098C852 /* Bee_Foundation.mm */; };
+		F3359EEA18882F8000C1E636 /* Bee_UITemplateHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1892618543A440098C852 /* Bee_UITemplateHTML.m */; };
+		F3359EEB18882F8000C1E636 /* Bee_UIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187D218543A420098C852 /* Bee_UIStyle.m */; };
+		F3359EEC18882F8000C1E636 /* UIViewController+UINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187CE18543A420098C852 /* UIViewController+UINavigationController.m */; };
+		F3359EED18882F8000C1E636 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66E3A6C1888183E00EB19DE /* Encryption.m */; };
+		F3359EEE18882F8000C1E636 /* UIViewController+LifeCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187BF18543A420098C852 /* UIViewController+LifeCycle.m */; };
+		F3359EEF18882F8000C1E636 /* NSObject+BeeNotification.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189C218543A450098C852 /* NSObject+BeeNotification.mm */; };
+		F3359EF018882F8000C1E636 /* MBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D537185D876D00392C40 /* MBAlertView.m */; };
+		F3359EF118882F8000C1E636 /* Bee_Message.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1876E18543A420098C852 /* Bee_Message.mm */; };
+		F3359EF218882F8000C1E636 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1875C18543A420098C852 /* CXMLNode_PrivateExtensions.m */; };
+		F3359EF318882F8000C1E636 /* BeeDatabase+BeeActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1897B18543A440098C852 /* BeeDatabase+BeeActiveRecord.m */; };
+		F3359EF418882F8000C1E636 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BD4717187EDFF2009F3673 /* MJRefreshBaseView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F3359EF518882F8000C1E636 /* OnlineWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65A728A1872A7CE006B08FB /* OnlineWallViewController.m */; };
+		F3359EF618882F8000C1E636 /* UIViewController+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187C218543A420098C852 /* UIViewController+Metrics.m */; };
+		F3359EF718882F8000C1E636 /* UITextView+BeeUILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188E818543A430098C852 /* UITextView+BeeUILayout.m */; };
+		F3359EF818882F8000C1E636 /* UIView+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D535185D876D00392C40 /* UIView+Animations.m */; };
+		F3359EF918882F8000C1E636 /* UIImage+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1893318543A440098C852 /* UIImage+Theme.m */; };
+		F3359EFA18882F8000C1E636 /* NSDate+BeeExtension.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189B618543A440098C852 /* NSDate+BeeExtension.mm */; };
+		F3359EFB18882F8000C1E636 /* BeeUIQuery+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1890518543A440098C852 /* BeeUIQuery+Manipulation.m */; };
+		F3359EFC18882F8000C1E636 /* Bee_UICollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1879318543A420098C852 /* Bee_UICollection.m */; };
+		F3359EFD18882F8000C1E636 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1874718543A420098C852 /* CXMLDocument_PrivateExtensions.m */; };
+		F3359EFE18882F8000C1E636 /* UIView+UIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187BC18543A420098C852 /* UIView+UIViewController.m */; };
+		F3359EFF18882F8000C1E636 /* Bee_UISignalBus.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188C718543A430098C852 /* Bee_UISignalBus.m */; };
+		F3359F0018882F8000C1E636 /* UILabel+UIDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1881918543A430098C852 /* UILabel+UIDataBinding.m */; };
+		F3359F0118882F8000C1E636 /* Bee_Ticker.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189A618543A440098C852 /* Bee_Ticker.mm */; };
+		F3359F0218882F8000C1E636 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1871818543A410098C852 /* ASINetworkQueue.m */; };
+		F3359F0318882F8000C1E636 /* NSObject+BeeTypeConversion.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189CE18543A450098C852 /* NSObject+BeeTypeConversion.mm */; };
+		F3359F0418882F8000C1E636 /* Bee_Routine.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1877418543A420098C852 /* Bee_Routine.mm */; };
+		F3359F0518882F8000C1E636 /* Bee_UIQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188F218543A440098C852 /* Bee_UIQuery.m */; };
+		F3359F0618882F8000C1E636 /* UIView+TapGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1889D18543A430098C852 /* UIView+TapGesture.m */; };
+		F3359F0718882F8000C1E636 /* Bee_UIZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188B918543A430098C852 /* Bee_UIZoomView.m */; };
+		F3359F0818882F8000C1E636 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1870A18543A410098C852 /* ASIDownloadCache.m */; };
+		F3359F0918882F8000C1E636 /* Bee_Thread.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189A318543A440098C852 /* Bee_Thread.mm */; };
+		F3359F0A18882F8000C1E636 /* UtilityFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604926187016C200FAD1F3 /* UtilityFunctions.m */; };
+		F3359F0B18882F8000C1E636 /* Bee.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1893A18543A440098C852 /* Bee.mm */; };
+		F3359F0C18882F8000C1E636 /* Bee_Skeleton.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1893718543A440098C852 /* Bee_Skeleton.m */; };
+		F3359F0D18882F8000C1E636 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1871518543A410098C852 /* ASIInputStream.m */; };
+		F3359F0E18882F8000C1E636 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1872B18543A420098C852 /* FMResultSet.m */; };
+		F3359F0F18882F8000C1E636 /* Bee_UIKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1884518543A430098C852 /* Bee_UIKeyboard.m */; };
+		F3359F1018882F8000C1E636 /* UIControl+BeeUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187DC18543A420098C852 /* UIControl+BeeUIStyle.m */; };
+		F3359F1118882F8000C1E636 /* UIView+Manipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1888E18543A430098C852 /* UIView+Manipulation.m */; };
+		F3359F1218882F8000C1E636 /* Bee_UISignal.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188C418543A430098C852 /* Bee_UISignal.m */; };
+		F3359F1318882F8000C1E636 /* UIViewController+BeeUISignal.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188D118543A430098C852 /* UIViewController+BeeUISignal.m */; };
+		F3359F1418882F8000C1E636 /* Bee_UIStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187A018543A420098C852 /* Bee_UIStack.m */; };
+		F3359F1518882F8000C1E636 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1870418543A410098C852 /* ASIDataCompressor.m */; };
+		F3359F1618882F8000C1E636 /* Bee_UIPullLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188B318543A430098C852 /* Bee_UIPullLoader.m */; };
+		F3359F1718882F8000C1E636 /* ChoujiangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F36049B61871B0C500FAD1F3 /* ChoujiangViewController.m */; };
+		F3359F1818882F8000C1E636 /* Bee_UIAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187F218543A420098C852 /* Bee_UIAnimation.m */; };
+		F3359F1918882F8000C1E636 /* NSString+BeeExtension.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189D118543A450098C852 /* NSString+BeeExtension.mm */; };
+		F3359F1A18882F8000C1E636 /* Bee_Assertion.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1898B18543A440098C852 /* Bee_Assertion.mm */; };
+		F3359F1B18882F8000C1E636 /* BeeUISignal+BeeUICell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188BD18543A430098C852 /* BeeUISignal+BeeUICell.m */; };
+		F3359F1C18882F8000C1E636 /* BeeUIBoard+Traversing.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187B318543A420098C852 /* BeeUIBoard+Traversing.m */; };
+		F3359F1D18882F8000C1E636 /* TransferToAlipayAndPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */; };
+		F3359F1E18882F8000C1E636 /* BeeMessage+BackwardCompatible.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1877818543A420098C852 /* BeeMessage+BackwardCompatible.mm */; };
+		F3359F1F18882F8000C1E636 /* Bee_Singleton.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1899D18543A440098C852 /* Bee_Singleton.mm */; };
+		F3359F2018882F8000C1E636 /* NSObject+BeeMessage.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1878718543A420098C852 /* NSObject+BeeMessage.mm */; };
+		F3359F2118882F8000C1E636 /* NSString+Trim.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D531185D876D00392C40 /* NSString+Trim.m */; };
+		F3359F2218882F8000C1E636 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F186DD18543A410098C852 /* main.m */; };
+		F3359F2318882F8000C1E636 /* UITextField+BeeUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187E818543A420098C852 /* UITextField+BeeUIStyle.m */; };
+		F3359F2418882F8000C1E636 /* Bee_UILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188D518543A430098C852 /* Bee_UILayout.m */; };
+		F3359F2518882F8000C1E636 /* UIColor+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1892D18543A440098C852 /* UIColor+Theme.m */; };
+		F3359F2618882F8000C1E636 /* Bee_UILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1884818543A430098C852 /* Bee_UILabel.m */; };
+		F3359F2718882F8000C1E636 /* Bee_ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1896A18543A440098C852 /* Bee_ActiveRecord.m */; };
+		F3359F2818882F8000C1E636 /* Bee_UISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1886918543A430098C852 /* Bee_UISwitch.m */; };
+		F3359F2918882F8000C1E636 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A60C876E1865949700F6889C /* HttpRequest.m */; };
+		F3359F2A18882F8000C1E636 /* Bee_Keychain.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1895018543A440098C852 /* Bee_Keychain.mm */; };
+		F3359F2B18882F8000C1E636 /* UITextField+UIDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1881C18543A430098C852 /* UITextField+UIDataBinding.m */; };
+		F3359F2C18882F8000C1E636 /* Bee_UIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1883618543A430098C852 /* Bee_UIAlertView.m */; };
+		F3359F2D18882F8000C1E636 /* NSObject+BeeTicker.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189C818543A450098C852 /* NSObject+BeeTicker.mm */; };
+		F3359F2E18882F8000C1E636 /* Bee_UINavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1884E18543A430098C852 /* Bee_UINavigationBar.m */; };
+		F3359F2F18882F8000C1E636 /* Bee_UICell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188AD18543A430098C852 /* Bee_UICell.m */; };
+		F3359F3018882F8000C1E636 /* PhoneValidationBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A9414186DB268001FD600 /* PhoneValidationBoard_iPhone.m */; };
+		F3359F3118882F8000C1E636 /* BeeUIStack+BackwardCompatible.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187B618543A420098C852 /* BeeUIStack+BackwardCompatible.m */; };
+		F3359F3218882F8000C1E636 /* Bee_UIPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1885418543A430098C852 /* Bee_UIPageViewController.m */; };
+		F3359F3318882F8000C1E636 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1871F18543A420098C852 /* FMDatabase.m */; };
+		F3359F3418882F8000C1E636 /* UIViewController+Title.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187C518543A420098C852 /* UIViewController+Title.m */; };
+		F3359F3518882F8000C1E636 /* Bee_UITabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1886C18543A430098C852 /* Bee_UITabBar.m */; };
+		F3359F3618882F8000C1E636 /* UIFont+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D533185D876D00392C40 /* UIFont+Alert.m */; };
+		F3359F3718882F8000C1E636 /* BeeUIQuery+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1890E18543A440098C852 /* BeeUIQuery+Transform.m */; };
+		F3359F3818882F8000C1E636 /* UIView+BeeUILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188EB18543A440098C852 /* UIView+BeeUILayout.m */; };
+		F3359F3918882F8000C1E636 /* Bee_Performance.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1899418543A440098C852 /* Bee_Performance.mm */; };
+		F3359F3A18882F8000C1E636 /* UIView+Background.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1888518543A430098C852 /* UIView+Background.m */; };
+		F3359F3B18882F8000C1E636 /* Bee_UITemplateXML.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1892918543A440098C852 /* Bee_UITemplateXML.m */; };
+		F3359F3C18882F8000C1E636 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1870718543A410098C852 /* ASIDataDecompressor.m */; };
+		F3359F3D18882F8000C1E636 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FEE27C187D971C00E5AF3E /* EGORefreshTableHeaderView.m */; };
+		F3359F3E18882F8000C1E636 /* Bee_UISegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1886318543A430098C852 /* Bee_UISegmentedControl.m */; };
+		F3359F3F18882F8000C1E636 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D568185D878800392C40 /* Common.m */; };
+		F3359F4018882F8000C1E636 /* BeeUIQuery+Events.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1890218543A440098C852 /* BeeUIQuery+Events.m */; };
+		F3359F4118882F8000C1E636 /* UIFont+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1893018543A440098C852 /* UIFont+Theme.m */; };
+		F3359F4218882F8000C1E636 /* NSData+BeeExtension.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189B318543A440098C852 /* NSData+BeeExtension.mm */; };
+		F3359F4318882F8000C1E636 /* InviteController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D52C185D876D00392C40 /* InviteController.m */; };
+		F3359F4418882F8000C1E636 /* BeeUISignal+SourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188CB18543A430098C852 /* BeeUISignal+SourceView.m */; };
+		F3359F4518882F8000C1E636 /* Bee_UIAnimationFade.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187FB18543A420098C852 /* Bee_UIAnimationFade.m */; };
+		F3359F4618882F8000C1E636 /* Bee_UIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1885D18543A430098C852 /* Bee_UIScrollView.m */; };
+		F3359F4718882F8000C1E636 /* StartupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63AC91E186C565B00A106A0 /* StartupController.m */; };
+		F3359F4818882F8000C1E636 /* AppBoard_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189FB18543A450098C852 /* AppBoard_iPad.m */; };
+		F3359F4918882F8000C1E636 /* BeeMessage+BeeXML.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1878418543A420098C852 /* BeeMessage+BeeXML.mm */; };
+		F3359F4A18882F8000C1E636 /* MBAlertViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D53C185D876D00392C40 /* MBAlertViewItem.m */; };
+		F3359F4B18882F8000C1E636 /* NSObject+BeeJSON.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189BF18543A450098C852 /* NSObject+BeeJSON.mm */; };
+		F3359F4C18882F8000C1E636 /* UITextView+BeeUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187EB18543A420098C852 /* UITextView+BeeUIStyle.m */; };
+		F3359F4D18882F8000C1E636 /* BaseTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834CB185C1E31003095D5 /* BaseTaskTableViewController.m */; };
+		F3359F4E18882F8000C1E636 /* BeeUIQuery+Dimensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188FC18543A440098C852 /* BeeUIQuery+Dimensions.m */; };
+		F3359F4F18882F8000C1E636 /* ServiceBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A62A940E186D6400001FD600 /* ServiceBoard_iPhone.m */; };
+		F3359F5018882F8000C1E636 /* NSString+FloatFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604924187016C200FAD1F3 /* NSString+FloatFormat.m */; };
+		F3359F5118882F8000C1E636 /* Bee_UIDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1880F18543A430098C852 /* Bee_UIDataBinding.m */; };
+		F3359F5218882F8000C1E636 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BD4719187EDFF2009F3673 /* MJRefreshConst.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F3359F5318882F8000C1E636 /* Bee_UIMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1879618543A420098C852 /* Bee_UIMetrics.m */; };
+		F3359F5418882F8000C1E636 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1873718543A420098C852 /* Reachability.m */; };
+		F3359F5518882F8000C1E636 /* TabController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D54A185D876D00392C40 /* TabController.m */; };
+		F3359F5618882F8000C1E636 /* Bee_HTTPMockServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189DB18543A450098C852 /* Bee_HTTPMockServer.m */; };
+		F3359F5718882F8000C1E636 /* Bee_Cache.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1894718543A440098C852 /* Bee_Cache.mm */; };
+		F3359F5818882F8000C1E636 /* ChoujiangLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F3813D341877FD7100350C27 /* ChoujiangLogic.m */; };
+		F3359F5918882F8000C1E636 /* TaskInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834D0185C2172003095D5 /* TaskInfoTableViewCell.m */; };
+		F3359F5A18882F8000C1E636 /* Bee_UIPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1885118543A430098C852 /* Bee_UIPageControl.m */; };
+		F3359F5B18882F8000C1E636 /* NSObject+BeeHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189E818543A450098C852 /* NSObject+BeeHTTPRequest.m */; };
+		F3359F5C18882F8000C1E636 /* NSObject+BeeProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189C518543A450098C852 /* NSObject+BeeProperty.mm */; };
+		F3359F5D18882F8000C1E636 /* UIView+PanGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1889418543A430098C852 /* UIView+PanGesture.m */; };
+		F3359F5E18882F8000C1E636 /* Bee_Service.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1893F18543A440098C852 /* Bee_Service.m */; };
+		F3359F5F18882F8000C1E636 /* UIViewController+UINavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187CB18543A420098C852 /* UIViewController+UINavigationBar.m */; };
+		F3359F6018882F8000C1E636 /* NSObject+BeeActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1898418543A440098C852 /* NSObject+BeeActiveRecord.m */; };
+		F3359F6118882F8000C1E636 /* UIView+UINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187B918543A420098C852 /* UIView+UINavigationController.m */; };
+		F3359F6218882F8000C1E636 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1872218543A420098C852 /* FMDatabaseAdditions.m */; };
+		F3359F6318882F8000C1E636 /* UIView+LifeCycle.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1888B18543A430098C852 /* UIView+LifeCycle.m */; };
+		F3359F6418882F8000C1E636 /* Bee_SystemInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189A018543A440098C852 /* Bee_SystemInfo.mm */; };
+		F3359F6518882F8000C1E636 /* UIViewController+BeeUILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188EE18543A440098C852 /* UIViewController+BeeUILayout.m */; };
+		F3359F6618882F8000C1E636 /* Bee_UICameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188AA18543A430098C852 /* Bee_UICameraView.m */; };
+		F3359F6718882F8000C1E636 /* PhoneValidationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D547185D876D00392C40 /* PhoneValidationController.m */; };
+		F3359F6818882F8000C1E636 /* Bee_HTTPConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189D818543A450098C852 /* Bee_HTTPConfig.m */; };
+		F3359F6918882F8000C1E636 /* FirstBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189FE18543A450098C852 /* FirstBoard_iPhone.m */; };
+		F3359F6A18882F8000C1E636 /* PhoneValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D56D185D878800392C40 /* PhoneValidation.m */; };
+		F3359F6B18882F8000C1E636 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1875918543A420098C852 /* CXMLNode_CreationExtensions.m */; };
+		F3359F6C18882F8000C1E636 /* Bee_FileCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1894D18543A440098C852 /* Bee_FileCache.mm */; };
+		F3359F6D18882F8000C1E636 /* Bee_UIProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1885A18543A430098C852 /* Bee_UIProgressView.m */; };
+		F3359F6E18882F8000C1E636 /* Bee_UIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1883918543A430098C852 /* Bee_UIButton.m */; };
+		F3359F6F18882F8000C1E636 /* Bee_UISlider.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1886618543A430098C852 /* Bee_UISlider.m */; };
+		F3359F7018882F8000C1E636 /* UIView+BeeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1882718543A430098C852 /* UIView+BeeExtension.m */; };
+		F3359F7118882F8000C1E636 /* Bee_Log.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1899118543A440098C852 /* Bee_Log.mm */; };
+		F3359F7218882F8000C1E636 /* Bee_UIAnimationStyling.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187FE18543A430098C852 /* Bee_UIAnimationStyling.m */; };
+		F3359F7318882F8000C1E636 /* Bee_Sandbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1899A18543A440098C852 /* Bee_Sandbox.mm */; };
+		F3359F7418882F8000C1E636 /* BeeUIQuery+Offset.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1890B18543A440098C852 /* BeeUIQuery+Offset.m */; };
+		F3359F7518882F8000C1E636 /* Bee_UIActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1883018543A430098C852 /* Bee_UIActivity.m */; };
+		F3359F7618882F8000C1E636 /* Bee_Runtime.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1899718543A440098C852 /* Bee_Runtime.mm */; };
+		F3359F7718882F8000C1E636 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1874118543A420098C852 /* CXMLDocument.m */; };
+		F3359F7818882F8000C1E636 /* NSObject+BeeDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1898718543A440098C852 /* NSObject+BeeDatabase.m */; };
+		F3359F7918882F8000C1E636 /* ExchangeControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FD8A7E1861C36700223772 /* ExchangeControllerCell.m */; };
+		F3359F7A18882F8000C1E636 /* Bee_UIBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1879A18543A420098C852 /* Bee_UIBoard.m */; };
+		F3359F7B18882F8000C1E636 /* Bee_UIMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1884B18543A430098C852 /* Bee_UIMenuController.m */; };
+		F3359F7C18882F8000C1E636 /* UserInfoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */; };
+		F3359F7D18882F8000C1E636 /* Bee_UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189A918543A440098C852 /* Bee_UnitTest.m */; };
+		F3359F7E18882F8000C1E636 /* NSDictionary+BeeExtension.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189B918543A450098C852 /* NSDictionary+BeeExtension.mm */; };
+		F3359F7F18882F8000C1E636 /* UIView+SwipeGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1889718543A430098C852 /* UIView+SwipeGesture.m */; };
+		F3359F8018882F8000C1E636 /* BeeUIQuery+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188FF18543A440098C852 /* BeeUIQuery+Effects.m */; };
+		F3359F8118882F8000C1E636 /* NSTimer+BeeExtension.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F189D418543A450098C852 /* NSTimer+BeeExtension.mm */; };
+		F3359F8218882F8000C1E636 /* Bee_Network.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189E418543A450098C852 /* Bee_Network.m */; };
+		F3359F8318882F8000C1E636 /* BeeUIBoard+ModalStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F187AA18543A420098C852 /* BeeUIBoard+ModalStack.m */; };
+		F3359F8418882F8000C1E636 /* BeeUIQuery+Value.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1891418543A440098C852 /* BeeUIQuery+Value.m */; };
+		F3359F8518882F8000C1E636 /* UIButton+UIDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1881318543A430098C852 /* UIButton+UIDataBinding.m */; };
+		F3359F8618882F8000C1E636 /* UICustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D591C7187C0FD4004DF4E0 /* UICustomAlertView.m */; };
+		F3359F8718882F8000C1E636 /* UINavigationBar+BeeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1882418543A430098C852 /* UINavigationBar+BeeExtension.m */; };
+		F3359F8818882F8000C1E636 /* CommonYuENumView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D834AE185B517B003095D5 /* CommonYuENumView.m */; };
+		F3359F8918882F8000C1E636 /* UIButton+BeeUILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F188D918543A430098C852 /* UIButton+BeeUILayout.m */; };
+		F3359F8A18882F8000C1E636 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1875618543A420098C852 /* CXMLNode.m */; };
+		F3359F8B18882F8000C1E636 /* MBCheckMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D543185D876D00392C40 /* MBCheckMarkView.m */; };
+		F3359F8D18882F8000C1E636 /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66E3A691887FD2000EB19DE /* libPushSDK.a */; };
+		F3359F8E18882F8000C1E636 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186BF18543A410098C852 /* UIKit.framework */; };
+		F3359F8F18882F8000C1E636 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C118543A410098C852 /* Foundation.framework */; };
+		F3359F9018882F8000C1E636 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C318543A410098C852 /* CoreGraphics.framework */; };
+		F3359F9118882F8000C1E636 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186D518543A410098C852 /* SystemConfiguration.framework */; };
+		F3359F9218882F8000C1E636 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F4185D892600392C40 /* CoreTelephony.framework */; };
+		F3359F9318882F8000C1E636 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66E3A651887FA7600EB19DE /* CoreFoundation.framework */; };
+		F3359F9418882F8000C1E636 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C718543A410098C852 /* CFNetwork.framework */; };
+		F3359F9518882F8000C1E636 /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F8BC6D1883CCE2000E5E55 /* libYouMi.a */; };
+		F3359F9618882F8000C1E636 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438A1872A19B00B5C319 /* libDomobOfferWallSDK.a */; };
+		F3359F9718882F8000C1E636 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A62C5F53187697E300172334 /* libMobClickLibrary.a */; };
+		F3359F9818882F8000C1E636 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F3359F9918882F8000C1E636 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438D1872A1BB00B5C319 /* libsqlite3.dylib */; };
+		F3359F9A18882F8000C1E636 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186D118543A410098C852 /* QuartzCore.framework */; };
+		F3359F9B18882F8000C1E636 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A43911872A1E400B5C319 /* CoreLocation.framework */; };
+		F3359F9C18882F8000C1E636 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438F1872A1CF00B5C319 /* AdSupport.framework */; };
+		F3359F9D18882F8000C1E636 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C518543A410098C852 /* AVFoundation.framework */; };
+		F3359F9E18882F8000C1E636 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186C918543A410098C852 /* CoreMedia.framework */; };
+		F3359F9F18882F8000C1E636 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186D318543A410098C852 /* Security.framework */; };
+		F3359FA018882F8000C1E636 /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429CF1862986E00007461 /* TencentWeiboConnection.framework */; };
+		F3359FA118882F8000C1E636 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F8185D89A600392C40 /* libicucore.dylib */; };
+		F3359FA218882F8000C1E636 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429ED1862986E00007461 /* libWeiboSDK.a */; };
+		F3359FA318882F8000C1E636 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D9D5F6185D893D00392C40 /* MessageUI.framework */; };
+		F3359FA418882F8000C1E636 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429FC1862986E00007461 /* ShareSDKiPhoneDefaultShareViewUI.framework */; };
+		F3359FA518882F8000C1E636 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429BB1862986E00007461 /* FacebookConnection.framework */; };
+		F3359FA618882F8000C1E636 /* PrintConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429C61862986E00007461 /* PrintConnection.framework */; };
+		F3359FA718882F8000C1E636 /* RenRenConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429C91862986E00007461 /* RenRenConnection.framework */; };
+		F3359FA818882F8000C1E636 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429F91862986E00007461 /* ShareSDKiPadSimpleShareViewUI.framework */; };
+		F3359FA918882F8000C1E636 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429E61862986E00007461 /* TencentOpenAPI.framework */; };
+		F3359FAA18882F8000C1E636 /* SohuConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429CC1862986E00007461 /* SohuConnection.framework */; };
+		F3359FAB18882F8000C1E636 /* EverNoteConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429BA1862986E00007461 /* EverNoteConnection.framework */; };
+		F3359FAC18882F8000C1E636 /* TwitterConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429D11862986E00007461 /* TwitterConnection.framework */; };
+		F3359FAD18882F8000C1E636 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429B71862986E00007461 /* CopyConnection.framework */; };
+		F3359FAE18882F8000C1E636 /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429C71862986E00007461 /* QQConnection.framework */; };
+		F3359FAF18882F8000C1E636 /* QZoneConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429C81862986E00007461 /* QZoneConnection.framework */; };
+		F3359FB018882F8000C1E636 /* T163WeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429CE1862986E00007461 /* T163WeiboConnection.framework */; };
+		F3359FB118882F8000C1E636 /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429D61862986E00007461 /* AGCommon.framework */; };
+		F3359FB218882F8000C1E636 /* ShareSDKiPadDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429F71862986E00007461 /* ShareSDKiPadDefaultShareViewUI.framework */; };
+		F3359FB318882F8000C1E636 /* WeChatConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429D31862986E00007461 /* WeChatConnection.framework */; };
+		F3359FB418882F8000C1E636 /* SMSConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429CB1862986E00007461 /* SMSConnection.framework */; };
+		F3359FB518882F8000C1E636 /* LinkedInConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429C21862986E00007461 /* LinkedInConnection.framework */; };
+		F3359FB618882F8000C1E636 /* GooglePlusConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429BD1862986E00007461 /* GooglePlusConnection.framework */; };
+		F3359FB718882F8000C1E636 /* TumblrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429D01862986E00007461 /* TumblrConnection.framework */; };
+		F3359FB818882F8000C1E636 /* KaiXinConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429C11862986E00007461 /* KaiXinConnection.framework */; };
+		F3359FB918882F8000C1E636 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429CA1862986E00007461 /* SinaWeiboConnection.framework */; };
+		F3359FBA18882F8000C1E636 /* PocketConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429C51862986E00007461 /* PocketConnection.framework */; };
+		F3359FBB18882F8000C1E636 /* FlickrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429BC1862986E00007461 /* FlickrConnection.framework */; };
+		F3359FBC18882F8000C1E636 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429FE1862986E00007461 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
+		F3359FBD18882F8000C1E636 /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429FA1862986E00007461 /* ShareSDKiPhoneAppRecommendShareViewUI.framework */; };
+		F3359FBE18882F8000C1E636 /* RennSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429E81862986E00007461 /* RennSDK.framework */; };
+		F3359FBF18882F8000C1E636 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186F818543A410098C852 /* libsqlite3.dylib */; };
+		F3359FC018882F8000C1E636 /* ShareSDKCoreService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429DA1862986E00007461 /* ShareSDKCoreService.framework */; };
+		F3359FC118882F8000C1E636 /* MailConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429C31862986E00007461 /* MailConnection.framework */; };
+		F3359FC218882F8000C1E636 /* InstagramConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429BE1862986E00007461 /* InstagramConnection.framework */; };
+		F3359FC318882F8000C1E636 /* PinterestConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429C41862986E00007461 /* PinterestConnection.framework */; };
+		F3359FC418882F8000C1E636 /* libSinaWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429EA1862986E00007461 /* libSinaWeiboSDK.a */; };
+		F3359FC518882F8000C1E636 /* YouDaoNoteConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429D41862986E00007461 /* YouDaoNoteConnection.framework */; };
+		F3359FC618882F8000C1E636 /* DropboxConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429B91862986E00007461 /* DropboxConnection.framework */; };
+		F3359FC718882F8000C1E636 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186F618543A410098C852 /* libz.dylib */; };
+		F3359FC818882F8000C1E636 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429B81862986E00007461 /* DouBanConnection.framework */; };
+		F3359FC918882F8000C1E636 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186CB18543A410098C852 /* CoreText.framework */; };
+		F3359FCA18882F8000C1E636 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186CF18543A410098C852 /* MobileCoreServices.framework */; };
+		F3359FCB18882F8000C1E636 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429F11862986E00007461 /* libWeChatSDK.a */; };
+		F3359FCC18882F8000C1E636 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186CD18543A410098C852 /* CoreVideo.framework */; };
+		F3359FCD18882F8000C1E636 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F186FA18543A410098C852 /* libxml2.dylib */; };
+		F3359FCE18882F8000C1E636 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59E429F41862986E00007461 /* ShareSDK.framework */; };
+		F3359FCF18882F8000C1E636 /* libqrencode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A60C589218703AD80068425C /* libqrencode.a */; };
+		F3359FD118882F8000C1E636 /* alipay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D591BD187C00BB004DF4E0 /* alipay@2x.png */; };
+		F3359FD218882F8000C1E636 /* !@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57EC186FF8A30068425C /* !@2x.png */; };
+		F3359FD318882F8000C1E636 /* invite_banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589518703AE60068425C /* invite_banner@2x.png */; };
+		F3359FD418882F8000C1E636 /* UserInfoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D6AE1865791600392C40 /* UserInfoEditorViewController.xib */; };
+		F3359FD518882F8000C1E636 /* choujiang_thanks4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0818753ED400350C27 /* choujiang_thanks4@2x.png */; };
+		F3359FD618882F8000C1E636 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F186E218543A410098C852 /* Default@2x.png */; };
+		F3359FD718882F8000C1E636 /* BusionessPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */; };
+		F3359FD818882F8000C1E636 /* warn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5816186FF8A30068425C /* warn@2x.png */; };
+		F3359FD918882F8000C1E636 /* StartupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63AC920186C566B00A106A0 /* StartupController.xib */; };
+		F3359FDA18882F8000C1E636 /* package_icon_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57E7186FF8A30068425C /* package_icon_3@2x.png */; };
+		F3359FDB18882F8000C1E636 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A66E3A671887FB6C00EB19DE /* PushConfig.plist */; };
+		F3359FDC18882F8000C1E636 /* yue_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C581B186FF8A30068425C /* yue_0@2x.png */; };
+		F3359FDD18882F8000C1E636 /* menu-icon-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F9186FF8A30068425C /* menu-icon-blue@2x.png */; };
+		F3359FDE18882F8000C1E636 /* choujiang_start_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0318753ED400350C27 /* choujiang_start_btn@2x.png */; };
+		F3359FDF18882F8000C1E636 /* package_icon_half@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57E9186FF8A30068425C /* package_icon_half@2x.png */; };
+		F3359FE018882F8000C1E636 /* menu_icon_jiaoyimingxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F36049A81871A9AE00FAD1F3 /* menu_icon_jiaoyimingxi@2x.png */; };
+		F3359FE118882F8000C1E636 /* setting_right@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = A60C5809186FF8A30068425C /* setting_right@2x.PNG */; };
+		F3359FE218882F8000C1E636 /* choujiang_8yuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813CFC18753ED400350C27 /* choujiang_8yuan@2x.png */; };
+		F3359FE318882F8000C1E636 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D551185D876D00392C40 /* WebViewController.xib */; };
+		F3359FE418882F8000C1E636 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE27F187D9AB800E5AF3E /* blackArrow.png */; };
+		F3359FE518882F8000C1E636 /* choujiang_3yuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813CFA18753ED400350C27 /* choujiang_3yuan@2x.png */; };
+		F3359FE618882F8000C1E636 /* choujiang_x3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0E18753ED400350C27 /* choujiang_x3@2x.png */; };
+		F3359FE718882F8000C1E636 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F186E818543A410098C852 /* Icon@2x.png */; };
+		F3359FE818882F8000C1E636 /* user_sex_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C582F186FF8A30068425C /* user_sex_selected@2x.png */; };
+		F3359FE918882F8000C1E636 /* splash-logo-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C580C186FF8A30068425C /* splash-logo-small@2x.png */; };
+		F3359FEA18882F8000C1E636 /* invite_copy_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589618703AE60068425C /* invite_copy_button@2x.png */; };
+		F3359FEB18882F8000C1E636 /* MenuBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3F189F818543A450098C852 /* MenuBoard_iPhone.xml */; };
+		F3359FEC18882F8000C1E636 /* btn_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F3186FF8A30068425C /* btn_normal@2x.png */; };
+		F3359FED18882F8000C1E636 /* update@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A5B18827C88003F8399 /* update@2x.png */; };
+		F3359FEE18882F8000C1E636 /* menu_icon_tuhaobang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F36049AC1871A9AE00FAD1F3 /* menu_icon_tuhaobang@2x.png */; };
+		F3359FEF18882F8000C1E636 /* invite_seg_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589C18703AE60068425C /* invite_seg_normal@2x.png */; };
+		F3359FF018882F8000C1E636 /* navigation-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57FF186FF8A30068425C /* navigation-bar@2x.png */; };
+		F3359FF118882F8000C1E636 /* phone_num_border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5802186FF8A30068425C /* phone_num_border@2x.png */; };
+		F3359FF218882F8000C1E636 /* package_icon_1mao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E561886D2A800C1E636 /* package_icon_1mao@2x.png */; };
+		F3359FF318882F8000C1E636 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F8186FF8A30068425C /* menu-button@2x.png */; };
+		F3359FF418882F8000C1E636 /* choujiang_guize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D2F187566CC00350C27 /* choujiang_guize@2x.png */; };
+		F3359FF518882F8000C1E636 /* border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F0186FF8A30068425C /* border@2x.png */; };
+		F3359FF618882F8000C1E636 /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F6186FF8A30068425C /* line@2x.png */; };
+		F3359FF718882F8000C1E636 /* choujiang_start_btn_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0418753ED400350C27 /* choujiang_start_btn_selected@2x.png */; };
+		F3359FF818882F8000C1E636 /* choujiang_border_moving@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813CFE18753ED400350C27 /* choujiang_border_moving@2x.png */; };
+		F3359FF918882F8000C1E636 /* yue_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5823186FF8A30068425C /* yue_8@2x.png */; };
+		F3359FFA18882F8000C1E636 /* navigation_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5800186FF8A30068425C /* navigation_bar@2x.png */; };
+		F3359FFB18882F8000C1E636 /* bottom_arraw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F1186FF8A30068425C /* bottom_arraw@2x.png */; };
+		F3359FFC18882F8000C1E636 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE283187D9AB800E5AF3E /* grayArrow.png */; };
+		F3359FFD18882F8000C1E636 /* invite_invited_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589A18703AE60068425C /* invite_invited_edit@2x.png */; };
+		F3359FFE18882F8000C1E636 /* table_view_cell_icon_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5827186FF8A30068425C /* table_view_cell_icon_bg@2x.png */; };
+		F3359FFF18882F8000C1E636 /* head_extension_part@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5834186FF8A30068425C /* head_extension_part@2x.png */; };
+		F335A00018882F8000C1E636 /* splash-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C580D186FF8A30068425C /* splash-logo@2x.png */; };
+		F335A00118882F8000C1E636 /* tiquxianjin_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C583C186FF8A30068425C /* tiquxianjin_icon@2x.png */; };
+		F335A00218882F8000C1E636 /* choujiang_1mao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813CF918753ED400350C27 /* choujiang_1mao@2x.png */; };
+		F335A00318882F8000C1E636 /* nav_Header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57FD186FF8A30068425C /* nav_Header@2x.png */; };
+		F335A00418882F8000C1E636 /* head_right_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5836186FF8A30068425C /* head_right_icon@2x.png */; };
+		F335A00518882F8000C1E636 /* tab_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5814186FF8A30068425C /* tab_bkg@2x.png */; };
+		F335A00618882F8000C1E636 /* choujiang_x1selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0B18753ED400350C27 /* choujiang_x1selected@2x.png */; };
+		F335A00718882F8000C1E636 /* yue_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5820186FF8A30068425C /* yue_5@2x.png */; };
+		F335A00818882F8000C1E636 /* package_icon_many@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3DD641F1882D7B400E56A0B /* package_icon_many@2x.png */; };
+		F335A00918882F8000C1E636 /* choujiang_zhongjiangbeilv@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D1118753ED400350C27 /* choujiang_zhongjiangbeilv@2x.png */; };
+		F335A00A18882F8000C1E636 /* choujiang_thanks3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0718753ED400350C27 /* choujiang_thanks3@2x.png */; };
+		F335A00B18882F8000C1E636 /* menu_icon_help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3DD64171882D36500E56A0B /* menu_icon_help@2x.png */; };
+		F335A00C18882F8000C1E636 /* right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5806186FF8A30068425C /* right@2x.png */; };
+		F335A00D18882F8000C1E636 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE286187D9AB800E5AF3E /* whiteArrow@2x.png */; };
+		F335A00E18882F8000C1E636 /* gotcoins.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F3813D3A18783CE800350C27 /* gotcoins.aiff */; };
+		F335A00F18882F8000C1E636 /* warn_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5817186FF8A30068425C /* warn_bkg@2x.png */; };
+		F335A01018882F8000C1E636 /* yue_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C581F186FF8A30068425C /* yue_4@2x.png */; };
+		F335A01118882F8000C1E636 /* qiandao_button_red_dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FB92AE187C5AB5001D702E /* qiandao_button_red_dot@2x.png */; };
+		F335A01218882F8000C1E636 /* yue_dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5825186FF8A30068425C /* yue_dot@2x.png */; };
+		F335A01318882F8000C1E636 /* table_view_cell_label_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5828186FF8A30068425C /* table_view_cell_label_bg@2x.png */; };
+		F335A01418882F8000C1E636 /* BaseTaskTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D834CC185C1E31003095D5 /* BaseTaskTableViewController.xib */; };
+		F335A01518882F8000C1E636 /* OnlineWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A581882547B003F8399 /* OnlineWallViewController.xib */; };
+		F335A01618882F8000C1E636 /* choujiang_x1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0A18753ED400350C27 /* choujiang_x1@2x.png */; };
+		F335A01718882F8000C1E636 /* invite_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589818703AE60068425C /* invite_error@2x.png */; };
+		F335A01818882F8000C1E636 /* choujiang_thanks2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0618753ED400350C27 /* choujiang_thanks2@2x.png */; };
+		F335A01918882F8000C1E636 /* ChoujiangViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F36049B71871B0C500FAD1F3 /* ChoujiangViewController.xib */; };
+		F335A01A18882F8000C1E636 /* InviteController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D52D185D876D00392C40 /* InviteController.xib */; };
+		F335A01B18882F8000C1E636 /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A661882E6F3003F8399 /* about@2x.png */; };
+		F335A01C18882F8000C1E636 /* reg_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5803186FF8A30068425C /* reg_success@2x.png */; };
+		F335A01D18882F8000C1E636 /* resend_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5805186FF8A30068425C /* resend_normal@2x.png */; };
+		F335A01E18882F8000C1E636 /* package_icon_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57E8186FF8A30068425C /* package_icon_8@2x.png */; };
+		F335A01F18882F8000C1E636 /* invite_seg_unsel_unsel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C58A118703AE60068425C /* invite_seg_unsel_unsel@2x.png */; };
+		F335A02018882F8000C1E636 /* choujiang_back_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D311875796F00350C27 /* choujiang_back_btn@2x.png */; };
+		F335A02118882F8000C1E636 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57EE186FF8A30068425C /* back@2x.png */; };
+		F335A02218882F8000C1E636 /* TabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D54B185D876D00392C40 /* TabController.xib */; };
+		F335A02318882F8000C1E636 /* tab-item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5810186FF8A30068425C /* tab-item@2x.png */; };
+		F335A02418882F8000C1E636 /* about_wangcai_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5831186FF8A30068425C /* about_wangcai_cell_icon@2x.png */; };
+		F335A02518882F8000C1E636 /* invite_seg_sel_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589D18703AE60068425C /* invite_seg_sel_sel@2x.png */; };
+		F335A02618882F8000C1E636 /* bottom_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5832186FF8A30068425C /* bottom_bg@2x.png */; };
+		F335A02718882F8000C1E636 /* choujiang_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D2B1875662A00350C27 /* choujiang_bg@2x.png */; };
+		F335A02818882F8000C1E636 /* yue_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5824186FF8A30068425C /* yue_9@2x.png */; };
+		F335A02918882F8000C1E636 /* setting_bell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5807186FF8A30068425C /* setting_bell@2x.png */; };
+		F335A02A18882F8000C1E636 /* body_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57EF186FF8A30068425C /* body_bkg@2x.png */; };
+		F335A02B18882F8000C1E636 /* WebPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6DE671860287900D089C7 /* WebPageController.xib */; };
+		F335A02C18882F8000C1E636 /* menu_icon_tixian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F36049AB1871A9AE00FAD1F3 /* menu_icon_tixian@2x.png */; };
+		F335A02D18882F8000C1E636 /* cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A5A18827C88003F8399 /* cloud@2x.png */; };
+		F335A02E18882F8000C1E636 /* invite_invite_code_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589918703AE60068425C /* invite_invite_code_bkg@2x.png */; };
+		F335A02F18882F8000C1E636 /* user_hobby_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C582D186FF8A30068425C /* user_hobby_normal@2x.png */; };
+		F335A03018882F8000C1E636 /* menu-icon-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57FA186FF8A30068425C /* menu-icon-green@2x.png */; };
+		F335A03118882F8000C1E636 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59E429FD1862986E00007461 /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
+		F335A03218882F8000C1E636 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F186E418543A410098C852 /* Default-568h@2x.png */; };
+		F335A03318882F8000C1E636 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE284187D9AB800E5AF3E /* grayArrow@2x.png */; };
+		F335A03418882F8000C1E636 /* yellow_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C583E186FF8A30068425C /* yellow_circle@2x.png */; };
+		F335A03518882F8000C1E636 /* ShareSDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59E429D71862986E00007461 /* ShareSDKLocalizable.strings */; };
+		F335A03618882F8000C1E636 /* dengjiTmp.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C582B186FF8A30068425C /* dengjiTmp.png */; };
+		F335A03718882F8000C1E636 /* navigation-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57FE186FF8A30068425C /* navigation-back@2x.png */; };
+		F335A03818882F8000C1E636 /* invite_seg_sel_unsel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589E18703AE60068425C /* invite_seg_sel_unsel@2x.png */; };
+		F335A03918882F8000C1E636 /* tab_split@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = A6D591BB187BDD4E004DF4E0 /* tab_split@2x.PNG */; };
+		F335A03A18882F8000C1E636 /* yue_7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5822186FF8A30068425C /* yue_7@2x.png */; };
+		F335A03B18882F8000C1E636 /* package_icon_one@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57EA186FF8A30068425C /* package_icon_one@2x.png */; };
+		F335A03C18882F8000C1E636 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE281187D9AB800E5AF3E /* blueArrow.png */; };
+		F335A03D18882F8000C1E636 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FA00ED186ABEF6008302F0 /* SettingViewController.xib */; };
+		F335A03E18882F8000C1E636 /* choujiang_border_selected2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0018753ED400350C27 /* choujiang_border_selected2@2x.png */; };
+		F335A03F18882F8000C1E636 /* choujiang_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0918753ED400350C27 /* choujiang_title@2x.png */; };
+		F335A04018882F8000C1E636 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FD8A72186189B500223772 /* ExchangeController.xib */; };
+		F335A04118882F8000C1E636 /* ExtractMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D52A185D876D00392C40 /* ExtractMoneyController.xib */; };
+		F335A04218882F8000C1E636 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F186E618543A410098C852 /* Icon.png */; };
+		F335A04318882F8000C1E636 /* menu_icon_wodewangcai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F36049AD1871A9AE00FAD1F3 /* menu_icon_wodewangcai@2x.png */; };
+		F335A04418882F8000C1E636 /* table_view_cell_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5829186FF8A30068425C /* table_view_cell_line@2x.png */; };
+		F335A04518882F8000C1E636 /* sms_code_border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C580A186FF8A30068425C /* sms_code_border@2x.png */; };
+		F335A04618882F8000C1E636 /* user_info_commit_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FB9292187AF5F7001D702E /* user_info_commit_btn@2x.png */; };
+		F335A04718882F8000C1E636 /* user_hobby_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C582E186FF8A30068425C /* user_hobby_selected@2x.png */; };
+		F335A04818882F8000C1E636 /* package_icon_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E4D1886C0FB00C1E636 /* package_icon_2@2x.png */; };
+		F335A04918882F8000C1E636 /* invite_seg_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589F18703AE60068425C /* invite_seg_select@2x.png */; };
+		F335A04A18882F8000C1E636 /* menu_icon_chaozhiduihua@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F36049A71871A9AE00FAD1F3 /* menu_icon_chaozhiduihua@2x.png */; };
+		F335A04B18882F8000C1E636 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3F186DA18543A410098C852 /* InfoPlist.strings */; };
+		F335A04C18882F8000C1E636 /* main_page_head@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5838186FF8A30068425C /* main_page_head@2x.png */; };
+		F335A04D18882F8000C1E636 /* arrow-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57ED186FF8A30068425C /* arrow-down@2x.png */; };
+		F335A04E18882F8000C1E636 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE285187D9AB800E5AF3E /* whiteArrow.png */; };
+		F335A04F18882F8000C1E636 /* person_info_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5839186FF8A30068425C /* person_info_icon@2x.png */; };
+		F335A05018882F8000C1E636 /* TransferToAlipayAndPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */; };
+		F335A05118882F8000C1E636 /* yue_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5821186FF8A30068425C /* yue_6@2x.png */; };
+		F335A05218882F8000C1E636 /* choujiang_x2selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0D18753ED400350C27 /* choujiang_x2selected@2x.png */; };
+		F335A05318882F8000C1E636 /* choujiang_border_selected1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813CFF18753ED400350C27 /* choujiang_border_selected1@2x.png */; };
+		F335A05418882F8000C1E636 /* yue_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C581D186FF8A30068425C /* yue_2@2x.png */; };
+		F335A05518882F8000C1E636 /* invite_share_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C58A218703AE60068425C /* invite_share_button@2x.png */; };
+		F335A05618882F8000C1E636 /* setting_message@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = A60C5808186FF8A30068425C /* setting_message@2x.PNG */; };
+		F335A05718882F8000C1E636 /* splash-slogan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C580E186FF8A30068425C /* splash-slogan@2x.png */; };
+		F335A05818882F8000C1E636 /* splash-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C580B186FF8A30068425C /* splash-bg@2x.png */; };
+		F335A05918882F8000C1E636 /* BindTipsDuihao.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57E5186FF8A30068425C /* BindTipsDuihao.png */; };
+		F335A05A18882F8000C1E636 /* head_top_part@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5837186FF8A30068425C /* head_top_part@2x.png */; };
+		F335A05B18882F8000C1E636 /* exchange_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F5186FF8A30068425C /* exchange_btn@2x.png */; };
+		F335A05C18882F8000C1E636 /* qrcode_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */; };
+		F335A05D18882F8000C1E636 /* choujiang_shaxuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0218753ED400350C27 /* choujiang_shaxuan@2x.png */; };
+		F335A05E18882F8000C1E636 /* phone_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5801186FF8A30068425C /* phone_logo@2x.png */; };
+		F335A05F18882F8000C1E636 /* BindAttachphoneBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57E4186FF8A30068425C /* BindAttachphoneBtn.png */; };
+		F335A06018882F8000C1E636 /* yue_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C581E186FF8A30068425C /* yue_3@2x.png */; };
+		F335A06118882F8000C1E636 /* main_menu_title_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5819186FF8A30068425C /* main_menu_title_text@2x.png */; };
+		F335A06218882F8000C1E636 /* head_left_menu_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */; };
+		F335A06318882F8000C1E636 /* choujiang_baojie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813CFD18753ED400350C27 /* choujiang_baojie@2x.png */; };
+		F335A06418882F8000C1E636 /* yue_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C581C186FF8A30068425C /* yue_1@2x.png */; };
+		F335A06518882F8000C1E636 /* testIconSetting222@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3DD64191882D36500E56A0B /* testIconSetting222@2x.jpg */; };
+		F335A06618882F8000C1E636 /* rate_app_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E501886C11100C1E636 /* rate_app_cell_icon@2x.png */; };
+		F335A06718882F8000C1E636 /* choujiang_x2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0C18753ED400350C27 /* choujiang_x2@2x.png */; };
+		F335A06818882F8000C1E636 /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A60A43891872A19B00B5C319 /* DomobOfferWallBundle.bundle */; };
+		F335A06918882F8000C1E636 /* resend_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5804186FF8A30068425C /* resend_down@2x.png */; };
+		F335A06A18882F8000C1E636 /* tiyanzhongxin_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3DD64121880251B00E56A0B /* tiyanzhongxin_cell_icon@2x.png */; };
+		F335A06B18882F8000C1E636 /* choujiang_bottom_cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0118753ED400350C27 /* choujiang_bottom_cloud@2x.png */; };
+		F335A06C18882F8000C1E636 /* menu_icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F36049AA1871A9AE00FAD1F3 /* menu_icon_setting@2x.png */; };
+		F335A06D18882F8000C1E636 /* main_menu_bg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F36049381870492000FAD1F3 /* main_menu_bg@2x.jpg */; };
+		F335A06E18882F8000C1E636 /* invite_nav_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589B18703AE60068425C /* invite_nav_bar@2x.png */; };
+		F335A06F18882F8000C1E636 /* default568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A601882D0FD003F8399 /* default568@2x.png */; };
+		F335A07018882F8000C1E636 /* choujiang_5mao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813CFB18753ED400350C27 /* choujiang_5mao@2x.png */; };
+		F335A07118882F8000C1E636 /* user_info_bg_paper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3DD64211883037600E56A0B /* user_info_bg_paper@2x.png */; };
+		F335A07218882F8000C1E636 /* invite_edit_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C589718703AE60068425C /* invite_edit_bkg@2x.png */; };
+		F335A07318882F8000C1E636 /* choujiang_xiaomi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D1018753ED400350C27 /* choujiang_xiaomi@2x.png */; };
+		F335A07418882F8000C1E636 /* menu-icon-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57FB186FF8A30068425C /* menu-icon-red@2x.png */; };
+		F335A07518882F8000C1E636 /* apptask_rmb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A621882E284003F8399 /* apptask_rmb@2x.png */; };
+		F335A07618882F8000C1E636 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F3F186E018543A410098C852 /* Default.png */; };
+		F335A07718882F8000C1E636 /* WCMainPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = F3F18A24185472A90098C852 /* WCMainPageBoard_iPhone.xml */; };
+		F335A07818882F8000C1E636 /* invite_seg_unsel_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C58A018703AE60068425C /* invite_seg_unsel_sel@2x.png */; };
+		F335A07918882F8000C1E636 /* zhanghuyue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C583D186FF8A30068425C /* zhanghuyue@2x.png */; };
+		F335A07A18882F8000C1E636 /* PhoneValidationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D548185D876D00392C40 /* PhoneValidationController.xib */; };
+		F335A07B18882F8000C1E636 /* TaskController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3D9D54E185D876D00392C40 /* TaskController.xib */; };
+		F335A07C18882F8000C1E636 /* about2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E051601886CF0E00780F02 /* about2@2x.png */; };
+		F335A07D18882F8000C1E636 /* JPushlib in Resources */ = {isa = PBXBuildFile; fileRef = A66E3A631887FA2200EB19DE /* JPushlib */; };
+		F335A07E18882F8000C1E636 /* recommand_task_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C583B186FF8A30068425C /* recommand_task_icon@2x.png */; };
+		F335A07F18882F8000C1E636 /* apptask_tip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FA6A631882E284003F8399 /* apptask_tip@2x.png */; };
+		F335A08018882F8000C1E636 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE282187D9AB800E5AF3E /* blueArrow@2x.png */; };
+		F335A08118882F8000C1E636 /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59E429D91862986E00007461 /* Resource.bundle */; };
+		F335A08218882F8000C1E636 /* tab-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C580F186FF8A30068425C /* tab-bar@2x.png */; };
+		F335A08318882F8000C1E636 /* qiandao_button_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C583A186FF8A30068425C /* qiandao_button_icon@2x.png */; };
+		F335A08418882F8000C1E636 /* testIconSetting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3DD64181882D36500E56A0B /* testIconSetting@2x.png */; };
+		F335A08518882F8000C1E636 /* menu_icon_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F36049A91871A9AE00FAD1F3 /* menu_icon_line@2x.png */; };
+		F335A08618882F8000C1E636 /* choujiang_thanks1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0518753ED400350C27 /* choujiang_thanks1@2x.png */; };
+		F335A08718882F8000C1E636 /* choujiang_x3selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3813D0F18753ED400350C27 /* choujiang_x3selected@2x.png */; };
+		F335A08818882F8000C1E636 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3BD4714187EDFF2009F3673 /* MJRefresh.bundle */; };
+		F335A08918882F8000C1E636 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57FC186FF8A30068425C /* menu-icon@2x.png */; };
+		F335A08A18882F8000C1E636 /* deal_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C57F4186FF8A30068425C /* deal_btn@2x.png */; };
+		F335A08B18882F8000C1E636 /* head_left_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5835186FF8A30068425C /* head_left_icon@2x.png */; };
+		F335A08C18882F8000C1E636 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE280187D9AB800E5AF3E /* blackArrow@2x.png */; };
+		F335A08D18882F8000C1E636 /* head_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A60C5833186FF8A30068425C /* head_back@2x.png */; };
 		F358E9EF186C1D8600DC3ADA /* UserInfoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */; };
 		F358E9F2186C583A00DC3ADA /* CommonTaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = F358E9F1186C583A00DC3ADA /* CommonTaskList.m */; };
 		F3604927187016C200FAD1F3 /* NSString+DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F3604922187016C200FAD1F3 /* NSString+DataParser.m */; };
@@ -815,6 +1366,8 @@
 		F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode_cell_icon@2x.png"; sourceTree = "<group>"; };
 		F3359E501886C11100C1E636 /* rate_app_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rate_app_cell_icon@2x.png"; sourceTree = "<group>"; };
 		F3359E561886D2A800C1E636 /* package_icon_1mao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_1mao@2x.png"; sourceTree = "<group>"; };
+		F335A09118882F8000C1E636 /* wangcai copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wangcai copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F335A09218882F8000C1E636 /* wangcai copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "wangcai copy-Info.plist"; path = "/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai copy-Info.plist"; sourceTree = "<absolute>"; };
 		F358E9ED186C1D8600DC3ADA /* UserInfoAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoAPI.h; sourceTree = "<group>"; };
 		F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoAPI.m; sourceTree = "<group>"; };
 		F358E9F0186C583A00DC3ADA /* CommonTaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTaskList.h; sourceTree = "<group>"; };
@@ -949,7 +1502,7 @@
 		F3DD64191882D36500E56A0B /* testIconSetting222@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "testIconSetting222@2x.jpg"; sourceTree = "<group>"; };
 		F3DD641F1882D7B400E56A0B /* package_icon_many@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_many@2x.png"; sourceTree = "<group>"; };
 		F3DD64211883037600E56A0B /* user_info_bg_paper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_info_bg_paper@2x.png"; sourceTree = "<group>"; };
-		F3F186BC18543A410098C852 /* wangcai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wangcai.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3F186BC18543A410098C852 /* wangcai App Store版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wangcai App Store版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F186BF18543A410098C852 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F3F186C118543A410098C852 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3F186C318543A410098C852 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1478,11 +2031,84 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F3359F8C18882F8000C1E636 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3359F8E18882F8000C1E636 /* UIKit.framework in Frameworks */,
+				F3359F8F18882F8000C1E636 /* Foundation.framework in Frameworks */,
+				F3359F9018882F8000C1E636 /* CoreGraphics.framework in Frameworks */,
+				F3359F9118882F8000C1E636 /* SystemConfiguration.framework in Frameworks */,
+				F3359F9218882F8000C1E636 /* CoreTelephony.framework in Frameworks */,
+				F3359F9318882F8000C1E636 /* CoreFoundation.framework in Frameworks */,
+				F3359F9418882F8000C1E636 /* CFNetwork.framework in Frameworks */,
+				F3359F9518882F8000C1E636 /* libYouMi.a in Frameworks */,
+				F3359F9618882F8000C1E636 /* libDomobOfferWallSDK.a in Frameworks */,
+				F3359F9718882F8000C1E636 /* libMobClickLibrary.a in Frameworks */,
+				F3359F9818882F8000C1E636 /* StoreKit.framework in Frameworks */,
+				F3359F9918882F8000C1E636 /* libsqlite3.dylib in Frameworks */,
+				F3359F9A18882F8000C1E636 /* QuartzCore.framework in Frameworks */,
+				F3359F9B18882F8000C1E636 /* CoreLocation.framework in Frameworks */,
+				F3359F9C18882F8000C1E636 /* AdSupport.framework in Frameworks */,
+				F3359F9D18882F8000C1E636 /* AVFoundation.framework in Frameworks */,
+				F3359F9E18882F8000C1E636 /* CoreMedia.framework in Frameworks */,
+				F3359F9F18882F8000C1E636 /* Security.framework in Frameworks */,
+				F3359FA018882F8000C1E636 /* TencentWeiboConnection.framework in Frameworks */,
+				F3359FA118882F8000C1E636 /* libicucore.dylib in Frameworks */,
+				F3359FA218882F8000C1E636 /* libWeiboSDK.a in Frameworks */,
+				F3359FA318882F8000C1E636 /* MessageUI.framework in Frameworks */,
+				F3359FA418882F8000C1E636 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
+				F3359FA518882F8000C1E636 /* FacebookConnection.framework in Frameworks */,
+				F3359FA618882F8000C1E636 /* PrintConnection.framework in Frameworks */,
+				F3359FA718882F8000C1E636 /* RenRenConnection.framework in Frameworks */,
+				F3359FA818882F8000C1E636 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
+				F3359FA918882F8000C1E636 /* TencentOpenAPI.framework in Frameworks */,
+				F3359FAA18882F8000C1E636 /* SohuConnection.framework in Frameworks */,
+				F3359FAB18882F8000C1E636 /* EverNoteConnection.framework in Frameworks */,
+				F3359FAC18882F8000C1E636 /* TwitterConnection.framework in Frameworks */,
+				F3359FAD18882F8000C1E636 /* CopyConnection.framework in Frameworks */,
+				F3359FAE18882F8000C1E636 /* QQConnection.framework in Frameworks */,
+				F3359FAF18882F8000C1E636 /* QZoneConnection.framework in Frameworks */,
+				F3359FB018882F8000C1E636 /* T163WeiboConnection.framework in Frameworks */,
+				F3359FB118882F8000C1E636 /* AGCommon.framework in Frameworks */,
+				F3359FB218882F8000C1E636 /* ShareSDKiPadDefaultShareViewUI.framework in Frameworks */,
+				F3359FB318882F8000C1E636 /* WeChatConnection.framework in Frameworks */,
+				F3359FB418882F8000C1E636 /* SMSConnection.framework in Frameworks */,
+				F3359FB518882F8000C1E636 /* LinkedInConnection.framework in Frameworks */,
+				F3359FB618882F8000C1E636 /* GooglePlusConnection.framework in Frameworks */,
+				F3359FB718882F8000C1E636 /* TumblrConnection.framework in Frameworks */,
+				F3359FB818882F8000C1E636 /* KaiXinConnection.framework in Frameworks */,
+				F3359FB918882F8000C1E636 /* SinaWeiboConnection.framework in Frameworks */,
+				F3359FBA18882F8000C1E636 /* PocketConnection.framework in Frameworks */,
+				F3359FBB18882F8000C1E636 /* FlickrConnection.framework in Frameworks */,
+				F3359FBC18882F8000C1E636 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
+				F3359FBD18882F8000C1E636 /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
+				F3359FBE18882F8000C1E636 /* RennSDK.framework in Frameworks */,
+				F3359FBF18882F8000C1E636 /* libsqlite3.dylib in Frameworks */,
+				F3359FC018882F8000C1E636 /* ShareSDKCoreService.framework in Frameworks */,
+				F3359FC118882F8000C1E636 /* MailConnection.framework in Frameworks */,
+				F3359FC218882F8000C1E636 /* InstagramConnection.framework in Frameworks */,
+				F3359FC318882F8000C1E636 /* PinterestConnection.framework in Frameworks */,
+				F3359FC418882F8000C1E636 /* libSinaWeiboSDK.a in Frameworks */,
+				F3359FC518882F8000C1E636 /* YouDaoNoteConnection.framework in Frameworks */,
+				F3359FC618882F8000C1E636 /* DropboxConnection.framework in Frameworks */,
+				F3359FC718882F8000C1E636 /* libz.dylib in Frameworks */,
+				F3359FC818882F8000C1E636 /* DouBanConnection.framework in Frameworks */,
+				F3359FC918882F8000C1E636 /* CoreText.framework in Frameworks */,
+				F3359FCA18882F8000C1E636 /* MobileCoreServices.framework in Frameworks */,
+				F3359FCB18882F8000C1E636 /* libWeChatSDK.a in Frameworks */,
+				F3359F8D18882F8000C1E636 /* libPushSDK.a in Frameworks */,
+				F3359FCC18882F8000C1E636 /* CoreVideo.framework in Frameworks */,
+				F3359FCD18882F8000C1E636 /* libxml2.dylib in Frameworks */,
+				F3359FCE18882F8000C1E636 /* ShareSDK.framework in Frameworks */,
+				F3359FCF18882F8000C1E636 /* libqrencode.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3F186B918543A410098C852 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A66E3A6A1887FD2100EB19DE /* libPushSDK.a in Frameworks */,
 				F3F186C018543A410098C852 /* UIKit.framework in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
 				F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */,
@@ -1533,6 +2159,7 @@
 				59E42A301862986F00007461 /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				59E42A271862986F00007461 /* RennSDK.framework in Frameworks */,
 				F3F186F918543A410098C852 /* libsqlite3.dylib in Frameworks */,
+				A66E3A6A1887FD2100EB19DE /* libPushSDK.a in Frameworks */,
 				59E42A201862986E00007461 /* ShareSDKCoreService.framework in Frameworks */,
 				59E42A0B1862986E00007461 /* MailConnection.framework in Frameworks */,
 				59E42A061862986E00007461 /* InstagramConnection.framework in Frameworks */,
@@ -2136,14 +2763,16 @@
 				F3F18A1118543A450098C852 /* wangcaiTests */,
 				F3F186BE18543A410098C852 /* Frameworks */,
 				F3F186BD18543A410098C852 /* Products */,
+				F335A09218882F8000C1E636 /* wangcai copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		F3F186BD18543A410098C852 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F3F186BC18543A410098C852 /* wangcai.app */,
+				F3F186BC18543A410098C852 /* wangcai App Store版.app */,
 				F3F18A0A18543A450098C852 /* wangcaiTests.xctest */,
+				F335A09118882F8000C1E636 /* wangcai copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3312,9 +3941,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F3F186BB18543A410098C852 /* wangcai */ = {
+		F3359E6318882F8000C1E636 /* wangcai 亲友版 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F3F18A1B18543A450098C852 /* Build configuration list for PBXNativeTarget "wangcai" */;
+			buildConfigurationList = F335A08E18882F8000C1E636 /* Build configuration list for PBXNativeTarget "wangcai 亲友版" */;
+			buildPhases = (
+				F3359E6418882F8000C1E636 /* Sources */,
+				F3359F8C18882F8000C1E636 /* Frameworks */,
+				F3359FD018882F8000C1E636 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "wangcai 亲友版";
+			productName = wangcai;
+			productReference = F335A09118882F8000C1E636 /* wangcai copy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F3F186BB18543A410098C852 /* wangcai App Store版 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3F18A1B18543A450098C852 /* Build configuration list for PBXNativeTarget "wangcai App Store版" */;
 			buildPhases = (
 				F3F186B818543A410098C852 /* Sources */,
 				F3F186B918543A410098C852 /* Frameworks */,
@@ -3324,9 +3970,9 @@
 			);
 			dependencies = (
 			);
-			name = wangcai;
+			name = "wangcai App Store版";
 			productName = wangcai;
-			productReference = F3F186BC18543A410098C852 /* wangcai.app */;
+			productReference = F3F186BC18543A410098C852 /* wangcai App Store版.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F3F18A0918543A450098C852 /* wangcaiTests */ = {
@@ -3356,6 +4002,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = 1528studio;
 				TargetAttributes = {
+					F3359E6318882F8000C1E636 = {
+						DevelopmentTeam = EW56WP8229;
+					};
 					F3F186BB18543A410098C852 = {
 						DevelopmentTeam = B4BR4E2M87;
 					};
@@ -3377,13 +4026,210 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F3F186BB18543A410098C852 /* wangcai */,
+				F3F186BB18543A410098C852 /* wangcai App Store版 */,
 				F3F18A0918543A450098C852 /* wangcaiTests */,
+				F3359E6318882F8000C1E636 /* wangcai 亲友版 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F3359FD018882F8000C1E636 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3359FD118882F8000C1E636 /* alipay@2x.png in Resources */,
+				F3359FD218882F8000C1E636 /* !@2x.png in Resources */,
+				F3359FD318882F8000C1E636 /* invite_banner@2x.png in Resources */,
+				F3359FD418882F8000C1E636 /* UserInfoEditorViewController.xib in Resources */,
+				F3359FD518882F8000C1E636 /* choujiang_thanks4@2x.png in Resources */,
+				F3359FD618882F8000C1E636 /* Default@2x.png in Resources */,
+				F3359FD718882F8000C1E636 /* BusionessPageBoard_iPhone.xml in Resources */,
+				F3359FD818882F8000C1E636 /* warn@2x.png in Resources */,
+				F3359FD918882F8000C1E636 /* StartupController.xib in Resources */,
+				F3359FDA18882F8000C1E636 /* package_icon_3@2x.png in Resources */,
+				F3359FDB18882F8000C1E636 /* PushConfig.plist in Resources */,
+				F3359FDC18882F8000C1E636 /* yue_0@2x.png in Resources */,
+				F3359FDD18882F8000C1E636 /* menu-icon-blue@2x.png in Resources */,
+				F3359FDE18882F8000C1E636 /* choujiang_start_btn@2x.png in Resources */,
+				F3359FDF18882F8000C1E636 /* package_icon_half@2x.png in Resources */,
+				F3359FE018882F8000C1E636 /* menu_icon_jiaoyimingxi@2x.png in Resources */,
+				F3359FE118882F8000C1E636 /* setting_right@2x.PNG in Resources */,
+				F3359FE218882F8000C1E636 /* choujiang_8yuan@2x.png in Resources */,
+				F3359FE318882F8000C1E636 /* WebViewController.xib in Resources */,
+				F3359FE418882F8000C1E636 /* blackArrow.png in Resources */,
+				F3359FE518882F8000C1E636 /* choujiang_3yuan@2x.png in Resources */,
+				F3359FE618882F8000C1E636 /* choujiang_x3@2x.png in Resources */,
+				F3359FE718882F8000C1E636 /* Icon@2x.png in Resources */,
+				F3359FE818882F8000C1E636 /* user_sex_selected@2x.png in Resources */,
+				F3359FE918882F8000C1E636 /* splash-logo-small@2x.png in Resources */,
+				F3359FEA18882F8000C1E636 /* invite_copy_button@2x.png in Resources */,
+				F3359FEB18882F8000C1E636 /* MenuBoard_iPhone.xml in Resources */,
+				F3359FEC18882F8000C1E636 /* btn_normal@2x.png in Resources */,
+				F3359FED18882F8000C1E636 /* update@2x.png in Resources */,
+				F3359FEE18882F8000C1E636 /* menu_icon_tuhaobang@2x.png in Resources */,
+				F3359FEF18882F8000C1E636 /* invite_seg_normal@2x.png in Resources */,
+				F3359FF018882F8000C1E636 /* navigation-bar@2x.png in Resources */,
+				F3359FF118882F8000C1E636 /* phone_num_border@2x.png in Resources */,
+				F3359FF218882F8000C1E636 /* package_icon_1mao@2x.png in Resources */,
+				F3359FF318882F8000C1E636 /* menu-button@2x.png in Resources */,
+				F3359FF418882F8000C1E636 /* choujiang_guize@2x.png in Resources */,
+				F3359FF518882F8000C1E636 /* border@2x.png in Resources */,
+				F3359FF618882F8000C1E636 /* line@2x.png in Resources */,
+				F3359FF718882F8000C1E636 /* choujiang_start_btn_selected@2x.png in Resources */,
+				F3359FF818882F8000C1E636 /* choujiang_border_moving@2x.png in Resources */,
+				F3359FF918882F8000C1E636 /* yue_8@2x.png in Resources */,
+				F3359FFA18882F8000C1E636 /* navigation_bar@2x.png in Resources */,
+				F3359FFB18882F8000C1E636 /* bottom_arraw@2x.png in Resources */,
+				F3359FFC18882F8000C1E636 /* grayArrow.png in Resources */,
+				F3359FFD18882F8000C1E636 /* invite_invited_edit@2x.png in Resources */,
+				F3359FFE18882F8000C1E636 /* table_view_cell_icon_bg@2x.png in Resources */,
+				F3359FFF18882F8000C1E636 /* head_extension_part@2x.png in Resources */,
+				F335A00018882F8000C1E636 /* splash-logo@2x.png in Resources */,
+				F335A00118882F8000C1E636 /* tiquxianjin_icon@2x.png in Resources */,
+				F335A00218882F8000C1E636 /* choujiang_1mao@2x.png in Resources */,
+				F335A00318882F8000C1E636 /* nav_Header@2x.png in Resources */,
+				F335A00418882F8000C1E636 /* head_right_icon@2x.png in Resources */,
+				F335A00518882F8000C1E636 /* tab_bkg@2x.png in Resources */,
+				F335A00618882F8000C1E636 /* choujiang_x1selected@2x.png in Resources */,
+				F335A00718882F8000C1E636 /* yue_5@2x.png in Resources */,
+				F335A00818882F8000C1E636 /* package_icon_many@2x.png in Resources */,
+				F335A00918882F8000C1E636 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
+				F335A00A18882F8000C1E636 /* choujiang_thanks3@2x.png in Resources */,
+				F335A00B18882F8000C1E636 /* menu_icon_help@2x.png in Resources */,
+				F335A00C18882F8000C1E636 /* right@2x.png in Resources */,
+				F335A00D18882F8000C1E636 /* whiteArrow@2x.png in Resources */,
+				F335A00E18882F8000C1E636 /* gotcoins.aiff in Resources */,
+				F335A00F18882F8000C1E636 /* warn_bkg@2x.png in Resources */,
+				F335A01018882F8000C1E636 /* yue_4@2x.png in Resources */,
+				F335A01118882F8000C1E636 /* qiandao_button_red_dot@2x.png in Resources */,
+				F335A01218882F8000C1E636 /* yue_dot@2x.png in Resources */,
+				F335A01318882F8000C1E636 /* table_view_cell_label_bg@2x.png in Resources */,
+				F335A01418882F8000C1E636 /* BaseTaskTableViewController.xib in Resources */,
+				F335A01518882F8000C1E636 /* OnlineWallViewController.xib in Resources */,
+				F335A01618882F8000C1E636 /* choujiang_x1@2x.png in Resources */,
+				F335A01718882F8000C1E636 /* invite_error@2x.png in Resources */,
+				F335A01818882F8000C1E636 /* choujiang_thanks2@2x.png in Resources */,
+				F335A01918882F8000C1E636 /* ChoujiangViewController.xib in Resources */,
+				F335A01A18882F8000C1E636 /* InviteController.xib in Resources */,
+				F335A01B18882F8000C1E636 /* about@2x.png in Resources */,
+				F335A01C18882F8000C1E636 /* reg_success@2x.png in Resources */,
+				F335A01D18882F8000C1E636 /* resend_normal@2x.png in Resources */,
+				F335A01E18882F8000C1E636 /* package_icon_8@2x.png in Resources */,
+				F335A01F18882F8000C1E636 /* invite_seg_unsel_unsel@2x.png in Resources */,
+				F335A02018882F8000C1E636 /* choujiang_back_btn@2x.png in Resources */,
+				F335A02118882F8000C1E636 /* back@2x.png in Resources */,
+				F335A02218882F8000C1E636 /* TabController.xib in Resources */,
+				F335A02318882F8000C1E636 /* tab-item@2x.png in Resources */,
+				F335A02418882F8000C1E636 /* about_wangcai_cell_icon@2x.png in Resources */,
+				F335A02518882F8000C1E636 /* invite_seg_sel_sel@2x.png in Resources */,
+				F335A02618882F8000C1E636 /* bottom_bg@2x.png in Resources */,
+				F335A02718882F8000C1E636 /* choujiang_bg@2x.png in Resources */,
+				F335A02818882F8000C1E636 /* yue_9@2x.png in Resources */,
+				F335A02918882F8000C1E636 /* setting_bell@2x.png in Resources */,
+				F335A02A18882F8000C1E636 /* body_bkg@2x.png in Resources */,
+				F335A02B18882F8000C1E636 /* WebPageController.xib in Resources */,
+				F335A02C18882F8000C1E636 /* menu_icon_tixian@2x.png in Resources */,
+				F335A02D18882F8000C1E636 /* cloud@2x.png in Resources */,
+				F335A02E18882F8000C1E636 /* invite_invite_code_bkg@2x.png in Resources */,
+				F335A02F18882F8000C1E636 /* user_hobby_normal@2x.png in Resources */,
+				F335A03018882F8000C1E636 /* menu-icon-green@2x.png in Resources */,
+				F335A03118882F8000C1E636 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
+				F335A03218882F8000C1E636 /* Default-568h@2x.png in Resources */,
+				F335A03318882F8000C1E636 /* grayArrow@2x.png in Resources */,
+				F335A03418882F8000C1E636 /* yellow_circle@2x.png in Resources */,
+				F335A03518882F8000C1E636 /* ShareSDKLocalizable.strings in Resources */,
+				F335A03618882F8000C1E636 /* dengjiTmp.png in Resources */,
+				F335A03718882F8000C1E636 /* navigation-back@2x.png in Resources */,
+				F335A03818882F8000C1E636 /* invite_seg_sel_unsel@2x.png in Resources */,
+				F335A03918882F8000C1E636 /* tab_split@2x.PNG in Resources */,
+				F335A03A18882F8000C1E636 /* yue_7@2x.png in Resources */,
+				F335A03B18882F8000C1E636 /* package_icon_one@2x.png in Resources */,
+				F335A03C18882F8000C1E636 /* blueArrow.png in Resources */,
+				F335A03D18882F8000C1E636 /* SettingViewController.xib in Resources */,
+				F335A03E18882F8000C1E636 /* choujiang_border_selected2@2x.png in Resources */,
+				F335A03F18882F8000C1E636 /* choujiang_title@2x.png in Resources */,
+				F335A04018882F8000C1E636 /* ExchangeController.xib in Resources */,
+				F335A04118882F8000C1E636 /* ExtractMoneyController.xib in Resources */,
+				F335A04218882F8000C1E636 /* Icon.png in Resources */,
+				F335A04318882F8000C1E636 /* menu_icon_wodewangcai@2x.png in Resources */,
+				F335A04418882F8000C1E636 /* table_view_cell_line@2x.png in Resources */,
+				F335A04518882F8000C1E636 /* sms_code_border@2x.png in Resources */,
+				F335A04618882F8000C1E636 /* user_info_commit_btn@2x.png in Resources */,
+				F335A04718882F8000C1E636 /* user_hobby_selected@2x.png in Resources */,
+				F335A04818882F8000C1E636 /* package_icon_2@2x.png in Resources */,
+				F335A04918882F8000C1E636 /* invite_seg_select@2x.png in Resources */,
+				F335A04A18882F8000C1E636 /* menu_icon_chaozhiduihua@2x.png in Resources */,
+				F335A04B18882F8000C1E636 /* InfoPlist.strings in Resources */,
+				F335A04C18882F8000C1E636 /* main_page_head@2x.png in Resources */,
+				F335A04D18882F8000C1E636 /* arrow-down@2x.png in Resources */,
+				F335A04E18882F8000C1E636 /* whiteArrow.png in Resources */,
+				F335A04F18882F8000C1E636 /* person_info_icon@2x.png in Resources */,
+				F335A05018882F8000C1E636 /* TransferToAlipayAndPhoneController.xib in Resources */,
+				F335A05118882F8000C1E636 /* yue_6@2x.png in Resources */,
+				F335A05218882F8000C1E636 /* choujiang_x2selected@2x.png in Resources */,
+				F335A05318882F8000C1E636 /* choujiang_border_selected1@2x.png in Resources */,
+				F335A05418882F8000C1E636 /* yue_2@2x.png in Resources */,
+				F335A05518882F8000C1E636 /* invite_share_button@2x.png in Resources */,
+				F335A05618882F8000C1E636 /* setting_message@2x.PNG in Resources */,
+				F335A05718882F8000C1E636 /* splash-slogan@2x.png in Resources */,
+				F335A05818882F8000C1E636 /* splash-bg@2x.png in Resources */,
+				F335A05918882F8000C1E636 /* BindTipsDuihao.png in Resources */,
+				F335A05A18882F8000C1E636 /* head_top_part@2x.png in Resources */,
+				F335A05B18882F8000C1E636 /* exchange_btn@2x.png in Resources */,
+				F335A05C18882F8000C1E636 /* qrcode_cell_icon@2x.png in Resources */,
+				F335A05D18882F8000C1E636 /* choujiang_shaxuan@2x.png in Resources */,
+				F335A05E18882F8000C1E636 /* phone_logo@2x.png in Resources */,
+				F335A05F18882F8000C1E636 /* BindAttachphoneBtn.png in Resources */,
+				F335A06018882F8000C1E636 /* yue_3@2x.png in Resources */,
+				F335A06118882F8000C1E636 /* main_menu_title_text@2x.png in Resources */,
+				F335A06218882F8000C1E636 /* head_left_menu_btn@2x.png in Resources */,
+				F335A06318882F8000C1E636 /* choujiang_baojie@2x.png in Resources */,
+				F335A06418882F8000C1E636 /* yue_1@2x.png in Resources */,
+				F335A06518882F8000C1E636 /* testIconSetting222@2x.jpg in Resources */,
+				F335A06618882F8000C1E636 /* rate_app_cell_icon@2x.png in Resources */,
+				F335A06718882F8000C1E636 /* choujiang_x2@2x.png in Resources */,
+				F335A06818882F8000C1E636 /* DomobOfferWallBundle.bundle in Resources */,
+				F335A06918882F8000C1E636 /* resend_down@2x.png in Resources */,
+				F335A06A18882F8000C1E636 /* tiyanzhongxin_cell_icon@2x.png in Resources */,
+				F335A06B18882F8000C1E636 /* choujiang_bottom_cloud@2x.png in Resources */,
+				F335A06C18882F8000C1E636 /* menu_icon_setting@2x.png in Resources */,
+				F335A06D18882F8000C1E636 /* main_menu_bg@2x.jpg in Resources */,
+				F335A06E18882F8000C1E636 /* invite_nav_bar@2x.png in Resources */,
+				F335A06F18882F8000C1E636 /* default568@2x.png in Resources */,
+				F335A07018882F8000C1E636 /* choujiang_5mao@2x.png in Resources */,
+				F335A07118882F8000C1E636 /* user_info_bg_paper@2x.png in Resources */,
+				F335A07218882F8000C1E636 /* invite_edit_bkg@2x.png in Resources */,
+				F335A07318882F8000C1E636 /* choujiang_xiaomi@2x.png in Resources */,
+				F335A07418882F8000C1E636 /* menu-icon-red@2x.png in Resources */,
+				F335A07518882F8000C1E636 /* apptask_rmb@2x.png in Resources */,
+				F335A07618882F8000C1E636 /* Default.png in Resources */,
+				F335A07718882F8000C1E636 /* WCMainPageBoard_iPhone.xml in Resources */,
+				F335A07818882F8000C1E636 /* invite_seg_unsel_sel@2x.png in Resources */,
+				F335A07918882F8000C1E636 /* zhanghuyue@2x.png in Resources */,
+				F335A07A18882F8000C1E636 /* PhoneValidationController.xib in Resources */,
+				F335A07B18882F8000C1E636 /* TaskController.xib in Resources */,
+				F335A07C18882F8000C1E636 /* about2@2x.png in Resources */,
+				F335A07D18882F8000C1E636 /* JPushlib in Resources */,
+				F335A07E18882F8000C1E636 /* recommand_task_icon@2x.png in Resources */,
+				F335A07F18882F8000C1E636 /* apptask_tip@2x.png in Resources */,
+				F335A08018882F8000C1E636 /* blueArrow@2x.png in Resources */,
+				F335A08118882F8000C1E636 /* Resource.bundle in Resources */,
+				F335A08218882F8000C1E636 /* tab-bar@2x.png in Resources */,
+				F335A08318882F8000C1E636 /* qiandao_button_icon@2x.png in Resources */,
+				F335A08418882F8000C1E636 /* testIconSetting@2x.png in Resources */,
+				F335A08518882F8000C1E636 /* menu_icon_line@2x.png in Resources */,
+				F335A08618882F8000C1E636 /* choujiang_thanks1@2x.png in Resources */,
+				F335A08718882F8000C1E636 /* choujiang_x3selected@2x.png in Resources */,
+				F335A08818882F8000C1E636 /* MJRefresh.bundle in Resources */,
+				F335A08918882F8000C1E636 /* menu-icon@2x.png in Resources */,
+				F335A08A18882F8000C1E636 /* deal_btn@2x.png in Resources */,
+				F335A08B18882F8000C1E636 /* head_left_icon@2x.png in Resources */,
+				F335A08C18882F8000C1E636 /* blackArrow@2x.png in Resources */,
+				F335A08D18882F8000C1E636 /* head_back@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3F186BA18543A410098C852 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3591,6 +4437,308 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F3359E6418882F8000C1E636 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3359E6518882F8000C1E636 /* XMLReader.m in Sources */,
+				F3359E6618882F8000C1E636 /* UIView+Metrics.m in Sources */,
+				F3359E6718882F8000C1E636 /* WebViewController.m in Sources */,
+				F3359E6818882F8000C1E636 /* NSString+DataParser.m in Sources */,
+				F3359E6918882F8000C1E636 /* RateAppLogic.m in Sources */,
+				F3359E6A18882F8000C1E636 /* MBAlertViewButton.m in Sources */,
+				F3359E6B18882F8000C1E636 /* BeeUIQuery+CSS.m in Sources */,
+				F3359E6C18882F8000C1E636 /* UILabel+BeeUILayout.m in Sources */,
+				F3359E6D18882F8000C1E636 /* UIView+Wireframe.m in Sources */,
+				F3359E6E18882F8000C1E636 /* MJRefreshFooterView.m in Sources */,
+				F3359E6F18882F8000C1E636 /* UIImageView+UIDataBinding.m in Sources */,
+				F3359E7018882F8000C1E636 /* Bee_UIAnimationAlpha.m in Sources */,
+				F3359E7118882F8000C1E636 /* UIView+BeeUITemplate.m in Sources */,
+				F3359E7218882F8000C1E636 /* CommonTaskTableViewCell.m in Sources */,
+				F3359E7318882F8000C1E636 /* SecondBoard_iPhone.m in Sources */,
+				F3359E7418882F8000C1E636 /* NSObject+Resource.mm in Sources */,
+				F3359E7518882F8000C1E636 /* UIView+BeeUISignal.m in Sources */,
+				F3359E7618882F8000C1E636 /* Bee_MessageQueue.mm in Sources */,
+				F3359E7718882F8000C1E636 /* ASIFormDataRequest.m in Sources */,
+				F3359E7818882F8000C1E636 /* Bee_UIMatrixView.m in Sources */,
+				F3359E7918882F8000C1E636 /* Bee_UIWebView.m in Sources */,
+				F3359E7A18882F8000C1E636 /* UIView+Visibility.m in Sources */,
+				F3359E7B18882F8000C1E636 /* MJRefreshHeaderView.m in Sources */,
+				F3359E7C18882F8000C1E636 /* ASIHTTPRequest.m in Sources */,
+				F3359E7D18882F8000C1E636 /* TaskController.m in Sources */,
+				F3359E7E18882F8000C1E636 /* InviteBoard_iPhone.m in Sources */,
+				F3359E7F18882F8000C1E636 /* ThirdBoard_iPhone.m in Sources */,
+				F3359E8018882F8000C1E636 /* NSObject+BeeKeychain.mm in Sources */,
+				F3359E8118882F8000C1E636 /* UIImageView+BeeUILayout.m in Sources */,
+				F3359E8218882F8000C1E636 /* FMDatabasePool.m in Sources */,
+				F3359E8318882F8000C1E636 /* Bee_UIToolbar.m in Sources */,
+				F3359E8418882F8000C1E636 /* MenuBoard_iPhone.m in Sources */,
+				F3359E8518882F8000C1E636 /* SettingLocalRecords.m in Sources */,
+				F3359E8618882F8000C1E636 /* Bee_Resource.mm in Sources */,
+				F3359E8718882F8000C1E636 /* Bee_CacheProtocol.mm in Sources */,
+				F3359E8818882F8000C1E636 /* Bee_UITemplate.m in Sources */,
+				F3359E8918882F8000C1E636 /* Bee_MVC.mm in Sources */,
+				F3359E8A18882F8000C1E636 /* UIButton+BeeUIStyle.m in Sources */,
+				F3359E8B18882F8000C1E636 /* NSDictionary+BeeActiveRecord.m in Sources */,
+				F3359E8C18882F8000C1E636 /* MBHUDView.m in Sources */,
+				F3359E8D18882F8000C1E636 /* Bee_UserDefaults.mm in Sources */,
+				F3359E8E18882F8000C1E636 /* WebPageController.m in Sources */,
+				F3359E8F18882F8000C1E636 /* Bee_Database.mm in Sources */,
+				F3359E9018882F8000C1E636 /* Bee_Controller.mm in Sources */,
+				F3359E9118882F8000C1E636 /* CXMLElement_CreationExtensions.m in Sources */,
+				F3359E9218882F8000C1E636 /* UIView+Tag.m in Sources */,
+				F3359E9318882F8000C1E636 /* FMDatabaseQueue.m in Sources */,
+				F3359E9418882F8000C1E636 /* Bee_ActiveObject.m in Sources */,
+				F3359E9518882F8000C1E636 /* BeeUIQuery+Traversing.m in Sources */,
+				F3359E9618882F8000C1E636 /* Bee_MemoryCache.mm in Sources */,
+				F3359E9718882F8000C1E636 /* OpenUDID.m in Sources */,
+				F3359E9818882F8000C1E636 /* CommonZhanghuYuETableViewCell.m in Sources */,
+				F3359E9918882F8000C1E636 /* Bee_View.mm in Sources */,
+				F3359E9A18882F8000C1E636 /* AppDelegate.m in Sources */,
+				F3359E9B18882F8000C1E636 /* NSNumber+BeeExtension.mm in Sources */,
+				F3359E9C18882F8000C1E636 /* NSArray+BeeExtension.mm in Sources */,
+				F3359E9D18882F8000C1E636 /* UIViewController+Traversing.m in Sources */,
+				F3359E9E18882F8000C1E636 /* Bee_UIAnimationZoom.m in Sources */,
+				F3359E9F18882F8000C1E636 /* UIScrollView+BeeUIStyle.m in Sources */,
+				F3359EA018882F8000C1E636 /* BeeUIBoard+Popover.m in Sources */,
+				F3359EA118882F8000C1E636 /* BeeUIQuery+Miscellaneous.m in Sources */,
+				F3359EA218882F8000C1E636 /* UIView+Transition.m in Sources */,
+				F3359EA318882F8000C1E636 /* CXMLElement.m in Sources */,
+				F3359EA418882F8000C1E636 /* MBSpinningCircle.m in Sources */,
+				F3359EA518882F8000C1E636 /* ExchangeController.m in Sources */,
+				F3359EA618882F8000C1E636 /* Bee_UIActivityIndicatorView.m in Sources */,
+				F3359EA718882F8000C1E636 /* Bee_ActiveBuilder.m in Sources */,
+				F3359EA818882F8000C1E636 /* Bee_MYSQL.m in Sources */,
+				F3359EA918882F8000C1E636 /* CXHTMLDocument.m in Sources */,
+				F3359EAA18882F8000C1E636 /* Bee_UIVideoEditorController.m in Sources */,
+				F3359EAB18882F8000C1E636 /* Bee_UISearchBar.m in Sources */,
+				F3359EAC18882F8000C1E636 /* Bee_SQLITE.m in Sources */,
+				F3359EAD18882F8000C1E636 /* CXMLDocument_CreationExtensions.m in Sources */,
+				F3359EAE18882F8000C1E636 /* Bee_HTTPRequest.m in Sources */,
+				F3359EAF18882F8000C1E636 /* Bee_UIImageView.m in Sources */,
+				F3359EB018882F8000C1E636 /* Bee_UITextView.m in Sources */,
+				F3359EB118882F8000C1E636 /* InviterUpdate.m in Sources */,
+				F3359EB218882F8000C1E636 /* UIImageView+BeeUIStyle.m in Sources */,
+				F3359EB318882F8000C1E636 /* Bee_UIPickerView.m in Sources */,
+				F3359EB418882F8000C1E636 /* BeeMessage+BeeJSON.mm in Sources */,
+				F3359EB518882F8000C1E636 /* Bee_UIActionSheet.m in Sources */,
+				F3359EB618882F8000C1E636 /* BeeUIBoard+ModalView.m in Sources */,
+				F3359EB718882F8000C1E636 /* Bee_Model.mm in Sources */,
+				F3359EB818882F8000C1E636 /* ASIAuthenticationDialog.m in Sources */,
+				F3359EB918882F8000C1E636 /* UIView+HoldGesture.m in Sources */,
+				F3359EBA18882F8000C1E636 /* BeeMessage+BeeActiveRecord.mm in Sources */,
+				F3359EBB18882F8000C1E636 /* CTidy.m in Sources */,
+				F3359EBC18882F8000C1E636 /* Bee_UIImagePickerController.m in Sources */,
+				F3359EBD18882F8000C1E636 /* SettingViewController.m in Sources */,
+				F3359EBE18882F8000C1E636 /* Bee_Storage.m in Sources */,
+				F3359EBF18882F8000C1E636 /* Bee_UIRouter.m in Sources */,
+				F3359EC018882F8000C1E636 /* JSONKit.m in Sources */,
+				F3359EC118882F8000C1E636 /* AppBoard_iPhone.m in Sources */,
+				F3359EC218882F8000C1E636 /* UITextView+UIDataBinding.m in Sources */,
+				F3359EC318882F8000C1E636 /* NSBundle+BeeExtension.m in Sources */,
+				F3359EC418882F8000C1E636 /* Bee_UIDatePicker.m in Sources */,
+				F3359EC518882F8000C1E636 /* BeeMessage+BeeNetwork.mm in Sources */,
+				F3359EC618882F8000C1E636 /* UIView+Traversing.m in Sources */,
+				F3359EC718882F8000C1E636 /* UITextField+BeeUILayout.m in Sources */,
+				F3359EC818882F8000C1E636 /* Bee_UIView.m in Sources */,
+				F3359EC918882F8000C1E636 /* Bee_UITemplateAndroid.m in Sources */,
+				F3359ECA18882F8000C1E636 /* BeeUIBoard+BackwardCompatible.m in Sources */,
+				F3359ECB18882F8000C1E636 /* BeeUIBoard+ModalBoard.m in Sources */,
+				F3359ECC18882F8000C1E636 /* UIViewController+Transition.m in Sources */,
+				F3359ECD18882F8000C1E636 /* Bee_UIAccelerometer.m in Sources */,
+				F3359ECE18882F8000C1E636 /* Bee_ActiveProtocol.m in Sources */,
+				F3359ECF18882F8000C1E636 /* UILabel+BeeUIStyle.m in Sources */,
+				F3359ED018882F8000C1E636 /* WCMainPageBoard_iPhone.m in Sources */,
+				F3359ED118882F8000C1E636 /* UserInfoEditorViewController.m in Sources */,
+				F3359ED218882F8000C1E636 /* UIViewController+BeeUITemplate.m in Sources */,
+				F3359ED318882F8000C1E636 /* CommonTaskList.m in Sources */,
+				F3359ED418882F8000C1E636 /* UIView+BeeUIStyle.m in Sources */,
+				F3359ED518882F8000C1E636 /* Bee_UIAnimationBounce.m in Sources */,
+				F3359ED618882F8000C1E636 /* IZValueSelectorView.m in Sources */,
+				F3359ED718882F8000C1E636 /* Bee_UITipsView.m in Sources */,
+				F3359ED818882F8000C1E636 /* CXMLElement_ElementTreeExtensions.m in Sources */,
+				F3359ED918882F8000C1E636 /* Bee_HTTPRequestQueue.m in Sources */,
+				F3359EDA18882F8000C1E636 /* UIActivityIndicatorView+BeeUIStyle.m in Sources */,
+				F3359EDB18882F8000C1E636 /* NSObject+BeeTimer.mm in Sources */,
+				F3359EDC18882F8000C1E636 /* CXMLNamespaceNode.m in Sources */,
+				F3359EDD18882F8000C1E636 /* Bee_UITextField.m in Sources */,
+				F3359EDE18882F8000C1E636 /* UIScrollView+BeeUILayout.m in Sources */,
+				F3359EDF18882F8000C1E636 /* Bee_UITableView.m in Sources */,
+				F3359EE018882F8000C1E636 /* NSArray+BeeActiveRecord.m in Sources */,
+				F3359EE118882F8000C1E636 /* NSObject+BeeUserDefaults.mm in Sources */,
+				F3359EE218882F8000C1E636 /* BusionessPageBoard_iPhone.m in Sources */,
+				F3359EE318882F8000C1E636 /* BeeUIQuery+AJAX.m in Sources */,
+				F3359EE418882F8000C1E636 /* LoginAndRegister.m in Sources */,
+				F3359EE518882F8000C1E636 /* UIView+BeeUICell.m in Sources */,
+				F3359EE618882F8000C1E636 /* CXMLNode_XPathExtensions.m in Sources */,
+				F3359EE718882F8000C1E636 /* UIView+Animation.m in Sources */,
+				F3359EE818882F8000C1E636 /* ExtractMoneyController.m in Sources */,
+				F3359EE918882F8000C1E636 /* Bee_Foundation.mm in Sources */,
+				F3359EEA18882F8000C1E636 /* Bee_UITemplateHTML.m in Sources */,
+				F3359EEB18882F8000C1E636 /* Bee_UIStyle.m in Sources */,
+				F3359EEC18882F8000C1E636 /* UIViewController+UINavigationController.m in Sources */,
+				F3359EED18882F8000C1E636 /* Encryption.m in Sources */,
+				F3359EEE18882F8000C1E636 /* UIViewController+LifeCycle.m in Sources */,
+				F3359EEF18882F8000C1E636 /* NSObject+BeeNotification.mm in Sources */,
+				F3359EF018882F8000C1E636 /* MBAlertView.m in Sources */,
+				F3359EF118882F8000C1E636 /* Bee_Message.mm in Sources */,
+				F3359EF218882F8000C1E636 /* CXMLNode_PrivateExtensions.m in Sources */,
+				F3359EF318882F8000C1E636 /* BeeDatabase+BeeActiveRecord.m in Sources */,
+				F3359EF418882F8000C1E636 /* MJRefreshBaseView.m in Sources */,
+				F3359EF518882F8000C1E636 /* OnlineWallViewController.m in Sources */,
+				F3359EF618882F8000C1E636 /* UIViewController+Metrics.m in Sources */,
+				F3359EF718882F8000C1E636 /* UITextView+BeeUILayout.m in Sources */,
+				F3359EF818882F8000C1E636 /* UIView+Animations.m in Sources */,
+				F3359EF918882F8000C1E636 /* UIImage+Theme.m in Sources */,
+				F3359EFA18882F8000C1E636 /* NSDate+BeeExtension.mm in Sources */,
+				F3359EFB18882F8000C1E636 /* BeeUIQuery+Manipulation.m in Sources */,
+				F3359EFC18882F8000C1E636 /* Bee_UICollection.m in Sources */,
+				F3359EFD18882F8000C1E636 /* CXMLDocument_PrivateExtensions.m in Sources */,
+				F3359EFE18882F8000C1E636 /* UIView+UIViewController.m in Sources */,
+				F3359EFF18882F8000C1E636 /* Bee_UISignalBus.m in Sources */,
+				F3359F0018882F8000C1E636 /* UILabel+UIDataBinding.m in Sources */,
+				F3359F0118882F8000C1E636 /* Bee_Ticker.mm in Sources */,
+				F3359F0218882F8000C1E636 /* ASINetworkQueue.m in Sources */,
+				F3359F0318882F8000C1E636 /* NSObject+BeeTypeConversion.mm in Sources */,
+				F3359F0418882F8000C1E636 /* Bee_Routine.mm in Sources */,
+				F3359F0518882F8000C1E636 /* Bee_UIQuery.m in Sources */,
+				F3359F0618882F8000C1E636 /* UIView+TapGesture.m in Sources */,
+				F3359F0718882F8000C1E636 /* Bee_UIZoomView.m in Sources */,
+				F3359F0818882F8000C1E636 /* ASIDownloadCache.m in Sources */,
+				F3359F0918882F8000C1E636 /* Bee_Thread.mm in Sources */,
+				F3359F0A18882F8000C1E636 /* UtilityFunctions.m in Sources */,
+				F3359F0B18882F8000C1E636 /* Bee.mm in Sources */,
+				F3359F0C18882F8000C1E636 /* Bee_Skeleton.m in Sources */,
+				F3359F0D18882F8000C1E636 /* ASIInputStream.m in Sources */,
+				F3359F0E18882F8000C1E636 /* FMResultSet.m in Sources */,
+				F3359F0F18882F8000C1E636 /* Bee_UIKeyboard.m in Sources */,
+				F3359F1018882F8000C1E636 /* UIControl+BeeUIStyle.m in Sources */,
+				F3359F1118882F8000C1E636 /* UIView+Manipulation.m in Sources */,
+				F3359F1218882F8000C1E636 /* Bee_UISignal.m in Sources */,
+				F3359F1318882F8000C1E636 /* UIViewController+BeeUISignal.m in Sources */,
+				F3359F1418882F8000C1E636 /* Bee_UIStack.m in Sources */,
+				F3359F1518882F8000C1E636 /* ASIDataCompressor.m in Sources */,
+				F3359F1618882F8000C1E636 /* Bee_UIPullLoader.m in Sources */,
+				F3359F1718882F8000C1E636 /* ChoujiangViewController.m in Sources */,
+				F3359F1818882F8000C1E636 /* Bee_UIAnimation.m in Sources */,
+				F3359F1918882F8000C1E636 /* NSString+BeeExtension.mm in Sources */,
+				F3359F1A18882F8000C1E636 /* Bee_Assertion.mm in Sources */,
+				F3359F1B18882F8000C1E636 /* BeeUISignal+BeeUICell.m in Sources */,
+				F3359F1C18882F8000C1E636 /* BeeUIBoard+Traversing.m in Sources */,
+				F3359F1D18882F8000C1E636 /* TransferToAlipayAndPhoneController.m in Sources */,
+				F3359F1E18882F8000C1E636 /* BeeMessage+BackwardCompatible.mm in Sources */,
+				F3359F1F18882F8000C1E636 /* Bee_Singleton.mm in Sources */,
+				F3359F2018882F8000C1E636 /* NSObject+BeeMessage.mm in Sources */,
+				F3359F2118882F8000C1E636 /* NSString+Trim.m in Sources */,
+				F3359F2218882F8000C1E636 /* main.m in Sources */,
+				F3359F2318882F8000C1E636 /* UITextField+BeeUIStyle.m in Sources */,
+				F3359F2418882F8000C1E636 /* Bee_UILayout.m in Sources */,
+				F3359F2518882F8000C1E636 /* UIColor+Theme.m in Sources */,
+				F3359F2618882F8000C1E636 /* Bee_UILabel.m in Sources */,
+				F3359F2718882F8000C1E636 /* Bee_ActiveRecord.m in Sources */,
+				F3359F2818882F8000C1E636 /* Bee_UISwitch.m in Sources */,
+				F3359F2918882F8000C1E636 /* HttpRequest.m in Sources */,
+				F3359F2A18882F8000C1E636 /* Bee_Keychain.mm in Sources */,
+				F3359F2B18882F8000C1E636 /* UITextField+UIDataBinding.m in Sources */,
+				F3359F2C18882F8000C1E636 /* Bee_UIAlertView.m in Sources */,
+				F3359F2D18882F8000C1E636 /* NSObject+BeeTicker.mm in Sources */,
+				F3359F2E18882F8000C1E636 /* Bee_UINavigationBar.m in Sources */,
+				F3359F2F18882F8000C1E636 /* Bee_UICell.m in Sources */,
+				F3359F3018882F8000C1E636 /* PhoneValidationBoard_iPhone.m in Sources */,
+				F3359F3118882F8000C1E636 /* BeeUIStack+BackwardCompatible.m in Sources */,
+				F3359F3218882F8000C1E636 /* Bee_UIPageViewController.m in Sources */,
+				F3359F3318882F8000C1E636 /* FMDatabase.m in Sources */,
+				F3359F3418882F8000C1E636 /* UIViewController+Title.m in Sources */,
+				F3359F3518882F8000C1E636 /* Bee_UITabBar.m in Sources */,
+				F3359F3618882F8000C1E636 /* UIFont+Alert.m in Sources */,
+				F3359F3718882F8000C1E636 /* BeeUIQuery+Transform.m in Sources */,
+				F3359F3818882F8000C1E636 /* UIView+BeeUILayout.m in Sources */,
+				F3359F3918882F8000C1E636 /* Bee_Performance.mm in Sources */,
+				F3359F3A18882F8000C1E636 /* UIView+Background.m in Sources */,
+				F3359F3B18882F8000C1E636 /* Bee_UITemplateXML.m in Sources */,
+				F3359F3C18882F8000C1E636 /* ASIDataDecompressor.m in Sources */,
+				F3359F3D18882F8000C1E636 /* EGORefreshTableHeaderView.m in Sources */,
+				F3359F3E18882F8000C1E636 /* Bee_UISegmentedControl.m in Sources */,
+				F3359F3F18882F8000C1E636 /* Common.m in Sources */,
+				F3359F4018882F8000C1E636 /* BeeUIQuery+Events.m in Sources */,
+				F3359F4118882F8000C1E636 /* UIFont+Theme.m in Sources */,
+				F3359F4218882F8000C1E636 /* NSData+BeeExtension.mm in Sources */,
+				F3359F4318882F8000C1E636 /* InviteController.m in Sources */,
+				F3359F4418882F8000C1E636 /* BeeUISignal+SourceView.m in Sources */,
+				F3359F4518882F8000C1E636 /* Bee_UIAnimationFade.m in Sources */,
+				F3359F4618882F8000C1E636 /* Bee_UIScrollView.m in Sources */,
+				F3359F4718882F8000C1E636 /* StartupController.m in Sources */,
+				F3359F4818882F8000C1E636 /* AppBoard_iPad.m in Sources */,
+				F3359F4918882F8000C1E636 /* BeeMessage+BeeXML.mm in Sources */,
+				F3359F4A18882F8000C1E636 /* MBAlertViewItem.m in Sources */,
+				F3359F4B18882F8000C1E636 /* NSObject+BeeJSON.mm in Sources */,
+				F3359F4C18882F8000C1E636 /* UITextView+BeeUIStyle.m in Sources */,
+				F3359F4D18882F8000C1E636 /* BaseTaskTableViewController.m in Sources */,
+				F3359F4E18882F8000C1E636 /* BeeUIQuery+Dimensions.m in Sources */,
+				F3359F4F18882F8000C1E636 /* ServiceBoard_iPhone.m in Sources */,
+				F3359F5018882F8000C1E636 /* NSString+FloatFormat.m in Sources */,
+				F3359F5118882F8000C1E636 /* Bee_UIDataBinding.m in Sources */,
+				F3359F5218882F8000C1E636 /* MJRefreshConst.m in Sources */,
+				F3359F5318882F8000C1E636 /* Bee_UIMetrics.m in Sources */,
+				F3359F5418882F8000C1E636 /* Reachability.m in Sources */,
+				F3359F5518882F8000C1E636 /* TabController.m in Sources */,
+				F3359F5618882F8000C1E636 /* Bee_HTTPMockServer.m in Sources */,
+				F3359F5718882F8000C1E636 /* Bee_Cache.mm in Sources */,
+				F3359F5818882F8000C1E636 /* ChoujiangLogic.m in Sources */,
+				F3359F5918882F8000C1E636 /* TaskInfoTableViewCell.m in Sources */,
+				F3359F5A18882F8000C1E636 /* Bee_UIPageControl.m in Sources */,
+				F3359F5B18882F8000C1E636 /* NSObject+BeeHTTPRequest.m in Sources */,
+				F3359F5C18882F8000C1E636 /* NSObject+BeeProperty.mm in Sources */,
+				F3359F5D18882F8000C1E636 /* UIView+PanGesture.m in Sources */,
+				F3359F5E18882F8000C1E636 /* Bee_Service.m in Sources */,
+				F3359F5F18882F8000C1E636 /* UIViewController+UINavigationBar.m in Sources */,
+				F3359F6018882F8000C1E636 /* NSObject+BeeActiveRecord.m in Sources */,
+				F3359F6118882F8000C1E636 /* UIView+UINavigationController.m in Sources */,
+				F3359F6218882F8000C1E636 /* FMDatabaseAdditions.m in Sources */,
+				F3359F6318882F8000C1E636 /* UIView+LifeCycle.m in Sources */,
+				F3359F6418882F8000C1E636 /* Bee_SystemInfo.mm in Sources */,
+				F3359F6518882F8000C1E636 /* UIViewController+BeeUILayout.m in Sources */,
+				F3359F6618882F8000C1E636 /* Bee_UICameraView.m in Sources */,
+				F3359F6718882F8000C1E636 /* PhoneValidationController.m in Sources */,
+				F3359F6818882F8000C1E636 /* Bee_HTTPConfig.m in Sources */,
+				F3359F6918882F8000C1E636 /* FirstBoard_iPhone.m in Sources */,
+				F3359F6A18882F8000C1E636 /* PhoneValidation.m in Sources */,
+				F3359F6B18882F8000C1E636 /* CXMLNode_CreationExtensions.m in Sources */,
+				F3359F6C18882F8000C1E636 /* Bee_FileCache.mm in Sources */,
+				F3359F6D18882F8000C1E636 /* Bee_UIProgressView.m in Sources */,
+				F3359F6E18882F8000C1E636 /* Bee_UIButton.m in Sources */,
+				F3359F6F18882F8000C1E636 /* Bee_UISlider.m in Sources */,
+				F3359F7018882F8000C1E636 /* UIView+BeeExtension.m in Sources */,
+				F3359F7118882F8000C1E636 /* Bee_Log.mm in Sources */,
+				F3359F7218882F8000C1E636 /* Bee_UIAnimationStyling.m in Sources */,
+				F3359F7318882F8000C1E636 /* Bee_Sandbox.mm in Sources */,
+				F3359F7418882F8000C1E636 /* BeeUIQuery+Offset.m in Sources */,
+				F3359F7518882F8000C1E636 /* Bee_UIActivity.m in Sources */,
+				F3359F7618882F8000C1E636 /* Bee_Runtime.mm in Sources */,
+				F3359F7718882F8000C1E636 /* CXMLDocument.m in Sources */,
+				F3359F7818882F8000C1E636 /* NSObject+BeeDatabase.m in Sources */,
+				F3359F7918882F8000C1E636 /* ExchangeControllerCell.m in Sources */,
+				F3359F7A18882F8000C1E636 /* Bee_UIBoard.m in Sources */,
+				F3359F7B18882F8000C1E636 /* Bee_UIMenuController.m in Sources */,
+				F3359F7C18882F8000C1E636 /* UserInfoAPI.m in Sources */,
+				F3359F7D18882F8000C1E636 /* Bee_UnitTest.m in Sources */,
+				F3359F7E18882F8000C1E636 /* NSDictionary+BeeExtension.mm in Sources */,
+				F3359F7F18882F8000C1E636 /* UIView+SwipeGesture.m in Sources */,
+				F3359F8018882F8000C1E636 /* BeeUIQuery+Effects.m in Sources */,
+				F3359F8118882F8000C1E636 /* NSTimer+BeeExtension.mm in Sources */,
+				F3359F8218882F8000C1E636 /* Bee_Network.m in Sources */,
+				F3359F8318882F8000C1E636 /* BeeUIBoard+ModalStack.m in Sources */,
+				F3359F8418882F8000C1E636 /* BeeUIQuery+Value.m in Sources */,
+				F3359F8518882F8000C1E636 /* UIButton+UIDataBinding.m in Sources */,
+				F3359F8618882F8000C1E636 /* UICustomAlertView.m in Sources */,
+				F3359F8718882F8000C1E636 /* UINavigationBar+BeeExtension.m in Sources */,
+				F3359F8818882F8000C1E636 /* CommonYuENumView.m in Sources */,
+				F3359F8918882F8000C1E636 /* UIButton+BeeUILayout.m in Sources */,
+				F3359F8A18882F8000C1E636 /* CXMLNode.m in Sources */,
+				F3359F8B18882F8000C1E636 /* MBCheckMarkView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3F186B818543A410098C852 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3906,7 +5054,7 @@
 /* Begin PBXTargetDependency section */
 		F3F18A1018543A450098C852 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F3F186BB18543A410098C852 /* wangcai */;
+			target = F3F186BB18543A410098C852 /* wangcai App Store版 */;
 			targetProxy = F3F18A0F18543A450098C852 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -3940,6 +5088,149 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F335A08F18882F8000C1E636 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/Pinterest.embeddedframework,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/QQConnectSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/Pinterest.embeddedframework,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/QQConnectSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/Pinterest.embeddedframework,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/QQConnectSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = "wangcai copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/libYouMi,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/JPushlib,
+				);
+				PRODUCT_NAME = "wangcai copy";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F335A09018882F8000C1E636 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/Pinterest.embeddedframework,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/QQConnectSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/Pinterest.embeddedframework,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/QQConnectSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/Pinterest.embeddedframework,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/QQConnectSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = "wangcai copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
+					/Users/1528/Documents/wangcai/wangcai_iOS/libYouMi,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/JPushlib,
+				);
+				PRODUCT_NAME = "wangcai copy";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
+				VALIDATE_PRODUCT = NO;
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		F3F18A1918543A450098C852 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4019,7 +5310,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4075,6 +5366,7 @@
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/libYouMi,
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/JPushlib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4089,7 +5381,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4145,6 +5437,7 @@
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/libYouMi,
 					/Users/1528/Documents/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/JPushlib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4200,6 +5493,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F335A08E18882F8000C1E636 /* Build configuration list for PBXNativeTarget "wangcai 亲友版" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F335A08F18882F8000C1E636 /* Debug */,
+				F335A09018882F8000C1E636 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F3F186B718543A410098C852 /* Build configuration list for PBXProject "wangcai" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -4209,7 +5511,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F3F18A1B18543A450098C852 /* Build configuration list for PBXNativeTarget "wangcai" */ = {
+		F3F18A1B18543A450098C852 /* Build configuration list for PBXNativeTarget "wangcai App Store版" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F3F18A1C18543A450098C852 /* Debug */,

@@ -18,10 +18,13 @@ DEF_SINGLETON( ChoujiangLogic )
 {
     self = [super init];
     if (self) {
-        _awardCode = kGetAwardTypeNotGet;
-        if ([SettingLocalRecords hasCheckInToday])
+        if ([SettingLocalRecords getCheckIn])
         {
             _awardCode = kGetAwardTypeAlreadyGot;
+        }
+        else
+        {
+            _awardCode = kGetAwardTypeNotGet;
         }
     }
     return self;
@@ -34,6 +37,10 @@ DEF_SINGLETON( ChoujiangLogic )
 
 - (GetAwardType)getAwardCode
 {
+    if (![SettingLocalRecords getCheckIn])
+    {
+        _awardCode = kGetAwardTypeNotGet;
+    }
     return _awardCode;
 }
 
@@ -64,6 +71,7 @@ DEF_SINGLETON( ChoujiangLogic )
         if ([result intValue] != 0)
         {
             _awardCode = kGetAwardTypeAlreadyGot;
+            [SettingLocalRecords setCheckIn:YES];
         }
         else if ([result integerValue] == 0)
         {
@@ -71,6 +79,7 @@ DEF_SINGLETON( ChoujiangLogic )
             if (awardCodeNum)
             {
                 _awardCode = [awardCodeNum integerValue];
+                [SettingLocalRecords setCheckIn:YES];
             }
         }
         succeed = YES;

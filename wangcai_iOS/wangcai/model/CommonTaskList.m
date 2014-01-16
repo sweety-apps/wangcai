@@ -68,6 +68,7 @@ static CommonTaskList* gInstance = nil;
 @interface CommonTaskList ()
 {
     BOOL _containsUserInfoTask;
+    BOOL _awardTaskFinished;
 }
 
 @property (nonatomic,retain) NSMutableArray* unfinishedTaskList;
@@ -195,6 +196,140 @@ static CommonTaskList* gInstance = nil;
     return _containsUserInfoTask;
 }
 
+- (BOOL)isAwardTaskFinished
+{
+    return _awardTaskFinished;
+}
+
+- (void)resetTaskListWithJsonArray:(NSArray*)jsonArray
+{
+    NSArray* taskList = jsonArray;
+    NSMutableArray* resultTaskList = [NSMutableArray array];
+    NSMutableArray* unfinishedTaskList = [NSMutableArray array];
+    
+    _containsUserInfoTask = NO;
+    
+    if (NO)
+    {
+        //本地测试数据
+        NSArray* localTestTask = [self _buildLocalTestTask];
+        [resultTaskList addObjectsFromArray:localTestTask];
+    }
+    
+    for (NSDictionary* taskDict in taskList)
+    {
+        CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
+        task.taskId = [taskDict objectForKey:@"id"];
+        task.taskType = [taskDict objectForKey:@"type"];
+        task.taskTitle = [taskDict objectForKey:@"title"];
+        task.taskStatus = [taskDict objectForKey:@"status"];
+        task.taskMoney = [taskDict objectForKey:@"money"];
+        task.taskIconUrl = [taskDict objectForKey:@"icon"];
+        task.taskIntro = [taskDict objectForKey:@"intro"];
+        task.taskDesc = [taskDict objectForKey:@"desc"];
+        task.taskStepStrings = [taskDict objectForKey:@"steps"];
+        
+        NSInteger taskType = [task.taskType intValue];
+        
+        BOOL shouldAddTask = YES;
+        
+        switch (taskType)
+        {
+            case kTaskTypeInstallWangcai:
+                task.taskIsLocalIcon = YES;
+                task.taskIconUrl = @"about_wangcai_cell_icon";
+                break;
+            case kTaskTypeUserInfo:
+                task.taskIsLocalIcon = YES;
+                task.taskIconUrl = @"person_info_icon";
+                if ([task.taskStatus integerValue] != 1)
+                {
+                    _containsUserInfoTask = YES;
+                }
+                else
+                {
+                    _containsUserInfoTask = NO;
+                }
+                break;
+            case kTaskTypeInviteFriends:
+                task.taskIsLocalIcon = YES;
+                task.taskIconUrl = @"qrcode_cell_icon";
+                break;
+            case kTaskTypeEverydaySign:
+                task.taskIsLocalIcon = NO;
+                if ([task.taskStatus intValue] == 10)
+                {
+                    [SettingLocalRecords setCheckIn:YES];
+                }
+                else
+                {
+                    [SettingLocalRecords setCheckIn:NO];
+                }
+                shouldAddTask = NO;
+                //task.taskIconUrl = @"";
+                break;
+            case kTaskTypeIntallApp:
+                task.taskIsLocalIcon = NO;
+                //task.taskIconUrl = @"";
+                break;
+            case kTaskTypeCommon:
+                task.taskIsLocalIcon = NO;
+                //task.taskIconUrl = @"";
+                break;
+            case kTaskTypeOfferWall:
+                task.taskIsLocalIcon = YES;
+                task.taskIconUrl = @"tiyanzhongxin_cell_icon";
+                //task.taskIconUrl = @"";
+                break;
+            case kTaskTypeCommetWangcai:
+                task.taskIsLocalIcon = YES;
+                task.taskIconUrl = @"rate_app_cell_icon";
+                if ([task.taskStatus intValue] == 10)
+                {
+                    [SettingLocalRecords setRatedApp:YES];
+                }
+                else
+                {
+                    [SettingLocalRecords setRatedApp:NO];
+                }
+                break;
+                
+            default:
+                if ([task.taskIconUrl rangeOfString:@"http://"].length > 0)
+                {
+                    task.taskIsLocalIcon = NO;
+                }
+                break;
+        }
+        
+        if (shouldAddTask)
+        {
+            [resultTaskList addObject:task];
+        }
+    }
+    
+    //分离完成任务和未完成任务
+    for (CommonTaskInfo* task in resultTaskList)
+    {
+        if ([task.taskStatus intValue] == 0)
+        {
+            [unfinishedTaskList addObject:task];
+        }
+    }
+    
+    self.taskList = resultTaskList;
+    self.unfinishedTaskList = unfinishedTaskList;
+    NSMutableArray* reorderedTaskList = [NSMutableArray arrayWithArray:self.unfinishedTaskList];
+    for (CommonTaskInfo* task in resultTaskList)
+    {
+        if ([task.taskStatus intValue] != 0)
+        {
+            [reorderedTaskList addObject:task];
+        }
+    }
+    self.taskList = reorderedTaskList;
+}
+
 - (NSArray*)_buildLocalTestTask
 {
     //本地测试数据
@@ -259,115 +394,8 @@ static CommonTaskList* gInstance = nil;
         msg = [body objectForKey:@"msg"];
         if ([result integerValue] == 0)
         {
-            _containsUserInfoTask = NO;
-            
             NSArray* taskList = [body objectForKey:@"task_list"];
-            NSMutableArray* resultTaskList = [NSMutableArray array];
-            NSMutableArray* unfinishedTaskList = [NSMutableArray array];
-            
-            if (NO)
-            {
-                //本地测试数据
-                NSArray* localTestTask = [self _buildLocalTestTask];
-                [resultTaskList addObjectsFromArray:localTestTask];
-            }
-            
-            for (NSDictionary* taskDict in taskList)
-            {
-                CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
-                task.taskId = [taskDict objectForKey:@"id"];
-                task.taskType = [taskDict objectForKey:@"type"];
-                task.taskTitle = [taskDict objectForKey:@"title"];
-                task.taskStatus = [taskDict objectForKey:@"status"];
-                task.taskMoney = [taskDict objectForKey:@"money"];
-                task.taskIconUrl = [taskDict objectForKey:@"icon"];
-                task.taskIntro = [taskDict objectForKey:@"intro"];
-                task.taskDesc = [taskDict objectForKey:@"desc"];
-                task.taskStepStrings = [taskDict objectForKey:@"steps"];
-                
-                NSInteger taskType = [task.taskType intValue];
-                switch (taskType)
-                {
-                    case kTaskTypeInstallWangcai:
-                        task.taskIsLocalIcon = YES;
-                        task.taskIconUrl = @"about_wangcai_cell_icon";
-                        break;
-                    case kTaskTypeUserInfo:
-                        task.taskIsLocalIcon = YES;
-                        task.taskIconUrl = @"person_info_icon";
-                        if ([task.taskStatus integerValue] != 1)
-                        {
-                            _containsUserInfoTask = YES;
-                        }
-                        else
-                        {
-                            _containsUserInfoTask = NO;
-                        }
-                        break;
-                    case kTaskTypeInviteFriends:
-                        task.taskIsLocalIcon = YES;
-                        task.taskIconUrl = @"qrcode_cell_icon";
-                        break;
-                    case kTaskTypeEverydaySign:
-                        task.taskIsLocalIcon = NO;
-                        //task.taskIconUrl = @"";
-                        break;
-                    case kTaskTypeIntallApp:
-                        task.taskIsLocalIcon = NO;
-                        //task.taskIconUrl = @"";
-                        break;
-                    case kTaskTypeCommon:
-                        task.taskIsLocalIcon = NO;
-                        //task.taskIconUrl = @"";
-                        break;
-                    case kTaskTypeOfferWall:
-                        task.taskIsLocalIcon = YES;
-                        task.taskIconUrl = @"tiyanzhongxin_cell_icon";
-                        //task.taskIconUrl = @"";
-                        break;
-                    case kTaskTypeCommetWangcai:
-                        task.taskIsLocalIcon = YES;
-                        task.taskIconUrl = @"rate_app_cell_icon";
-                        if ([task.taskStatus intValue] == 10)
-                        {
-                            [SettingLocalRecords setRatedApp:YES];
-                        }
-                        else
-                        {
-                            [SettingLocalRecords setRatedApp:NO];
-                        }
-                        break;
-                        
-                    default:
-                        if ([task.taskIconUrl rangeOfString:@"http://"].length > 0)
-                        {
-                            task.taskIsLocalIcon = NO;
-                        }
-                        break;
-                }
-                
-                [resultTaskList addObject:task];
-            }
-            
-            for (CommonTaskInfo* task in resultTaskList)
-            {
-                if ([task.taskStatus intValue] == 0)
-                {
-                    [unfinishedTaskList addObject:task];
-                }
-            }
-            
-            self.taskList = resultTaskList;
-            self.unfinishedTaskList = unfinishedTaskList;
-            NSMutableArray* reorderedTaskList = [NSMutableArray arrayWithArray:self.unfinishedTaskList];
-            for (CommonTaskInfo* task in resultTaskList)
-            {
-                if ([task.taskStatus intValue] != 0)
-                {
-                    [reorderedTaskList addObject:task];
-                }
-            }
-            self.taskList = reorderedTaskList;
+            [self resetTaskListWithJsonArray:taskList];
         }
     }
     

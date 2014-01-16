@@ -13,6 +13,7 @@
 #define kLastShareTime @"lastShareTime"
 #define kLastOfferWallAlertView @"offerWallAlertView"
 #define kRatedApp @"ratedApp"
+#define kCheckIn @"checkIn"
 //#define kLastOfferWallAlertView @"offerWallClearPoint"
 
 #define NKEY(x) ([SettingLocalRecords getUserNamedKey:(x)])
@@ -85,7 +86,7 @@
     BOOL syned = [[NSUserDefaults standardUserDefaults] synchronize];
     if (!syned)
     {
-        NSLog(@"[[ERROR]] saveLastCheckInDateTime saved false!");
+        NSLog(@"[[ERROR]] rated saved false!");
     }
 }
 
@@ -93,6 +94,27 @@
 {
     BOOL ret = NO;
     NSNumber* boolNum = [[NSUserDefaults standardUserDefaults] objectForKey:NKEY(kRatedApp)];
+    if (boolNum)
+    {
+        ret = [boolNum boolValue];
+    }
+    return ret;
+}
+
++ (void)setCheckIn:(BOOL)checkedIn
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:checkedIn] forKey:NKEY(kCheckIn)];
+    BOOL syned = [[NSUserDefaults standardUserDefaults] synchronize];
+    if (!syned)
+    {
+        NSLog(@"[[ERROR]] checked In saved false!");
+    }
+}
+
++ (BOOL)getCheckIn
+{
+    BOOL ret = NO;
+    NSNumber* boolNum = [[NSUserDefaults standardUserDefaults] objectForKey:NKEY(kCheckIn)];
     if (boolNum)
     {
         ret = [boolNum boolValue];

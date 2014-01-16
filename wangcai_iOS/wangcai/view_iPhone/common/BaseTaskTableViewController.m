@@ -685,7 +685,9 @@ static BOOL gNeedReloadTaskList = NO;
             UIAlertView* alertForceUpdate = [[[UIAlertView alloc]initWithTitle:@"升级" message:@"为了您红包的安全，需要升级之后才能继续使用。" delegate:self cancelButtonTitle:@"升级" otherButtonTitles:nil, nil] autorelease];
             [alertForceUpdate show];
         } else {
-            [[CommonTaskList sharedInstance] fetchTaskList:self];
+            //任务列表改到登陆协议中去了，已不用单独再拉列表了
+            //[[CommonTaskList sharedInstance] fetchTaskList:self];
+            [self onFinishedFetchTaskList:[CommonTaskList sharedInstance] resultCode:0];
         }
     } else {
         // 登陆错误，必须登陆成功才能进入下一步

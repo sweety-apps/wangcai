@@ -54,6 +54,8 @@
 - (NSArray*)getAllTaskList;
 - (float)allMoneyCanBeEarnedInRMBYuan;
 - (BOOL)containsUnfinishedUserInfoTask;
+- (BOOL)isAwardTaskFinished;
+- (void)resetTaskListWithJsonArray:(NSArray*)jsonArray;
 
 - (void) increaseEarned:(NSInteger) increase;
 

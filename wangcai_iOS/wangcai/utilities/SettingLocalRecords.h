@@ -22,6 +22,9 @@
 + (void)setRatedApp:(BOOL)rated;
 + (BOOL)getRatedApp;
 
++ (void)setCheckIn:(BOOL)checkedIn;
++ (BOOL)getCheckIn;
+
 + (BOOL)hasCheckInYesterday;
 + (BOOL)hasCheckInToday;
 + (BOOL)hasShareToday;
