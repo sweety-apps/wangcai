@@ -160,13 +160,13 @@
 		A66E3A661887FA7600EB19DE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A66E3A651887FA7600EB19DE /* CoreFoundation.framework */; };
 		A66E3A681887FB6C00EB19DE /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A66E3A671887FB6C00EB19DE /* PushConfig.plist */; };
 		A66E3A6A1887FD2100EB19DE /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66E3A691887FD2000EB19DE /* libPushSDK.a */; };
+		A66E3A6D1888183E00EB19DE /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66E3A6C1888183E00EB19DE /* Encryption.m */; };
 		A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A6AA900118647E03006DB7D2 /* BusionessPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */; };
 		A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */; };
 		A6D591BC187BDD4E004DF4E0 /* tab_split@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = A6D591BB187BDD4E004DF4E0 /* tab_split@2x.PNG */; };
 		A6D591BE187C00BB004DF4E0 /* alipay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D591BD187C00BB004DF4E0 /* alipay@2x.png */; };
 		A6D591C8187C0FD4004DF4E0 /* UICustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D591C7187C0FD4004DF4E0 /* UICustomAlertView.m */; };
-		A6E0515F1886B4C500780F02 /* client.p12 in Resources */ = {isa = PBXBuildFile; fileRef = A6E0515E1886B4C500780F02 /* client.p12 */; };
 		A6E051611886CF0E00780F02 /* about2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E051601886CF0E00780F02 /* about2@2x.png */; };
 		A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6DE671860287900D089C7 /* WebPageController.xib */; };
 		A6F6DE6B186028B700D089C7 /* WebPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6DE6A186028B700D089C7 /* WebPageController.m */; };
@@ -757,6 +757,8 @@
 		A66E3A651887FA7600EB19DE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		A66E3A671887FB6C00EB19DE /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		A66E3A691887FD2000EB19DE /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPushSDK.a; path = wangcai/JPushlib/libPushSDK.a; sourceTree = "<group>"; };
+		A66E3A6B1888183E00EB19DE /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
+		A66E3A6C1888183E00EB19DE /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
 		A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A6AA8FFE18647E03006DB7D2 /* BusionessPageBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusionessPageBoard_iPhone.h; sourceTree = "<group>"; };
 		A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusionessPageBoard_iPhone.m; sourceTree = "<group>"; };
@@ -765,7 +767,6 @@
 		A6D591BD187C00BB004DF4E0 /* alipay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipay@2x.png"; sourceTree = "<group>"; };
 		A6D591C6187C0FD4004DF4E0 /* UICustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICustomAlertView.h; sourceTree = "<group>"; };
 		A6D591C7187C0FD4004DF4E0 /* UICustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomAlertView.m; sourceTree = "<group>"; };
-		A6E0515E1886B4C500780F02 /* client.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = client.p12; sourceTree = "<group>"; };
 		A6E051601886CF0E00780F02 /* about2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about2@2x.png"; sourceTree = "<group>"; };
 		A6F6DE671860287900D089C7 /* WebPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebPageController.xib; sourceTree = "<group>"; };
 		A6F6DE69186028B700D089C7 /* WebPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPageController.h; sourceTree = "<group>"; };
@@ -2236,6 +2237,8 @@
 				F3813D341877FD7100350C27 /* ChoujiangLogic.m */,
 				F3359E4A1886C0F000C1E636 /* RateAppLogic.h */,
 				F3359E4B1886C0F000C1E636 /* RateAppLogic.m */,
+				A66E3A6B1888183E00EB19DE /* Encryption.h */,
+				A66E3A6C1888183E00EB19DE /* Encryption.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -3302,7 +3305,6 @@
 				A60C582C186FF8A30068425C /* UserInfo */,
 				A60C5830186FF8A30068425C /* WCMainPageBoard */,
 				A60C583E186FF8A30068425C /* yellow_circle@2x.png */,
-				A6E0515E1886B4C500780F02 /* client.p12 */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -3524,7 +3526,6 @@
 				A60C5864186FF8A30068425C /* splash-bg@2x.png in Resources */,
 				A60C5840186FF8A30068425C /* BindTipsDuihao.png in Resources */,
 				A60C588A186FF8A30068425C /* head_top_part@2x.png in Resources */,
-				A6E0515F1886B4C500780F02 /* client.p12 in Resources */,
 				A60C584E186FF8A30068425C /* exchange_btn@2x.png in Resources */,
 				F3359E511886C11100C1E636 /* qrcode_cell_icon@2x.png in Resources */,
 				F3813D1B18753ED400350C27 /* choujiang_shaxuan@2x.png in Resources */,
@@ -3730,6 +3731,7 @@
 				F3F1892718543A440098C852 /* Bee_UITemplateHTML.m in Sources */,
 				F3F187D318543A420098C852 /* Bee_UIStyle.m in Sources */,
 				F3F187CF18543A420098C852 /* UIViewController+UINavigationController.m in Sources */,
+				A66E3A6D1888183E00EB19DE /* Encryption.m in Sources */,
 				F3F187C018543A420098C852 /* UIViewController+LifeCycle.m in Sources */,
 				F3F189C318543A450098C852 /* NSObject+BeeNotification.mm in Sources */,
 				F3D9D559185D876D00392C40 /* MBAlertView.m in Sources */,
@@ -4017,8 +4019,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
@@ -4087,8 +4089,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,

@@ -8,6 +8,8 @@
 
 #import "HttpRequest.h"
 #import "Common.h"
+#import "Encryption.h"
+#import "Config.h"
 
 @implementation HttpRequest
 
@@ -83,10 +85,17 @@
 
 - (void) request : (NSString*) url Param:(NSDictionary*) params method:(NSString*)getOrPost
 {
+    [self request:url Param:params method:getOrPost Aes:NO];
+}
+
+- (void) request : (NSString*) url Param:(NSDictionary*) params method:(NSString*)getOrPost Aes:(BOOL) aes
+{
     if ([getOrPost length] == 0)
     {
         getOrPost = @"post";
     }
+    
+    _aes = aes;
     
     getOrPost = [getOrPost lowercaseString];
     NSString* newUrl = [[self BuildURL:url] autorelease];
@@ -122,7 +131,7 @@
     }
     
     // 设置https访问证书
-    //[_request setValidatesSecureCertificate:YES];
+    [_request setValidatesSecureCertificate:NO];
     //[_request setClientCertificateIdentity: [Common getSecIdentityRef]];
     //
     
@@ -141,14 +150,14 @@
     
     if([getOrPost isEqualToString:@"post"]) {
         NSString* nsParam = [[NSString alloc]init];
-    
+        
         if ( params != nil ) {
             NSArray* keys = [params allKeys];
             int nCount = [keys count];
             for (int i = 0; i < nCount; i ++ ) {
                 id key = [keys objectAtIndex:i];
                 id value = [params objectForKey:key];
-        
+                
                 if ( i == nCount - 1 ) {
                     nsParam = [nsParam stringByAppendingFormat:@"%@=%@", key, value];
                 } else {
@@ -156,25 +165,31 @@
                 }
             }
         }
-    
+        
         _param = [nsParam copy];
-    
+        
         NSMutableData* data = [[[NSMutableData alloc] init] autorelease];
-    
-    
+        
+        
         NSString* encodedString = [nsParam stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-        const char * a =[encodedString UTF8String];
-    
         _request.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
-        [data appendBytes:a length:strlen(a)];
-    
+        
+        const char * a =[encodedString UTF8String];
+        if ( _aes ) {
+            // 加密
+            NSData* oldData = [encodedString dataUsingEncoding:NSUTF8StringEncoding];
+            NSData* tmpData = [oldData AES256EncryptWithKey:AES_KEY];
+            
+            [data appendData:tmpData];
+        } else {
+            [data appendBytes:a length:strlen(a)];
+        }
+        
         _request.postBody = [[data copy] autorelease];
     }
     
     _request.TIMEOUT(10);
 }
-
 
 - (void) handleRequest:(BeeHTTPRequest *)req {
     if ( req.sending) {
@@ -259,15 +274,22 @@
     {
         _param = @"";
     }
+    
     NSString* encodedString = [_param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    _request.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
     
     const char * a =[encodedString UTF8String];
-    
-    _request.HEADER(@"Content-Type", @"application/x-www-form-urlencoded");
-    [data appendBytes:a length:strlen(a)];
+    if ( _aes ) {
+        // 加密
+        NSData* oldData = [encodedString dataUsingEncoding:NSUTF8StringEncoding];
+        NSData* tmpData = [oldData AES256EncryptWithKey:AES_KEY];
+        [data appendData:tmpData];
+    } else {
+        [data appendBytes:a length:strlen(a)];
+    }
     
     // 设置https访问证书
-    //[_request setValidatesSecureCertificate:YES];
+    [_request setValidatesSecureCertificate:NO];
     //[_request setClientCertificateIdentity: [Common getSecIdentityRef]];
     //
     

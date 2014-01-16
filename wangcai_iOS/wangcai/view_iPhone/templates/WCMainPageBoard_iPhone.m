@@ -157,7 +157,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         
         // 亲友提示
-        [self showFirendMsg];
+        //[self showFirendMsg];
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {

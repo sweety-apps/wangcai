@@ -193,7 +193,7 @@ static OnlineWallViewController* _sharedInstance;
         [dictionary setObject:nsPoint forKey:@"domob_point"];
         [dictionary setObject:nsYoumi forKey:@"youmi_point"];
         
-        [request request:HTTP_TASK_OFFERWALL Param:dictionary];
+        [request request:HTTP_TASK_OFFERWALL Param:dictionary method:@"post"];
     } else {
         // 不继续往下请求
         _request = NO;

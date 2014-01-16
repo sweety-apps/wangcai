@@ -17,6 +17,7 @@
     id _delegate;
     BeeHTTPRequest* _request;
     BOOL    _relogin;
+    BOOL    _aes;
     NSString* _url;
     NSString* _param;
     NSString* _method;
@@ -27,4 +28,6 @@
 - (id) init : (id) delegate;
 - (void) request : (NSString*) url Param:(NSDictionary*) params;//使用POST
 - (void) request : (NSString*) url Param:(NSDictionary*) params method:(NSString*)getOrPost;
+- (void) request : (NSString*) url Param:(NSDictionary*) params method:(NSString*)getOrPost Aes:(BOOL) aes;
+
 @end

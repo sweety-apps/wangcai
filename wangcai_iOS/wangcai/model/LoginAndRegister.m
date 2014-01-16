@@ -139,7 +139,7 @@ static LoginAndRegister* _sharedInstance;
     [data appendBytes:a length:strlen(a)];
     
     // 设置https访问证书
-    //[req setValidatesSecureCertificate:YES];
+    [req setValidatesSecureCertificate:NO];
     //[req setClientCertificateIdentity: [Common getSecIdentityRef]];
     //
     

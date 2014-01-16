@@ -179,7 +179,7 @@ NSString * macaddress()
 + (BOOL)extractIdentity:(SecIdentityRef *)outIdentity andTrust:(SecTrustRef*)outTrust fromPKCS12Data:(NSData *)inPKCS12Data {
     OSStatus securityError = errSecSuccess;
     
-    CFStringRef password = CFSTR("1528memeda"); //证书密码
+    CFStringRef password = CFSTR("WangCai@1528"); //证书密码
     const void *keys[] =   { kSecImportExportPassphrase };
     const void *values[] = { password };
     
