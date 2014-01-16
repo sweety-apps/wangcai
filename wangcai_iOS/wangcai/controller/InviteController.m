@@ -217,7 +217,7 @@
 {
     NSString* imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
     
-    id<ISSContent> publishContent = [ShareSDK content: @"妈妈再也不用担心我的话费了" defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"新年旺财，玩应用领红包" url: [NSString stringWithFormat: @"http://invite.getwangcai.com/index.php?code=%@", _inviteCode] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
+    id<ISSContent> publishContent = [ShareSDK content: @"妈妈再也不用担心我的话费了" defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"新年旺财，玩应用领红包" url: [NSString stringWithFormat: @"http://wangcai.meme-da.com/invite/index.php?code=%@", _inviteCode] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
     
     [ShareSDK showShareActionSheet: nil shareList: nil content: publishContent statusBarTips: YES authOptions: nil shareOptions: nil result: ^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
      {
@@ -266,8 +266,8 @@
         _inviteCode = [inviteCode copy];
         
         self.inviteCodeLabel.text = _inviteCode;
-        self.inviteUrlTextField.text = [NSString stringWithFormat: @"http://invite.getwangcai.com/index.php?code=%@", _inviteCode];
-        self.qrcodeView.image = [self QRCodeGenerator: [NSString stringWithFormat: @"http://invite.getwangcai.com/index.php?code=%@", _inviteCode] andLightColor: [UIColor whiteColor] andDarkColor: [UIColor blackColor] andQuietZone: 1 andSize: 128];
+        self.inviteUrlTextField.text = [NSString stringWithFormat: @"http://wangcai.meme-da.com/invite/index.php?code=%@", _inviteCode];
+        self.qrcodeView.image = [self QRCodeGenerator: [NSString stringWithFormat: @"http://wangcai.meme-da.com/invite/index.php?code=%@", _inviteCode] andLightColor: [UIColor whiteColor] andDarkColor: [UIColor blackColor] andQuietZone: 1 andSize: 128];
     }
 }
 

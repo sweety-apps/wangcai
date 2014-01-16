@@ -135,9 +135,59 @@ static CommonTaskList* gInstance = nil;
         {
             allRMBFen += [task.taskMoney floatValue];
         }
+        
+        allRMBFen -= [self getIncreaseEarned];
+        if ( allRMBFen < 1000 ) {
+            allRMBFen = 1000;
+        }
+        
         return allRMBFen/100.0f;
     }
     return 0.0f;
+}
+
+- (void) increaseEarned:(NSInteger) increase {
+    // 今天已经赚了多少钱
+    NSDate* now = [NSDate date];
+    int nYear = [now year];
+    int nMonth = [now month];
+    int nDay = [now day];
+    
+    NSString* curTime = [[NSString alloc] initWithFormat:@"%d-%d-%d", nYear, nMonth, nDay];
+    
+    // 取配置文件中的时间
+    NSString* cfgTime = [[NSUserDefaults standardUserDefaults] objectForKey:@"cfgTime"];
+    NSNumber* cfgInc = [[NSUserDefaults standardUserDefaults] objectForKey:@"cfgInc"];
+    if ( [curTime isEqualToString:cfgTime] ) {
+        int value = [cfgInc intValue];
+        value += increase;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:value] forKey:@"cfgInc"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:curTime forKey:@"cfgTime"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:increase] forKey:@"cfgInc"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    [curTime release];
+}
+
+- (int) getIncreaseEarned {
+    NSDate* now = [NSDate date];
+    int nYear = [now year];
+    int nMonth = [now month];
+    int nDay = [now day];
+    
+    NSString* curTime = [[[NSString alloc] initWithFormat:@"%d-%d-%d", nYear, nMonth, nDay] autorelease];
+    
+    // 取配置文件中的时间
+    NSString* cfgTime = [[NSUserDefaults standardUserDefaults] objectForKey:@"cfgTime"];
+    NSNumber* cfgInc = [[NSUserDefaults standardUserDefaults] objectForKey:@"cfgInc"];
+    
+    if ( [curTime isEqualToString:cfgTime] ) {
+        return [cfgInc intValue];
+    }
+    return 0;
 }
 
 - (BOOL)containsUnfinishedUserInfoTask

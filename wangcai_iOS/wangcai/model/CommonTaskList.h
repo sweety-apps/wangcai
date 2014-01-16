@@ -55,4 +55,6 @@
 - (float)allMoneyCanBeEarnedInRMBYuan;
 - (BOOL)containsUnfinishedUserInfoTask;
 
+- (void) increaseEarned:(NSInteger) increase;
+
 @end

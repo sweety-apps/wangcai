@@ -663,6 +663,9 @@ static BOOL gNeedReloadTaskList = NO;
 {
     if (suc && consume > 0)
     {
+        [[CommonTaskList sharedInstance] increaseEarned:consume];
+        [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[[CommonTaskList sharedInstance] allMoneyCanBeEarnedInRMBYuan]];
+        
         [[LoginAndRegister sharedInstance] increaseBalance:consume];
         UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"收到应用体验红包 %@ 元！",[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:1 ignoreBackZeros:YES]] message:@"" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
         [alert show];
