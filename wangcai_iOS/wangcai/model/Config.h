@@ -11,8 +11,10 @@
 
 #if TARGET_VERSION_LITE == 1 
 #define APP_NAME   @"WangCai"
+#define INVITE_URL @"http://wangcai.meme-da.com/invite/index.php?code=%@"
 #elif TARGET_VERSION_LITE == 2
 #define APP_NAME   @"WangCaiFirend"
+#define INVITE_URL @"http://wangcai.meme-da.com/invite/index.php?app=wangcaifirend&code=%@"
 #endif
 
 #define UMENG_KEY   @"52c65fc056240b00c1128d1e"
