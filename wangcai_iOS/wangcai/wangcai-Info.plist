@@ -28,11 +28,9 @@
 			<key>CFBundleURLIconFile</key>
 			<string></string>
 			<key>CFBundleURLName</key>
-			<string>1528studio.wangcai</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>1528wangcai</string>
-			</array>
+			<array/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>

@@ -161,6 +161,7 @@
 		A66E3A681887FB6C00EB19DE /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A66E3A671887FB6C00EB19DE /* PushConfig.plist */; };
 		A66E3A6A1887FD2100EB19DE /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66E3A691887FD2000EB19DE /* libPushSDK.a */; };
 		A66E3A6D1888183E00EB19DE /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66E3A6C1888183E00EB19DE /* Encryption.m */; };
+		A67BA6E11888F11100CEC89B /* iTunesArtwrok.png in Resources */ = {isa = PBXBuildFile; fileRef = A67BA6E01888F11100CEC89B /* iTunesArtwrok.png */; };
 		A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A6AA900118647E03006DB7D2 /* BusionessPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */; };
 		A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */; };
@@ -1310,6 +1311,7 @@
 		A66E3A691887FD2000EB19DE /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPushSDK.a; path = wangcai/JPushlib/libPushSDK.a; sourceTree = "<group>"; };
 		A66E3A6B1888183E00EB19DE /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
 		A66E3A6C1888183E00EB19DE /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
+		A67BA6E01888F11100CEC89B /* iTunesArtwrok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwrok.png; sourceTree = "<group>"; };
 		A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A6AA8FFE18647E03006DB7D2 /* BusionessPageBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusionessPageBoard_iPhone.h; sourceTree = "<group>"; };
 		A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusionessPageBoard_iPhone.m; sourceTree = "<group>"; };
@@ -1502,7 +1504,7 @@
 		F3DD64191882D36500E56A0B /* testIconSetting222@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "testIconSetting222@2x.jpg"; sourceTree = "<group>"; };
 		F3DD641F1882D7B400E56A0B /* package_icon_many@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_many@2x.png"; sourceTree = "<group>"; };
 		F3DD64211883037600E56A0B /* user_info_bg_paper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_info_bg_paper@2x.png"; sourceTree = "<group>"; };
-		F3F186BC18543A410098C852 /* wangcai App Store版.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wangcai App Store版.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3F186BC18543A410098C852 /* wangcai_AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wangcai_AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F186BF18543A410098C852 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F3F186C118543A410098C852 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3F186C318543A410098C852 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -2770,7 +2772,7 @@
 		F3F186BD18543A410098C852 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F3F186BC18543A410098C852 /* wangcai App Store版.app */,
+				F3F186BC18543A410098C852 /* wangcai_AppStore.app */,
 				F3F18A0A18543A450098C852 /* wangcaiTests.xctest */,
 				F335A09118882F8000C1E636 /* wangcai copy.app */,
 			);
@@ -3934,6 +3936,7 @@
 				A60C582C186FF8A30068425C /* UserInfo */,
 				A60C5830186FF8A30068425C /* WCMainPageBoard */,
 				A60C583E186FF8A30068425C /* yellow_circle@2x.png */,
+				A67BA6E01888F11100CEC89B /* iTunesArtwrok.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -3958,9 +3961,9 @@
 			productReference = F335A09118882F8000C1E636 /* wangcai copy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F3F186BB18543A410098C852 /* wangcai App Store版 */ = {
+		F3F186BB18543A410098C852 /* wangcai_AppStore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F3F18A1B18543A450098C852 /* Build configuration list for PBXNativeTarget "wangcai App Store版" */;
+			buildConfigurationList = F3F18A1B18543A450098C852 /* Build configuration list for PBXNativeTarget "wangcai_AppStore" */;
 			buildPhases = (
 				F3F186B818543A410098C852 /* Sources */,
 				F3F186B918543A410098C852 /* Frameworks */,
@@ -3970,9 +3973,9 @@
 			);
 			dependencies = (
 			);
-			name = "wangcai App Store版";
+			name = wangcai_AppStore;
 			productName = wangcai;
-			productReference = F3F186BC18543A410098C852 /* wangcai App Store版.app */;
+			productReference = F3F186BC18543A410098C852 /* wangcai_AppStore.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F3F18A0918543A450098C852 /* wangcaiTests */ = {
@@ -4026,7 +4029,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F3F186BB18543A410098C852 /* wangcai App Store版 */,
+				F3F186BB18543A410098C852 /* wangcai_AppStore */,
 				F3F18A0918543A450098C852 /* wangcaiTests */,
 				F3359E6318882F8000C1E636 /* wangcai 亲友版 */,
 			);
@@ -4262,6 +4265,7 @@
 				A60C58A418703AE60068425C /* invite_copy_button@2x.png in Resources */,
 				F3F189F918543A450098C852 /* MenuBoard_iPhone.xml in Resources */,
 				A60C584C186FF8A30068425C /* btn_normal@2x.png in Resources */,
+				A67BA6E11888F11100CEC89B /* iTunesArtwrok.png in Resources */,
 				A6FA6A5D18827C88003F8399 /* update@2x.png in Resources */,
 				F36049B31871A9AE00FAD1F3 /* menu_icon_tuhaobang@2x.png in Resources */,
 				A60C58AA18703AE60068425C /* invite_seg_normal@2x.png in Resources */,
@@ -5054,7 +5058,7 @@
 /* Begin PBXTargetDependency section */
 		F3F18A1018543A450098C852 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F3F186BB18543A410098C852 /* wangcai App Store版 */;
+			target = F3F186BB18543A410098C852 /* wangcai_AppStore */;
 			targetProxy = F3F18A0F18543A450098C852 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -5248,8 +5252,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JINXIN LI (DJJ4XT349N)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BIN Li (B4BR4E2M87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BIN Li (B4BR4E2M87)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -5267,6 +5271,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "47B8C31E-6A4D-41F0-A717-8F169A58970F";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5300,6 +5305,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "47B8C31E-6A4D-41F0-A717-8F169A58970F";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5310,8 +5316,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BIN Li (B4BR4E2M87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BIN Li (B4BR4E2M87)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
@@ -5369,7 +5375,7 @@
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/JPushlib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "47B8C31E-6A4D-41F0-A717-8F169A58970F";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -5381,8 +5387,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BIN Li (B4BR4E2M87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BIN Li (B4BR4E2M87)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
@@ -5440,7 +5446,7 @@
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/JPushlib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "47B8C31E-6A4D-41F0-A717-8F169A58970F";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -5511,7 +5517,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F3F18A1B18543A450098C852 /* Build configuration list for PBXNativeTarget "wangcai App Store版" */ = {
+		F3F18A1B18543A450098C852 /* Build configuration list for PBXNativeTarget "wangcai_AppStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F3F18A1C18543A450098C852 /* Debug */,
