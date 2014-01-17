@@ -165,6 +165,8 @@
 		A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A6AA900118647E03006DB7D2 /* BusionessPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */; };
 		A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */; };
+		A6C1A635188942F70011FBBC /* icon_120_120.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C1A634188942F70011FBBC /* icon_120_120.png */; };
+		A6C1A636188942F70011FBBC /* icon_120_120.png in Resources */ = {isa = PBXBuildFile; fileRef = A6C1A634188942F70011FBBC /* icon_120_120.png */; };
 		A6D591BC187BDD4E004DF4E0 /* tab_split@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = A6D591BB187BDD4E004DF4E0 /* tab_split@2x.PNG */; };
 		A6D591BE187C00BB004DF4E0 /* alipay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6D591BD187C00BB004DF4E0 /* alipay@2x.png */; };
 		A6D591C8187C0FD4004DF4E0 /* UICustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D591C7187C0FD4004DF4E0 /* UICustomAlertView.m */; };
@@ -1316,6 +1318,7 @@
 		A6AA8FFE18647E03006DB7D2 /* BusionessPageBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusionessPageBoard_iPhone.h; sourceTree = "<group>"; };
 		A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusionessPageBoard_iPhone.m; sourceTree = "<group>"; };
 		A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BusionessPageBoard_iPhone.xml; sourceTree = "<group>"; };
+		A6C1A634188942F70011FBBC /* icon_120_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120_120.png; sourceTree = "<group>"; };
 		A6D591BB187BDD4E004DF4E0 /* tab_split@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_split@2x.PNG"; sourceTree = "<group>"; };
 		A6D591BD187C00BB004DF4E0 /* alipay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipay@2x.png"; sourceTree = "<group>"; };
 		A6D591C6187C0FD4004DF4E0 /* UICustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICustomAlertView.h; sourceTree = "<group>"; };
@@ -2829,6 +2832,7 @@
 		F3F186D818543A410098C852 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A6C1A634188942F70011FBBC /* icon_120_120.png */,
 				F3F186D918543A410098C852 /* wangcai-Info.plist */,
 				F3F186DA18543A410098C852 /* InfoPlist.strings */,
 				F3F186DD18543A410098C852 /* main.m */,
@@ -4049,6 +4053,7 @@
 				F3359FD618882F8000C1E636 /* Default@2x.png in Resources */,
 				F3359FD718882F8000C1E636 /* BusionessPageBoard_iPhone.xml in Resources */,
 				F3359FD818882F8000C1E636 /* warn@2x.png in Resources */,
+				A6C1A636188942F70011FBBC /* icon_120_120.png in Resources */,
 				F3359FD918882F8000C1E636 /* StartupController.xib in Resources */,
 				F3359FDA18882F8000C1E636 /* package_icon_3@2x.png in Resources */,
 				F3359FDB18882F8000C1E636 /* PushConfig.plist in Resources */,
@@ -4362,6 +4367,7 @@
 				F36049AE1871A9AE00FAD1F3 /* menu_icon_chaozhiduihua@2x.png in Resources */,
 				F3F186DC18543A410098C852 /* InfoPlist.strings in Resources */,
 				A60C588B186FF8A30068425C /* main_page_head@2x.png in Resources */,
+				A6C1A635188942F70011FBBC /* icon_120_120.png in Resources */,
 				A60C5846186FF8A30068425C /* arrow-down@2x.png in Resources */,
 				A6FEE28D187D9AB800E5AF3E /* whiteArrow.png in Resources */,
 				A60C588C186FF8A30068425C /* person_info_icon@2x.png in Resources */,

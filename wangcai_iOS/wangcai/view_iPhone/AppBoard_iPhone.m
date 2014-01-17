@@ -112,8 +112,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	{
 		//[BeeUIRouter sharedInstance].view.pannable = YES;
         //_mask.pannable = YES;
-        
-        _origFrame = [BeeUIRouter sharedInstance].view.frame;
+        if ( _origFrame.size.height == 0 && _origFrame.size.width == 0 ) {
+            _origFrame = [BeeUIRouter sharedInstance].view.frame;
+        }
 	}
 	else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
 	{

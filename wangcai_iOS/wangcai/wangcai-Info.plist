@@ -62,6 +62,12 @@
 	<true/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon.png</string>
+		<string>Icon@2x.png</string>
+		<string>icon_120_120.png</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
