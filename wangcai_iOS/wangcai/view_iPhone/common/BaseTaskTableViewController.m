@@ -148,6 +148,11 @@ static BOOL gNeedReloadTaskList = NO;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self refreshChoujiangButton];
+}
+
+- (void)refreshChoujiangButton
+{
     if ([[ChoujiangLogic sharedInstance] getAwardCode] == kGetAwardTypeNotGet)
     {
         [self enableQiandaoButton:YES];
@@ -649,6 +654,7 @@ static BOOL gNeedReloadTaskList = NO;
         [self.zhanghuYuEHeaderCell.yuENumView setNum:[[LoginAndRegister sharedInstance] getBalance]];
         [self doneWithView:_header];
         [self resetFooter];
+        [self refreshChoujiangButton];
         [self.containTableView reloadData];
     }
     else
