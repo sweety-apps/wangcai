@@ -108,7 +108,6 @@
     [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                                    UIRemoteNotificationTypeSound |
                                                    UIRemoteNotificationTypeAlert)];
-    
     [APService setupWithOption:launchOptions];
     
     return YES;
@@ -127,6 +126,8 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [super applicationDidBecomeActive:application];
+    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 

@@ -10,6 +10,7 @@
 #import "Config.h"
 #import "Common.h"
 #import "CommonTaskList.h"
+#import "../JPushlib/APService.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -200,6 +201,8 @@ static LoginAndRegister* _sharedInstance;
                 
                 [[CommonTaskList sharedInstance] resetTaskListWithJsonArray:taskList];
 
+                [self RegisterPhoneNumToAPService];
+                
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
                 
                 if ( _firstLogin ) {
@@ -216,6 +219,20 @@ static LoginAndRegister* _sharedInstance;
             }
         }
     }
+}
+
+-(void)RegisterPhoneNumToAPService {
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    if ( phoneNum != nil && ![phoneNum isEqualToString:@""] ) {
+        [APService setTags:[NSSet setWithObjects:nil] alias:phoneNum callbackSelector:@selector(tagsAliasCallback:tags:alias:) target:self];
+    }
+    
+    if ( phoneNum != nil ) {
+        [phoneNum release];
+    }
+}
+
+- (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
 }
 
 -(int) getForceUpdate {
