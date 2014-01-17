@@ -177,8 +177,8 @@
         int round = rand()%2;
         round += 3;
         
-        float startInterval = 0.15f;
-        float endInterval = 1.8f;
+        float startInterval = 0.05f;
+        float endInterval = 1.0f;
         
         NSMutableArray* animaNodes = [NSMutableArray array];
         
