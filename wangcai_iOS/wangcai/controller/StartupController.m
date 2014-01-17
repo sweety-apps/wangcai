@@ -62,7 +62,7 @@
     } else if ( _alertForceUpdate != nil && [alertView isEqual:_alertForceUpdate] ) {
         // 升级
         NSString* sysVer = [[UIDevice currentDevice] systemVersion];
-        NSString* urlStr = [[[NSString alloc] initWithFormat:@"%@?sysVer=%@", WEB_FORCE_UPDATE, sysVer] autorelease];
+        NSString* urlStr = [[[NSString alloc] initWithFormat:@"%@sysVer=%@", WEB_FORCE_UPDATE, sysVer] autorelease];
         
         NSURL* url = [NSURL URLWithString:urlStr];
         [[UIApplication sharedApplication] openURL:url];

@@ -12,10 +12,17 @@
 #if TARGET_VERSION_LITE == 1 
 #define APP_NAME   @"WangCai"
 #define INVITE_URL @"http://wangcai.meme-da.com/invite/index.php?code=%@"
+
+#define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?"
+
 #elif TARGET_VERSION_LITE == 2
+
 #define APP_NAME   @"WangCaiFirend"
 #define INVITE_URL @"http://wangcai.meme-da.com/invite/index.php?app=wangcaifirend&code=%@"
+
+#define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcaifirend&"
 #endif
+
 
 #define UMENG_KEY   @"52c65fc056240b00c1128d1e"
 #define AES_KEY     @"cd421509726b38a2ffd2997caed6dab9"
@@ -57,8 +64,6 @@
 #define WEB_TASK          @"http://wangcai.meme-da.com/web/task/app_task.php"
 #define WEB_EXCHANGE_INFO @"http://wangcai.meme-da.com/web/exchange_info.php"
 #define WEB_ORDER_INFO    @"http://wangcai.meme-da.com/web/order_info.php"
-
-#define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php"
 
 #define WEB_SERVICE_VIEW @"http://service.meme-da.com/index.php/mobile/shouce/view/h_id/"
 
