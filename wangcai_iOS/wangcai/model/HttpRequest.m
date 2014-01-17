@@ -75,7 +75,8 @@
     NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
     NSString* network = [self getNetworkInfo];
     
-    NSString* info = [[[NSString alloc] initWithFormat:@"%@_%@; app=%@; net=%@", sysModel, sysVer, appVersion, network] autorelease];
+    NSString* info = [[[NSString alloc] initWithFormat:@"%@_%@; app=%@; ver=%@; net=%@", sysModel, sysVer, APP_NAME, appVersion, network] autorelease];
+    
     [properties setValue:info forKey:NSHTTPCookieValue];
     
     NSHTTPCookie* cookie = [[[NSHTTPCookie alloc] initWithProperties:properties] autorelease];

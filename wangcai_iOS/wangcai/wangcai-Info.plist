@@ -8,6 +8,12 @@
 	<string>旺财</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon.png</string>
+		<string>Icon@2x.png</string>
+		<string>icon_120_120.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.1528studio.wangcai</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -62,12 +68,6 @@
 	<true/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>Icon.png</string>
-		<string>Icon@2x.png</string>
-		<string>icon_120_120.png</string>
-	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

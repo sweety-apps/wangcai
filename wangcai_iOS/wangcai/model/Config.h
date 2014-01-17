@@ -9,6 +9,12 @@
 #ifndef wangcai_Config_h
 #define wangcai_Config_h
 
+#if TARGET_VERSION_LITE == 1 
+#define APP_NAME   @"WangCai"
+#elif TARGET_VERSION_LITE == 2
+#define APP_NAME   @"WangCaiFirend"
+#endif
+
 #define UMENG_KEY   @"52c65fc056240b00c1128d1e"
 #define AES_KEY     @"cd421509726b38a2ffd2997caed6dab9"
 

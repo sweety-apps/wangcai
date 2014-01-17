@@ -5134,6 +5134,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"TARGET_VERSION_LITE=2",
+				);
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "wangcai copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -5205,6 +5210,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_VERSION_LITE=2";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "wangcai copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -5353,6 +5359,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"TARGET_VERSION_LITE=1",
+				);
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "wangcai/wangcai-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -5424,6 +5435,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_VERSION_LITE=1";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "wangcai/wangcai-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
