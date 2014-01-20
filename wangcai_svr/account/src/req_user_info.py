@@ -45,7 +45,7 @@ class Handler:
                     'age': user.age,
                     'interest': user.interest,
                     'invite_code': user.invite_code,
-                    'inviter': user.inviter
+                    'inviter': user.inviter_code
                 }
         return json.dumps(resp)
 

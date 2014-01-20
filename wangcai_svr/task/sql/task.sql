@@ -64,12 +64,15 @@ CREATE TABLE IF NOT EXISTS task_daily
     id              INT             NOT NULL AUTO_INCREMENT,
     device_id       CHAR(32)        NOT NULL DEFAULT '',
     userid          INT             NOT NULL DEFAULT 0,
+    date            DATE            NOT NULL,
     task_id         INT             NOT NULL DEFAULT 0,
     type            INT             NOT NULL DEFAULT 0,
     money           INT             NOT NULL DEFAULT 0,
+    extra           TEXT            NOT NULL DEFAULT '',
     ts              TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    INDEX (device_id)
+    INDEX (device_id, date),
+    INDEX (userid, date)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -82,6 +85,18 @@ CREATE TABLE IF NOT EXISTS task_invite
     ts              TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     UNIQUE (userid, invitee)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+CREATE TABLE IF NOT EXISTS task_app_download
+(
+    id              INT             NOT NULL AUTO_INCREMENT,
+    device_id       CHAR(32)        NOT NULL DEFAULT '',
+    userid          INT             NOT NULL DEFAULT 0,
+    appid           CHAR(20)        NOT NULL DEFAULT '',
+    ts              TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE (device_id, appid)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -106,8 +121,20 @@ CREATE TABLE IF NOT EXISTS task_app
     site            VARCHAR(255)    NOT NULL DEFAULT '',
     contact         VARCHAR(255)    NOT NULL DEFAULT '',
     insert_time     DATETIME        NOT NULL,
+    money           INT             NOT NULL DEFAULT 0,
     ts              TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 ) ENGINE = MyISAM AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
+CREATE TABLE IF NOT EXISTS offer_wall_point
+(
+    id              INT             NOT NULL AUTO_INCREMENT,
+    device_id       CHAR(32)        NOT NULL DEFAULT '',
+    type            INT             NOT NULL DEFAULT 0,
+    point           INT             NOT NULL DEFAULT 0,
+    create_time     DATETIME        NOT NULL,
+    ts              TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE (device_id, type)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

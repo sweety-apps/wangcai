@@ -51,7 +51,8 @@ CREATE TABLE IF NOT EXISTS user_info
     create_time     DATETIME        NOT NULL,
     ts              TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    UNIQUE (phone_num)
+    UNIQUE (phone_num),
+    UNIQUE (invite_code)
 ) ENGINE = InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 

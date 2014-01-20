@@ -4,3 +4,14 @@
 wangcai_iOS/wangcai.xcodeproj/xcuserdata
 
 wangcai_iOS/wangcai.xcodeproj/xcuserdata/*
+
+
+.DS_Store
+*.pyc
+wangcai_svr/z
+wangcai_svr/z/*
+wangcai_svr/account/log/*
+wangcai_svr/billing/log/*
+wangcai_svr/interface/log/*
+wangcai_svr/order/log/*
+wangcai_svr/task/log/*

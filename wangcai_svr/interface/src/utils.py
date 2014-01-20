@@ -26,9 +26,14 @@ def http_request(url, data = None, timeout = 3):
     logger.debug(url)
 
     try:
-        resp = urllib2.urlopen(req, timeout = timeout)
-        return json.loads(resp.read())
+        resp = urllib2.urlopen(req, timeout = timeout).read()
+        logger.debug('resp: %s' %resp)
+        return json.loads(resp)
+    except urllib2.HTTPError, e:
+        logger.error('httperror: ' + str(e))
+        return {'rtn': -e.code}
     except urllib2.URLError, e:
+        logger.error('urlerror: ' + str(e))
         if isinstance(e.reason, socket.timeout):
             return {'rtn': -1}
         else:

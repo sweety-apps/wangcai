@@ -17,6 +17,8 @@ class Handler:
         inviter = db_helper.query_userid_by_invite_code(invite_code)
         if inviter is None:
             return json.dumps({'rtn': 1})
+        elif inviter == userid:
+            return json.dumps({'rtn': 2})
 
         #更新inviter字段
         db_helper.update_inviter(userid, inviter, invite_code)

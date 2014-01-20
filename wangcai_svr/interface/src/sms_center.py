@@ -44,6 +44,7 @@ class SMSCenter:
 
     def __init__(self):
         self._conn = MySQLdb.connect(host=MYSQL_HOST, user=MYSQL_USER, passwd=MYSQL_PASSWD, db=MYSQL_DB, charset='utf8')
+        self._conn.autocommit(True)
 
     def gen_sms_code(self, code_len=5):
         code = ''

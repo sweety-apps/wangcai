@@ -35,3 +35,11 @@ class AnonymousDevice:
         self.interest = ''
 
 
+class LoginHistory:
+    def __init__(self):
+        self.userid = 0
+        self.device_id = ''
+        self.platform = ''
+        self.version = ''
+        self.ip = ''
+        self.network = ''

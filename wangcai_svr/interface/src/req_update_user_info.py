@@ -24,10 +24,20 @@ class Handler:
         url = 'http://' + ACCOUNT_BACKEND + '/update_user_info'
 
         r = http_request(url, data)
-        if r.has_key('rtn') and r['rtn'] == 0:
+        if r['rtn'] == 0:
+            self.report_task(params.device_id, params.userid)
             resp = {'res': 0, 'msg': ''}
         else:
             resp = {'res': 1, 'msg': 'error'}
-                
+
         return json.dumps(resp)
+
+    
+    def report_task(self, device_id, userid):
+        data = {
+            'device_id': device_id,
+            'userid': userid
+        }
+        url = 'http://' + TASK_BACKEND + '/report_user_info'
+        http_request(url, data)
 
