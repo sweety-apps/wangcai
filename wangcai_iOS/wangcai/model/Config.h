@@ -11,14 +11,14 @@
 
 #if TARGET_VERSION_LITE == 1 
 #define APP_NAME   @"WangCai"
-#define INVITE_URL @"http://wangcai.meme-da.com/invite/index.php?code=%@"
+#define INVITE_URL @"http://invite.getwangcai.com/index.php?code=%@"
 
 #define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?"
 
 #elif TARGET_VERSION_LITE == 2
 
 #define APP_NAME   @"WangCaiFirend"
-#define INVITE_URL @"http://wangcai.meme-da.com/invite/index.php?app=wangcaifirend&code=%@"
+#define INVITE_URL @"http://invite.getwangcai.com/index.php?app=wangcaifirend&code=%@"
 
 #define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcaifirend&"
 #endif
