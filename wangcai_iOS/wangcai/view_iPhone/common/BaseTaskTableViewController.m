@@ -83,8 +83,29 @@ static BOOL gNeedReloadTaskList = NO;
     
     _checkOfferWallTimer = [NSTimer scheduledTimerWithTimeInterval:15.f target:self selector:@selector(checkDMOfferWall) userInfo:nil repeats:NO];
     
+    [self _initAudioPlayer];
     
     //[self performSelector:@selector(refreshTaskList) withObject:nil afterDelay:2.0f];
+}
+
+- (void)_initAudioPlayer
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"gotcoins" ofType:@"aiff"];
+    
+    
+    if (path) {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [session setActive:YES error:nil];
+        
+        NSURL *audioUrl = [NSURL fileURLWithPath:path];
+        _player = [[AVPlayer playerWithURL:audioUrl] retain];
+        if (_player == NULL)
+        {
+            NSLog(@"fail to play audio :(");
+            return;
+        }
+    }
 }
 
 - (void)checkDMOfferWall
@@ -185,6 +206,8 @@ static BOOL gNeedReloadTaskList = NO;
         [_alertBalanceTip release];
         _alertBalanceTip = nil;
     }
+    
+    [_player release];
     
     [super dealloc];
 }
@@ -328,20 +351,8 @@ static BOOL gNeedReloadTaskList = NO;
 //带动画和声音设置余额
 - (void)setYuENumberWithAnimationFrom:(int)oldNum toNum:(int)newNum
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"gotcoins" ofType:@"aiff"];
-    
-    
-    if (path) {
-        SystemSoundID soundID;
-        
-        NSURL* pathUrl = [NSURL fileURLWithPath:path];
-        
-        
-        AudioServicesCreateSystemSoundID((CFURLRef)pathUrl,&soundID);
-        
-        AudioServicesPlaySystemSound(soundID);
-    }
-    
+    [_player seekToTime:CMTimeMakeWithSeconds(0, 1)];
+    [_player play];
     
     [self.zhanghuYuEHeaderCell.yuENumView animateNumFrom:oldNum to:newNum withAnimation:YES];
 }
