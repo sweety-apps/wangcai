@@ -112,6 +112,10 @@
 
 - (IBAction)onPressedStartButton:(id)sender
 {
+#if 0
+    int target = [self _getRandomIndexWithResultcode:kGetAwardType1Mao];
+    [self startChoiceAnimations:target];
+#else
     if ([[ChoujiangLogic sharedInstance] getAwardCode] == kGetAwardTypeNotGet)
     {
         self.startButton.enabled = NO;
@@ -123,6 +127,7 @@
         UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"您今天已经签到过了" message:@"明天记得再来签到哟！" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
         [alert show];
     }
+#endif
 }
 
 
@@ -146,18 +151,18 @@
     
     //奖项
     NSString* jiangxiang[12] = {
-        @"choujiang_1mao",
-        @"choujiang_5mao",
-        @"choujiang_thanks1",
-        @"choujiang_thanks4",
-        @"choujiang_8yuan",
-        @"choujiang_thanks2",
-        @"choujiang_thanks1",
-        @"choujiang_3yuan",
-        @"choujiang_thanks3",
-        @"choujiang_5mao",
-        @"choujiang_1mao",
-        @"choujiang_thanks4"
+        @"choujiang_5mao",  //0
+        @"choujiang_thanks1",   //1
+        @"choujiang_1mao",  //2
+        @"choujiang_thanks4",   //3
+        @"choujiang_8yuan", //4
+        @"choujiang_thanks2",   //5
+        @"choujiang_1mao",  //6
+        @"choujiang_3yuan", //7
+        @"choujiang_thanks3",   //8
+        @"choujiang_5mao",  //9
+        @"choujiang_1mao",  //10
+        @"choujiang_thanks4"    //11
     };
     
     for (int i = 0; i < [_choiceViews count]; ++i)
@@ -175,14 +180,14 @@
         _choiceIndex = targetNum;
         srand(time(NULL));
         int round = rand()%2;
-        round += 3;
+        round += 2;
         
         float startInterval = 0.05f;
-        float endInterval = 1.0f;
+        float endInterval = 0.25f;
         
         NSMutableArray* animaNodes = [NSMutableArray array];
         
-#define startRounds (3)
+#define startRounds (2)
         
         for (int i = 0; i < startRounds; ++i)
         {
@@ -286,19 +291,20 @@
 {
     NSString* title = @"";
     NSString* msg = @"";
+    
     switch (_choiceIndex)
     {
-        case 2:
+        case 1:
         case 3:
         case 5:
-        case 6:
         case 8:
         case 11:
             //没中
             title = @"旺财你不给力啊:(";
             msg = @"两手空空";
             break;
-        case 0:
+        case 2:
+        case 6:
         case 10:
             //1毛
             title = @"恭喜您中奖了！";
@@ -306,7 +312,7 @@
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:10];
             break;
-        case 1:
+        case 0:
         case 9:
             //5毛
             title = @"恭喜您中奖了！";
@@ -337,6 +343,53 @@
     [alertView show];
 }
 
+- (int)_getRandomIndexWithResultcode:(GetAwardType)awardCode
+{
+    int target = 0;
+    switch (awardCode)
+    {
+        case kGetAwardTypeNothing:
+        {
+            int indexs[5] = {1,3,5,8,11};
+            srand(time(NULL));
+            target = indexs[rand()%5];
+        }
+            break;
+        case kGetAwardType1Mao:
+        {
+            int indexs[3] = {2,6,10};
+            srand(time(NULL));
+            target = indexs[rand()%3];
+        }
+            break;
+        case kGetAwardType5Mao:
+        {
+            int indexs[2] = {0,9};
+            srand(time(NULL));
+            target = indexs[rand()%2];
+        }
+            break;
+        case kGetAwardType3Yuan:
+        {
+            int indexs[1] = {7};
+            srand(time(NULL));
+            target = indexs[rand()%1];
+        }
+            break;
+        case kGetAwardType8Yuan:
+        {
+            int indexs[1] = {4};
+            srand(time(NULL));
+            target = indexs[rand()%1];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return target;
+}
 
 #pragma mark - <UIAlertViewDelegate>
 
@@ -388,48 +441,7 @@
             }
             else
             {
-                int target = 0;
-                switch (awardCode)
-                {
-                    case kGetAwardTypeNothing:
-                    {
-                        int indexs[6] = {2,3,5,6,8,11};
-                        srand(time(NULL));
-                        target = indexs[rand()%6];
-                    }
-                        break;
-                    case kGetAwardType1Mao:
-                    {
-                        int indexs[2] = {0,10};
-                        srand(time(NULL));
-                        target = indexs[rand()%2];
-                    }
-                        break;
-                    case kGetAwardType5Mao:
-                    {
-                        int indexs[2] = {1,9};
-                        srand(time(NULL));
-                        target = indexs[rand()%2];
-                    }
-                        break;
-                    case kGetAwardType3Yuan:
-                    {
-                        int indexs[1] = {7};
-                        srand(time(NULL));
-                        target = indexs[rand()%1];
-                    }
-                        break;
-                    case kGetAwardType8Yuan:
-                    {
-                        int indexs[1] = {4};
-                        srand(time(NULL));
-                        target = indexs[rand()%1];
-                    }
-                        break;
-                        
-                    default:
-                        break;
-                }
+                int target = [self _getRandomIndexWithResultcode:awardCode];
                 [self startChoiceAnimations:target];
             }
         }

@@ -70,19 +70,15 @@
                                     <color key="textColor" red="0.47058826679999999" green="0.47058826679999999" blue="0.47058826679999999" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="pH2-FA-rjX">
-                                    <rect key="frame" x="15" y="65" width="290" height="1"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="Eae-O1-yNG" userLabel="DOWN">
-                            <rect key="frame" x="0.0" y="69" width="320" height="400"/>
+                            <rect key="frame" x="0.0" y="58" width="320" height="400"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LQ7-DO-dJH">
-                                    <rect key="frame" x="95" y="19" width="43" height="43"/>
+                                    <rect key="frame" x="95" y="15" width="43" height="43"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal" title="男">
@@ -100,7 +96,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZrA-pI-483">
-                                    <rect key="frame" x="165" y="19" width="43" height="43"/>
+                                    <rect key="frame" x="165" y="15" width="43" height="43"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal" title="女">
@@ -118,33 +114,33 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年龄" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GU6-5c-aZ8">
-                                    <rect key="frame" x="25" y="100" width="42" height="21"/>
+                                    <rect key="frame" x="25" y="90" width="42" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择你感兴趣的关键字（多选）" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="caI-dr-Ron">
-                                    <rect key="frame" x="25" y="153" width="300" height="21"/>
+                                    <rect key="frame" x="25" y="135" width="300" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XBb-5v-1ze">
-                                    <rect key="frame" x="25" y="30" width="42" height="21"/>
+                                    <rect key="frame" x="25" y="25" width="42" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="kRP-IQ-4D7">
-                                    <rect key="frame" x="30" y="80" width="265" height="1"/>
+                                    <rect key="frame" x="30" y="70" width="265" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="qjQ-nC-pCe">
-                                    <rect key="frame" x="30" y="140" width="265" height="1"/>
+                                    <rect key="frame" x="30" y="130" width="265" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" id="mzq-Qu-qah" userLabel="SlideV" customClass="IZValueSelectorView">
-                                    <rect key="frame" x="75" y="85" width="215" height="50"/>
+                                    <rect key="frame" x="75" y="75" width="215" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <connections>
@@ -153,13 +149,13 @@
                                     </connections>
                                 </view>
                                 <view contentMode="scaleToFill" id="Eqa-nk-nYl" userLabel="Selections">
-                                    <rect key="frame" x="0.0" y="140" width="320" height="568"/>
+                                    <rect key="frame" x="0.0" y="120" width="320" height="568"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="rhM-gr-c1k">
-                                    <rect key="frame" x="0.0" y="180" width="320" height="80"/>
+                                    <rect key="frame" x="0.0" y="160" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_view_cell_line.png" id="756-g3-wjI">
