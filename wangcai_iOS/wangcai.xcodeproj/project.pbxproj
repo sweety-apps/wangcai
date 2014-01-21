@@ -5144,8 +5144,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
@@ -5221,7 +5221,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 				);
 				PRODUCT_NAME = "wangcai copy";
-				PROVISIONING_PROFILE = "5ABB07CA-3BBE-4BA5-AC81-058BF1B4BC5A";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -5306,7 +5306,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 				);
 				PRODUCT_NAME = "wangcai copy";
-				PROVISIONING_PROFILE = "5ABB07CA-3BBE-4BA5-AC81-058BF1B4BC5A";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "armv7 armv7s arm64";

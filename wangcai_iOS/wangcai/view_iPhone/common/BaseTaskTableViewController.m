@@ -512,7 +512,7 @@ static BOOL gNeedReloadTaskList = NO;
     if (row < [_staticCells count])
     {
         //测试数字动画
-        //[self setYuENumberWithAnimationFrom:0.1 toNum:29.8];
+        //[self setYuENumberWithAnimationFrom:0.1 toNum:150000];
     }
     else
     {

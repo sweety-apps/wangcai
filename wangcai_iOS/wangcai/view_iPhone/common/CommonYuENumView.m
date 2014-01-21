@@ -9,6 +9,14 @@
 #import "CommonYuENumView.h"
 
 #define kStepInterval (0.05f)
+#define kTimeLength (2.0f)
+#define kMinStepNum (20)
+
+@interface CommonYuENumView ()
+{
+    float _stepInterval;
+}
+@end
 
 @implementation CommonYuENumView
 
@@ -16,6 +24,7 @@
 {
     _digitDict = [[NSMutableDictionary dictionaryWithObjectsAndKeys:@"yue_0",@"0",@"yue_1",@"1",@"yue_2",@"2",@"yue_3",@"3",@"yue_4",@"4",@"yue_5",@"5",@"yue_6",@"6",@"yue_7",@"7",@"yue_8",@"8",@"yue_9",@"9",@"yue_dot",@".", nil] retain];
     _num = 0;
+    _stepInterval = kStepInterval;
     _animaArray = [[NSMutableArray array] retain];
     self.backgroundColor = [UIColor clearColor];
 }
@@ -97,7 +106,7 @@
         NSNumber* number = [_animaArray objectAtIndex:0];
         [self _refreshViewWithNum:[number floatValue]];
         [_animaArray removeObjectAtIndex:0];
-        [NSTimer scheduledTimerWithTimeInterval:kStepInterval target:self selector:@selector(animateStep) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:_stepInterval target:self selector:@selector(animateStep) userInfo:nil repeats:NO];
     }
 }
 
@@ -128,8 +137,31 @@
                 [_animaArray addObject:number];
             }
         }
+        if (count > kMinStepNum)
+        {
+            //抽调一些元素保证能够快速到达
+            int left = count - kMinStepNum;
+            NSMutableArray* newArray = [NSMutableArray array];
+            int step = left / kMinStepNum;
+            
+            for (int i = 0; i < left; ++i)
+            {
+                if (i % step == 0)
+                {
+                    [newArray addObject:[_animaArray objectAtIndex:i]];
+                }
+            }
+            
+            for (int i = left; i < [_animaArray count]; ++i)
+            {
+                [newArray addObject:[_animaArray objectAtIndex:i]];
+            }
+            [_animaArray removeAllObjects];
+            [_animaArray addObjectsFromArray:newArray];
+            _stepInterval = kTimeLength / ((float)[_animaArray count]);
+        }
         _num = num;
-        [NSTimer scheduledTimerWithTimeInterval:kStepInterval target:self selector:@selector(animateStep) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:_stepInterval target:self selector:@selector(animateStep) userInfo:nil repeats:NO];
     }
     else
     {
