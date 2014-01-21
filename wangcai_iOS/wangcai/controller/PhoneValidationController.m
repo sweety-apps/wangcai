@@ -9,6 +9,7 @@
 #import "PhoneValidationController.h"
 #import "MBHUDView.h"
 #import "Common.h"
+#import "MobClick.h"
 
 @interface PhoneValidationController ()
 @end
@@ -407,6 +408,8 @@
 }
 
 - (IBAction)clickResend:(id)sender {
+    [MobClick event:@"bind_phone_resend_code" attributes:@{@"phone_num":_phoneNum}];
+    
     [[_viewCheckNum viewWithTag:53] setHidden:YES];
     [[_viewCheckNum viewWithTag:54] setHidden:YES];
     
@@ -663,6 +666,8 @@
 - (void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg  token:(NSString*) token {
     [self hideLoading];
     if ( suc ) {
+        [MobClick event:@"bind_phone_step1" attributes:@{@"phone_num":_phoneNum}];
+        
         // 发送完成，进入下一步
         if ( _token != nil ) {
             [_token release];
@@ -688,6 +693,7 @@
 }
 
 -(void) bindPhoneCompeted {
+    [MobClick event:@"bind_phone_step2" attributes:@{@"phone_num":_phoneNum}];
     [self showThirdPage];
 }
 

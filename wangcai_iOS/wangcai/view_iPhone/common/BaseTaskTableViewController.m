@@ -24,6 +24,7 @@
 #import "SettingViewController.h"
 #import "Config.h"
 #import "NSString+FloatFormat.h"
+#import "MobClick.h"
 
 static BOOL gNeedReloadTaskList = NO;
 
@@ -722,6 +723,8 @@ static BOOL gNeedReloadTaskList = NO;
         {
             if ( [alertView isEqual:_alertBalanceTip] ) {
                 // 绑定手机
+                [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"task_list"}];
+                
                 PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
                 
                 [self.beeStack pushViewController:phoneVal animated:YES];
