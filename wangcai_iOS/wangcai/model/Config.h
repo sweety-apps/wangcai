@@ -13,7 +13,7 @@
 #define APP_NAME   @"WangCai"
 #define INVITE_URL @"http://invite.getwangcai.com/index.php?code=%@"
 
-#define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?"
+#define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcai&"
 
 #elif TARGET_VERSION_LITE == 2
 
