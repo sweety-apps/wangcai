@@ -35,6 +35,8 @@
 
 - (id)init;
 
+- (IBAction)onMusicSwitchChanged:(UISwitch*)musicSwitch;
+
 - (IBAction)clickBack:(id)sender;
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;

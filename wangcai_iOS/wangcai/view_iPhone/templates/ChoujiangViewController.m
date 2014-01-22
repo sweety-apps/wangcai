@@ -10,6 +10,7 @@
 #import "ChoujiangLogic.h"
 #import "MBHUDView.h"
 #import "SettingLocalRecords.h"
+#import "MobClick.h"
 #import <ShareSDK/ShareSDK.h>
 
 @interface ChoiceMoveNode : NSObject
@@ -441,6 +442,31 @@
             }
             else
             {
+                //统计
+                NSString* value = @"kGetAwardTypeNothing";
+                switch (awardCode)
+                {
+                    case kGetAwardTypeNothing:
+                        value = @"无";
+                        break;
+                    case kGetAwardType1Mao:
+                        value = @"1毛";
+                        break;
+                    case kGetAwardType5Mao:
+                        value = @"5毛";
+                        break;
+                    case kGetAwardType3Yuan:
+                        value = @"3元";
+                        break;
+                    case kGetAwardType8Yuan:
+                        value = @"8元";
+                        break;
+                    default:
+                        break;
+                }
+                
+                [MobClick event:@"daily_checkin" attributes:@{@"code":[NSString stringWithFormat:@"%d",awardCode],@"money":value}];
+                
                 int target = [self _getRandomIndexWithResultcode:awardCode];
                 [self startChoiceAnimations:target];
             }

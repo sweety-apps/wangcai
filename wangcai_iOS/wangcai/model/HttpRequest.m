@@ -10,6 +10,7 @@
 #import "Common.h"
 #import "Encryption.h"
 #import "Config.h"
+#import "MobClick.h"
 
 @implementation HttpRequest
 
@@ -196,6 +197,9 @@
     if ( req.sending) {
     } else if ( req.recving ) {
     } else if ( req.failed ) {
+        //统计
+        [MobClick event:@"http_request_failed" attributes:@{@"url":[req.url absoluteString],@"device_id":[[LoginAndRegister sharedInstance] getDeviceId],@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
+        
         if ( _delegate != nil ) {
             [_delegate HttpRequestCompleted:self HttpCode:req.responseStatusCode Body:nil];
         }

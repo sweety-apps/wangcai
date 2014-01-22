@@ -214,11 +214,18 @@
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/order_info"] ) {
         NSString* value = [self getValueFromQuery:query Key:@"num"];
+        
+        //统计
+        [MobClick event:@"click_view_order_secret" attributes:@{@"current_page":@"网页",@"query_id":value}];
+        
         [self onShowOrder:value];
         
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/copy_to_clip"] ) {
         NSString* value = [self getValueFromQuery:query Key:@"context"];
+        
+        //统计
+        [MobClick event:@"click_copy_to_clipboard" attributes:@{@"current_page":@"网页",@"content":value}];
         
         UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
         pasteboard.string = value;
@@ -230,6 +237,9 @@
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/install_app"] ) {
         NSString* value = [self getValueFromQuery:query Key:@"appid"];
+        
+        //统计
+        [MobClick event:@"task_install_app_step1" attributes:@{@"appid":value}];
 
         if ( _delegate != nil ) {
             [_delegate openAppWithIdentifier:value];
@@ -238,6 +248,9 @@
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/open_url"] ) {
         NSString* value = [self getValueFromQuery:query Key:@"url"];
+        
+        //统计
+        [MobClick event:@"web_open_outside_url" attributes:@{@"url":value}];
         
         if ( _delegate != nil ) {
             [_delegate openUrl:value];
@@ -252,6 +265,8 @@
         NSString* url = [[NSString alloc] initWithFormat:@"%@?mobile=%@&mobile_num=%@---%@",
                          HTTP_SERVICE_CENTER, num, [Common getMACAddress], [Common getIDFAAddress] ];
         
+        //统计
+        [MobClick event:@"click_contact_to_customer_service" attributes:@{@"current_page":@"网页"}];
         WebPageController* webController = [[[WebPageController alloc] init:@"客户服务" Url:url Stack:_beeStack]autorelease];
         
         [self->_beeStack pushViewController:webController animated:YES];
@@ -260,6 +275,9 @@
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/open_url_inside"] ) {
         NSString* value = [self getValueFromQuery:query Key:@"url"];
         NSString* title = [self getValueFromQuery:query Key:@"title"];
+        
+        //统计
+        [MobClick event:@"web_open_inside_url" attributes:@{@"url":value,@"title":title}];
         
         title = [title stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
@@ -275,6 +293,8 @@
         
         NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@", WEB_EXCHANGE_INFO, device, sessionid, userid] autorelease];
     
+        //统计
+        [MobClick event:@"click_trade_details" attributes:@{@"current_page":@"网页"}];
         WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:url Stack:_beeStack];
         [_beeStack pushViewController:controller animated:YES];
         
@@ -290,6 +310,9 @@
         
         NSString* btn2 = [self getValueFromQuery:query Key:@"btn2"];
         if ( btn2 != nil ) {
+            //统计
+            [MobClick event:@"click_clear_all_submitted_problem" attributes:@{@"current_page":@"网页"}];
+            
             btn2 = [btn2 stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             NSString* btn2Id = [self getValueFromQuery:query Key:@"btn2id"];
             NSString* callback = [self getValueFromQuery:query Key:@"callback"];
@@ -311,6 +334,9 @@
             
             [_alert show];
         } else {
+            //统计
+            [MobClick event:@"click_submit_problem" attributes:@{@"current_page":@"网页"}];
+            
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:info delegate:nil cancelButtonTitle:btntext otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
@@ -429,6 +455,8 @@
 }
 
 -(void) onAttachPhone {
+    // 绑定手机
+    [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"网页"}];
     PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     [self->_beeStack pushViewController:phoneVal animated:YES];
 }

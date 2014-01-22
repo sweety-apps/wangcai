@@ -14,6 +14,7 @@
 #define kLastOfferWallAlertView @"offerWallAlertView"
 #define kRatedApp @"ratedApp"
 #define kCheckIn @"checkIn"
+#define kMusicOnOff @"musicOnOff"
 //#define kLastOfferWallAlertView @"offerWallClearPoint"
 
 #define NKEY(x) ([SettingLocalRecords getUserNamedKey:(x)])
@@ -208,4 +209,24 @@
     [[NSUserDefaults standardUserDefaults] setObject:number forKey:NKEY(kLastOfferWallAlertView)];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
++ (void)setMusicEnable:(BOOL)enabled
+{
+    NSNumber* number = [NSNumber numberWithBool:enabled];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:number forKey:kMusicOnOff];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL)getMusicEnabled
+{
+    BOOL ret = YES;
+    NSNumber* boolNum = [[NSUserDefaults standardUserDefaults] objectForKey:kMusicOnOff];
+    if (boolNum)
+    {
+        ret = [boolNum boolValue];
+    }
+    return ret;
+}
+
 @end

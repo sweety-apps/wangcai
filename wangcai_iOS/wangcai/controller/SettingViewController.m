@@ -13,6 +13,8 @@
 #import "BaseTaskTableViewController.h"
 #import "WebPageController.h"
 #import "Config.h"
+#import "SettingLocalRecords.h"
+#import "MobClick.h"
 
 @interface SettingViewController () <RateAppLogicDelegate>
 
@@ -50,8 +52,12 @@
         if ( type == UIRemoteNotificationTypeNone ) {
             // 没有打开
             [_msgSwitch setOn:NO];
+            //统计
+            [MobClick event:@"setting_push_switch" attributes:@{@"isOpen":[NSNumber numberWithBool:NO]}];
         } else {
             [_msgSwitch setOn:YES];
+            //统计
+            [MobClick event:@"setting_push_switch" attributes:@{@"isOpen":[NSNumber numberWithBool:YES]}];
         }
         
         float fVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
@@ -133,6 +139,7 @@
     NSInteger row = indexPath.row;
     if ( row == 3 ) {
         // 评分
+        [MobClick event:@"task_list_rate_wangcai" attributes:@{@"currentpage":@"设置"}];
         [[self class] jumpToAppStoreAndRate];
         [[RateAppLogic sharedInstance] requestRated:self];
     }
@@ -192,6 +199,14 @@
     WebPageController* controller = [[[WebPageController alloc] init:@"使用条款和隐私政策"
                                                                  Url:url Stack:stack] autorelease];
     [stack pushViewController:controller animated:YES];
+}
+
+- (IBAction)onMusicSwitchChanged:(UISwitch*)musicSwitch
+{
+    [SettingLocalRecords setMusicEnable:musicSwitch.on];
+    
+    //统计
+    [MobClick event:@"setting_music_switch" attributes:@{@"isOpen":[NSNumber numberWithBool:musicSwitch.on]}];
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "Common.h"
 #import "CommonTaskList.h"
 #import "../JPushlib/APService.h"
+#import "MobClick.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -162,6 +163,11 @@ static LoginAndRegister* _sharedInstance;
     if ( req.sending) {
     } else if ( req.recving ) {
     } else if ( req.failed ) {
+        //统计
+        [MobClick event:@"http_request_failed" attributes:@{@"url":[req.url absoluteString],@"device_id":[self getDeviceId],@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
+        [MobClick event:@"login_failed" attributes:@{@"reason":@"服务器状态码错误",@"device_id":[self getDeviceId],@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
+        
+        //
         [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:nil];
     } else if ( req.succeed ) {
         // 判断返回数据是
@@ -215,6 +221,9 @@ static LoginAndRegister* _sharedInstance;
                 }
             } else {
                 NSString* err = [[dict valueForKey:@"msg"] copy];
+                
+                [MobClick event:@"login_failed" attributes:@{@"reason":[err length]==0?@"服务器状态码错误":err,@"device_id":[self getDeviceId],@"res":[res stringValue]}];
+                
                 [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:err];
             }
         }

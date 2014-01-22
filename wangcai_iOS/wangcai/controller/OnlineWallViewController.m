@@ -15,6 +15,8 @@
 #import "YouMiWallAppModel.h"
 #import "YouMiPointsManager.h"
 #import "SettingLocalRecords.h"
+#import "MobClick.h"
+
 
 #define PUBLISHER_ID @"96ZJ2I4gzeykPwTACk"
 
@@ -101,6 +103,7 @@ static OnlineWallViewController* _sharedInstance;
         [_alertView hideAlertView];
     }
     
+    [MobClick event:@"task_list_click_youmi" attributes:@{@"currentpage":@"任务列表"}];
     [YouMiWall showOffers:YES didShowBlock:^{
     }didDismissBlock:^{
     }];
@@ -111,6 +114,7 @@ static OnlineWallViewController* _sharedInstance;
         [_alertView hideAlertView];
     }
     
+    [MobClick event:@"task_list_click_duomeng" attributes:@{@"currentpage":@"任务列表"}];
     [_offerWallController presentOfferWall];
 }
 

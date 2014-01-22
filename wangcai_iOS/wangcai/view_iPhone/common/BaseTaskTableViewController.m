@@ -228,6 +228,7 @@ static BOOL gNeedReloadTaskList = NO;
         // 模拟延迟加载数据，因此2秒后才调用）
         // 这里的refreshView其实就是header
         //[self performSelector:@selector(doneWithView:) withObject:refreshView afterDelay:2.0];
+        [MobClick event:@"task_list_refresh_list" attributes:@{@"currentpage":@"任务列表"}];
         [self refreshTaskList];
         
         NSLog(@"%@----开始进入刷新状态", refreshView.class);
@@ -303,7 +304,7 @@ static BOOL gNeedReloadTaskList = NO;
 - (void)onLoadHistoricalFinishedList
 {
     //这里加载领取过的红包
-    
+    [MobClick event:@"task_list_get_unfinished" attributes:@{@"currentpage":@"任务列表"}];
     [self endFooter];
     _hasLoadedHistoricalFinishedList = YES;
     [self.containTableView reloadData];
@@ -316,6 +317,9 @@ static BOOL gNeedReloadTaskList = NO;
 
 - (IBAction)onPressedQiandaoChoujiangButton:(id)sender
 {
+    //统计
+    [MobClick event:@"task_list_daily_checkin" attributes:@{@"currentpage":@"任务列表"}];
+    
     if ([ChoujiangLogic sharedInstance].getAwardCode == kGetAwardTypeNotGet) {
         ChoujiangViewController* choujiangCtrl = [[ChoujiangViewController alloc] init];
         [self.beeStack pushViewController:choujiangCtrl animated:YES];
@@ -329,6 +333,7 @@ static BOOL gNeedReloadTaskList = NO;
 
 - (IBAction)onPressedTiquxianjinButton:(id)sender
 {
+    [MobClick event:@"click_extract_money" attributes:@{@"current_page":@"任务列表"}];
     [[BeeUIRouter sharedInstance] open:@"second" animated:YES];
 }
 
@@ -353,7 +358,11 @@ static BOOL gNeedReloadTaskList = NO;
 - (void)setYuENumberWithAnimationFrom:(int)oldNum toNum:(int)newNum
 {
     [_player seekToTime:CMTimeMakeWithSeconds(0, 1)];
-    [_player play];
+    if ([SettingLocalRecords getMusicEnabled])
+    {
+        [_player play];
+    }
+    
     
     [self.zhanghuYuEHeaderCell.yuENumView animateNumFrom:oldNum to:newNum withAnimation:YES];
 }
@@ -522,6 +531,7 @@ static BOOL gNeedReloadTaskList = NO;
         {
             case kTaskTypeUserInfo:
             {
+                [MobClick event:@"task_list_click_user_info" attributes:@{@"currentpage":@"任务列表"}];
                 if ([task.taskStatus intValue] == 0)
                 {
                     UserInfoEditorViewController* userInfoCtrl = [[UserInfoEditorViewController alloc] initWithNibName:@"UserInfoEditorViewController" bundle:nil];
@@ -535,6 +545,7 @@ static BOOL gNeedReloadTaskList = NO;
                 break;
             case kTaskTypeOfferWall:
             {
+                [MobClick event:@"task_list_offer_wall" attributes:@{@"currentpage":@"任务列表"}];
                 [[OnlineWallViewController sharedInstance] showWithModal];
             }
                 break;
@@ -542,6 +553,16 @@ static BOOL gNeedReloadTaskList = NO;
             case kTaskTypeIntallApp:
             case kTaskTypeCommon:
             {
+                //统计
+                if ([task.taskType intValue] == kTaskTypeInstallWangcai)
+                {
+                    [MobClick event:@"task_list_click_install_wangcai" attributes:@{@"currentpage":@"任务列表"}];
+                }
+                else
+                {
+                    [MobClick event:@"task_list_click_install_app" attributes:@{@"currentpage":@"任务列表"}];
+                }
+                
                 if ([task.taskStatus intValue] == 0)
                 {
                     NSString* tabs[3] = {0};
@@ -563,6 +584,7 @@ static BOOL gNeedReloadTaskList = NO;
                 break;
             case kTaskTypeInviteFriends:
             {
+                [MobClick event:@"task_list_click_inviter" attributes:@{@"currentpage":@"任务列表"}];
                 if ([task.taskStatus intValue] == 0)
                 {
                     [[AppBoard_iPhone sharedInstance] onTouchedInvite:YES];
@@ -572,6 +594,7 @@ static BOOL gNeedReloadTaskList = NO;
             
             case kTaskTypeCommetWangcai:
             {
+                [MobClick event:@"task_list_rate_wangcai" attributes:@{@"currentpage":@"任务列表"}];
                 if ([task.taskStatus intValue] == 0)
                 {
                     [SettingViewController jumpToAppStoreAndRate];
@@ -671,6 +694,7 @@ static BOOL gNeedReloadTaskList = NO;
     }
     else
     {
+        [MobClick event:@"task_list_refresh_failed" attributes:@{@"currentpage":@"任务列表"}];
         [MBHUDView hudWithBody:@":(\n拉取失败" type:MBAlertViewHUDTypeImagePositive  hidesAfter:2.0 show:YES];
     }
 }
@@ -723,7 +747,7 @@ static BOOL gNeedReloadTaskList = NO;
         {
             if ( [alertView isEqual:_alertBalanceTip] ) {
                 // 绑定手机
-                [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"task_list"}];
+                [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"任务列表"}];
                 
                 PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
                 

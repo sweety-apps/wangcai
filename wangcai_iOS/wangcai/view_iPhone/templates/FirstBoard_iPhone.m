@@ -19,6 +19,7 @@
 #import "AppBoard_iPhone.h"
 #import "PhoneValidationController.h"
 #import "InviteController.h"
+#import "MobClick.h"
 
 #pragma mark -
 
@@ -118,6 +119,9 @@ ON_MESSAGE( message )
 
 ON_SIGNAL3( FirstBoard_iPhone, test, signal )
 {
+    // 绑定手机
+    [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"test"}];
+    
     PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     
     [self.stack pushViewController:phoneVal animated:YES];

@@ -19,6 +19,7 @@
 #import "CommonYuENumView.h"
 #import "UserInfoEditorViewController.h"
 #import "AppBoard_iPhone.h"
+#import "MobClick.h"
 
 #pragma mark -
 
@@ -259,6 +260,7 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 -(void)naviToExchangeController
 {
+    [MobClick event:@"click_buy_item" attributes:@{@"currentpage":@"任务列表"}];
     [[BeeUIRouter sharedInstance] open:@"first" animated:YES];
 }
 

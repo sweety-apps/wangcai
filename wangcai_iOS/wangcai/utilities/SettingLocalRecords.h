@@ -31,4 +31,8 @@
 
 + (int)getDomobPoint;
 + (void)setDomobPoint:(int) point;
+
++ (void)setMusicEnable:(BOOL)enabled;
++ (BOOL)getMusicEnabled;
+
 @end

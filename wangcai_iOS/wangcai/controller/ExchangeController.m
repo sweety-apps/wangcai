@@ -13,6 +13,8 @@
 #import "PhoneValidationController.h"
 #import "MBHUDView.h"
 #import "Common.h"
+#import "MobClick.h"
+
 @interface ExchangeController ()
 
 @end
@@ -240,11 +242,16 @@
     
     NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@", WEB_EXCHANGE_INFO, device, sessionid, userid] autorelease];
     
+    //统计
+    [MobClick event:@"click_trade_details" attributes:@{@"current_page":@"兑换"}];
     WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:url Stack:_beeStack];
     [_beeStack pushViewController:controller animated:YES];
 }
 
 - (IBAction)clickAttachPhone:(id)sender {
+    // 绑定手机
+    [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"兑换"}];
+    
     PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     
     [self->_beeStack pushViewController:phoneVal animated:YES];
@@ -294,6 +301,19 @@
 - (IBAction)clickContinue:(id)sender {
     if ( _alertView != nil ) {
         [_alertView hideAlertView];
+    }
+    
+    //统计
+    [MobClick event:@"click_exchange_item" attributes:@{@"exchange_type":[_prtType stringValue]}];
+    if ([_prtType intValue] == 1)
+    {
+        //京东卡
+        [MobClick event:@"click_buy_jingdong_card" attributes:@{@"exchange_type":[_prtType stringValue]}];
+    }
+    else if([_prtType intValue] == 2)
+    {
+        //迅雷白金会员卡
+        [MobClick event:@"click_buy_xunlei_vip_card" attributes:@{@"exchange_type":[_prtType stringValue]}];
     }
     
     [self showLoading:@"处理中..."];
@@ -411,6 +431,9 @@
 }
 
 -(void) onAttachPhone {
+    // 绑定手机
+    [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"兑换"}];
+    
     PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     [self->_beeStack pushViewController:phoneVal animated:YES];
 }

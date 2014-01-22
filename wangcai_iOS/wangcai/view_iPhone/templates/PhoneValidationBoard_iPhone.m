@@ -20,6 +20,7 @@
 #import "LoginAndRegister.h"
 #import "Config.h"
 #import "Common.h"
+#import "MobClick.h"
 
 #pragma mark -
 
@@ -50,6 +51,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	
 	if ( [signal is:BeeUIBoard.CREATE_VIEWS] )
 	{
+        // 绑定手机
+        [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"菜单"}];
+        
         _phoneController = [PhoneValidationController shareInstance];
         [_phoneController setBackType:YES];
         

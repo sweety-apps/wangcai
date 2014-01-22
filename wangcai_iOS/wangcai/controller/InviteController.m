@@ -15,6 +15,7 @@
 #import "Config.h"
 #import "SettingLocalRecords.h"
 #import "BaseTaskTableViewController.h"
+#import "MobClick.h"
 
 @interface InviteController ()
 
@@ -208,6 +209,9 @@
     UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.inviteUrlTextField.text;
     
+    //统计
+    [MobClick event:@"click_copy_to_clipboard" attributes:@{@"current_page":@"邀请",@"content":pasteboard.string}];
+    
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle: @"复制成功" message: nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
     [alertView show];
     [alertView release];
@@ -215,6 +219,9 @@
 
 - (IBAction)share:(id)sender
 {
+    //统计
+    [MobClick event:@"click_invite_redbag" attributes:@{@"current_page":@"邀请"}];
+    
     NSString* imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
     
     id<ISSContent> publishContent = [ShareSDK content: @"妈妈再也不用担心我的话费了" defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"新年旺财，玩应用领红包" url: [NSString stringWithFormat: INVITE_URL, _inviteCode] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
@@ -355,6 +362,9 @@
     NSString* inviter = self.invitedPeopleTextfield.text;
     if (inviter != nil)
     {
+        //统计
+        [MobClick event:@"click_submit_invite_code" attributes:@{@"current_page":@"邀请",@"code":inviter}];
+        
         [_inviterUpdate updateInviter: inviter delegate: self];
         [self showLoading];
     }

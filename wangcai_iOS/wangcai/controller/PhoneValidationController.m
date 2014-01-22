@@ -12,6 +12,9 @@
 #import "MobClick.h"
 
 @interface PhoneValidationController ()
+{
+    NSDate* _startDate;
+}
 @end
 
 @implementation PhoneValidationController
@@ -157,6 +160,19 @@
 }
 
 - (IBAction)clickBack:(id)sender {
+    
+    //统计
+    [MobClick endEvent:@"bind_phone_step1" primarykey:@"phone_num"];
+    [MobClick endEvent:@"bind_phone_step2" primarykey:@"phone_num"];
+    if(_startDate)
+    {
+        NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:_startDate];
+        [MobClick event:@"bind_phone_all_steps" attributes:@{@"phone_num":_phoneNum==nil?@"":_phoneNum,@"result":@"取消"} durations:(interval*1000)];
+        
+        [_startDate release];
+        _startDate = nil;
+    }
+    
     // 收起键盘
     [self hideKeyboard];
     if ( _bSend ) {
@@ -221,6 +237,15 @@
 - (void)viewWillAppear:(BOOL)animated {    // Called when the view is about to made visible. Default does nothing
     // 绑定键盘事件
     [self attachEvent];
+    
+    if(_startDate)
+    {
+        [_startDate release];
+        _startDate = nil;
+    }
+    _startDate = [[NSDate date] retain];
+    //统计一
+    [MobClick beginEvent:@"bind_phone_step1" primarykey:@"phone_num" attributes:@{@"phone_num":_phoneNum}];
 }
 
 - (void)viewWillDisappear:(BOOL)animated { // Called when the view is dismissed, covered or otherwise hidden. Default does nothing
@@ -669,7 +694,9 @@
 - (void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg  token:(NSString*) token {
     [self hideLoading];
     if ( suc ) {
-        [MobClick event:@"bind_phone_step1" attributes:@{@"phone_num":_phoneNum}];
+        
+        [MobClick endEvent:@"bind_phone_step1" primarykey:@"phone_num"];
+        [MobClick beginEvent:@"bind_phone_step2" primarykey:@"phone_num" attributes:@{@"phone_num":_phoneNum}];
         
         // 发送完成，进入下一步
         if ( _token != nil ) {
@@ -696,7 +723,16 @@
 }
 
 -(void) bindPhoneCompeted {
-    [MobClick event:@"bind_phone_step2" attributes:@{@"phone_num":_phoneNum}];
+    [MobClick endEvent:@"bind_phone_step2" primarykey:@"phone_num"];
+    if(_startDate)
+    {
+        NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:_startDate];
+        [MobClick event:@"bind_phone_all_steps" attributes:@{@"phone_num":_phoneNum,@"result":@"成功"} durations:(interval*1000)];
+        
+        [_startDate release];
+        _startDate = nil;
+    }
+    
     [self showThirdPage];
 }
 

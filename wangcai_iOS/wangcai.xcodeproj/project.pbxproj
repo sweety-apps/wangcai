@@ -5221,7 +5221,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 				);
 				PRODUCT_NAME = "wangcai copy";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "896F0B9C-918C-4230-AFDE-834AD73AF416";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -5306,7 +5306,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 				);
 				PRODUCT_NAME = "wangcai copy";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "896F0B9C-918C-4230-AFDE-834AD73AF416";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "armv7 armv7s arm64";

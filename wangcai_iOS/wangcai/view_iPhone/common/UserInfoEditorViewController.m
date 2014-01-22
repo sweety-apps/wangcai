@@ -12,6 +12,7 @@
 #import "MBHUDView.h"
 #import "CommonTaskList.h"
 #import "BaseTaskTableViewController.h"
+#import "MobClick.h"
 
 @interface UserInfoEditorViewController () <UserInfoAPIDelegate>
 {
@@ -250,6 +251,9 @@
 {
     if (self.stack)
     {
+        // 绑定手机
+        [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"用户详情页"}];
+        
         PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
         
         [self.stack pushViewController:phoneVal animated:YES];

@@ -11,6 +11,7 @@
 #import "LoginAndRegister.h"
 #import "PhoneValidationController.h"
 #import "OnlineWallViewController.h"
+#import "MobClick.h"
 
 #define SHOW_MASK (0)
 
@@ -217,18 +218,21 @@ ON_SIGNAL3( BeeUIRouter, DID_CHANGED, signal )
 ON_SIGNAL3( MenuBoard_iPhone, first, signal )
 {
     [self hideMenu];
+    [MobClick event:@"click_buy_item" attributes:@{@"currentpage":@"菜单"}];
 	[[BeeUIRouter sharedInstance] open:@"first" animated:YES];
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, second, signal )
 {
     [self hideMenu];
+    [MobClick event:@"click_extract_money" attributes:@{@"current_page":@"菜单"}];
 	[[BeeUIRouter sharedInstance] open:@"second" animated:YES];
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, third, signal )
 {
     [self hideMenu];
+    [MobClick event:@"click_setting" attributes:@{@"current_page":@"菜单"}];
 	[[BeeUIRouter sharedInstance] open:@"third" animated:YES];
 }
 
@@ -279,6 +283,7 @@ ON_SIGNAL3( MenuBoard_iPhone, wc_main, signal )
 
 ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
 {
+    [MobClick event:@"click_invite_redbag" attributes:@{@"current_page":@"菜单"}];
     [self onTouchedInvite:NO];
 }
 
@@ -296,6 +301,8 @@ ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
 ON_SIGNAL3( MenuBoard_iPhone, service, signal)
 {
     [self hideMenu];
+    //统计
+    [MobClick event:@"click_help" attributes:@{@"current_page":@"menu"}];
 	[[BeeUIRouter sharedInstance] open:@"service" animated:YES];
 	
 }
@@ -303,7 +310,7 @@ ON_SIGNAL3( MenuBoard_iPhone, service, signal)
 ON_SIGNAL3( MenuBoard_iPhone, team, signal )
 {
     [self hideMenu];
-	[[BeeUIRouter sharedInstance] open:@"team" animated:YES];
+    [[BeeUIRouter sharedInstance] open:@"team" animated:YES];
 	
 }
 
