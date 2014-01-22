@@ -154,10 +154,11 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //self.view.layer.shouldRasterize = YES;
         //self.view.layer.edgeAntialiasingMask = kCALayerLeftEdge ;
         //self.view.layer.masksToBounds = YES;
-        
-        
+                 
         // 亲友提示
-        //[self showFirendMsg];
+#if TARGET_VERSION_LITE == 2
+        [self showFirendMsg];
+#endif
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
     {
