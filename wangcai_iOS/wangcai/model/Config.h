@@ -17,10 +17,10 @@
 
 #elif TARGET_VERSION_LITE == 2
 
-#define APP_NAME   @"WangCaiFirend"
-#define INVITE_URL @"http://invite.getwangcai.com/index.php?app=wangcaifirend&code=%@"
+#define APP_NAME   @"WangCaiFriend"
+#define INVITE_URL @"http://invite.getwangcai.com/index.php?app=wangcaifriend&code=%@"
 
-#define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcaifirend&"
+#define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcaifriend&"
 #endif
 
 
