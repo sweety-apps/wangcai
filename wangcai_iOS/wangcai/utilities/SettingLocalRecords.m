@@ -196,7 +196,7 @@
 
 + (int)getDomobPoint
 {
-    NSNumber* point = [[NSUserDefaults standardUserDefaults] objectForKey:kLastOfferWallAlertView];
+    NSNumber* point = [[NSUserDefaults standardUserDefaults] objectForKey:NKEY(kLastOfferWallAlertView)];
     
     return [point intValue];
 }
