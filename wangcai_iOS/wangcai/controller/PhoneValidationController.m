@@ -525,13 +525,14 @@
 }
 
 - (void) showFirstPage {
+    [UIView beginAnimations:@"view curldown" context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    //[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:self->_viewInputNum cache:YES];
+    
     [_viewCheckNum setHidden:YES];
     [_viewInputNum setHidden:NO];
     [_viewRegSuccess setHidden:YES];
-    
-    [UIView beginAnimations:@"view curldown" context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self->_viewInputNum cache:YES];
     
     self->curState = 0;
     
@@ -541,13 +542,14 @@
 }
 
 - (void) showThirdPage {
+    [UIView beginAnimations:@"view curldown" context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    //[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:self->_viewRegSuccess cache:YES];
+    
     [_viewCheckNum setHidden:YES];
     [_viewInputNum setHidden:YES];
     [_viewRegSuccess setHidden:NO];
-    
-    [UIView beginAnimations:@"view curldown" context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self->_viewRegSuccess cache:YES];
     
     self->curState = 3;
     
@@ -557,13 +559,14 @@
 }
 
 - (void) showSecondPage {
+    [UIView beginAnimations:@"view curlup" context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    //[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:_viewCheckNum cache:YES];
+
     [self->_viewCheckNum setHidden:NO];
     [self->_viewInputNum setHidden:YES];
     [self->_viewRegSuccess setHidden:YES];
-
-    [UIView beginAnimations:@"view curlup" context:nil];
-    [UIView setAnimationDuration:0.5];
-    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:_viewCheckNum cache:YES];
     
     self->curState = 1;
     
