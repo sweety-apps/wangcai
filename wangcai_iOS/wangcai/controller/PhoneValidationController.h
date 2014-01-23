@@ -49,6 +49,8 @@
     TabController* _tabController;
     
     BOOL          _bSend;
+    
+    BOOL          _bShowKeyboard;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* _imageArrow;

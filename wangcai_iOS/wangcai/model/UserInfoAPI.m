@@ -87,7 +87,7 @@ static UserInfoAPI* gDefaultUserInfo = nil;
 {
     if (gDefaultUserInfo == nil)
     {
-        NSNumber* userId = [[LoginAndRegister sharedInstance] getUserId];
+        NSString* userId = [[LoginAndRegister sharedInstance] getUserId];
         gDefaultUserInfo = [[UserInfoAPI recordWithKey:userId] retain];
         if (gDefaultUserInfo == nil)
         {

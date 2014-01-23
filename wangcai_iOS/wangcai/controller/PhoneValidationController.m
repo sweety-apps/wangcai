@@ -51,6 +51,7 @@
         _bSend = NO;
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] firstObject];
         _token = nil;
+        _bShowKeyboard = NO;
         
         self->_timer = nil;
         self->_viewInputNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:2];
@@ -245,7 +246,11 @@
     }
     _startDate = [[NSDate date] retain];
     //统计一
-    [MobClick beginEvent:@"bind_phone_step1" primarykey:@"phone_num" attributes:@{@"phone_num":_phoneNum}];
+    if ( _phoneNum == nil ) {
+        [MobClick beginEvent:@"bind_phone_step1" primarykey:@"phone_num" attributes:@{@"phone_num":@""}];
+    } else {
+        [MobClick beginEvent:@"bind_phone_step1" primarykey:@"phone_num" attributes:@{@"phone_num":_phoneNum}];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated { // Called when the view is dismissed, covered or otherwise hidden. Default does nothing
@@ -271,6 +276,11 @@
 }
 
 - (void)keyboardWillShow: (NSNotification*) notification {
+    if ( _bShowKeyboard ) {
+        return ;
+    }
+    _bShowKeyboard = YES;
+    
     NSDictionary* userInfo = [notification userInfo];
     NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     
@@ -339,6 +349,11 @@
 }
 
 - (void)keyboardWillHide: (NSNotification*) notification {
+    if ( !_bShowKeyboard ) {
+        return ;
+    }
+    _bShowKeyboard = NO;
+    
     NSDictionary* userInfo = [notification userInfo];
     
     NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];

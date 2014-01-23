@@ -289,7 +289,7 @@
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/exchange_info"] ) {
         NSString* device = [[[LoginAndRegister sharedInstance] getDeviceId] autorelease];
         NSString* sessionid = [[[LoginAndRegister sharedInstance] getSessionId] autorelease];
-        NSNumber* userid = [[[LoginAndRegister sharedInstance] getUserId] autorelease];
+        NSString* userid = [[[LoginAndRegister sharedInstance] getUserId] autorelease];
         
         NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@", WEB_EXCHANGE_INFO, device, sessionid, userid] autorelease];
     
@@ -410,7 +410,7 @@
 - (void)notifyDeviceInfo {
     NSString* device = [[LoginAndRegister sharedInstance] getDeviceId];
     NSString* sessionId = [[LoginAndRegister sharedInstance] getSessionId];
-    NSNumber* userid = [[LoginAndRegister sharedInstance] getUserId];
+    NSString* userid = [[LoginAndRegister sharedInstance] getUserId];
     
     NSString* js = [NSString stringWithFormat:@"notifyDeviceInfo(\"%@\", \"%@\", %@)", device, sessionId, userid];
     

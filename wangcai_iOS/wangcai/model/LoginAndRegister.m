@@ -337,7 +337,7 @@ static LoginAndRegister* _sharedInstance;
     return [self->_phoneNum copy];
 }
 
--(NSNumber*) getUserId  {
+-(NSString*) getUserId  {
     if ( self->_userid == nil ) {
         return nil;
     }

@@ -38,7 +38,7 @@ typedef enum LoginStatus {
     id          _delegate;
     LoginStatus loginStatus;
     NSString*   _phoneNum;
-    NSNumber*   _userid;
+    NSString*   _userid;
     NSString*   _session_id;
     NSString*   _nickname;
     NSString*   _device_id;
@@ -69,7 +69,7 @@ typedef enum LoginStatus {
 -(void) login: (id) delegate;
 
 -(NSString*) getPhoneNum;
--(NSNumber*) getUserId;
+-(NSString*) getUserId;
 -(NSString*) getSessionId;
 -(NSString*) getNickName;
 -(NSString*) getDeviceId;
