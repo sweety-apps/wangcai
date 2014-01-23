@@ -45,13 +45,13 @@
         _finishedLabel.textAlignment = NSTextAlignmentLeft;
         
         //抗锯齿
-        _leftIcon.layer.shouldRasterize = YES;
-        _leftIcon.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
-        _leftIcon.layer.masksToBounds = YES;
+        //_leftIcon.layer.shouldRasterize = YES;
+        //_leftIcon.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
+        //_leftIcon.layer.masksToBounds = YES;
         
-        _redBagIcon.layer.shouldRasterize = YES;
-        _redBagIcon.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
-        _redBagIcon.layer.masksToBounds = YES;
+        //_redBagIcon.layer.shouldRasterize = YES;
+        //_redBagIcon.layer.edgeAntialiasingMask = kCALayerLeftEdge | kCALayerRightEdge | kCALayerBottomEdge | kCALayerTopEdge;
+        //_redBagIcon.layer.masksToBounds = YES;
         
         _redBagIcon.contentMode = UIViewContentModeCenter;
         

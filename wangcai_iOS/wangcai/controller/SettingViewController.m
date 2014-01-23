@@ -15,6 +15,8 @@
 #import "Config.h"
 #import "SettingLocalRecords.h"
 #import "MobClick.h"
+#import "UIGetRedBagAlertView.h"
+#import "NSString+FloatFormat.h"
 
 @interface SettingViewController () <RateAppLogicDelegate>
 
@@ -173,10 +175,13 @@
         //统计
         [MobClick event:@"money_get_from_all" attributes:@{@"RMB":@"10",@"FROM":@"用户评价"}];
         
-        NSString* strIncome = [NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:1 ignoreBackZeros:YES];
-        NSString* btnStr = [NSString stringWithFormat:@"领取 %@ 元",strIncome];
-        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价成功" message:@"" delegate:self cancelButtonTitle:btnStr otherButtonTitles:nil] autorelease];
-        [alertView show];
+        NSString* strIncome = [NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:2 ignoreBackZeros:YES];
+        
+        UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
+        [getMoneyAlertView setRMBString:strIncome];
+        [getMoneyAlertView setLevel:3];
+        [getMoneyAlertView setTitle:@"评价成功，获得红包"];
+        [getMoneyAlertView show];
         
         [[LoginAndRegister sharedInstance] increaseBalance:income];
         [BaseTaskTableViewController setNeedReloadTaskList];

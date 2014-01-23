@@ -42,7 +42,7 @@
 
 - (void)setJinTianHaiNengZhuanNumLabelTextNum:(float)num
 {
-    self.jintianhainengzhuanLabel.text = [NSString stringWithFloatRoundToPrecision:num precision:1 ignoreBackZeros:YES];
+    self.jintianhainengzhuanLabel.text = [NSString stringWithFloatRoundToPrecision:num precision:2 ignoreBackZeros:YES];
 }
 
 @end

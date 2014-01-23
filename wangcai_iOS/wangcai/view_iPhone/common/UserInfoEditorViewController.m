@@ -13,8 +13,10 @@
 #import "CommonTaskList.h"
 #import "BaseTaskTableViewController.h"
 #import "MobClick.h"
+#import "UIGetRedBagAlertView.h"
+#import "NSString+FloatFormat.h"
 
-@interface UserInfoEditorViewController () <UserInfoAPIDelegate>
+@interface UserInfoEditorViewController () <UserInfoAPIDelegate,UIGetRedBagAlertViewDelegate>
 {
     UILabel* _labelAgeSelected;
     UIView* _selectorView;
@@ -509,20 +511,42 @@
     if (succeed)
     {
         [BaseTaskTableViewController setNeedReloadTaskList];
-        [MBHUDView hudWithBody:@"用户信息提交成功！" type:MBAlertViewHUDTypeCheckmark  hidesAfter:2.0 show:YES];
+        //[MBHUDView hudWithBody:@"用户信息提交成功！" type:MBAlertViewHUDTypeCheckmark  hidesAfter:2.0 show:YES];
         // 给用户加一块钱
         if (_shouldAddMoney)
         {
+            NSString* strIncome = [NSString stringWithFloatRoundToPrecision:1.f precision:2 ignoreBackZeros:YES];
+            UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
+            [getMoneyAlertView setRMBString:strIncome];
+            [getMoneyAlertView setLevel:3];
+            [getMoneyAlertView setDelegate:self];
+            [getMoneyAlertView setTitle:@"用户信息提交成功，获得红包"];
+            [getMoneyAlertView show];
             //统计
             [MobClick event:@"money_get_from_all" attributes:@{@"RMB":@"100",@"FROM":@"填写用户信息"}];
             [[LoginAndRegister sharedInstance] increaseBalance:100];
         }
-        [self onPressedBackPhone:nil];
+        else
+        {
+            [self onPressedBackPhone:nil];
+        }
     }
     else
     {
         [MBHUDView hudWithBody:@":(\n用户信息提交失败" type:MBAlertViewHUDTypeImagePositive  hidesAfter:2.0 show:YES];
     }
+}
+
+#pragma mark - <UIGetRedBagAlertViewDelegate>
+
+- (void)onPressedCloseUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
+{
+    [self onPressedBackPhone:nil];
+}
+
+- (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
+{
+    [self onPressedBackPhone:nil];
 }
 
 @end

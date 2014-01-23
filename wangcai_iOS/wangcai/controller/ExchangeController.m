@@ -74,7 +74,7 @@
         }
         
         float fBalance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
-        NSString* balance = [[NSString alloc] initWithFormat:@"%.1f元", fBalance];
+        NSString* balance = [[NSString alloc] initWithFormat:@"%.2f元", fBalance];
         [_labelBalance setText:balance];
         [balance release];
         
@@ -103,7 +103,7 @@
 
 -(void) balanceChanged:(int) oldBalance New:(int) balance {
     float fBalance = (1.0*balance) / 100;
-    NSString* bal = [[NSString alloc] initWithFormat:@"%.1f元", fBalance];
+    NSString* bal = [[NSString alloc] initWithFormat:@"%.2f元", fBalance];
     [_labelBalance setText:bal];
     [bal release];
 }
@@ -163,7 +163,7 @@
     NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
     float fBalance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
     
-    NSString* balance = [[NSString alloc] initWithFormat:@"%.1f元", fBalance];
+    NSString* balance = [[NSString alloc] initWithFormat:@"%.2f元", fBalance];
     [_labelBalance setText:balance];
     [balance release];
     
@@ -396,7 +396,7 @@
         }
         
         NSString* nsTitle = [[NSString alloc] initWithFormat:@"产品：%@", name];
-        NSString* nsPrice = [[NSString alloc] initWithFormat:@"价格：%.1f元", 1.0*nPrice/100];
+        NSString* nsPrice = [[NSString alloc] initWithFormat:@"价格：%.2f元", 1.0*nPrice/100];
         
         [self checkExchange:nsTitle Text:nsPrice Tip:@"兑换需要1-3个工作日，请耐心等待" Button:@"继续兑换"];
         
