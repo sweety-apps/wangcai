@@ -572,6 +572,9 @@
             _alertExchange = nil;
         }
         
+        //统计
+        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",-1*_price],@"FROM": [NSString stringWithFormat:@"兑换 类型%d",[_prtType intValue]]}];
+        
         [[LoginAndRegister sharedInstance] increaseBalance:(-1*_price)];
         
         [self exchangeCompleted:[_prtType intValue]];

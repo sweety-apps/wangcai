@@ -384,6 +384,9 @@
         [alertView show];
         [alertView release];
         
+        //统计
+        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",200],@"FROM": @"绑定邀请人成功"}];
+        
         // 给用户加二块钱
         [[LoginAndRegister sharedInstance] increaseBalance:200];
         [BaseTaskTableViewController setNeedReloadTaskList];

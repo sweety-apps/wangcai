@@ -513,6 +513,8 @@
         // 给用户加一块钱
         if (_shouldAddMoney)
         {
+            //统计
+            [MobClick event:@"money_get_from_all" attributes:@{@"RMB":@"100",@"FROM":@"填写用户信息"}];
             [[LoginAndRegister sharedInstance] increaseBalance:100];
         }
         [self onPressedBackPhone:nil];

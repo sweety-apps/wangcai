@@ -708,6 +708,9 @@ static BOOL gNeedReloadTaskList = NO;
         [[CommonTaskList sharedInstance] increaseEarned:consume];
         [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[[CommonTaskList sharedInstance] allMoneyCanBeEarnedInRMBYuan]];
         
+        //统计
+        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",consume],@"FROM":@"积分墙"}];
+        
         [[LoginAndRegister sharedInstance] increaseBalance:consume];
         UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"收到应用体验红包 %@ 元！",[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:1 ignoreBackZeros:YES]] message:@"" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
         [alert show];
@@ -729,6 +732,14 @@ static BOOL gNeedReloadTaskList = NO;
         } else {
             //任务列表改到登陆协议中去了，已不用单独再拉列表了
             //[[CommonTaskList sharedInstance] fetchTaskList:self];
+            
+            //统计
+            [MobClick event:@"money_account_total"
+                 attributes:@{
+                              @"balance":[NSString stringWithFormat:@"%d",[[LoginAndRegister sharedInstance] getBalance]],
+                              @"income":[NSString stringWithFormat:@"%d",[[LoginAndRegister sharedInstance] getIncome]],
+                              @"outgo":[NSString stringWithFormat:@"%d",[[LoginAndRegister sharedInstance] getOutgo]]
+                              }];
             [self onFinishedFetchTaskList:[CommonTaskList sharedInstance] resultCode:0];
         }
     } else {
@@ -786,6 +797,9 @@ static BOOL gNeedReloadTaskList = NO;
 {
     if (isSucceed && income > 0)
     {
+        //统计
+        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":@"10",@"FROM":@"用户评价"}];
+        
         _needAddCommentIncome = YES;
         NSString* strIncome = [NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:1 ignoreBackZeros:YES];
         NSString* btnStr = [NSString stringWithFormat:@"领取 %@ 元",strIncome];

@@ -170,6 +170,9 @@
 {
     if (isSucceed && income > 0)
     {
+        //统计
+        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":@"10",@"FROM":@"用户评价"}];
+        
         NSString* strIncome = [NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:1 ignoreBackZeros:YES];
         NSString* btnStr = [NSString stringWithFormat:@"领取 %@ 元",strIncome];
         UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价成功" message:@"" delegate:self cancelButtonTitle:btnStr otherButtonTitles:nil] autorelease];

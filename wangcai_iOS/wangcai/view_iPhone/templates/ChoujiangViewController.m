@@ -312,6 +312,8 @@
             msg = @"1毛";
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:10];
+            //统计
+            [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",10],@"FROM":@"签到"}];
             break;
         case 0:
         case 9:
@@ -320,6 +322,8 @@
             msg = @"5毛";
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:50];
+            //统计
+            [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",50],@"FROM":@"签到"}];
             break;
         case 7:
             //3元
@@ -327,6 +331,8 @@
             msg = @"3元";
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:300];
+            //统计
+            [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",300],@"FROM":@"签到"}];
             break;
         case 4:
             //8元
@@ -334,6 +340,8 @@
             msg = @"8元";
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:800];
+            //统计
+            [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",800],@"FROM":@"签到"}];
             break;
             
         default:
