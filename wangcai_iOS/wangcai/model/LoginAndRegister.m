@@ -164,8 +164,8 @@ static LoginAndRegister* _sharedInstance;
     } else if ( req.recving ) {
     } else if ( req.failed ) {
         //统计
-        [MobClick event:@"http_request_failed" attributes:@{@"url":[req.url absoluteString],@"device_id":[self getDeviceId],@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
-        [MobClick event:@"login_failed" attributes:@{@"reason":@"服务器状态码错误",@"device_id":[self getDeviceId],@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
+        [MobClick event:@"http_request_failed" attributes:@{@"url":[req.url absoluteString],@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
+        [MobClick event:@"login_failed" attributes:@{@"reason":@"服务器状态码错误",@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
         
         //
         [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:nil];

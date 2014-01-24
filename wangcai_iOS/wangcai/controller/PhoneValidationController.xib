@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_Header.png" id="u6L-0T-Ks1">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_Header2.png" id="u6L-0T-Ks1">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -239,15 +239,15 @@
             </subviews>
         </view>
         <view contentMode="scaleToFill" id="DBG-Zt-Qms">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="body_bkg.png" id="bf7-Sz-0Dl">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="register_suc.png" id="bf7-Sz-0Dl">
+                    <rect key="frame" x="0.0" y="-2" width="320" height="519"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
-                <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JRd-fi-2pZ">
-                    <rect key="frame" x="23" y="241" width="275" height="54"/>
+                <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JRd-fi-2pZ">
+                    <rect key="frame" x="106" y="157" width="109" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
@@ -255,7 +255,7 @@
                     </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="确定" backgroundImage="btn_normal.png">
+                    <state key="normal" backgroundImage="goback.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -263,17 +263,6 @@
                         <action selector="clickGetMoney:" destination="-1" eventType="touchUpInside" id="Xod-Cb-imo"/>
                     </connections>
                 </button>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="reg_success.png" id="5TP-7S-UCC">
-                    <rect key="frame" x="79" y="20" width="163" height="163"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册成功" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fjJ-m3-u3u">
-                    <rect key="frame" x="85" y="197" width="150" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
@@ -288,10 +277,11 @@
         <image name="back.png" width="12" height="22"/>
         <image name="body_bkg.png" width="320" height="415"/>
         <image name="btn_normal.png" width="275" height="54"/>
-        <image name="nav_Header.png" width="320" height="54"/>
+        <image name="goback.png" width="109" height="40"/>
+        <image name="nav_Header2.png" width="320" height="53"/>
         <image name="phone_logo.png" width="11" height="19"/>
         <image name="phone_num_border.png" width="275" height="53"/>
-        <image name="reg_success.png" width="163" height="163"/>
+        <image name="register_suc.png" width="320" height="514"/>
         <image name="resend_normal.png" width="66" height="27"/>
         <image name="sms_code_border.png" width="45" height="43"/>
         <image name="warn_bkg.png" width="275" height="30"/>

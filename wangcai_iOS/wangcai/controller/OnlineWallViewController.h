@@ -41,4 +41,5 @@
 
 - (IBAction)clickDomob:(id)sender;
 - (IBAction)clickYoumi:(id)sender;
+- (IBAction)clickClose:(id)sender;
 @end

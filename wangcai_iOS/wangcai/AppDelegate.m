@@ -81,9 +81,6 @@
     [UIApplication sharedApplication].statusBarHidden = YES;
     
     [MobClick startWithAppkey:UMENG_KEY];
-    
-    UIWindow* window = self.window;
-    [[OnlineWallViewController sharedInstance] setFullScreenWindow:window];
 }
 
 - (void)unload

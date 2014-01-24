@@ -75,11 +75,7 @@ static OnlineWallViewController* _sharedInstance;
     }
         
     UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
-    view.layer.masksToBounds = YES;
-    view.layer.cornerRadius = 10.0;
-    view.layer.borderWidth = 0.0;
-    view.layer.borderColor = [[UIColor whiteColor] CGColor];
-        
+    
     UIColor *color = [UIColor colorWithRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1];
         
     UIButton* btn = (UIButton*)[view viewWithTag:11];
@@ -116,6 +112,12 @@ static OnlineWallViewController* _sharedInstance;
     
     [MobClick event:@"task_list_click_duomeng" attributes:@{@"currentpage":@"任务列表"}];
     [_offerWallController presentOfferWall];
+}
+
+- (IBAction)clickClose:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
 }
 
 - (void)viewDidLoad
@@ -252,12 +254,14 @@ static OnlineWallViewController* _sharedInstance;
             [SettingLocalRecords setDomobPoint:_allConsume];
             
             int inc = [[body objectForKey:@"income"] intValue];
-            if ( inc > 0 ) {
-                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:inc];
-            }
+            
             // 消费掉多余的积分
             [YouMiPointsManager spendPoints:_remained];
             [_offerWallManager requestOnlineConsumeWithPoint:_allConsume];
+            
+            if ( inc > 0 ) {
+                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:inc];
+            }
         } else {
             _request = NO;
         }

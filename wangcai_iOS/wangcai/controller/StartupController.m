@@ -20,6 +20,7 @@
 #import "CommonTaskList.h"
 #import "XMLReader.h"
 #import "Config.h"
+#import "OnlineWallViewController.h"
 
 @interface StartupController () <CommonTaskListDelegate>
 
@@ -85,6 +86,8 @@
             _alertForceUpdate = [[UIAlertView alloc]initWithTitle:@"升级" message:@"为了您红包的安全，需要升级之后才能继续使用。" delegate:self cancelButtonTitle:@"升级" otherButtonTitles:nil, nil];
             [_alertForceUpdate show];
         } else {
+            [[OnlineWallViewController sharedInstance] setFullScreenWindow:_delegate.window];
+            
             [CATransaction begin];
             CATransition *transition = [CATransition animation];
             transition.type = kCATransitionFade;

@@ -52,7 +52,7 @@
 }
 
 -(void) tapGestureRecognizer {
-    [self hideAlertView];
+    //[self hideAlertView];
 }
 
 -(void) show

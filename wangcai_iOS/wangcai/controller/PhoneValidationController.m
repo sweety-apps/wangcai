@@ -61,6 +61,8 @@
         CGRect rect = CGRectMake( 0.0f, 134.0f, self->_viewInputNum.frame.size.width, self->_viewInputNum.frame.size.height);
         _viewInputNum.frame = rect;
         _viewCheckNum.frame = rect;
+        
+        rect = CGRectMake( 0.0f, 54.0f, self->_viewInputNum.frame.size.width, 519);
         _viewRegSuccess.frame = rect;
        
         [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
