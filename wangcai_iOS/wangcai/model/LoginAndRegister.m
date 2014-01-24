@@ -270,6 +270,20 @@ static LoginAndRegister* _sharedInstance;
     }
 }
 
+-(void) setShareIncome:(int) nShareIncome {
+    self->_inviteIncome = nShareIncome;
+}
+-(void) setInviter:(NSString*) inviter {
+    if ( inviter ==nil || [inviter length] == 0 ) {
+        return ;
+    }
+    
+    if ( _inviter != nil ) {
+        [_inviter release];
+    }
+    _inviter = [inviter copy];
+}
+
 -(void) fire_balanceChanged:(int) old New:(int) balance {
     BalanceInfo* info = [[BalanceInfo alloc]init];
     info._newBalance = balance;

@@ -141,16 +141,20 @@
         int nRes = [res intValue];
         if ( nRes == 0 ) {
             // 调用成功
-            NSNumber* income = [[body valueForKey:@"income"] copy];
-            NSNumber* outgo = [[body valueForKey:@"outgo"] copy];
-            NSNumber* balance = [[body valueForKey:@"balance"] copy];
+            NSNumber* income = [body valueForKey:@"income"];
+            NSNumber* outgo = [body valueForKey:@"outgo"];
+            NSNumber* balance = [body valueForKey:@"balance"];
+            NSNumber* shareIncome = [body valueForKey:@"shared_income"];
+            NSString* inviter = [[body valueForKey:@"inviter"] copy];
             int nIncome = [income intValue];
             int nOutgo = [outgo intValue];
             int nBalance = [balance intValue];
-            
+            int nShareIncome = [shareIncome intValue];
             [[LoginAndRegister sharedInstance] setIncome:nIncome];
             [[LoginAndRegister sharedInstance] setOutgo:nOutgo];
             [[LoginAndRegister sharedInstance] setBalance:nBalance];
+            [[LoginAndRegister sharedInstance] setShareIncome:nShareIncome];
+            [[LoginAndRegister sharedInstance] setInviter:inviter];
             
             NSString* userid = [[body valueForKey:@"userid"] copy];
             NSString* inviteCode = [[body valueForKey:@"invite_code"] copy];
@@ -158,6 +162,7 @@
             
             [userid release];
             [inviteCode release];
+            [inviter release];
         } else {
             // 错误
             NSString* msg = [[body valueForKey:@"msg"] copy];

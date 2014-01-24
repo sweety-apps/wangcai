@@ -29,7 +29,7 @@
 
 
 
-#define TEST 0
+#define TEST 1
 
 #if TEST == 0
 #define HTTP_LOGIN_AND_REGISTER @"https://ssl.getwangcai.com/0/register"

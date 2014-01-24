@@ -97,4 +97,7 @@ typedef enum LoginStatus {
 
 -(int) getInviteIncome;
 -(int) getForceUpdate;
+
+-(void) setShareIncome:(int) nShareIncome;
+-(void) setInviter:(NSString*) inviter;
 @end
