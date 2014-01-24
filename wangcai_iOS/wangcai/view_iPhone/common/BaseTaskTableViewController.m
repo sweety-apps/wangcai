@@ -524,10 +524,10 @@ static BOOL gNeedReloadTaskList = NO;
         //测试数字动画
         //[self setYuENumberWithAnimationFrom:0.1 toNum:150000];
         
-        UIGetRedBagAlertView* testAlertView = [UIGetRedBagAlertView sharedInstance];
-        [testAlertView setRMBString:@"2.81"];
-        [testAlertView setLevel:3];
-        [testAlertView show];
+        //UIGetRedBagAlertView* testAlertView = [UIGetRedBagAlertView sharedInstance];
+        //[testAlertView setRMBString:@"2.81"];
+        //[testAlertView setLevel:3];
+        //[testAlertView show];
     }
     else
     {

@@ -14,6 +14,7 @@
 #import "MBHUDView.h"
 #import "Common.h"
 #import "MobClick.h"
+#import "NSString+FloatFormat.h"
 
 @interface ExchangeController ()
 
@@ -396,7 +397,7 @@
         }
         
         NSString* nsTitle = [[NSString alloc] initWithFormat:@"产品：%@", name];
-        NSString* nsPrice = [[NSString alloc] initWithFormat:@"价格：%.2f元", 1.0*nPrice/100];
+        NSString* nsPrice = [[NSString alloc] initWithFormat:@"价格：%@元",[NSString stringWithFloatRoundToPrecision:(1.0f*((float)nPrice)/100.f) precision:2 ignoreBackZeros:YES]];
         
         [self checkExchange:nsTitle Text:nsPrice Tip:@"兑换需要1-3个工作日，请耐心等待" Button:@"继续兑换"];
         
