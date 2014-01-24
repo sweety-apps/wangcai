@@ -32,7 +32,7 @@ static UIGetRedBagAlertView* gInstance = nil;
 
 @implementation UIGetRedBagAlertView
 
-- (UIGetRedBagAlertView*)sharedInstance
++ (UIGetRedBagAlertView*)sharedInstance
 {
     if (gInstance == nil)
     {
@@ -92,7 +92,7 @@ static UIGetRedBagAlertView* gInstance = nil;
     {
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
-        _bgView = [[[UIView alloc] initWithFrame:self.frame] autorelease];
+        _bgView = [[UIView alloc] initWithFrame:self.frame];
         [_bgView setBackgroundColor:[UIColor blackColor]];
         
         _alertViewContainer = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, _bgView.frame.size.width, _bgView.frame.size.height)] autorelease];
@@ -102,13 +102,13 @@ static UIGetRedBagAlertView* gInstance = nil;
         CGRect rectAlertView = CGRectZero;
         CGRect rect = CGRectZero;
         
-        _alertBg = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"redbag_mb_bg"]] autorelease];
+        _alertBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"redbag_mb_bg"]];
         rectAlertView = _alertBg.frame;
         rectAlertView.origin = CGPointMake(0.5*(_bgView.frame.size.width - rectAlertView.size.width), 0.5*(_bgView.frame.size.height - rectAlertView.size.height));
         _alertBg.contentMode = UIViewContentModeTopLeft;
         _alertBg.frame = rectAlertView;
         
-        _getMoneyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _getMoneyBtn = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
         [_getMoneyBtn setImage:[UIImage imageNamed:@"redbag_mb_btn_normal"] forState:UIControlStateNormal];
         [_getMoneyBtn setImage:[UIImage imageNamed:@"redbag_mb_btn_pressed"] forState:UIControlStateHighlighted];
         [_getMoneyBtn addTarget:self action:@selector(pressedGetButton) forControlEvents:UIControlEventTouchUpInside];
@@ -117,7 +117,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         rect.size = [UIImage imageNamed:@"redbag_mb_btn_pressed"].size;
         _getMoneyBtn.frame = rect;
         
-        UIImageView* _testBtn = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"redbag_mb_btn_normal"]] autorelease];
+        UIImageView* _testBtn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"redbag_mb_btn_normal"]];
         _testBtn.frame = _getMoneyBtn.frame;
         
         _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -130,7 +130,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         
         rect = CGRectOffset(rectAlertView, 31, 13);
         rect.size = CGSizeMake(200, 20);
-        _titleLbl = [[[UILabel alloc] initWithFrame:rect] autorelease];
+        _titleLbl = [[UILabel alloc] initWithFrame:rect];
         _titleLbl.textColor = RGB(0, 0, 0);
         _titleLbl.backgroundColor = [UIColor clearColor];
         _titleLbl.font = [UIFont systemFontOfSize:20.0f];
@@ -142,7 +142,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         
         rect = CGRectOffset(rectAlertView, 30, 42);
         rect.size = CGSizeMake(100, 60);
-        _rmbLbl = [[[UILabel alloc] initWithFrame:rect] autorelease];
+        _rmbLbl = [[UILabel alloc] initWithFrame:rect];
         _rmbLbl.textColor = RGB(209, 13, 13);
         _rmbLbl.backgroundColor = [UIColor clearColor];
         _rmbLbl.font = [UIFont systemFontOfSize:60.0f];
@@ -153,7 +153,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         
         rect = CGRectOffset(rectAlertView, 30, 66);
         rect.size = CGSizeMake(100, 31);
-        _yuanLbl = [[[UILabel alloc] initWithFrame:rect] autorelease];
+        _yuanLbl = [[UILabel alloc] initWithFrame:rect];
         _yuanLbl.textColor = RGB(209, 13, 13);
         _yuanLbl.backgroundColor = [UIColor clearColor];
         _yuanLbl.font = [UIFont systemFontOfSize:30.0f];
@@ -164,7 +164,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         
         rect = CGRectOffset(rectAlertView, 132, 113);
         rect.size = CGSizeMake(150, 15);
-        _levelBounusLbl = [[[UILabel alloc] initWithFrame:rect] autorelease];
+        _levelBounusLbl = [[UILabel alloc] initWithFrame:rect];
         _levelBounusLbl.textColor = RGB(90, 90, 90);
         _levelBounusLbl.backgroundColor = [UIColor clearColor];
         _levelBounusLbl.font = [UIFont systemFontOfSize:12.0f];
@@ -175,7 +175,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         
         rect = CGRectOffset(rectAlertView, 30, 112);
         rect.size = CGSizeMake(35, 17);
-        _lvLbl = [[[UILabel alloc] initWithFrame:rect] autorelease];
+        _lvLbl = [[UILabel alloc] initWithFrame:rect];
         _lvLbl.textColor = RGB(0, 0, 0);
         _lvLbl.backgroundColor = [UIColor clearColor];
         _lvLbl.font = [UIFont systemFontOfSize:16.0f];
@@ -253,13 +253,14 @@ static UIGetRedBagAlertView* gInstance = nil;
         }
         [subView addSubview:self];
     }
-    
+    [self showAlertAnmation];
 }
 
 
 - (void)showBackground
 {
     _bgView.alpha = 0;
+    _alertViewContainer.alpha = 1.0;
     [UIView beginAnimations:@"fadeIn" context:nil];
     [UIView setAnimationDuration:0.35];
     _bgView.alpha = 0.6;
@@ -268,6 +269,8 @@ static UIGetRedBagAlertView* gInstance = nil;
 
 -(void) showAlertAnmation
 {
+    _bgView.alpha = 0;
+    _alertViewContainer.alpha = 1.0;
     _alertViewContainer.transform = CGAffineTransformMakeScale(0.0f, 0.0f);
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){
         _alertViewContainer.transform = CGAffineTransformMakeScale(1.1, 1.1);
@@ -276,6 +279,11 @@ static UIGetRedBagAlertView* gInstance = nil;
             _alertViewContainer.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished){
         }];
+    }];
+    
+    [UIView animateWithDuration:0.35f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){
+        _bgView.alpha = 0.6;
+    } completion:^(BOOL finished){
     }];
 }
 

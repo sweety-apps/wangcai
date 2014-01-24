@@ -24,7 +24,7 @@
     id<UIGetRedBagAlertViewDelegate> _delegate;
 }
 
-- (UIGetRedBagAlertView*)sharedInstance;
++ (UIGetRedBagAlertView*)sharedInstance;
 
 - (void) setRMBString:(NSString*)rmb;
 - (void) setLevel:(int)level; //1-5
