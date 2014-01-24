@@ -16,6 +16,8 @@
 #import "SettingLocalRecords.h"
 #import "BaseTaskTableViewController.h"
 #import "MobClick.h"
+#import "UIGetRedBagAlertView.h"
+#import "NSString+FloatFormat.h"
 
 @interface InviteController ()
 
@@ -138,7 +140,7 @@
         [[self.view viewWithTag:40] setHidden:YES];
         [[self.view viewWithTag:41] setHidden:YES];
     } else {
-        NSString* nsIncome = [[NSString alloc]initWithFormat:@"%.1f元", 1.0*income/100];
+        NSString* nsIncome = [[NSString alloc]initWithFormat:@"%.2f元", 1.0*income/100];
     
         self.inviteIncome.text = nsIncome;
         [nsIncome release];
@@ -380,9 +382,14 @@
         [self updateInvitersControls: YES];
         [self updateErrorMsg: NO msg: nil];
         
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle: @"绑定成功" message: nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alertView show];
-        [alertView release];
+        UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
+        [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:2 precision:2 ignoreBackZeros:YES]];
+        [getMoneyAlertView setLevel:3];
+        [getMoneyAlertView setTitle:@"绑定成功，获得红包"];
+        [getMoneyAlertView show];
+        
+        //统计
+        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",200],@"FROM": @"绑定邀请人成功"}];
         
         // 给用户加二块钱
         [[LoginAndRegister sharedInstance] increaseBalance:200];

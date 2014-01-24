@@ -12,6 +12,8 @@
 #import "SettingLocalRecords.h"
 #import "MobClick.h"
 #import <ShareSDK/ShareSDK.h>
+#import "UIGetRedBagAlertView.h"
+#import "NSString+FloatFormat.h"
 
 @interface ChoiceMoveNode : NSObject
 
@@ -26,7 +28,7 @@
 @end
 
 
-@interface ChoujiangViewController () <ChoujiangLogicDelegate> {
+@interface ChoujiangViewController () <ChoujiangLogicDelegate,UIGetRedBagAlertViewDelegate> {
     NSArray* _choiceViews;
     int _beilv;
     NSMutableArray* _animaNodes;
@@ -292,6 +294,7 @@
 {
     NSString* title = @"";
     NSString* msg = @"";
+    int income = 0;
     
     switch (_choiceIndex)
     {
@@ -310,38 +313,54 @@
             //1毛
             title = @"恭喜您中奖了！";
             msg = @"1毛";
+            income = 10;
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:10];
+            //统计
+            [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",10],@"FROM":@"签到"}];
             break;
         case 0:
         case 9:
             //5毛
             title = @"恭喜您中奖了！";
             msg = @"5毛";
+            income = 50;
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:50];
+            //统计
+            [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",50],@"FROM":@"签到"}];
             break;
         case 7:
             //3元
             title = @"恭喜您中奖了！";
             msg = @"3元";
+            income = 300;
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:300];
+            //统计
+            [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",300],@"FROM":@"签到"}];
             break;
         case 4:
             //8元
             title = @"恭喜您中奖了！";
             msg = @"8元";
+            income = 800;
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:800];
+            //统计
+            [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",800],@"FROM":@"签到"}];
             break;
             
         default:
             break;
     }
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"返回" otherButtonTitles:/*@"分享",*/ nil];
+    UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
+    [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:2 ignoreBackZeros:YES]];
+    [getMoneyAlertView setLevel:3];
+    [getMoneyAlertView setTitle:title];
+    [getMoneyAlertView setDelegate:self];
+    [getMoneyAlertView show];
     
-    [alertView show];
 }
 
 - (int)_getRandomIndexWithResultcode:(GetAwardType)awardCode
@@ -390,6 +409,20 @@
     }
     
     return target;
+}
+
+#pragma mark - <UIGetRedBagAlertViewDelegate>
+
+- (void)onPressedCloseUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
+{
+    //返回
+    [self onPressedBackButton:self.backButton];
+}
+
+- (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
+{
+    //返回
+    [self onPressedBackButton:self.backButton];
 }
 
 #pragma mark - <UIAlertViewDelegate>

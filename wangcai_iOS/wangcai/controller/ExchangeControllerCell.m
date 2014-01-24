@@ -112,7 +112,7 @@
     NSNumber* remain = [_info objectAtPath:@"remain"];
     int nPrice = [price intValue];
     
-    _labelPrice.text = [[NSString alloc] initWithFormat:@"价格：%.1f元", 1.0*nPrice/100];
+    _labelPrice.text = [[NSString alloc] initWithFormat:@"价格：%.2f元", 1.0*nPrice/100];
     _labelNum.text = [[NSString alloc] initWithFormat:@"剩余：%@", remain];
     
     UIImage* cachedImage = [[BeeImageCache sharedInstance] imageForURL:icon];

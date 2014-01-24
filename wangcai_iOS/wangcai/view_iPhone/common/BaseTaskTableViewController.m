@@ -25,10 +25,11 @@
 #import "Config.h"
 #import "NSString+FloatFormat.h"
 #import "MobClick.h"
+#import "UIGetRedBagAlertView.h"
 
 static BOOL gNeedReloadTaskList = NO;
 
-@interface BaseTaskTableViewController () <CommonTaskListDelegate>
+@interface BaseTaskTableViewController () <CommonTaskListDelegate,UIGetRedBagAlertViewDelegate>
 {
     NSTimer* _checkOfferWallTimer;
     BOOL _justOnePage;
@@ -96,7 +97,7 @@ static BOOL gNeedReloadTaskList = NO;
     
     if (path) {
         AVAudioSession *session = [AVAudioSession sharedInstance];
-        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [session setCategory:AVAudioSessionCategorySoloAmbient error:nil];
         [session setActive:YES error:nil];
         
         NSURL *audioUrl = [NSURL fileURLWithPath:path];
@@ -522,6 +523,11 @@ static BOOL gNeedReloadTaskList = NO;
     {
         //测试数字动画
         //[self setYuENumberWithAnimationFrom:0.1 toNum:150000];
+        
+        UIGetRedBagAlertView* testAlertView = [UIGetRedBagAlertView sharedInstance];
+        [testAlertView setRMBString:@"2.81"];
+        [testAlertView setLevel:3];
+        [testAlertView show];
     }
     else
     {
@@ -708,10 +714,17 @@ static BOOL gNeedReloadTaskList = NO;
         [[CommonTaskList sharedInstance] increaseEarned:consume];
         [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[[CommonTaskList sharedInstance] allMoneyCanBeEarnedInRMBYuan]];
         
+        //统计
+        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",consume],@"FROM":@"积分墙"}];
+        
         [[LoginAndRegister sharedInstance] increaseBalance:consume];
-        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"收到应用体验红包 %@ 元！",[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:1 ignoreBackZeros:YES]] message:@"" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
-        [alert show];
-        [self checkBalanceAndAnimateYuE];
+        
+        UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
+        [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:2 ignoreBackZeros:YES]];
+        [getMoneyAlertView setLevel:3];
+        [getMoneyAlertView setTitle:@"收到应用体验红包"];
+        [getMoneyAlertView setDelegate:self];
+        [getMoneyAlertView show];
     }
 }
 
@@ -729,6 +742,14 @@ static BOOL gNeedReloadTaskList = NO;
         } else {
             //任务列表改到登陆协议中去了，已不用单独再拉列表了
             //[[CommonTaskList sharedInstance] fetchTaskList:self];
+            
+            //统计
+            [MobClick event:@"money_account_total"
+                 attributes:@{
+                              @"balance":[NSString stringWithFormat:@"%d",[[LoginAndRegister sharedInstance] getBalance]],
+                              @"income":[NSString stringWithFormat:@"%d",[[LoginAndRegister sharedInstance] getIncome]],
+                              @"outgo":[NSString stringWithFormat:@"%d",[[LoginAndRegister sharedInstance] getOutgo]]
+                              }];
             [self onFinishedFetchTaskList:[CommonTaskList sharedInstance] resultCode:0];
         }
     } else {
@@ -786,11 +807,17 @@ static BOOL gNeedReloadTaskList = NO;
 {
     if (isSucceed && income > 0)
     {
+        //统计
+        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":@"10",@"FROM":@"用户评价"}];
+        
         _needAddCommentIncome = YES;
-        NSString* strIncome = [NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:1 ignoreBackZeros:YES];
-        NSString* btnStr = [NSString stringWithFormat:@"领取 %@ 元",strIncome];
-        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价成功" message:@"" delegate:self cancelButtonTitle:btnStr otherButtonTitles:nil] autorelease];
-        [alertView show];
+        NSString* strIncome = [NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:2 ignoreBackZeros:YES];
+        
+        UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
+        [getMoneyAlertView setRMBString:strIncome];
+        [getMoneyAlertView setLevel:3];
+        [getMoneyAlertView setTitle:@"评价成功，获得红包"];
+        [getMoneyAlertView show];
         
         [[LoginAndRegister sharedInstance] increaseBalance:income];
     }
@@ -804,6 +831,18 @@ static BOOL gNeedReloadTaskList = NO;
         UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价失败" message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil] autorelease];
         [alertView show];
     }
+}
+
+#pragma mark <UIGetRedBagAlertViewDelegate>
+
+- (void)onPressedCloseUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
+{
+    [self checkBalanceAndAnimateYuE];
+}
+
+- (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
+{
+    [self checkBalanceAndAnimateYuE];
 }
 
 @end

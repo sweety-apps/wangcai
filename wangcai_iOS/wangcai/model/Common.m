@@ -144,10 +144,6 @@ NSString * macaddress()
     
     NSString* newUrl = [[NSString alloc] initWithFormat:@"%@?session_id=%@&device_id=%@&userid=%@", url, sessionid, deviceid, userid];
     
-    [userid release];
-    [sessionid release];
-    [deviceid release];
-    
     if ( params != nil ) {
         NSArray* keys = [params allKeys];
         int nCount = [keys count];

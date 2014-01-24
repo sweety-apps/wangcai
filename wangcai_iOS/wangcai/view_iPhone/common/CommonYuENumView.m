@@ -72,7 +72,7 @@
 -(void)_refreshViewWithNum:(float)num
 {
     [self removeAllSubviews];
-    NSString* numString = [NSString stringWithFormat:@"%.1f", 1.0*num/100];
+    NSString* numString = [NSString stringWithFormat:@"%.2f", 1.0*num/100];
     CGFloat offsetX = self.frame.size.width;
     for (int i = [numString length] - 1; i >= 0; i--)
     {

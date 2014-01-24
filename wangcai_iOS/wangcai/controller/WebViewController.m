@@ -388,9 +388,9 @@
 - (void)notifyPhoneStatus:(BOOL)isAttach Phone:(NSString*)phone Balance:(float)banlance {
     NSString* js;
     if ( isAttach ) {
-        js = [NSString stringWithFormat:@"notifyPhoneStatus(true, \"%@\", %.1f)", phone, banlance];
+        js = [NSString stringWithFormat:@"notifyPhoneStatus(true, \"%@\", %.2f)", phone, banlance];
     } else {
-        js = [NSString stringWithFormat:@"notifyPhoneStatus(false, \"\", %.1f)", banlance];
+        js = [NSString stringWithFormat:@"notifyPhoneStatus(false, \"\", %.2f)", banlance];
     }
     [self->_webView stringByEvaluatingJavaScriptFromString:js];
 }
@@ -401,7 +401,7 @@
     int outgo = [[LoginAndRegister sharedInstance] getOutgo];
     int sharedIncome = [[LoginAndRegister sharedInstance] getInviteIncome];
 
-    NSString* js = [NSString stringWithFormat:@"notifyBalance(%.1f, %.1f, %.1f, %.1f)",
+    NSString* js = [NSString stringWithFormat:@"notifyBalance(%.2f, %.2f, %.2f, %.2f)",
                     1.0*balance/100, 1.0*income/100, 1.0*outgo/100, 1.0*sharedIncome/100];
     
     [self->_webView stringByEvaluatingJavaScriptFromString:js];

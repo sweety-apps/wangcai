@@ -13,6 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Config.h"
 #import "WebPageController.h"
+#import "MobClick.h"
 
 @interface TransferToAlipayAndPhoneController ()
 @end
@@ -434,6 +435,9 @@
     if ( _orderId != nil ) {
         [_orderId release];
     }
+    
+    //统计
+    [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",(-1*self->_nDiscount)],@"FROM":self->_bAlipay?@"淘宝提现":@"充话费"}];
     
     [[LoginAndRegister sharedInstance] increaseBalance:(-1*self->_nDiscount)];
     _orderId = [orderId copy];
