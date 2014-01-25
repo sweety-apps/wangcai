@@ -30,13 +30,13 @@
         _labelTitle.font = [UIFont systemFontOfSize:14];
         _labelTitle.backgroundColor = [UIColor clearColor];
         
-        _labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(72, 37, 76, 20)];
+        _labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(72, 37, 96, 20)];
         [_view addSubview:_labelPrice];
         _labelPrice.font = [UIFont systemFontOfSize:12];
         [_labelPrice setTextColor:[UIColor colorWithRed:164.0/255 green:164.0/255 blue:164.0/255 alpha:1]];
         _labelPrice.backgroundColor = [UIColor clearColor];
         
-        _labelNum = [[UILabel alloc] initWithFrame:CGRectMake(156, 37, 76, 20)];
+        _labelNum = [[UILabel alloc] initWithFrame:CGRectMake(166, 37, 76, 20)];
         [_view addSubview:_labelNum];
         _labelNum.font = [UIFont systemFontOfSize:12];
         [_labelNum setTextColor:[UIColor colorWithRed:164.0/255 green:164.0/255 blue:164.0/255 alpha:1]];
