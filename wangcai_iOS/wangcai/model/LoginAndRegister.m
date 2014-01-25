@@ -204,6 +204,12 @@ static LoginAndRegister* _sharedInstance;
                 _inviteIncome = [[dict valueForKey:@"shared_income"] intValue];
                 _force_update = [[dict valueForKey:@"force_update"] intValue];
                 
+                _nowithdraw = [[dict valueForKey:@"no_withdraw"] intValue];
+                
+                NSDictionary* offerwall = [dict valueForKey:@"offerwall"];
+                _showDomob = [[offerwall valueForKey:@"domob"] intValue];
+                _showYoumi = [[offerwall valueForKey:@"youmi"] intValue];
+                
                 NSArray* taskList = [dict objectForKey:@"task_list"];
                 
                 [[CommonTaskList sharedInstance] resetTaskListWithJsonArray:taskList];
@@ -428,6 +434,10 @@ static LoginAndRegister* _sharedInstance;
 
 -(BOOL) isShowYoumi {
     return YES;
+}
+
+-(int) getNoWithDraw {
+    return _nowithdraw;
 }
 
 @end

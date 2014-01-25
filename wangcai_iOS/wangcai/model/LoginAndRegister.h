@@ -56,6 +56,10 @@ typedef enum LoginStatus {
     int        _force_update;
     
     BOOL       _firstLogin;
+    
+    int        _nowithdraw;
+    int        _showDomob;
+    int        _showYoumi;
 }
 
 +(id) sharedInstance;
@@ -103,5 +107,7 @@ typedef enum LoginStatus {
 
 -(BOOL) isShowDomob;
 -(BOOL) isShowYoumi;
+
+-(int)  getNoWithDraw;
 
 @end
