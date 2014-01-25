@@ -38,6 +38,8 @@ static LoginAndRegister* _sharedInstance;
     self->_delegateBalanceArray = [[NSMutableArray alloc]init];
     self->_balance = 0;
     self->_firstLogin = YES;
+    self->_showDomob = 0;
+    self->_showYoumi = 0;
     
     return self;
 }
@@ -207,8 +209,13 @@ static LoginAndRegister* _sharedInstance;
                 _nowithdraw = [[dict valueForKey:@"no_withdraw"] intValue];
                 
                 NSDictionary* offerwall = [dict valueForKey:@"offerwall"];
-                _showDomob = [[offerwall valueForKey:@"domob"] intValue];
-                _showYoumi = [[offerwall valueForKey:@"youmi"] intValue];
+                if ( [[offerwall allKeys] containsObject:@"domob"] ) {
+                    _showDomob = [[offerwall valueForKey:@"domob"] intValue];
+                }
+                
+                if ( [[offerwall allKeys] containsObject:@"youmi"] ) {
+                    _showYoumi = [[offerwall valueForKey:@"youmi"] intValue];
+                }
                 
                 NSArray* taskList = [dict objectForKey:@"task_list"];
                 
@@ -429,11 +436,17 @@ static LoginAndRegister* _sharedInstance;
 }
 
 -(BOOL) isShowDomob {
-    return YES;
+    if ( _showDomob == 1 ) {
+        return YES;
+    }
+    return NO;
 }
 
 -(BOOL) isShowYoumi {
-    return YES;
+    if ( _showYoumi == 1 ) {
+        return YES;
+    }
+    return NO;
 }
 
 -(int) getNoWithDraw {
