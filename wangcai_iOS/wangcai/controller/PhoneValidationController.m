@@ -673,8 +673,8 @@
         // 发送完成，进入下一步
         if (boundPhoneNum > 0)
         {
-            NSString* msg = [NSString stringWithFormat:@"您已经绑定了%d台设备，\n绑定设备不能超过3台。",boundPhoneNum+1];
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"明白了" otherButtonTitles:nil];
+            NSString* msg = [NSString stringWithFormat:@"一个手机号一个月内最多绑定3台设备，你已绑定了第%d台设备，请谨慎使用剩余机会。",boundPhoneNum+1];
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"注意" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];
         }
         [[LoginAndRegister sharedInstance] attachPhone:_phoneNum UserId:userId InviteCode:inviteCode];
