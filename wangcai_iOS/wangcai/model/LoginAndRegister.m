@@ -12,6 +12,7 @@
 #import "CommonTaskList.h"
 #import "../JPushlib/APService.h"
 #import "MobClick.h"
+#import "Common.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -222,7 +223,7 @@ static LoginAndRegister* _sharedInstance;
             } else {
                 NSString* err = [[dict valueForKey:@"msg"] copy];
                 
-                [MobClick event:@"login_failed" attributes:@{@"reason":[err length]==0?@"服务器状态码错误":err,@"device_id":[self getDeviceId],@"res":[res stringValue]}];
+                [MobClick event:@"login_failed" attributes:@{@"reason":[err length]==0?@"服务器状态码错误":err,@"device_idfa":[Common getIDFAAddress],@"res":[res stringValue]}];
                 
                 [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode ErrCode:[res intValue] Msg:err];
             }
