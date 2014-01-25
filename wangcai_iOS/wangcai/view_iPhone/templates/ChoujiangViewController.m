@@ -295,6 +295,7 @@
     NSString* title = @"";
     NSString* msg = @"";
     int income = 0;
+    int old_balance = [[LoginAndRegister sharedInstance] getBalance];
     
     switch (_choiceIndex)
     {
@@ -354,13 +355,22 @@
         default:
             break;
     }
-    UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
-    [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:2 ignoreBackZeros:YES]];
-    [getMoneyAlertView setLevel:3];
-    [getMoneyAlertView setTitle:title];
-    [getMoneyAlertView setDelegate:self];
-    [getMoneyAlertView show];
-    
+    if (income > 0)
+    {
+        UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
+        [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)income)/100.f precision:2 ignoreBackZeros:YES]];
+        [getMoneyAlertView setLevel:3];
+        [getMoneyAlertView setTitle:title];
+        [getMoneyAlertView setDelegate:self];
+        [getMoneyAlertView setShowCurrentBanlance:old_balance andIncrease:income];
+        [getMoneyAlertView show];
+    }
+    else
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"返回" otherButtonTitles:/*@"分享",*/ nil];
+        
+        [alertView show];
+    }
 }
 
 - (int)_getRandomIndexWithResultcode:(GetAwardType)awardCode

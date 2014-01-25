@@ -7,6 +7,7 @@
 //
 
 #import "UIGetRedBagAlertView.h"
+#import "NSString+FloatFormat.h"
 
 #define MAX_CATEGORY_NAME_LENGTH 9
 #define kTagViewTextFieldJalBreakPassW (1001)
@@ -22,6 +23,7 @@
     UILabel* _titleLbl;
     UILabel* _lvLbl;
     UILabel* _levelBounusLbl;
+    UILabel* _balanceIncreaseLbl;
     
     UIImageView* _levelBlock[5];
 }
@@ -85,6 +87,22 @@ static UIGetRedBagAlertView* gInstance = nil;
     _titleLbl.text = title;
 }
 
+- (void) setShowCurrentBanlance:(int)balance andIncrease:(int)increase
+{
+    NSString* bal = [NSString stringWithFloatRoundToPrecision:(((float)balance)/100.f) precision:2 ignoreBackZeros:YES];
+    NSString* inc = [NSString stringWithFloatRoundToPrecision:(((float)increase)/100.f) precision:2 ignoreBackZeros:YES];
+    NSString* new = [NSString stringWithFloatRoundToPrecision:(((float)(balance+increase))/100.f) precision:2 ignoreBackZeros:YES];
+    _balanceIncreaseLbl.text = [NSString stringWithFormat:@"当前账户余额 ￥%@ + ￥%@ = ￥%@",bal,inc,new];
+    _balanceIncreaseLbl.hidden = YES;
+    _lvLbl.hidden = YES;
+    _levelBounusLbl.hidden = YES;
+    
+    for (int i = 0; i < 5; i++)
+    {
+        _levelBlock[i].hidden = YES;
+    }
+}
+
 //含有title，提示内容和1个button
 - (id)init
 {
@@ -128,7 +146,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         _closeBtn.frame = rect;
         _closeBtn.contentMode = UIViewContentModeTopLeft;
         
-        rect = CGRectOffset(rectAlertView, 31, 13);
+        rect = CGRectOffset(rectAlertView, 31, 25);
         rect.size = CGSizeMake(200, 20);
         _titleLbl = [[UILabel alloc] initWithFrame:rect];
         _titleLbl.textColor = RGB(0, 0, 0);
@@ -140,7 +158,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         _titleLbl.contentMode = UIViewContentModeTopLeft;
         
         
-        rect = CGRectOffset(rectAlertView, 30, 42);
+        rect = CGRectOffset(rectAlertView, 30, 67);
         rect.size = CGSizeMake(100, 60);
         _rmbLbl = [[UILabel alloc] initWithFrame:rect];
         _rmbLbl.textColor = RGB(209, 13, 13);
@@ -151,7 +169,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         _rmbLbl.text = @"0.0";
         _rmbLbl.contentMode = UIViewContentModeTopLeft;
         
-        rect = CGRectOffset(rectAlertView, 30, 66);
+        rect = CGRectOffset(rectAlertView, 30, 91);
         rect.size = CGSizeMake(100, 31);
         _yuanLbl = [[UILabel alloc] initWithFrame:rect];
         _yuanLbl.textColor = RGB(209, 13, 13);
@@ -172,6 +190,18 @@ static UIGetRedBagAlertView* gInstance = nil;
         _levelBounusLbl.frame = rect;
         _levelBounusLbl.text = @"等级加成 +1%";
         _levelBounusLbl.contentMode = UIViewContentModeTopLeft;
+        
+        rect = CGRectOffset(rectAlertView, 30, 113);
+        rect.size = CGSizeMake(320, 15);
+        _balanceIncreaseLbl = [[UILabel alloc] initWithFrame:rect];
+        _balanceIncreaseLbl.textColor = RGB(90, 90, 90);
+        _balanceIncreaseLbl.backgroundColor = [UIColor clearColor];
+        _balanceIncreaseLbl.font = [UIFont systemFontOfSize:12.0f];
+        _balanceIncreaseLbl.textAlignment = NSTextAlignmentLeft;
+        _balanceIncreaseLbl.frame = rect;
+        _balanceIncreaseLbl.text = @"目前余额";
+        _balanceIncreaseLbl.contentMode = UIViewContentModeTopLeft;
+        _balanceIncreaseLbl.hidden = YES;
         
         rect = CGRectOffset(rectAlertView, 30, 112);
         rect.size = CGSizeMake(35, 17);
@@ -204,6 +234,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         [_alertViewContainer addSubview:_getMoneyBtn];
         [_alertViewContainer addSubview:_lvLbl];
         [_alertViewContainer addSubview:_levelBounusLbl];
+        [_alertViewContainer addSubview:_balanceIncreaseLbl];
         
         //[self addSubview:_testBtn];
         //_getMoneyBtn.hidden = YES;

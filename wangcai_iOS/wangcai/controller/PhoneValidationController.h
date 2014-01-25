@@ -71,7 +71,7 @@
 
 -(void) attachPhoneCompleted : (BOOL) suc Token:(NSString*)token errMsg:(NSString*)errMsg;
 - (void) sendSMSCompleted : (BOOL) suc errMsg:(NSString*) errMsg token:(NSString*) token;
-- (void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId Nickname:(NSString*)nickname;
+- (void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId Nickname:(NSString*)nickname boundPhoneNum:(int)boundPhoneNum;
 
 -(void)attachEvent;
 -(void)detachEvent;

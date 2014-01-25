@@ -524,10 +524,11 @@ static BOOL gNeedReloadTaskList = NO;
         //测试数字动画
         //[self setYuENumberWithAnimationFrom:0.1 toNum:150000];
         
-        //UIGetRedBagAlertView* testAlertView = [UIGetRedBagAlertView sharedInstance];
-        //[testAlertView setRMBString:@"2.81"];
-        //[testAlertView setLevel:3];
-        //[testAlertView show];
+        UIGetRedBagAlertView* testAlertView = [UIGetRedBagAlertView sharedInstance];
+        [testAlertView setRMBString:@"2.81"];
+        [testAlertView setLevel:3];
+        [testAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:281];
+        [testAlertView show];
     }
     else
     {
@@ -717,14 +718,16 @@ static BOOL gNeedReloadTaskList = NO;
         //统计
         [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",consume],@"FROM":@"积分墙"}];
         
-        [[LoginAndRegister sharedInstance] increaseBalance:consume];
-        
         UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
         [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:2 ignoreBackZeros:YES]];
         [getMoneyAlertView setLevel:3];
         [getMoneyAlertView setTitle:@"收到应用体验红包"];
-        [getMoneyAlertView setDelegate:self];
+        //[getMoneyAlertView setDelegate:self];
+        [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:consume];
         [getMoneyAlertView show];
+        
+        [[LoginAndRegister sharedInstance] increaseBalance:consume];
+        [self checkBalanceAndAnimateYuE];
     }
 }
 
@@ -817,6 +820,7 @@ static BOOL gNeedReloadTaskList = NO;
         [getMoneyAlertView setRMBString:strIncome];
         [getMoneyAlertView setLevel:3];
         [getMoneyAlertView setTitle:@"评价成功，获得红包"];
+        [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:income];
         [getMoneyAlertView show];
         
         [[LoginAndRegister sharedInstance] increaseBalance:income];

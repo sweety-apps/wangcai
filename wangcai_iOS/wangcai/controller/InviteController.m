@@ -386,6 +386,7 @@
         [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:2 precision:2 ignoreBackZeros:YES]];
         [getMoneyAlertView setLevel:3];
         [getMoneyAlertView setTitle:@"绑定成功，获得红包"];
+        [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:200];
         [getMoneyAlertView show];
         
         //统计

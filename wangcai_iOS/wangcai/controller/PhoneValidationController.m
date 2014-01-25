@@ -667,10 +667,16 @@
     [text release];
 }
 
-- (void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId InviteCode:(NSString *)inviteCode {
+- (void) checkSmsCodeCompleted : (BOOL) suc errMsg:(NSString*) errMsg UserId:(NSString*) userId InviteCode:(NSString *)inviteCode boundPhoneNum:(int)boundPhoneNum {
     [self hideLoading];
     if ( suc ) {
         // 发送完成，进入下一步
+        if (boundPhoneNum > 0)
+        {
+            NSString* msg = [NSString stringWithFormat:@"您已经绑定了%d台设备，\n绑定设备不能超过3台。",boundPhoneNum+1];
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"明白了" otherButtonTitles:nil];
+            [alertView show];
+        }
         [[LoginAndRegister sharedInstance] attachPhone:_phoneNum UserId:userId InviteCode:inviteCode];
     } else {
         // 发送失败，错误提示
