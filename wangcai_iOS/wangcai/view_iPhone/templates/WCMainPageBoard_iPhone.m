@@ -158,7 +158,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
                  
         // 亲友提示
 #if TARGET_VERSION_LITE == 2
-        [self showFriendMsg];
+        //[self showFriendMsg];
 #endif
     }
     else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )

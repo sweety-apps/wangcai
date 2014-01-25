@@ -107,15 +107,24 @@
         }
     } else {
         // 登陆错误，必须登陆成功才能进入下一步
-        if ( httpCode == 200 && errCode == 100 ) {
-            _alertTips = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
+        if ( httpCode == 200 && (errCode == 511 || errCode == 403) ) {
+            NSString* errMsg = [[msg copy] autorelease];
+            NSRange range = [errMsg rangeOfString:@"$"];
+            NSString* title = [errMsg substringToIndex:range.location];
+            NSString* body = [errMsg substringFromIndex:range.location + range.length];
+            
+            _alertTips = [[UIAlertView alloc] initWithTitle:title message:body delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
             [_alertTips show];
         } else {
             if ( _alertError != nil ) {
                 [_alertError release];
             }
-        
-            _alertError = [[UIAlertView alloc]initWithTitle:@"错误" message:@"无法访问服务器，请确保网络连接正常" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil];
+            
+            if ( msg != nil && [msg length] > 0 ) {
+                _alertError = [[UIAlertView alloc]initWithTitle:@"错误" message:msg delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil];
+            } else {
+                _alertError = [[UIAlertView alloc]initWithTitle:@"错误" message:@"无法访问服务器，请确保网络连接正常" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil];
+            }
             [_alertError show];
         }
     }
