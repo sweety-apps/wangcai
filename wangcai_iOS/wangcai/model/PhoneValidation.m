@@ -145,11 +145,13 @@
             NSNumber* outgo = [body valueForKey:@"outgo"];
             NSNumber* balance = [body valueForKey:@"balance"];
             NSNumber* shareIncome = [body valueForKey:@"shared_income"];
+            NSNumber* boundNum = [body valueForKey:@"total_device"];
             NSString* inviter = [[body valueForKey:@"inviter"] copy];
             int nIncome = [income intValue];
             int nOutgo = [outgo intValue];
             int nBalance = [balance intValue];
             int nShareIncome = [shareIncome intValue];
+            int nBoundNum = [boundNum intValue];
             [[LoginAndRegister sharedInstance] setIncome:nIncome];
             [[LoginAndRegister sharedInstance] setOutgo:nOutgo];
             [[LoginAndRegister sharedInstance] setBalance:nBalance];
@@ -158,7 +160,7 @@
             
             NSString* userid = [[body valueForKey:@"userid"] copy];
             NSString* inviteCode = [[body valueForKey:@"invite_code"] copy];
-            [_smsDelegate checkSmsCodeCompleted:YES errMsg:nil UserId:userid InviteCode:inviteCode];
+            [_smsDelegate checkSmsCodeCompleted:YES errMsg:nil UserId:userid InviteCode:inviteCode boundPhoneNum:nBoundNum];
             
             [userid release];
             [inviteCode release];
@@ -168,12 +170,12 @@
             NSString* msg = [[body valueForKey:@"msg"] copy];
             
             // 重新登录过了，返回错误
-            [_smsDelegate checkSmsCodeCompleted:NO errMsg:msg UserId:nil InviteCode:nil];
+            [_smsDelegate checkSmsCodeCompleted:NO errMsg:msg UserId:nil InviteCode:nil boundPhoneNum:0];
             
             [msg release];
         }
     } else {
-        [_smsDelegate checkSmsCodeCompleted:NO errMsg:@"访问服务器错误" UserId:nil InviteCode:nil];
+        [_smsDelegate checkSmsCodeCompleted:NO errMsg:@"访问服务器错误" UserId:nil InviteCode:nil boundPhoneNum:0];
     }
 }
 

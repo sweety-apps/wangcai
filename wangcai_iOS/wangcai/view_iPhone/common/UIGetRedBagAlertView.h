@@ -29,6 +29,7 @@
 - (void) setRMBString:(NSString*)rmb;
 - (void) setLevel:(int)level; //1-5
 - (void) setTitle:(NSString*)title;
+- (void) setShowCurrentBanlance:(int)balance andIncrease:(int)increase;
 
 - (id)init;
 

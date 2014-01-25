@@ -181,6 +181,7 @@
         [getMoneyAlertView setRMBString:strIncome];
         [getMoneyAlertView setLevel:3];
         [getMoneyAlertView setTitle:@"评价成功，获得红包"];
+        [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:income];
         [getMoneyAlertView show];
         
         [[LoginAndRegister sharedInstance] increaseBalance:income];

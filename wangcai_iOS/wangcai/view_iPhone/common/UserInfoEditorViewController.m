@@ -521,6 +521,7 @@
             [getMoneyAlertView setLevel:3];
             [getMoneyAlertView setDelegate:self];
             [getMoneyAlertView setTitle:@"用户信息提交成功，获得红包"];
+            [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:100];
             [getMoneyAlertView show];
             //统计
             [MobClick event:@"money_get_from_all" attributes:@{@"RMB":@"100",@"FROM":@"填写用户信息"}];
