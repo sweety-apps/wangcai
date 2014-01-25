@@ -56,7 +56,11 @@
         self->_timer = nil;
         self->_viewInputNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:2];
         self->_viewCheckNum = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:1];
-        self->_viewRegSuccess = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:3];
+        if ( DEVICE_IS_IPHONE5 ) {
+            self->_viewRegSuccess = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:3];
+        } else {
+            self->_viewRegSuccess = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:4];
+        }
         
         CGRect rect = CGRectMake( 0.0f, 134.0f, self->_viewInputNum.frame.size.width, self->_viewInputNum.frame.size.height);
         _viewInputNum.frame = rect;

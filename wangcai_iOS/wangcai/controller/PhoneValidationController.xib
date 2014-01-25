@@ -263,6 +263,42 @@
                         <action selector="clickGetMoney:" destination="-1" eventType="touchUpInside" id="Xod-Cb-imo"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_btn.png" id="jEU-zH-IhZ">
+                    <rect key="frame" x="59" y="67" width="202" height="51"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+            </subviews>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="4Gl-D1-UX6">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="register_suc.png" id="mqj-6f-N0R">
+                    <rect key="frame" x="0.0" y="-80" width="320" height="519"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+                <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="y3a-Ha-duA">
+                    <rect key="frame" x="106" y="116" width="109" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
+                        <bool key="isElement" value="NO"/>
+                    </accessibility>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="goback.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickGetMoney:" destination="-1" eventType="touchUpInside" id="agW-SQ-ID6"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_btn.png" id="MZd-rt-Njw">
+                    <rect key="frame" x="59" y="41" width="202" height="51"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
@@ -281,6 +317,7 @@
         <image name="nav_Header2.png" width="320" height="53"/>
         <image name="phone_logo.png" width="11" height="19"/>
         <image name="phone_num_border.png" width="275" height="53"/>
+        <image name="register_btn.png" width="202" height="51"/>
         <image name="register_suc.png" width="320" height="514"/>
         <image name="resend_normal.png" width="66" height="27"/>
         <image name="sms_code_border.png" width="45" height="43"/>
