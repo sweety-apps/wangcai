@@ -16,7 +16,7 @@ typedef enum LoginStatus {
 } LoginStatus;
 
 @protocol LoginAndRegisterDelegate <NSObject>
--(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg;
+-(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode ErrCode:(int)errCode Msg:(NSString*)msg;
 @end
 
 @protocol BindPhoneDelegate <NSObject>
@@ -100,4 +100,8 @@ typedef enum LoginStatus {
 
 -(void) setShareIncome:(int) nShareIncome;
 -(void) setInviter:(NSString*) inviter;
+
+-(BOOL) isShowDomob;
+-(BOOL) isShowYoumi;
+
 @end

@@ -45,6 +45,7 @@
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
         _alertError = nil;
         _alertForceUpdate = nil;
+        _alertTips = nil;
         
         // 初始化sharesdk
         [self initShareSDK];
@@ -69,10 +70,12 @@
         [[UIApplication sharedApplication] openURL:url];
         
         exit(0);
+    } else if ( _alertTips != nil && [alertView isEqual:_alertTips] ) {
+        exit(0);
     }
 }
 
--(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg {
+-(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode ErrCode:(int)errCode Msg:(NSString*)msg {
     [[self.view viewWithTag:11] setHidden:YES];
     
     if ( status == Login_Success ) {
@@ -104,12 +107,17 @@
         }
     } else {
         // 登陆错误，必须登陆成功才能进入下一步
-        if ( _alertError != nil ) {
-            [_alertError release];
-        }
+        if ( httpCode == 200 && errCode == 100 ) {
+            _alertTips = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
+            [_alertTips show];
+        } else {
+            if ( _alertError != nil ) {
+                [_alertError release];
+            }
         
-        _alertError = [[UIAlertView alloc]initWithTitle:@"错误" message:@"无法访问服务器，请确保网络连接正常" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil];
-        [_alertError show];
+            _alertError = [[UIAlertView alloc]initWithTitle:@"错误" message:@"无法访问服务器，请确保网络连接正常" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil];
+            [_alertError show];
+        }
     }
 }
 

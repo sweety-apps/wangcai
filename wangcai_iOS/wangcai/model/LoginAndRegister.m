@@ -54,9 +54,9 @@ static LoginAndRegister* _sharedInstance;
     self->loginStatus = Login_Timeout;
 }
 
--(void) sendEvent : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg {
+-(void) sendEvent : (LoginStatus) status HttpCode:(int)httpCode ErrCode:(int)errCode Msg:(NSString*)msg {
     if (_delegate != nil ) {
-        [_delegate loginCompleted:status HttpCode:httpCode Msg:msg];
+        [_delegate loginCompleted:status HttpCode:httpCode ErrCode:errCode Msg:msg];
     }
 }
 
@@ -153,10 +153,10 @@ static LoginAndRegister* _sharedInstance;
     [data release];
 }
 
-- (void) setLoginStatus : (LoginStatus) status HttpCode:(int)code Msg:(NSString*) msg {
+- (void) setLoginStatus : (LoginStatus) status HttpCode:(int)code ErrCode:(int) errCode Msg:(NSString*) msg {
     self->loginStatus = status;
     
-    [self sendEvent:status HttpCode:code Msg:msg];
+    [self sendEvent:status HttpCode:code ErrCode:errCode Msg:msg];
 }
 
 - (void) handleRequest:(BeeHTTPRequest *)req {
@@ -168,13 +168,13 @@ static LoginAndRegister* _sharedInstance;
         [MobClick event:@"login_failed" attributes:@{@"reason":@"服务器状态码错误",@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
         
         //
-        [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:nil];
+        [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode ErrCode:0 Msg:nil];
     } else if ( req.succeed ) {
         // 判断返回数据是
         NSError* error;
         NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
         if ( dict == nil || [dict count] == 0 ) {
-            [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:nil];
+            [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode ErrCode:0 Msg:nil];
         } else {
             NSNumber* res = [dict valueForKey:@"res"];
             if ( [res intValue] == 0 ) {
@@ -209,7 +209,7 @@ static LoginAndRegister* _sharedInstance;
 
                 [self RegisterPhoneNumToAPService];
                 
-                [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode Msg:nil];
+                [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode ErrCode:[res intValue] Msg:nil];
                 
                 if ( _firstLogin ) {
                     _firstLogin = NO;
@@ -224,7 +224,7 @@ static LoginAndRegister* _sharedInstance;
                 
                 [MobClick event:@"login_failed" attributes:@{@"reason":[err length]==0?@"服务器状态码错误":err,@"device_id":[self getDeviceId],@"res":[res stringValue]}];
                 
-                [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode Msg:err];
+                [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode ErrCode:[res intValue] Msg:err];
             }
         }
     }
@@ -421,5 +421,12 @@ static LoginAndRegister* _sharedInstance;
     return _inviteIncome;
 }
 
+-(BOOL) isShowDomob {
+    return YES;
+}
+
+-(BOOL) isShowYoumi {
+    return YES;
+}
 
 @end

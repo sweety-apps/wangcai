@@ -14,6 +14,7 @@
     AppDelegate* _delegate;
     UIAlertView* _alertForceUpdate;
     UIAlertView* _alertError;
+    UIAlertView* _alertTips;
 }
 
 - (id) init : (AppDelegate*) delegate;

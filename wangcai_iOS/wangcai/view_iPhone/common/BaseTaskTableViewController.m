@@ -730,7 +730,7 @@ static BOOL gNeedReloadTaskList = NO;
 
 #pragma mark <LoginAndRegisterDelegate>
 
--(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode Msg:(NSString*)msg
+-(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode ErrCode:(int)errCode Msg:(NSString*)msg
 {
     if ( status == Login_Success ) {
         int forceUpdate = [[LoginAndRegister sharedInstance] getForceUpdate];

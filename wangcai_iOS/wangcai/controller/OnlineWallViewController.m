@@ -73,8 +73,18 @@ static OnlineWallViewController* _sharedInstance;
     if ( _alertView != nil ) {
         [_alertView release];
     }
-        
-    UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
+    
+    BOOL showDomob = [[LoginAndRegister sharedInstance] isShowDomob];
+    BOOL showYoumi = [[LoginAndRegister sharedInstance] isShowYoumi];
+    
+    UIView* view;
+    if ( showDomob && showYoumi ) {
+        view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
+    } else if ( !showDomob && showYoumi ) {
+        view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] objectAtIndex:2] autorelease];
+    } else {
+        view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] objectAtIndex:1] autorelease];
+    }
     
     UIColor *color = [UIColor colorWithRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1];
         
