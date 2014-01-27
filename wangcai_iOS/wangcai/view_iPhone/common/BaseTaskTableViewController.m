@@ -109,6 +109,23 @@ static BOOL gNeedReloadTaskList = NO;
     
     [self checkBalanceAndAnimateYuE];
     
+    if (![SettingLocalRecords hasInstallWangcaiAlertViewPoped])
+    {
+        if ([[[LoginAndRegister sharedInstance] getPhoneNum] length] <= 0 && [[LoginAndRegister sharedInstance] getBalance] == 100)
+        {
+            //首次启动弹出安装旺财奖励窗口，未绑定状态
+            UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
+            [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)100)/100.f precision:2 ignoreBackZeros:YES]];
+            [getMoneyAlertView setLevel:3];
+            [getMoneyAlertView setTitle:@"获得应用体验红包"];
+            //[getMoneyAlertView setDelegate:self];
+            [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:100];
+            [getMoneyAlertView show];
+        }
+        
+        [SettingLocalRecords setPopedInstallWangcaiAlertView:YES];
+    }
+    
     // 超过5元
     if ( _alertBalanceTip == nil ) {
         NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
@@ -116,7 +133,7 @@ static BOOL gNeedReloadTaskList = NO;
         if ( [[LoginAndRegister sharedInstance] getBalance] >= 500 && (phoneNum == nil || [phoneNum length] == 0) ) {
             
             _needBindPhone = YES;
-            _alertBalanceTip = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的余额超过5元，为了您的帐号安全，推荐您绑定手机" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"绑定手机", nil];
+            _alertBalanceTip = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您已积累了超过5元红包，为了红包的安全建议立即绑定手机号。" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"绑定手机", nil];
             
             [_alertBalanceTip show];
         }
@@ -303,7 +320,7 @@ static BOOL gNeedReloadTaskList = NO;
     }
     else
     {
-        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"您今天已签到" message:@"明天记得再来签到哟！" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"今天已经签到过了，明天记得来哟" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] autorelease];
         [alert show];
     }
 }
@@ -690,7 +707,7 @@ static BOOL gNeedReloadTaskList = NO;
         UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
         [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:2 ignoreBackZeros:YES]];
         [getMoneyAlertView setLevel:3];
-        [getMoneyAlertView setTitle:@"收到应用体验红包"];
+        [getMoneyAlertView setTitle:@"获得应用体验红包"];
         //[getMoneyAlertView setDelegate:self];
         [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:consume];
         [getMoneyAlertView show];
@@ -709,7 +726,7 @@ static BOOL gNeedReloadTaskList = NO;
         if ( forceUpdate == 1 ) {
             // 强制升级
             _needUpdateApp = YES;
-            UIAlertView* alertForceUpdate = [[[UIAlertView alloc]initWithTitle:@"升级" message:@"为了您红包的安全，需要升级之后才能继续使用。" delegate:self cancelButtonTitle:@"升级" otherButtonTitles:nil, nil] autorelease];
+            UIAlertView* alertForceUpdate = [[[UIAlertView alloc]initWithTitle:@"提示" message:@"发现新版旺财！更安全更好赚，请立即升级。" delegate:self cancelButtonTitle:@"更新" otherButtonTitles:nil, nil] autorelease];
             [alertForceUpdate show];
         } else {
             //任务列表改到登陆协议中去了，已不用单独再拉列表了
@@ -727,7 +744,7 @@ static BOOL gNeedReloadTaskList = NO;
     } else {
         // 登陆错误，必须登陆成功才能进入下一步
         _needRetry = YES;
-        UIAlertView* alertError = [[[UIAlertView alloc] initWithTitle:@"错误" message:@"无法访问服务器，请确保网络连接正常" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil] autorelease];
+        UIAlertView* alertError = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络不可用，请检查网络连接" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil] autorelease];
         [alertError show];
     }
 }
@@ -788,7 +805,7 @@ static BOOL gNeedReloadTaskList = NO;
         UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
         [getMoneyAlertView setRMBString:strIncome];
         [getMoneyAlertView setLevel:3];
-        [getMoneyAlertView setTitle:@"评价成功，获得红包"];
+        [getMoneyAlertView setTitle:@"获得好评红包"];
         [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:income];
         [getMoneyAlertView show];
         
@@ -801,7 +818,7 @@ static BOOL gNeedReloadTaskList = NO;
         {
             msgStr = msg;
         }
-        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价失败" message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil] autorelease];
+        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"评价失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] autorelease];
         [alertView show];
     }
 }

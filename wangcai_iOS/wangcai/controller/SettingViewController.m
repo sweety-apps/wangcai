@@ -180,7 +180,7 @@
         UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
         [getMoneyAlertView setRMBString:strIncome];
         [getMoneyAlertView setLevel:3];
-        [getMoneyAlertView setTitle:@"评价成功，获得红包"];
+        [getMoneyAlertView setTitle:@"获得好评红包"];
         [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:income];
         [getMoneyAlertView show];
         
@@ -194,7 +194,7 @@
         {
             msgStr = msg;
         }
-        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"评价失败" message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil] autorelease];
+        UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"评价失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] autorelease];
         [alertView show];
     }
     

@@ -15,6 +15,7 @@
 #define kRatedApp @"ratedApp"
 #define kCheckIn @"checkIn"
 #define kMusicOnOff @"musicOnOff"
+#define kInstallWangcaiAlertView @"installWangcaiAlertView"
 //#define kLastOfferWallAlertView @"offerWallClearPoint"
 
 #define NKEY(x) ([SettingLocalRecords getUserNamedKey:(x)])
@@ -222,6 +223,25 @@
 {
     BOOL ret = YES;
     NSNumber* boolNum = [[NSUserDefaults standardUserDefaults] objectForKey:kMusicOnOff];
+    if (boolNum)
+    {
+        ret = [boolNum boolValue];
+    }
+    return ret;
+}
+
++ (void)setPopedInstallWangcaiAlertView:(BOOL)alerted
+{
+    NSNumber* number = [NSNumber numberWithBool:alerted];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:number forKey:kInstallWangcaiAlertView];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (BOOL)hasInstallWangcaiAlertViewPoped
+{
+    BOOL ret = NO;
+    NSNumber* boolNum = [[NSUserDefaults standardUserDefaults] objectForKey:kInstallWangcaiAlertView];
     if (boolNum)
     {
         ret = [boolNum boolValue];

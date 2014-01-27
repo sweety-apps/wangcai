@@ -42,6 +42,7 @@ static LoginAndRegister* _sharedInstance;
     self->_firstLogin = YES;
     self->_showDomob = 0;
     self->_showYoumi = 0;
+    _tipsString = @"";
     
     return self;
 }
@@ -189,6 +190,11 @@ static LoginAndRegister* _sharedInstance;
                 _nickname = [[dict valueForKey:@"nickname"] copy];
                 _device_id = [[dict valueForKey:@"device_id"] copy];
                 _phoneNum = [[dict valueForKey:@"phone"] copy];
+                _tipsString = [[dict valueForKey:@"tips"] copy];
+                if ([_tipsString length] == 0)
+                {
+                    _tipsString = @"";
+                }
                 
                 NSNumber* num = [dict valueForKey:@"balance"];
                 int nOldBalance = _balance;
@@ -454,6 +460,11 @@ static LoginAndRegister* _sharedInstance;
 
 -(int) getNoWithDraw {
     return _nowithdraw;
+}
+
+-(NSString*) getTipsStrings
+{
+    return _tipsString;
 }
 
 @end

@@ -346,7 +346,7 @@
     }
     else
     {
-        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:errTitle message:errContent delegate:nil cancelButtonTitle:@"重来" otherButtonTitles:nil] autorelease];
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:errTitle message:errContent delegate:nil cancelButtonTitle:@"重试" otherButtonTitles:nil] autorelease];
         [alert show];
     }
     
@@ -520,7 +520,7 @@
             [getMoneyAlertView setRMBString:strIncome];
             [getMoneyAlertView setLevel:3];
             [getMoneyAlertView setDelegate:self];
-            [getMoneyAlertView setTitle:@"信息提交成功，获得红包"];
+            [getMoneyAlertView setTitle:@"获得问卷红包"];
             [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:100];
             [getMoneyAlertView show];
             //统计

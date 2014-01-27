@@ -86,7 +86,7 @@
                 [_alertForceUpdate release];
             }
             
-            _alertForceUpdate = [[UIAlertView alloc]initWithTitle:@"升级" message:@"为了您红包的安全，需要升级之后才能继续使用。" delegate:self cancelButtonTitle:@"升级" otherButtonTitles:nil, nil];
+            _alertForceUpdate = [[UIAlertView alloc]initWithTitle:@"提示" message:@"发现新版旺财！更安全更好赚，请立即升级。" delegate:self cancelButtonTitle:@"更新" otherButtonTitles:nil, nil];
             [_alertForceUpdate show];
         } else {
             [[OnlineWallViewController sharedInstance] setFullScreenWindow:_delegate.window];
@@ -104,6 +104,18 @@
             [self onFinishedFetchTaskList:[CommonTaskList sharedInstance] resultCode:0];
         
             [CATransaction commit];
+            
+            NSString* msgTips = [[LoginAndRegister sharedInstance] getTipsStrings];
+            if ([msgTips length] > 0)
+            {
+                NSString* errMsg = [[msgTips copy] autorelease];
+                NSRange range = [errMsg rangeOfString:@"$"];
+                NSString* title = [errMsg substringToIndex:range.location];
+                NSString* body = [errMsg substringFromIndex:range.location + range.length];
+                
+                UIAlertView* alertTips = [[UIAlertView alloc] initWithTitle:title message:body delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertTips show];
+            }
         }
     } else {
         // 登陆错误，必须登陆成功才能进入下一步
@@ -123,7 +135,7 @@
             if ( msg != nil && [msg length] > 0 ) {
                 _alertError = [[UIAlertView alloc]initWithTitle:@"错误" message:msg delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil];
             } else {
-                _alertError = [[UIAlertView alloc]initWithTitle:@"错误" message:@"无法访问服务器，请确保网络连接正常" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil];
+                _alertError = [[UIAlertView alloc]initWithTitle:@"提示" message:@"当前网络不可用，请检查网络连接" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil];
             }
             [_alertError show];
         }

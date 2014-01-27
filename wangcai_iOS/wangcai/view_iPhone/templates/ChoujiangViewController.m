@@ -127,7 +127,7 @@
     }
     else
     {
-        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"您今天已经签到过了" message:@"明天记得再来签到哟！" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"今天已经签到过了，明天记得来哟" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] autorelease];
         [alert show];
     }
 #endif
@@ -312,7 +312,7 @@
         case 6:
         case 10:
             //1毛
-            title = @"恭喜您中奖了！";
+            title = @"获得签到红包";
             msg = @"1毛";
             income = 10;
             //加钱
@@ -323,7 +323,7 @@
         case 0:
         case 9:
             //5毛
-            title = @"恭喜您中奖了！";
+            title = @"获得签到红包";
             msg = @"5毛";
             income = 50;
             //加钱
@@ -333,7 +333,7 @@
             break;
         case 7:
             //3元
-            title = @"恭喜您中奖了！";
+            title = @"获得签到红包";
             msg = @"3元";
             income = 300;
             //加钱
@@ -343,7 +343,7 @@
             break;
         case 4:
             //8元
-            title = @"恭喜您中奖了！";
+            title = @"获得签到红包";
             msg = @"8元";
             income = 800;
             //加钱
@@ -480,7 +480,7 @@
             [SettingLocalRecords saveLastCheckInDateTime:[NSDate date]];
             if (awardCode == kGetAwardTypeAlreadyGot)
             {
-                UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"您今天已经签到过了" message:@"明天记得再来签到哟！" delegate:self cancelButtonTitle:@"返回" otherButtonTitles:nil] autorelease];
+                UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"今天已经签到过了，明天记得来哟" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] autorelease];
                 [alert show];
             }
             else
@@ -523,7 +523,7 @@
     }
     else
     {
-        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"网络请求失败" message:@"网络有点问题，请过一会儿再试:(" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil] autorelease];
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络不可用，请检查网络连接" delegate:nil cancelButtonTitle:@"重试" otherButtonTitles:nil, nil] autorelease];
         [alert show];
     }
 }

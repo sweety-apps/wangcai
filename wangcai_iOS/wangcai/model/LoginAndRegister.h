@@ -42,6 +42,7 @@ typedef enum LoginStatus {
     NSString*   _session_id;
     NSString*   _nickname;
     NSString*   _device_id;
+    NSString*   _tipsString;
     int       _balance;
     int       _income;    // 总收入
     int       _outgo;     // 总支出
@@ -109,5 +110,6 @@ typedef enum LoginStatus {
 -(BOOL) isShowYoumi;
 
 -(int)  getNoWithDraw;
+-(NSString*) getTipsStrings;
 
 @end

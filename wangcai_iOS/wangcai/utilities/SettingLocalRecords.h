@@ -35,4 +35,7 @@
 + (void)setMusicEnable:(BOOL)enabled;
 + (BOOL)getMusicEnabled;
 
++ (void)setPopedInstallWangcaiAlertView:(BOOL)alerted;
++ (BOOL)hasInstallWangcaiAlertViewPoped;
+
 @end

@@ -487,7 +487,7 @@
             [_alertNoBalance release];
         }
         
-        _alertNoBalance = [[UIAlertView alloc] initWithTitle:@"提示" message:@"现金不足，无法完成该操作" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+        _alertNoBalance = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的余额不足以支付" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [_alertNoBalance show];
         
         return NO;

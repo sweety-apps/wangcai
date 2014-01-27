@@ -710,7 +710,7 @@
         }
         
         UILabel* statusText = (UILabel*)[_viewCheckNum viewWithTag:29];
-        statusText.text = @"验证码错误请重新输入";
+        statusText.text = @"验证码错误，请重新输入";
     }
 }
 

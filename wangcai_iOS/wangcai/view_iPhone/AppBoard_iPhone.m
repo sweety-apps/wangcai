@@ -263,7 +263,7 @@ ON_SIGNAL3( MenuBoard_iPhone, wc_main, signal )
             [phoneNum release];
         }
         
-        _alertView = [[UIAlertView alloc] initWithTitle:@"邀请送红包" message:@"您还没有绑定手机，请先绑定手机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"绑定手机", nil];
+        _alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"尚未绑定手机，请先绑定手机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"绑定手机", nil];
         [_alertView show];
     } else {
         [phoneNum release];

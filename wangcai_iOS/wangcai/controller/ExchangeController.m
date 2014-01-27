@@ -360,7 +360,7 @@
             [_alertNoBalance release];
         }
         
-        _alertNoBalance = [[UIAlertView alloc] initWithTitle:@"提示" message:@"现金不足，无法完成该操作" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+        _alertNoBalance = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的余额不足以支付" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [_alertNoBalance show];
         
         return NO;
@@ -396,7 +396,7 @@
     if ( [self checkBalanceAndBindPhone:(1.0*nPrice/100)] ) {
         // 判断数量是否为0
         if ( [remain intValue] <= 0 ) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前数量为0，无法完成兑换！" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前数量为0，无法完成兑换！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
             [alert release];
             
@@ -462,7 +462,7 @@
     if ( _list != nil ) {
         [self->_tableView reloadData];
     }else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取数据失败或网络异常" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络不可用，请检查网络连接" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
     }
@@ -525,7 +525,7 @@
         if ( httpCode == 200 ) {
             [self onExchangeCompleted:body];
         } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取数据失败或网络异常" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络不可用，请检查网络连接" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
             [alert release];
         }
