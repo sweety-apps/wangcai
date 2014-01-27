@@ -19,4 +19,10 @@
 + (NSString*) buildURL:(NSString*) url Params:(NSMutableDictionary*) params;
 
 + (SecIdentityRef) getSecIdentityRef;
+
++ (NSString *)localIPAddress;
++ (NSString*)deviceModel;
+
++ (void)playAddCoinSound;
+
 @end

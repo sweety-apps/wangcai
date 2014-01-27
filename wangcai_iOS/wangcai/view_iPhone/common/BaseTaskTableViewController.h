@@ -35,8 +35,6 @@
     
     UIAlertView* _alertBalanceTip;
     
-    AVPlayer* _player;//播放赚钱声音
-    
     BOOL _needUpdateApp;
     BOOL _needRetry;
     BOOL _needBindPhone;

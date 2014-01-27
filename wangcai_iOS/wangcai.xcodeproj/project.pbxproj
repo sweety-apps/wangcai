@@ -274,6 +274,38 @@
 		A6FEE28C187D9AB800E5AF3E /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE284187D9AB800E5AF3E /* grayArrow@2x.png */; };
 		A6FEE28D187D9AB800E5AF3E /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE285187D9AB800E5AF3E /* whiteArrow.png */; };
 		A6FEE28E187D9AB800E5AF3E /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FEE286187D9AB800E5AF3E /* whiteArrow@2x.png */; };
+		F31F895B18962B3100F34F20 /* libALSystemUtilities_Lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F3C02E18962852003809D5 /* libALSystemUtilities_Lib.a */; };
+		F31F895C18962B4500F34F20 /* libALSystemUtilities_Lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3F3C02E18962852003809D5 /* libALSystemUtilities_Lib.a */; };
+		F31F897018962B8600F34F20 /* iPad2.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F895F18962B8600F34F20 /* iPad2.plist */; };
+		F31F897118962B8600F34F20 /* iPad2.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F895F18962B8600F34F20 /* iPad2.plist */; };
+		F31F897218962B8600F34F20 /* iPad3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896018962B8600F34F20 /* iPad3.plist */; };
+		F31F897318962B8600F34F20 /* iPad3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896018962B8600F34F20 /* iPad3.plist */; };
+		F31F897418962B8600F34F20 /* iPad4.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896118962B8600F34F20 /* iPad4.plist */; };
+		F31F897518962B8600F34F20 /* iPad4.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896118962B8600F34F20 /* iPad4.plist */; };
+		F31F897618962B8600F34F20 /* iPadAir.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896218962B8600F34F20 /* iPadAir.plist */; };
+		F31F897718962B8600F34F20 /* iPadAir.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896218962B8600F34F20 /* iPadAir.plist */; };
+		F31F897818962B8600F34F20 /* iPadMini.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896318962B8600F34F20 /* iPadMini.plist */; };
+		F31F897918962B8600F34F20 /* iPadMini.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896318962B8600F34F20 /* iPadMini.plist */; };
+		F31F897A18962B8600F34F20 /* iPadMiniRetina.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896418962B8600F34F20 /* iPadMiniRetina.plist */; };
+		F31F897B18962B8600F34F20 /* iPadMiniRetina.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896418962B8600F34F20 /* iPadMiniRetina.plist */; };
+		F31F897C18962B8600F34F20 /* iPhone3Gs.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896618962B8600F34F20 /* iPhone3Gs.plist */; };
+		F31F897D18962B8600F34F20 /* iPhone3Gs.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896618962B8600F34F20 /* iPhone3Gs.plist */; };
+		F31F897E18962B8600F34F20 /* iPhone4.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896718962B8600F34F20 /* iPhone4.plist */; };
+		F31F897F18962B8600F34F20 /* iPhone4.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896718962B8600F34F20 /* iPhone4.plist */; };
+		F31F898018962B8600F34F20 /* iPhone4s.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896818962B8600F34F20 /* iPhone4s.plist */; };
+		F31F898118962B8600F34F20 /* iPhone4s.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896818962B8600F34F20 /* iPhone4s.plist */; };
+		F31F898218962B8600F34F20 /* iPhone5.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896918962B8600F34F20 /* iPhone5.plist */; };
+		F31F898318962B8600F34F20 /* iPhone5.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896918962B8600F34F20 /* iPhone5.plist */; };
+		F31F898418962B8600F34F20 /* iPhone5c.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896A18962B8600F34F20 /* iPhone5c.plist */; };
+		F31F898518962B8600F34F20 /* iPhone5c.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896A18962B8600F34F20 /* iPhone5c.plist */; };
+		F31F898618962B8600F34F20 /* iPhone5s.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896B18962B8600F34F20 /* iPhone5s.plist */; };
+		F31F898718962B8600F34F20 /* iPhone5s.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896B18962B8600F34F20 /* iPhone5s.plist */; };
+		F31F898818962B8600F34F20 /* iPodTouch3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896D18962B8600F34F20 /* iPodTouch3.plist */; };
+		F31F898918962B8600F34F20 /* iPodTouch3.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896D18962B8600F34F20 /* iPodTouch3.plist */; };
+		F31F898A18962B8600F34F20 /* iPodTouch4.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896E18962B8600F34F20 /* iPodTouch4.plist */; };
+		F31F898B18962B8600F34F20 /* iPodTouch4.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896E18962B8600F34F20 /* iPodTouch4.plist */; };
+		F31F898C18962B8600F34F20 /* iPodTouch5.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896F18962B8600F34F20 /* iPodTouch5.plist */; };
+		F31F898D18962B8600F34F20 /* iPodTouch5.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896F18962B8600F34F20 /* iPodTouch5.plist */; };
 		F3359E4C1886C0F000C1E636 /* RateAppLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F3359E4B1886C0F000C1E636 /* RateAppLogic.m */; };
 		F3359E4E1886C0FB00C1E636 /* package_icon_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E4D1886C0FB00C1E636 /* package_icon_2@2x.png */; };
 		F3359E511886C11100C1E636 /* qrcode_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */; };
@@ -518,7 +550,6 @@
 		F3359F5118882F8000C1E636 /* Bee_UIDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1880F18543A430098C852 /* Bee_UIDataBinding.m */; };
 		F3359F5218882F8000C1E636 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BD4719187EDFF2009F3673 /* MJRefreshConst.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F3359F5318882F8000C1E636 /* Bee_UIMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1879618543A420098C852 /* Bee_UIMetrics.m */; };
-		F3359F5418882F8000C1E636 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1873718543A420098C852 /* Reachability.m */; };
 		F3359F5518882F8000C1E636 /* TabController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D9D54A185D876D00392C40 /* TabController.m */; };
 		F3359F5618882F8000C1E636 /* Bee_HTTPMockServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F189DB18543A450098C852 /* Bee_HTTPMockServer.m */; };
 		F3359F5718882F8000C1E636 /* Bee_Cache.mm in Sources */ = {isa = PBXBuildFile; fileRef = F3F1894718543A440098C852 /* Bee_Cache.mm */; };
@@ -913,7 +944,6 @@
 		F3F1872C18543A420098C852 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1872B18543A420098C852 /* FMResultSet.m */; };
 		F3F1873018543A420098C852 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1872F18543A420098C852 /* JSONKit.m */; };
 		F3F1873418543A420098C852 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1873318543A420098C852 /* OpenUDID.m */; };
-		F3F1873818543A420098C852 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1873718543A420098C852 /* Reachability.m */; };
 		F3F1873C18543A420098C852 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1873B18543A420098C852 /* CTidy.m */; };
 		F3F1873F18543A420098C852 /* CXHTMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1873E18543A420098C852 /* CXHTMLDocument.m */; };
 		F3F1874218543A420098C852 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F1874118543A420098C852 /* CXMLDocument.m */; };
@@ -1170,6 +1200,41 @@
 			remoteGlobalIDString = F3F186BB18543A410098C852;
 			remoteInfo = wangcai;
 		};
+		F3F3C02B18962852003809D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 87D8E4A4182156D300546E6D;
+			remoteInfo = ALSystemUtilities;
+		};
+		F3F3C02D18962852003809D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3F3BFD6189626AA003809D5;
+			remoteInfo = ALSystemUtilities_Lib;
+		};
+		F3F3C02F18962852003809D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3F3BFE3189626AA003809D5;
+			remoteInfo = ALSystemUtilities_LibTests;
+		};
+		F3F3C03118962858003809D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F3F3BFD5189626AA003809D5;
+			remoteInfo = ALSystemUtilities_Lib;
+		};
+		F3F3C0331896285D003809D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F3F3BFD5189626AA003809D5;
+			remoteInfo = ALSystemUtilities_Lib;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -1418,6 +1483,21 @@
 		A6FEE284187D9AB800E5AF3E /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
 		A6FEE285187D9AB800E5AF3E /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		A6FEE286187D9AB800E5AF3E /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		F31F895F18962B8600F34F20 /* iPad2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPad2.plist; sourceTree = "<group>"; };
+		F31F896018962B8600F34F20 /* iPad3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPad3.plist; sourceTree = "<group>"; };
+		F31F896118962B8600F34F20 /* iPad4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPad4.plist; sourceTree = "<group>"; };
+		F31F896218962B8600F34F20 /* iPadAir.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPadAir.plist; sourceTree = "<group>"; };
+		F31F896318962B8600F34F20 /* iPadMini.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPadMini.plist; sourceTree = "<group>"; };
+		F31F896418962B8600F34F20 /* iPadMiniRetina.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPadMiniRetina.plist; sourceTree = "<group>"; };
+		F31F896618962B8600F34F20 /* iPhone3Gs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPhone3Gs.plist; sourceTree = "<group>"; };
+		F31F896718962B8600F34F20 /* iPhone4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPhone4.plist; sourceTree = "<group>"; };
+		F31F896818962B8600F34F20 /* iPhone4s.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPhone4s.plist; sourceTree = "<group>"; };
+		F31F896918962B8600F34F20 /* iPhone5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPhone5.plist; sourceTree = "<group>"; };
+		F31F896A18962B8600F34F20 /* iPhone5c.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPhone5c.plist; sourceTree = "<group>"; };
+		F31F896B18962B8600F34F20 /* iPhone5s.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPhone5s.plist; sourceTree = "<group>"; };
+		F31F896D18962B8600F34F20 /* iPodTouch3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPodTouch3.plist; sourceTree = "<group>"; };
+		F31F896E18962B8600F34F20 /* iPodTouch4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPodTouch4.plist; sourceTree = "<group>"; };
+		F31F896F18962B8600F34F20 /* iPodTouch5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPodTouch5.plist; sourceTree = "<group>"; };
 		F3359E4A1886C0F000C1E636 /* RateAppLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateAppLogic.h; sourceTree = "<group>"; };
 		F3359E4B1886C0F000C1E636 /* RateAppLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateAppLogic.m; sourceTree = "<group>"; };
 		F3359E4D1886C0FB00C1E636 /* package_icon_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_2@2x.png"; sourceTree = "<group>"; };
@@ -1426,6 +1506,7 @@
 		F3359E561886D2A800C1E636 /* package_icon_1mao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_1mao@2x.png"; sourceTree = "<group>"; };
 		F335A09118882F8000C1E636 /* wangcai copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "wangcai copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F335A09218882F8000C1E636 /* wangcai copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "wangcai copy-Info.plist"; path = "/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai copy-Info.plist"; sourceTree = "<absolute>"; };
+		F355076A189625C800406CF5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ALSystemUtilities/ALSystemUtilities/ALSystemUtilities/Reachability/Reachability.h; sourceTree = "<group>"; };
 		F358E9ED186C1D8600DC3ADA /* UserInfoAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoAPI.h; sourceTree = "<group>"; };
 		F358E9EE186C1D8600DC3ADA /* UserInfoAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoAPI.m; sourceTree = "<group>"; };
 		F358E9F0186C583A00DC3ADA /* CommonTaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTaskList.h; sourceTree = "<group>"; };
@@ -1623,8 +1704,6 @@
 		F3F1872F18543A420098C852 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = framework/vendor/JSONKit/JSONKit.m; sourceTree = "<group>"; };
 		F3F1873218543A420098C852 /* OpenUDID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenUDID.h; path = framework/vendor/OpenUDID/OpenUDID.h; sourceTree = "<group>"; };
 		F3F1873318543A420098C852 /* OpenUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenUDID.m; path = framework/vendor/OpenUDID/OpenUDID.m; sourceTree = "<group>"; };
-		F3F1873618543A420098C852 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = framework/vendor/Reachability/Reachability.h; sourceTree = "<group>"; };
-		F3F1873718543A420098C852 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = framework/vendor/Reachability/Reachability.m; sourceTree = "<group>"; };
 		F3F1873A18543A420098C852 /* CTidy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CTidy.h; path = framework/vendor/TouchXML/CTidy.h; sourceTree = "<group>"; };
 		F3F1873B18543A420098C852 /* CTidy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CTidy.m; path = framework/vendor/TouchXML/CTidy.m; sourceTree = "<group>"; };
 		F3F1873D18543A420098C852 /* CXHTMLDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CXHTMLDocument.h; path = framework/vendor/TouchXML/CXHTMLDocument.h; sourceTree = "<group>"; };
@@ -2083,6 +2162,7 @@
 		F3F18A22185472A90098C852 /* WCMainPageBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCMainPageBoard_iPhone.h; sourceTree = "<group>"; };
 		F3F18A23185472A90098C852 /* WCMainPageBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCMainPageBoard_iPhone.m; sourceTree = "<group>"; };
 		F3F18A24185472A90098C852 /* WCMainPageBoard_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WCMainPageBoard_iPhone.xml; sourceTree = "<group>"; };
+		F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ALSystemUtilities.xcodeproj; path = wangcai/ALSystemUtilities/ALSystemUtilities.xcodeproj; sourceTree = "<group>"; };
 		F3FB9292187AF5F7001D702E /* user_info_commit_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_info_commit_btn@2x.png"; sourceTree = "<group>"; };
 		F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head_left_menu_btn@2x.png"; sourceTree = "<group>"; };
 		F3FB92AE187C5AB5001D702E /* qiandao_button_red_dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qiandao_button_red_dot@2x.png"; sourceTree = "<group>"; };
@@ -2101,6 +2181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31F895B18962B3100F34F20 /* libALSystemUtilities_Lib.a in Frameworks */,
 				713555A1188D17800007784A /* RennSDK.framework in Frameworks */,
 				F3359F9718882F8000C1E636 /* libMobClickLibrary.a in Frameworks */,
 				F3359FCF18882F8000C1E636 /* libqrencode.a in Frameworks */,
@@ -2178,6 +2259,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31F895C18962B4500F34F20 /* libALSystemUtilities_Lib.a in Frameworks */,
 				713555A0188D17800007784A /* RennSDK.framework in Frameworks */,
 				A62C5F54187697E300172334 /* libMobClickLibrary.a in Frameworks */,
 				71355514188D16060007784A /* libDomobOfferWallSDK.a in Frameworks */,
@@ -2670,6 +2752,53 @@
 			path = EGORefreshTableHeader;
 			sourceTree = "<group>";
 		};
+		F31F895D18962B8600F34F20 /* Resources_SystemInfo */ = {
+			isa = PBXGroup;
+			children = (
+				F31F895E18962B8600F34F20 /* iPad */,
+				F31F896518962B8600F34F20 /* iPhone */,
+				F31F896C18962B8600F34F20 /* iPodTouch */,
+			);
+			name = Resources_SystemInfo;
+			path = wangcai/ALSystemUtilities/ALSystemUtilities/ALSystemUtilities/Resources;
+			sourceTree = "<group>";
+		};
+		F31F895E18962B8600F34F20 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				F31F895F18962B8600F34F20 /* iPad2.plist */,
+				F31F896018962B8600F34F20 /* iPad3.plist */,
+				F31F896118962B8600F34F20 /* iPad4.plist */,
+				F31F896218962B8600F34F20 /* iPadAir.plist */,
+				F31F896318962B8600F34F20 /* iPadMini.plist */,
+				F31F896418962B8600F34F20 /* iPadMiniRetina.plist */,
+			);
+			path = iPad;
+			sourceTree = "<group>";
+		};
+		F31F896518962B8600F34F20 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				F31F896618962B8600F34F20 /* iPhone3Gs.plist */,
+				F31F896718962B8600F34F20 /* iPhone4.plist */,
+				F31F896818962B8600F34F20 /* iPhone4s.plist */,
+				F31F896918962B8600F34F20 /* iPhone5.plist */,
+				F31F896A18962B8600F34F20 /* iPhone5c.plist */,
+				F31F896B18962B8600F34F20 /* iPhone5s.plist */,
+			);
+			path = iPhone;
+			sourceTree = "<group>";
+		};
+		F31F896C18962B8600F34F20 /* iPodTouch */ = {
+			isa = PBXGroup;
+			children = (
+				F31F896D18962B8600F34F20 /* iPodTouch3.plist */,
+				F31F896E18962B8600F34F20 /* iPodTouch4.plist */,
+				F31F896F18962B8600F34F20 /* iPodTouch5.plist */,
+			);
+			path = iPodTouch;
+			sourceTree = "<group>";
+		};
 		F358E9F3186D2AA200DC3ADA /* utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -2847,10 +2976,12 @@
 		F3F186B318543A410098C852 = {
 			isa = PBXGroup;
 			children = (
+				F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */,
 				59D8E0BE189230DE003D5F3F /* JPushlib */,
 				71355518188D17800007784A /* ShareSDK_v2.6.1 */,
 				7135550A188D16060007784A /* DMOfferWallSDK */,
 				713554FA188D14110007784A /* libYouMi */,
+				F31F895D18962B8600F34F20 /* Resources_SystemInfo */,
 				A6F96CE0187A60A20067D785 /* XMLReader.m */,
 				F3F186D718543A410098C852 /* wangcai */,
 				F3F18A1118543A450098C852 /* wangcaiTests */,
@@ -3121,13 +3252,13 @@
 		F3F186FD18543A410098C852 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F355076A189625C800406CF5 /* Reachability.h */,
 				F3F1871B18543A410098C852 /* Bee_Vendor.h */,
 				F3F1871C18543A420098C852 /* Bee_VendorConfig.h */,
 				F3F186FE18543A410098C852 /* ASI */,
 				F3F1871D18543A420098C852 /* FMDB */,
 				F3F1872D18543A420098C852 /* JSONKit */,
 				F3F1873118543A420098C852 /* OpenUDID */,
-				F3F1873518543A420098C852 /* Reachability */,
 				F3F1873918543A420098C852 /* TouchXML */,
 			);
 			name = vendor;
@@ -3193,15 +3324,6 @@
 				F3F1873318543A420098C852 /* OpenUDID.m */,
 			);
 			name = OpenUDID;
-			sourceTree = "<group>";
-		};
-		F3F1873518543A420098C852 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				F3F1873618543A420098C852 /* Reachability.h */,
-				F3F1873718543A420098C852 /* Reachability.m */,
-			);
-			name = Reachability;
 			sourceTree = "<group>";
 		};
 		F3F1873918543A420098C852 /* TouchXML */ = {
@@ -4035,6 +4157,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F3F3C02618962852003809D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3F3C02C18962852003809D5 /* ALSystemUtilities.framework */,
+				F3F3C02E18962852003809D5 /* libALSystemUtilities_Lib.a */,
+				F3F3C03018962852003809D5 /* ALSystemUtilities_LibTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F3FEC516189146E100A297C8 /* RedbagMsgbox */ = {
 			isa = PBXGroup;
 			children = (
@@ -4062,6 +4194,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F3F3C0341896285D003809D5 /* PBXTargetDependency */,
 			);
 			name = "wangcai 亲友版";
 			productName = wangcai;
@@ -4079,6 +4212,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F3F3C03218962858003809D5 /* PBXTargetDependency */,
 			);
 			name = wangcai_AppStore;
 			productName = wangcai;
@@ -4113,7 +4247,7 @@
 				ORGANIZATIONNAME = 1528studio;
 				TargetAttributes = {
 					F3359E6318882F8000C1E636 = {
-						DevelopmentTeam = EW56WP8229;
+						DevelopmentTeam = 2B5V3KE6U9;
 					};
 					F3F186BB18543A410098C852 = {
 						DevelopmentTeam = B4BR4E2M87;
@@ -4134,6 +4268,12 @@
 			mainGroup = F3F186B318543A410098C852;
 			productRefGroup = F3F186BD18543A410098C852 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F3F3C02618962852003809D5 /* Products */;
+					ProjectRef = F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F3F186BB18543A410098C852 /* wangcai_AppStore */,
@@ -4143,6 +4283,30 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		F3F3C02C18962852003809D5 /* ALSystemUtilities.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ALSystemUtilities.framework;
+			remoteRef = F3F3C02B18962852003809D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F3F3C02E18962852003809D5 /* libALSystemUtilities_Lib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libALSystemUtilities_Lib.a;
+			remoteRef = F3F3C02D18962852003809D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F3F3C03018962852003809D5 /* ALSystemUtilities_LibTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ALSystemUtilities_LibTests.xctest;
+			remoteRef = F3F3C02F18962852003809D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		F3359FD018882F8000C1E636 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -4150,9 +4314,11 @@
 			files = (
 				F3359FD118882F8000C1E636 /* alipay@2x.png in Resources */,
 				F3359FD218882F8000C1E636 /* !@2x.png in Resources */,
+				F31F898118962B8600F34F20 /* iPhone4s.plist in Resources */,
 				F3359FD318882F8000C1E636 /* invite_banner@2x.png in Resources */,
 				F3359FD418882F8000C1E636 /* UserInfoEditorViewController.xib in Resources */,
 				F3359FD518882F8000C1E636 /* choujiang_thanks4@2x.png in Resources */,
+				F31F897118962B8600F34F20 /* iPad2.plist in Resources */,
 				F3359FD618882F8000C1E636 /* Default@2x.png in Resources */,
 				F3359FD718882F8000C1E636 /* BusionessPageBoard_iPhone.xml in Resources */,
 				F3359FD818882F8000C1E636 /* warn@2x.png in Resources */,
@@ -4168,6 +4334,7 @@
 				F3359FE218882F8000C1E636 /* choujiang_8yuan@2x.png in Resources */,
 				F3359FE318882F8000C1E636 /* WebViewController.xib in Resources */,
 				F3359FE418882F8000C1E636 /* blackArrow.png in Resources */,
+				F31F898718962B8600F34F20 /* iPhone5s.plist in Resources */,
 				F3359FE518882F8000C1E636 /* choujiang_3yuan@2x.png in Resources */,
 				F3359FE618882F8000C1E636 /* choujiang_x3@2x.png in Resources */,
 				F3359FE718882F8000C1E636 /* Icon@2x.png in Resources */,
@@ -4194,11 +4361,13 @@
 				F3359FFA18882F8000C1E636 /* navigation_bar@2x.png in Resources */,
 				F3359FFB18882F8000C1E636 /* bottom_arraw@2x.png in Resources */,
 				F3359FFC18882F8000C1E636 /* grayArrow.png in Resources */,
+				F31F897918962B8600F34F20 /* iPadMini.plist in Resources */,
 				7135556D188D17800007784A /* InstapaperResource.bundle in Resources */,
 				F3359FFD18882F8000C1E636 /* invite_invited_edit@2x.png in Resources */,
 				F3359FFE18882F8000C1E636 /* table_view_cell_icon_bg@2x.png in Resources */,
 				F3359FFF18882F8000C1E636 /* head_extension_part@2x.png in Resources */,
 				71008A3D189108D900689E2F /* app_tip_youmi@2x.png in Resources */,
+				F31F897D18962B8600F34F20 /* iPhone3Gs.plist in Resources */,
 				F335A00018882F8000C1E636 /* splash-logo@2x.png in Resources */,
 				F335A00118882F8000C1E636 /* tiquxianjin_icon@2x.png in Resources */,
 				F335A00218882F8000C1E636 /* choujiang_1mao@2x.png in Resources */,
@@ -4215,11 +4384,13 @@
 				F335A00C18882F8000C1E636 /* right@2x.png in Resources */,
 				F335A00D18882F8000C1E636 /* whiteArrow@2x.png in Resources */,
 				F335A00E18882F8000C1E636 /* gotcoins.aiff in Resources */,
+				F31F897B18962B8600F34F20 /* iPadMiniRetina.plist in Resources */,
 				F335A00F18882F8000C1E636 /* warn_bkg@2x.png in Resources */,
 				F335A01018882F8000C1E636 /* yue_4@2x.png in Resources */,
 				F335A01118882F8000C1E636 /* qiandao_button_red_dot@2x.png in Resources */,
 				F335A01218882F8000C1E636 /* yue_dot@2x.png in Resources */,
 				F335A01318882F8000C1E636 /* table_view_cell_label_bg@2x.png in Resources */,
+				F31F897518962B8600F34F20 /* iPad4.plist in Resources */,
 				F335A01418882F8000C1E636 /* BaseTaskTableViewController.xib in Resources */,
 				F335A01518882F8000C1E636 /* OnlineWallViewController.xib in Resources */,
 				F335A01618882F8000C1E636 /* choujiang_x1@2x.png in Resources */,
@@ -4235,15 +4406,19 @@
 				F335A02018882F8000C1E636 /* choujiang_back_btn@2x.png in Resources */,
 				F335A02118882F8000C1E636 /* back@2x.png in Resources */,
 				F335A02218882F8000C1E636 /* TabController.xib in Resources */,
+				F31F897718962B8600F34F20 /* iPadAir.plist in Resources */,
 				F335A02318882F8000C1E636 /* tab-item@2x.png in Resources */,
+				F31F898918962B8600F34F20 /* iPodTouch3.plist in Resources */,
 				F335A02418882F8000C1E636 /* about_wangcai_cell_icon@2x.png in Resources */,
 				713555AF188D17810007784A /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				F335A02518882F8000C1E636 /* invite_seg_sel_sel@2x.png in Resources */,
 				F335A02618882F8000C1E636 /* bottom_bg@2x.png in Resources */,
 				F335A02718882F8000C1E636 /* choujiang_bg@2x.png in Resources */,
+				F31F898B18962B8600F34F20 /* iPodTouch4.plist in Resources */,
 				F335A02818882F8000C1E636 /* yue_9@2x.png in Resources */,
 				F335A02918882F8000C1E636 /* setting_bell@2x.png in Resources */,
 				F335A02A18882F8000C1E636 /* body_bkg@2x.png in Resources */,
+				F31F898518962B8600F34F20 /* iPhone5c.plist in Resources */,
 				F335A02B18882F8000C1E636 /* WebPageController.xib in Resources */,
 				F335A02C18882F8000C1E636 /* menu_icon_tixian@2x.png in Resources */,
 				F335A02D18882F8000C1E636 /* cloud@2x.png in Resources */,
@@ -4251,6 +4426,7 @@
 				713555AB188D17810007784A /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
 				F335A02F18882F8000C1E636 /* user_hobby_normal@2x.png in Resources */,
 				7135559B188D17800007784A /* Resource.bundle in Resources */,
+				F31F897318962B8600F34F20 /* iPad3.plist in Resources */,
 				F335A03018882F8000C1E636 /* menu-icon-green@2x.png in Resources */,
 				F3FEC522189146E100A297C8 /* redbag_mb_btn_pressed@2x.png in Resources */,
 				F335A03218882F8000C1E636 /* Default-568h@2x.png in Resources */,
@@ -4278,6 +4454,7 @@
 				F335A04418882F8000C1E636 /* table_view_cell_line@2x.png in Resources */,
 				713555B5188D17810007784A /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				F335A04518882F8000C1E636 /* sms_code_border@2x.png in Resources */,
+				F31F898D18962B8600F34F20 /* iPodTouch5.plist in Resources */,
 				F335A04618882F8000C1E636 /* user_info_commit_btn@2x.png in Resources */,
 				F335A04718882F8000C1E636 /* user_hobby_selected@2x.png in Resources */,
 				F335A04818882F8000C1E636 /* package_icon_2@2x.png in Resources */,
@@ -4290,6 +4467,7 @@
 				F335A04F18882F8000C1E636 /* person_info_icon@2x.png in Resources */,
 				F335A05018882F8000C1E636 /* TransferToAlipayAndPhoneController.xib in Resources */,
 				F335A05118882F8000C1E636 /* yue_6@2x.png in Resources */,
+				F31F897F18962B8600F34F20 /* iPhone4.plist in Resources */,
 				F335A05218882F8000C1E636 /* choujiang_x2selected@2x.png in Resources */,
 				F335A05318882F8000C1E636 /* choujiang_border_selected1@2x.png in Resources */,
 				F335A05418882F8000C1E636 /* yue_2@2x.png in Resources */,
@@ -4303,6 +4481,7 @@
 				71008A4318915EFD00689E2F /* register_suc@2x.png in Resources */,
 				F335A05C18882F8000C1E636 /* qrcode_cell_icon@2x.png in Resources */,
 				F3FEC51E189146E100A297C8 /* redbag_mb_bg@2x.png in Resources */,
+				F31F898318962B8600F34F20 /* iPhone5.plist in Resources */,
 				F335A05D18882F8000C1E636 /* choujiang_shaxuan@2x.png in Resources */,
 				71355513188D16060007784A /* DomobOfferWallBundle.bundle in Resources */,
 				F335A05E18882F8000C1E636 /* phone_logo@2x.png in Resources */,
@@ -4366,6 +4545,7 @@
 				A60C5845186FF8A30068425C /* !@2x.png in Resources */,
 				A60C58A318703AE60068425C /* invite_banner@2x.png in Resources */,
 				F3D9D6B01865791600392C40 /* UserInfoEditorViewController.xib in Resources */,
+				F31F897018962B8600F34F20 /* iPad2.plist in Resources */,
 				F3813D2118753ED400350C27 /* choujiang_thanks4@2x.png in Resources */,
 				F3F186E318543A410098C852 /* Default@2x.png in Resources */,
 				A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */,
@@ -4383,6 +4563,7 @@
 				F3D9D566185D876D00392C40 /* WebViewController.xib in Resources */,
 				A6FEE287187D9AB800E5AF3E /* blackArrow.png in Resources */,
 				F3813D1318753ED400350C27 /* choujiang_3yuan@2x.png in Resources */,
+				F31F898C18962B8600F34F20 /* iPodTouch5.plist in Resources */,
 				713555AA188D17810007784A /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
 				F3813D2718753ED400350C27 /* choujiang_x3@2x.png in Resources */,
 				F3F186E918543A410098C852 /* Icon@2x.png in Resources */,
@@ -4405,6 +4586,8 @@
 				A60C584F186FF8A30068425C /* line@2x.png in Resources */,
 				F3813D1D18753ED400350C27 /* choujiang_start_btn_selected@2x.png in Resources */,
 				F3813D1718753ED400350C27 /* choujiang_border_moving@2x.png in Resources */,
+				F31F897818962B8600F34F20 /* iPadMini.plist in Resources */,
+				F31F898218962B8600F34F20 /* iPhone5.plist in Resources */,
 				A60C587A186FF8A30068425C /* yue_8@2x.png in Resources */,
 				A60C5859186FF8A30068425C /* navigation_bar@2x.png in Resources */,
 				A60C584A186FF8A30068425C /* bottom_arraw@2x.png in Resources */,
@@ -4412,6 +4595,7 @@
 				A60C58A818703AE60068425C /* invite_invited_edit@2x.png in Resources */,
 				A60C587D186FF8A30068425C /* table_view_cell_icon_bg@2x.png in Resources */,
 				A60C5887186FF8A30068425C /* head_extension_part@2x.png in Resources */,
+				F31F897418962B8600F34F20 /* iPad4.plist in Resources */,
 				A60C5866186FF8A30068425C /* splash-logo@2x.png in Resources */,
 				A60C588F186FF8A30068425C /* tiquxianjin_icon@2x.png in Resources */,
 				F3813D1218753ED400350C27 /* choujiang_1mao@2x.png in Resources */,
@@ -4442,10 +4626,13 @@
 				F3813D2318753ED400350C27 /* choujiang_x1@2x.png in Resources */,
 				A60C58A618703AE60068425C /* invite_error@2x.png in Resources */,
 				F3813D1F18753ED400350C27 /* choujiang_thanks2@2x.png in Resources */,
+				F31F898818962B8600F34F20 /* iPodTouch3.plist in Resources */,
 				F36049B91871B0C500FAD1F3 /* ChoujiangViewController.xib in Resources */,
+				F31F897218962B8600F34F20 /* iPad3.plist in Resources */,
 				F3D9D555185D876D00392C40 /* InviteController.xib in Resources */,
 				A6FA6A671882E6F3003F8399 /* about@2x.png in Resources */,
 				A60C585C186FF8A30068425C /* reg_success@2x.png in Resources */,
+				F31F897C18962B8600F34F20 /* iPhone3Gs.plist in Resources */,
 				A60C585E186FF8A30068425C /* resend_normal@2x.png in Resources */,
 				A60C5842186FF8A30068425C /* package_icon_8@2x.png in Resources */,
 				A60C58AF18703AE60068425C /* invite_seg_unsel_unsel@2x.png in Resources */,
@@ -4470,6 +4657,7 @@
 				A6FEE28C187D9AB800E5AF3E /* grayArrow@2x.png in Resources */,
 				A60C5891186FF8A30068425C /* yellow_circle@2x.png in Resources */,
 				A60C5880186FF8A30068425C /* dengjiTmp.png in Resources */,
+				F31F898A18962B8600F34F20 /* iPodTouch4.plist in Resources */,
 				A60C5857186FF8A30068425C /* navigation-back@2x.png in Resources */,
 				A60C58AC18703AE60068425C /* invite_seg_sel_unsel@2x.png in Resources */,
 				71355512188D16060007784A /* DomobOfferWallBundle.bundle in Resources */,
@@ -4486,6 +4674,7 @@
 				F3F186E718543A410098C852 /* Icon.png in Resources */,
 				F36049B41871A9AE00FAD1F3 /* menu_icon_wodewangcai@2x.png in Resources */,
 				A60C587F186FF8A30068425C /* table_view_cell_line@2x.png in Resources */,
+				F31F898018962B8600F34F20 /* iPhone4s.plist in Resources */,
 				A60C5863186FF8A30068425C /* sms_code_border@2x.png in Resources */,
 				F3FB9293187AF5F7001D702E /* user_info_commit_btn@2x.png in Resources */,
 				A60C5882186FF8A30068425C /* user_hobby_selected@2x.png in Resources */,
@@ -4498,6 +4687,7 @@
 				F3FEC525189146E100A297C8 /* redbag_mb_lv_get@2x.png in Resources */,
 				A60C5846186FF8A30068425C /* arrow-down@2x.png in Resources */,
 				A6FEE28D187D9AB800E5AF3E /* whiteArrow.png in Resources */,
+				F31F898418962B8600F34F20 /* iPhone5c.plist in Resources */,
 				71008A3A189108D900689E2F /* app_tip_domob@2x.png in Resources */,
 				A60C588C186FF8A30068425C /* person_info_icon@2x.png in Resources */,
 				A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */,
@@ -4515,6 +4705,7 @@
 				A60C588A186FF8A30068425C /* head_top_part@2x.png in Resources */,
 				A60C584E186FF8A30068425C /* exchange_btn@2x.png in Resources */,
 				718FB1911893FF2900851D2A /* register_btn@2x.png in Resources */,
+				F31F897E18962B8600F34F20 /* iPhone4.plist in Resources */,
 				F3359E511886C11100C1E636 /* qrcode_cell_icon@2x.png in Resources */,
 				F3813D1B18753ED400350C27 /* choujiang_shaxuan@2x.png in Resources */,
 				F3FEC527189146E100A297C8 /* redbag_mb_lv_unget@2x.png in Resources */,
@@ -4538,7 +4729,9 @@
 				F3813D1A18753ED400350C27 /* choujiang_bottom_cloud@2x.png in Resources */,
 				F3FEC521189146E100A297C8 /* redbag_mb_btn_pressed@2x.png in Resources */,
 				F36049B11871A9AE00FAD1F3 /* menu_icon_setting@2x.png in Resources */,
+				F31F897A18962B8600F34F20 /* iPadMiniRetina.plist in Resources */,
 				7135556C188D17800007784A /* InstapaperResource.bundle in Resources */,
+				F31F898618962B8600F34F20 /* iPhone5s.plist in Resources */,
 				F36049391870492000FAD1F3 /* main_menu_bg@2x.jpg in Resources */,
 				A60C58A918703AE60068425C /* invite_nav_bar@2x.png in Resources */,
 				A6FA6A611882D0FD003F8399 /* default568@2x.png in Resources */,
@@ -4560,6 +4753,7 @@
 				A6FEE28A187D9AB800E5AF3E /* blueArrow@2x.png in Resources */,
 				A60C5868186FF8A30068425C /* tab-bar@2x.png in Resources */,
 				A60C588D186FF8A30068425C /* qiandao_button_icon@2x.png in Resources */,
+				F31F897618962B8600F34F20 /* iPadAir.plist in Resources */,
 				F3DD641C1882D36500E56A0B /* testIconSetting@2x.png in Resources */,
 				F36049B01871A9AE00FAD1F3 /* menu_icon_line@2x.png in Resources */,
 				F3813D1E18753ED400350C27 /* choujiang_thanks1@2x.png in Resources */,
@@ -4828,7 +5022,6 @@
 				F3359F5118882F8000C1E636 /* Bee_UIDataBinding.m in Sources */,
 				F3359F5218882F8000C1E636 /* MJRefreshConst.m in Sources */,
 				F3359F5318882F8000C1E636 /* Bee_UIMetrics.m in Sources */,
-				F3359F5418882F8000C1E636 /* Reachability.m in Sources */,
 				F3359F5518882F8000C1E636 /* TabController.m in Sources */,
 				F3359F5618882F8000C1E636 /* Bee_HTTPMockServer.m in Sources */,
 				F3359F5718882F8000C1E636 /* Bee_Cache.mm in Sources */,
@@ -5131,7 +5324,6 @@
 				F3F1881018543A430098C852 /* Bee_UIDataBinding.m in Sources */,
 				F3BD4720187EDFF2009F3673 /* MJRefreshConst.m in Sources */,
 				F3F1879718543A420098C852 /* Bee_UIMetrics.m in Sources */,
-				F3F1873818543A420098C852 /* Reachability.m in Sources */,
 				F3D9D561185D876D00392C40 /* TabController.m in Sources */,
 				F3F189DC18543A450098C852 /* Bee_HTTPMockServer.m in Sources */,
 				F3F1894818543A440098C852 /* Bee_Cache.mm in Sources */,
@@ -5206,6 +5398,16 @@
 			target = F3F186BB18543A410098C852 /* wangcai_AppStore */;
 			targetProxy = F3F18A0F18543A450098C852 /* PBXContainerItemProxy */;
 		};
+		F3F3C03218962858003809D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ALSystemUtilities_Lib;
+			targetProxy = F3F3C03118962858003809D5 /* PBXContainerItemProxy */;
+		};
+		F3F3C0341896285D003809D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ALSystemUtilities_Lib;
+			targetProxy = F3F3C0331896285D003809D5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -5246,6 +5448,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/wangcai/ALSystemUtilities/**",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
@@ -5276,6 +5479,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
@@ -5284,7 +5488,10 @@
 					"$(inherited)",
 					"TARGET_VERSION_LITE=2",
 				);
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"$(SRCROOT)/wangcai/ALSystemUtilities/ALSystemUtilities/ALSystemUtilities/**",
+				);
 				INFOPLIST_FILE = "wangcai copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -5318,6 +5525,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/libYouMi,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ALSystemUtilities.framework/Versions/A,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "";
@@ -5336,6 +5544,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/wangcai/ALSystemUtilities/**",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Core,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/GooglePlusSDK,
@@ -5366,11 +5575,15 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_VERSION_LITE=2";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"$(SRCROOT)/wangcai/ALSystemUtilities/ALSystemUtilities/ALSystemUtilities/**",
+				);
 				INFOPLIST_FILE = "wangcai copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -5404,6 +5617,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/libYouMi,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ALSystemUtilities.framework/Versions/A,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "";
@@ -5529,6 +5743,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
@@ -5537,7 +5752,10 @@
 					"$(inherited)",
 					"TARGET_VERSION_LITE=1",
 				);
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"$(SRCROOT)/wangcai/ALSystemUtilities/ALSystemUtilities/ALSystemUtilities/**",
+				);
 				INFOPLIST_FILE = "wangcai/wangcai-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -5571,6 +5789,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ALSystemUtilities.framework/Versions/A,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D815A78C-6344-449F-9F43-21D62CA039A9";
@@ -5619,11 +5838,15 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_VERSION_LITE=1";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"$(SRCROOT)/wangcai/ALSystemUtilities/ALSystemUtilities/ALSystemUtilities/**",
+				);
 				INFOPLIST_FILE = "wangcai/wangcai-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -5657,6 +5880,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ALSystemUtilities.framework/Versions/A,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "594D6C65-DB25-4AAA-8A31-CBF232EEFA04";

@@ -12,12 +12,19 @@
 #include <sys/param.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
+#include <arpa/inet.h>
+#include <net/if.h>
+#include <ifaddrs.h>
 #include <net/if.h>
 #include <netinet/in.h>
 #include <net/if_dl.h>
 #include <sys/sysctl.h>
 #include <AdSupport/AdSupport.h>
+#import "ALSystem.h"
 #include "LoginAndRegister.h"
+#import "SettingLocalRecords.h"
+
+static AVPlayer* gPlayer = nil;//播放赚钱声音
 
 @implementation Common
 
@@ -199,4 +206,71 @@ NSString * macaddress()
     }
     return YES;
 }
+
++ (NSString *)localIPAddress
+{
+    NSString *localIP = nil;
+    struct ifaddrs *addrs;
+    if (getifaddrs(&addrs)==0) {
+        const struct ifaddrs *cursor = addrs;
+        while (cursor != NULL) {
+            if (cursor->ifa_addr->sa_family == AF_INET && (cursor->ifa_flags & IFF_LOOPBACK) == 0)
+            {
+                //NSString *name = [NSString stringWithUTF8String:cursor->ifa_name];
+                //if ([name isEqualToString:@"en0"]) // Wi-Fi adapter
+                {
+                    localIP = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)cursor->ifa_addr)->sin_addr)];
+                    break;
+                }
+            }
+            cursor = cursor->ifa_next;
+        }
+        freeifaddrs(addrs);
+    }
+    return localIP;
+}
+
++ (NSString*)deviceModel
+{
+    NSString* model = [[ALSystem systemInformations] objectForKey:ALHardware_platformType];
+    if ([model length] == 0)
+    {
+        model = [UIDevice currentDevice].model;
+    }
+    return model;
+}
+
++ (void)_initAudioPlayer
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"gotcoins" ofType:@"aiff"];
+    
+    
+    if (path) {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setCategory:AVAudioSessionCategorySoloAmbient error:nil];
+        [session setActive:YES error:nil];
+        
+        NSURL *audioUrl = [NSURL fileURLWithPath:path];
+        gPlayer = [[AVPlayer playerWithURL:audioUrl] retain];
+        if (gPlayer == NULL)
+        {
+            NSLog(@"fail to play audio :(");
+            return;
+        }
+    }
+}
+
++ (void)playAddCoinSound
+{
+    if (gPlayer == nil)
+    {
+        [[self class] _initAudioPlayer];
+    }
+    [gPlayer seekToTime:CMTimeMakeWithSeconds(0, 1)];
+    if ([SettingLocalRecords getMusicEnabled])
+    {
+        [gPlayer play];
+    }
+}
+
 @end

@@ -13,6 +13,8 @@
 #import "../JPushlib/APService.h"
 #import "MobClick.h"
 #import "Common.h"
+#import "ALSystem.h"
+#import "Reachability.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -71,9 +73,9 @@ static LoginAndRegister* _sharedInstance;
 - (NSString*) getNetworkInfo {
     Reachability* r = [Reachability reachabilityWithHostName:@"app.getwangcai.com"];
     NSInteger state = [r currentReachabilityStatus];
-    if ( state == kReachableViaWiFi ) {
+    if ( state == ReachableViaWiFi ) {
         return [[@"wifi" copy] autorelease];
-    } else if ( state == kReachableViaWWAN ) {
+    } else if ( state == ReachableViaWWAN ) {
         return [[@"3g" copy] autorelease];
     }
     
@@ -89,13 +91,14 @@ static LoginAndRegister* _sharedInstance;
     
     [properties setValue:@"p" forKey:NSHTTPCookieName];
     
-    NSString* sysModel = [[UIDevice currentDevice] model];
+    NSString* sysModel = [Common deviceModel];
     NSString* sysVer = [[UIDevice currentDevice] systemVersion];
     NSDictionary* dic = [[NSBundle mainBundle] infoDictionary];
     NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
     NSString* network = [self getNetworkInfo];
+    NSString* localIP = [Common localIPAddress];
     
-    NSString* info = [[[NSString alloc] initWithFormat:@"%@_%@; app=%@; ver=%@; net=%@", sysModel, sysVer, APP_NAME, appVersion, network] autorelease];
+    NSString* info = [[[NSString alloc] initWithFormat:@"%@_%@; app=%@; ver=%@; net=%@;  local_ip=%@", sysModel, sysVer, APP_NAME, appVersion, network, localIP] autorelease];
     [properties setValue:info forKey:NSHTTPCookieValue];
     
     NSHTTPCookie* cookie = [[[NSHTTPCookie alloc] initWithProperties:properties] autorelease];

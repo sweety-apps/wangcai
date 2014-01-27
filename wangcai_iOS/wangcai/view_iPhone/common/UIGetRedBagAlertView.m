@@ -8,6 +8,7 @@
 
 #import "UIGetRedBagAlertView.h"
 #import "NSString+FloatFormat.h"
+#import "Common.h"
 
 #define MAX_CATEGORY_NAME_LENGTH 9
 #define kTagViewTextFieldJalBreakPassW (1001)
@@ -147,7 +148,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         _closeBtn.contentMode = UIViewContentModeTopLeft;
         
         rect = CGRectOffset(rectAlertView, 31, 25);
-        rect.size = CGSizeMake(200, 20);
+        rect.size = CGSizeMake(250, 20);
         _titleLbl = [[UILabel alloc] initWithFrame:rect];
         _titleLbl.textColor = RGB(0, 0, 0);
         _titleLbl.backgroundColor = [UIColor clearColor];
@@ -285,6 +286,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         [subView addSubview:self];
     }
     [self showAlertAnmation];
+    [Common playAddCoinSound];
 }
 
 

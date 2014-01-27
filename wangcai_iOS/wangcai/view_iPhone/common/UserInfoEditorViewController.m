@@ -520,7 +520,7 @@
             [getMoneyAlertView setRMBString:strIncome];
             [getMoneyAlertView setLevel:3];
             [getMoneyAlertView setDelegate:self];
-            [getMoneyAlertView setTitle:@"用户信息提交成功，获得红包"];
+            [getMoneyAlertView setTitle:@"信息提交成功，获得红包"];
             [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:100];
             [getMoneyAlertView show];
             //统计

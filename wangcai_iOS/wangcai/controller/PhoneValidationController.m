@@ -10,6 +10,7 @@
 #import "MBHUDView.h"
 #import "Common.h"
 #import "MobClick.h"
+#import "BaseTaskTableViewController.h"
 
 @interface PhoneValidationController ()
 {
@@ -761,6 +762,8 @@
     }
     
     [self showThirdPage];
+    
+    [BaseTaskTableViewController setNeedReloadTaskList];
 }
 
 @end
