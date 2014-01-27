@@ -81,6 +81,7 @@
         
         btnCheckNum = (UIButton*)[_viewCheckNum viewWithTag:71];
         nextNumBtn = (UIButton*)[_viewInputNum viewWithTag:71];
+        btnReturn = (UIButton*)[_viewCheckNum viewWithTag:72];
         
         UIView* viewTab = self->_tabController.view;
         CGRect rectTab = viewTab.frame;
@@ -122,6 +123,12 @@
         self->phoneValidation = [[PhoneValidation alloc] init];
         
         //[self.textNum becomeFirstResponder];
+        
+        if ( DEVICE_IS_IPHONE5 ) {
+            CGRect rect = btnReturn.frame;
+            rect.origin.y = 360;
+            btnReturn.frame = rect;
+        }
     }
     return self;
 }
@@ -188,6 +195,11 @@
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (IBAction)clickReturn:(id)sender {
+    textNum.text = @"";
+    [self showFirstPage];
 }
 
 - (IBAction)clickGetMoney:(id)sender {
@@ -303,14 +315,14 @@
         newViewFrame.origin.y = _viewInputNum.frame.origin.y - 80; // 头部高度98
         
         newBtnFrame = nextNumBtn.frame;
-        newBtnFrame.origin.y = nextNumBtn.frame.origin.y - 108;
+        newBtnFrame.origin.y = nextNumBtn.frame.origin.y - 88;
         [self._imageArrow setHidden:YES];
     } else if ( self->curState == 1 ) {
         newViewFrame = _viewCheckNum.frame;
         newViewFrame.origin.y = _viewCheckNum.frame.origin.y - 80; // 头部高度98
         
         newBtnFrame = btnCheckNum.frame;
-        newBtnFrame.origin.y = btnCheckNum.frame.origin.y - 108;
+        newBtnFrame.origin.y = btnCheckNum.frame.origin.y - 88;
         [self._imageArrow setHidden:YES];
         [[_viewCheckNum viewWithTag:31] setHidden:YES];
     }
@@ -377,7 +389,7 @@
         newViewFrame.origin.y = 80 + _viewInputNum.frame.origin.y;
     
         newBtnFrame = nextNumBtn.frame;
-        newBtnFrame.origin.y = 108 + nextNumBtn.frame.origin.y;
+        newBtnFrame.origin.y = 88 + nextNumBtn.frame.origin.y;
         
         _viewInputNum.frame = newViewFrame;
         if ( !DEVICE_IS_IPHONE5 ) {
@@ -389,7 +401,7 @@
         newViewFrame.origin.y = 80 + _viewCheckNum.frame.origin.y;
         
         newBtnFrame = btnCheckNum.frame;
-        newBtnFrame.origin.y = 108 + btnCheckNum.frame.origin.y;
+        newBtnFrame.origin.y = 88 + btnCheckNum.frame.origin.y;
         
         _viewCheckNum.frame = newViewFrame;
         
@@ -634,15 +646,17 @@
 }
 
 - (void) beginTime {
-    self->_nTime = 120;
+    self->_nTime = 60;
     self->_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
     [[_viewCheckNum viewWithTag:53] setHidden:YES];
     [[_viewCheckNum viewWithTag:54] setHidden:NO];
     
     UILabel* label = (UILabel*)[_viewCheckNum viewWithTag:54];
-    NSString *text = [[NSString alloc] initWithFormat:@"120秒后重发"];
+    NSString *text = [[NSString alloc] initWithFormat:@"60秒后重发"];
     label.text = text;
     [text release];
+    
+    [btnReturn setEnabled:NO];
 }
 
 - (void) endTime {
@@ -653,6 +667,8 @@
     
     [[_viewCheckNum viewWithTag:53] setHidden:NO];
     [[_viewCheckNum viewWithTag:54] setHidden:YES];
+    
+    [btnReturn setEnabled:YES];
 }
 
 - (void) timerTick :(NSTimer *)timer {

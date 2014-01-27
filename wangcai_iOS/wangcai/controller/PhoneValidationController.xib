@@ -148,7 +148,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button autoresizesSubviews="NO" opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CLZ-Rh-Zwn">
-                    <rect key="frame" x="23" y="239" width="275" height="54"/>
+                    <rect key="frame" x="23" y="219" width="275" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
@@ -162,6 +162,23 @@
                     </state>
                     <connections>
                         <action selector="clickNext:" destination="-2" eventType="touchUpInside" id="cPv-Rk-LPs"/>
+                    </connections>
+                </button>
+                <button autoresizesSubviews="NO" opaque="NO" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="USm-D7-YLF">
+                    <rect key="frame" x="23" y="280" width="275" height="54"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
+                        <bool key="isElement" value="NO"/>
+                    </accessibility>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="返回" backgroundImage="btn_normal.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickReturn:" destination="-1" eventType="touchUpInside" id="O5N-uz-hBp"/>
                     </connections>
                 </button>
                 <button opaque="NO" tag="53" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KJA-hk-XRa">
@@ -192,7 +209,7 @@
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <button autoresizesSubviews="NO" opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gEs-0V-m3Z">
-                    <rect key="frame" x="23" y="241" width="275" height="54"/>
+                    <rect key="frame" x="23" y="220" width="275" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>

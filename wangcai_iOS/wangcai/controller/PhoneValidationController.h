@@ -36,6 +36,7 @@
     int        _nTime;
     UIButton* btnCheckNum;
     UILabel* _phoneLabel;
+    UIButton* btnReturn;
     
     NSTimer*    _timer;
     
@@ -64,6 +65,8 @@
 - (IBAction)clickResend:(id)sender;
 - (IBAction)clickGetMoney:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
+
+- (IBAction)clickReturn:(id)sender;
 
 - (void)setBackType:(BOOL)bSend;
 
