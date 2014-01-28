@@ -4247,7 +4247,7 @@
 				ORGANIZATIONNAME = 1528studio;
 				TargetAttributes = {
 					F3359E6318882F8000C1E636 = {
-						DevelopmentTeam = 2B5V3KE6U9;
+						DevelopmentTeam = EW56WP8229;
 					};
 					F3F186BB18543A410098C852 = {
 						DevelopmentTeam = B4BR4E2M87;
@@ -5540,7 +5540,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
