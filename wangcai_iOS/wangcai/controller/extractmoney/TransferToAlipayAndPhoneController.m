@@ -61,6 +61,11 @@
         self._textFieldTip = (UILabel*)[self._containerView viewWithTag:51];
         self._textCheckTip = (UILabel*)[self._containerView viewWithTag:52];
         
+        if ( isAlipay ) {
+            self._textName = (UITextField*)[self._containerView viewWithTag:73];
+            self._textNameTip = (UILabel*)[self._containerView viewWithTag:53];
+        }
+        
         UIButton* btn = (UIButton*)[self._containerView viewWithTag:14];
         if ( self->_bAlipay ) {
             NSString* text = nil;
@@ -109,6 +114,10 @@
     
     if ( [self._textCheck isFirstResponder] ) {
         [self._textCheck resignFirstResponder];
+    }
+    
+    if ( [self._textName isFirstResponder] ) {
+        [self._textName resignFirstResponder];
     }
 }
 
@@ -194,6 +203,10 @@
     if ( [textField isEqual:self._textCheck] ) {
         [self._textCheckTip setHidden:YES];
     }
+    
+    if ( _bAlipay && [textField isEqual:self._textName] ) {
+        [self._textNameTip setHidden:YES];
+    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -208,6 +221,10 @@
         if ( [textField isEqual:self._textCheck] ) {
             [self._textCheckTip setHidden:NO];
         }
+
+        if ( _bAlipay && [textField isEqual:self._textName] ) {
+            [self._textNameTip setHidden:NO];
+        }
     } else {
         if ( [textField isEqual:self._textField] ) {
             [self._textFieldTip setHidden:YES];
@@ -215,6 +232,10 @@
         
         if ( [textField isEqual:self._textCheck] ) {
             [self._textCheckTip setHidden:YES];
+        }
+        
+        if ( _bAlipay && [textField isEqual:self._textName] ) {
+            [self._textNameTip setHidden:YES];
         }
     }
 }
@@ -249,6 +270,15 @@
 - (IBAction)clickNext:(id)sender {
     NSString* text1 = self._textField.text;
     NSString* text2 = self._textCheck.text;
+    NSString* text3 = self._textName.text;
+    
+    if ( [text3 length] == 0 ) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"支付宝名不能为空" delegate:self cancelButtonTitle:@"重新输入" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+        
+        return ;
+    }
     
     if ( ![text1 isEqualToString:text2] ) {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"两次输入的信息不一致" delegate:self cancelButtonTitle:@"重新输入" otherButtonTitles:nil, nil];

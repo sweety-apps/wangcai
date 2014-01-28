@@ -13,7 +13,7 @@
 -(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body;
 @end
 
-@interface HttpRequest : NSObject {
+@interface HttpRequest : NSObject<UIAlertViewDelegate> {
     id _delegate;
     BeeHTTPRequest* _request;
     BOOL    _relogin;

@@ -24,9 +24,11 @@
 @property (assign, nonatomic) UIView *_containerView;
 @property (assign, nonatomic) UITextField *_textField;
 @property (assign, nonatomic) UITextField *_textCheck;
+@property (assign, nonatomic) UITextField *_textName;
 
 @property (assign, nonatomic) UILabel *_textFieldTip;
 @property (assign, nonatomic) UILabel *_textCheckTip;
+@property (assign, nonatomic) UILabel *_textNameTip;
 
 - (id) init:(BOOL) isAlipay Discount:(int)nDiscount Amount:(int)nAmount;
 

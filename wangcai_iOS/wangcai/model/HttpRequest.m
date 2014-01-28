@@ -311,12 +311,30 @@
     if ( status == Login_Success ) {
         // 重新请求
         _relogin = YES;
-        [self request];
+        
+        //
+        if ( [[LoginAndRegister sharedInstance] getForceUpdate] == 1 ) {
+            UIAlertView* alertForceUpdate = [[[UIAlertView alloc]initWithTitle:@"升级" message:@"为了您红包的安全，需要升级之后才能继续使用。" delegate:self cancelButtonTitle:@"升级" otherButtonTitles:nil, nil] autorelease];
+            [alertForceUpdate show];
+            
+        } else {
+            [self request];
+        }
     } else {
         if ( _delegate != nil ) {
             [_delegate HttpRequestCompleted:self HttpCode:httpCode Body:nil];
         }
     }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString* sysVer = [[UIDevice currentDevice] systemVersion];
+    NSString* urlStr = [[[NSString alloc] initWithFormat:@"%@?sysVer=%@", WEB_FORCE_UPDATE, sysVer] autorelease];
+    
+    NSURL* url = [NSURL URLWithString:urlStr];
+    [[UIApplication sharedApplication] openURL:url];
+    
+    exit(0);
 }
 
 @end

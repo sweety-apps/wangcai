@@ -22,7 +22,7 @@
 @end
 
 @implementation LoginAndRegister
-static LoginAndRegister* _sharedInstance;
+static LoginAndRegister* _sharedInstance = nil;
 
 +(id) sharedInstance {
     if ( _sharedInstance == nil ) {
@@ -53,6 +53,10 @@ static LoginAndRegister* _sharedInstance;
     }
     
     [super dealloc];
+}
+
+-(LoginStatus) getLoginStatus {
+    return loginStatus;
 }
 
 // session超时后，需要先设置超时，然后login
