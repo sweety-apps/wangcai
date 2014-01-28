@@ -272,7 +272,7 @@
     NSString* text2 = self._textCheck.text;
     NSString* text3 = self._textName.text;
     
-    if ( [text3 length] == 0 ) {
+    if ( _bAlipay && [text3 length] == 0 ) {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"支付宝名不能为空" delegate:self cancelButtonTitle:@"重新输入" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
