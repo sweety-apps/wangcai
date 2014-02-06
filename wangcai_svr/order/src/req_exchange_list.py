@@ -18,7 +18,7 @@ class Handler:
         entry.type = ExchangeType.T_JINGDONG
         entry.name = '50元京东礼品卡'
         entry.icon = 'http://getwangcai.com/images/jingdong.png'
-        entry.price = 3000
+        entry.price = 4500
         entry.remain = db_helper.count_available_exchange_code_jingdong()
         resp.exchange_list.append(entry)
 

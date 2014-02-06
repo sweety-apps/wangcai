@@ -27,6 +27,9 @@ class Handler:
             if order is None:
                 resp.rtn = 2
             else:
+                resp.userid = req.userid
+                resp.device_id = order.device_id
+                resp.serial_num = order.serial_num
                 resp.type = order.type
                 resp.status = order.status
                 resp.money = order.money
@@ -40,6 +43,9 @@ class Handler:
             if order is None:
                 resp.rtn = 2
             else:
+                resp.userid = req.userid
+                resp.device_id = order.device_id
+                resp.serial_num = order.serial_num
                 resp.type = order.type
                 resp.status = order.status
                 resp.money = order.money
@@ -53,6 +59,9 @@ class Handler:
             if order is None:
                 resp.rtn = 2
             else:
+                resp.userid = req.userid
+                resp.device_id = order.device_id
+                resp.serial_num = order.serial_num
                 resp.type = order.type
                 resp.status = order.status
                 resp.money = order.money

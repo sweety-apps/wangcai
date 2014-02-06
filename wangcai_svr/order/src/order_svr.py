@@ -14,6 +14,11 @@ import req_phone_payment
 import req_exchange_list
 import req_exchange_code
 import req_order_detail
+import req_order_list
+import req_order_list_alipay_transfer
+import req_order_list_phone_payment
+import req_confirm_alipay_transfer
+import req_confirm_phone_payment
 
 
 def init_logger(path, level=logging.NOTSET, maxBytes=50*1024*1024, backupCount=20):
@@ -29,7 +34,12 @@ urls = (
     '/phone_payment', req_phone_payment.Handler,
     '/exchange_list', req_exchange_list.Handler,
     '/exchange_code', req_exchange_code.Handler,
-    '/order_detail', req_order_detail.Handler
+    '/order_detail', req_order_detail.Handler,
+    '/order_list', req_order_list.Handler,
+    '/order_list_alipay_transfer', req_order_list_alipay_transfer.Handler,
+    '/order_list_phone_payment', req_order_list_phone_payment.Handler,
+    '/confirm_alipay_transfer', req_confirm_alipay_transfer.Handler,
+    '/confirm_phone_payment', req_confirm_phone_payment.Handler,
 )
 
 

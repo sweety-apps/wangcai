@@ -28,7 +28,7 @@ class Handler:
                 resp.rtn = 1
                 return resp.dump_json()
 
-            order.money = 3000
+            order.money = 4500
             order.exchange_type = ExchangeType.T_JINGDONG
             order.exchange_code = code
 

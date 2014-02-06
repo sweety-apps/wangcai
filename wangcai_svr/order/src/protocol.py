@@ -14,6 +14,12 @@ class Response(object):
     def __json_encode(o):
         if isinstance(o, ExchangeEntry):
             return o.__dict__
+        elif isinstance(o, OrderAlipayTransfer):
+            return o.__dict__
+        elif isinstance(o, OrderPhonePayment):
+            return o.__dict__
+        elif isinstance(o, Order):
+            return o.__dict__
         raise TypeError('type error!! ' + str(type(o)))
 
     def dump_json(self):
@@ -36,6 +42,18 @@ class AlipayTransfer_Resp(Response):
 
 ######################################
 
+class ConfirmAlipayTransfer_Req(Request):
+    def __init__(self, input):
+        Request.__init__(self)
+        self.userid = int(input.userid)
+        self.serial_num = input.serial_num
+
+class ConfirmAlipayTransfer_Resp(Response):
+    def __init__(self):
+        Response.__init__(self)
+
+######################################
+
 class PhonePayment_Req(Request):
     def __init__(self, input):
         Request.__init__(self)
@@ -46,6 +64,18 @@ class PhonePayment_Req(Request):
         self.phone_num = input.phone_num
 
 class PhonePayment_Resp(Response):
+    def __init__(self):
+        Response.__init__(self)
+
+######################################
+
+class ConfirmPhonePayment_Req(Request):
+    def __init__(self, input):
+        Request.__init__(self)
+        self.userid = int(input.userid)
+        self.serial_num = input.serial_num
+
+class ConfirmPhonePayment_Resp(Response):
     def __init__(self):
         Response.__init__(self)
 
@@ -86,6 +116,9 @@ class OrderDetail_Req(Request):
 class OrderDetail_Resp(Response):
     def __init__(self):
         Response.__init__(self)
+        self.userid = 0
+        self.device_id = ''
+        self.serial_num = ''
         self.type = 0
         self.status = 0
         self.money = 0
@@ -93,4 +126,44 @@ class OrderDetail_Resp(Response):
         self.confirm_time = 0
         self.operate_time = 0
         self.extra = ''
+
+
+######################################
+
+class OrderList_Req(Request):
+    def __init__(self, input):
+        Request.__init__(self)
+        self.offset = int(input.offset)
+        self.num = int(input.num)
+
+class OrderList_Resp(Response):
+    def __init__(self):
+        Response.__init__(self)
+        self.order_list = []
+
+######################################
+
+class OrderList_AlipayTransfer_Req(Request):
+    def __init__(self, input):
+        Request.__init__(self)
+        self.offset = int(input.offset)
+        self.num = int(input.num)
+
+class OrderList_AlipayTransfer_Resp(Response):
+    def __init__(self):
+        Response.__init__(self)
+        self.order_list = []
+
+######################################
+
+class OrderList_PhonePayment_Req(Request):
+    def __init__(self, input):
+        Request.__init__(self)
+        self.offset = int(input.offset)
+        self.num = int(input.num)
+
+class OrderList_PhonePayment_Resp(Response):
+    def __init__(self):
+        Response.__init__(self)
+        self.order_list = []
 
