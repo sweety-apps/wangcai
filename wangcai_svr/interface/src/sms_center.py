@@ -55,13 +55,17 @@ class SMSCenter:
     def gen_token(self):
         return hashlib.md5(str(uuid.uuid4())).hexdigest()
 
-    def send_sms(self, phone_num, sms_code):
+    def send_sms_code(self, phone_num, sms_code):
+        content = SMS_TEMPLATE %sms_code
+        return self.__send_sms(phone_num, content)
+
+    def __send_sms(self, phone_num, sms_content):
         params = {
             'method': 'Submit',
             'account': SMS_USER,
             'password': SMS_PASSWD,
             'mobile': phone_num,
-            'content': (SMS_TEMPLATE %sms_code)
+            'content': sms_content
         }
 
         logger.debug(SMS_API+'?'+urllib.urlencode(params))
@@ -144,5 +148,19 @@ class SMSCenter:
         cur = self._conn.cursor()
         cur.execute(stmt)
         self._conn.commit()
+
+
+    def notify_exchange_code(self, phone_num, exchange_desc, exchange_code):
+        content = SMS_TPL_EXCHANGE_CODE % (exchange_desc, exchange_code)
+        return self.__send_sms(phone_num, content)
+        
+    def confirm_order_alipay(self, phone_num, amount):
+        content = SMS_TPL_ALIPAY % amount
+        return self.__send_sms(phone_num, content)
+
+    def confirm_order_phone_charge(self, phone_num, amount):
+        content = SMS_TPL_PHONE_CHARGE % amount
+        return self.__send_sms(phone_num, content)
+
 
 

@@ -8,6 +8,8 @@ wangcai_iOS/wangcai.xcodeproj/xcuserdata/*
 
 .DS_Store
 *.pyc
+wangcai_svr/wangcai
+wangcai_svr/wangcai/*
 wangcai_svr/z
 wangcai_svr/z/*
 wangcai_svr/account/log/*

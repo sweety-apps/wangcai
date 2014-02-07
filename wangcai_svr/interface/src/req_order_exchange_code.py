@@ -8,6 +8,7 @@ from config import *
 from utils import *
 from billing_client import *
 from session_manager import SessionManager
+from sms_center import SMSCenter
 
 logger = logging.getLogger()
 
@@ -37,10 +38,13 @@ class Handler:
         if rtn != 0:
             resp.res = rtn
             return resp.dump_json()
-        else:
-            resp.order_id = sn
-            resp.exchange_code = code
-            return resp.dump_json()
+
+        #成功,发送短信
+        self.notify_exchange_code(req.userid, req.device_id, req.exchange_type, code)
+        
+        resp.order_id = sn
+        resp.exchange_code = code
+        return resp.dump_json()
 
 
     def create_order(self, userid, device_id, serial_num, exchange_type, price):
@@ -59,7 +63,7 @@ class Handler:
 
 
     def get_exchange_code_jingdong(self, userid, device_id):
-        price = 3000  #京东兑换码,折后30元
+        price = 4500  #京东兑换码,折后45元
         #冻结
         rtn, sn = BillingClient.instance().freeze(userid, device_id, price, '兑换50元京东礼品卡')
         if rtn != 0:
@@ -92,4 +96,27 @@ class Handler:
                 return 0, sn, code
         
             
+    def notify_exchange_code(self, userid, device_id, exchange_type, exchange_code):
+        data = {'userid': userid, 'device_id': device_id}
+        url = 'http://' + ACCOUNT_BACKEND + '/user_info?' + urllib.urlencode(data)
+        r = http_request(url)
+        if r['rtn'] != 0:
+            logger.error('get user_info failed! rtn:%d' %r['rtn'])
+            return
+
+        phone_num = r['phone_num']
+        if phone_num == '':
+            return
+
+        if exchange_type == 1:
+            exchange_desc = '50元京东礼品卡'
+        else:
+            exchange_desc = '迅雷白金月卡'
+            
+        SMSCenter.instance().notify_exchange_code(phone_num, exchange_desc, exchange_code)
+        
+
+
+        
+        
 

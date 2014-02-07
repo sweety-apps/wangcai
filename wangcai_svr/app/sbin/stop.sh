@@ -1,4 +1,6 @@
 #!/bin/bash
 
-ps -ef | grep uWSGI | grep app | awk '{print $2}' | xargs kill -9
+cd `dirname $0`
+
+/usr/local/bin/uwsgi --stop ../conf/app.pid
 

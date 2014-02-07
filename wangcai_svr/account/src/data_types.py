@@ -11,6 +11,7 @@ class UserInfo:
         self.invite_code = ''
         self.inviter_id = 0
         self.inviter_code = ''
+        self.create_time = ''
 
 
 class UserDevice:
@@ -33,6 +34,7 @@ class AnonymousDevice:
         self.sex = 0
         self.age = 0
         self.interest = ''
+        self.activate_time = ''
 
 
 class LoginHistory:

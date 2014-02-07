@@ -47,7 +47,7 @@ class Handler:
         #为苹果审核屏蔽
         app = web.cookies().get('app', '')
         ver = web.cookies().get('ver', '')
-        if app.lower() == 'wangcai' and version == '1.1':
+        if app.lower() == 'wangcai' and ver in ['1.1', '1.2']:
             if 5 in task_map:
                 del task_map[5]
             if 6 in task_map:

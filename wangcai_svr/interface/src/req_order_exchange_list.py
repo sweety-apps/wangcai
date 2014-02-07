@@ -23,22 +23,3 @@ class Handler:
 
         return resp.dump_json()
 
-        resp.exchange_list = [
-            {
-                'name': '50元京东礼品卡',
-                'type': 1,
-                'icon': 'http://getwangcai.com/images/jingdong.png',
-                'price': 3000,
-                'remain': 10
-            },
-
-            {
-                'name': '迅雷白金会员月卡',
-                'type': 2,
-                'icon': 'http://getwangcai.com/images/xlvip.png',
-                'price': 800,
-                'remain': 100
-            }
-        ]
-
-        return resp.dump_json()

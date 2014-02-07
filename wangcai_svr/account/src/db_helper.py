@@ -37,6 +37,7 @@ def query_user_info(userid):
         user.invite_code = res['invite_code']
         user.inviter_id = int(res['inviter_id'])
         user.inviter_code = res['inviter_code']
+        user.create_time = str(res['create_time'])
         return user
 
 
@@ -108,12 +109,13 @@ def query_anonymous_device(device_id):
         device.sex = int(res['sex'])
         device.age = int(res['age'])
         device.interest = res['interest']
+        device.activate_time = str(res['activate_time'])
         return device
 
 
 def insert_anonymous_device(device_id, mac, idfa, platform):
     stmt = "INSERT INTO anonymous_device \
-                SET device_id = '%s', mac = '%s', idfa = '%s', platform = '%s', activate_time = NOW()" \
+                SET device_id = '%s', mac = '%s', idfa = '%s', platform = '%s', interest = '', activate_time = NOW()" \
                 % (MySQLdb.escape_string(device_id), 
                         MySQLdb.escape_string(mac), 
                         MySQLdb.escape_string(idfa), 
@@ -147,20 +149,33 @@ def insert_user_info(phone_num, sex, age, interest, invite_code):
     logger.debug(stmt)
     conn.ping(True)
     conn.autocommit(False)
-    cur = conn.cursor()
+    cur = conn.cursor(MySQLdb.cursors.DictCursor)
     n = cur.execute(stmt)
     if n != 0:
-        userid = conn.insert_id()
+        user = UserInfo()
+        user.userid = conn.insert_id()
+        user.phone_num = phone_num
+        user.sex = sex
+        user.age = age
+        user.interest = interest
+        user.invite_code = invite_code
     else:
         #phone_num冲突
-        stmt = "SELECT id, invite_code FROM user_info WHERE phone_num = '%s'" %MySQLdb.escape_string(phone_num)
+        stmt = "SELECT * FROM user_info WHERE phone_num = '%s'" %MySQLdb.escape_string(phone_num)
         n = cur.execute(stmt)
         assert n != 0
         res = cur.fetchone()
-        userid = int(res[0])
-        invite_code = res[1]
+        user = UserInfo()
+        user.userid = int(res['id'])
+        user.phone_num = phone_num
+        user.sex = int(res['sex'])
+        user.age = int(res['age'])
+        user.interest = res['interest']
+        user.invite_code = res['invite_code']
+        user.inviter_id = int(res['inviter_id'])
+        user.inviter_code = res['inviter_code']
     conn.commit()
-    return (userid, invite_code)
+    return user
 
 
 def insert_user_device(userid, device_id, idfa, mac, platform):
@@ -262,3 +277,24 @@ def record_login_history(entry):
     cur = conn.cursor()
     cur.execute(stmt)
     conn.commit()
+
+
+def query_ip_history(ip):
+    stmt = "SELECT device_id, platform FROM login_history WHERE ip = '%s'" %ip
+    logger.debug(stmt)
+    conn.ping(True)
+    conn.autocommit(True)
+    cur = conn.cursor()
+    n = cur.execute(stmt)
+    if n == 0:
+        return {}
+    else:
+        m = {}
+        for each in cur.fetchall():
+            m[each[0]] = each[1]
+        return m
+            
+
+
+                
+

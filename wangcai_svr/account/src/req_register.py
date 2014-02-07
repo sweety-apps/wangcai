@@ -22,6 +22,7 @@ class Handler:
         self._platform = params.platform
         self._device_id = self.calc_device_id()
         self._new_device = False
+        self._ip = params.ip
         self._phone_num = ''
         self._nickname = ''
         self._invite_code = ''
@@ -33,7 +34,15 @@ class Handler:
         entry.network = params.network
         entry.ip = params.ip
         self._login_history_entry = entry
+        self._banned_list = None
+        self.init_banned_list()
 
+    def init_banned_list(self):
+        fp = open('../conf/bad_user.txt')
+        self._banned_list = [int(line.strip()) for line in fp.readlines() if line.strip() != '']
+#        logger.info('banned list size: %d' %len(self._banned_list))
+#        logger.debug('banned list: %s' %str(self._banned_list))
+        fp.close()
 
     def calc_device_id(self):
         if self._idfa == '':
@@ -44,6 +53,22 @@ class Handler:
     def POST(self):
         self.init()
 
+        #判断当前ip登陆设备数,3台以上屏蔽
+#        if self._ip != '14.127.235.24':
+#            device_list = db_helper.query_ip_history(self._ip)
+#            if self._device_id not in device_list and len(device_list) >= 3:
+#                logger.info('too many devices on ip: %s, total_device: %d' %(self._ip, len(device_list)))
+#                return json.dumps({'rtn': 1})
+
+        #判断当前ip登陆过的设备,每个类型的设备只能登陆1次
+        if self._ip not in ['183.14.0.221', '121.14.98.49', '14.153.253.143', '113.92.102.40']:
+            mm = db_helper.query_ip_history(self._ip)
+            if self._device_id not in mm and self._platform in set(mm.values()):
+                logger.info('too many devices on ip: %s, device_list: %s' %(self._ip, str(mm)))
+                return json.dumps({'rtn': 1})
+                
+
+            
         #先查anonymous_device
         device = db_helper.query_anonymous_device(self._device_id)
         if device is None:
@@ -61,6 +86,11 @@ class Handler:
             device = db_helper.query_user_device(self._device_id)
             #能查到
             assert device is not None
+
+            #被屏蔽用户
+            if self.is_banned(device.userid):
+                logger.info('banned user!! userid:%d' %device.userid)
+                return json.dumps({'rtn': 2})
 
             user = db_helper.query_user_info(device.userid)
             assert user is not None
@@ -89,6 +119,9 @@ class Handler:
         logger.debug('resp: %s' %str(resp))
 
         return json.dumps(resp)
+
+    def is_banned(self, userid):
+        return userid in self._banned_list
 
 
     def recharge(self, device_id, money, remark):

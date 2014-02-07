@@ -10,6 +10,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 import req_callback
+import req_youmi
 
 
 def init_logger(path, level=logging.NOTSET, maxBytes=50*1024*1024, backupCount=20):
@@ -21,7 +22,8 @@ def init_logger(path, level=logging.NOTSET, maxBytes=50*1024*1024, backupCount=2
 
 
 urls = (
-    '/callback', req_callback.Handler
+    '/callback', req_callback.Handler,
+    '/youmi', req_youmi.Handler
 )
 
 init_logger("../log/app.log")

@@ -6,6 +6,7 @@ import json
 import urllib
 import logging
 import memcache
+import protocol
 from config import *
 from utils import *
 from session_manager import SessionManager
@@ -18,14 +19,14 @@ class Handler:
         self.re_mac = re.compile('[0-9A-F]{12}$')
 
     def POST(self):
-        params = web.input()
-        idfa = params.get('idfa', '').upper()
-        mac = params.get('mac', '').upper()
+        req  = protocol.RegisterReq(web.input(), web.cookies())
+        resp = protocol.RegisterResp()
 
-        if not self.re_idfa.match(idfa) or not self.re_mac.match(mac):
-            resp = { 'res': 1, 'msg': '参数错误' }
-            return json.dumps(resp)
-
+        if not self.re_idfa.match(req.idfa) or not self.re_mac.match(req.mac):
+            resp.res = 1
+            resp.msg = '参数错误'
+            return resp.dump_json()
+        
         cookies = web.cookies()
         logger.debug('cookies: platform=%s, version=%s%s, network=%s' \
                 %(cookies.get('p', ''), 
@@ -34,11 +35,41 @@ class Handler:
                     cookies.get('net', '')))
         logger.debug('client ip: %s' %web.ctx.ip)
 
+        #服务器维护
+        if SWITCH_SERVER_DOWN == 1:
+            resp.res = 511
+            resp.msg = SWITCH_SERVER_DOWN_MSG
+            return resp.dump_json()
+
+        #配置提现开关
+        if SWITCH_NO_WITHDRAW == 1:
+            resp.no_withdraw = 1
+
+        #配置TIPS
+        if SWITCH_SERVER_TIPS == 1:
+            resp.tips = SWITCH_SERVER_TIPS_CONTENT
+
+        #配置积分墙开关
+        resp.offerwall = {'domob': 0, 'youmi': 1}
+
+        #配置强制升级
+        if cookies.get('app', '').lower() != 'wangcai' and cookies.get('ver', '') in ['1.1', '1.1.1', '1.2', '1.3', '']:
+            resp.force_update = 1
+            return resp.dump_json()
+
+        #屏蔽2g/3g用户
+        if cookies.get('app', '').lower() != 'wangcai' and cookies.get('net', '') == '3g':
+            logger.info('2g/3g user, ban! idfa:%s, mac:%s' %(req.idfa, req.mac))
+            resp.res = 403
+            resp.msg = '错误$当前IP访问的机器数过高，为了保证广告商的推广效果，您的设备今日无法继续使用旺财，请明日再试。'
+            return resp.dump_json()
+
+
         data = {
-            'idfa': idfa,
-            'mac': mac,
+            'idfa': req.idfa,
+            'mac': req.mac,
             'platform': cookies.get('p', ''),
-            'version': cookies.get('app', '')+cookies.get('ver', ''),
+            'version': cookies.get('app', '') + cookies.get('ver', ''),
             'network': cookies.get('net', ''),
             'ip': web.ctx.ip,
         }
@@ -46,35 +77,30 @@ class Handler:
         url = 'http://' + ACCOUNT_BACKEND + '/register'
 
         r = http_request(url, data)
-        if r['rtn'] != 0:
-            resp = { 'res': 1, 'msg': 'error' }
-            return json.dumps(resp)
+        if r['rtn'] == 1:
+            resp.res = 403
+            resp.msg = '错误$当前IP访问的机器数过高，为了保证广告商的推广效果，您的设备今日无法继续使用旺财，请明日再试。'
+            return resp.dump_json()
+        elif r['rtn'] == 2:
+            resp.res = 403
+            resp.msg = '错误$您当前的IP及绑定账号被广告商判断为异常，您的账号已被冻结，导致此问题的原因可能是通过重置系统重复完成任务。如需申诉，请邮件手机号及问题至wangcai@188.com。'
+            return resp.dump_json()
+        elif r['rtn'] != 0:
+            resp.res = 1
+            resp.msg = 'error'
+            return resp.dump_json()
 
-        userid = r['userid']
-        device_id = r['device_id']
+        resp.userid = userid = r['userid']
+        resp.device_id = device_id = r['device_id']
+        resp.phone = r['phone_num']
+        resp.inviter = r['inviter']
+        resp.invite_code = r['invite_code']
 
         #创建session缓存
-        session_id = SessionManager.instance().create_session(device_id, userid)
-#        session_id = generate_session_id()
-        resp = {
-            'res': 0,
-            'msg': '',
-            'session_id': session_id,
-            'device_id': device_id,
-            'invite_code': r['invite_code'],
-            'userid': userid,
-            'inviter': r['inviter'],
-            'phone': r['phone_num'],
-            'balance': 0,
-            'income': 0,
-            'outgo': 0,
-            'recent_income': 0,
-            'shared_income': 0,
-            'force_update': 0
-        }
+        resp.session_id = SessionManager.instance().create_session(device_id, userid)
 
         if r['new_device']:
-            logger.info('new device, idfa:%s, mac:%s' %(params.idfa, params.mac))
+            logger.info('new device, idfa:%s, mac:%s' %(req.idfa, req.mac))
 
         data = {
             'userid': userid,
@@ -85,13 +111,14 @@ class Handler:
 
         r = http_request(url)
         if r['rtn'] == 0:
-            resp['balance'] = r['balance']
-            resp['income'] = r['income']
-            resp['outgo'] = r['outgo']
-            resp['shared_income'] = r['shared_income']
-            resp['task_list'] = self.query_task_list(userid, device_id)
-#            resp['recent_income'] = 
-        return json.dumps(resp, ensure_ascii=False, indent=2)
+            resp.balance = r['balance']
+            resp.income = r['income']
+            resp.outgo = r['outgo']
+            resp.shared_income = r['shared_income']
+            resp.task_list = self.query_task_list(userid, device_id)
+
+        return resp.dump_json()
+
 
     def query_task_list(self, userid, device_id):
         #查设备任务
@@ -120,10 +147,10 @@ class Handler:
                     else:
                         task_map[task['id']] = task
 
-        version = web.cookies().get('ver', '')
-
         #为苹果审核屏蔽
-        if version == '1.1':
+        app = web.cookies().get('app', '')
+        ver = web.cookies().get('ver', '')
+        if app.lower() == 'wangcai' and ver in ['1.1', '1.2']:
             if 5 in task_map:
                 del task_map[5]
             if 6 in task_map:

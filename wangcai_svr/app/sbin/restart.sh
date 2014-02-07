@@ -2,9 +2,5 @@
 
 cd `dirname $0`
 
-./stop.sh
-
-sleep 1
-
-./start.sh
+/usr/local/bin/uwsgi --reload ../conf/app.pid
 

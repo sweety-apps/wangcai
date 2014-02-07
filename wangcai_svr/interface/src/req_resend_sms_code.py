@@ -32,7 +32,7 @@ class Handler:
 
         sms.update_sms_code(req.token, sms_code)
 
-        ret = sms.send_sms(item['phone_num'], sms_code)
+        ret = sms.send_sms_code(item['phone_num'], sms_code)
         if ret:
             sms.update_status(req.token, SMSStatus.SMS_SUCC)
             resp.token = req.token

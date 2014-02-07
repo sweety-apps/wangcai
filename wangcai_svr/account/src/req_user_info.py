@@ -30,7 +30,8 @@ class Handler:
                     'age': anony.age,
                     'interest': anony.interest,
                     'invite_code': '',
-                    'inviter': ''
+                    'inviter': '',
+                    'activate_time': ''
                 }
         else:
             user = db_helper.query_user_info(self._userid)
@@ -45,7 +46,8 @@ class Handler:
                     'age': user.age,
                     'interest': user.interest,
                     'invite_code': user.invite_code,
-                    'inviter': user.inviter_code
+                    'inviter': user.inviter_code,
+                    'activate_time': user.create_time
                 }
         return json.dumps(resp)
 

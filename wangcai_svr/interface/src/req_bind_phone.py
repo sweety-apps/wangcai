@@ -37,7 +37,7 @@ class Handler:
         token, code = sms.create_sms_task(phone_num, SMSAction.BIND_PHONE, json.dumps(data))
         
         #发送短信
-        ret = sms.send_sms(phone_num, code)
+        ret = sms.send_sms_code(phone_num, code)
         if ret:
             sms.update_status(token, SMSStatus.SMS_SUCC)
             resp = {'res': 0, 'msg': '', 'token': token}

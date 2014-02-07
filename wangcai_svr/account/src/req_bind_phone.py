@@ -5,6 +5,7 @@ import json
 import random
 import logging
 import db_helper
+from config import *
 
 logger = logging.getLogger('root')
 
@@ -40,26 +41,27 @@ class Handler:
             logger.error('query_anonymous_device failed!! device_id:%s' %self._device_id)    
             return {'rtn': 1}
         elif anony.flag == 1: #已被绑定
-#            logger.error('query_anonymous_device, flag=1, device_id:%s' %self._device_id)
-#            return {'rtn': 1}
+            logger.info('query_anonymous_device, flag=1, device_id:%s, userid:%d' %self._device_id, self._userid)
             user = db_helper.query_user_info(self._userid)
-            return {'rtn': 0, 'userid': self._userid, 'invite_code': user.invite_code}
+            n = db_helper.count_user_device(self.userid)
+            return {'rtn': 0, 'userid': self._userid, 'invite_code': user.invite_code, 'inviter': user.inviter_code, 'total_device': n}
             
         else:
             invite_code = self.gen_invite_code()
-            userid, invite_code = db_helper.insert_user_info(self._phone_num, anony.sex, anony.age, anony.interest, invite_code)
-            assert userid != 0
-            n = db_helper.count_user_device(userid)
-            if (userid == 10028 and n >= 50) or (userid == 10065 and n >= 10) \
-                        or (userid != 10028 and userid != 10065 and n >= 3):
-                logger.info('too many devices, userid: %d' %userid)
+            user = db_helper.insert_user_info(self._phone_num, anony.sex, anony.age, anony.interest, invite_code)
+            assert user is not None and user.userid != 0
+            n = db_helper.count_user_device(user.userid)
+
+            if (user.userid in VIP_LIST and n >= 50) or (user.userid not in VIP_LIST and n >= 3):
+                logger.info('too many devices, userid: %d' %user.userid)
                 return {'rtn': 2}
             else:
-                db_helper.insert_user_device(userid, self._device_id, anony.idfa, anony.mac, anony.platform)
+                db_helper.insert_user_device(user.userid, self._device_id, anony.idfa, anony.mac, anony.platform)
                 db_helper.update_anonymous_device_flag(self._device_id, 1)
-                return {'rtn': 0, 'userid': userid, 'invite_code': invite_code}
+                return {'rtn': 0, 'userid': user.userid, 'invite_code': user.invite_code, 'inviter': user.inviter_code, 'total_device': n}
 
     def update_phone_num(self):
+        logger.info('update phone num, userid:%d, device_id:%s, phone:%s' %(self._userid, self._device_id, self._phone_num))
         assert self._userid != 0
 
         user = db_helper.query_user_info(self._userid)

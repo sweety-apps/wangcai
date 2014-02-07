@@ -75,7 +75,9 @@ class Handler:
                 'res': 0,
                 'msg': '',
                 'userid': r['userid'],
-                'invite_code': r['invite_code']
+                'invite_code': r['invite_code'],
+                'inviter': r['inviter'],
+                'total_device': r['total_device']
             }
 
 

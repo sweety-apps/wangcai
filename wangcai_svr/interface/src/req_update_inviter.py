@@ -24,11 +24,15 @@ class Handler:
         data = {
             'device_id': req.device_id,
             'userid': req.userid,
-            'invite_code': req.inviter
+            'invite_code': req.inviter.upper()
         }
 
         r = http_request(url, data)
-        if r['rtn'] != 0:
+        if r['rtn'] == 2:
+            resp.res = 1
+            resp.msg = '不能邀请自己'
+            return resp.dump_json()
+        elif r['rtn'] != 0:
             resp.res = 1
             resp.msg = 'error'
             return resp.dump_json()

@@ -22,6 +22,14 @@ class Request(object):
         uid = self.input.get('userid', '')
         return uid.isdigit() and int(uid) or 0
 
+    def get(self, key, default=''):
+        return self.input.get(key, default)
+
+    def get_int(self, key, default=0):
+        n = self.input.get(key, '')
+        return n.isdigit() and int(n) or default
+
+
 class Response(object):
     def __init__(self):
         self.res = 0
@@ -35,6 +43,8 @@ class Response(object):
 class RegisterReq(Request):
     def __init__(self, input, cookies):
         Request.__init__(self, input, cookies)
+        self.idfa = self.get('idfa').upper()
+        self.mac = self.get('mac').upper()
 
 class RegisterResp(Response):
     def __init__(self):
@@ -48,6 +58,13 @@ class RegisterResp(Response):
         self.balance = 0
         self.income = 0
         self.outgo = 0
+        self.recent_income = 0
+        self.shared_income = 0
+        self.force_update = 0
+        self.task_list = []
+        self.no_withdraw = 0
+        self.offerwall = {}
+        self.tips = ''
 
 #############################################
 
