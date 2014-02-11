@@ -27,7 +27,6 @@
 		71355509188D14110007784A /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355505188D14110007784A /* libYouMi.a */; };
 		71355512188D16060007784A /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71355510188D16060007784A /* DomobOfferWallBundle.bundle */; };
 		71355513188D16060007784A /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71355510188D16060007784A /* DomobOfferWallBundle.bundle */; };
-		71355514188D16060007784A /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355511188D16060007784A /* libDomobOfferWallSDK.a */; };
 		71355515188D16060007784A /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355511188D16060007784A /* libDomobOfferWallSDK.a */; };
 		71355517188D169D0007784A /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71355516188D169D0007784A /* PushConfig.plist */; };
 		7135555A188D17800007784A /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7135551A188D17800007784A /* CopyConnection.framework */; };
@@ -130,6 +129,14 @@
 		713555BB188D17810007784A /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355559188D17800007784A /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
 		718FB1911893FF2900851D2A /* register_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718FB1901893FF2900851D2A /* register_btn@2x.png */; };
 		718FB1921893FF2900851D2A /* register_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718FB1901893FF2900851D2A /* register_btn@2x.png */; };
+		719F187618AA15B800C29765 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187518AA15B800C29765 /* MediaPlayer.framework */; };
+		719F187818AA17D000C29765 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187718AA17D000C29765 /* EventKit.framework */; };
+		719F187A18AA17D600C29765 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187918AA17D600C29765 /* Social.framework */; };
+		719F187C18AA17E300C29765 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187B18AA17E300C29765 /* PassKit.framework */; };
+		719F187E18AA17EB00C29765 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187D18AA17EB00C29765 /* AudioToolbox.framework */; };
+		719F188018AA188900C29765 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355511188D16060007784A /* libDomobOfferWallSDK.a */; };
+		719F188218AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */; };
+		719F188318AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */; };
 		A60A438E1872A1BB00B5C319 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438D1872A1BB00B5C319 /* libsqlite3.dylib */; };
 		A60A43901872A1CF00B5C319 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438F1872A1CF00B5C319 /* AdSupport.framework */; };
 		A60A43921872A1E400B5C319 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A43911872A1E400B5C319 /* CoreLocation.framework */; };
@@ -1320,6 +1327,12 @@
 		71355558188D17800007784A /* ShareSDKiPhoneSimpleShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPhoneSimpleShareViewUI.bundle; sourceTree = "<group>"; };
 		71355559188D17800007784A /* ShareSDKiPhoneSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneSimpleShareViewUI.framework; sourceTree = "<group>"; };
 		718FB1901893FF2900851D2A /* register_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register_btn@2x.png"; sourceTree = "<group>"; };
+		719F187518AA15B800C29765 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		719F187718AA17D000C29765 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		719F187918AA17D600C29765 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		719F187B18AA17E300C29765 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		719F187D18AA17EB00C29765 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = MenuBoardInReview_iPhone.xml; path = view_iPhone/MenuBoardInReview_iPhone.xml; sourceTree = "<group>"; };
 		A60A438D1872A1BB00B5C319 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		A60A438F1872A1CF00B5C319 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		A60A43911872A1E400B5C319 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -2259,10 +2272,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				719F188018AA188900C29765 /* libDomobOfferWallSDK.a in Frameworks */,
+				719F187E18AA17EB00C29765 /* AudioToolbox.framework in Frameworks */,
+				719F187C18AA17E300C29765 /* PassKit.framework in Frameworks */,
+				A60A43921872A1E400B5C319 /* CoreLocation.framework in Frameworks */,
+				719F187A18AA17D600C29765 /* Social.framework in Frameworks */,
+				719F187818AA17D000C29765 /* EventKit.framework in Frameworks */,
+				F3F186D218543A410098C852 /* QuartzCore.framework in Frameworks */,
+				719F187618AA15B800C29765 /* MediaPlayer.framework in Frameworks */,
+				F3F186D018543A410098C852 /* MobileCoreServices.framework in Frameworks */,
+				F3F186C818543A410098C852 /* CFNetwork.framework in Frameworks */,
 				F31F895C18962B4500F34F20 /* libALSystemUtilities_Lib.a in Frameworks */,
 				713555A0188D17800007784A /* RennSDK.framework in Frameworks */,
 				A62C5F54187697E300172334 /* libMobClickLibrary.a in Frameworks */,
-				71355514188D16060007784A /* libDomobOfferWallSDK.a in Frameworks */,
 				A60C589318703AD80068425C /* libqrencode.a in Frameworks */,
 				713555A6188D17810007784A /* libWeChatSDK.a in Frameworks */,
 				F3F186C018543A410098C852 /* UIKit.framework in Frameworks */,
@@ -2277,16 +2299,13 @@
 				71355580188D17800007784A /* SinaWeiboConnection.framework in Frameworks */,
 				713555B6188D17810007784A /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
 				A66E3A661887FA7600EB19DE /* CoreFoundation.framework in Frameworks */,
-				F3F186C818543A410098C852 /* CFNetwork.framework in Frameworks */,
 				713555A2188D17800007784A /* libSinaWeiboSDK.a in Frameworks */,
 				A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */,
 				A60A438E1872A1BB00B5C319 /* libsqlite3.dylib in Frameworks */,
 				71355578188D17800007784A /* PrintConnection.framework in Frameworks */,
-				F3F186D218543A410098C852 /* QuartzCore.framework in Frameworks */,
 				7135555C188D17800007784A /* DouBanConnection.framework in Frameworks */,
 				7135556A188D17800007784A /* InstapaperConnection.framework in Frameworks */,
 				7135558E188D17800007784A /* TwitterConnection.framework in Frameworks */,
-				A60A43921872A1E400B5C319 /* CoreLocation.framework in Frameworks */,
 				59D8E0C1189230DE003D5F3F /* libPushSDK.a in Frameworks */,
 				713555A8188D17810007784A /* ShareSDK.framework in Frameworks */,
 				71355590188D17800007784A /* VKontakteConnection.framework in Frameworks */,
@@ -2312,7 +2331,6 @@
 				71355566188D17800007784A /* GooglePlusConnection.framework in Frameworks */,
 				F3F186F718543A410098C852 /* libz.dylib in Frameworks */,
 				F3F186CC18543A410098C852 /* CoreText.framework in Frameworks */,
-				F3F186D018543A410098C852 /* MobileCoreServices.framework in Frameworks */,
 				713555BA188D17810007784A /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
 				7135557A188D17800007784A /* QQConnection.framework in Frameworks */,
 				F3F186CE18543A410098C852 /* CoreVideo.framework in Frameworks */,
@@ -3004,6 +3022,11 @@
 		F3F186BE18543A410098C852 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				719F187D18AA17EB00C29765 /* AudioToolbox.framework */,
+				719F187B18AA17E300C29765 /* PassKit.framework */,
+				719F187918AA17D600C29765 /* Social.framework */,
+				719F187718AA17D000C29765 /* EventKit.framework */,
+				719F187518AA15B800C29765 /* MediaPlayer.framework */,
 				A66E3A691887FD2000EB19DE /* libPushSDK.a */,
 				A66E3A651887FA7600EB19DE /* CoreFoundation.framework */,
 				A60A43911872A1E400B5C319 /* CoreLocation.framework */,
@@ -3152,6 +3175,7 @@
 				F3F189F518543A450098C852 /* MenuBoard_iPhone.h */,
 				F3F189F618543A450098C852 /* MenuBoard_iPhone.m */,
 				F3F189F818543A450098C852 /* MenuBoard_iPhone.xml */,
+				719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */,
 				F3F186F118543A410098C852 /* templates */,
 				F3D834AC185B5146003095D5 /* common */,
 				F3F186F018543A410098C852 /* resource */,
@@ -4455,6 +4479,7 @@
 				713555B5188D17810007784A /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				F335A04518882F8000C1E636 /* sms_code_border@2x.png in Resources */,
 				F31F898D18962B8600F34F20 /* iPodTouch5.plist in Resources */,
+				719F188318AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */,
 				F335A04618882F8000C1E636 /* user_info_commit_btn@2x.png in Resources */,
 				F335A04718882F8000C1E636 /* user_hobby_selected@2x.png in Resources */,
 				F335A04818882F8000C1E636 /* package_icon_2@2x.png in Resources */,
@@ -4608,6 +4633,7 @@
 				71008A361891073800689E2F /* app_tip_close@2x.png in Resources */,
 				F3813D2A18753ED400350C27 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
 				F3813D2018753ED400350C27 /* choujiang_thanks3@2x.png in Resources */,
+				719F188218AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */,
 				F3DD641B1882D36500E56A0B /* menu_icon_help@2x.png in Resources */,
 				A60C585F186FF8A30068425C /* right@2x.png in Resources */,
 				A6FEE28E187D9AB800E5AF3E /* whiteArrow@2x.png in Resources */,
@@ -5526,6 +5552,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ALSystemUtilities.framework/Versions/A,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "";
@@ -5618,6 +5645,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/DMOfferWallSDK,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ALSystemUtilities.framework/Versions/A,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "";
@@ -5790,6 +5818,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ALSystemUtilities.framework/Versions/A,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D815A78C-6344-449F-9F43-21D62CA039A9";
@@ -5881,6 +5910,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai/JPushlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ALSystemUtilities.framework/Versions/A,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "594D6C65-DB25-4AAA-8A31-CBF232EEFA04";

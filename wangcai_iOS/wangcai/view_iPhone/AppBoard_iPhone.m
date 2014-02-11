@@ -43,6 +43,16 @@ DEF_SINGLETON( AppBoard_iPhone )
 {
 	[super load];
     _alertView = nil;
+    
+    if ( [[LoginAndRegister sharedInstance] isInReview] ) {
+        [YouMiConfig setIsTesting:YES];
+        _adView = [[YouMiView alloc] initWithContentSizeIdentifier:YouMiBannerContentSizeIdentifier320x50 delegate:nil];
+        _adView.indicateTranslucency = YES;
+        _adView.indicateRounded = NO;
+        [_adView start];
+    } else {
+        _adView = nil;
+    }
 }
 
 - (void)unload
@@ -67,6 +77,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 		MenuBoard_iPhone * menu = [MenuBoard_iPhone sharedInstance];
 		menu.parentBoard = self;
+        
 		[self.view addSubview:menu.view];
 
 		BeeUIRouter * router = [BeeUIRouter sharedInstance];
@@ -92,6 +103,17 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
 		[router open:@"wc_main"];
         
+        if ( _adView != nil ) {
+            CGRect rect = _adView.frame;
+            rect.size.height = 50;
+            rect.size.width = 320;
+            rect.origin.x = 0;
+            rect.origin.y = [[UIScreen mainScreen] bounds].size.height - 50;
+            
+            UIView* view = [[UIView alloc] initWithFrame:rect];
+            [view addSubview:_adView];
+            [self.view addSubview:view];
+        }
         //[self _preOpenBoards:router];
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )

@@ -61,6 +61,8 @@ typedef enum LoginStatus {
     int        _nowithdraw;
     int        _showDomob;
     int        _showYoumi;
+    
+    int        _inReview;
 }
 
 +(id) sharedInstance;
@@ -112,4 +114,5 @@ typedef enum LoginStatus {
 -(int)  getNoWithDraw;
 -(NSString*) getTipsStrings;
 
+-(BOOL) isInReview;
 @end

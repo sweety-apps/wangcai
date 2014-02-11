@@ -221,6 +221,8 @@ static LoginAndRegister* _sharedInstance = nil;
                 
                 _nowithdraw = [[dict valueForKey:@"no_withdraw"] intValue];
                 
+                _inReview = [[dict valueForKey:@"in_review"] intValue];
+                
                 NSDictionary* offerwall = [dict valueForKey:@"offerwall"];
                 if ( [[offerwall allKeys] containsObject:@"domob"] ) {
                     _showDomob = [[offerwall valueForKey:@"domob"] intValue];
@@ -255,6 +257,13 @@ static LoginAndRegister* _sharedInstance = nil;
             }
         }
     }
+}
+
+-(BOOL) isInReview {
+    if ( _inReview == 1 ) {
+        return YES;
+    }
+    return NO;
 }
 
 -(void)RegisterPhoneNumToAPService {

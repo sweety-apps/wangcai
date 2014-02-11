@@ -16,9 +16,11 @@
 //
 
 #import "Bee.h"
+#import "YouMiView.h"
 
 @interface AppBoard_iPhone : BeeUIBoard <UIAlertViewDelegate> {
     UIAlertView* _alertView;
+    YouMiView*   _adView;
 }
 
 AS_SINGLETON( AppBoard_iPhone )

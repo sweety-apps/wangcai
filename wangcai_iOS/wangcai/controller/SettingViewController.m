@@ -17,6 +17,7 @@
 #import "MobClick.h"
 #import "UIGetRedBagAlertView.h"
 #import "NSString+FloatFormat.h"
+#import "LoginAndRegister.h"
 
 @interface SettingViewController () <RateAppLogicDelegate>
 
@@ -106,9 +107,9 @@
         return _msgCell;
     } else if ( row == 2 ) {
         return _bellCell;
-    } else if ( row == 3 ) {
+    } else if ( row == 3 && ![[LoginAndRegister sharedInstance] isInReview] ) {
         return _gradeCell;
-    } else if ( row == 4 ) {
+    } else {
         return _aboutCell;
     }
     
@@ -121,7 +122,9 @@
         return 218;
     } else if ( row == 1 ) {
         return 130;
-    } else if ( row == 2 || row == 3 ) {
+    } else if ( row == 2 ) {
+        return 90;
+    } else if ( row == 3 && ![[LoginAndRegister sharedInstance] isInReview] ) {
         return 90;
     } else {
         return 70;
@@ -134,12 +137,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if ( [[LoginAndRegister sharedInstance] isInReview] ) {
+        // 不显示评论
+        return 4;
+    }
     return 5;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
-    if ( row == 3 ) {
+    if ( row == 3 && ![[LoginAndRegister sharedInstance] isInReview] ) {
         // 评分
         [MobClick event:@"task_list_rate_wangcai" attributes:@{@"currentpage":@"设置"}];
         [[self class] jumpToAppStoreAndRate];

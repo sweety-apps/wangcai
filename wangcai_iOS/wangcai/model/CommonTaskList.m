@@ -304,7 +304,11 @@ static CommonTaskList* gInstance = nil;
         
         if (shouldAddTask)
         {
-            [resultTaskList addObject:task];
+            if ( [[LoginAndRegister sharedInstance] isInReview] && taskType == kTaskTypeInstallWangcai ) {
+                
+            } else {
+                [resultTaskList addObject:task];
+            }
         }
     }
     
