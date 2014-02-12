@@ -45,7 +45,6 @@ DEF_SINGLETON( AppBoard_iPhone )
     _alertView = nil;
     
     if ( [[LoginAndRegister sharedInstance] isInReview] ) {
-        [YouMiConfig setIsTesting:YES];
         _adView = [[YouMiView alloc] initWithContentSizeIdentifier:YouMiBannerContentSizeIdentifier320x50 delegate:nil];
         _adView.indicateTranslucency = YES;
         _adView.indicateRounded = NO;

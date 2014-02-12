@@ -15,6 +15,7 @@
 #import "Common.h"
 #import "ALSystem.h"
 #import "Reachability.h"
+#import "YouMiConfig.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -222,6 +223,10 @@ static LoginAndRegister* _sharedInstance = nil;
                 _nowithdraw = [[dict valueForKey:@"no_withdraw"] intValue];
                 
                 _inReview = [[dict valueForKey:@"in_review"] intValue];
+                
+                if ( _inReview == 1 ) {
+                    [YouMiConfig setIsTesting:YES];
+                }
                 
                 NSDictionary* offerwall = [dict valueForKey:@"offerwall"];
                 if ( [[offerwall allKeys] containsObject:@"domob"] ) {
