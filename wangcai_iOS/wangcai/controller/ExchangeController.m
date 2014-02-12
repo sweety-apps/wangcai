@@ -94,6 +94,10 @@
         [view1 release];
         
         [self requestList];
+        
+        if ( [[LoginAndRegister sharedInstance] isInReview] ) {
+            [[self.view viewWithTag:73] setHidden:YES];
+        }
     }
     return self;
 }

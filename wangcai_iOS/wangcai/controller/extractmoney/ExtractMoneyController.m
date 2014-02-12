@@ -33,7 +33,12 @@
         view.frame = rect;
         [self.view addSubview:view];
         
-        [self->_webViewController setNavigateUrl:WEB_EXTRACT_MONEY];
+        NSString* url = WEB_EXTRACT_MONEY;
+        if ( [[LoginAndRegister sharedInstance] isInReview] ) {
+            url = [url stringByAppendingString:@"?inreview=1"];
+        }
+        
+        [self->_webViewController setNavigateUrl:url];
     }
     return self;
 }
