@@ -97,7 +97,8 @@
     [dictionary setObject:[NSNumber numberWithBool:[ALNetwork connectedViaWiFi]] forKey:ALNetwork_connectedViaWiFi];
     [dictionary setObject:[NSNumber numberWithBool:[ALNetwork connectedVia3G]] forKey:ALNetwork_connectedVia3G];
     [dictionary setObjectIfNullSetNullString:[ALNetwork macAddress] forKey:ALNetwork_macAddress];
-    [dictionary setObjectIfNullSetNullString:[ALNetwork externalIPAddress] forKey:ALNetwork_externalIPAddress];
+    [dictionary setObjectIfNullSetNullString:@"127.0.0.1" forKey:ALNetwork_externalIPAddress];
+    //[dictionary setObjectIfNullSetNullString:[ALNetwork externalIPAddress] forKey:ALNetwork_externalIPAddress];
     [dictionary setObjectIfNullSetNullString:[ALNetwork cellIPAddress] forKey:ALNetwork_cellIPAddress];
     [dictionary setObjectIfNullSetNullString:[ALNetwork WiFiNetmaskAddress] forKey:ALNetwork_WiFiNetmaskAddress];
     [dictionary setObjectIfNullSetNullString:[ALNetwork WiFiBroadcastAddress] forKey:ALNetwork_WiFiBroadcastAddress];
@@ -223,7 +224,8 @@
     [dictionary setObject:[NSNumber numberWithBool:[ALNetwork connectedViaWiFi]] forKey:ALNetwork_connectedViaWiFi];
     [dictionary setObject:[NSNumber numberWithBool:[ALNetwork connectedVia3G]] forKey:ALNetwork_connectedVia3G];
     [dictionary setObjectIfNullSetNullString:[ALNetwork macAddress] forKey:ALNetwork_macAddress];
-    [dictionary setObjectIfNullSetNullString:[ALNetwork externalIPAddress] forKey:ALNetwork_externalIPAddress];
+    [dictionary setObjectIfNullSetNullString:@"127.0.0.1" forKey:ALNetwork_externalIPAddress];
+    //[dictionary setObjectIfNullSetNullString:[ALNetwork externalIPAddress] forKey:ALNetwork_externalIPAddress];
     [dictionary setObjectIfNullSetNullString:[ALNetwork cellIPAddress] forKey:ALNetwork_cellIPAddress];
     [dictionary setObjectIfNullSetNullString:[ALNetwork WiFiNetmaskAddress] forKey:ALNetwork_WiFiNetmaskAddress];
     [dictionary setObjectIfNullSetNullString:[ALNetwork WiFiBroadcastAddress] forKey:ALNetwork_WiFiBroadcastAddress];
