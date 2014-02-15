@@ -313,6 +313,66 @@
 		F31F898B18962B8600F34F20 /* iPodTouch4.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896E18962B8600F34F20 /* iPodTouch4.plist */; };
 		F31F898C18962B8600F34F20 /* iPodTouch5.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896F18962B8600F34F20 /* iPodTouch5.plist */; };
 		F31F898D18962B8600F34F20 /* iPodTouch5.plist in Resources */ = {isa = PBXBuildFile; fileRef = F31F896F18962B8600F34F20 /* iPodTouch5.plist */; };
+		F31F94D418AF599A0035792B /* MyWangcaiBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F31F94D318AF599A0035792B /* MyWangcaiBoard_iPhone.m */; };
+		F31F94D518AF599A0035792B /* MyWangcaiBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F31F94D318AF599A0035792B /* MyWangcaiBoard_iPhone.m */; };
+		F31F94DB18AF59E00035792B /* MyWangcaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F31F94D918AF59E00035792B /* MyWangcaiViewController.m */; };
+		F31F94DC18AF59E00035792B /* MyWangcaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F31F94D918AF59E00035792B /* MyWangcaiViewController.m */; };
+		F31F94DD18AF59E00035792B /* MyWangcaiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31F94DA18AF59E00035792B /* MyWangcaiViewController.xib */; };
+		F31F94DE18AF59E00035792B /* MyWangcaiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31F94DA18AF59E00035792B /* MyWangcaiViewController.xib */; };
+		F31F94FA18AF623B0035792B /* mywangcai_dog_10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E118AF623B0035792B /* mywangcai_dog_10@2x.png */; };
+		F31F94FB18AF623B0035792B /* mywangcai_dog_10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E118AF623B0035792B /* mywangcai_dog_10@2x.png */; };
+		F31F94FC18AF623B0035792B /* mywangcai_dog_11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E218AF623B0035792B /* mywangcai_dog_11@2x.png */; };
+		F31F94FD18AF623B0035792B /* mywangcai_dog_11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E218AF623B0035792B /* mywangcai_dog_11@2x.png */; };
+		F31F94FE18AF623B0035792B /* mywangcai_dog_12@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E318AF623B0035792B /* mywangcai_dog_12@2x.png */; };
+		F31F94FF18AF623B0035792B /* mywangcai_dog_12@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E318AF623B0035792B /* mywangcai_dog_12@2x.png */; };
+		F31F950018AF623B0035792B /* mywangcai_dog_13@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E418AF623B0035792B /* mywangcai_dog_13@2x.png */; };
+		F31F950118AF623B0035792B /* mywangcai_dog_13@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E418AF623B0035792B /* mywangcai_dog_13@2x.png */; };
+		F31F950218AF623B0035792B /* mywangcai_dog_14@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E518AF623B0035792B /* mywangcai_dog_14@2x.png */; };
+		F31F950318AF623B0035792B /* mywangcai_dog_14@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E518AF623B0035792B /* mywangcai_dog_14@2x.png */; };
+		F31F950418AF623B0035792B /* mywangcai_dog_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E618AF623B0035792B /* mywangcai_dog_1@2x.png */; };
+		F31F950518AF623B0035792B /* mywangcai_dog_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E618AF623B0035792B /* mywangcai_dog_1@2x.png */; };
+		F31F950618AF623B0035792B /* mywangcai_dog_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E718AF623B0035792B /* mywangcai_dog_2@2x.png */; };
+		F31F950718AF623B0035792B /* mywangcai_dog_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E718AF623B0035792B /* mywangcai_dog_2@2x.png */; };
+		F31F950818AF623B0035792B /* mywangcai_dog_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E818AF623B0035792B /* mywangcai_dog_3@2x.png */; };
+		F31F950918AF623B0035792B /* mywangcai_dog_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E818AF623B0035792B /* mywangcai_dog_3@2x.png */; };
+		F31F950A18AF623B0035792B /* mywangcai_dog_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E918AF623B0035792B /* mywangcai_dog_4@2x.png */; };
+		F31F950B18AF623B0035792B /* mywangcai_dog_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94E918AF623B0035792B /* mywangcai_dog_4@2x.png */; };
+		F31F950C18AF623B0035792B /* mywangcai_dog_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EA18AF623B0035792B /* mywangcai_dog_5@2x.png */; };
+		F31F950D18AF623B0035792B /* mywangcai_dog_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EA18AF623B0035792B /* mywangcai_dog_5@2x.png */; };
+		F31F950E18AF623B0035792B /* mywangcai_dog_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EB18AF623B0035792B /* mywangcai_dog_6@2x.png */; };
+		F31F950F18AF623B0035792B /* mywangcai_dog_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EB18AF623B0035792B /* mywangcai_dog_6@2x.png */; };
+		F31F951018AF623B0035792B /* mywangcai_dog_7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EC18AF623B0035792B /* mywangcai_dog_7@2x.png */; };
+		F31F951118AF623B0035792B /* mywangcai_dog_7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EC18AF623B0035792B /* mywangcai_dog_7@2x.png */; };
+		F31F951218AF623B0035792B /* mywangcai_dog_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94ED18AF623B0035792B /* mywangcai_dog_8@2x.png */; };
+		F31F951318AF623B0035792B /* mywangcai_dog_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94ED18AF623B0035792B /* mywangcai_dog_8@2x.png */; };
+		F31F951418AF623B0035792B /* mywangcai_dog_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EE18AF623B0035792B /* mywangcai_dog_9@2x.png */; };
+		F31F951518AF623B0035792B /* mywangcai_dog_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EE18AF623B0035792B /* mywangcai_dog_9@2x.png */; };
+		F31F951618AF623B0035792B /* mywangcai_bingdphone_!@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EF18AF623B0035792B /* mywangcai_bingdphone_!@2x.png */; };
+		F31F951718AF623B0035792B /* mywangcai_bingdphone_!@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94EF18AF623B0035792B /* mywangcai_bingdphone_!@2x.png */; };
+		F31F951818AF623B0035792B /* mywangcai_bingdphone_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F018AF623B0035792B /* mywangcai_bingdphone_bg@2x.png */; };
+		F31F951918AF623B0035792B /* mywangcai_bingdphone_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F018AF623B0035792B /* mywangcai_bingdphone_bg@2x.png */; };
+		F31F951A18AF623B0035792B /* mywangcai_bingdphone_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F118AF623B0035792B /* mywangcai_bingdphone_btn@2x.png */; };
+		F31F951B18AF623B0035792B /* mywangcai_bingdphone_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F118AF623B0035792B /* mywangcai_bingdphone_btn@2x.png */; };
+		F31F951C18AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F218AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png */; };
+		F31F951D18AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F218AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png */; };
+		F31F951E18AF623B0035792B /* mywangcai_cell_baifabaizhong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F318AF623B0035792B /* mywangcai_cell_baifabaizhong@2x.png */; };
+		F31F951F18AF623B0035792B /* mywangcai_cell_baifabaizhong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F318AF623B0035792B /* mywangcai_cell_baifabaizhong@2x.png */; };
+		F31F952018AF623B0035792B /* mywangcai_cell_dianshichengjin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F418AF623B0035792B /* mywangcai_cell_dianshichengjin@2x.png */; };
+		F31F952118AF623B0035792B /* mywangcai_cell_dianshichengjin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F418AF623B0035792B /* mywangcai_cell_dianshichengjin@2x.png */; };
+		F31F952218AF623B0035792B /* mywangcai_cell_haoyunlianlian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F518AF623B0035792B /* mywangcai_cell_haoyunlianlian@2x.png */; };
+		F31F952318AF623B0035792B /* mywangcai_cell_haoyunlianlian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F518AF623B0035792B /* mywangcai_cell_haoyunlianlian@2x.png */; };
+		F31F952418AF623B0035792B /* mywangcai_cell_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F618AF623B0035792B /* mywangcai_cell_line@2x.png */; };
+		F31F952518AF623B0035792B /* mywangcai_cell_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F618AF623B0035792B /* mywangcai_cell_line@2x.png */; };
+		F31F952618AF623B0035792B /* mywangcai_jiangyan_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F718AF623B0035792B /* mywangcai_jiangyan_bg@2x.png */; };
+		F31F952718AF623B0035792B /* mywangcai_jiangyan_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F718AF623B0035792B /* mywangcai_jiangyan_bg@2x.png */; };
+		F31F952818AF623B0035792B /* mywangcai_jingyan_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F818AF623B0035792B /* mywangcai_jingyan_red@2x.png */; };
+		F31F952918AF623B0035792B /* mywangcai_jingyan_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F818AF623B0035792B /* mywangcai_jingyan_red@2x.png */; };
+		F31F952A18AF623B0035792B /* mywangcai_up_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F918AF623B0035792B /* mywangcai_up_bg@2x.png */; };
+		F31F952B18AF623B0035792B /* mywangcai_up_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F31F94F918AF623B0035792B /* mywangcai_up_bg@2x.png */; };
+		F31F952F18AF76E80035792B /* MyWangcaiSkillCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F31F952D18AF76E80035792B /* MyWangcaiSkillCellViewController.m */; };
+		F31F953018AF76E80035792B /* MyWangcaiSkillCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F31F952D18AF76E80035792B /* MyWangcaiSkillCellViewController.m */; };
+		F31F953118AF76E80035792B /* MyWangcaiSkillCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31F952E18AF76E80035792B /* MyWangcaiSkillCellViewController.xib */; };
+		F31F953218AF76E80035792B /* MyWangcaiSkillCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31F952E18AF76E80035792B /* MyWangcaiSkillCellViewController.xib */; };
 		F3359E4C1886C0F000C1E636 /* RateAppLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F3359E4B1886C0F000C1E636 /* RateAppLogic.m */; };
 		F3359E4E1886C0FB00C1E636 /* package_icon_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E4D1886C0FB00C1E636 /* package_icon_2@2x.png */; };
 		F3359E511886C11100C1E636 /* qrcode_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */; };
@@ -1511,6 +1571,39 @@
 		F31F896D18962B8600F34F20 /* iPodTouch3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPodTouch3.plist; sourceTree = "<group>"; };
 		F31F896E18962B8600F34F20 /* iPodTouch4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPodTouch4.plist; sourceTree = "<group>"; };
 		F31F896F18962B8600F34F20 /* iPodTouch5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iPodTouch5.plist; sourceTree = "<group>"; };
+		F31F94D218AF599A0035792B /* MyWangcaiBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWangcaiBoard_iPhone.h; sourceTree = "<group>"; };
+		F31F94D318AF599A0035792B /* MyWangcaiBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWangcaiBoard_iPhone.m; sourceTree = "<group>"; };
+		F31F94D818AF59E00035792B /* MyWangcaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWangcaiViewController.h; sourceTree = "<group>"; };
+		F31F94D918AF59E00035792B /* MyWangcaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWangcaiViewController.m; sourceTree = "<group>"; };
+		F31F94DA18AF59E00035792B /* MyWangcaiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWangcaiViewController.xib; sourceTree = "<group>"; };
+		F31F94E118AF623B0035792B /* mywangcai_dog_10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_10@2x.png"; sourceTree = "<group>"; };
+		F31F94E218AF623B0035792B /* mywangcai_dog_11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_11@2x.png"; sourceTree = "<group>"; };
+		F31F94E318AF623B0035792B /* mywangcai_dog_12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_12@2x.png"; sourceTree = "<group>"; };
+		F31F94E418AF623B0035792B /* mywangcai_dog_13@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_13@2x.png"; sourceTree = "<group>"; };
+		F31F94E518AF623B0035792B /* mywangcai_dog_14@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_14@2x.png"; sourceTree = "<group>"; };
+		F31F94E618AF623B0035792B /* mywangcai_dog_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_1@2x.png"; sourceTree = "<group>"; };
+		F31F94E718AF623B0035792B /* mywangcai_dog_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_2@2x.png"; sourceTree = "<group>"; };
+		F31F94E818AF623B0035792B /* mywangcai_dog_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_3@2x.png"; sourceTree = "<group>"; };
+		F31F94E918AF623B0035792B /* mywangcai_dog_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_4@2x.png"; sourceTree = "<group>"; };
+		F31F94EA18AF623B0035792B /* mywangcai_dog_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_5@2x.png"; sourceTree = "<group>"; };
+		F31F94EB18AF623B0035792B /* mywangcai_dog_6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_6@2x.png"; sourceTree = "<group>"; };
+		F31F94EC18AF623B0035792B /* mywangcai_dog_7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_7@2x.png"; sourceTree = "<group>"; };
+		F31F94ED18AF623B0035792B /* mywangcai_dog_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_8@2x.png"; sourceTree = "<group>"; };
+		F31F94EE18AF623B0035792B /* mywangcai_dog_9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_dog_9@2x.png"; sourceTree = "<group>"; };
+		F31F94EF18AF623B0035792B /* mywangcai_bingdphone_!@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_bingdphone_!@2x.png"; sourceTree = "<group>"; };
+		F31F94F018AF623B0035792B /* mywangcai_bingdphone_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_bingdphone_bg@2x.png"; sourceTree = "<group>"; };
+		F31F94F118AF623B0035792B /* mywangcai_bingdphone_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_bingdphone_btn@2x.png"; sourceTree = "<group>"; };
+		F31F94F218AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_bingdphone_btn_pressed@2x.png"; sourceTree = "<group>"; };
+		F31F94F318AF623B0035792B /* mywangcai_cell_baifabaizhong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_cell_baifabaizhong@2x.png"; sourceTree = "<group>"; };
+		F31F94F418AF623B0035792B /* mywangcai_cell_dianshichengjin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_cell_dianshichengjin@2x.png"; sourceTree = "<group>"; };
+		F31F94F518AF623B0035792B /* mywangcai_cell_haoyunlianlian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_cell_haoyunlianlian@2x.png"; sourceTree = "<group>"; };
+		F31F94F618AF623B0035792B /* mywangcai_cell_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_cell_line@2x.png"; sourceTree = "<group>"; };
+		F31F94F718AF623B0035792B /* mywangcai_jiangyan_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_jiangyan_bg@2x.png"; sourceTree = "<group>"; };
+		F31F94F818AF623B0035792B /* mywangcai_jingyan_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_jingyan_red@2x.png"; sourceTree = "<group>"; };
+		F31F94F918AF623B0035792B /* mywangcai_up_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mywangcai_up_bg@2x.png"; sourceTree = "<group>"; };
+		F31F952C18AF76E80035792B /* MyWangcaiSkillCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWangcaiSkillCellViewController.h; sourceTree = "<group>"; };
+		F31F952D18AF76E80035792B /* MyWangcaiSkillCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWangcaiSkillCellViewController.m; sourceTree = "<group>"; };
+		F31F952E18AF76E80035792B /* MyWangcaiSkillCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWangcaiSkillCellViewController.xib; sourceTree = "<group>"; };
 		F3359E4A1886C0F000C1E636 /* RateAppLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateAppLogic.h; sourceTree = "<group>"; };
 		F3359E4B1886C0F000C1E636 /* RateAppLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateAppLogic.m; sourceTree = "<group>"; };
 		F3359E4D1886C0FB00C1E636 /* package_icon_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_2@2x.png"; sourceTree = "<group>"; };
@@ -2817,6 +2910,46 @@
 			path = iPodTouch;
 			sourceTree = "<group>";
 		};
+		F31F94DF18AF623B0035792B /* MyWangcai */ = {
+			isa = PBXGroup;
+			children = (
+				F31F94E018AF623B0035792B /* animation */,
+				F31F94EF18AF623B0035792B /* mywangcai_bingdphone_!@2x.png */,
+				F31F94F018AF623B0035792B /* mywangcai_bingdphone_bg@2x.png */,
+				F31F94F118AF623B0035792B /* mywangcai_bingdphone_btn@2x.png */,
+				F31F94F218AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png */,
+				F31F94F318AF623B0035792B /* mywangcai_cell_baifabaizhong@2x.png */,
+				F31F94F418AF623B0035792B /* mywangcai_cell_dianshichengjin@2x.png */,
+				F31F94F518AF623B0035792B /* mywangcai_cell_haoyunlianlian@2x.png */,
+				F31F94F618AF623B0035792B /* mywangcai_cell_line@2x.png */,
+				F31F94F718AF623B0035792B /* mywangcai_jiangyan_bg@2x.png */,
+				F31F94F818AF623B0035792B /* mywangcai_jingyan_red@2x.png */,
+				F31F94F918AF623B0035792B /* mywangcai_up_bg@2x.png */,
+			);
+			path = MyWangcai;
+			sourceTree = "<group>";
+		};
+		F31F94E018AF623B0035792B /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				F31F94E118AF623B0035792B /* mywangcai_dog_10@2x.png */,
+				F31F94E218AF623B0035792B /* mywangcai_dog_11@2x.png */,
+				F31F94E318AF623B0035792B /* mywangcai_dog_12@2x.png */,
+				F31F94E418AF623B0035792B /* mywangcai_dog_13@2x.png */,
+				F31F94E518AF623B0035792B /* mywangcai_dog_14@2x.png */,
+				F31F94E618AF623B0035792B /* mywangcai_dog_1@2x.png */,
+				F31F94E718AF623B0035792B /* mywangcai_dog_2@2x.png */,
+				F31F94E818AF623B0035792B /* mywangcai_dog_3@2x.png */,
+				F31F94E918AF623B0035792B /* mywangcai_dog_4@2x.png */,
+				F31F94EA18AF623B0035792B /* mywangcai_dog_5@2x.png */,
+				F31F94EB18AF623B0035792B /* mywangcai_dog_6@2x.png */,
+				F31F94EC18AF623B0035792B /* mywangcai_dog_7@2x.png */,
+				F31F94ED18AF623B0035792B /* mywangcai_dog_8@2x.png */,
+				F31F94EE18AF623B0035792B /* mywangcai_dog_9@2x.png */,
+			);
+			path = animation;
+			sourceTree = "<group>";
+		};
 		F358E9F3186D2AA200DC3ADA /* utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -3215,6 +3348,14 @@
 				F36049B51871B0C500FAD1F3 /* ChoujiangViewController.h */,
 				F36049B61871B0C500FAD1F3 /* ChoujiangViewController.m */,
 				F36049B71871B0C500FAD1F3 /* ChoujiangViewController.xib */,
+				F31F94D218AF599A0035792B /* MyWangcaiBoard_iPhone.h */,
+				F31F94D318AF599A0035792B /* MyWangcaiBoard_iPhone.m */,
+				F31F94D818AF59E00035792B /* MyWangcaiViewController.h */,
+				F31F94D918AF59E00035792B /* MyWangcaiViewController.m */,
+				F31F94DA18AF59E00035792B /* MyWangcaiViewController.xib */,
+				F31F952C18AF76E80035792B /* MyWangcaiSkillCellViewController.h */,
+				F31F952D18AF76E80035792B /* MyWangcaiSkillCellViewController.m */,
+				F31F952E18AF76E80035792B /* MyWangcaiSkillCellViewController.xib */,
 			);
 			name = templates;
 			path = view_iPhone/templates;
@@ -4161,6 +4302,7 @@
 		F3F18A41185762BD0098C852 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F31F94DF18AF623B0035792B /* MyWangcai */,
 				F3FEC516189146E100A297C8 /* RedbagMsgbox */,
 				A6FEE27E187D9AB800E5AF3E /* EGORefreshTableHeader */,
 				F3813D3718783A5000350C27 /* Sounds */,
@@ -4336,8 +4478,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31F951918AF623B0035792B /* mywangcai_bingdphone_bg@2x.png in Resources */,
+				F31F950B18AF623B0035792B /* mywangcai_dog_4@2x.png in Resources */,
 				F3359FD118882F8000C1E636 /* alipay@2x.png in Resources */,
 				F3359FD218882F8000C1E636 /* !@2x.png in Resources */,
+				F31F950718AF623B0035792B /* mywangcai_dog_2@2x.png in Resources */,
 				F31F898118962B8600F34F20 /* iPhone4s.plist in Resources */,
 				F3359FD318882F8000C1E636 /* invite_banner@2x.png in Resources */,
 				F3359FD418882F8000C1E636 /* UserInfoEditorViewController.xib in Resources */,
@@ -4346,11 +4491,13 @@
 				F3359FD618882F8000C1E636 /* Default@2x.png in Resources */,
 				F3359FD718882F8000C1E636 /* BusionessPageBoard_iPhone.xml in Resources */,
 				F3359FD818882F8000C1E636 /* warn@2x.png in Resources */,
+				F31F950318AF623B0035792B /* mywangcai_dog_14@2x.png in Resources */,
 				A6C1A636188942F70011FBBC /* icon_120_120.png in Resources */,
 				F3359FD918882F8000C1E636 /* StartupController.xib in Resources */,
 				F3359FDA18882F8000C1E636 /* package_icon_3@2x.png in Resources */,
 				F3359FDC18882F8000C1E636 /* yue_0@2x.png in Resources */,
 				F3359FDD18882F8000C1E636 /* menu-icon-blue@2x.png in Resources */,
+				F31F952518AF623B0035792B /* mywangcai_cell_line@2x.png in Resources */,
 				F3359FDE18882F8000C1E636 /* choujiang_start_btn@2x.png in Resources */,
 				F3359FDF18882F8000C1E636 /* package_icon_half@2x.png in Resources */,
 				F3359FE018882F8000C1E636 /* menu_icon_jiaoyimingxi@2x.png in Resources */,
@@ -4361,6 +4508,7 @@
 				F31F898718962B8600F34F20 /* iPhone5s.plist in Resources */,
 				F3359FE518882F8000C1E636 /* choujiang_3yuan@2x.png in Resources */,
 				F3359FE618882F8000C1E636 /* choujiang_x3@2x.png in Resources */,
+				F31F950D18AF623B0035792B /* mywangcai_dog_5@2x.png in Resources */,
 				F3359FE718882F8000C1E636 /* Icon@2x.png in Resources */,
 				F3359FE818882F8000C1E636 /* user_sex_selected@2x.png in Resources */,
 				F3359FE918882F8000C1E636 /* splash-logo-small@2x.png in Resources */,
@@ -4371,6 +4519,7 @@
 				F3359FEE18882F8000C1E636 /* menu_icon_tuhaobang@2x.png in Resources */,
 				F3359FEF18882F8000C1E636 /* invite_seg_normal@2x.png in Resources */,
 				F3359FF018882F8000C1E636 /* navigation-bar@2x.png in Resources */,
+				F31F94FB18AF623B0035792B /* mywangcai_dog_10@2x.png in Resources */,
 				F3359FF118882F8000C1E636 /* phone_num_border@2x.png in Resources */,
 				F3359FF218882F8000C1E636 /* package_icon_1mao@2x.png in Resources */,
 				71008A3B189108D900689E2F /* app_tip_domob@2x.png in Resources */,
@@ -4381,6 +4530,8 @@
 				F3FEC528189146E100A297C8 /* redbag_mb_lv_unget@2x.png in Resources */,
 				F3359FF718882F8000C1E636 /* choujiang_start_btn_selected@2x.png in Resources */,
 				F3359FF818882F8000C1E636 /* choujiang_border_moving@2x.png in Resources */,
+				F31F951518AF623B0035792B /* mywangcai_dog_9@2x.png in Resources */,
+				F31F950F18AF623B0035792B /* mywangcai_dog_6@2x.png in Resources */,
 				F3359FF918882F8000C1E636 /* yue_8@2x.png in Resources */,
 				F3359FFA18882F8000C1E636 /* navigation_bar@2x.png in Resources */,
 				F3359FFB18882F8000C1E636 /* bottom_arraw@2x.png in Resources */,
@@ -4402,6 +4553,7 @@
 				F335A00618882F8000C1E636 /* choujiang_x1selected@2x.png in Resources */,
 				F335A00718882F8000C1E636 /* yue_5@2x.png in Resources */,
 				F335A00818882F8000C1E636 /* package_icon_many@2x.png in Resources */,
+				F31F952318AF623B0035792B /* mywangcai_cell_haoyunlianlian@2x.png in Resources */,
 				F335A00918882F8000C1E636 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
 				F335A00A18882F8000C1E636 /* choujiang_thanks3@2x.png in Resources */,
 				F335A00B18882F8000C1E636 /* menu_icon_help@2x.png in Resources */,
@@ -4430,6 +4582,7 @@
 				F335A02018882F8000C1E636 /* choujiang_back_btn@2x.png in Resources */,
 				F335A02118882F8000C1E636 /* back@2x.png in Resources */,
 				F335A02218882F8000C1E636 /* TabController.xib in Resources */,
+				F31F951718AF623B0035792B /* mywangcai_bingdphone_!@2x.png in Resources */,
 				F31F897718962B8600F34F20 /* iPadAir.plist in Resources */,
 				F335A02318882F8000C1E636 /* tab-item@2x.png in Resources */,
 				F31F898918962B8600F34F20 /* iPodTouch3.plist in Resources */,
@@ -4443,6 +4596,7 @@
 				F335A02918882F8000C1E636 /* setting_bell@2x.png in Resources */,
 				F335A02A18882F8000C1E636 /* body_bkg@2x.png in Resources */,
 				F31F898518962B8600F34F20 /* iPhone5c.plist in Resources */,
+				F31F94DE18AF59E00035792B /* MyWangcaiViewController.xib in Resources */,
 				F335A02B18882F8000C1E636 /* WebPageController.xib in Resources */,
 				F335A02C18882F8000C1E636 /* menu_icon_tixian@2x.png in Resources */,
 				F335A02D18882F8000C1E636 /* cloud@2x.png in Resources */,
@@ -4462,11 +4616,14 @@
 				F335A03818882F8000C1E636 /* invite_seg_sel_unsel@2x.png in Resources */,
 				F335A03918882F8000C1E636 /* tab_split@2x.PNG in Resources */,
 				71355517188D169D0007784A /* PushConfig.plist in Resources */,
+				F31F94FD18AF623B0035792B /* mywangcai_dog_11@2x.png in Resources */,
 				F335A03A18882F8000C1E636 /* yue_7@2x.png in Resources */,
 				F3FEC520189146E100A297C8 /* redbag_mb_btn_normal@2x.png in Resources */,
 				F335A03B18882F8000C1E636 /* package_icon_one@2x.png in Resources */,
+				F31F951318AF623B0035792B /* mywangcai_dog_8@2x.png in Resources */,
 				F335A03C18882F8000C1E636 /* blueArrow.png in Resources */,
 				F335A03D18882F8000C1E636 /* SettingViewController.xib in Resources */,
+				F31F951D18AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png in Resources */,
 				71008A341891046100689E2F /* app_tip_bkg@2x.png in Resources */,
 				F335A03E18882F8000C1E636 /* choujiang_border_selected2@2x.png in Resources */,
 				F335A03F18882F8000C1E636 /* choujiang_title@2x.png in Resources */,
@@ -4475,9 +4632,11 @@
 				F335A04218882F8000C1E636 /* Icon.png in Resources */,
 				71008A371891073800689E2F /* app_tip_close@2x.png in Resources */,
 				F335A04318882F8000C1E636 /* menu_icon_wodewangcai@2x.png in Resources */,
+				F31F952918AF623B0035792B /* mywangcai_jingyan_red@2x.png in Resources */,
 				F335A04418882F8000C1E636 /* table_view_cell_line@2x.png in Resources */,
 				713555B5188D17810007784A /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				F335A04518882F8000C1E636 /* sms_code_border@2x.png in Resources */,
+				F31F951F18AF623B0035792B /* mywangcai_cell_baifabaizhong@2x.png in Resources */,
 				F31F898D18962B8600F34F20 /* iPodTouch5.plist in Resources */,
 				719F188318AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */,
 				F335A04618882F8000C1E636 /* user_info_commit_btn@2x.png in Resources */,
@@ -4489,6 +4648,7 @@
 				F335A04C18882F8000C1E636 /* main_page_head@2x.png in Resources */,
 				F335A04D18882F8000C1E636 /* arrow-down@2x.png in Resources */,
 				F335A04E18882F8000C1E636 /* whiteArrow.png in Resources */,
+				F31F951B18AF623B0035792B /* mywangcai_bingdphone_btn@2x.png in Resources */,
 				F335A04F18882F8000C1E636 /* person_info_icon@2x.png in Resources */,
 				F335A05018882F8000C1E636 /* TransferToAlipayAndPhoneController.xib in Resources */,
 				F335A05118882F8000C1E636 /* yue_6@2x.png in Resources */,
@@ -4503,12 +4663,15 @@
 				F335A05918882F8000C1E636 /* BindTipsDuihao.png in Resources */,
 				F335A05A18882F8000C1E636 /* head_top_part@2x.png in Resources */,
 				F335A05B18882F8000C1E636 /* exchange_btn@2x.png in Resources */,
+				F31F952B18AF623B0035792B /* mywangcai_up_bg@2x.png in Resources */,
 				71008A4318915EFD00689E2F /* register_suc@2x.png in Resources */,
 				F335A05C18882F8000C1E636 /* qrcode_cell_icon@2x.png in Resources */,
 				F3FEC51E189146E100A297C8 /* redbag_mb_bg@2x.png in Resources */,
 				F31F898318962B8600F34F20 /* iPhone5.plist in Resources */,
 				F335A05D18882F8000C1E636 /* choujiang_shaxuan@2x.png in Resources */,
+				F31F94FF18AF623B0035792B /* mywangcai_dog_12@2x.png in Resources */,
 				71355513188D16060007784A /* DomobOfferWallBundle.bundle in Resources */,
+				F31F953218AF76E80035792B /* MyWangcaiSkillCellViewController.xib in Resources */,
 				F335A05E18882F8000C1E636 /* phone_logo@2x.png in Resources */,
 				71008A46189160F800689E2F /* goback@2x.png in Resources */,
 				F3FEC526189146E100A297C8 /* redbag_mb_lv_get@2x.png in Resources */,
@@ -4529,12 +4692,16 @@
 				F335A06D18882F8000C1E636 /* main_menu_bg@2x.jpg in Resources */,
 				F335A06E18882F8000C1E636 /* invite_nav_bar@2x.png in Resources */,
 				F335A06F18882F8000C1E636 /* default568@2x.png in Resources */,
+				F31F950518AF623B0035792B /* mywangcai_dog_1@2x.png in Resources */,
 				F335A07018882F8000C1E636 /* choujiang_5mao@2x.png in Resources */,
+				F31F952718AF623B0035792B /* mywangcai_jiangyan_bg@2x.png in Resources */,
 				F335A07118882F8000C1E636 /* user_info_bg_paper@2x.png in Resources */,
 				F335A07218882F8000C1E636 /* invite_edit_bkg@2x.png in Resources */,
+				F31F951118AF623B0035792B /* mywangcai_dog_7@2x.png in Resources */,
 				F335A07318882F8000C1E636 /* choujiang_xiaomi@2x.png in Resources */,
 				F335A07418882F8000C1E636 /* menu-icon-red@2x.png in Resources */,
 				F335A07518882F8000C1E636 /* apptask_rmb@2x.png in Resources */,
+				F31F950918AF623B0035792B /* mywangcai_dog_3@2x.png in Resources */,
 				F335A07618882F8000C1E636 /* Default.png in Resources */,
 				F335A07718882F8000C1E636 /* WCMainPageBoard_iPhone.xml in Resources */,
 				F335A07818882F8000C1E636 /* invite_seg_unsel_sel@2x.png in Resources */,
@@ -4543,6 +4710,7 @@
 				F335A07A18882F8000C1E636 /* PhoneValidationController.xib in Resources */,
 				F335A07B18882F8000C1E636 /* TaskController.xib in Resources */,
 				F335A07C18882F8000C1E636 /* about2@2x.png in Resources */,
+				F31F952118AF623B0035792B /* mywangcai_cell_dianshichengjin@2x.png in Resources */,
 				F335A07E18882F8000C1E636 /* recommand_task_icon@2x.png in Resources */,
 				F335A07F18882F8000C1E636 /* apptask_tip@2x.png in Resources */,
 				F335A08018882F8000C1E636 /* blueArrow@2x.png in Resources */,
@@ -4552,6 +4720,7 @@
 				F3FEC524189146E100A297C8 /* redbag_mb_close@2x.png in Resources */,
 				F335A08518882F8000C1E636 /* menu_icon_line@2x.png in Resources */,
 				F335A08618882F8000C1E636 /* choujiang_thanks1@2x.png in Resources */,
+				F31F950118AF623B0035792B /* mywangcai_dog_13@2x.png in Resources */,
 				F335A08718882F8000C1E636 /* choujiang_x3selected@2x.png in Resources */,
 				F335A08818882F8000C1E636 /* MJRefresh.bundle in Resources */,
 				F335A08918882F8000C1E636 /* menu-icon@2x.png in Resources */,
@@ -4595,18 +4764,22 @@
 				71008A331891046100689E2F /* app_tip_bkg@2x.png in Resources */,
 				A60C5883186FF8A30068425C /* user_sex_selected@2x.png in Resources */,
 				A60C5865186FF8A30068425C /* splash-logo-small@2x.png in Resources */,
+				F31F952018AF623B0035792B /* mywangcai_cell_dianshichengjin@2x.png in Resources */,
 				A60C58A418703AE60068425C /* invite_copy_button@2x.png in Resources */,
 				F3F189F918543A450098C852 /* MenuBoard_iPhone.xml in Resources */,
+				F31F94FE18AF623B0035792B /* mywangcai_dog_12@2x.png in Resources */,
 				A60C584C186FF8A30068425C /* btn_normal@2x.png in Resources */,
 				A67BA6E11888F11100CEC89B /* iTunesArtwrok.png in Resources */,
 				A6FA6A5D18827C88003F8399 /* update@2x.png in Resources */,
 				F36049B31871A9AE00FAD1F3 /* menu_icon_tuhaobang@2x.png in Resources */,
 				A60C58AA18703AE60068425C /* invite_seg_normal@2x.png in Resources */,
+				F31F951018AF623B0035792B /* mywangcai_dog_7@2x.png in Resources */,
 				A60C5858186FF8A30068425C /* navigation-bar@2x.png in Resources */,
 				A60C585B186FF8A30068425C /* phone_num_border@2x.png in Resources */,
 				F3359E571886D2A800C1E636 /* package_icon_1mao@2x.png in Resources */,
 				A60C5851186FF8A30068425C /* menu-button@2x.png in Resources */,
 				F3813D30187566CC00350C27 /* choujiang_guize@2x.png in Resources */,
+				F31F94FA18AF623B0035792B /* mywangcai_dog_10@2x.png in Resources */,
 				A60C5849186FF8A30068425C /* border@2x.png in Resources */,
 				A60C584F186FF8A30068425C /* line@2x.png in Resources */,
 				F3813D1D18753ED400350C27 /* choujiang_start_btn_selected@2x.png in Resources */,
@@ -4627,6 +4800,7 @@
 				A60C5856186FF8A30068425C /* nav_Header@2x.png in Resources */,
 				A60C5889186FF8A30068425C /* head_right_icon@2x.png in Resources */,
 				A60C586D186FF8A30068425C /* tab_bkg@2x.png in Resources */,
+				F31F951C18AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png in Resources */,
 				F3813D2418753ED400350C27 /* choujiang_x1selected@2x.png in Resources */,
 				A60C5877186FF8A30068425C /* yue_5@2x.png in Resources */,
 				F3DD64201882D7B400E56A0B /* package_icon_many@2x.png in Resources */,
@@ -4634,18 +4808,25 @@
 				F3813D2A18753ED400350C27 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
 				F3813D2018753ED400350C27 /* choujiang_thanks3@2x.png in Resources */,
 				719F188218AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */,
+				F31F952618AF623B0035792B /* mywangcai_jiangyan_bg@2x.png in Resources */,
 				F3DD641B1882D36500E56A0B /* menu_icon_help@2x.png in Resources */,
 				A60C585F186FF8A30068425C /* right@2x.png in Resources */,
 				A6FEE28E187D9AB800E5AF3E /* whiteArrow@2x.png in Resources */,
 				F3813D3B18783CE800350C27 /* gotcoins.aiff in Resources */,
 				A60C5870186FF8A30068425C /* warn_bkg@2x.png in Resources */,
+				F31F94DD18AF59E00035792B /* MyWangcaiViewController.xib in Resources */,
+				F31F953118AF76E80035792B /* MyWangcaiSkillCellViewController.xib in Resources */,
 				A60C5876186FF8A30068425C /* yue_4@2x.png in Resources */,
+				F31F951E18AF623B0035792B /* mywangcai_cell_baifabaizhong@2x.png in Resources */,
 				F3FB92AF187C5AB5001D702E /* qiandao_button_red_dot@2x.png in Resources */,
 				A60C587C186FF8A30068425C /* yue_dot@2x.png in Resources */,
 				A60C587E186FF8A30068425C /* table_view_cell_label_bg@2x.png in Resources */,
+				F31F94FC18AF623B0035792B /* mywangcai_dog_11@2x.png in Resources */,
+				F31F950E18AF623B0035792B /* mywangcai_dog_6@2x.png in Resources */,
 				71008A45189160F800689E2F /* goback@2x.png in Resources */,
 				713555AE188D17810007784A /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				F3D834CE185C1E31003095D5 /* BaseTaskTableViewController.xib in Resources */,
+				F31F951418AF623B0035792B /* mywangcai_dog_9@2x.png in Resources */,
 				71355598188D17800007784A /* ShareSDKLocalizable.strings in Resources */,
 				A6FA6A591882547B003F8399 /* OnlineWallViewController.xib in Resources */,
 				F3FEC523189146E100A297C8 /* redbag_mb_close@2x.png in Resources */,
@@ -4655,11 +4836,13 @@
 				F31F898818962B8600F34F20 /* iPodTouch3.plist in Resources */,
 				F36049B91871B0C500FAD1F3 /* ChoujiangViewController.xib in Resources */,
 				F31F897218962B8600F34F20 /* iPad3.plist in Resources */,
+				F31F950618AF623B0035792B /* mywangcai_dog_2@2x.png in Resources */,
 				F3D9D555185D876D00392C40 /* InviteController.xib in Resources */,
 				A6FA6A671882E6F3003F8399 /* about@2x.png in Resources */,
 				A60C585C186FF8A30068425C /* reg_success@2x.png in Resources */,
 				F31F897C18962B8600F34F20 /* iPhone3Gs.plist in Resources */,
 				A60C585E186FF8A30068425C /* resend_normal@2x.png in Resources */,
+				F31F950418AF623B0035792B /* mywangcai_dog_1@2x.png in Resources */,
 				A60C5842186FF8A30068425C /* package_icon_8@2x.png in Resources */,
 				A60C58AF18703AE60068425C /* invite_seg_unsel_unsel@2x.png in Resources */,
 				F3813D321875796F00350C27 /* choujiang_back_btn@2x.png in Resources */,
@@ -4667,6 +4850,7 @@
 				F3D9D562185D876D00392C40 /* TabController.xib in Resources */,
 				A60C5869186FF8A30068425C /* tab-item@2x.png in Resources */,
 				A60C5884186FF8A30068425C /* about_wangcai_cell_icon@2x.png in Resources */,
+				F31F950218AF623B0035792B /* mywangcai_dog_14@2x.png in Resources */,
 				A60C58AB18703AE60068425C /* invite_seg_sel_sel@2x.png in Resources */,
 				A60C5885186FF8A30068425C /* bottom_bg@2x.png in Resources */,
 				F3813D2D1875662A00350C27 /* choujiang_bg@2x.png in Resources */,
@@ -4681,6 +4865,7 @@
 				A60C5853186FF8A30068425C /* menu-icon-green@2x.png in Resources */,
 				F3F186E518543A410098C852 /* Default-568h@2x.png in Resources */,
 				A6FEE28C187D9AB800E5AF3E /* grayArrow@2x.png in Resources */,
+				F31F952A18AF623B0035792B /* mywangcai_up_bg@2x.png in Resources */,
 				A60C5891186FF8A30068425C /* yellow_circle@2x.png in Resources */,
 				A60C5880186FF8A30068425C /* dengjiTmp.png in Resources */,
 				F31F898A18962B8600F34F20 /* iPodTouch4.plist in Resources */,
@@ -4704,7 +4889,9 @@
 				A60C5863186FF8A30068425C /* sms_code_border@2x.png in Resources */,
 				F3FB9293187AF5F7001D702E /* user_info_commit_btn@2x.png in Resources */,
 				A60C5882186FF8A30068425C /* user_hobby_selected@2x.png in Resources */,
+				F31F951818AF623B0035792B /* mywangcai_bingdphone_bg@2x.png in Resources */,
 				F3359E4E1886C0FB00C1E636 /* package_icon_2@2x.png in Resources */,
+				F31F950C18AF623B0035792B /* mywangcai_dog_5@2x.png in Resources */,
 				A60C58AD18703AE60068425C /* invite_seg_select@2x.png in Resources */,
 				F36049AE1871A9AE00FAD1F3 /* menu_icon_chaozhiduihua@2x.png in Resources */,
 				F3F186DC18543A410098C852 /* InfoPlist.strings in Resources */,
@@ -4724,15 +4911,19 @@
 				A60C58B018703AE60068425C /* invite_share_button@2x.png in Resources */,
 				A60C5861186FF8A30068425C /* setting_message@2x.PNG in Resources */,
 				713555B8188D17810007784A /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
+				F31F951A18AF623B0035792B /* mywangcai_bingdphone_btn@2x.png in Resources */,
 				A60C5867186FF8A30068425C /* splash-slogan@2x.png in Resources */,
 				A60C5864186FF8A30068425C /* splash-bg@2x.png in Resources */,
 				71008A3C189108D900689E2F /* app_tip_youmi@2x.png in Resources */,
+				F31F952218AF623B0035792B /* mywangcai_cell_haoyunlianlian@2x.png in Resources */,
 				A60C5840186FF8A30068425C /* BindTipsDuihao.png in Resources */,
 				A60C588A186FF8A30068425C /* head_top_part@2x.png in Resources */,
 				A60C584E186FF8A30068425C /* exchange_btn@2x.png in Resources */,
 				718FB1911893FF2900851D2A /* register_btn@2x.png in Resources */,
 				F31F897E18962B8600F34F20 /* iPhone4.plist in Resources */,
 				F3359E511886C11100C1E636 /* qrcode_cell_icon@2x.png in Resources */,
+				F31F950818AF623B0035792B /* mywangcai_dog_3@2x.png in Resources */,
+				F31F952818AF623B0035792B /* mywangcai_jingyan_red@2x.png in Resources */,
 				F3813D1B18753ED400350C27 /* choujiang_shaxuan@2x.png in Resources */,
 				F3FEC527189146E100A297C8 /* redbag_mb_lv_unget@2x.png in Resources */,
 				A60C585A186FF8A30068425C /* phone_logo@2x.png in Resources */,
@@ -4741,6 +4932,8 @@
 				A60C5875186FF8A30068425C /* yue_3@2x.png in Resources */,
 				A60C5871186FF8A30068425C /* main_menu_title_text@2x.png in Resources */,
 				F3FB9295187AF825001D702E /* head_left_menu_btn@2x.png in Resources */,
+				F31F950A18AF623B0035792B /* mywangcai_dog_4@2x.png in Resources */,
+				F31F952418AF623B0035792B /* mywangcai_cell_line@2x.png in Resources */,
 				F3813D1618753ED400350C27 /* choujiang_baojie@2x.png in Resources */,
 				7135559A188D17800007784A /* Resource.bundle in Resources */,
 				A60C5873186FF8A30068425C /* yue_1@2x.png in Resources */,
@@ -4748,6 +4941,8 @@
 				F3DD641D1882D36500E56A0B /* testIconSetting222@2x.jpg in Resources */,
 				713555B4188D17810007784A /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				F3359E521886C11100C1E636 /* rate_app_cell_icon@2x.png in Resources */,
+				F31F950018AF623B0035792B /* mywangcai_dog_13@2x.png in Resources */,
+				F31F951218AF623B0035792B /* mywangcai_dog_8@2x.png in Resources */,
 				F3813D2518753ED400350C27 /* choujiang_x2@2x.png in Resources */,
 				F3FEC51D189146E100A297C8 /* redbag_mb_bg@2x.png in Resources */,
 				A60C585D186FF8A30068425C /* resend_down@2x.png in Resources */,
@@ -4782,6 +4977,7 @@
 				F31F897618962B8600F34F20 /* iPadAir.plist in Resources */,
 				F3DD641C1882D36500E56A0B /* testIconSetting@2x.png in Resources */,
 				F36049B01871A9AE00FAD1F3 /* menu_icon_line@2x.png in Resources */,
+				F31F951618AF623B0035792B /* mywangcai_bingdphone_!@2x.png in Resources */,
 				F3813D1E18753ED400350C27 /* choujiang_thanks1@2x.png in Resources */,
 				F3813D2818753ED400350C27 /* choujiang_x3selected@2x.png in Resources */,
 				F3BD471E187EDFF2009F3673 /* MJRefresh.bundle in Resources */,
@@ -4822,6 +5018,7 @@
 				F3359E7018882F8000C1E636 /* Bee_UIAnimationAlpha.m in Sources */,
 				F3359E7118882F8000C1E636 /* UIView+BeeUITemplate.m in Sources */,
 				F3359E7218882F8000C1E636 /* CommonTaskTableViewCell.m in Sources */,
+				F31F94DC18AF59E00035792B /* MyWangcaiViewController.m in Sources */,
 				F3359E7318882F8000C1E636 /* SecondBoard_iPhone.m in Sources */,
 				F3359E7418882F8000C1E636 /* NSObject+Resource.mm in Sources */,
 				F3359E7518882F8000C1E636 /* UIView+BeeUISignal.m in Sources */,
@@ -4908,6 +5105,7 @@
 				F3359EC618882F8000C1E636 /* UIView+Traversing.m in Sources */,
 				F3359EC718882F8000C1E636 /* UITextField+BeeUILayout.m in Sources */,
 				F3359EC818882F8000C1E636 /* Bee_UIView.m in Sources */,
+				F31F94D518AF599A0035792B /* MyWangcaiBoard_iPhone.m in Sources */,
 				F3359EC918882F8000C1E636 /* Bee_UITemplateAndroid.m in Sources */,
 				F3359ECA18882F8000C1E636 /* BeeUIBoard+BackwardCompatible.m in Sources */,
 				F3359ECB18882F8000C1E636 /* BeeUIBoard+ModalBoard.m in Sources */,
@@ -5053,6 +5251,7 @@
 				F3359F5718882F8000C1E636 /* Bee_Cache.mm in Sources */,
 				F3359F5818882F8000C1E636 /* ChoujiangLogic.m in Sources */,
 				F3359F5918882F8000C1E636 /* TaskInfoTableViewCell.m in Sources */,
+				F31F953018AF76E80035792B /* MyWangcaiSkillCellViewController.m in Sources */,
 				F3359F5A18882F8000C1E636 /* Bee_UIPageControl.m in Sources */,
 				F3359F5B18882F8000C1E636 /* NSObject+BeeHTTPRequest.m in Sources */,
 				F3359F5C18882F8000C1E636 /* NSObject+BeeProperty.mm in Sources */,
@@ -5124,6 +5323,7 @@
 				F3F187F618543A420098C852 /* Bee_UIAnimationAlpha.m in Sources */,
 				F3F1891D18543A440098C852 /* UIView+BeeUITemplate.m in Sources */,
 				F3D9D526185D71AE00392C40 /* CommonTaskTableViewCell.m in Sources */,
+				F31F94DB18AF59E00035792B /* MyWangcaiViewController.m in Sources */,
 				F3F18A0218543A450098C852 /* SecondBoard_iPhone.m in Sources */,
 				F3F189F118543A450098C852 /* NSObject+Resource.mm in Sources */,
 				F3F188CF18543A430098C852 /* UIView+BeeUISignal.m in Sources */,
@@ -5210,6 +5410,7 @@
 				F3F188A118543A430098C852 /* UIView+Traversing.m in Sources */,
 				F3F188E618543A430098C852 /* UITextField+BeeUILayout.m in Sources */,
 				F3F1887F18543A430098C852 /* Bee_UIView.m in Sources */,
+				F31F94D418AF599A0035792B /* MyWangcaiBoard_iPhone.m in Sources */,
 				F3F1892418543A440098C852 /* Bee_UITemplateAndroid.m in Sources */,
 				F3F187A518543A420098C852 /* BeeUIBoard+BackwardCompatible.m in Sources */,
 				F3F187A818543A420098C852 /* BeeUIBoard+ModalBoard.m in Sources */,
@@ -5355,6 +5556,7 @@
 				F3F1894818543A440098C852 /* Bee_Cache.mm in Sources */,
 				F3813D351877FD7100350C27 /* ChoujiangLogic.m in Sources */,
 				F3D834D1185C2172003095D5 /* TaskInfoTableViewCell.m in Sources */,
+				F31F952F18AF76E80035792B /* MyWangcaiSkillCellViewController.m in Sources */,
 				F3F1885218543A430098C852 /* Bee_UIPageControl.m in Sources */,
 				F3F189E918543A450098C852 /* NSObject+BeeHTTPRequest.m in Sources */,
 				F3F189C618543A450098C852 /* NSObject+BeeProperty.mm in Sources */,

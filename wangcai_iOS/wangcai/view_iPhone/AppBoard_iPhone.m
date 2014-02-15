@@ -265,6 +265,13 @@ ON_SIGNAL3( MenuBoard_iPhone, second, signal )
 	[[BeeUIRouter sharedInstance] open:@"second" animated:YES];
 }
 
+ON_SIGNAL3( MenuBoard_iPhone, my_wangcai, signal )
+{
+    [self hideMenu];
+    [MobClick event:@"click_extract_money" attributes:@{@"current_page":@"菜单"}];
+	[[BeeUIRouter sharedInstance] open:@"my_wangcai" animated:YES];
+}
+
 ON_SIGNAL3( MenuBoard_iPhone, third, signal )
 {
     [self hideMenu];
