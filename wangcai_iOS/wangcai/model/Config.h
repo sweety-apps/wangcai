@@ -29,9 +29,12 @@
 
 
 
-#define TEST 0
+#define TEST 1
 
 #if TEST == 0
+
+#define DEBUG_PUSH 0
+
 #define HTTP_LOGIN_AND_REGISTER @"https://ssl.getwangcai.com/0/register"
 #define HTTP_BIND_PHONE         @"https://ssl.getwangcai.com/0/account/bind_phone"
 
@@ -62,6 +65,8 @@
 #define WEB_ORDER_INFO    @"http://wangcai.meme-da.com/web/order_info.php"
 
 #else
+
+#define DEBUG_PUSH 1
 
 #define HTTP_LOGIN_AND_REGISTER @"https://dev.getwangcai.com/0/register"
 #define HTTP_BIND_PHONE         @"https://dev.getwangcai.com/0/account/bind_phone"

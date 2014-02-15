@@ -18,11 +18,14 @@
 #pragma mark -
 
 #undef	MENU_BOUNDS
-#define	MENU_BOUNDS	(240.0f)
+#define	MENU_BOUNDS	(210.0f)
 #undef	MASK_LEFT_X
 #define	MASK_LEFT_X	(160.0f)
 #undef MENU_TRIGER_BOUNDS
 #define	MENU_TRIGER_BOUNDS	(100.0f)
+
+#undef ROTATE_PAN_MENU
+#define ROTATE_PAN_MENU 0
 
 #pragma mark -
 
@@ -203,12 +206,24 @@ ON_SIGNAL2( UIView, signal )
                 INFO(@"<WHY??>");
             }
             CGFloat angle = (boundsX * M_PI / 5120.f);
-            router.view.transform = CGAffineTransformMakeRotation(angle);
-            INFO(@"<Angle Rotated> A = %f, Off = %f",angle,boundsX);
+            if (ROTATE_PAN_MENU)
+            {
+                router.view.transform = CGAffineTransformMakeRotation(angle);
+                INFO(@"<Angle Rotated> A = %f, Off = %f",angle,boundsX);
+            }
             
             CGRect rectNewBounds = router.view.bounds;
             CGFloat offsetY = tan(0.5*angle) * boundsX;
-            rectNewBounds.origin.y = offsetY;
+            
+            if (ROTATE_PAN_MENU)
+            {
+                rectNewBounds.origin.y = offsetY;
+            }
+            else
+            {
+                rectNewBounds.origin.y = 0;
+            }
+            
             router.view.frame = rectNewBounds;
             
 			_mask.frame = CGRectMake( MASK_LEFT_X, 0.0, _origFrame.size.width - MASK_LEFT_X, _origFrame.size.height );
@@ -397,12 +412,22 @@ ON_SIGNAL3( MenuBoard_iPhone, busioness, signal )
         INFO(@"<WHY??>");
     }
     CGFloat angle = (boundsX * M_PI / 5120.f);
-    router.view.transform = CGAffineTransformMakeRotation(angle);
-    INFO(@"<Angle Rotated> A = %f, Off = %f",angle,boundsX);
+    if (ROTATE_PAN_MENU)
+    {
+        router.view.transform = CGAffineTransformMakeRotation(angle);
+        INFO(@"<Angle Rotated> A = %f, Off = %f",angle,boundsX);
+    }
     
     CGRect rectNewBounds = router.view.bounds;
     CGFloat offsetY = tan(0.5*angle) * boundsX;
-    rectNewBounds.origin.y = offsetY;
+    if (ROTATE_PAN_MENU)
+    {
+        rectNewBounds.origin.y = offsetY;
+    }
+    else
+    {
+        rectNewBounds.origin.y = 0;
+    }
     router.view.frame = rectNewBounds;
     
 	if ( router.view.left <= 0.0f )

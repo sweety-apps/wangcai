@@ -12,4 +12,6 @@
 
 @interface UtilityFunctions : NSObject
 
++ (void)debugAlertView:(NSString*)title content:(NSString*)content;
+
 @end
