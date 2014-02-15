@@ -228,6 +228,9 @@ static LoginAndRegister* _sharedInstance = nil;
                 _offerwallIncome = [[dict valueForKey:@"offerwall_income"] intValue];
                 
                 _pollingInterval = [[dict valueForKey:@"polling_interval"] intValue];
+                if ( _pollingInterval < 5 ) {
+                    _pollingInterval = 5;
+                }
                 
                 if ( _inReview == 1 ) {
                     [YouMiConfig setIsTesting:YES];
