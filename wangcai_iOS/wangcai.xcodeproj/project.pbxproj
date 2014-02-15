@@ -5672,8 +5672,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: BIN Li (TQ7NCVX24R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: BIN Li (TQ7NCVX24R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/wangcai/ALSystemUtilities/**",
@@ -5757,7 +5757,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 				);
 				PRODUCT_NAME = "wangcai copy";
-				PROVISIONING_PROFILE = "30C4311E-0C26-44DC-A472-961EE2BB5D82";
+				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -5769,8 +5769,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: BIN Li (TQ7NCVX24R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Angoo Studio";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Angoo Studio";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/wangcai/ALSystemUtilities/**",
@@ -5850,7 +5850,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 				);
 				PRODUCT_NAME = "wangcai copy";
-				PROVISIONING_PROFILE = "30C4311E-0C26-44DC-A472-961EE2BB5D82";
+				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "armv7 armv7s arm64";

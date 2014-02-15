@@ -283,7 +283,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         {
             [aSubView.layer removeAllAnimations];
         }
-        [subView addSubview:self];
+        [window addSubview:self];//[subView addSubview:self];
     }
     [self showAlertAnmation];
     [Common playAddCoinSound];
