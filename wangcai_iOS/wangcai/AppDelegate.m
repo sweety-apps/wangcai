@@ -133,6 +133,8 @@
     [super applicationDidBecomeActive:application];
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+            
+    [self postNotification:@"applicationDidBecomeActive"];
 }
 
 @end

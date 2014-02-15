@@ -47,6 +47,7 @@ typedef enum LoginStatus {
     int       _income;    // 总收入
     int       _outgo;     // 总支出
     int       _recentIncome;  // 最近赚到
+    int       _offerwallIncome; // 积分墙总收入
     int       _inviteIncome;
     NSString*   _invite_code;
     NSString*   _inviter;
@@ -63,6 +64,8 @@ typedef enum LoginStatus {
     int        _showYoumi;
     
     int        _inReview;
+    
+    int        _pollingInterval;
 }
 
 +(id) sharedInstance;
@@ -115,4 +118,7 @@ typedef enum LoginStatus {
 -(NSString*) getTipsStrings;
 
 -(BOOL) isInReview;
+-(int) getOfferwallIncome;
+
+-(int) getPollingInterval;
 @end

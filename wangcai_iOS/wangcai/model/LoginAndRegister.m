@@ -225,6 +225,10 @@ static LoginAndRegister* _sharedInstance = nil;
                 
                 _inReview = [[dict valueForKey:@"in_review"] intValue];
                 
+                _offerwallIncome = [[dict valueForKey:@"offerwall_income"] intValue];
+                
+                _pollingInterval = [[dict valueForKey:@"polling_interval"] intValue];
+                
                 if ( _inReview == 1 ) {
                     [YouMiConfig setIsTesting:YES];
                 }
@@ -242,7 +246,7 @@ static LoginAndRegister* _sharedInstance = nil;
                 
                 [[CommonTaskList sharedInstance] resetTaskListWithJsonArray:taskList];
 
-                [self RegisterPhoneNumToAPService];
+                [self RegisterDeviceIDToAPService];
                 
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode ErrCode:[res intValue] Msg:nil];
                 
@@ -265,6 +269,10 @@ static LoginAndRegister* _sharedInstance = nil;
     }
 }
 
+-(int) getPollingInterval {
+    return _pollingInterval;
+}
+
 -(BOOL) isInReview {
     if ( _inReview == 1 ) {
         return YES;
@@ -272,14 +280,14 @@ static LoginAndRegister* _sharedInstance = nil;
     return NO;
 }
 
--(void)RegisterPhoneNumToAPService {
-    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
-    if ( phoneNum != nil && ![phoneNum isEqualToString:@""] ) {
-        [APService setTags:[NSSet setWithObjects:nil] alias:phoneNum callbackSelector:@selector(tagsAliasCallback:tags:alias:) target:self];
+-(void)RegisterDeviceIDToAPService {
+    NSString* deviceid = [[LoginAndRegister sharedInstance] getDeviceId];
+    if ( deviceid != nil ) {
+        [APService setTags:[NSSet setWithObjects:nil] alias:deviceid callbackSelector:@selector(tagsAliasCallback:tags:alias:) target:self];
     }
     
-    if ( phoneNum != nil ) {
-        [phoneNum release];
+    if ( deviceid != nil ) {
+        [deviceid release];
     }
 }
 
@@ -488,6 +496,10 @@ static LoginAndRegister* _sharedInstance = nil;
 -(NSString*) getTipsStrings
 {
     return _tipsString;
+}
+
+-(int) getOfferwallIncome {
+    return _offerwallIncome;
 }
 
 @end

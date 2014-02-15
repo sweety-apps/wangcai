@@ -64,6 +64,8 @@ static BOOL gNeedReloadTaskList = NO;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self observeNotification:@"applicationDidBecomeActive"];
+    
     _justOnePage = NO;
     _curCellCount = 0;
     _hisCellCount = 0;
@@ -83,7 +85,8 @@ static BOOL gNeedReloadTaskList = NO;
     
     [self.zhanghuYuEHeaderCell.yuENumView setNum:[[LoginAndRegister sharedInstance] getBalance]];
     
-    _checkOfferWallTimer = [NSTimer scheduledTimerWithTimeInterval:15.f target:self selector:@selector(checkDMOfferWall) userInfo:nil repeats:NO];
+    int nPollingInterval = [[LoginAndRegister sharedInstance] getPollingInterval];
+    _checkOfferWallTimer = [NSTimer scheduledTimerWithTimeInterval:nPollingInterval target:self selector:@selector(checkDMOfferWall) userInfo:nil repeats:NO];
     
     //[self performSelector:@selector(refreshTaskList) withObject:nil afterDelay:2.0f];
 }
@@ -92,7 +95,9 @@ static BOOL gNeedReloadTaskList = NO;
 {
     [OnlineWallViewController sharedInstance].delegate = self;
     [[OnlineWallViewController sharedInstance] requestAndConsumePoint];
-    _checkOfferWallTimer = [NSTimer scheduledTimerWithTimeInterval:15.f target:self selector:@selector(checkDMOfferWall) userInfo:nil repeats:NO];
+    
+    int nPollingInterval = [[LoginAndRegister sharedInstance] getPollingInterval];
+    _checkOfferWallTimer = [NSTimer scheduledTimerWithTimeInterval:nPollingInterval target:self selector:@selector(checkDMOfferWall) userInfo:nil repeats:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -833,6 +838,15 @@ static BOOL gNeedReloadTaskList = NO;
 - (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
 {
     //[self checkBalanceAndAnimateYuE];
+}
+
+ON_NOTIFICATION( notification )
+{
+	if ([notification.name isEqualToString:@"applicationDidBecomeActive"])
+    {   // 界面被激活，查询积分
+        [OnlineWallViewController sharedInstance].delegate = self;
+        [[OnlineWallViewController sharedInstance] requestAndConsumePoint];
+    }
 }
 
 @end

@@ -19,7 +19,6 @@
 
 @interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, HttpRequestDelegate> {
     DMOfferWallViewController* _offerWallController;
-    DMOfferWallManager*        _offerWallManager;
     NSInteger                  _nConsume;
     id<OnlineWallViewControllerDelegate>        _delegate;
     
@@ -29,6 +28,8 @@
     
     BOOL               _request;
     NSInteger          _allConsume;
+    
+    int                _offerwallIncome;
 }
 
 @property (nonatomic,assign) id<OnlineWallViewControllerDelegate>  delegate;

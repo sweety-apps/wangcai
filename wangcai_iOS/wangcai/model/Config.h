@@ -55,7 +55,7 @@
 #define HTTP_EXCHANGE_LIST         @"https://ssl.getwangcai.com/0/order/exchange_list"
 #define HTTP_EXCHANGE_CODE         @"https://ssl.getwangcai.com/0/order/exchange_code"
 
-#define HTTP_TASK_OFFERWALL         @"https://ssl.getwangcai.com/0/task/offerwall"
+#define HTTP_TASK_OFFERWALL         @"https://ssl.getwangcai.com/0/task/poll"
 
 #define HTTP_TASK_COMMENT         @"https://ssl.getwangcai.com/0/task/comment"
 
@@ -88,7 +88,7 @@
 #define HTTP_EXCHANGE_LIST         @"https://dev.getwangcai.com/0/order/exchange_list"
 #define HTTP_EXCHANGE_CODE         @"https://dev.getwangcai.com/0/order/exchange_code"
 
-#define HTTP_TASK_OFFERWALL         @"https://dev.getwangcai.com/0/task/offerwall"
+#define HTTP_TASK_OFFERWALL         @"https://dev.getwangcai.com/0/task/poll"
 
 #define HTTP_TASK_COMMENT         @"https://dev.getwangcai.com/0/task/comment"
 
