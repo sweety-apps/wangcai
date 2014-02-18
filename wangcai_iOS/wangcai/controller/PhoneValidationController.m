@@ -102,11 +102,59 @@
 
 -(void)attachEvent {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fieldTextChanged:) name:UITextFieldTextDidChangeNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 -(void)detachEvent {
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
+
+
+- (void)keyboardWillShow: (NSNotification*) notification {
+    NSDictionary* userInfo = [notification userInfo];
+    NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    
+    CGRect keyboardRect = [aValue CGRectValue];
+    
+    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
+    
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    
+    CGRect rect = _nextBtn.frame;
+    rect.origin.y = 207; //399
+    [_nextBtn setFrame:rect];
+    
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillHide: (NSNotification*) notification {
+    NSDictionary* userInfo = [notification userInfo];
+    
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+ 
+    
+    CGRect rect = _nextBtn.frame;
+    rect.origin.y = 399;
+    [_nextBtn setFrame:rect];
+    
+    [UIView commitAnimations];
+}
+
 
 - (IBAction)clearPhone:(id)sender {
     _firstSend = YES;
