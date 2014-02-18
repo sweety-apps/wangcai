@@ -176,7 +176,7 @@ static LoginAndRegister* _sharedInstance = nil;
     if ( req.sending) {
     } else if ( req.recving ) {
     } else if ( req.failed ) {
-        //统计
+        //统计]
         [MobClick event:@"http_request_failed" attributes:@{@"url":[req.url absoluteString],@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
         [MobClick event:@"login_failed" attributes:@{@"reason":@"服务器状态码错误",@"status_code":[NSString stringWithFormat:@"%d",req.responseStatusCode]}];
         
@@ -184,6 +184,7 @@ static LoginAndRegister* _sharedInstance = nil;
         [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode ErrCode:0 Msg:nil];
     } else if ( req.succeed ) {
         // 判断返回数据是
+        
         NSError* error;
         NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableLeaves error:&error];
         if ( dict == nil || [dict count] == 0 ) {
