@@ -44,7 +44,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _iconImages = [NSArray arrayWithObjects:[UIImage imageNamed:@"mywangcai_cell_baifabaizhong"],[UIImage imageNamed:@"mywangcai_cell_haoyunlianlian"],[UIImage imageNamed:@"mywangcai_cell_dianshichengjin"], nil];
+    _iconImages = [[NSArray arrayWithObjects:[UIImage imageNamed:@"mywangcai_cell_baifabaizhong"],[UIImage imageNamed:@"mywangcai_cell_haoyunlianlian"],[UIImage imageNamed:@"mywangcai_cell_dianshichengjin"], nil] retain];
     
     [self setLevel:12];
     [self setEXP:1.0f withAnimation:NO];

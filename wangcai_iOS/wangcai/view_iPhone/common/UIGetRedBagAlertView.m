@@ -94,13 +94,13 @@ static UIGetRedBagAlertView* gInstance = nil;
     NSString* inc = [NSString stringWithFloatRoundToPrecision:(((float)increase)/100.f) precision:2 ignoreBackZeros:YES];
     NSString* new = [NSString stringWithFloatRoundToPrecision:(((float)(balance+increase))/100.f) precision:2 ignoreBackZeros:YES];
     _balanceIncreaseLbl.text = [NSString stringWithFormat:@"当前账户余额 ￥%@ + ￥%@ = ￥%@",bal,inc,new];
-    _balanceIncreaseLbl.hidden = YES;
-    _lvLbl.hidden = YES;
-    _levelBounusLbl.hidden = YES;
+    //_balanceIncreaseLbl.hidden = YES;
+    //_lvLbl.hidden = YES;
+    //_levelBounusLbl.hidden = YES;
     
     for (int i = 0; i < 5; i++)
     {
-        _levelBlock[i].hidden = YES;
+        //_levelBlock[i].hidden = YES;
     }
 }
 
@@ -147,8 +147,8 @@ static UIGetRedBagAlertView* gInstance = nil;
         _closeBtn.frame = rect;
         _closeBtn.contentMode = UIViewContentModeTopLeft;
         
-        rect = CGRectOffset(rectAlertView, 31, 25);
-        rect.size = CGSizeMake(250, 20);
+        rect = CGRectOffset(rectAlertView, 31, 13);
+        rect.size = CGSizeMake(200, 20);
         _titleLbl = [[UILabel alloc] initWithFrame:rect];
         _titleLbl.textColor = RGB(0, 0, 0);
         _titleLbl.backgroundColor = [UIColor clearColor];
@@ -159,7 +159,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         _titleLbl.contentMode = UIViewContentModeTopLeft;
         
         
-        rect = CGRectOffset(rectAlertView, 30, 67);
+        rect = CGRectOffset(rectAlertView, 30, 42);
         rect.size = CGSizeMake(100, 60);
         _rmbLbl = [[UILabel alloc] initWithFrame:rect];
         _rmbLbl.textColor = RGB(209, 13, 13);
@@ -170,7 +170,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         _rmbLbl.text = @"0.0";
         _rmbLbl.contentMode = UIViewContentModeTopLeft;
         
-        rect = CGRectOffset(rectAlertView, 30, 91);
+        rect = CGRectOffset(rectAlertView, 30, 66);
         rect.size = CGSizeMake(100, 31);
         _yuanLbl = [[UILabel alloc] initWithFrame:rect];
         _yuanLbl.textColor = RGB(209, 13, 13);
