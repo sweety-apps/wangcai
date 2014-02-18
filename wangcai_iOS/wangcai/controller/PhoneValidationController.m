@@ -131,7 +131,12 @@
     [UIView setAnimationDuration:animationDuration];
     
     CGRect rect = _nextBtn.frame;
-    rect.origin.y = 207; //399
+    if ( DEVICE_IS_IPHONE5 ) {
+        rect.origin.y = 277; //399
+    } else {
+        rect.origin.y = 203; //399
+    }
+    
     [_nextBtn setFrame:rect];
     
     [UIView commitAnimations];
