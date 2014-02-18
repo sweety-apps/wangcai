@@ -108,6 +108,20 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" tag="99" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEr-V1-Y0V">
+                    <rect key="frame" x="221" y="146" width="82" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="重新发送">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cleckSendSms:" destination="-1" eventType="touchUpInside" id="s3x-8E-KzH"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
             <gestureRecognizers/>
@@ -228,7 +242,12 @@
     </objects>
     <resources>
         <image name="back.png" width="12" height="22"/>
+        <image name="back.png" width="12" height="22"/>
+        <image name="back.png" width="12" height="22"/>
         <image name="goback.png" width="109" height="40"/>
+        <image name="goback.png" width="109" height="40"/>
+        <image name="nav_Header2.png" width="320" height="53"/>
+        <image name="nav_Header2.png" width="320" height="53"/>
         <image name="nav_Header2.png" width="320" height="53"/>
         <image name="phone_validation_code.png" width="320" height="54"/>
         <image name="phone_validation_code2.png" width="320" height="54"/>
@@ -240,6 +259,8 @@
         <image name="phone_validation_sendcode.png" width="86" height="35"/>
         <image name="phone_validation_sendcode_down.png" width="86" height="35"/>
         <image name="register_btn.png" width="202" height="51"/>
+        <image name="register_btn.png" width="202" height="51"/>
+        <image name="register_suc.png" width="320" height="514"/>
         <image name="register_suc.png" width="320" height="514"/>
     </resources>
 </document>

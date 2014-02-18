@@ -20,6 +20,7 @@
     UITextField* _smsCode;
     UILabel*     _smsCodeTip;
     
+    UIButton*    _resendBtn;
     UIButton*    _smsBtn;
     
     UIButton*    _nextBtn;

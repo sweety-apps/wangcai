@@ -67,6 +67,7 @@
         _smsTime = (UILabel*)[self.view viewWithTag:17];
         _phoneFieldTip = (UILabel*)[self.view viewWithTag:65];
         _smsCodeTip = (UILabel*)[self.view viewWithTag:66];
+        _resendBtn = (UIButton*)[self.view viewWithTag:99];
         
         _smsCode.delegate = self;
         _phoneField.delegate = self;
@@ -311,6 +312,7 @@
         _smsCode.hidden = YES;
         _smsBtn.hidden = NO;
         _smsTime.hidden = YES;
+        _resendBtn.hidden = YES;
         [self updateNextBtnStatus];
         
         [_smsCode setText:@""];
@@ -323,13 +325,24 @@
         _smsBtn.hidden = YES;
         _smsTime.hidden = NO;
         [_smsCodeTip setText:@"请输入验证码"];
+        _resendBtn.hidden = YES;
         [self updateNextBtnStatus];
+        
+        [_smsCode becomeFirstResponder];
     } else if ( status == 3 ) {
-        _phoneField.enabled = YES;   // 手机号不可再编辑，要等倒计时结束
+        _phoneField.enabled = YES;   //
         _phoneClear.hidden = NO;
         _smsBkg.highlighted = YES;
         _smsCode.hidden = NO;
-        _smsBtn.hidden = NO;
+        
+        if ( _firstSend ) {
+            _resendBtn.hidden = YES;
+            _smsBtn.hidden = NO;
+        } else {
+            _resendBtn.hidden = NO;
+            _smsBtn.hidden = YES;
+        }
+        
         _smsTime.hidden = YES;
         [_smsCodeTip setText:@"请输入验证码"];
         [self updateNextBtnStatus];
