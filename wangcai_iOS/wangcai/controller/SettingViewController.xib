@@ -35,10 +35,11 @@
                         <action selector="clickBack:" destination="-1" eventType="touchUpInside" id="oco-pY-oJ6"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="功能设置" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cE3-lH-HGB">
-                    <rect key="frame" x="182" y="10" width="118" height="33"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="功能设置" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cE3-lH-HGB">
+                    <rect key="frame" x="101" y="10" width="118" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" tag="99" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bHY-wb-qfz">
@@ -264,7 +265,7 @@
     <resources>
         <image name="about.png" width="320" height="216"/>
         <image name="about2.png" width="29" height="29"/>
-        <image name="back.png" width="12" height="22"/>
+        <image name="back.png" width="11" height="22"/>
         <image name="line.png" width="320" height="1"/>
         <image name="nav_Header.png" width="320" height="54"/>
         <image name="setting_bell.png" width="29" height="29"/>

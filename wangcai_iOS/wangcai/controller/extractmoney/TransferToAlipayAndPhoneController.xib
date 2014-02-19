@@ -26,10 +26,11 @@
                         <action selector="clickBack:" destination="-2" eventType="touchUpInside" id="v34-dx-3z8"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绑定手机" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PsB-ds-GWa">
-                    <rect key="frame" x="182" y="10" width="118" height="33"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绑定手机" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PsB-ds-GWa">
+                    <rect key="frame" x="101" y="10" width="118" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -352,12 +353,21 @@
     </objects>
     <resources>
         <image name="!.png" width="12" height="12"/>
+        <image name="!.png" width="12" height="12"/>
         <image name="alipay.png" width="65" height="21"/>
-        <image name="back.png" width="12" height="22"/>
+        <image name="back.png" width="11" height="22"/>
         <image name="body_bkg.png" width="320" height="415"/>
+        <image name="body_bkg.png" width="320" height="415"/>
+        <image name="body_bkg.png" width="320" height="415"/>
+        <image name="btn_normal.png" width="275" height="54"/>
+        <image name="btn_normal.png" width="275" height="54"/>
         <image name="btn_normal.png" width="275" height="54"/>
         <image name="nav_Header.png" width="320" height="54"/>
         <image name="phone_logo.png" width="11" height="19"/>
+        <image name="phone_num_border.png" width="275" height="53"/>
+        <image name="phone_num_border.png" width="275" height="53"/>
+        <image name="phone_num_border.png" width="275" height="53"/>
+        <image name="phone_num_border.png" width="275" height="53"/>
         <image name="phone_num_border.png" width="275" height="53"/>
     </resources>
 </document>

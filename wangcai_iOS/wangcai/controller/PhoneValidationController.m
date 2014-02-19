@@ -439,14 +439,24 @@
         
         [self onBindPhoneCompeted];
         
-        UIView* view = nil;
+        UIView* sucView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] lastObject];
         if ( DEVICE_IS_IPHONE5 ) {
-            view = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:1];
-        } else {
-            view = [[[NSBundle mainBundle] loadNibNamed:@"PhoneValidationController" owner:self options:nil] objectAtIndex:2];
+            UIView* view = [sucView viewWithTag:1];
+            CGRect rect = view.frame;
+            rect.origin.y = 102;
+            [view setFrame:rect];
+            
+            view = [sucView viewWithTag:2];
+            rect = view.frame;
+            rect.origin.y = 51;
+            [view setFrame:rect];
+            
+            view = [sucView viewWithTag:3];
+            rect = view.frame;
+            rect.origin.y = 208;
+            [view setFrame:rect];
         }
-        
-        [self.view addSubview:view];
+        [self.view addSubview:sucView];
     } else {
         // 发送失败，错误提示
         if ( errMsg == nil ) {
