@@ -51,12 +51,12 @@
         self._containerView.frame = rect;
         self._completeView.frame = rect;
         
-        [self.view addSubview:self._containerView];
+        [self.view insertSubview:self._containerView atIndex:0];
         [self.view addSubview:self._completeView];
         
         [self._completeView setHidden:YES];
         [self._containerView setHidden:NO];
-        
+
         self._textField = (UITextField*)[self._containerView viewWithTag:71];
         self._textCheck = (UITextField*)[self._containerView viewWithTag:72];
         
@@ -98,6 +98,66 @@
     }
 }
 
+
+
+- (void)viewWillAppear:(BOOL)animated {    // Called when the view is about to made visible. Default does nothing
+    // 绑定键盘事件
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated { // Called when the view is dismissed, covered or otherwise hidden. Default does nothing
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+
+
+
+- (void)keyboardWillShow: (NSNotification*) notification {
+    NSDictionary* userInfo = [notification userInfo];
+    NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    
+    CGRect keyboardRect = [aValue CGRectValue];
+    
+    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
+    
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    
+    CGRect rect = self._containerView.frame;
+    rect.origin.y = 4;
+    [self._containerView setFrame:rect];
+    
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillHide: (NSNotification*) notification {
+    NSDictionary* userInfo = [notification userInfo];
+    
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    
+    CGRect rect = self._containerView.frame;
+    rect.origin.y = 54;
+    [self._containerView setFrame:rect];
+    
+    [UIView commitAnimations];
+}
+
+
+
+
 - (IBAction)clickBack:(id)sender {
     // 收起键盘
     [self hideKeyboard];
@@ -121,10 +181,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated {    // Called when the view is about to made visible. Default does nothing
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void) showLoading {

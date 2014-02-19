@@ -278,8 +278,6 @@ static LoginAndRegister* _sharedInstance = nil;
 }
 
 -(BOOL) isInReview {
-    return NO;
-    
     if ( _inReview == 1 ) {
         return YES;
     }
