@@ -10,12 +10,17 @@
 #import "Config.h"
 #import "PhoneValidationController.h"
 #import "TransferToAlipayAndPhoneController.h"
+#import "WebPageController.h"
 
 @interface ExtractMoneyController ()
 
 @end
 
 @implementation ExtractMoneyController
+@synthesize bingphoneTipsView;
+@synthesize jiaoyiTipsView;
+@synthesize jiaoyiBtn;
+@synthesize labelBalance;
 
 - (id)init:(NSBundle *)nibBundleOrNil
 {
@@ -24,21 +29,17 @@
         // Custom initialization
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"ExtractMoneyController" owner:self options:nil] firstObject];
         
-        self->_webViewController = [[WebViewController alloc]init];
-        
-        UIView* view = self->_webViewController.view;
-        CGRect rect = [[UIScreen mainScreen]bounds];
-        rect.origin.y = 54;
-        rect.size.height -= 54;
-        view.frame = rect;
-        [self.view addSubview:view];
-        
-        NSString* url = WEB_EXTRACT_MONEY;
         if ( [[LoginAndRegister sharedInstance] isInReview] ) {
-            url = [url stringByAppendingString:@"?inreview=1"];
+            // 隐藏交易明细按钮
+            [self.jiaoyiBtn setHidden:YES];
         }
         
-        [self->_webViewController setNavigateUrl:url];
+        [[LoginAndRegister sharedInstance] attachBalanceChangeEvent:self];
+        [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
+        
+        [self performSelector:@selector(onViewInit) withObject:nil afterDelay:0.1];
+        
+        [self updateBalance];
     }
     return self;
 }
@@ -49,15 +50,73 @@
 	// Do any additional setup after loading the view.
 }
 
+- (IBAction)bindPhone:(id)sender {
+    PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
+    [self->_beeStack pushViewController:phoneVal animated:YES];
+}
+
+- (void)onViewInit
+{
+    if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]> 0)
+    {
+        [self hideBindTips:NO];
+    }
+    else
+    {
+        [self showBindTips:YES];
+    }
+}
+
+- (void)showBindTips:(BOOL)animated;
+{
+    self.bingphoneTipsView.frame = CGRectMake(0, 5, self.bingphoneTipsView.frame.size.width, self.bingphoneTipsView.frame.size.height);
+    
+    void (^block)(void) = ^(){
+        self.bingphoneTipsView.frame = CGRectMake(0, 52, self.bingphoneTipsView.frame.size.width, self.bingphoneTipsView.frame.size.height);
+    };
+    
+    [jiaoyiTipsView setHidden:YES];
+    
+    if (animated)
+    {
+        [UIView animateWithDuration:1.0 animations:block];
+    }
+    else
+    {
+        block();
+    }
+}
+
+- (void)hideBindTips:(BOOL)animated;
+{
+    void (^block)(void) = ^(){
+        self.bingphoneTipsView.frame = CGRectMake(0, 5, self.bingphoneTipsView.frame.size.width, self.bingphoneTipsView.frame.size.height);
+    };
+    
+    [jiaoyiTipsView setHidden:NO];
+    
+    if (animated)
+    {
+        [UIView animateWithDuration:1.0 animations:block];
+    }
+    else
+    {
+        block();
+    }
+}
+
+
 - (void) dealloc {
-    self->_webViewController = nil;
     self->_beeStack = nil;
+    [jiaoyiBtn release];
+    [jiaoyiTipsView release];
+    [bingphoneTipsView release];
+    [labelBalance release];
     [super dealloc];
 }
 
 - (void)setUIStack : (BeeUIStack*) beeStack {
     self->_beeStack = beeStack;
-    [_webViewController setBeeUIStack:beeStack];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +127,42 @@
 
 - (IBAction)clickBack:(id)sender {
 	[[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
+}
+
+- (void)updateBalance {
+    int nBalance = [[LoginAndRegister sharedInstance] getBalance];
+    NSString* balance = [[NSString alloc] initWithFormat:@"可用余额：¥ %.2f元", (1.0*nBalance/100)];
+    [labelBalance setText:balance];
+}
+
+- (IBAction)clickJiaoyi:(id)sender {
+    NSString* device = [[[LoginAndRegister sharedInstance] getDeviceId] autorelease];
+    NSString* sessionid = [[[LoginAndRegister sharedInstance] getSessionId] autorelease];
+    NSString* userid = [[[LoginAndRegister sharedInstance] getUserId] autorelease];
+
+    NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@", WEB_EXCHANGE_INFO, device, sessionid, userid] autorelease];
+
+    WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:url Stack:_beeStack];
+    [_beeStack pushViewController:controller animated:YES];
+}
+
+-(void) bindPhoneCompeted {
+    [self hideBindTips:YES];
+}
+
+-(void) balanceChanged:(int) oldBalance New:(int) balance {
+    [self updateBalance];
+}
+
+- (IBAction)clickAlipay:(id)sender {
+    TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES BeeUIStack:_beeStack] autorelease];
+        
+    [self->_beeStack pushViewController:controller animated:YES];
+}
+
+- (IBAction)clickPhone:(id)sender {
+    TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO BeeUIStack:_beeStack] autorelease];
+    [self->_beeStack pushViewController:controller animated:YES];
 }
 
 @end

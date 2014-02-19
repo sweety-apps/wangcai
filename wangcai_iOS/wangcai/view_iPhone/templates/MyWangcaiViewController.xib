@@ -144,7 +144,7 @@
         </view>
     </objects>
     <resources>
-        <image name="back2.png" width="12" height="22"/>
+        <image name="back2.png" width="10" height="20"/>
         <image name="mywangcai_bingdphone_!.png" width="17" height="17"/>
         <image name="mywangcai_bingdphone_bg.png" width="313" height="47"/>
         <image name="mywangcai_bingdphone_btn.png" width="73" height="26"/>
