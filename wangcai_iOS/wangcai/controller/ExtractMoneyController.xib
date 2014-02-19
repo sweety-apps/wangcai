@@ -38,7 +38,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="TopLeft" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIT-vn-vuo">
-                            <rect key="frame" x="231" y="-3" width="88" height="43"/>
+                            <rect key="frame" x="227" y="-3" width="88" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" image="mywangcai_bingdphone_btn.png">
@@ -63,7 +63,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4m3-Lx-Lab">
-                            <rect key="frame" x="226" y="8" width="74" height="26"/>
+                            <rect key="frame" x="234" y="9" width="74" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" image="jiaoyi.png">
@@ -116,7 +116,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9T-uo-WmO">
-                    <rect key="frame" x="227" y="115" width="73" height="32"/>
+                    <rect key="frame" x="234" y="115" width="73" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" image="chongzhi_btn.png">
@@ -149,7 +149,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZW-5u-Pus">
-                    <rect key="frame" x="227" y="188" width="73" height="32"/>
+                    <rect key="frame" x="234" y="188" width="73" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" image="chongzhi_btn.png">
@@ -171,6 +171,7 @@
     </objects>
     <resources>
         <image name="back.png" width="11" height="22"/>
+        <image name="chongzhi_btn.png" width="73" height="32"/>
         <image name="chongzhi_btn.png" width="73" height="32"/>
         <image name="extract_alipay.png" width="40" height="42"/>
         <image name="extract_phone.png" width="40" height="42"/>
