@@ -12,6 +12,7 @@
 #import "PhoneValidationController.h"
 #import "OnlineWallViewController.h"
 #import "MobClick.h"
+#import "WebPageController.h"
 
 #define SHOW_MASK (0)
 
@@ -46,6 +47,8 @@ DEF_SINGLETON( AppBoard_iPhone )
 {
 	[super load];
     _alertView = nil;
+    _remoteNotificationTitle = nil;
+    _remoteNotificationUrl = nil;
     
     if ( [[LoginAndRegister sharedInstance] isInReview] ) {
         _adView = [[YouMiView alloc] initWithContentSizeIdentifier:YouMiBannerContentSizeIdentifier320x50 delegate:nil];
@@ -131,7 +134,6 @@ ON_SIGNAL2( BeeUIBoard, signal )
 	}
 	else if ( [signal is:BeeUIBoard.WILL_APPEAR] )
 	{
-        
 	}
 	else if ( [signal is:BeeUIBoard.DID_APPEAR] )
 	{
@@ -139,6 +141,19 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //_mask.pannable = YES;
         if ( _origFrame.size.height == 0 && _origFrame.size.width == 0 ) {
             _origFrame = [BeeUIRouter sharedInstance].view.frame;
+        }
+        
+        if ( _remoteNotificationTitle != nil ) {
+            BeeUIStack* stack = [BeeUIRouter sharedInstance].currentStack;
+            
+            WebPageController* controller = [[[WebPageController alloc] init:_remoteNotificationTitle
+                                                                         Url:_remoteNotificationUrl Stack:stack] autorelease];
+            [stack pushViewController:controller animated:YES];
+            
+            [_remoteNotificationTitle release];
+            _remoteNotificationTitle = nil;
+            [_remoteNotificationUrl release];
+            _remoteNotificationUrl = nil;
         }
 	}
 	else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
@@ -510,6 +525,11 @@ ON_MESSAGE( message )
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+- (void) openUrlFromRomoteNotification : (NSString*) title Url:(NSString*) url {
+    _remoteNotificationTitle = [title copy];
+    _remoteNotificationUrl = [url copy];
 }
 
 @end

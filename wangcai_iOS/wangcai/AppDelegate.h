@@ -36,9 +36,8 @@
 #pragma mark -
 
 @interface AppDelegate : BeeSkeleton {
-    
+    NSDictionary* _nsRemoteNotifications;
+    NSTimeInterval _timeRemoteNotifications;
 }
-
--(void) loginCompleted : (LoginStatus) status HttpCode:(int)httpCode ErrCode:(int)errCode Msg:(NSString*)msg;
 
 @end

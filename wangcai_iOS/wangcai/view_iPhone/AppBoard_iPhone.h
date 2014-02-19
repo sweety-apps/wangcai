@@ -21,11 +21,14 @@
 @interface AppBoard_iPhone : BeeUIBoard <UIAlertViewDelegate> {
     UIAlertView* _alertView;
     YouMiView*   _adView;
+    
+    NSString*    _remoteNotificationTitle;
+    NSString*    _remoteNotificationUrl;
 }
 
 AS_SINGLETON( AppBoard_iPhone )
 
 - (void)setPanable:(BOOL)panable;
 - (void)onTouchedInvite:(BOOL)switchToFillInvitedCodeView;
-
+- (void) openUrlFromRomoteNotification : (NSString*) title Url:(NSString*) url;
 @end

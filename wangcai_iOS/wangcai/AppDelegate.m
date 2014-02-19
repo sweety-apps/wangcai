@@ -34,6 +34,7 @@
 #import "AppBoard_iPad.h"
 #import "LoginAndRegister.h"
 #import <ShareSDK/ShareSDK.h>
+#import "AppBoard_iPhone.h"
 #import "WXApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
@@ -46,6 +47,7 @@
 #import "OnlineWallViewController.h"
 #import "JPushlib/APService.h"
 #import "UtilityFunctions.h"
+#import "WebPageController.h"
 
 #pragma mark -
 
@@ -64,7 +66,9 @@
 - (void)load
 {
     StartupController* startup = [[StartupController alloc]init : self];
+    _nsRemoteNotifications = nil;
     
+    _timeRemoteNotifications = 0;
     _startupController = startup;
     
     [CATransaction begin];
@@ -86,7 +90,9 @@
 
 - (void)unload
 {
-	
+	if ( _nsRemoteNotifications != nil ) {
+        [_nsRemoteNotifications release];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
@@ -102,6 +108,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [super application:application didFinishLaunchingWithOptions:launchOptions];
     
+    if ( launchOptions != nil ) {
+        NSDictionary* pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        if ( pushNotificationKey ) {
+            _nsRemoteNotifications = [pushNotificationKey copy];
+            NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+            _timeRemoteNotifications = [dat timeIntervalSince1970]*1000;
+        }
+    }
     
     [APService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                                    UIRemoteNotificationTypeSound |
@@ -118,6 +132,16 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // Required
     [APService handleRemoteNotification:userInfo];
+    
+    if ( userInfo != nil ) {
+        if ( _nsRemoteNotifications != nil ) {
+            [_nsRemoteNotifications release];
+        }
+        _nsRemoteNotifications = [userInfo copy];
+        
+        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+        _timeRemoteNotifications = [dat timeIntervalSince1970]*1000;
+    }
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
@@ -135,6 +159,43 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
             
     [self postNotification:@"applicationDidBecomeActive"];
+    
+    if ( _nsRemoteNotifications != nil ) {
+        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+        NSTimeInterval curTime = [dat timeIntervalSince1970]*1000;
+        if ( curTime - _timeRemoteNotifications < 500 ) {
+            // 如果小于1s，认为是通过通知来启动的
+            //
+            [self onShowPageFromRootNotification:_nsRemoteNotifications];
+            
+            [_nsRemoteNotifications release];
+            _nsRemoteNotifications = nil;
+        } else {
+            [_nsRemoteNotifications release];
+            _nsRemoteNotifications = nil;
+        }
+    }
 }
 
+-(void) onShowPageFromRootNotification:(NSDictionary*) remoteNotifications {
+    NSString* type = [remoteNotifications objectForKey:@"type"];
+    if ( ![type isEqualToString:@"1"] ) {
+        return ;
+    }
+    
+    NSString* title = [remoteNotifications objectForKey:@"title"];
+    NSString* url = [remoteNotifications objectForKey:@"url"];
+    
+    if ( [self.window.rootViewController isEqual:[AppBoard_iPhone sharedInstance]] ) {
+        // 取当前stack
+        BeeUIStack* stack = [BeeUIRouter sharedInstance].currentStack;
+
+        WebPageController* controller = [[[WebPageController alloc] init:title
+                                                                     Url:url Stack:stack] autorelease];
+        [stack pushViewController:controller animated:YES];
+    } else {
+        // 界面还没有创建
+        [[AppBoard_iPhone sharedInstance] openUrlFromRomoteNotification:title Url:url];
+    }
+}
 @end
