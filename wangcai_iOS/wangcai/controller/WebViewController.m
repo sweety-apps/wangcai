@@ -513,7 +513,7 @@
         [dict release];
         [rmb release];
 
-        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES Discount:nDiscount Amount:nAmount] autorelease];
+        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:YES BeeUIStack:_beeStack] autorelease];
         
         [self->_beeStack pushViewController:controller animated:YES];
     }
@@ -536,7 +536,7 @@
         [dict release];
         [rmb release];
         
-        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO Discount:nDiscount Amount:nAmount] autorelease];
+        TransferToAlipayAndPhoneController* controller = [[[TransferToAlipayAndPhoneController alloc]init:NO BeeUIStack:_beeStack] autorelease];
         [self->_beeStack pushViewController:controller animated:YES];
     }
 }

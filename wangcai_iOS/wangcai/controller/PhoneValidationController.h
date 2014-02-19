@@ -40,6 +40,8 @@
     int _status;
 }
 
++ (PhoneValidationController*) shareInstance;
+
 - (IBAction)clickBack:(id)sender;
 
 - (IBAction)hideKeyboard:(id)sender;

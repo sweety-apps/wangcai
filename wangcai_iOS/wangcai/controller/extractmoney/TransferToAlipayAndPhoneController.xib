@@ -44,37 +44,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="body_bkg.png" id="9hD-cG-H8O">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <button autoresizesSubviews="NO" opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gEs-0V-m3Z">
-                    <rect key="frame" x="23" y="330" width="275" height="54"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration">
-                        <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
-                        <bool key="isElement" value="NO"/>
-                    </accessibility>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="充值5元" backgroundImage="btn_normal.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickNext:" destination="-1" eventType="touchUpInside" id="OEs-Gz-JWU"/>
-                    </connections>
-                </button>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone_num_border.png" id="4vl-2z-pIM">
-                    <rect key="frame" x="23" y="29" width="275" height="53"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone_input.png" id="4vl-2z-pIM">
+                    <rect key="frame" x="0.0" y="50" width="320" height="110"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone_logo.png" id="fNS-lT-b4q">
-                    <rect key="frame" x="39" y="46" width="11" height="19"/>
+                    <rect key="frame" x="20" y="17" width="12" height="20"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="28" id="Ob2-Xx-eW8">
-                    <rect key="frame" x="39" y="41" width="242" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" minimumFontSize="28" id="Ob2-Xx-eW8">
+                    <rect key="frame" x="92" y="64" width="186" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -82,19 +61,15 @@
                         <outlet property="delegate" destination="-1" id="h6P-fR-HNi"/>
                     </connections>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入充值的手机号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Wf-Fg-SXk">
-                    <rect key="frame" x="71" y="45" width="178" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入充值的手机号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Wf-Fg-SXk">
+                    <rect key="frame" x="92" y="69" width="178" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone_num_border.png" id="IK9-dA-kR5">
-                    <rect key="frame" x="23" y="97" width="275" height="53"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <textField opaque="NO" clipsSubviews="YES" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="28" id="hXF-qH-y0t">
-                    <rect key="frame" x="39" y="109" width="242" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" minimumFontSize="28" id="hXF-qH-y0t">
+                    <rect key="frame" x="92" y="121" width="186" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -102,61 +77,107 @@
                         <outlet property="delegate" destination="-1" id="bTy-NX-bp0"/>
                     </connections>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仅限中国大陆手机用户" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="24P-9W-o4H">
-                    <rect key="frame" x="162" y="158" width="136" height="20"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="52" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请再输入一遍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="faZ-MV-swh">
+                    <rect key="frame" x="92" y="126" width="178" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="!.png" id="Pcr-dY-NwH">
-                    <rect key="frame" x="162" y="162" width="12" height="12"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="52" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请再输入一遍" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="faZ-MV-swh">
-                    <rect key="frame" x="71" y="113" width="178" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入手机号码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wz8-EI-Xh6">
+                    <rect key="frame" x="39" y="17" width="128" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值数额：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="odG-N7-3xQ">
+                    <rect key="frame" x="20" y="171" width="128" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="（提醒：仅限中国大陆用户）" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p5h-Cr-WAu">
+                    <rect key="frame" x="138" y="18" width="169" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button hidden="YES" opaque="NO" tag="81" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kOl-V2-2nf">
+                    <rect key="frame" x="288" y="71" width="13" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
+                    <state key="normal" image="phone_validation_input_clear.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickClear1:" destination="-1" eventType="touchUpInside" id="4ih-dV-O6i"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" tag="82" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cED-Q9-5Dc">
+                    <rect key="frame" x="288" y="127" width="13" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="phone_validation_input_clear.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickClear2:" destination="-1" eventType="touchUpInside" id="TBX-WX-bd6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="n13-LQ-eOQ">
+                    <rect key="frame" x="10" y="200" width="95" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="10yuan.PNG">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickPhone10:" destination="-1" eventType="touchUpInside" id="qPL-xE-rjc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="knl-lg-5yT">
+                    <rect key="frame" x="113" y="200" width="95" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="30yuan.PNG">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickPhone30:" destination="-1" eventType="touchUpInside" id="ouM-72-dss"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lJU-w9-GTJ">
+                    <rect key="frame" x="216" y="200" width="95" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="50yuan.PNG">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickPhone50:" destination="-1" eventType="touchUpInside" id="y1U-B4-cdP"/>
+                    </connections>
+                </button>
             </subviews>
+            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
         </view>
         <view contentMode="top" id="cMe-bk-TIR">
             <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="body_bkg.png" id="gSm-qk-pcz">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="415"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <button autoresizesSubviews="NO" opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y9v-Ox-viQ">
-                    <rect key="frame" x="23" y="330" width="275" height="54"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration">
-                        <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
-                        <bool key="isElement" value="NO"/>
-                    </accessibility>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="提取5元" backgroundImage="btn_normal.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickNext:" destination="-1" eventType="touchUpInside" id="Xuh-bb-ilt"/>
-                    </connections>
-                </button>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone_num_border.png" id="ioA-vS-ZCB">
-                    <rect key="frame" x="23" y="29" width="275" height="53"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="alipay_input.PNG" id="Xjs-RY-H98">
+                    <rect key="frame" x="0.0" y="49" width="320" height="164"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="alipay.png" id="UD0-vZ-NhR">
-                    <rect key="frame" x="23" y="225" width="65" height="21"/>
+                    <rect key="frame" x="20" y="17" width="65" height="21"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="14" id="DBX-6q-ehr">
-                    <rect key="frame" x="39" y="41" width="242" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" minimumFontSize="14" id="DBX-6q-ehr">
+                    <rect key="frame" x="92" y="62" width="186" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -164,19 +185,15 @@
                         <outlet property="delegate" destination="-1" id="Q2c-Bk-rUI"/>
                     </connections>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入支付宝帐号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yFb-tO-ap3">
-                    <rect key="frame" x="71" y="45" width="178" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入支付宝帐号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yFb-tO-ap3">
+                    <rect key="frame" x="92" y="67" width="178" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone_num_border.png" id="3Bg-lU-xnC">
-                    <rect key="frame" x="23" y="97" width="275" height="53"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <textField opaque="NO" clipsSubviews="YES" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="14" id="J4M-m6-oG5">
-                    <rect key="frame" x="39" y="109" width="242" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" minimumFontSize="14" id="J4M-m6-oG5">
+                    <rect key="frame" x="92" y="117" width="186" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -184,37 +201,15 @@
                         <outlet property="delegate" destination="-1" id="IsA-mx-PRg"/>
                     </connections>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仅限中国大陆支付宝用户" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fMQ-yp-eNC">
-                    <rect key="frame" x="162" y="226" width="136" height="20"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="52" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请再输入一遍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4YC-Lt-seq">
+                    <rect key="frame" x="92" y="122" width="178" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注：请填写您的支付宝实名，没有实名认证的账户无法完成自动提现。" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="456-rA-l6J">
-                    <rect key="frame" x="23" y="259" width="275" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
-                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="!.png" id="4i2-2x-4Xk">
-                    <rect key="frame" x="150" y="230" width="12" height="12"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="52" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请再输入一遍" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4YC-Lt-seq">
-                    <rect key="frame" x="71" y="113" width="178" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="phone_num_border.png" id="s0H-qZ-LNJ">
-                    <rect key="frame" x="23" y="164" width="275" height="53"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <textField opaque="NO" clipsSubviews="YES" tag="73" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="14" id="cgK-BR-X7X">
-                    <rect key="frame" x="39" y="176" width="242" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" tag="73" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" minimumFontSize="14" id="cgK-BR-X7X">
+                    <rect key="frame" x="92" y="170" width="186" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="28"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -222,14 +217,95 @@
                         <outlet property="delegate" destination="-1" id="5Rc-2h-aZy"/>
                     </connections>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="53" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您的姓名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mse-sD-5fd">
-                    <rect key="frame" x="71" y="180" width="178" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="53" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您的姓名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mse-sD-5fd">
+                    <rect key="frame" x="92" y="175" width="178" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入支付宝信息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sJX-oj-N6V">
+                    <rect key="frame" x="93" y="17" width="128" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值数额：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8ac-ZP-X58">
+                    <rect key="frame" x="20" y="223" width="128" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button hidden="YES" opaque="NO" tag="81" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xIw-WO-LTc">
+                    <rect key="frame" x="288" y="68" width="13" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="phone_validation_input_clear.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickClear1:" destination="-1" eventType="touchUpInside" id="2OX-9T-mJq"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" tag="82" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zGI-zj-BHW">
+                    <rect key="frame" x="288" y="123" width="13" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="phone_validation_input_clear.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickClear2:" destination="-1" eventType="touchUpInside" id="9Z9-Yb-nun"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" tag="83" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5Di-ti-xqM">
+                    <rect key="frame" x="288" y="176" width="13" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="phone_validation_input_clear.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickClear3:" destination="-1" eventType="touchUpInside" id="LPD-vD-trc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DNE-ja-nxF">
+                    <rect key="frame" x="10" y="252" width="95" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="10yuan.PNG">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickAlipay10:" destination="-1" eventType="touchUpInside" id="F63-Xf-tw0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Zw-Zo-Qqc">
+                    <rect key="frame" x="113" y="252" width="95" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="30yuan.PNG">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickAlipay30:" destination="-1" eventType="touchUpInside" id="BRv-WZ-kce"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1L6-UV-Tq1">
+                    <rect key="frame" x="216" y="252" width="95" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="50yuan.PNG">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickAlipay50:" destination="-1" eventType="touchUpInside" id="lBt-m6-0hk"/>
+                    </connections>
+                </button>
             </subviews>
+            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
         </view>
         <view contentMode="scaleToFill" id="DBG-Zt-Qms">
             <rect key="frame" x="0.0" y="0.0" width="320" height="513"/>
@@ -352,22 +428,17 @@
         </view>
     </objects>
     <resources>
-        <image name="!.png" width="12" height="12"/>
-        <image name="!.png" width="12" height="12"/>
+        <image name="10yuan.PNG" width="95" height="50"/>
+        <image name="30yuan.PNG" width="95" height="50"/>
+        <image name="50yuan.PNG" width="95" height="50"/>
         <image name="alipay.png" width="65" height="21"/>
+        <image name="alipay_input.PNG" width="320" height="164"/>
         <image name="back.png" width="11" height="22"/>
         <image name="body_bkg.png" width="320" height="415"/>
-        <image name="body_bkg.png" width="320" height="415"/>
-        <image name="body_bkg.png" width="320" height="415"/>
-        <image name="btn_normal.png" width="275" height="54"/>
-        <image name="btn_normal.png" width="275" height="54"/>
         <image name="btn_normal.png" width="275" height="54"/>
         <image name="nav_Header.png" width="320" height="54"/>
-        <image name="phone_logo.png" width="11" height="19"/>
-        <image name="phone_num_border.png" width="275" height="53"/>
-        <image name="phone_num_border.png" width="275" height="53"/>
-        <image name="phone_num_border.png" width="275" height="53"/>
-        <image name="phone_num_border.png" width="275" height="53"/>
-        <image name="phone_num_border.png" width="275" height="53"/>
+        <image name="phone_input.png" width="320" height="109"/>
+        <image name="phone_logo.png" width="12" height="20"/>
+        <image name="phone_validation_input_clear.png" width="13" height="13"/>
     </resources>
 </document>

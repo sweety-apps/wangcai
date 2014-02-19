@@ -11,12 +11,13 @@
 #import "TabController.h"
 #import "UICustomAlertView.h"
 
-@interface TransferToAlipayAndPhoneController : UIViewController<UITextFieldDelegate, HttpRequestDelegate> {
+@interface TransferToAlipayAndPhoneController : UIViewController<UITextFieldDelegate, HttpRequestDelegate, UIAlertViewDelegate> {
     BOOL _bAlipay;
     int _nDiscount;
     int _nAmount;
     UICustomAlertView* _alertView;
-    
+    UIAlertView*    _alertBindPhone;
+    BeeUIStack*     _beeStack;
     NSString* _orderId;
 }
 
@@ -30,14 +31,27 @@
 @property (assign, nonatomic) UILabel *_textCheckTip;
 @property (assign, nonatomic) UILabel *_textNameTip;
 
-- (id) init:(BOOL) isAlipay Discount:(int)nDiscount Amount:(int)nAmount;
+- (id) init:(BOOL) isAlipay BeeUIStack:(BeeUIStack*) stack;
 
 - (IBAction)clickBack:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
-- (IBAction)clickNext:(id)sender;
 
 - (IBAction)clickOrderInfo:(id)sender;
 
 - (IBAction)clickCancel:(id)sender;
 - (IBAction)clickContinue:(id)sender;
+
+- (IBAction)clickClear1:(id)sender;
+- (IBAction)clickClear2:(id)sender;
+- (IBAction)clickClear3:(id)sender;
+
+
+
+- (IBAction)clickPhone10:(id)sender;
+- (IBAction)clickPhone30:(id)sender;
+- (IBAction)clickPhone50:(id)sender;
+
+- (IBAction)clickAlipay10:(id)sender;
+- (IBAction)clickAlipay30:(id)sender;
+- (IBAction)clickAlipay50:(id)sender;
 @end

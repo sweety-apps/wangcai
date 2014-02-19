@@ -45,6 +45,16 @@
 		7112B1B618B3203F0067F3E8 /* PhoneValidationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */; };
 		7112B1B818B321720067F3E8 /* phone_validation_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */; };
 		7112B1B918B321720067F3E8 /* phone_validation_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */; };
+		711F437B18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */; };
+		711F437C18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */; };
+		711F437D18B4A03400AEE1D5 /* phone_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F437A18B4A03400AEE1D5 /* phone_input@2x.png */; };
+		711F437E18B4A03400AEE1D5 /* phone_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F437A18B4A03400AEE1D5 /* phone_input@2x.png */; };
+		711F438418B4A85B00AEE1D5 /* 10yuan@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F438118B4A85B00AEE1D5 /* 10yuan@2x.PNG */; };
+		711F438518B4A85B00AEE1D5 /* 10yuan@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F438118B4A85B00AEE1D5 /* 10yuan@2x.PNG */; };
+		711F438618B4A85B00AEE1D5 /* 30yuan@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F438218B4A85B00AEE1D5 /* 30yuan@2x.PNG */; };
+		711F438718B4A85B00AEE1D5 /* 30yuan@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F438218B4A85B00AEE1D5 /* 30yuan@2x.PNG */; };
+		711F438818B4A85B00AEE1D5 /* 50yuan@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F438318B4A85B00AEE1D5 /* 50yuan@2x.PNG */; };
+		711F438918B4A85B00AEE1D5 /* 50yuan@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F438318B4A85B00AEE1D5 /* 50yuan@2x.PNG */; };
 		71355508188D14110007784A /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355505188D14110007784A /* libYouMi.a */; };
 		71355509188D14110007784A /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355505188D14110007784A /* libYouMi.a */; };
 		71355512188D16060007784A /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71355510188D16060007784A /* DomobOfferWallBundle.bundle */; };
@@ -1346,6 +1356,11 @@
 		7112722318B33A1A0068C33E /* phone_validation_sendcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_sendcode@2x.png"; sourceTree = "<group>"; };
 		7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneValidationController.xib; sourceTree = "<group>"; };
 		7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_input@2x.png"; sourceTree = "<group>"; };
+		711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipay_input@2x.PNG"; sourceTree = "<group>"; };
+		711F437A18B4A03400AEE1D5 /* phone_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_input@2x.png"; sourceTree = "<group>"; };
+		711F438118B4A85B00AEE1D5 /* 10yuan@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10yuan@2x.PNG"; sourceTree = "<group>"; };
+		711F438218B4A85B00AEE1D5 /* 30yuan@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "30yuan@2x.PNG"; sourceTree = "<group>"; };
+		711F438318B4A85B00AEE1D5 /* 50yuan@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50yuan@2x.PNG"; sourceTree = "<group>"; };
 		713554FC188D14110007784A /* YouMiConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiConfig.h; sourceTree = "<group>"; };
 		713554FD188D14110007784A /* YouMiDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiDelegateProtocol.h; sourceTree = "<group>"; };
 		713554FE188D14110007784A /* YouMiPointsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiPointsManager.h; sourceTree = "<group>"; };
@@ -2716,8 +2731,13 @@
 		A60C57EB186FF8A30068425C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				711F438118B4A85B00AEE1D5 /* 10yuan@2x.PNG */,
+				711F438218B4A85B00AEE1D5 /* 30yuan@2x.PNG */,
+				711F438318B4A85B00AEE1D5 /* 50yuan@2x.PNG */,
 				71AE4C9C18B488D200B820EC /* back2@2x.png */,
 				7112722218B33A1A0068C33E /* phone_validation_sendcode_down@2x.png */,
+				711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */,
+				711F437A18B4A03400AEE1D5 /* phone_input@2x.png */,
 				7112722318B33A1A0068C33E /* phone_validation_sendcode@2x.png */,
 				7112721F18B339C00068C33E /* phone_validation_code2@2x.png */,
 				7112721C18B339400068C33E /* phone_validation_code@2x.png */,
@@ -4536,6 +4556,7 @@
 				F3359FD918882F8000C1E636 /* StartupController.xib in Resources */,
 				F3359FDA18882F8000C1E636 /* package_icon_3@2x.png in Resources */,
 				F3359FDC18882F8000C1E636 /* yue_0@2x.png in Resources */,
+				711F438918B4A85B00AEE1D5 /* 50yuan@2x.PNG in Resources */,
 				F3359FDD18882F8000C1E636 /* menu-icon-blue@2x.png in Resources */,
 				F31F952518AF623B0035792B /* mywangcai_cell_line@2x.png in Resources */,
 				F3359FDE18882F8000C1E636 /* choujiang_start_btn@2x.png in Resources */,
@@ -4567,6 +4588,8 @@
 				F3359FF318882F8000C1E636 /* menu-button@2x.png in Resources */,
 				F3359FF418882F8000C1E636 /* choujiang_guize@2x.png in Resources */,
 				F3359FF518882F8000C1E636 /* border@2x.png in Resources */,
+				711F437C18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */,
+				711F438718B4A85B00AEE1D5 /* 30yuan@2x.PNG in Resources */,
 				F3359FF618882F8000C1E636 /* line@2x.png in Resources */,
 				F3FEC528189146E100A297C8 /* redbag_mb_lv_unget@2x.png in Resources */,
 				F3359FF718882F8000C1E636 /* choujiang_start_btn_selected@2x.png in Resources */,
@@ -4736,6 +4759,7 @@
 				F335A06C18882F8000C1E636 /* menu_icon_setting@2x.png in Resources */,
 				F335A06D18882F8000C1E636 /* main_menu_bg@2x.jpg in Resources */,
 				F335A06E18882F8000C1E636 /* invite_nav_bar@2x.png in Resources */,
+				711F438518B4A85B00AEE1D5 /* 10yuan@2x.PNG in Resources */,
 				F335A06F18882F8000C1E636 /* default568@2x.png in Resources */,
 				F31F950518AF623B0035792B /* mywangcai_dog_1@2x.png in Resources */,
 				F335A07018882F8000C1E636 /* choujiang_5mao@2x.png in Resources */,
@@ -4757,6 +4781,7 @@
 				F335A07818882F8000C1E636 /* invite_seg_unsel_sel@2x.png in Resources */,
 				71008A4018915E0900689E2F /* nav_Header2@2x.png in Resources */,
 				F335A07918882F8000C1E636 /* zhanghuyue@2x.png in Resources */,
+				711F437E18B4A03400AEE1D5 /* phone_input@2x.png in Resources */,
 				F335A07B18882F8000C1E636 /* TaskController.xib in Resources */,
 				F335A07C18882F8000C1E636 /* about2@2x.png in Resources */,
 				F31F952118AF623B0035792B /* mywangcai_cell_dianshichengjin@2x.png in Resources */,
@@ -4797,6 +4822,7 @@
 				A63AC921186C566B00A106A0 /* StartupController.xib in Resources */,
 				A60C5841186FF8A30068425C /* package_icon_3@2x.png in Resources */,
 				A66E3A681887FB6C00EB19DE /* PushConfig.plist in Resources */,
+				711F437D18B4A03400AEE1D5 /* phone_input@2x.png in Resources */,
 				A60C5872186FF8A30068425C /* yue_0@2x.png in Resources */,
 				A60C5852186FF8A30068425C /* menu-icon-blue@2x.png in Resources */,
 				F3813D1C18753ED400350C27 /* choujiang_start_btn@2x.png in Resources */,
@@ -4854,6 +4880,7 @@
 				F31F951C18AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png in Resources */,
 				F3813D2418753ED400350C27 /* choujiang_x1selected@2x.png in Resources */,
 				A60C5877186FF8A30068425C /* yue_5@2x.png in Resources */,
+				711F438818B4A85B00AEE1D5 /* 50yuan@2x.PNG in Resources */,
 				7112721D18B339400068C33E /* phone_validation_code@2x.png in Resources */,
 				F3DD64201882D7B400E56A0B /* package_icon_many@2x.png in Resources */,
 				71008A361891073800689E2F /* app_tip_close@2x.png in Resources */,
@@ -4936,8 +4963,10 @@
 				F3813D1918753ED400350C27 /* choujiang_border_selected2@2x.png in Resources */,
 				F3813D2218753ED400350C27 /* choujiang_title@2x.png in Resources */,
 				7112B1B818B321720067F3E8 /* phone_validation_input@2x.png in Resources */,
+				711F438418B4A85B00AEE1D5 /* 10yuan@2x.PNG in Resources */,
 				A6FD8A73186189B500223772 /* ExchangeController.xib in Resources */,
 				F3D9D553185D876D00392C40 /* ExtractMoneyController.xib in Resources */,
+				711F438618B4A85B00AEE1D5 /* 30yuan@2x.PNG in Resources */,
 				F3F186E718543A410098C852 /* Icon.png in Resources */,
 				F36049B41871A9AE00FAD1F3 /* menu_icon_wodewangcai@2x.png in Resources */,
 				A60C587F186FF8A30068425C /* table_view_cell_line@2x.png in Resources */,
@@ -5034,6 +5063,7 @@
 				A6FEE28A187D9AB800E5AF3E /* blueArrow@2x.png in Resources */,
 				A60C5868186FF8A30068425C /* tab-bar@2x.png in Resources */,
 				A60C588D186FF8A30068425C /* qiandao_button_icon@2x.png in Resources */,
+				711F437B18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */,
 				F31F897618962B8600F34F20 /* iPadAir.plist in Resources */,
 				F3DD641C1882D36500E56A0B /* testIconSetting@2x.png in Resources */,
 				F36049B01871A9AE00FAD1F3 /* menu_icon_line@2x.png in Resources */,

@@ -14,23 +14,25 @@
 #import "Config.h"
 #import "WebPageController.h"
 #import "MobClick.h"
+#import "PhoneValidationController.h"
 
 @interface TransferToAlipayAndPhoneController ()
 @end
 
 @implementation TransferToAlipayAndPhoneController
 
-- (id) init:(BOOL) isAlipay Discount:(int)nDiscount Amount:(int)nAmount
+- (id) init:(BOOL) isAlipay BeeUIStack:(BeeUIStack*) stack
 {
     self = [super initWithNibName:@"TransferToAlipayAndPhoneController" bundle:nil];
     if (self) {
         // Custom initialization
         self->_bAlipay = isAlipay;
-        self->_nDiscount = nDiscount;
-        self->_nAmount = nAmount;
-        
+        //self->_nDiscount = nDiscount;
+        //self->_nAmount = nAmount;
+        self->_alertBindPhone = nil;
         self->_alertView = nil;
         self->_orderId = nil;
+        self->_beeStack = stack;
         
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] firstObject];
 
@@ -64,31 +66,6 @@
         if ( isAlipay ) {
             self._textName = (UITextField*)[self._containerView viewWithTag:73];
             self._textNameTip = (UILabel*)[self._containerView viewWithTag:53];
-        }
-        
-        UIButton* btn = (UIButton*)[self._containerView viewWithTag:14];
-        if ( self->_bAlipay ) {
-            NSString* text = nil;
-            
-            if ( self->_nAmount == self->_nDiscount ) {
-                text = [[NSString alloc]initWithFormat:@"提取%.0f元", (1.0*self->_nDiscount/100)];
-            } else {
-                text = [[NSString alloc]initWithFormat:@"提取%.0f元，实际到帐%.0f元", (1.0*self->_nDiscount/100), (1.0*self->_nAmount/100)];
-            }
-            
-            [btn setTitle:text forState:UIControlStateNormal];
-            [text release];
-        } else {
-            NSString* text = nil;
-            
-            if ( self->_nAmount == self->_nDiscount ) {
-                text = [[NSString alloc]initWithFormat:@"充值%.0f元", (1.0*self->_nAmount/100)];
-            } else {
-                text = [[NSString alloc]initWithFormat:@"充值%.0f元，实际花费%.0f元", (1.0*self->_nAmount/100), (1.0*self->_nDiscount/100)];
-            }
-            
-            [btn setTitle:text forState:UIControlStateNormal];
-            [text release];
         }
     }
     
@@ -198,15 +175,25 @@
 {
     if ( [textField isEqual:self._textField] ) {
         [self._textFieldTip setHidden:YES];
+        [[self._containerView viewWithTag:81] setHidden:NO];
+    } else {
+        [[self._containerView viewWithTag:81] setHidden:YES];
     }
   
     if ( [textField isEqual:self._textCheck] ) {
         [self._textCheckTip setHidden:YES];
+        [[self._containerView viewWithTag:82] setHidden:NO];
+    } else {
+        [[self._containerView viewWithTag:82] setHidden:YES];
     }
     
     if ( _bAlipay && [textField isEqual:self._textName] ) {
         [self._textNameTip setHidden:YES];
+        [[self._containerView viewWithTag:83] setHidden:NO];
+    } else {
+        [[self._containerView viewWithTag:83] setHidden:YES];
     }
+    
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -238,6 +225,10 @@
             [self._textNameTip setHidden:YES];
         }
     }
+    
+    [[self._containerView viewWithTag:81] setHidden:YES];
+    [[self._containerView viewWithTag:82] setHidden:YES];
+    [[self._containerView viewWithTag:83] setHidden:YES];
 }
 
 - (BOOL) checkPhoneNum : phoneNum {
@@ -267,7 +258,19 @@
     return YES;
 }
 
-- (IBAction)clickNext:(id)sender {
+- (IBAction)clickClear1:(id)sender {
+    [self._textField setText:@""];
+}
+
+- (IBAction)clickClear2:(id)sender {
+    [self._textCheck setText:@""];
+}
+
+- (IBAction)clickClear3:(id)sender {
+    [self._textName setText:@""];
+}
+
+- (void)clickNext {
     NSString* text1 = self._textField.text;
     NSString* text2 = self._textCheck.text;
     NSString* text3 = self._textName.text;
@@ -312,7 +315,7 @@
         if ( self->_nAmount == self->_nDiscount ) {
             info2 = [[NSString alloc] initWithFormat:@"提现金额：%.0f元", (1.0*self->_nDiscount/100)];
         } else {
-            info2 = [[NSString alloc]initWithFormat:@"提现金额：%.0f元，实际到帐%.0f元", (1.0*self->_nDiscount/100), (1.0*self->_nAmount/100)];
+            info2 = [[NSString alloc]initWithFormat:@"提现金额：%.0f元，返现%.0f元", (1.0*self->_nAmount/100), (1.0*(self->_nAmount-self->_nDiscount)/100)];
         }
         
         [self checkExchange:info1 Text:info2 Tip:@"注：提现在一个工作日内到账，请耐心等待" Button:@"确认提现"];
@@ -335,7 +338,7 @@
         if ( self->_nAmount == self->_nDiscount ) {
             info2 = [[NSString alloc] initWithFormat:@"充值金额：%.0f元", (1.0*self->_nAmount/100)];
         } else {
-            info2 = [[NSString alloc]initWithFormat:@"充值金额：%.0f元，实际花费%.0f元", (1.0*self->_nAmount/100), (1.0*self->_nDiscount/100)];
+            info2 = [[NSString alloc]initWithFormat:@"充值金额：%.0f元，返现%.0f元", (1.0*self->_nAmount/100), (1.0*(self->_nAmount-self->_nDiscount)/100)];
         }
         
         [self checkExchange:info1 Text:info2 Tip:@"注：提现在一个工作日内到账，请耐心等待" Button:@"确认充值"];
@@ -483,6 +486,114 @@
     
     [UIView setAnimationDelegate:self];
     [UIView commitAnimations];
+}
+
+-(BOOL) checkBalanceAndBindPhone :(float) fCoin {
+    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+    if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+        // 没有绑定手机号
+        if ( _alertBindPhone != nil ) {
+            [_alertBindPhone release];
+        }
+        
+        _alertBindPhone = [[UIAlertView alloc] initWithTitle:@"提示" message:@"尚未绑定手机，请先绑定手机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"绑定手机", nil];
+        
+        [_alertBindPhone show];
+        
+        if ( phoneNum != nil ) {
+            [phoneNum release];
+        }
+        return NO;
+    }
+    
+    [phoneNum release];
+    
+    float balance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
+    if ( fCoin > balance ) {
+        UIAlertView* balanceAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的余额不足以支付" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [balanceAlert show];
+        [balanceAlert release];
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (IBAction)clickPhone10:(id)sender {
+    [self hideKeyboard];
+    if ( [self checkBalanceAndBindPhone:10] ) {
+        self->_nDiscount = 1000;
+        self->_nAmount = 1000;
+    
+        [self clickNext];
+    }
+}
+
+- (IBAction)clickPhone30:(id)sender {
+    [self hideKeyboard];
+    if ( [self checkBalanceAndBindPhone:30] ) {
+        self->_nDiscount = 2700;
+        self->_nAmount = 3000;
+    
+        [self clickNext];
+    }
+}
+
+- (IBAction)clickPhone50:(id)sender {
+    [self hideKeyboard];
+    if ( [self checkBalanceAndBindPhone:50] ) {
+        self->_nDiscount = 4000;
+        self->_nAmount = 5000;
+    
+        [self clickNext];
+    }
+}
+
+- (IBAction)clickAlipay10:(id)sender {
+    [self hideKeyboard];
+    if ( [self checkBalanceAndBindPhone:10] ) {
+        self->_nDiscount = 1000;
+        self->_nAmount = 1000;
+    
+        [self clickNext];
+    }
+}
+
+- (IBAction)clickAlipay30:(id)sender {
+    [self hideKeyboard];
+    if ( [self checkBalanceAndBindPhone:30] ) {
+        self->_nDiscount = 2700;
+        self->_nAmount = 3000;
+    
+        [self clickNext];
+    }
+}
+
+- (IBAction)clickAlipay50:(id)sender {
+    [self hideKeyboard];
+    if ( [self checkBalanceAndBindPhone:50] ) {
+        self->_nDiscount = 4000;
+        self->_nAmount = 5000;
+    
+        [self clickNext];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( _alertBindPhone != nil ) {
+        if ( [_alertBindPhone isEqual:alertView] ) {
+            if ( buttonIndex == 1 ) {
+                [self onAttachPhone];
+            }
+        }
+    }
+}
+
+-(void) onAttachPhone {
+    // 绑定手机
+    [MobClick event:@"click_bind_phone" attributes:@{@"currentpage":@"网页"}];
+    PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
+    [self->_beeStack pushViewController:phoneVal animated:YES];
 }
 
 @end

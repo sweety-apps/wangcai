@@ -438,6 +438,7 @@ static LoginAndRegister* _sharedInstance = nil;
 }
 
 -(int) getBalance {
+    return 10000;
     return _balance;
 }
 
