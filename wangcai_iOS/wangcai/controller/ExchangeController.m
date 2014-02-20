@@ -21,6 +21,8 @@
 @end
 
 @implementation ExchangeController
+@synthesize jiaoyiBtn;
+
 
 - (void) setUIStack :(BeeUIStack*) stack {
     _beeStack = stack;
@@ -43,41 +45,21 @@
         self->_exchange_code = nil;
         self->_alertExchange = nil;
         
-        _labelBalance = (UILabel*) [self.view viewWithTag:55];
+        _bingphoneTipsView = [self.view viewWithTag:99];
+        _jiaoyiTipsView = [self.view viewWithTag:98];
+        _labelBalance = (UILabel*) [_jiaoyiTipsView viewWithTag:97];
         _tableView = (UITableView*)[self.view viewWithTag:89];
         _tableView.separatorStyle = NO;
         _tableView.dataSource = self;
         _tableView.delegate = self;
         
         CGRect rect = [[UIScreen mainScreen]bounds];
-        rect.origin.y = 101;
-        rect.size.height -= 101;
+        rect.origin.y = 96;
+        rect.size.height -= 96;
         
         //[_tableView setHeight:rect.size.height];
         
         [_tableView setFrame:rect];
-
-        
-        NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
-        if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
-            _noattachView = [[[NSBundle mainBundle] loadNibNamed:@"ExchangeController" owner:self options:nil] objectAtIndex:3];
-            rect = _noattachView.frame;
-            rect.origin.y = 54;
-            _noattachView.frame = rect;
-            
-            [self.view addSubview:_noattachView];
-        } else {
-            _noattachView = nil;
-        }
-        
-        if ( phoneNum != nil ) {
-            [phoneNum release];
-        }
-        
-        float fBalance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
-        NSString* balance = [[NSString alloc] initWithFormat:@"%.2f元", fBalance];
-        [_labelBalance setText:balance];
-        [balance release];
         
         [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
         [[LoginAndRegister sharedInstance] attachBalanceChangeEvent:self];
@@ -97,7 +79,16 @@
         
         if ( [[LoginAndRegister sharedInstance] isInReview] ) {
             [[self.view viewWithTag:73] setHidden:YES];
+            [self.jiaoyiBtn setHidden:YES];
         }
+        
+        if ([[[LoginAndRegister sharedInstance] getPhoneNum] length] == 0) {
+            [_jiaoyiTipsView setHidden:YES];
+        }
+        
+        [self performSelector:@selector(onViewInit) withObject:nil afterDelay:0.1];
+        
+        [self updateBalance];
     }
     return self;
 }
@@ -107,10 +98,65 @@
 }
 
 -(void) balanceChanged:(int) oldBalance New:(int) balance {
-    float fBalance = (1.0*balance) / 100;
-    NSString* bal = [[NSString alloc] initWithFormat:@"%.2f元", fBalance];
-    [_labelBalance setText:bal];
-    [bal release];
+    [self updateBalance];
+}
+
+
+- (void)updateBalance {
+    int nBalance = [[LoginAndRegister sharedInstance] getBalance];
+    NSString* balance = [[NSString alloc] initWithFormat:@"可用余额：¥ %.2f元", (1.0*nBalance/100)];
+    [_labelBalance setText:balance];
+}
+
+- (void)onViewInit
+{
+    if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]> 0)
+    {
+        [self hideBindTips:NO];
+    }
+    else
+    {
+        [self showBindTips:YES];
+    }
+}
+
+- (void)hideBindTips:(BOOL)animated;
+{
+    void (^block)(void) = ^(){
+        _bingphoneTipsView.frame = CGRectMake(0, 5, _bingphoneTipsView.frame.size.width, _bingphoneTipsView.frame.size.height);
+    };
+    
+    [_jiaoyiTipsView setHidden:NO];
+    
+    if (animated)
+    {
+        [UIView animateWithDuration:1.0 animations:block];
+    }
+    else
+    {
+        block();
+    }
+}
+
+
+- (void)showBindTips:(BOOL)animated;
+{
+    _bingphoneTipsView.frame = CGRectMake(0, 5, _bingphoneTipsView.frame.size.width, _bingphoneTipsView.frame.size.height);
+    
+    void (^block)(void) = ^(){
+        _bingphoneTipsView.frame = CGRectMake(0, 52, _bingphoneTipsView.frame.size.width, _bingphoneTipsView.frame.size.height);
+    };
+    
+    [_jiaoyiTipsView setHidden:YES];
+    
+    if (animated)
+    {
+        [UIView animateWithDuration:1.0 animations:block];
+    }
+    else
+    {
+        block();
+    }
 }
 
 - (void) dealloc {
@@ -144,10 +190,6 @@
         _requestExchange = nil;
     }
     
-    if ( _noattachView != nil ) {
-        [_noattachView release];
-    }
-    
     if ( _alertView != nil ) {
         [_alertView release];
         _alertView = nil;
@@ -165,18 +207,7 @@
 }
 
 -(void) bindPhoneCompeted {
-    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
-    float fBalance = (1.0*[[LoginAndRegister sharedInstance] getBalance]) / 100;
-    
-    NSString* balance = [[NSString alloc] initWithFormat:@"%.2f元", fBalance];
-    [_labelBalance setText:balance];
-    [balance release];
-    
-    if ( _noattachView != nil ) {
-        [_noattachView setHidden:YES];
-    }
-    
-    [phoneNum release];
+    [self hideBindTips:YES];
 }
 
 
@@ -432,7 +463,8 @@
                 [self onAttachPhone];
             }
         }
-    } else if ( _alertExchange != nil ) {
+    }
+    if ( _alertExchange != nil ) {
         if ( [_alertExchange isEqual:alertView] ) {
             if ( buttonIndex == 1 ) {
                 // 显示交易详情

@@ -48,10 +48,11 @@
                         <action selector="clickBack:" destination="-1" eventType="touchUpInside" id="Htf-8U-1wy"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="邀请送红包" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lg-wG-Atp">
-                    <rect key="frame" x="182" y="10" width="118" height="33"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="邀请送红包" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lg-wG-Atp">
+                    <rect key="frame" x="101" y="10" width="118" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -224,7 +225,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="back.png" width="12" height="22"/>
+        <image name="back.png" width="11" height="22"/>
         <image name="invite_copy_button" width="320" height="54"/>
         <image name="invite_edit_bkg" width="320" height="54"/>
         <image name="invite_error.png" width="12" height="12"/>

@@ -19,7 +19,6 @@
     UITableView* _tableView;
     BeeUIStack* _beeStack;
     
-    UIView*  _noattachView;
     UILabel* _labelBalance;
     
     UICustomAlertView* _alertView;
@@ -42,7 +41,12 @@
     NSNumber* _prtType;
     NSString* _exchange_code;
     int             _price;
+                
+    UIView* _bingphoneTipsView;
+    UIView* _jiaoyiTipsView;
 }
+
+@property (nonatomic,retain) IBOutlet UIButton* jiaoyiBtn;
 
 - (id)init;
 

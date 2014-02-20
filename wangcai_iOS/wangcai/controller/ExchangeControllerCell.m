@@ -20,7 +20,7 @@
         
         _info = nil;
         
-        _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(12, 8, 48, 48)];
+        _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(16, 8, 48, 48)];
         [_view addSubview:_imageView];
         
         _imageView.contentMode = UIViewContentModeScaleToFill;
@@ -42,7 +42,7 @@
         [_labelNum setTextColor:[UIColor colorWithRed:164.0/255 green:164.0/255 blue:164.0/255 alpha:1]];
         _labelNum.backgroundColor = [UIColor clearColor];
         
-        _btnExchange = [[UIButton alloc]initWithFrame:CGRectMake(225, 18, 75, 27)];
+        _btnExchange = [[UIButton alloc]initWithFrame:CGRectMake(234, 18, 75, 27)];
         [_view addSubview:_btnExchange];
         [_btnExchange addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
         [_btnExchange setImage:[UIImage imageNamed:@"exchange_btn"] forState:UIControlStateNormal];
