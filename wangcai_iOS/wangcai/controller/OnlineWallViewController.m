@@ -49,11 +49,20 @@ static OnlineWallViewController* _sharedInstance;
         _alertView = nil;
         _request = NO;
         
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:deviceId];
+        // 有米积分墙
+#if TEST == 1
+        NSString* did = [[NSString alloc] initWithFormat:@"dev_%@", deviceId];
+        
+        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:did];
         _offerWallController.delegate = self;
         
-        // 有米积分墙
+        [YouMiConfig setUserID:did];
+#else 
+        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:deviceId];
+        _offerWallController.delegate = self;
+
         [YouMiConfig setUserID:deviceId];
+#endif
         [YouMiConfig setUseInAppStore:YES];
         
         //[YouMiConfig launchWithAppID:@"a33a9f68b3eb6147" appSecret:@"02b5609f193b2828"];
@@ -198,6 +207,22 @@ static OnlineWallViewController* _sharedInstance;
         int res = [[body objectForKey:@"res"] intValue];
         if ( res == 0 ) {
             int offerwallIncome = [[body valueForKey:@"offerwall_income"] intValue];
+            
+            int userLevel = [[body valueForKey:@"level"] intValue];
+            int currentEXP = [[body valueForKey:@"exp_current"] intValue];
+            int nextLevelEXP = [[body valueForKey:@"exp_next_level"] intValue];
+            int benefit = [[body valueForKey:@"benefit"] intValue];
+            
+            if (userLevel > 0)
+            {
+                [[LoginAndRegister sharedInstance] setUserLevel:userLevel];
+                [[LoginAndRegister sharedInstance] setCurrentExp:currentEXP];
+                [[LoginAndRegister sharedInstance] setNextLevelExp:nextLevelEXP];
+                if (benefit > 0)
+                {
+                    [[LoginAndRegister sharedInstance] setBenefit:benefit];
+                }
+            }
             
             if ( offerwallIncome > _offerwallIncome ) {
                 int diff = offerwallIncome - _offerwallIncome;

@@ -21,13 +21,17 @@
 @property (nonatomic,retain) IBOutlet UIImageView* jingyan2View;
 @property (nonatomic,retain) IBOutlet UILabel* dengjiNumLabel;
 @property (nonatomic,retain) IBOutlet UILabel* jiachengInfoLabel;
+@property (nonatomic,retain) IBOutlet UILabel* jiachengInfoLabel2;
 @property (nonatomic,retain) IBOutlet UIView* bingphoneTipsView;
 @property (nonatomic,retain) IBOutlet UITableViewCell* dogCell;
+@property (nonatomic,retain) IBOutlet UILabel* EXPLabel;
+@property (nonatomic,retain) IBOutlet UIView* dogcellContentView;
+@property (nonatomic,retain) IBOutlet UIView* dogcellContentView2;
 
 - (IBAction)onPressedBindPhone:(id)sender;
 - (IBAction)onPressedBack:(id)sender;
 
 - (void)setLevel:(int)level;
-- (void)setEXP:(float)EXP withAnimation:(BOOL)animated; //经验：0-1
+- (void)setEXP:(float)EXP nextLevelEXP:(float)nextLevelEXP withAnimation:(BOOL)animated;
 
 @end

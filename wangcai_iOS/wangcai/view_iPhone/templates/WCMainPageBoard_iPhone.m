@@ -96,7 +96,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         UIImageView* headWangcaiIconImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head_left_icon"]] autorelease];
         rectFrame = headWangcaiIconImageView.frame;
         rectFrame.origin.x = 58;
-        rectFrame.origin.y = 14;
+        rectFrame.origin.y = 12;
         headWangcaiIconImageView.frame = rectFrame;
         [self.view addSubview:headWangcaiIconImageView];
         

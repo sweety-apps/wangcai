@@ -14,6 +14,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import "UIGetRedBagAlertView.h"
 #import "NSString+FloatFormat.h"
+#import "BaseTaskTableViewController.h"
 
 @interface ChoiceMoveNode : NSObject
 
@@ -426,12 +427,22 @@
 - (void)onPressedCloseUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
 {
     //返回
+    if ([[LoginAndRegister sharedInstance] getUserLevel]>=5)
+    {
+        //双抽的话再拉下任务更新状态
+        [BaseTaskTableViewController setNeedReloadTaskList];
+    }
     [self onPressedBackButton:self.backButton];
 }
 
 - (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
 {
     //返回
+    if ([[LoginAndRegister sharedInstance] getUserLevel]>=5)
+    {
+        //双抽的话再拉下任务更新状态
+        [BaseTaskTableViewController setNeedReloadTaskList];
+    }
     [self onPressedBackButton:self.backButton];
 }
 

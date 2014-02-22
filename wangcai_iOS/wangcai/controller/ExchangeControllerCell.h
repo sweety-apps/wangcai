@@ -19,6 +19,7 @@
     UILabel* _labelNum;
     UIButton* _btnExchange;
     
+    UIImageView* _imageBtn;
     UIView* _view;
     
     NSDictionary* _info;
@@ -26,7 +27,6 @@
 
 @property (assign, nonatomic) id delegate;
 
-- (void)setBkgColor:(UIColor*) clr;
 - (void)setInfo:(NSDictionary*) info;
 - (NSDictionary*)getInfo;
 @end

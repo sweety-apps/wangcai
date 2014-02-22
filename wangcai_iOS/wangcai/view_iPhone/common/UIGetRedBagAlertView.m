@@ -8,6 +8,7 @@
 
 #import "UIGetRedBagAlertView.h"
 #import "NSString+FloatFormat.h"
+#import "LoginAndRegister.h"
 #import "Common.h"
 
 #define MAX_CATEGORY_NAME_LENGTH 9
@@ -60,27 +61,23 @@ static UIGetRedBagAlertView* gInstance = nil;
 
 - (void) setLevel:(int)level
 {
-    if (level < 1)
-    {
-        level = 1;
-    }
-    if (level > 5)
-    {
-        level = 5;
-    }
+    level = [[LoginAndRegister sharedInstance] getUserLevel];
+    
+    float blocksNum = [[LoginAndRegister sharedInstance] getCurrentExp]/[[LoginAndRegister sharedInstance] getNextLevelExp];
+    int blockN = (int)(blocksNum*5.0f);
     
     for (int i = 0; i < 5; ++i)
     {
         _levelBlock[i].image = [UIImage imageNamed:@"redbag_mb_lv_unget"];
     }
     
-    for (int i = 0; i < level; ++i)
+    for (int i = 0; i < blockN; ++i)
     {
         _levelBlock[i].image = [UIImage imageNamed:@"redbag_mb_lv_get"];
     }
     
     _lvLbl.text = [NSString stringWithFormat:@"LV%d",level];
-    _levelBounusLbl.text = [NSString stringWithFormat:@"等级加成 +%d%@",level,@"%"];
+    _levelBounusLbl.text = [NSString stringWithFormat:@"等级加成 +%d%@",[[LoginAndRegister sharedInstance] getBenefit],@"%"];
 }
 
 - (void) setTitle:(NSString*)title

@@ -246,6 +246,22 @@ static LoginAndRegister* _sharedInstance = nil;
                     _showYoumi = [[offerwall valueForKey:@"youmi"] intValue];
                 }
                 
+                int userLevel = [[dict valueForKey:@"level"] intValue];
+                int currentEXP = [[dict valueForKey:@"exp_current"] intValue];
+                int nextLevelEXP = [[dict valueForKey:@"exp_next_level"] intValue];
+                int benefit = [[dict valueForKey:@"benefit"] intValue];
+                
+                if (userLevel > 0)
+                {
+                    [[LoginAndRegister sharedInstance] setUserLevel:userLevel];
+                    [[LoginAndRegister sharedInstance] setCurrentExp:currentEXP];
+                    [[LoginAndRegister sharedInstance] setNextLevelExp:nextLevelEXP];
+                    if (benefit > 0)
+                    {
+                        [[LoginAndRegister sharedInstance] setBenefit:benefit];
+                    }
+                }
+                
                 NSArray* taskList = [dict objectForKey:@"task_list"];
                 
                 [[CommonTaskList sharedInstance] resetTaskListWithJsonArray:taskList];
@@ -275,6 +291,66 @@ static LoginAndRegister* _sharedInstance = nil;
 
 -(int) getPollingInterval {
     return _pollingInterval;
+}
+
+-(int) getUserLevel
+{
+    return _userLevel;
+}
+
+-(void) setUserLevel:(int)level
+{
+    if (_userLevel != 0 && level > _userLevel)
+    {
+        _hasLevelUp = YES;
+    }
+    if (_benefit == 0)
+    {
+        _benefit = level;
+    }
+    _userLevel = level;
+}
+
+-(int) getCurrentExp
+{
+    return _currentEXP;
+}
+
+-(void) setCurrentExp:(int)exp
+{
+    _currentEXP = exp;
+}
+
+-(int) getNextLevelExp
+{
+    return _nextLevelEXP;
+}
+
+-(void) setNextLevelExp:(int)exp
+{
+    _nextLevelEXP = exp;
+}
+
+-(int) getBenefit
+{
+    return _benefit;
+}
+
+-(void) setBenefit:(int)benefit
+{
+    _benefit = benefit;
+}
+
+-(BOOL)checkAndConsumeLevel
+{
+    BOOL ret = NO;
+    if (_hasLevelUp)
+    {
+        ret = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNameLevelUp object:nil];
+    }
+    _hasLevelUp = NO;
+    return ret;
 }
 
 -(BOOL) isInReview {

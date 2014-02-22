@@ -237,12 +237,6 @@
         }
         
         if ( cell ) {
-            if ( row % 2 == 1 ) {
-                [cell setBkgColor:[UIColor colorWithRed:233.0/255 green:233.0/255 blue:233.0/255 alpha:1]];
-            } else {
-                [cell setBkgColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
-            }
-            
             NSDictionary *info = [_list objectAtIndex:(row-1)];
             [cell setInfo:info];
         }
@@ -259,7 +253,7 @@
         return 28;
     }
     
-    return 64;
+    return 103;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -363,7 +357,7 @@
     
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
     [dictionary setObject:_prtType forKey:@"exchange_type"];
-    
+
     [_requestExchange request:HTTP_EXCHANGE_CODE Param:dictionary];
 }
 
@@ -552,6 +546,11 @@
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
     NSString* timestamp = [Common getTimestamp];
     [dictionary setObject:timestamp forKey:@"stamp"];
+    NSDictionary* dic = [[NSBundle mainBundle] infoDictionary];
+    NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
+    [dictionary setObject:appVersion forKey:@"ver"];
+    [dictionary setObject:APP_NAME forKey:@"app"];
+    
     [_request request:HTTP_EXCHANGE_LIST Param:dictionary method:@"get"];
 }
 
@@ -654,6 +653,13 @@
             break;
         }
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    id cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self onClickExchange:cell];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

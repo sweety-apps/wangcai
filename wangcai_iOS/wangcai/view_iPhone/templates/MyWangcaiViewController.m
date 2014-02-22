@@ -11,10 +11,18 @@
 #import "LoginAndRegister.h"
 #import "MobClick.h"
 #import "PhoneValidationController.h"
+#import "NSString+FloatFormat.h"
+
+
+#define DOG_CELL_ADJUST_OFFSET_Y (30)
 
 @interface MyWangcaiViewController ()
 {
     NSArray* _iconImages;
+    NSArray* _titleImages;
+    NSArray* _descriptionImages;
+    NSMutableArray* _isSkillLocks;
+    NSInteger _currentlevel;
 }
 
 @end
@@ -27,8 +35,12 @@
 @synthesize jingyan2View;
 @synthesize dengjiNumLabel;
 @synthesize jiachengInfoLabel;
+@synthesize jiachengInfoLabel2;
 @synthesize bingphoneTipsView;
 @synthesize dogCell;
+@synthesize EXPLabel;
+@synthesize dogcellContentView;
+@synthesize dogcellContentView2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,15 +56,51 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _iconImages = [[NSArray arrayWithObjects:[UIImage imageNamed:@"mywangcai_cell_baifabaizhong"],[UIImage imageNamed:@"mywangcai_cell_haoyunlianlian"],[UIImage imageNamed:@"mywangcai_cell_dianshichengjin"], nil] retain];
+    _currentlevel = 1;
     
-    [self setLevel:12];
-    [self setEXP:1.0f withAnimation:NO];
+    _iconImages = [[NSArray arrayWithObjects:[UIImage imageNamed:@"mywangcai_cell_baifabaizhong"],[UIImage imageNamed:@"mywangcai_cell_xiongdibang"],[UIImage imageNamed:@"mywangcai_cell_dianshichengjin"], nil] retain];
+    
+    _titleImages = [[NSArray arrayWithObjects:[UIImage imageNamed:@"mywangcai_cell_baifabaizhong_title"],[UIImage imageNamed:@"mywangcai_cell_xiongdibang_title"],[UIImage imageNamed:@"mywangcai_cell_dianshichengjin_title"], nil] retain];
+    
+    _descriptionImages = [[NSArray arrayWithObjects:[UIImage imageNamed:@"mywangcai_cell_baifabaizhong_des"],[UIImage imageNamed:@"mywangcai_cell_xiongdibang_des"],[UIImage imageNamed:@"mywangcai_cell_dianshichengjin_des"], nil] retain];
+    
+    _isSkillLocks = [[NSMutableArray arrayWithArray:@[@YES,@YES,@YES]] retain];
+    
+    
+    
+    jiachengInfoLabel2 = [[UILabel alloc] initWithFrame:jiachengInfoLabel.frame];
+    jiachengInfoLabel2.textAlignment = jiachengInfoLabel.textAlignment;
+    jiachengInfoLabel2.contentMode = jiachengInfoLabel.contentMode;
+    jiachengInfoLabel2.backgroundColor = [UIColor clearColor];
+    jiachengInfoLabel2.textColor = [UIColor blackColor];
+    jiachengInfoLabel2.font = jiachengInfoLabel.font;
+    
+    [self setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
+    [self setEXP:[[LoginAndRegister sharedInstance] getCurrentExp]
+    nextLevelEXP:[[LoginAndRegister sharedInstance] getNextLevelExp]
+   withAnimation:YES];
     
     jingyan2View = [[UIImageView alloc] initWithFrame:self.jingyanView.frame];
     jingyan2View.image = jingyanView.image;
     jingyan2View.contentMode = jingyanView.contentMode;
-    [dogCell addSubview:jingyan2View];
+    
+    
+    
+    dogcellContentView2 = [[UIView alloc] initWithFrame:dogcellContentView2.frame];
+    dogcellContentView2.backgroundColor = [UIColor clearColor];
+    [self.dogCell.contentView addSubview:dogcellContentView2];
+    dogcellContentView.hidden = YES;
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(onLevelUp) name:kNotificationNameLevelUp object:nil];
+}
+
+- (void)onLevelUp
+{
+    [self setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
+    [self setEXP:[[LoginAndRegister sharedInstance] getCurrentExp]
+    nextLevelEXP:[[LoginAndRegister sharedInstance] getNextLevelExp]
+   withAnimation:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,8 +113,38 @@
 {
     [super viewWillAppear:animated];
     
+    [self performSelector:@selector(moveContentViews) withObject:nil afterDelay:0.0];
+    
+    [self performSelector:@selector(adjustDogCell) withObject:nil afterDelay:0.0];
     [self hideBindTips:NO];
-    [self setEXP:0.0f withAnimation:NO];
+    [self setEXP:[[LoginAndRegister sharedInstance] getCurrentExp]
+    nextLevelEXP:[[LoginAndRegister sharedInstance] getNextLevelExp]
+   withAnimation:YES];
+}
+
+- (void)moveContentViews
+{
+    NSArray* subViewsArray = [NSArray arrayWithArray:[dogcellContentView subviews]];
+    
+    for (UIView* v in subViewsArray)
+    {
+        CGRect rect = v.frame;
+        [dogcellContentView2 addSubview:v];
+        v.frame = rect;
+    }
+    
+    if (self.EXPLabel)
+    {
+        [dogcellContentView2 insertSubview:jingyan2View belowSubview:self.EXPLabel];
+    }
+    else
+    {
+        [dogcellContentView2 addSubview:jingyan2View];
+    }
+    
+    jiachengInfoLabel.hidden = YES;
+    jiachengInfoLabel2.hidden = NO;
+    [dogcellContentView2 addSubview:jiachengInfoLabel2];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -88,7 +166,9 @@
     }
     
     [self playDogAnimation];
-    [self setEXP:1.0f withAnimation:YES];
+    [self setEXP:[[LoginAndRegister sharedInstance] getCurrentExp]
+    nextLevelEXP:[[LoginAndRegister sharedInstance] getNextLevelExp]
+   withAnimation:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -103,6 +183,7 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [tableView release];
     [dogImageView release];
     [jingyanView release];
@@ -111,7 +192,13 @@
     [bingphoneTipsView release];
     [dogCell release];
     [_iconImages release];
+    [_descriptionImages release];
+    [_titleImages release];
+    [_isSkillLocks release];
     [jingyan2View release];
+    [EXPLabel release];
+    [dogcellContentView release];
+    [dogcellContentView2 release];
     [super dealloc];
 }
 
@@ -150,6 +237,23 @@
     }
 }
 
+- (void)adjustDogCell
+{
+    CGRect rect = self.dogcellContentView2.frame;
+    if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]> 0)
+    {
+        rect.origin = CGPointMake(0, -DOG_CELL_ADJUST_OFFSET_Y);
+    }
+    else
+    {
+        rect.origin = CGPointZero;
+    }
+    self.dogcellContentView2.frame = rect;
+    self.jiachengInfoLabel.frame = CGRectMake(132, 144, 163, 21);
+    self.jiachengInfoLabel.textAlignment = NSTextAlignmentLeft;
+    //[self.dogcellContentView setNeedsDisplay];
+}
+
 - (void)hideBindTips:(BOOL)animated;
 {
     void (^block)(void) = ^(){
@@ -186,16 +290,47 @@
 
 - (void)setLevel:(int)level
 {
+    _currentlevel = level;
+    
+    int extraPlus = [[LoginAndRegister sharedInstance] getBenefit];
+    if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]==0)
+    {
+        extraPlus = level;
+    }
+    
     self.dengjiNumLabel.text = [NSString stringWithFormat:@"%d",level];
-    self.jiachengInfoLabel.text = [NSString stringWithFormat:@"可获得额外%d%@的红包",level,@"%"];
+    self.jiachengInfoLabel2.text = [NSString stringWithFormat:@"可获得额外%d%@的红包",extraPlus,@"%"];
+    self.jiachengInfoLabel.textAlignment = NSTextAlignmentLeft;
+    
+    
+    [_isSkillLocks removeAllObjects];
+    [_isSkillLocks addObjectsFromArray:@[@YES,@YES,@YES]];
+    
+    if (level >= 3)
+    {
+        [_isSkillLocks replaceObjectAtIndex:0 withObject:@NO];
+    }
+    
+    if (level >= 5)
+    {
+        [_isSkillLocks replaceObjectAtIndex:1 withObject:@NO];
+    }
+    
+    if (level >= 10)
+    {
+        [_isSkillLocks replaceObjectAtIndex:2 withObject:@NO];
+    }
+    
+    [self.tableView reloadData];
 }
 
-//经验：0-1
-- (void)setEXP:(float)EXP withAnimation:(BOOL)animated
+- (void)setEXP:(float)EXP nextLevelEXP:(float)nextLevelEXP withAnimation:(BOOL)animated
 {
+    float ratio = EXP/nextLevelEXP;
+    
     float length = 138.f;
     
-    length *= EXP;
+    length *= ratio;
     
     CGRect rectEXP = self.jingyanView.frame;
     rectEXP.size.width = 0.f;
@@ -206,6 +341,8 @@
     void (^block)(void) = ^(){
         self.jingyan2View.frame = rectEXP;
     };
+    
+    self.EXPLabel.text = [NSString stringWithFormat:@"￥%@ / ￥%@",[NSString stringWithFloatRoundToPrecision:EXP/100.f precision:2 ignoreBackZeros:YES],[NSString stringWithFloatRoundToPrecision:nextLevelEXP/100.f precision:2 ignoreBackZeros:YES]];
     
     if (animated)
     {
@@ -231,6 +368,7 @@
     if (row == 0)
     {
         cell = self.dogCell;
+        [self adjustDogCell];
     }
     else
     {
@@ -243,6 +381,10 @@
         
         MyWangcaiSkillCell* skillCell = (MyWangcaiSkillCell*)cell;
         skillCell.icon.image = [_iconImages objectAtIndex:row-1];
+        skillCell.titleImg.image = [_titleImages objectAtIndex:row-1];
+        skillCell.descriptionImg.image = [_descriptionImages objectAtIndex:row-1];
+        
+        skillCell.lockIcon.hidden = ![[_isSkillLocks objectAtIndex:row-1] boolValue];
     }
     
     return cell;
@@ -255,7 +397,12 @@
     NSInteger row = indexPath.row;
     if (row == 0)
     {
-        return self.dogCell.frame.size.height;
+        CGFloat height = self.dogCell.frame.size.height;
+        if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]> 0)
+        {
+            height = height - DOG_CELL_ADJUST_OFFSET_Y;
+        }
+        return height;
     }
     else
     {

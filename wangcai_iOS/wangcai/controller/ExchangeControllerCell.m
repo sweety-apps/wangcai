@@ -15,37 +15,39 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        _view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 64)];
+        _view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 103)];
         [self addSubview:_view];
+        
+        UIImage* image = [UIImage imageNamed:@"exchange_bkg"];
+        [_view setBackgroundImage:image];
         
         _info = nil;
         
-        _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(16, 8, 48, 48)];
+        _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(16, 14, 120, 82)];
         [_view addSubview:_imageView];
         
         _imageView.contentMode = UIViewContentModeScaleToFill;
         
-        _labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(72, 9, 160, 20)];
+        _labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(146, 12, 160, 20)];
         [_view addSubview:_labelTitle];
         _labelTitle.font = [UIFont systemFontOfSize:14];
         _labelTitle.backgroundColor = [UIColor clearColor];
         
-        _labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(72, 37, 96, 20)];
+        _labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(146, 36, 96, 20)];
         [_view addSubview:_labelPrice];
         _labelPrice.font = [UIFont systemFontOfSize:12];
-        [_labelPrice setTextColor:[UIColor colorWithRed:164.0/255 green:164.0/255 blue:164.0/255 alpha:1]];
+        [_labelPrice setTextColor:[UIColor colorWithRed:0.0/255 green:114.0/255 blue:197.0/255 alpha:1]];
         _labelPrice.backgroundColor = [UIColor clearColor];
         
-        _labelNum = [[UILabel alloc] initWithFrame:CGRectMake(166, 37, 76, 20)];
+        _labelNum = [[UILabel alloc] initWithFrame:CGRectMake(236, 36, 76, 20)];
         [_view addSubview:_labelNum];
         _labelNum.font = [UIFont systemFontOfSize:12];
-        [_labelNum setTextColor:[UIColor colorWithRed:164.0/255 green:164.0/255 blue:164.0/255 alpha:1]];
+        [_labelNum setTextColor:[UIColor colorWithRed:0.0/255 green:114.0/255 blue:197.0/255 alpha:1]];
         _labelNum.backgroundColor = [UIColor clearColor];
         
-        _btnExchange = [[UIButton alloc]initWithFrame:CGRectMake(234, 18, 75, 27)];
-        [_view addSubview:_btnExchange];
-        [_btnExchange addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_btnExchange setImage:[UIImage imageNamed:@"exchange_btn"] forState:UIControlStateNormal];
+        _imageBtn = [[UIImageView alloc] initWithFrame:CGRectMake(146, 72, 45, 15)];
+        [_imageBtn setImage:[UIImage imageNamed:@"exchange_btn2"]];
+        [_view addSubview:_imageBtn];
     }
     return self;
 }
@@ -83,13 +85,9 @@
     [_view release];
     _view = nil;
     
+    [_imageBtn release];
     [super dealloc];
 }
-
-- (void)setBkgColor:(UIColor*) clr {
-    [_view setBackgroundColor:clr];
-}
-
 
 - (IBAction)onClick:(id)sender {
     if ( self.delegate != nil ) {

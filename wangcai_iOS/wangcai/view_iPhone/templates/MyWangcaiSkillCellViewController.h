@@ -16,6 +16,9 @@
 }
 
 @property (nonatomic,retain) IBOutlet UIImageView* icon;
+@property (nonatomic,retain) IBOutlet UIImageView* lockIcon;
+@property (nonatomic,retain) IBOutlet UIImageView* titleImg;
+@property (nonatomic,retain) IBOutlet UIImageView* descriptionImg;
 
 @end
 

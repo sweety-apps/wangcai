@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define kNotificationNameLevelUp @"LevelUp"
+
 typedef enum LoginStatus {
     Login_Timeout,  // session超时，需要重新登录
     Login_Error,    // 登录失败
@@ -66,6 +68,13 @@ typedef enum LoginStatus {
     int        _inReview;
     
     int        _pollingInterval;
+    
+    int        _userLevel;
+    int        _currentEXP;
+    int        _nextLevelEXP;
+    int        _benefit;
+    
+    BOOL       _hasLevelUp;
 }
 
 +(id) sharedInstance;
@@ -121,4 +130,19 @@ typedef enum LoginStatus {
 -(int) getOfferwallIncome;
 
 -(int) getPollingInterval;
+
+-(int) getUserLevel;
+-(void) setUserLevel:(int)level;
+
+-(int) getCurrentExp;
+-(void) setCurrentExp:(int)exp;
+
+-(int) getNextLevelExp;
+-(void) setNextLevelExp:(int)exp;
+
+-(int) getBenefit;
+-(void) setBenefit:(int)benefit;
+
+-(BOOL)checkAndConsumeLevel;
+
 @end

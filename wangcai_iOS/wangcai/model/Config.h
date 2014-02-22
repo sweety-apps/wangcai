@@ -29,7 +29,7 @@
 
 
 
-#define TEST 0
+#define TEST 1
 
 #if TEST == 0
 
@@ -61,7 +61,7 @@
 
 #define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
 #define WEB_TASK          @"http://wangcai.meme-da.com/web/task/app_task.php"
-#define WEB_EXCHANGE_INFO @"http://wangcai.meme-da.com/web/exchange_info.php"
+#define WEB_EXCHANGE_INFO @"http://wangcai.meme-da.com/web/exchange_info2.php"
 #define WEB_ORDER_INFO    @"http://wangcai.meme-da.com/web/order_info.php"
 
 #else
@@ -94,7 +94,7 @@
 
 #define WEB_EXTRACT_MONEY         @"http://dev.meme-da.com/web/extract_money.php"
 #define WEB_TASK                  @"http://dev.meme-da.com/web/task/app_task.php"
-#define WEB_EXCHANGE_INFO         @"http://dev.meme-da.com/web/exchange_info.php"
+#define WEB_EXCHANGE_INFO         @"http://dev.meme-da.com/web/exchange_info2.php"
 #define WEB_ORDER_INFO            @"http://dev.meme-da.com/web/order_info.php"
 #endif
 

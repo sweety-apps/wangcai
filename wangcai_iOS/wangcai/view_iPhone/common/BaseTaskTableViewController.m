@@ -26,6 +26,7 @@
 #import "NSString+FloatFormat.h"
 #import "MobClick.h"
 #import "UIGetRedBagAlertView.h"
+#import "UILevelUpAlertView.h"
 
 static BOOL gNeedReloadTaskList = NO;
 
@@ -121,7 +122,7 @@ static BOOL gNeedReloadTaskList = NO;
             //首次启动弹出安装旺财奖励窗口，未绑定状态
             UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
             [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)100)/100.f precision:2 ignoreBackZeros:YES]];
-            [getMoneyAlertView setLevel:3];
+            [getMoneyAlertView setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
             [getMoneyAlertView setTitle:@"获得应用体验红包"];
             //[getMoneyAlertView setDelegate:self];
             [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:100];
@@ -520,6 +521,11 @@ static BOOL gNeedReloadTaskList = NO;
         //[testAlertView setLevel:3];
         //[testAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:281];
         //[testAlertView show];
+        
+        //static int level = 1;
+        //UILevelUpAlertView* talert = [UILevelUpAlertView sharedInstance];
+        //[talert setLevel:level++];
+        //[talert show];
     }
     else
     {
@@ -701,6 +707,10 @@ static BOOL gNeedReloadTaskList = NO;
 
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume
 {
+    if ([[LoginAndRegister sharedInstance] checkAndConsumeLevel])
+    {
+        //TODO:弹窗
+    }
     if (suc && consume > 0)
     {
         [[CommonTaskList sharedInstance] increaseEarned:consume];
@@ -733,6 +743,12 @@ static BOOL gNeedReloadTaskList = NO;
             _needUpdateApp = YES;
             UIAlertView* alertForceUpdate = [[[UIAlertView alloc]initWithTitle:@"提示" message:@"发现新版旺财！更安全更好赚，请立即升级。" delegate:self cancelButtonTitle:@"更新" otherButtonTitles:nil, nil] autorelease];
             [alertForceUpdate show];
+            
+            if ([[LoginAndRegister sharedInstance] checkAndConsumeLevel])
+            {
+                //TODO:弹窗
+            }
+            
         } else {
             //任务列表改到登陆协议中去了，已不用单独再拉列表了
             //[[CommonTaskList sharedInstance] fetchTaskList:self];
@@ -833,11 +849,23 @@ static BOOL gNeedReloadTaskList = NO;
 - (void)onPressedCloseUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
 {
     //[self checkBalanceAndAnimateYuE];
+    if ([[LoginAndRegister sharedInstance] checkAndConsumeLevel])
+    {
+        UILevelUpAlertView* talert = [UILevelUpAlertView sharedInstance];
+        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
+        [talert show];
+    }
 }
 
 - (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
 {
     //[self checkBalanceAndAnimateYuE];
+    if ([[LoginAndRegister sharedInstance] checkAndConsumeLevel])
+    {
+        UILevelUpAlertView* talert = [UILevelUpAlertView sharedInstance];
+        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
+        [talert show];
+    }
 }
 
 ON_NOTIFICATION( notification )

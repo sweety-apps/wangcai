@@ -12,6 +12,9 @@
 @implementation MyWangcaiSkillCell
 
 @synthesize icon;
+@synthesize lockIcon;
+@synthesize titleImg;
+@synthesize descriptionImg;
 
 - (id)init
 {
@@ -25,6 +28,9 @@
 - (void)dealloc
 {
     [icon release];
+    [lockIcon release];
+    [titleImg release];
+    [descriptionImg release];
     [super dealloc];
 }
 
