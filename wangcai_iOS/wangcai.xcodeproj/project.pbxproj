@@ -179,6 +179,10 @@
 		719F188018AA188900C29765 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355511188D16060007784A /* libDomobOfferWallSDK.a */; };
 		719F188218AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */; };
 		719F188318AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */; };
+		71A9C7D618B8D563006119F6 /* exchange_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */; };
+		71A9C7D718B8D563006119F6 /* exchange_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */; };
+		71A9C7D918B8D884006119F6 /* exchange_btn2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */; };
+		71A9C7DA18B8D884006119F6 /* exchange_btn2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */; };
 		71AE4C9D18B488D200B820EC /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AE4C9C18B488D200B820EC /* back2@2x.png */; };
 		71AE4C9E18B488D200B820EC /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AE4C9C18B488D200B820EC /* back2@2x.png */; };
 		A60A438E1872A1BB00B5C319 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A60A438D1872A1BB00B5C319 /* libsqlite3.dylib */; };
@@ -1455,6 +1459,8 @@
 		719F187B18AA17E300C29765 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		719F187D18AA17EB00C29765 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = MenuBoardInReview_iPhone.xml; path = view_iPhone/MenuBoardInReview_iPhone.xml; sourceTree = "<group>"; };
+		71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_bkg@2x.png"; sourceTree = "<group>"; };
+		71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_btn2@2x.png"; sourceTree = "<group>"; };
 		71AE4C9C18B488D200B820EC /* back2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back2@2x.png"; sourceTree = "<group>"; };
 		A60A438D1872A1BB00B5C319 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		A60A438F1872A1CF00B5C319 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -2746,6 +2752,7 @@
 		A60C57EB186FF8A30068425C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */,
 				711F438118B4A85B00AEE1D5 /* 10yuan@2x.PNG */,
 				711F438218B4A85B00AEE1D5 /* 30yuan@2x.PNG */,
 				711F439318B4F49C00AEE1D5 /* extract_alipay@2x.png */,
@@ -2757,6 +2764,7 @@
 				7112722218B33A1A0068C33E /* phone_validation_sendcode_down@2x.png */,
 				711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */,
 				711F437A18B4A03400AEE1D5 /* phone_input@2x.png */,
+				71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */,
 				7112722318B33A1A0068C33E /* phone_validation_sendcode@2x.png */,
 				7112721F18B339C00068C33E /* phone_validation_code2@2x.png */,
 				7112721C18B339400068C33E /* phone_validation_code@2x.png */,
@@ -4695,6 +4703,7 @@
 				F31F897318962B8600F34F20 /* iPad3.plist in Resources */,
 				F335A03018882F8000C1E636 /* menu-icon-green@2x.png in Resources */,
 				F3FEC522189146E100A297C8 /* redbag_mb_btn_pressed@2x.png in Resources */,
+				71A9C7DA18B8D884006119F6 /* exchange_btn2@2x.png in Resources */,
 				F335A03218882F8000C1E636 /* Default-568h@2x.png in Resources */,
 				71355599188D17800007784A /* ShareSDKLocalizable.strings in Resources */,
 				F335A03318882F8000C1E636 /* grayArrow@2x.png in Resources */,
@@ -4799,6 +4808,7 @@
 				7112722718B33A1A0068C33E /* phone_validation_sendcode@2x.png in Resources */,
 				F335A07418882F8000C1E636 /* menu-icon-red@2x.png in Resources */,
 				7112722518B33A1A0068C33E /* phone_validation_sendcode_down@2x.png in Resources */,
+				71A9C7D718B8D563006119F6 /* exchange_bkg@2x.png in Resources */,
 				F335A07518882F8000C1E636 /* apptask_rmb@2x.png in Resources */,
 				F31F950918AF623B0035792B /* mywangcai_dog_3@2x.png in Resources */,
 				F335A07618882F8000C1E636 /* Default.png in Resources */,
@@ -4843,6 +4853,7 @@
 				F3813D2118753ED400350C27 /* choujiang_thanks4@2x.png in Resources */,
 				F3F186E318543A410098C852 /* Default@2x.png in Resources */,
 				A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */,
+				71A9C7D918B8D884006119F6 /* exchange_btn2@2x.png in Resources */,
 				A60C586F186FF8A30068425C /* warn@2x.png in Resources */,
 				A63AC921186C566B00A106A0 /* StartupController.xib in Resources */,
 				A60C5841186FF8A30068425C /* package_icon_3@2x.png in Resources */,
@@ -4889,6 +4900,7 @@
 				F31F897818962B8600F34F20 /* iPadMini.plist in Resources */,
 				F31F898218962B8600F34F20 /* iPhone5.plist in Resources */,
 				A60C587A186FF8A30068425C /* yue_8@2x.png in Resources */,
+				71A9C7D618B8D563006119F6 /* exchange_bkg@2x.png in Resources */,
 				A60C5859186FF8A30068425C /* navigation_bar@2x.png in Resources */,
 				A60C584A186FF8A30068425C /* bottom_arraw@2x.png in Resources */,
 				A6FEE28B187D9AB800E5AF3E /* grayArrow.png in Resources */,
