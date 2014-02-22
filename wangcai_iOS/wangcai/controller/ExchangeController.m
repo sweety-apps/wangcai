@@ -546,6 +546,11 @@
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
     NSString* timestamp = [Common getTimestamp];
     [dictionary setObject:timestamp forKey:@"stamp"];
+    NSDictionary* dic = [[NSBundle mainBundle] infoDictionary];
+    NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
+    [dictionary setObject:appVersion forKey:@"ver"];
+    [dictionary setObject:APP_NAME forKey:@"app"];
+    
     [_request request:HTTP_EXCHANGE_LIST Param:dictionary method:@"get"];
 }
 

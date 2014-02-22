@@ -23,17 +23,17 @@
         
         _info = nil;
         
-        _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(16, 8, 120, 82)];
+        _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(16, 14, 120, 82)];
         [_view addSubview:_imageView];
         
         _imageView.contentMode = UIViewContentModeScaleToFill;
         
-        _labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(140, 9, 160, 20)];
+        _labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(146, 12, 160, 20)];
         [_view addSubview:_labelTitle];
         _labelTitle.font = [UIFont systemFontOfSize:14];
         _labelTitle.backgroundColor = [UIColor clearColor];
         
-        _labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(140, 36, 96, 20)];
+        _labelPrice = [[UILabel alloc] initWithFrame:CGRectMake(146, 36, 96, 20)];
         [_view addSubview:_labelPrice];
         _labelPrice.font = [UIFont systemFontOfSize:12];
         [_labelPrice setTextColor:[UIColor colorWithRed:0.0/255 green:114.0/255 blue:197.0/255 alpha:1]];
@@ -45,7 +45,7 @@
         [_labelNum setTextColor:[UIColor colorWithRed:0.0/255 green:114.0/255 blue:197.0/255 alpha:1]];
         _labelNum.backgroundColor = [UIColor clearColor];
         
-        _imageBtn = [[UIImageView alloc] initWithFrame:CGRectMake(140, 70, 45, 15)];
+        _imageBtn = [[UIImageView alloc] initWithFrame:CGRectMake(146, 72, 45, 15)];
         [_imageBtn setImage:[UIImage imageNamed:@"exchange_btn2"]];
         [_view addSubview:_imageBtn];
     }
