@@ -79,10 +79,10 @@ DEF_SINGLETON( ChoujiangLogic )
             if (awardCodeNum)
             {
                 _awardCode = [awardCodeNum integerValue];
-                if ([[LoginAndRegister sharedInstance] getUserLevel] < 5)
-                {
+                //if ([[LoginAndRegister sharedInstance] getUserLevel] < 5)
+                //{
                     [SettingLocalRecords setCheckIn:YES];
-                }
+                //}
             }
         }
         succeed = YES;

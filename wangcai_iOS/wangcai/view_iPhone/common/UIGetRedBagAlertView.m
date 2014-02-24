@@ -81,7 +81,7 @@ static UIGetRedBagAlertView* gInstance = nil;
     }
     
     _lvLbl.text = [NSString stringWithFormat:@"LV%d",level];
-    _levelBounusLbl.text = [NSString stringWithFormat:@"等级加成 +%d%@",[[LoginAndRegister sharedInstance] getBenefit],@"%"];
+    _levelBounusLbl.text = [NSString stringWithFormat:@"等级加成 +%d%@",level,@"%"];
 }
 
 - (void) setTitle:(NSString*)title

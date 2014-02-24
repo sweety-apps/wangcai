@@ -292,7 +292,7 @@
 {
     _currentlevel = level;
     
-    int extraPlus = [[LoginAndRegister sharedInstance] getBenefit];
+    int extraPlus = level;
     if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]==0)
     {
         extraPlus = level;

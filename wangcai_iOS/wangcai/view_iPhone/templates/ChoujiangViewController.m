@@ -427,22 +427,26 @@
 - (void)onPressedCloseUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
 {
     //返回
+#if 0
     if ([[LoginAndRegister sharedInstance] getUserLevel]>=5)
     {
         //双抽的话再拉下任务更新状态
         [BaseTaskTableViewController setNeedReloadTaskList];
     }
+#endif
     [self onPressedBackButton:self.backButton];
 }
 
 - (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
 {
     //返回
+#if 0
     if ([[LoginAndRegister sharedInstance] getUserLevel]>=5)
     {
         //双抽的话再拉下任务更新状态
         [BaseTaskTableViewController setNeedReloadTaskList];
     }
+#endif
     [self onPressedBackButton:self.backButton];
 }
 

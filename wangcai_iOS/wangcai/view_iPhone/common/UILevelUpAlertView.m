@@ -75,7 +75,7 @@ static UILevelUpAlertView* gInstance = nil;
         skill = @"一石二鸟";
     }
     
-    int extraPlus = [[LoginAndRegister sharedInstance] getBenefit];
+    int extraPlus = level;
     if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]==0)
     {
         extraPlus = level;
