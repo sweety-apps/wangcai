@@ -326,7 +326,11 @@
 
 - (void)setEXP:(float)EXP nextLevelEXP:(float)nextLevelEXP withAnimation:(BOOL)animated
 {
-    float ratio = EXP/nextLevelEXP;
+    float ratio = 0.0f;
+    if (nextLevelEXP > 0.0f)
+    {
+        ratio = EXP/nextLevelEXP;
+    }
     
     float length = 138.f;
     
