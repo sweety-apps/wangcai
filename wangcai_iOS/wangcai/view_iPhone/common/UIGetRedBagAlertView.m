@@ -63,7 +63,11 @@ static UIGetRedBagAlertView* gInstance = nil;
 {
     level = [[LoginAndRegister sharedInstance] getUserLevel];
     
-    float blocksNum = [[LoginAndRegister sharedInstance] getCurrentExp]/[[LoginAndRegister sharedInstance] getNextLevelExp];
+    float blocksNum = 0.0f;
+    if ([[LoginAndRegister sharedInstance] getNextLevelExp]>0)
+    {
+        blocksNum = ((float)[[LoginAndRegister sharedInstance] getCurrentExp])/((float)[[LoginAndRegister sharedInstance] getNextLevelExp]);
+    }
     int blockN = (int)(blocksNum*5.0f);
     
     for (int i = 0; i < 5; ++i)

@@ -32,12 +32,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mywangcai_cell_baifabaizhong_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="fsc-d7-rST">
-                        <rect key="frame" x="76" y="45" width="191" height="12"/>
+                        <rect key="frame" x="80" y="45" width="191" height="12"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <rect key="contentStretch" x="0.0" y="0.0" width="0.80000000000000004" height="1"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mywangcai_cell_baifabaizhong_des.png" translatesAutoresizingMaskIntoConstraints="NO" id="pd2-kr-kuL">
-                        <rect key="frame" x="126" y="45" width="191" height="12"/>
+                        <rect key="frame" x="134" y="45" width="191" height="12"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <rect key="contentStretch" x="0.0" y="0.0" width="0.80000000000000004" height="1"/>
                     </imageView>
@@ -55,8 +55,8 @@
     </objects>
     <resources>
         <image name="mywangcai_cell_baifabaizhong.png" width="320" height="78"/>
-        <image name="mywangcai_cell_baifabaizhong_des.png" width="105" height="11"/>
-        <image name="mywangcai_cell_baifabaizhong_title.png" width="48" height="11"/>
+        <image name="mywangcai_cell_baifabaizhong_des.png" width="109" height="10"/>
+        <image name="mywangcai_cell_baifabaizhong_title.png" width="50" height="10"/>
         <image name="mywangcai_cell_line.png" width="296" height="3"/>
         <image name="mywangcai_lock.png" width="34" height="44"/>
     </resources>
