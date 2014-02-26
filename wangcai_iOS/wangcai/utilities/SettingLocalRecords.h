@@ -28,6 +28,8 @@
 + (BOOL)hasCheckInYesterday;
 + (BOOL)hasCheckInToday;
 + (BOOL)hasShareToday;
++ (BOOL)hasCheckInRecent2Days;
++ (BOOL)hasShareInRecent2Days;
 
 + (int)getDomobPoint;
 + (void)setDomobPoint:(int) point;

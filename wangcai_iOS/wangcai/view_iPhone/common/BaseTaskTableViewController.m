@@ -123,7 +123,7 @@ static BOOL gNeedReloadTaskList = NO;
             UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
             [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)100)/100.f precision:2 ignoreBackZeros:YES]];
             [getMoneyAlertView setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
-            [getMoneyAlertView setTitle:@"获得应用体验红包"];
+            [getMoneyAlertView setTitle:@"新装旺财获得红包"];
             //[getMoneyAlertView setDelegate:self];
             [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:100];
             [getMoneyAlertView show];

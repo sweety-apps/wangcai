@@ -76,7 +76,7 @@
 -(void)_doAgeInitSelections
 {
     //[self.ageSelectorView selectItemAtIndex:17 animated:NO];
-    [self _doSelectAgeAtIndex:-1];
+    [self _doSelectAgeAtIndex:21];
     //[self selectSex:YES];
     
     [[UserInfoAPI loginedUserInfo] fetchUserInfo:self];
@@ -91,6 +91,7 @@
     else
     {
         [self.ageSelectorView selectItemAtIndex:index animated:NO];
+        _selectorView.alpha = 1.0f;
     }
 }
 
@@ -444,7 +445,8 @@
     [selectorView addSubview:label];
     _labelAgeSelected = label;
     _selectorView = selectorView;
-    _selectorView.alpha = 0.0f;
+    //_selectorView.alpha = 0.0f;
+    _selectorView.alpha = 1.0f;
     
     return selectorView;
 }
@@ -485,10 +487,14 @@
             }
         }
         int ageIndex = [userInfo.uiAge intValue] - 1;
+        if (ageIndex < 0)
+        {
+            ageIndex = 21;
+        }
         [self _doSelectAgeAtIndex:ageIndex];
         [self selectInterestsWithUserInfo:userInfo];
         
-        if (ageIndex < 0)
+        if ([userInfo.uiAge intValue] <= 0)
         {
             [self.commitButton setTitle:@"确认并领取1元" forState:UIControlStateNormal];
             _shouldAddMoney = YES;

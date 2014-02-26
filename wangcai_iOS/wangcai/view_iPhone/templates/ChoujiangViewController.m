@@ -56,13 +56,28 @@
     // Do any additional setup after loading the view from its nib.
     _choiceViews = [[NSArray arrayWithObjects:self.choice0,self.choice1,self.choice2,self.choice3,self.choice4,self.choice5,self.choice6,self.choice7,self.choice8,self.choice9,self.choice10,self.choice11, nil] retain];
     _beilv = 1;
-    if ([SettingLocalRecords hasCheckInYesterday])
+    
+    if ([SettingLocalRecords hasCheckInRecent2Days])
+    {
+        _beilv += 2;
+    }
+    else if([SettingLocalRecords hasCheckInYesterday])
     {
         _beilv += 1;
     }
-    if ([SettingLocalRecords hasShareToday])
+    
+    if ([SettingLocalRecords hasShareInRecent2Days])
+    {
+        _beilv += 2;
+    }
+    else if ([SettingLocalRecords hasShareToday])
     {
         _beilv += 1;
+    }
+    
+    if (_beilv > 3)
+    {
+        _beilv = 3;
     }
     
     self.choiceBorder.hidden = YES;

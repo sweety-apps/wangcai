@@ -16,6 +16,8 @@
 #define kCheckIn @"checkIn"
 #define kMusicOnOff @"musicOnOff"
 #define kInstallWangcaiAlertView @"installWangcaiAlertView"
+#define kCheckInTimeArray @"checkInTimeArray"
+#define kShareTimeArray @"shareTimeArray"
 //#define kLastOfferWallAlertView @"offerWallClearPoint"
 
 #define NKEY(x) ([SettingLocalRecords getUserNamedKey:(x)])
@@ -41,6 +43,20 @@
         {
             NSLog(@"[[ERROR]] saveLastCheckInDateTime saved false!");
         }
+        
+        NSArray* rawArray = [[NSUserDefaults standardUserDefaults] objectForKey:NKEY(kCheckInTimeArray)];
+        if (rawArray == nil)
+        {
+            rawArray = [NSArray array];
+        }
+        NSMutableArray* array = [NSMutableArray arrayWithArray:rawArray];
+        [array addObject:dateTime];
+        [[NSUserDefaults standardUserDefaults] setObject:array forKey:NKEY(kCheckInTimeArray)];
+        syned = [[NSUserDefaults standardUserDefaults] synchronize];
+        if (!syned)
+        {
+            NSLog(@"[[ERROR]] saveCheckInTimeArray false!");
+        }
     }
 }
 
@@ -56,7 +72,63 @@
     {
         [[NSUserDefaults standardUserDefaults] setObject:dateTime forKey:NKEY(kLastShareTime)];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSArray* rawArray = [[NSUserDefaults standardUserDefaults] objectForKey:NKEY(kShareTimeArray)];
+        if (rawArray == nil)
+        {
+            rawArray = [NSArray array];
+        }
+        NSMutableArray* array = [NSMutableArray arrayWithArray:rawArray];
+        [array addObject:dateTime];
+        [[NSUserDefaults standardUserDefaults] setObject:array forKey:NKEY(kShareTimeArray)];
+        BOOL syned = [[NSUserDefaults standardUserDefaults] synchronize];
+        if (!syned)
+        {
+            NSLog(@"[[ERROR]] saveShareTimeArray false!");
+        }
     }
+}
+
++ (BOOL)hasCheckinBeforeDays:(int)days
+{
+    BOOL ret = NO;
+    NSArray* rawArray = [[NSUserDefaults standardUserDefaults] objectForKey:NKEY(kCheckInTimeArray)];
+    if (rawArray == nil)
+    {
+        rawArray = [NSArray array];
+    }
+    NSDate* theDay = [NSDate dateWithTimeIntervalSinceNow:-(60.0f*60.0f*24.0f*((float)days))];
+    NSString * theDayString = [[theDay description] substringToIndex:10];
+    for (NSDate* dateTime in rawArray)
+    {
+        NSString * refDateString = [[dateTime description] substringToIndex:10];
+        if ([theDayString isEqualToString:refDateString])
+        {
+            ret = YES;
+        }
+    }
+    return ret;
+}
+
++ (BOOL)hasShareBeforeDays:(int)days
+{
+    BOOL ret = NO;
+    NSArray* rawArray = [[NSUserDefaults standardUserDefaults] objectForKey:NKEY(kShareTimeArray)];
+    if (rawArray == nil)
+    {
+        rawArray = [NSArray array];
+    }
+    NSDate* theDay = [NSDate dateWithTimeIntervalSinceNow:-(60.0f*60.0f*24.0f*((float)days))];
+    NSString * theDayString = [[theDay description] substringToIndex:10];
+    for (NSDate* dateTime in rawArray)
+    {
+        NSString * refDateString = [[dateTime description] substringToIndex:10];
+        if ([theDayString isEqualToString:refDateString])
+        {
+            ret = YES;
+        }
+    }
+    return ret;
 }
 
 + (NSDate*)getLastShareDateTime
@@ -147,6 +219,35 @@
     
     return NO;
 }
+
++ (BOOL)hasCheckInRecent2Days
+{
+    BOOL ret = NO;
+    if ([SettingLocalRecords hasCheckInYesterday] || [SettingLocalRecords hasCheckinBeforeDays:1])
+    {
+        if ([SettingLocalRecords hasCheckinBeforeDays:2])
+        {
+            ret = YES;
+        }
+    }
+    
+    return ret;
+}
+
++ (BOOL)hasShareInRecent2Days
+{
+    BOOL ret = NO;
+    if ([SettingLocalRecords hasShareToday])
+    {
+        if ([SettingLocalRecords hasShareBeforeDays:1])
+        {
+            ret = YES;
+        }
+    }
+    
+    return ret;
+}
+
 
 + (BOOL)hasCheckInToday
 {
