@@ -65,6 +65,9 @@ typedef enum LoginStatus {
     int        _showDomob;
     int        _showYoumi;
     
+    int        _showMobsmar;
+    int        _showLimei;
+    
     int        _inReview;
     
     int        _pollingInterval;
@@ -122,6 +125,8 @@ typedef enum LoginStatus {
 
 -(BOOL) isShowDomob;
 -(BOOL) isShowYoumi;
+-(BOOL) isShowLimei;
+-(BOOL) isShowMobsmar;
 
 -(int)  getNoWithDraw;
 -(NSString*) getTipsStrings;

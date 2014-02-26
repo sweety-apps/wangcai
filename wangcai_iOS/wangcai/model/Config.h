@@ -15,12 +15,28 @@
 
 #define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcai&"
 
+
+#define YOUMI_APP_ID    @"4a2807f06fd8d2df"
+#define YOUMI_APP_SECRET    @"83b758c99c63593d"
+
+#define DOMOB_PUBLISHER_ID @"96ZJ2I4gzeykPwTACk"
+
+#define LIMEI_ID           @"6ec9f39b6b38ac4d8b6c1764d68b91e4"
+
 #elif TARGET_VERSION_LITE == 2
 
 #define APP_NAME   @"WangCaiFriend"
 #define INVITE_URL @"http://invite.getwangcai.com/index.php?app=wangcaifriend&code=%@"
 
 #define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcaifriend&"
+
+#define YOUMI_APP_ID    @"c43af0b9f90601cf"
+#define YOUMI_APP_SECRET    @"14706b7214e01b2b"
+
+#define DOMOB_PUBLISHER_ID @"96ZJ0Q7gzeykPwTAVP"
+
+#define LIMEI_ID           @"a0b29d7891bffc58f7618f6788d3aaaa"
+
 #endif
 
 

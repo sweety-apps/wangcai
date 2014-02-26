@@ -12,12 +12,13 @@
 #import "HttpRequest.h"
 #import "UICustomAlertView.h"
 #import "YouMiConfig.h"
+#import <immobSDK/immobView.h>
 
 @protocol OnlineWallViewControllerDelegate <NSObject>
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume;
 @end
 
-@interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, HttpRequestDelegate> {
+@interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, immobViewDelegate, HttpRequestDelegate> {
     DMOfferWallViewController* _offerWallController;
     NSInteger                  _nConsume;
     id<OnlineWallViewControllerDelegate>        _delegate;
@@ -36,11 +37,22 @@
 
 + (OnlineWallViewController*) sharedInstance;
 
+@property (nonatomic, retain)immobView *adView_adWall;
+
+-(void)enterAdWall;
+-(void)QueryScore;
+-(void)ReduceScore;
+
 - (void)setFullScreenWindow:(UIWindow*) window;
 - (void)showWithModal;
 - (void)requestAndConsumePoint;
 
 - (IBAction)clickDomob:(id)sender;
 - (IBAction)clickYoumi:(id)sender;
+- (IBAction)clickLimei:(id)sender;
+- (IBAction)clickMobsmar:(id)sender;
+
+- (IBAction)clickHelper:(id)sender;
+
 - (IBAction)clickClose:(id)sender;
 @end

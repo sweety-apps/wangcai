@@ -16,16 +16,15 @@
 #import "YouMiPointsManager.h"
 #import "SettingLocalRecords.h"
 #import "MobClick.h"
-
-
-#define PUBLISHER_ID @"96ZJ2I4gzeykPwTACk"
+#import "BeeUIBoard+ModalBoard.h"
+#import "WebPageController.h"
 
 @interface OnlineWallViewController ()
 
 @end
 
 @implementation OnlineWallViewController
-
+@synthesize adView_adWall;
 @synthesize delegate = _delegate;
 
 static OnlineWallViewController* _sharedInstance;
@@ -58,15 +57,14 @@ static OnlineWallViewController* _sharedInstance;
         
         [YouMiConfig setUserID:did];
 #else 
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:deviceId];
+        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:deviceId];
         _offerWallController.delegate = self;
 
         [YouMiConfig setUserID:deviceId];
 #endif
         [YouMiConfig setUseInAppStore:YES];
         
-        //[YouMiConfig launchWithAppID:@"a33a9f68b3eb6147" appSecret:@"02b5609f193b2828"];
-        [YouMiConfig launchWithAppID:@"c43af0b9f90601cf" appSecret:@"14706b7214e01b2b"];  //服务器版
+        [YouMiConfig launchWithAppID:YOUMI_APP_ID appSecret:YOUMI_APP_SECRET];  //服务器版
         
         [YouMiWall enable];
         [YouMiPointsManager enable];
@@ -87,14 +85,54 @@ static OnlineWallViewController* _sharedInstance;
     
     BOOL showDomob = [[LoginAndRegister sharedInstance] isShowDomob];
     BOOL showYoumi = [[LoginAndRegister sharedInstance] isShowYoumi];
+    BOOL showLimei = [[LoginAndRegister sharedInstance] isShowLimei];
+    BOOL showMobsmar = [[LoginAndRegister sharedInstance] isShowMobsmar];
     
-    UIView* view;
-    if ( showDomob && showYoumi ) {
-        view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
-    } else if ( !showDomob && showYoumi ) {
-        view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] objectAtIndex:2] autorelease];
+    UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
+    
+    NSMutableArray* nsOfferwall = [[[NSMutableArray alloc] init] autorelease];
+    if ( showDomob ) {
+        [nsOfferwall pushTail:[view viewWithTag:11] ];
+    }
+    if ( showYoumi ) {
+        [nsOfferwall pushTail:[view viewWithTag:12] ];
+    }
+    if ( showLimei && [nsOfferwall count] < 2 ) {
+        [nsOfferwall pushTail:[view viewWithTag:13] ];
+    }
+    if ( showMobsmar && [nsOfferwall count] < 2 ) {
+        [nsOfferwall pushTail:[view viewWithTag:14] ];
+    }
+    
+    [[view viewWithTag:11] setHidden:YES];
+    [[view viewWithTag:12] setHidden:YES];
+    [[view viewWithTag:13] setHidden:YES];
+    [[view viewWithTag:14] setHidden:YES];
+    
+    if ( [nsOfferwall count] == 2 ) {
+        // 显示两个按钮
+        UIButton* btn1 = (UIButton*) [nsOfferwall objectAtIndex:0];
+        UIButton* btn2 = (UIButton*) [nsOfferwall objectAtIndex:1];
+        
+        CGRect rect = btn1.frame;
+        [btn1 setHidden:NO];
+        rect.origin.y = 321;
+        [btn1 setFrame:rect];
+        
+        rect = btn2.frame;
+        [btn2 setHidden:NO];
+        rect.origin.y = 380;
+        [btn2 setFrame:rect];
+    } else if ( [nsOfferwall count] == 1 ) {
+        // 只显示一个按钮
+        UIButton* btn1 = (UIButton*) [nsOfferwall objectAtIndex:0];
+        
+        CGRect rect = btn1.frame;
+        [btn1 setHidden:NO];
+        rect.origin.y = 360;
+        [btn1 setFrame:rect];
     } else {
-        view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] objectAtIndex:1] autorelease];
+        return ;
     }
     
     UIColor *color = [UIColor colorWithRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1];
@@ -126,6 +164,67 @@ static OnlineWallViewController* _sharedInstance;
     }];
 }
 
+- (IBAction)clickMobsmar:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    [MobClick event:@"task_list_click_mobsmar" attributes:@{@"currentpage":@"任务列表"}];
+    //[_offerWallController presentOfferWall];
+}
+
+
+- (IBAction)clickLimei:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    [MobClick event:@"task_list_click_limei" attributes:@{@"currentpage":@"任务列表"}];
+    [self enterAdWall];
+}
+
+// 进入积分墙
+-(void)enterAdWall{
+    // 实例化 immobView 对象,在此处替换在力美广告平台申请到的广告位 ID;
+    self.adView_adWall=[[immobView alloc] initWithAdUnitID:LIMEI_ID];
+    //添加 immobView 的 Delegate;
+    self.adView_adWall.delegate=self;
+
+    //添加 userAccount 属性,此属性针对多账户应用所使用,用于区分不同账户下的积分(可选)。
+    NSString* deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
+#if TEST == 1
+    NSString* did = [[NSString alloc] initWithFormat:@"dev_%@", deviceId];
+    [self.adView_adWall.UserAttribute setObject:did forKey:@"accountname"];
+#else
+    [self.adView_adWall.UserAttribute setObject:deviceId forKey:@"accountname"];
+#endif
+    
+    [deviceId release];
+    
+    //开始加载广告。
+    [self.adView_adWall immobViewRequest];
+}
+
+// 设置必需的 UIViewController, 此方法的返回值如果为空,会导致广告展示不正常。
+- (UIViewController *)immobViewController{
+    return self;
+}
+
+- (void) immobView: (immobView*) immobView didFailReceiveimmobViewWithError: (NSInteger) errorCode {
+    
+}
+
+- (void) immobViewDidReceiveAd:(immobView*)immobView {
+    BeeUIRouter * router = [BeeUIRouter sharedInstance];
+    UIView* view = router.view;
+    
+    //将 immobView 添加到界面上。
+    [view addSubview:adView_adWall];
+    
+    //将 immobView 添加到界面后,调用 immobViewDisplay。
+    [self.adView_adWall immobViewDisplay];
+}
+
 - (IBAction)clickDomob:(id)sender {
     if ( _alertView != nil ) {
         [_alertView hideAlertView];
@@ -139,6 +238,20 @@ static OnlineWallViewController* _sharedInstance;
     if ( _alertView != nil ) {
         [_alertView hideAlertView];
     }
+}
+
+- (IBAction)clickHelper:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    BeeUIStack* stack = [BeeUIRouter sharedInstance].currentStack;
+    
+    NSString* url = [[[NSString alloc] initWithFormat:@"%@132", WEB_SERVICE_VIEW] autorelease];
+    
+    WebPageController* controller = [[[WebPageController alloc] init:@"重要提示"
+                                                                 Url:url Stack:stack] autorelease];
+    [stack pushViewController:controller animated:YES];
 }
 
 - (void)viewDidLoad

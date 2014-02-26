@@ -44,6 +44,10 @@ static LoginAndRegister* _sharedInstance = nil;
     self->_firstLogin = YES;
     self->_showDomob = 0;
     self->_showYoumi = 0;
+    
+    self->_showMobsmar = 0;
+    self->_showLimei = 0;
+    
     _tipsString = @"";
     
     return self;
@@ -225,7 +229,7 @@ static LoginAndRegister* _sharedInstance = nil;
                 _nowithdraw = [[dict valueForKey:@"no_withdraw"] intValue];
                 
                 _inReview = [[dict valueForKey:@"in_review"] intValue];
-                
+              
                 _offerwallIncome = [[dict valueForKey:@"offerwall_income"] intValue];
                 
                 _pollingInterval = [[dict valueForKey:@"polling_interval"] intValue];
@@ -245,6 +249,15 @@ static LoginAndRegister* _sharedInstance = nil;
                 if ( [[offerwall allKeys] containsObject:@"youmi"] ) {
                     _showYoumi = [[offerwall valueForKey:@"youmi"] intValue];
                 }
+                
+                if ( [[offerwall allKeys] containsObject:@"mobsmar"] ) {
+                    _showMobsmar = [[offerwall valueForKey:@"mobsmar"] intValue];
+                }
+                
+                if ( [[offerwall allKeys] containsObject:@"limei"] ) {
+                    _showLimei = [[offerwall valueForKey:@"limei"] intValue];
+                }
+            
                 
                 int userLevel = [[dict valueForKey:@"level"] intValue];
                 int currentEXP = [[dict valueForKey:@"exp_current"] intValue];
@@ -556,6 +569,7 @@ static LoginAndRegister* _sharedInstance = nil;
 }
 
 -(BOOL) isShowDomob {
+    //return YES;
     if ( _showDomob == 1 ) {
         return YES;
     }
@@ -563,7 +577,24 @@ static LoginAndRegister* _sharedInstance = nil;
 }
 
 -(BOOL) isShowYoumi {
+    //return NO;
     if ( _showYoumi == 1 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isShowLimei {
+    //return YES;
+    if ( _showLimei == 1 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isShowMobsmar {
+    return NO;  // 还没支持
+    if ( _showMobsmar == 1 ) {
         return YES;
     }
     return NO;
