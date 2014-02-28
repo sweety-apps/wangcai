@@ -147,6 +147,12 @@ static LoginAndRegister* _sharedInstance = nil;
     NSString* timestamp = [Common getTimestamp];
     nsParam = [nsParam stringByAppendingFormat:@"timestamp=%@", timestamp];
 
+#if TARGET_VERSION_LITE == 2 
+    // 亲友版带上openudid
+    NSString* openUdid = [OpenUDID value];
+    nsParam = [nsParam stringByAppendingFormat:@"&openudid=%@", openUdid];
+#endif
+    
     NSMutableData* data = [[NSMutableData alloc] init];
     
     
