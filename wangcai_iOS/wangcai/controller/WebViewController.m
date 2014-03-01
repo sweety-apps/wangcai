@@ -14,6 +14,7 @@
 #import "Common.h"
 #import "MBHUDView.h"
 #import "MobClick.h"
+#import "EGORefreshTableHeaderView.h"
 
 @interface WebViewController ()
 
@@ -29,7 +30,10 @@
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"WebViewController" owner:self options:nil] firstObject];
         self->_webView = (UIWebView*)[self.view viewWithTag:11];
         self->_webView.delegate = self;
+        self->_webView.scrollView.delegate = self;
+        
         _delegate = nil;
+        self->_refreshHeader = false;
         
         self->_loadingView = [[[NSBundle mainBundle] loadNibNamed:@"WebViewController" owner:self options:nil] objectAtIndex:1];
         [self.view addSubview:self->_loadingView];
@@ -46,6 +50,14 @@
         _alert = nil;
         _nsCallback = nil;
         _nsBtn2ID = nil;
+        
+        if ( _refreshHeaderView == nil ) {
+            _refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0, 0-_webView.scrollView.bounds.size.height, _webView.scrollView.frame.size.width, _webView.scrollView.bounds.size.height)];
+            _refreshHeaderView.delegate = self;
+            [_webView.scrollView addSubview:_refreshHeaderView];
+        }
+        
+        [_refreshHeaderView refreshLastUpdatedDate];
         
         //
         [[LoginAndRegister sharedInstance] attachBindPhoneEvent:self];
@@ -139,6 +151,7 @@
     rect.origin.y = 0;
     self->_webView.frame = rect;
     
+    self->_refreshHeader = false;
     NSURL* nsurl = [[NSURL alloc] initWithString:url];
     [self->_webView loadRequest:[NSURLRequest requestWithURL:nsurl]];
     [nsurl release];
@@ -422,9 +435,11 @@
 }
  
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    [self->_loadingView setHidden:NO];
-    [self->_webView setHidden:YES];
-    [self->_errView setHidden:YES];
+    if ( !self->_refreshHeader ) {
+        [self->_loadingView setHidden:NO];
+        [self->_webView setHidden:YES];
+        [self->_errView setHidden:YES];
+    }
     
     CGRect rect;
     rect.origin.y = 0;
@@ -434,12 +449,19 @@
     if ( rect.size.height != 0 && rect.size.width != 0 ) {
         _webView.frame = rect;
     }
+    
+    _reloading = YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self->_loadingView setHidden:YES];
-    [self->_webView setHidden:NO];
-    [self->_errView setHidden:YES];
+    if ( !self->_refreshHeader ) {
+        [self->_loadingView setHidden:YES];
+        [self->_webView setHidden:NO];
+        [self->_errView setHidden:YES];
+    }
+    
+    _reloading = NO;
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:_webView.scrollView];
 }
 
 - (IBAction)onRequest:(id)sender {
@@ -452,7 +474,43 @@
     [self->_loadingView setHidden:YES];
     [self->_errView setHidden:NO];
     [self->_webView setHidden:YES];
+    
+    _reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:_webView.scrollView];
 }
+
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+    self->_refreshHeader = true;
+    [_webView reload];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+	return _reloading; // should return if data source model is reloading
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+}
+
 
 -(void) onAttachPhone {
     // 绑定手机

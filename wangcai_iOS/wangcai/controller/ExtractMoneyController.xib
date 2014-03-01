@@ -172,7 +172,6 @@
     <resources>
         <image name="back.png" width="11" height="22"/>
         <image name="chongzhi_btn.png" width="73" height="32"/>
-        <image name="chongzhi_btn.png" width="73" height="32"/>
         <image name="extract_alipay.png" width="40" height="42"/>
         <image name="extract_phone.png" width="40" height="42"/>
         <image name="jiaoyi.png" width="73" height="26"/>

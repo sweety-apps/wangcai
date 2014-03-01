@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginAndRegister.h"
+#import "EGORefreshTableHeaderView.h"
 
 @protocol WebViewControllerDelegate <NSObject>
 - (void) openAppWithIdentifier : (NSString*) appid;
 - (void) openUrl : (NSString*) url;
 @end
 
-@interface WebViewController : UIViewController<UIWebViewDelegate, UIAlertViewDelegate, BindPhoneDelegate, BalanceChangeDelegate> {
+@interface WebViewController : UIViewController<UIScrollViewDelegate, UIWebViewDelegate, UIAlertViewDelegate, BindPhoneDelegate, BalanceChangeDelegate, EGORefreshTableHeaderDelegate> {
     UIWebView* _webView;
     NSString*  _url;
     
@@ -33,6 +34,11 @@
     UIAlertView*    _alertNoBalance;
     
     CGSize          _size;
+    
+    EGORefreshTableHeaderView* _refreshHeaderView;
+    BOOL            _reloading;
+    
+    BOOL            _refreshHeader;
 }
 
 - (void) setDelegate:(id) delegate;
