@@ -287,7 +287,6 @@ static UIGetRedBagAlertView* gInstance = nil;
         [window addSubview:self];//[subView addSubview:self];
     }
     [self showAlertAnmation];
-    [Common playAddCoinSound];
 }
 
 
@@ -309,6 +308,7 @@ static UIGetRedBagAlertView* gInstance = nil;
     [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^(){
         _alertViewContainer.transform = CGAffineTransformMakeScale(1.1, 1.1);
     } completion:^(BOOL finished){
+        [Common playAddCoinSound];
         [UIView animateWithDuration:0.1f delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^(){
             _alertViewContainer.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished){
