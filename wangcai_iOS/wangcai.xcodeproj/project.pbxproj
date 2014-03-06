@@ -65,6 +65,8 @@
 		711F439818B4F49C00AEE1D5 /* extract_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F439418B4F49C00AEE1D5 /* extract_phone@2x.png */; };
 		711F439A18B4F9A300AEE1D5 /* chongzhi_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F439918B4F9A300AEE1D5 /* chongzhi_btn@2x.png */; };
 		711F439B18B4F9A300AEE1D5 /* chongzhi_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F439918B4F9A300AEE1D5 /* chongzhi_btn@2x.png */; };
+		712DA7D218C85978008414D4 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */; };
+		712DA7D318C85978008414D4 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */; };
 		71355508188D14110007784A /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355505188D14110007784A /* libYouMi.a */; };
 		71355509188D14110007784A /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355505188D14110007784A /* libYouMi.a */; };
 		71355512188D16060007784A /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71355510188D16060007784A /* DomobOfferWallBundle.bundle */; };
@@ -1421,6 +1423,7 @@
 		711F439318B4F49C00AEE1D5 /* extract_alipay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extract_alipay@2x.png"; sourceTree = "<group>"; };
 		711F439418B4F49C00AEE1D5 /* extract_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extract_phone@2x.png"; sourceTree = "<group>"; };
 		711F439918B4F9A300AEE1D5 /* chongzhi_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chongzhi_btn@2x.png"; sourceTree = "<group>"; };
+		712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = SOURCE_ROOT; };
 		713554FC188D14110007784A /* YouMiConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiConfig.h; sourceTree = "<group>"; };
 		713554FD188D14110007784A /* YouMiDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiDelegateProtocol.h; sourceTree = "<group>"; };
 		713554FE188D14110007784A /* YouMiPointsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiPointsManager.h; sourceTree = "<group>"; };
@@ -3392,6 +3395,7 @@
 		F3F186D818543A410098C852 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */,
 				71355516188D169D0007784A /* PushConfig.plist */,
 				A6C1A634188942F70011FBBC /* icon_120_120.png */,
 				F3F186D918543A410098C852 /* wangcai-Info.plist */,
@@ -4682,6 +4686,7 @@
 				F394DBC918B89841003311CD /* mywangcai_dog_14@2x.png in Resources */,
 				F3359FD918882F8000C1E636 /* StartupController.xib in Resources */,
 				F3359FDA18882F8000C1E636 /* package_icon_3@2x.png in Resources */,
+				712DA7D318C85978008414D4 /* KeychainAccessGroups.plist in Resources */,
 				F3359FDC18882F8000C1E636 /* yue_0@2x.png in Resources */,
 				711F438918B4A85B00AEE1D5 /* 50yuan@2x.PNG in Resources */,
 				F3359FDD18882F8000C1E636 /* menu-icon-blue@2x.png in Resources */,
@@ -5076,6 +5081,7 @@
 				F3D9D555185D876D00392C40 /* InviteController.xib in Resources */,
 				A6FA6A671882E6F3003F8399 /* about@2x.png in Resources */,
 				F394DBC418B89841003311CD /* mywangcai_dog_12@2x.png in Resources */,
+				712DA7D218C85978008414D4 /* KeychainAccessGroups.plist in Resources */,
 				A60C585C186FF8A30068425C /* reg_success@2x.png in Resources */,
 				F31F897C18962B8600F34F20 /* iPhone3Gs.plist in Resources */,
 				A60C585E186FF8A30068425C /* resend_normal@2x.png in Resources */,
@@ -6203,6 +6209,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6299,6 +6306,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: BIN Li (B4BR4E2M87)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BIN Li (B4BR4E2M87)";
 				FRAMEWORK_SEARCH_PATHS = (

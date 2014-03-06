@@ -25,4 +25,8 @@
 
 + (void)playAddCoinSound;
 
+#if TARGET_VERSION_LITE == 1
++ (BOOL)setUDIDToKeyChain:(NSString*)udid;
++ (NSString*)getUDIDFromKeyChain;
+#endif
 @end
