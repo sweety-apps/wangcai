@@ -52,7 +52,7 @@ static OnlineWallViewController* _sharedInstance;
 #if TEST == 1
         NSString* did = [[NSString alloc] initWithFormat:@"dev_%@", deviceId];
         
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:did];
+        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:did];
         _offerWallController.delegate = self;
         
         [YouMiConfig setUserID:did];

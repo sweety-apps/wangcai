@@ -29,4 +29,5 @@
 
 - (IBAction)clickAlipay:(id)sender;
 - (IBAction)clickPhone:(id)sender;
+- (IBAction)clickQBi:(id)sender;
 @end
