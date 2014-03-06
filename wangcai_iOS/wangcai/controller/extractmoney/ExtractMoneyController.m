@@ -11,6 +11,7 @@
 #import "PhoneValidationController.h"
 #import "TransferToAlipayAndPhoneController.h"
 #import "WebPageController.h"
+#import "Common.h"
 
 @interface ExtractMoneyController ()
 
@@ -139,8 +140,9 @@
     NSString* device = [[[LoginAndRegister sharedInstance] getDeviceId] autorelease];
     NSString* sessionid = [[[LoginAndRegister sharedInstance] getSessionId] autorelease];
     NSString* userid = [[[LoginAndRegister sharedInstance] getUserId] autorelease];
-
-    NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@", WEB_EXCHANGE_INFO, device, sessionid, userid] autorelease];
+    NSString* timestamp = [Common getTimestamp];
+    
+    NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@&timestamp=%@", WEB_EXCHANGE_INFO, device, sessionid, userid, timestamp] autorelease];
 
     WebPageController* controller = [[WebPageController alloc] init:@"交易详情" Url:url Stack:_beeStack];
     [_beeStack pushViewController:controller animated:YES];

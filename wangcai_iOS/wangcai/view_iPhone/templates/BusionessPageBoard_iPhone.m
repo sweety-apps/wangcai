@@ -20,6 +20,7 @@
 #import "Config.h"
 #import "LoginAndRegister.h"
 #import "MobClick.h"
+#import "Common.h"
 
 #pragma mark -
 
@@ -61,8 +62,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
         NSString* device = [[[LoginAndRegister sharedInstance] getDeviceId] autorelease];
         NSString* sessionid = [[[LoginAndRegister sharedInstance] getSessionId] autorelease];
         NSString* userid = [[[LoginAndRegister sharedInstance] getUserId] autorelease];
+        NSString* timestamp = [Common getTimestamp];
         
-        NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@", WEB_EXCHANGE_INFO, device, sessionid, userid] autorelease];
+        NSString* url = [[[NSString alloc] initWithFormat:@"%@?device_id=%@&session_id=%@&userid=%@&timestamp=%@", WEB_EXCHANGE_INFO, device, sessionid, userid, timestamp] autorelease];
         
         //统计
         [MobClick event:@"click_trade_details" attributes:@{@"current_page":@"菜单"}];
