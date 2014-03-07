@@ -533,6 +533,7 @@
         NSString* qq = self._textField.text;
         
         [dictionary setObject:qq forKey:@"qq"];
+        [dictionary setObject:discount forKey:@"price"];
         
         [request request:HTTP_QQ_PAY Param:dictionary];
     }

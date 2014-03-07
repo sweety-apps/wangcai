@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		59D8E0C1189230DE003D5F3F /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D8E0C0189230DE003D5F3F /* libPushSDK.a */; };
 		59D8E0C2189230DE003D5F3F /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D8E0C0189230DE003D5F3F /* libPushSDK.a */; };
+		59FE833218C77BCF00E4205A /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FE833118C77BCF00E4205A /* immobSDK.framework */; };
+		59FE833318C77BCF00E4205A /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FE833118C77BCF00E4205A /* immobSDK.framework */; };
 		71008A331891046100689E2F /* app_tip_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71008A321891046100689E2F /* app_tip_bkg@2x.png */; };
 		71008A341891046100689E2F /* app_tip_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71008A321891046100689E2F /* app_tip_bkg@2x.png */; };
 		71008A361891073800689E2F /* app_tip_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71008A351891073800689E2F /* app_tip_close@2x.png */; };
@@ -1400,6 +1402,7 @@
 /* Begin PBXFileReference section */
 		59D8E0BF189230DE003D5F3F /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
 		59D8E0C0189230DE003D5F3F /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushSDK.a; sourceTree = "<group>"; };
+		59FE833118C77BCF00E4205A /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
 		71008A321891046100689E2F /* app_tip_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_bkg@2x.png"; sourceTree = "<group>"; };
 		71008A351891073800689E2F /* app_tip_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_close@2x.png"; sourceTree = "<group>"; };
 		71008A38189108D900689E2F /* app_tip_domob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_domob@2x.png"; sourceTree = "<group>"; };
@@ -2490,6 +2493,7 @@
 				59D8E0C2189230DE003D5F3F /* libPushSDK.a in Frameworks */,
 				F3359FCD18882F8000C1E636 /* libxml2.dylib in Frameworks */,
 				71355565188D17800007784A /* FlickrConnection.framework in Frameworks */,
+				59FE833318C77BCF00E4205A /* immobSDK.framework in Frameworks */,
 				71355597188D17800007784A /* AGCommon.framework in Frameworks */,
 				71355563188D17800007784A /* FacebookConnection.framework in Frameworks */,
 				71355595188D17800007784A /* YouDaoNoteConnection.framework in Frameworks */,
@@ -2559,6 +2563,7 @@
 				F3F186D418543A410098C852 /* Security.framework in Frameworks */,
 				71355586188D17800007784A /* SohuWeiboConnection.framework in Frameworks */,
 				71355568188D17800007784A /* InstagramConnection.framework in Frameworks */,
+				59FE833218C77BCF00E4205A /* immobSDK.framework in Frameworks */,
 				F3D9D5F9185D89A600392C40 /* libicucore.dylib in Frameworks */,
 				7135559E188D17800007784A /* TencentOpenAPI.framework in Frameworks */,
 				F3D9D5F7185D893D00392C40 /* MessageUI.framework in Frameworks */,
@@ -3389,6 +3394,7 @@
 		F3F186D718543A410098C852 /* wangcai */ = {
 			isa = PBXGroup;
 			children = (
+				59FE833118C77BCF00E4205A /* immobSDK.framework */,
 				F358E9F3186D2AA200DC3ADA /* utilities */,
 				F3F18A41185762BD0098C852 /* Resources */,
 				F3F186EA18543A410098C852 /* AppDelegate.h */,
@@ -5995,6 +6001,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
@@ -6093,6 +6100,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
@@ -6263,6 +6271,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
@@ -6361,6 +6370,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
