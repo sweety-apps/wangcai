@@ -52,7 +52,7 @@ static OnlineWallViewController* _sharedInstance;
 #if TEST == 1
         NSString* did = [[NSString alloc] initWithFormat:@"dev_%@", deviceId];
         
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:did];
+        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:did];
         _offerWallController.delegate = self;
         
         [YouMiConfig setUserID:did];
@@ -207,7 +207,7 @@ static OnlineWallViewController* _sharedInstance;
 
 // 设置必需的 UIViewController, 此方法的返回值如果为空,会导致广告展示不正常。
 - (UIViewController *)immobViewController{
-    return self;
+    return [BeeUIRouter sharedInstance];
 }
 
 - (void) immobView: (immobView*) immobView didFailReceiveimmobViewWithError: (NSInteger) errorCode {

@@ -45,7 +45,7 @@
 
 
 
-#define TEST 1
+#define TEST 0
 
 #if TEST == 0
 
@@ -67,7 +67,6 @@
 
 #define HTTP_PHONE_PAY         @"https://ssl.getwangcai.com/0/order/phone_pay"
 #define HTTP_ALIPAY_PAY         @"https://ssl.getwangcai.com/0/order/alipay"
-#define HTTP_QQ_PAY             @"https://ssl.getwangcai.com/0/order/qb_pay"
 
 #define HTTP_EXCHANGE_LIST         @"https://ssl.getwangcai.com/0/order/exchange_list"
 #define HTTP_EXCHANGE_CODE         @"https://ssl.getwangcai.com/0/order/exchange_code"
@@ -101,7 +100,6 @@
 
 #define HTTP_PHONE_PAY         @"https://dev.getwangcai.com/0/order/phone_pay"
 #define HTTP_ALIPAY_PAY         @"https://dev.getwangcai.com/0/order/alipay"
-#define HTTP_QQ_PAY         @"https://dev.getwangcai.com/0/order/qb_pay"
 
 #define HTTP_EXCHANGE_LIST         @"https://dev.getwangcai.com/0/order/exchange_list"
 #define HTTP_EXCHANGE_CODE         @"https://dev.getwangcai.com/0/order/exchange_code"

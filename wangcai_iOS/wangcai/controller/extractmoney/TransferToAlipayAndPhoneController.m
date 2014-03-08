@@ -21,13 +21,12 @@
 
 @implementation TransferToAlipayAndPhoneController
 
-// type=1 支付宝  2 话费充值  3 qq币
-- (id) init:(int) type BeeUIStack:(BeeUIStack*) stack
+- (id) init:(BOOL) isAlipay BeeUIStack:(BeeUIStack*) stack
 {
     self = [super initWithNibName:@"TransferToAlipayAndPhoneController" bundle:nil];
     if (self) {
         // Custom initialization
-        self->_type = type;
+        self->_bAlipay = isAlipay;
         //self->_nDiscount = nDiscount;
         //self->_nAmount = nAmount;
         self->_alertBindPhone = nil;
@@ -38,18 +37,15 @@
         self.view = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] firstObject];
 
         UILabel* label = (UILabel*)[self.view viewWithTag:1];
-        if ( _type == 1 ) {
+        if ( isAlipay ) {
             label.text = @"现金提取";
             self._containerView = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] objectAtIndex:2];
-        } else if ( _type == 2 ) {
+        } else {
             label.text = @"话费充值";
             self._containerView = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] objectAtIndex:1];
-        } else if ( _type == 3 ) {
-            label.text = @"腾讯Q币";
-            self._containerView = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] objectAtIndex:3];
         }
         
-        self._completeView = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] objectAtIndex:4];
+        self._completeView = [[[NSBundle mainBundle] loadNibNamed:@"TransferToAlipayAndPhoneController" owner:self options:nil] objectAtIndex:3];
         
         CGRect rect = CGRectMake( 0.0f, 54.0f, self._containerView.frame.size.width, self._containerView.frame.size.height);
         self._containerView.frame = rect;
@@ -67,7 +63,7 @@
         self._textFieldTip = (UILabel*)[self._containerView viewWithTag:51];
         self._textCheckTip = (UILabel*)[self._containerView viewWithTag:52];
         
-        if ( _type == 1 ) {
+        if ( isAlipay ) {
             self._textName = (UITextField*)[self._containerView viewWithTag:73];
             self._textNameTip = (UILabel*)[self._containerView viewWithTag:53];
         }
@@ -201,7 +197,7 @@
         return NO;
     }
     
-    if ( _type == 1 ) {
+    if ( self->_bAlipay ) {
         // 手机充值
         NSString* str = [string trim];
         if ( [str length] == 0 && [string length] != 0 ) {
@@ -209,7 +205,7 @@
         }
         
         return YES;
-    } else if ( _type == 2 ) {
+    } else {
         // 话费充值
         if ( [string isEqualToString:@""] ) {
             return YES;
@@ -226,8 +222,6 @@
         }
         
         return NO;
-    } else {
-        return YES;
     }
     
     return NO;
@@ -249,7 +243,7 @@
         [[self._containerView viewWithTag:82] setHidden:YES];
     }
     
-    if ( _type == 1 && [textField isEqual:self._textName] ) {
+    if ( _bAlipay && [textField isEqual:self._textName] ) {
         [self._textNameTip setHidden:YES];
         [[self._containerView viewWithTag:83] setHidden:NO];
     } else {
@@ -271,7 +265,7 @@
             [self._textCheckTip setHidden:NO];
         }
 
-        if ( _type == 1 && [textField isEqual:self._textName] ) {
+        if ( _bAlipay && [textField isEqual:self._textName] ) {
             [self._textNameTip setHidden:NO];
         }
     } else {
@@ -283,7 +277,7 @@
             [self._textCheckTip setHidden:YES];
         }
         
-        if ( _type == 1 && [textField isEqual:self._textName] ) {
+        if ( _bAlipay && [textField isEqual:self._textName] ) {
             [self._textNameTip setHidden:YES];
         }
     }
@@ -301,17 +295,6 @@
     
     for (NSUInteger i = 0; i < [phoneNum length]; i ++ ) {
         unichar uc = [phoneNum characterAtIndex:i];
-        if ( !isnumber(uc) ) {
-            return NO;
-        }
-    }
-    
-    return YES;
-}
-
-- (BOOL) checkQQNum : qq {
-    for (NSUInteger i = 0; i < [qq length]; i ++ ) {
-        unichar uc = [qq characterAtIndex:i];
         if ( !isnumber(uc) ) {
             return NO;
         }
@@ -348,7 +331,7 @@
     NSString* text2 = self._textCheck.text;
     NSString* text3 = self._textName.text;
     
-    if ( _type==1 && [text3 length] == 0 ) {
+    if ( _bAlipay && [text3 length] == 0 ) {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"支付宝名不能为空" delegate:self cancelButtonTitle:@"重新输入" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
@@ -372,7 +355,7 @@
         return ;
     }
     
-    if ( _type == 1 ) {
+    if ( self->_bAlipay ) {
         if ( ![self checkAlipay:text1] ) {
             // 输入的手机号不正确
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入有效的支付宝帐号" delegate:self cancelButtonTitle:@"重新输入" otherButtonTitles:nil, nil];
@@ -395,7 +378,7 @@
         
         [info1 release];
         [info2 release];
-    } else if ( _type == 2 ) {
+    } else {
         if ( ![self checkPhoneNum:text1] ) {
             // 输入的手机号不正确
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入有效的手机号码" delegate:self cancelButtonTitle:@"重新输入" otherButtonTitles:nil, nil];
@@ -406,30 +389,6 @@
         }
         
         NSString* info1 = [[NSString alloc] initWithFormat:@"充值帐号：%@", text1];
-        NSString* info2 = nil;
-        
-        if ( self->_nAmount == self->_nDiscount ) {
-            info2 = [[NSString alloc] initWithFormat:@"充值金额：%.0f元", (1.0*self->_nAmount/100)];
-        } else {
-            info2 = [[NSString alloc]initWithFormat:@"充值金额：%.0f元，返现%.0f元", (1.0*self->_nAmount/100), (1.0*(self->_nAmount-self->_nDiscount)/100)];
-        }
-        
-        [self checkExchange:info1 Text:info2 Tip:@"注：提现在一个工作日内到账，请耐心等待" Button:@"确认充值"];
-        
-        [info1 release];
-        [info2 release];
-    } else {
-        // QQ币
-        if ( ![self checkQQNum:text1] ) {
-            // 输入的QQ号不正确
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"请输入有效的QQ号码" delegate:self cancelButtonTitle:@"重新输入" otherButtonTitles:nil, nil];
-            [alert show];
-            [alert release];
-            
-            return ;
-        }
-        
-        NSString* info1 = [[NSString alloc] initWithFormat:@"充值QQ号：%@", text1];
         NSString* info2 = nil;
         
         if ( self->_nAmount == self->_nDiscount ) {
@@ -516,26 +475,18 @@
     [dictionary setObject:discount forKey:@"discount"];
     [dictionary setObject:amount forKey:@"amount"];
     
-    if ( _type == 1 ) {
+    if ( self->_bAlipay ) {
         NSString* account = self._textField.text;
         
         [dictionary setObject:account forKey:@"alipay_account"];
         
         [request request:HTTP_ALIPAY_PAY Param:dictionary];
-    } else if ( _type == 2 ) {
+    } else {
         NSString* phoneNum = self._textField.text;
         
         [dictionary setObject:phoneNum forKey:@"phone_num"];
         
         [request request:HTTP_PHONE_PAY Param:dictionary];
-    } else {
-        // QQ币
-        NSString* qq = self._textField.text;
-        
-        [dictionary setObject:qq forKey:@"qq"];
-        [dictionary setObject:discount forKey:@"price"];
-        
-        [request request:HTTP_QQ_PAY Param:dictionary];
     }
     
     [dictionary release];
@@ -575,13 +526,7 @@
     }
     
     //统计
-    if ( _type == 1 ) {
-        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",(-1*self->_nDiscount)],@"FROM":@"淘宝提现"}];
-    } else if ( _type == 2 ) {
-        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",(-1*self->_nDiscount)],@"FROM":@"充话费"}];
-    } else {
-        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",(-1*self->_nDiscount)],@"FROM":@"QQ币"}];
-    }
+    [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",(-1*self->_nDiscount)],@"FROM":self->_bAlipay?@"淘宝提现":@"充话费"}];
     
     [[LoginAndRegister sharedInstance] increaseBalance:(-1*self->_nDiscount)];
     _orderId = [orderId copy];
@@ -689,42 +634,6 @@
         [self clickNext];
     }
 }
-
-
-
-
-- (IBAction)clickQQ10:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:10] ) {
-        self->_nDiscount = 1000;
-        self->_nAmount = 1000;
-        
-        [self clickNext];
-    }
-}
-
-- (IBAction)clickQQ30:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:30] ) {
-        self->_nDiscount = 2700;
-        self->_nAmount = 3000;
-        
-        [self clickNext];
-    }
-}
-
-- (IBAction)clickQQ50:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:50] ) {
-        self->_nDiscount = 4000;
-        self->_nAmount = 5000;
-        
-        [self clickNext];
-    }
-}
-
-
-
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ( _alertBindPhone != nil ) {
