@@ -31,8 +31,6 @@
     NSInteger          _allConsume;
     
     int                _offerwallIncome;
-    
-    UIViewController* _viewController;
 }
 
 @property (nonatomic,assign) id<OnlineWallViewControllerDelegate>  delegate;
@@ -40,8 +38,6 @@
 + (OnlineWallViewController*) sharedInstance;
 
 @property (nonatomic, retain)immobView *adView_adWall;
-
--(void)setViewController:(UIViewController*) viewController;
 
 -(void)enterAdWall;
 -(void)QueryScore;

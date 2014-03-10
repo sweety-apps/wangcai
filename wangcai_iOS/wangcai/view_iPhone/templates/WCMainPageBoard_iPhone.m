@@ -74,7 +74,6 @@ ON_SIGNAL2( BeeUIBoard, signal )
         listBgView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:listBgView];
         
-        [[OnlineWallViewController sharedInstance] setViewController:self];
         
         //头部超出部分
         //UIImageView* testImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"testMain"]];

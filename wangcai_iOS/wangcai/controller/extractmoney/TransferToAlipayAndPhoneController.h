@@ -12,13 +12,13 @@
 #import "UICustomAlertView.h"
 
 @interface TransferToAlipayAndPhoneController : UIViewController<UITextFieldDelegate, HttpRequestDelegate, UIAlertViewDelegate> {
-    BOOL _bAlipay;
     int _nDiscount;
     int _nAmount;
     UICustomAlertView* _alertView;
     UIAlertView*    _alertBindPhone;
     BeeUIStack*     _beeStack;
     NSString* _orderId;
+    int       _type; // type=1 支付宝  2 话费充值  3 qq币
 }
 
 @property (assign, nonatomic) UIView *_completeView;
@@ -31,7 +31,8 @@
 @property (assign, nonatomic) UILabel *_textCheckTip;
 @property (assign, nonatomic) UILabel *_textNameTip;
 
-- (id) init:(BOOL) isAlipay BeeUIStack:(BeeUIStack*) stack;
+// type=1 支付宝  2 话费充值  3 qq币
+- (id) init:(int) type BeeUIStack:(BeeUIStack*) stack;
 
 - (IBAction)clickBack:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
@@ -54,4 +55,8 @@
 - (IBAction)clickAlipay10:(id)sender;
 - (IBAction)clickAlipay30:(id)sender;
 - (IBAction)clickAlipay50:(id)sender;
+
+- (IBAction)clickQQ10:(id)sender;
+- (IBAction)clickQQ30:(id)sender;
+- (IBAction)clickQQ50:(id)sender;
 @end

@@ -195,14 +195,14 @@
         [BaseTaskTableViewController setNeedReloadTaskList];
     }
     else
-    {/*
+    {
         NSString* msgStr = @"服务器失败";
         if ([msg length] > 0)
         {
             msgStr = msg;
         }
         UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"评价失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] autorelease];
-        [alertView show];*/
+        [alertView show];
     }
     
 }

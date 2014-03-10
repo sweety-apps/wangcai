@@ -29,10 +29,6 @@
 
 static OnlineWallViewController* _sharedInstance;
 
--(void)setViewController:(UIViewController*) viewController {
-    _viewController = viewController;
-}
-
 +(OnlineWallViewController*) sharedInstance {
     if ( _sharedInstance == nil ) {
         _sharedInstance = [[OnlineWallViewController alloc] initWithNibName:nil bundle:nil];
@@ -56,7 +52,7 @@ static OnlineWallViewController* _sharedInstance;
 #if TEST == 1
         NSString* did = [[NSString alloc] initWithFormat:@"dev_%@", deviceId];
         
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:PUBLISHER_ID andUserID:did];
+        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:did];
         _offerWallController.delegate = self;
         
         [YouMiConfig setUserID:did];
@@ -211,7 +207,7 @@ static OnlineWallViewController* _sharedInstance;
 
 // 设置必需的 UIViewController, 此方法的返回值如果为空,会导致广告展示不正常。
 - (UIViewController *)immobViewController{
-    return _viewController;
+    return self;
 }
 
 - (void) immobView: (immobView*) immobView didFailReceiveimmobViewWithError: (NSInteger) errorCode {
@@ -219,7 +215,8 @@ static OnlineWallViewController* _sharedInstance;
 }
 
 - (void) immobViewDidReceiveAd:(immobView*)immobView {
-    UIView* view = _viewController.view;
+    BeeUIRouter * router = [BeeUIRouter sharedInstance];
+    UIView* view = router.view;
     
     //将 immobView 添加到界面上。
     [view addSubview:adView_adWall];
