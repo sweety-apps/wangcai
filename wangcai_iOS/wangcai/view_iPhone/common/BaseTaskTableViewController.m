@@ -70,6 +70,7 @@ static BOOL gNeedReloadTaskList = NO;
     _justOnePage = NO;
     _curCellCount = 0;
     _hisCellCount = 0;
+    _levelCell = nil;
     
     self.staticCells = [NSMutableArray array];
     _bounceHeader = NO;
@@ -475,6 +476,12 @@ static BOOL gNeedReloadTaskList = NO;
             {
                 [comCell setCellState:CommonTaskTableViewCellStateUnfinish];
             }
+            
+            if ( [task.taskType intValue] == KTaskTypeUpgrade ) {
+                // 等级
+                _levelCell = comCell;
+                [self updateLevel];
+            }
         }
         
         cell = comCell;
@@ -607,7 +614,12 @@ static BOOL gNeedReloadTaskList = NO;
                 }
             }
                 break;
-                
+            case KTaskTypeUpgrade:
+            {
+                [MobClick event:@"task_list_level" attributes:@{@"currentpage":@"任务列表"}];
+                [[BeeUIRouter sharedInstance] open:@"my_wangcai" animated:YES];
+            }
+                break;
             default:
                 break;
         }
@@ -875,6 +887,19 @@ ON_NOTIFICATION( notification )
     {   // 界面被激活，查询积分
         [OnlineWallViewController sharedInstance].delegate = self;
         [[OnlineWallViewController sharedInstance] requestAndConsumePoint];
+    }
+}
+
+- (void)updateLevel {
+    if ( _levelCell != nil ) {
+        // 修改等级信息
+        int nLevel = [[LoginAndRegister sharedInstance] getUserLevel];
+        int nExp = [[LoginAndRegister sharedInstance] getNextLevelExp] - [[LoginAndRegister sharedInstance] getCurrentExp];
+        
+        NSString* upText = [NSString stringWithFormat:@"旺财升级到LV%d", (nLevel+1)];
+        NSString* downText = [NSString stringWithFormat:@"再赚%.2f元，即可升级领红包", 1.0*nExp / 100];
+        [_levelCell setUpText:upText];
+        [_levelCell setDownText:downText];
     }
 }
 

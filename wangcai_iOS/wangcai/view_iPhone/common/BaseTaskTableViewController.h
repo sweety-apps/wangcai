@@ -12,6 +12,7 @@
 #import "MJRefresh.h"
 #import "OnlineWallViewController.h"
 #import "RateAppLogic.h"
+#import "CommonTaskTableViewCell.h"
 
 @interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate, UIAlertViewDelegate,RateAppLogicDelegate>
 {
@@ -30,6 +31,7 @@
     NSInteger _hisCellCount;
     
     MJRefreshHeaderView *_header;
+    CommonTaskTableViewCell* _levelCell;
     
     float _increasedNum;
     
@@ -63,6 +65,7 @@
 
 //带动画和声音设置余额
 - (void)setYuENumberWithAnimationFrom:(int)oldNum toNum:(int)newNum;
+- (void)updateLevel;
 
 + (void)setNeedReloadTaskList;
 

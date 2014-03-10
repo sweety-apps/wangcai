@@ -278,7 +278,13 @@ static LoginAndRegister* _sharedInstance = nil;
                 if ( [[offerwall allKeys] containsObject:@"mopan"] ) {
                     _showMopan = [[offerwall valueForKey:@"mopan"] intValue];
                 }
-                
+                /*
+                _showLimei = 0;
+                _showMopan = 1;
+                _showYoumi = 0;
+                _showMobsmar = 1;
+                _showDomob = 0;
+                */
                 int userLevel = [[dict valueForKey:@"level"] intValue];
                 int currentEXP = [[dict valueForKey:@"exp_current"] intValue];
                 int nextLevelEXP = [[dict valueForKey:@"exp_next_level"] intValue];
@@ -589,39 +595,70 @@ static LoginAndRegister* _sharedInstance = nil;
 }
 
 -(BOOL) isShowDomob {
-    //return YES;
-    if ( _showDomob == 1 ) {
-        return YES;
+    if ( _showDomob == 0 ) {
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 -(BOOL) isShowYoumi {
-    //return NO;
-    if ( _showYoumi == 1 ) {
-        return YES;
+    if ( _showYoumi == 0 ) {
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 -(BOOL) isShowLimei {
-    if ( _showLimei == 1 ) {
-        return YES;
+    if ( _showLimei == 0 ) {
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 -(BOOL) isShowMobsmar {
-    //return YES;
-    if ( _showMobsmar == 1 ) {
+    if ( _showMobsmar == 0 ) {
+        return NO;
+    }
+    return YES;
+}
+
+-(BOOL) isShowMopan {
+    if ( _showMopan == 0 ) {
+        return NO;
+    }
+    return YES;
+}
+
+-(BOOL) isRecommendDomob {
+    if ( _showDomob == 2 ) {
         return YES;
     }
     return NO;
 }
 
--(BOOL) isShowMopan {
-    //return YES;
-    if ( _showMopan == 1 ) {
+-(BOOL) isRecommendYoumi {
+    if ( _showYoumi == 2 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isRecommendLimei {
+    if ( _showLimei == 2 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isRecommendMobsmar {
+    if ( _showMobsmar == 2 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isRecommendMopan {
+    if ( _showMopan == 2 ) {
         return YES;
     }
     return NO;

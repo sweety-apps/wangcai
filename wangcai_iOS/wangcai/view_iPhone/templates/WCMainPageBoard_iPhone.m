@@ -150,6 +150,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
         _taskTableViewController.tableViewFrame = CGRectMake(0, 0, tableViewSize.width, tableViewSize.height - headBgImageView.frame.size.height);
         _taskTableViewController.containTableView.bounces = YES;
         
+        [[OnlineWallViewController sharedInstance] setTaskTableViewController:_taskTableViewController];
+        
         //[self.view addSubview:testImageView];
         
         //抗锯齿

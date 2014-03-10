@@ -35,10 +35,13 @@
     int                _offerwallIncome;
     
     UIViewController* _viewController;
+    id _baseTaskTableViewController;
     
     SiWeiWall *_siweWall;
     
     MopanAdWall* _mopanAdWallControl;
+    
+    int         _nRecommend;
 }
 
 @property (nonatomic,assign) id<OnlineWallViewControllerDelegate>  delegate;
@@ -48,7 +51,7 @@
 @property (nonatomic, retain)immobView *adView_adWall;
 
 -(void)setViewController:(UIViewController*) viewController;
-
+-(void)setTaskTableViewController:(id)taskTableViewController;
 
 
 -(void)enterAdWall;

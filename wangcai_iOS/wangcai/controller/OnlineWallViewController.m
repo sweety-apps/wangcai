@@ -22,6 +22,8 @@
 #import "SiWeiAdConfig.h"
 #import "SiWeiPointsManger.h"
 
+#import "BaseTaskTableViewController.h"
+
 @interface OnlineWallViewController ()
 
 @end
@@ -44,6 +46,10 @@ static OnlineWallViewController* _sharedInstance;
     _viewController = viewController;
 }
 
+-(void)setTaskTableViewController:(BaseTaskTableViewController*)taskTableViewController {
+    _baseTaskTableViewController = taskTableViewController;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -54,6 +60,7 @@ static OnlineWallViewController* _sharedInstance;
         
         _alertView = nil;
         _request = NO;
+        _baseTaskTableViewController = nil;
         
         // 有米积分墙
 #if TEST == 1
@@ -115,22 +122,39 @@ static OnlineWallViewController* _sharedInstance;
     
     UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
     
+    _nRecommend = 0;
     NSMutableArray* nsOfferwall = [[[NSMutableArray alloc] init] autorelease];
     if ( showDomob ) {
         [nsOfferwall pushTail:[view viewWithTag:11] ];
+        if ( [[LoginAndRegister sharedInstance] isRecommendDomob] ) {
+            _nRecommend = 11;
+        }
     }
     if ( showYoumi ) {
         [nsOfferwall pushTail:[view viewWithTag:12] ];
+        if ( [[LoginAndRegister sharedInstance] isRecommendYoumi] ) {
+            _nRecommend = 12;
+        }
     }
     if ( showLimei && [nsOfferwall count] < 2 ) {
         [nsOfferwall pushTail:[view viewWithTag:13] ];
+        if ( [[LoginAndRegister sharedInstance] isRecommendLimei] ) {
+            _nRecommend = 13;
+        }
     }
+    
     if ( showMobsmar && [nsOfferwall count] < 2 ) {
         [nsOfferwall pushTail:[view viewWithTag:14] ];
+        if ( [[LoginAndRegister sharedInstance] isRecommendMobsmar] ) {
+            _nRecommend = 14;
+        }
     }
     
     if ( showMopan && [nsOfferwall count] < 2 ) {
         [nsOfferwall pushTail:[view viewWithTag:15] ];
+        if ( [[LoginAndRegister sharedInstance] isRecommendMopan] ) {
+            _nRecommend = 15;
+        }
     }
     
     [[view viewWithTag:11] setHidden:YES];
@@ -163,6 +187,14 @@ static OnlineWallViewController* _sharedInstance;
         [btn1 setFrame:rect];
     } else {
         return ;
+    }
+    
+    if ( _nRecommend != 0 ) {
+        UIView* btnView = [view viewWithTag:_nRecommend];
+        [[view viewWithTag:22] setFrame:btnView.frame];
+        [[view viewWithTag:22] setHidden:NO];
+    } else {
+        [[view viewWithTag:22] setHidden:YES];
     }
     
     UIColor *color = [UIColor colorWithRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1];
@@ -263,13 +295,6 @@ static OnlineWallViewController* _sharedInstance;
 }
 
 - (void) immobViewDidReceiveAd:(immobView*)immobView {
-    //UIView* view = _viewController.view;
-    
-    //将 immobView 添加到界面上。
-    //[view addSubview:adView_adWall];
-    
-    //将 immobView 添加到界面后,调用 immobViewDisplay。
-    //[self.adView_adWall immobViewDisplay];
 }
 
 - (IBAction)clickDomob:(id)sender {
@@ -382,6 +407,7 @@ static OnlineWallViewController* _sharedInstance;
                 {
                     [[LoginAndRegister sharedInstance] setBenefit:benefit];
                 }
+                [_baseTaskTableViewController updateLevel];
             }
             
             if ( offerwallIncome > _offerwallIncome ) {

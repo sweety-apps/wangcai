@@ -55,7 +55,7 @@
                     <rect key="frame" x="32" y="264" width="254" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="指盟">
+                    <state key="normal" image="app_tip_mobsmar.png">
                         <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -64,10 +64,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3SM-sg-1GI">
-                    <rect key="frame" x="32" y="218" width="254" height="49"/>
+                    <rect key="frame" x="32" y="207" width="254" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="磨盘">
+                    <state key="normal" image="app_tip_mopan.png">
                         <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -98,6 +98,10 @@
                         <action selector="clickHelper:" destination="-1" eventType="touchUpInside" id="Ggf-7G-evO"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" tag="22" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_tip_recommand.png" id="n5r-eF-Wok">
+                    <rect key="frame" x="32" y="264" width="254" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
         </view>
     </objects>
@@ -106,6 +110,9 @@
         <image name="app_tip_bkg.png" width="285" height="430"/>
         <image name="app_tip_close.png" width="42" height="42"/>
         <image name="app_tip_domob.png" width="254" height="49"/>
+        <image name="app_tip_mobsmar.png" width="254" height="49"/>
+        <image name="app_tip_mopan.png" width="254" height="49"/>
+        <image name="app_tip_recommand.png" width="254" height="49"/>
         <image name="app_tip_youmi.png" width="254" height="49"/>
         <image name="limei.png" width="254" height="49"/>
     </resources>

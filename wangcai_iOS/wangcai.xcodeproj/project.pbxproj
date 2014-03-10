@@ -185,6 +185,14 @@
 		7153FCF418CDB8130026B4B5 /* zhimeng.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7153FCF018CDB8130026B4B5 /* zhimeng.bundle */; };
 		7153FCFA18CDC2C50026B4B5 /* MopanAdLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7153FCF818CDC2C50026B4B5 /* MopanAdLib.a */; };
 		7153FCFB18CDC2C50026B4B5 /* MopanAdLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7153FCF818CDC2C50026B4B5 /* MopanAdLib.a */; };
+		7153FCFD18CDE4490026B4B5 /* upgrade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7153FCFC18CDE4490026B4B5 /* upgrade@2x.png */; };
+		7153FCFE18CDE4490026B4B5 /* upgrade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7153FCFC18CDE4490026B4B5 /* upgrade@2x.png */; };
+		7153FD0118CDF6F00026B4B5 /* app_tip_mobsmar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7153FCFF18CDF6F00026B4B5 /* app_tip_mobsmar@2x.png */; };
+		7153FD0218CDF6F00026B4B5 /* app_tip_mobsmar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7153FCFF18CDF6F00026B4B5 /* app_tip_mobsmar@2x.png */; };
+		7153FD0318CDF6F00026B4B5 /* app_tip_mopan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7153FD0018CDF6F00026B4B5 /* app_tip_mopan@2x.png */; };
+		7153FD0418CDF6F00026B4B5 /* app_tip_mopan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7153FD0018CDF6F00026B4B5 /* app_tip_mopan@2x.png */; };
+		7153FD0618CDF78A0026B4B5 /* app_tip_recommand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7153FD0518CDF78A0026B4B5 /* app_tip_recommand@2x.png */; };
+		7153FD0718CDF78A0026B4B5 /* app_tip_recommand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7153FD0518CDF78A0026B4B5 /* app_tip_recommand@2x.png */; };
 		718FB1911893FF2900851D2A /* register_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718FB1901893FF2900851D2A /* register_btn@2x.png */; };
 		718FB1921893FF2900851D2A /* register_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718FB1901893FF2900851D2A /* register_btn@2x.png */; };
 		719F187618AA15B800C29765 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187518AA15B800C29765 /* MediaPlayer.framework */; };
@@ -1525,6 +1533,10 @@
 		7153FCF018CDB8130026B4B5 /* zhimeng.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = zhimeng.bundle; sourceTree = "<group>"; };
 		7153FCF818CDC2C50026B4B5 /* MopanAdLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = MopanAdLib.a; sourceTree = "<group>"; };
 		7153FCF918CDC2C50026B4B5 /* MopanAdWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MopanAdWall.h; sourceTree = "<group>"; };
+		7153FCFC18CDE4490026B4B5 /* upgrade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upgrade@2x.png"; sourceTree = "<group>"; };
+		7153FCFF18CDF6F00026B4B5 /* app_tip_mobsmar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_mobsmar@2x.png"; sourceTree = "<group>"; };
+		7153FD0018CDF6F00026B4B5 /* app_tip_mopan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_mopan@2x.png"; sourceTree = "<group>"; };
+		7153FD0518CDF78A0026B4B5 /* app_tip_recommand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_recommand@2x.png"; sourceTree = "<group>"; };
 		718FB1901893FF2900851D2A /* register_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register_btn@2x.png"; sourceTree = "<group>"; };
 		719F187518AA15B800C29765 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		719F187718AA17D000C29765 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -2886,7 +2898,10 @@
 			isa = PBXGroup;
 			children = (
 				712DA7D718C8616E008414D4 /* qq_input@2x.png */,
+				7153FD0518CDF78A0026B4B5 /* app_tip_recommand@2x.png */,
 				712DA7DA18C86202008414D4 /* Qbi@2x.png */,
+				7153FCFF18CDF6F00026B4B5 /* app_tip_mobsmar@2x.png */,
+				7153FD0018CDF6F00026B4B5 /* app_tip_mopan@2x.png */,
 				71D1976718BE1F4E00D3D48D /* app_install_tip@2x.png */,
 				71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */,
 				712DA7D418C8615F008414D4 /* qq@2x.PNG */,
@@ -3031,6 +3046,7 @@
 		A60C5830186FF8A30068425C /* WCMainPageBoard */ = {
 			isa = PBXGroup;
 			children = (
+				7153FCFC18CDE4490026B4B5 /* upgrade@2x.png */,
 				F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */,
 				F3359E501886C11100C1E636 /* rate_app_cell_icon@2x.png */,
 				F3DD64121880251B00E56A0B /* tiyanzhongxin_cell_icon@2x.png */,
@@ -4773,6 +4789,7 @@
 				F3359FE618882F8000C1E636 /* choujiang_x3@2x.png in Resources */,
 				F3359FE718882F8000C1E636 /* Icon@2x.png in Resources */,
 				F3359FE818882F8000C1E636 /* user_sex_selected@2x.png in Resources */,
+				7153FD0418CDF6F00026B4B5 /* app_tip_mopan@2x.png in Resources */,
 				F3359FE918882F8000C1E636 /* splash-logo-small@2x.png in Resources */,
 				F3359FEA18882F8000C1E636 /* invite_copy_button@2x.png in Resources */,
 				F394DBDF18B89841003311CD /* mywangcai_cell_baifabaizhong_title@2x.png in Resources */,
@@ -4820,6 +4837,7 @@
 				F335A00518882F8000C1E636 /* tab_bkg@2x.png in Resources */,
 				F335A00618882F8000C1E636 /* choujiang_x1selected@2x.png in Resources */,
 				F394DBDD18B89841003311CD /* mywangcai_cell_baifabaizhong_des@2x.png in Resources */,
+				7153FCFE18CDE4490026B4B5 /* upgrade@2x.png in Resources */,
 				F335A00718882F8000C1E636 /* yue_5@2x.png in Resources */,
 				F335A00818882F8000C1E636 /* package_icon_many@2x.png in Resources */,
 				F335A00918882F8000C1E636 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
@@ -4975,6 +4993,7 @@
 				F335A06918882F8000C1E636 /* resend_down@2x.png in Resources */,
 				713555B9188D17810007784A /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				F335A06A18882F8000C1E636 /* tiyanzhongxin_cell_icon@2x.png in Resources */,
+				7153FD0218CDF6F00026B4B5 /* app_tip_mobsmar@2x.png in Resources */,
 				711F439218B4F0B200AEE1D5 /* jiaoyi_sel@2x.png in Resources */,
 				F335A06B18882F8000C1E636 /* choujiang_bottom_cloud@2x.png in Resources */,
 				F335A06C18882F8000C1E636 /* menu_icon_setting@2x.png in Resources */,
@@ -4994,6 +5013,7 @@
 				F335A07318882F8000C1E636 /* choujiang_xiaomi@2x.png in Resources */,
 				7112722718B33A1A0068C33E /* phone_validation_sendcode@2x.png in Resources */,
 				F335A07418882F8000C1E636 /* menu-icon-red@2x.png in Resources */,
+				7153FD0718CDF78A0026B4B5 /* app_tip_recommand@2x.png in Resources */,
 				7153FCF418CDB8130026B4B5 /* zhimeng.bundle in Resources */,
 				7112722518B33A1A0068C33E /* phone_validation_sendcode_down@2x.png in Resources */,
 				71A9C7D718B8D563006119F6 /* exchange_bkg@2x.png in Resources */,
@@ -5033,6 +5053,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7153FD0318CDF6F00026B4B5 /* app_tip_mopan@2x.png in Resources */,
 				A6D591BE187C00BB004DF4E0 /* alipay@2x.png in Resources */,
 				A60C5845186FF8A30068425C /* !@2x.png in Resources */,
 				F394DBE818B89841003311CD /* mywangcai_cell_xiongdibang@2x.png in Resources */,
@@ -5100,6 +5121,7 @@
 				A6FEE28B187D9AB800E5AF3E /* grayArrow.png in Resources */,
 				A60C58A818703AE60068425C /* invite_invited_edit@2x.png in Resources */,
 				A60C587D186FF8A30068425C /* table_view_cell_icon_bg@2x.png in Resources */,
+				7153FD0618CDF78A0026B4B5 /* app_tip_recommand@2x.png in Resources */,
 				A60C5887186FF8A30068425C /* head_extension_part@2x.png in Resources */,
 				F31F897418962B8600F34F20 /* iPad4.plist in Resources */,
 				A60C5866186FF8A30068425C /* splash-logo@2x.png in Resources */,
@@ -5153,6 +5175,7 @@
 				F394DBC418B89841003311CD /* mywangcai_dog_12@2x.png in Resources */,
 				712DA7D218C85978008414D4 /* KeychainAccessGroups.plist in Resources */,
 				A60C585C186FF8A30068425C /* reg_success@2x.png in Resources */,
+				7153FD0118CDF6F00026B4B5 /* app_tip_mobsmar@2x.png in Resources */,
 				F31F897C18962B8600F34F20 /* iPhone3Gs.plist in Resources */,
 				A60C585E186FF8A30068425C /* resend_normal@2x.png in Resources */,
 				F394DBC618B89841003311CD /* mywangcai_dog_13@2x.png in Resources */,
@@ -5250,6 +5273,7 @@
 				A60C5840186FF8A30068425C /* BindTipsDuihao.png in Resources */,
 				A60C588A186FF8A30068425C /* head_top_part@2x.png in Resources */,
 				F394DBFB18B8EB9B003311CD /* levelup_close_btn@2x.png in Resources */,
+				7153FCFD18CDE4490026B4B5 /* upgrade@2x.png in Resources */,
 				A60C584E186FF8A30068425C /* exchange_btn@2x.png in Resources */,
 				718FB1911893FF2900851D2A /* register_btn@2x.png in Resources */,
 				F31F897E18962B8600F34F20 /* iPhone4.plist in Resources */,

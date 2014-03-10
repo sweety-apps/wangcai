@@ -130,6 +130,13 @@ typedef enum LoginStatus {
 -(BOOL) isShowMobsmar;
 -(BOOL) isShowMopan;
 
+-(BOOL) isRecommendDomob;
+-(BOOL) isRecommendYoumi;
+-(BOOL) isRecommendLimei;
+-(BOOL) isRecommendMobsmar;
+-(BOOL) isRecommendMopan;
+
+
 -(int)  getNoWithDraw;
 -(NSString*) getTipsStrings;
 

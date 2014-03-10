@@ -232,7 +232,6 @@ static CommonTaskList* gInstance = nil;
         NSInteger taskType = [task.taskType intValue];
         
         BOOL shouldAddTask = YES;
-        
         switch (taskType)
         {
             case kTaskTypeInstallWangcai:
@@ -293,7 +292,10 @@ static CommonTaskList* gInstance = nil;
                     [SettingLocalRecords setRatedApp:NO];
                 }
                 break;
-                
+            case KTaskTypeUpgrade:
+                task.taskIsLocalIcon = YES;
+                task.taskIconUrl = @"upgrade";
+                break;
             default:
                 if ([task.taskIconUrl rangeOfString:@"http://"].length > 0)
                 {
