@@ -13,6 +13,8 @@
 #import "UICustomAlertView.h"
 #import "YouMiConfig.h"
 #import <immobSDK/immobView.h>
+#import "SiWeiWall.h"
+#import "MopanAdWall.h"
 
 @protocol OnlineWallViewControllerDelegate <NSObject>
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume;
@@ -33,6 +35,10 @@
     int                _offerwallIncome;
     
     UIViewController* _viewController;
+    
+    SiWeiWall *_siweWall;
+    
+    MopanAdWall* _mopanAdWallControl;
 }
 
 @property (nonatomic,assign) id<OnlineWallViewControllerDelegate>  delegate;
@@ -57,6 +63,7 @@
 - (IBAction)clickYoumi:(id)sender;
 - (IBAction)clickLimei:(id)sender;
 - (IBAction)clickMobsmar:(id)sender;
+- (IBAction)clickMopan:(id)sender;
 
 - (IBAction)clickHelper:(id)sender;
 

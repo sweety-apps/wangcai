@@ -19,6 +19,9 @@
 #import "BeeUIBoard+ModalBoard.h"
 #import "WebPageController.h"
 
+#import "SiWeiAdConfig.h"
+#import "SiWeiPointsManger.h"
+
 @interface OnlineWallViewController ()
 
 @end
@@ -60,12 +63,29 @@ static OnlineWallViewController* _sharedInstance;
         _offerWallController.delegate = self;
         
         [YouMiConfig setUserID:did];
+        
+        [SiWeiAdConfig launchWithAppID:MOBSMAR_APP_ID];//初始化appid
+        [SiWeiAdConfig setDeveloperParam:did];
+        [SiWeiPointsManger enableSiweiWall];
+        
+        _mopanAdWallControl = [[MopanAdWall alloc] initWithMopan:MOPAN_APP_ID withAppSecret:MOPAN_APP_SECRET];
+        [_mopanAdWallControl setCustomParam:did];
 #else 
         _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:deviceId];
         _offerWallController.delegate = self;
 
         [YouMiConfig setUserID:deviceId];
+        
+        [SiWeiAdConfig launchWithAppID:MOBSMAR_APP_ID];//初始化appid
+        [SiWeiAdConfig setDeveloperParam:deviceId];
+        [SiWeiPointsManger enableSiweiWall];
+        
+        _mopanAdWallControl = [[MopanAdWall alloc] initWithMopan:MOPAN_APP_ID withAppSecret:MOPAN_APP_SECRET];
+        [_mopanAdWallControl setCustomParam:deviceId];
 #endif
+        
+        _siweWall = [SiWeiWall siwei];
+        
         [YouMiConfig setUseInAppStore:YES];
         
         [YouMiConfig launchWithAppID:YOUMI_APP_ID appSecret:YOUMI_APP_SECRET];  //服务器版
@@ -91,6 +111,7 @@ static OnlineWallViewController* _sharedInstance;
     BOOL showYoumi = [[LoginAndRegister sharedInstance] isShowYoumi];
     BOOL showLimei = [[LoginAndRegister sharedInstance] isShowLimei];
     BOOL showMobsmar = [[LoginAndRegister sharedInstance] isShowMobsmar];
+    BOOL showMopan = [[LoginAndRegister sharedInstance] isShowMopan];
     
     UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
     
@@ -108,10 +129,15 @@ static OnlineWallViewController* _sharedInstance;
         [nsOfferwall pushTail:[view viewWithTag:14] ];
     }
     
+    if ( showMopan && [nsOfferwall count] < 2 ) {
+        [nsOfferwall pushTail:[view viewWithTag:15] ];
+    }
+    
     [[view viewWithTag:11] setHidden:YES];
     [[view viewWithTag:12] setHidden:YES];
     [[view viewWithTag:13] setHidden:YES];
     [[view viewWithTag:14] setHidden:YES];
+    [[view viewWithTag:15] setHidden:YES];
     
     if ( [nsOfferwall count] == 2 ) {
         // 显示两个按钮
@@ -174,9 +200,19 @@ static OnlineWallViewController* _sharedInstance;
     }
     
     [MobClick event:@"task_list_click_mobsmar" attributes:@{@"currentpage":@"任务列表"}];
-    //[_offerWallController presentOfferWall];
+    [_siweWall showOfferWall:_viewController];//打开积分墙
 }
 
+- (IBAction)clickMopan:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    [MobClick event:@"task_list_click_mopan" attributes:@{@"currentpage":@"任务列表"}];
+    
+    _mopanAdWallControl.rootViewController = _viewController;
+    [_mopanAdWallControl showAppOffers];
+}
 
 - (IBAction)clickLimei:(id)sender {
     if ( _alertView != nil ) {

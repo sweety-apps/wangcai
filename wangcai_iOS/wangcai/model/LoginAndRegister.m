@@ -47,6 +47,7 @@ static LoginAndRegister* _sharedInstance = nil;
     
     self->_showMobsmar = 0;
     self->_showLimei = 0;
+    self->_showMopan = 0;
     
     _tipsString = @"";
     
@@ -274,6 +275,9 @@ static LoginAndRegister* _sharedInstance = nil;
                     _showLimei = [[offerwall valueForKey:@"limei"] intValue];
                 }
             
+                if ( [[offerwall allKeys] containsObject:@"mopan"] ) {
+                    _showMopan = [[offerwall valueForKey:@"mopan"] intValue];
+                }
                 
                 int userLevel = [[dict valueForKey:@"level"] intValue];
                 int currentEXP = [[dict valueForKey:@"exp_current"] intValue];
@@ -601,7 +605,6 @@ static LoginAndRegister* _sharedInstance = nil;
 }
 
 -(BOOL) isShowLimei {
-    //return YES;
     if ( _showLimei == 1 ) {
         return YES;
     }
@@ -609,8 +612,16 @@ static LoginAndRegister* _sharedInstance = nil;
 }
 
 -(BOOL) isShowMobsmar {
-    return NO;  // 还没支持
+    //return YES;
     if ( _showMobsmar == 1 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isShowMopan {
+    //return YES;
+    if ( _showMopan == 1 ) {
         return YES;
     }
     return NO;

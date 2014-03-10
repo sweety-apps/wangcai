@@ -62,11 +62,12 @@ typedef enum LoginStatus {
     BOOL       _firstLogin;
     
     int        _nowithdraw;
+    
     int        _showDomob;
     int        _showYoumi;
-    
-    int        _showMobsmar;
     int        _showLimei;
+    int        _showMobsmar; //指盟
+    int        _showMopan;
     
     int        _inReview;
     
@@ -127,6 +128,7 @@ typedef enum LoginStatus {
 -(BOOL) isShowYoumi;
 -(BOOL) isShowLimei;
 -(BOOL) isShowMobsmar;
+-(BOOL) isShowMopan;
 
 -(int)  getNoWithDraw;
 -(NSString*) getTipsStrings;

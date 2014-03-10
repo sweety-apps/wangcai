@@ -23,6 +23,11 @@
 
 #define LIMEI_ID           @"6ec9f39b6b38ac4d8b6c1764d68b91e4"
 
+#define MOBSMAR_APP_ID     @"dbfff8bedfbb85673317fdaeeb7776ba"
+
+#define MOPAN_APP_ID       @"12408"
+#define MOPAN_APP_SECRET   @"y5g1zmonrorhern6"
+
 #elif TARGET_VERSION_LITE == 2
 
 #define APP_NAME   @"WangCaiFriend"
@@ -37,6 +42,10 @@
 
 #define LIMEI_ID           @"a0b29d7891bffc58f7618f6788d3aaaa"
 
+#define MOBSMAR_APP_ID     @"4c90ded6f4a8d81c23e804ba169dc629"
+
+#define MOPAN_APP_ID       @"12407"
+#define MOPAN_APP_SECRET   @"urpq0gffsc6vbykq"
 #endif
 
 
