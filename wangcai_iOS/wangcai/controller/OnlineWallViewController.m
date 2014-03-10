@@ -207,6 +207,14 @@ static OnlineWallViewController* _sharedInstance;
     
     //开始加载广告。
     [self.adView_adWall immobViewRequest];
+    
+    UIView* view = _viewController.view;
+    
+    //将 immobView 添加到界面上。
+    [view addSubview:adView_adWall];
+    
+    //将 immobView 添加到界面后,调用 immobViewDisplay。
+    [self.adView_adWall immobViewDisplay];
 }
 
 // 设置必需的 UIViewController, 此方法的返回值如果为空,会导致广告展示不正常。
@@ -219,13 +227,13 @@ static OnlineWallViewController* _sharedInstance;
 }
 
 - (void) immobViewDidReceiveAd:(immobView*)immobView {
-    UIView* view = _viewController.view;
+    //UIView* view = _viewController.view;
     
     //将 immobView 添加到界面上。
-    [view addSubview:adView_adWall];
+    //[view addSubview:adView_adWall];
     
     //将 immobView 添加到界面后,调用 immobViewDisplay。
-    [self.adView_adWall immobViewDisplay];
+    //[self.adView_adWall immobViewDisplay];
 }
 
 - (IBAction)clickDomob:(id)sender {
