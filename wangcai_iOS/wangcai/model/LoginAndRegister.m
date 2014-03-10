@@ -281,8 +281,8 @@ static LoginAndRegister* _sharedInstance = nil;
                 /*
                 _showLimei = 0;
                 _showMopan = 1;
-                _showYoumi = 0;
-                _showMobsmar = 1;
+                _showYoumi = 2;
+                _showMobsmar = 0;
                 _showDomob = 0;
                 */
                 int userLevel = [[dict valueForKey:@"level"] intValue];

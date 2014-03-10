@@ -220,17 +220,6 @@
                     }
                 }
                 
-                // 新浪微博
-                NSDictionary* sinaWeiboObject = (NSDictionary *)[rootObject objectForKey: @"SinaWeibo"];
-                if (sinaWeiboObject)
-                {
-                    NSString* state = (NSString *)[sinaWeiboObject objectForKey: @"text"];
-                    if ([state intValue])
-                    {
-                        [ShareSDK connectSinaWeiboWithAppKey: @"338240125" appSecret: @"32ccbf2004d7f8d19e29978aacdc2904" redirectUri: @"https://api.weibo.com/oauth2/default.html" weiboSDKCls: [WeiboSDK class]];
-                    }
-                }
-                
                 // 腾讯微博
                 NSDictionary* tencentWeiboObject = (NSDictionary *)[rootObject objectForKey: @"TencentWeibo"];
                 if (tencentWeiboObject)
@@ -285,13 +274,16 @@
     });
     
     // 这几个默认都打开
+    // 新浪微博
+    [ShareSDK connectSinaWeiboWithAppKey: @"338240125" appSecret: @"32ccbf2004d7f8d19e29978aacdc2904" redirectUri: @"https://api.weibo.com/oauth2/default.html" weiboSDKCls: [WeiboSDK class]];
+    
     // 添加QQ应用
     [ShareSDK connectQQWithAppId: @"100577453" qqApiCls: [QQApiInterface class]];
     // 微信
     // wxb36cb2934f410866
     
     [ShareSDK connectWeChatWithAppId: @"wxf3b81b618060b1fc" wechatCls: [WXApi class]];
-    
+            
     // 微信朋友圈
     [ShareSDK connectWeChatTimelineWithAppId: @"wxf3b81b618060b1fc" wechatCls: [WXApi class]];
     

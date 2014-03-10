@@ -20,6 +20,7 @@
 #import "UserInfoEditorViewController.h"
 #import "AppBoard_iPhone.h"
 #import "MobClick.h"
+#import "SettingLocalRecords.h"
 
 #pragma mark -
 
@@ -62,6 +63,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self observeNotification:@"balanceChanged"];
         
         _alertView = nil;
+        _dotView = nil;
         self.view.hintString = @"This is the  board";
         self.view.backgroundColor = [UIColor whiteColor];
         self.view.clipsToBounds = NO;
@@ -137,6 +139,17 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         [self.view addSubview:headRightBtnImageView];
         [self.view addSubview:headRightBtn];
+        
+        //判断是否是首次启动
+        BOOL isFirst = [SettingLocalRecords isFirstRun];
+        if ( isFirst ) {
+            _dotView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"qiandao_button_red_dot"]] autorelease];
+            rectFrame = _dotView.frame;
+            rectFrame.origin.x = 28;
+            rectFrame.origin.y = 8;
+            _dotView.frame = rectFrame;
+            [self.view addSubview:_dotView];
+        }
         
         //列表
         BaseTaskTableViewController* taskTableViewController = [[BaseTaskTableViewController alloc] initWithNibName:@"BaseTaskTableViewController" bundle:nil];
@@ -218,6 +231,10 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 -(void)onPressedLeftBackBtn:(id)sender
 {
+    if ( _dotView != nil ) {
+        [_dotView setHidden:YES];
+    }
+    
     [self postNotification:@"showMenu"];
 }
 

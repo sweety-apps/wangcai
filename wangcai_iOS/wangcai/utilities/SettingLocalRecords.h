@@ -40,4 +40,6 @@
 + (void)setPopedInstallWangcaiAlertView:(BOOL)alerted;
 + (BOOL)hasInstallWangcaiAlertViewPoped;
 
++ (BOOL)isFirstRun;
+
 @end

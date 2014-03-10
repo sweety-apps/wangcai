@@ -14,6 +14,7 @@
 #define kLastOfferWallAlertView @"offerWallAlertView"
 #define kRatedApp @"ratedApp"
 #define kCheckIn @"checkIn"
+#define kFirstRun @"firstrun"
 #define kMusicOnOff @"musicOnOff"
 #define kInstallWangcaiAlertView @"installWangcaiAlertView"
 #define kCheckInTimeArray @"checkInTimeArray"
@@ -193,6 +194,18 @@
     {
         ret = [boolNum boolValue];
     }
+    return ret;
+}
+
++ (BOOL)isFirstRun {
+    BOOL ret = NO;
+    NSNumber* boolNum = [[NSUserDefaults standardUserDefaults] objectForKey:NKEY(kFirstRun)];
+    if (boolNum == nil) {
+        ret = YES;
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:NKEY(kFirstRun)];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     return ret;
 }
 

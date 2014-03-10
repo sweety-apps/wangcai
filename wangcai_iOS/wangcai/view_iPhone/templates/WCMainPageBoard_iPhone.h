@@ -24,7 +24,7 @@
 {
     BaseTaskTableViewController* _taskTableViewController;
     UIImageView* _headRightBtnImageView;
-    
+    UIImageView* _dotView;
     UICustomAlertView* _alertView;
 }
 
