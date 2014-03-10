@@ -62,6 +62,7 @@ static UIGetRedBagAlertView* gInstance = nil;
 - (void) setLevel:(int)level
 {
     level = [[LoginAndRegister sharedInstance] getUserLevel];
+    //level = 10;
     
     float blocksNum = 0.0f;
     if ([[LoginAndRegister sharedInstance] getNextLevelExp]>0)
@@ -206,7 +207,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         _balanceIncreaseLbl.hidden = YES;
         
         rect = CGRectOffset(rectAlertView, 30, 112);
-        rect.size = CGSizeMake(35, 17);
+        rect.size = CGSizeMake(31, 17);
         _lvLbl = [[UILabel alloc] initWithFrame:rect];
         _lvLbl.textColor = RGB(0, 0, 0);
         _lvLbl.backgroundColor = [UIColor clearColor];
@@ -214,6 +215,7 @@ static UIGetRedBagAlertView* gInstance = nil;
         _lvLbl.textAlignment = NSTextAlignmentLeft;
         _lvLbl.frame = rect;
         _lvLbl.text = @"LV1";
+        _lvLbl.adjustsFontSizeToFitWidth = YES;
         _lvLbl.contentMode = UIViewContentModeTopLeft;
         
         UIImage* imgBlk = [UIImage imageNamed:@"redbag_mb_lv_unget"];

@@ -5964,7 +5964,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhang chen (63V38R7FF7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhang chen (63V38R7FF7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
