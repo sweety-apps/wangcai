@@ -143,7 +143,9 @@
             int left = count - kMinStepNum;
             NSMutableArray* newArray = [NSMutableArray array];
             int step = left / kMinStepNum;
-            
+            if ( step == 0 ) {
+                step = 1;
+            }
             for (int i = 0; i < left; ++i)
             {
                 if (i % step == 0)
