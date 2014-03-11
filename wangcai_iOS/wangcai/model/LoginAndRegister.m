@@ -154,16 +154,6 @@ static LoginAndRegister* _sharedInstance = nil;
     nsParam = [nsParam stringByAppendingFormat:@"&openudid=%@", openUdid];
 #endif
     
-#if TARGET_VERSION_LITE == 1
-    NSString* uuid = [Common getUDIDFromKeyChain];
-    if ( uuid == nil ) {
-        uuid = [[NSUUID UUID] UUIDString];
-        [Common setUDIDToKeyChain:uuid];
-    }
-
-    nsParam = [nsParam stringByAppendingFormat:@"&uuid=%@", uuid];
-#endif
-    
     NSMutableData* data = [[NSMutableData alloc] init];
     
     
@@ -278,8 +268,9 @@ static LoginAndRegister* _sharedInstance = nil;
                 if ( [[offerwall allKeys] containsObject:@"mopan"] ) {
                     _showMopan = [[offerwall valueForKey:@"mopan"] intValue];
                 }
+                
                 /*
-                _showLimei = 0;
+                _showLimei = 1;
                 _showMopan = 1;
                 _showYoumi = 2;
                 _showMobsmar = 0;
