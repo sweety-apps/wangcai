@@ -285,6 +285,7 @@ static LoginAndRegister* _sharedInstance = nil;
                 _showMobsmar = 0;
                 _showDomob = 0;
                 */
+
                 int userLevel = [[dict valueForKey:@"level"] intValue];
                 int currentEXP = [[dict valueForKey:@"exp_current"] intValue];
                 int nextLevelEXP = [[dict valueForKey:@"exp_next_level"] intValue];
