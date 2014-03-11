@@ -397,9 +397,14 @@ static OnlineWallViewController* _sharedInstance;
             int currentEXP = [[body valueForKey:@"exp_current"] intValue];
             int nextLevelEXP = [[body valueForKey:@"exp_next_level"] intValue];
             int benefit = [[body valueForKey:@"benefit"] intValue];
-            
+            int levelChange = 0;
             if (userLevel > 0)
             {
+                int nLevel = [[LoginAndRegister sharedInstance] getUserLevel];
+                if ( nLevel > userLevel ) {
+                    // 等级变化
+                    levelChange = 200;
+                }
                 [[LoginAndRegister sharedInstance] setUserLevel:userLevel];
                 [[LoginAndRegister sharedInstance] setCurrentExp:currentEXP];
                 [[LoginAndRegister sharedInstance] setNextLevelExp:nextLevelEXP];
@@ -414,7 +419,7 @@ static OnlineWallViewController* _sharedInstance;
                 int diff = offerwallIncome - _offerwallIncome;
                 
                 _offerwallIncome = offerwallIncome;
-                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:diff];
+                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:diff Level:levelChange];
             }
 
             _request = NO;

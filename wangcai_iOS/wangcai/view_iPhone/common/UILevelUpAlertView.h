@@ -26,7 +26,7 @@
 
 + (UILevelUpAlertView*)sharedInstance;
 
-- (void) setLevel:(int)level; //1-5
+- (void) setLevel:(int)level level:(int)levelChange; //1-5
 
 - (id)init;
 

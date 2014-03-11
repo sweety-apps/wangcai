@@ -71,6 +71,7 @@ static BOOL gNeedReloadTaskList = NO;
     _curCellCount = 0;
     _hisCellCount = 0;
     _levelCell = nil;
+    _levelChange = 0;
     
     self.staticCells = [NSMutableArray array];
     _bounceHeader = NO;
@@ -718,7 +719,7 @@ static BOOL gNeedReloadTaskList = NO;
 
 #pragma mark <OnlineWallViewControllerDelegate>
 
-- (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume
+- (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume Level:(int)levelChange
 {
     if ([[LoginAndRegister sharedInstance] checkAndConsumeLevel])
     {
@@ -732,11 +733,16 @@ static BOOL gNeedReloadTaskList = NO;
         //统计
         [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",consume],@"FROM":@"积分墙"}];
         
+        if ( levelChange > 0 && consume > levelChange ) {
+            consume -= levelChange;
+            _levelChange = levelChange;
+        }
+        
         UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
         [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:2 ignoreBackZeros:YES]];
         [getMoneyAlertView setLevel:3];
         [getMoneyAlertView setTitle:@"获得应用体验红包"];
-        //[getMoneyAlertView setDelegate:self];
+        [getMoneyAlertView setDelegate:self];
         [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:consume];
         [getMoneyAlertView show];
         
@@ -861,22 +867,23 @@ static BOOL gNeedReloadTaskList = NO;
 
 - (void)onPressedCloseUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
 {
-    //[self checkBalanceAndAnimateYuE];
-    if ([[LoginAndRegister sharedInstance] checkAndConsumeLevel])
+    if ( _levelChange > 0 )
     {
         UILevelUpAlertView* talert = [UILevelUpAlertView sharedInstance];
-        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
+        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel] level:_levelChange];
+        
+        _levelChange = 0;
         [talert show];
     }
 }
 
 - (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
 {
-    //[self checkBalanceAndAnimateYuE];
-    if ([[LoginAndRegister sharedInstance] checkAndConsumeLevel])
+    if ( _levelChange > 0 )
     {
         UILevelUpAlertView* talert = [UILevelUpAlertView sharedInstance];
-        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
+        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel] level:_levelChange];
+        _levelChange = 0;
         [talert show];
     }
 }

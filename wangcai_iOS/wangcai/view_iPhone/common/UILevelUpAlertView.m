@@ -24,6 +24,8 @@
     UILabel* _extraRedBagValLbl;
     UILabel* _skillLbl;
     UILabel* _skillValLbl;
+    UILabel* _awardLbl;
+    UILabel* _awardRedLbl;
 }
 
 @end
@@ -59,7 +61,7 @@ static UILevelUpAlertView* gInstance = nil;
 }
 */
 
-- (void) setLevel:(int)level
+- (void) setLevel:(int)level level:(int)levelChange
 {
     NSString* skill = @"";
     if (level == 3)
@@ -74,7 +76,7 @@ static UILevelUpAlertView* gInstance = nil;
     {
         skill = @"一石二鸟";
     }
-    
+
     int extraPlus = level;
     if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]==0)
     {
@@ -92,16 +94,16 @@ static UILevelUpAlertView* gInstance = nil;
     CGRect rectSkill = _skillLbl.frame;
     CGRect rectSkillVal = _skillValLbl.frame;
     
-    rectExtra = CGRectOffset(rectAlertView, 24, 126);
+    rectExtra = CGRectOffset(rectAlertView, 24, 116);
     rectExtra.size = _extraRedBagLbl.frame.size;
     
-    rectExtraVal = CGRectOffset(rectAlertView, 118, 126);
+    rectExtraVal = CGRectOffset(rectAlertView, 118, 116);
     rectExtraVal.size = _extraRedBagValLbl.frame.size;
     
-    rectSkill = CGRectOffset(rectAlertView, 24, 158);
+    rectSkill = CGRectOffset(rectAlertView, 24, 148);
     rectSkill.size = _skillLbl.frame.size;
     
-    rectSkillVal = CGRectOffset(rectAlertView, 118, 158);
+    rectSkillVal = CGRectOffset(rectAlertView, 118, 148);
     rectSkillVal.size = _skillValLbl.frame.size;
     
     if ([skill length] > 0)
@@ -124,6 +126,17 @@ static UILevelUpAlertView* gInstance = nil;
     _skillValLbl.frame = rectSkillVal;
     _extraRedBagLbl.frame = rectExtra;
     _extraRedBagValLbl.frame = rectExtraVal;
+    
+    if ( levelChange == 0 ) {
+        [_awardLbl setHidden:YES];
+        [_awardRedLbl setHidden:YES];
+    } else {
+        [_awardLbl setHidden:NO];
+        [_awardRedLbl setHidden:NO];
+        
+        NSString* text = [NSString stringWithFormat:@"%.2f元", 1.0*levelChange/100];
+        [_awardRedLbl setText:text];
+    }
 }
 
 
@@ -198,7 +211,7 @@ static UILevelUpAlertView* gInstance = nil;
         _titleLevelLbl.text = @"Lv2";
         _titleLevelLbl.contentMode = UIViewContentModeTopLeft;
         
-        rect = CGRectOffset(rectAlertView, 24, 126);
+        rect = CGRectOffset(rectAlertView, 24, 116);
         rect.size = CGSizeMake(200, 22);
         _extraRedBagLbl = [[UILabel alloc] initWithFrame:rect];
         _extraRedBagLbl.textColor = RGB(139, 139, 139);
@@ -209,7 +222,7 @@ static UILevelUpAlertView* gInstance = nil;
         _extraRedBagLbl.text = @"额外红包:";
         _extraRedBagLbl.contentMode = UIViewContentModeTopLeft;
         
-        rect = CGRectOffset(rectAlertView, 118, 126);
+        rect = CGRectOffset(rectAlertView, 118, 116);
         rect.size = CGSizeMake(200, 20);
         _extraRedBagValLbl = [[UILabel alloc] initWithFrame:rect];
         _extraRedBagValLbl.textColor = RGB(11, 104, 208);
@@ -220,7 +233,7 @@ static UILevelUpAlertView* gInstance = nil;
         _extraRedBagValLbl.text = @"恭喜您升级到";
         _extraRedBagValLbl.contentMode = UIViewContentModeTopLeft;
         
-        rect = CGRectOffset(rectAlertView, 24, 158);
+        rect = CGRectOffset(rectAlertView, 24, 148);
         rect.size = CGSizeMake(200, 20);
         _skillLbl = [[UILabel alloc] initWithFrame:rect];
         _skillLbl.textColor = RGB(139, 139, 139);
@@ -228,10 +241,10 @@ static UILevelUpAlertView* gInstance = nil;
         _skillLbl.font = [UIFont systemFontOfSize:20.0f];
         _skillLbl.textAlignment = NSTextAlignmentLeft;
         _skillLbl.frame = rect;
-        _skillLbl.text = @"获得技能";
+        _skillLbl.text = @"获得技能:";
         _skillLbl.contentMode = UIViewContentModeTopLeft;
         
-        rect = CGRectOffset(rectAlertView, 118, 158);
+        rect = CGRectOffset(rectAlertView, 118, 148);
         rect.size = CGSizeMake(200, 20);
         _skillValLbl = [[UILabel alloc] initWithFrame:rect];
         _skillValLbl.textColor = RGB(11, 104, 208);
@@ -242,6 +255,30 @@ static UILevelUpAlertView* gInstance = nil;
         _skillValLbl.text = @"恭喜您升级到";
         _skillValLbl.contentMode = UIViewContentModeTopLeft;
         
+        
+        
+        
+        rect = CGRectOffset(rectAlertView, 24, 180);
+        rect.size = CGSizeMake(200, 20);
+        _awardLbl = [[UILabel alloc] initWithFrame:rect];
+        _awardLbl.textColor = RGB(139, 139, 139);
+        _awardLbl.backgroundColor = [UIColor clearColor];
+        _awardLbl.font = [UIFont systemFontOfSize:20.0f];
+        _awardLbl.textAlignment = NSTextAlignmentLeft;
+        _awardLbl.frame = rect;
+        _awardLbl.text = @"升级奖励:";
+        _awardLbl.contentMode = UIViewContentModeTopLeft;
+        
+        rect = CGRectOffset(rectAlertView, 118, 180);
+        rect.size = CGSizeMake(200, 20);
+        _awardRedLbl = [[UILabel alloc] initWithFrame:rect];
+        _awardRedLbl.textColor = RGB(209, 13, 13);
+        _awardRedLbl.backgroundColor = [UIColor clearColor];
+        _awardRedLbl.font = [UIFont systemFontOfSize:20.0f];
+        _awardRedLbl.textAlignment = NSTextAlignmentLeft;
+        _awardRedLbl.frame = rect;
+        _awardRedLbl.text = @"2.0元";
+        _awardRedLbl.contentMode = UIViewContentModeTopLeft;
         
         [self addSubview:_bgView];
         [self addSubview:_alertViewContainer];
@@ -255,6 +292,8 @@ static UILevelUpAlertView* gInstance = nil;
         [_alertViewContainer addSubview:_closeBtn];
         [_alertViewContainer addSubview:_downCloseBtn];
         [_alertViewContainer addSubview:_checkBtn];
+        [_alertViewContainer addSubview:_awardLbl];
+        [_alertViewContainer addSubview:_awardRedLbl];
         
         [self showBackground];
         [self showAlertAnmation];

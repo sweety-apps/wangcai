@@ -17,7 +17,7 @@
 #import "MopanAdWall.h"
 
 @protocol OnlineWallViewControllerDelegate <NSObject>
-- (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume;
+- (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume Level:(int) change;
 @end
 
 @interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, immobViewDelegate, HttpRequestDelegate> {

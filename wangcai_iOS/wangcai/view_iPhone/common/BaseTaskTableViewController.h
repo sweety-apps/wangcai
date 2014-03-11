@@ -41,6 +41,8 @@
     BOOL _needRetry;
     BOOL _needBindPhone;
     BOOL _needAddCommentIncome;
+    
+    int _levelChange;
 }
 
 @property (nonatomic,retain) IBOutlet CommonZhanghuYuETableViewCell* zhanghuYuEHeaderCell;
