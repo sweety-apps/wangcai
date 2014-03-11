@@ -733,8 +733,7 @@ static BOOL gNeedReloadTaskList = NO;
         //统计
         [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",consume],@"FROM":@"积分墙"}];
         
-        if ( levelChange > 0 && consume > levelChange ) {
-            consume -= levelChange;
+        if ( levelChange > 0 ) {
             _levelChange = levelChange;
         }
         

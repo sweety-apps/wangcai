@@ -397,11 +397,12 @@ static OnlineWallViewController* _sharedInstance;
             int currentEXP = [[body valueForKey:@"exp_current"] intValue];
             int nextLevelEXP = [[body valueForKey:@"exp_next_level"] intValue];
             int benefit = [[body valueForKey:@"benefit"] intValue];
+ 
             int levelChange = 0;
             if (userLevel > 0)
             {
                 int nLevel = [[LoginAndRegister sharedInstance] getUserLevel];
-                if ( nLevel > userLevel ) {
+                if ( nLevel < userLevel ) {
                     // 等级变化
                     levelChange = 200;
                 }
