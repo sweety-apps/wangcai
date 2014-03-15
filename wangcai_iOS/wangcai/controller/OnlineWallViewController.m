@@ -114,11 +114,11 @@ static OnlineWallViewController* _sharedInstance;
         [_alertView release];
     }
     
-    BOOL showDomob = [[LoginAndRegister sharedInstance] isShowDomob];
-    BOOL showYoumi = [[LoginAndRegister sharedInstance] isShowYoumi];
-    BOOL showLimei = [[LoginAndRegister sharedInstance] isShowLimei];
-    BOOL showMobsmar = [[LoginAndRegister sharedInstance] isShowMobsmar];
-    BOOL showMopan = [[LoginAndRegister sharedInstance] isShowMopan];
+    BOOL showDomob = [[LoginAndRegister sharedInstance] isShowDomob] && (![[LoginAndRegister sharedInstance] isInMoreDomob]);
+    BOOL showYoumi = [[LoginAndRegister sharedInstance] isShowYoumi] && (![[LoginAndRegister sharedInstance] isInMoreYoumi]);
+    BOOL showLimei = [[LoginAndRegister sharedInstance] isShowLimei] && (![[LoginAndRegister sharedInstance] isInMoreLimei]);
+    BOOL showMobsmar = [[LoginAndRegister sharedInstance] isShowMobsmar] && (![[LoginAndRegister sharedInstance] isInMoreMobsmar]);
+    BOOL showMopan = [[LoginAndRegister sharedInstance] isShowMopan] && (![[LoginAndRegister sharedInstance] isInMoreMopan]);
     
     UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
     
@@ -163,6 +163,20 @@ static OnlineWallViewController* _sharedInstance;
     [[view viewWithTag:14] setHidden:YES];
     [[view viewWithTag:15] setHidden:YES];
     
+    _moreView = [view viewWithTag:97];
+    [[view viewWithTag:97] setHidden:YES];
+    if ( [[LoginAndRegister sharedInstance] isInMoreDomob] ||
+        [[LoginAndRegister sharedInstance] isInMoreYoumi] ||
+        [[LoginAndRegister sharedInstance] isInMoreLimei] ||
+        [[LoginAndRegister sharedInstance] isInMoreMobsmar] ||
+        [[LoginAndRegister sharedInstance] isInMoreMopan] ) {
+        // 显示更多按钮
+        [[view viewWithTag:91] setHidden:NO];
+        [self repositionMore];
+    } else {
+        [[view viewWithTag:91] setHidden:YES];
+    }
+    
     if ( [nsOfferwall count] == 2 ) {
         // 显示两个按钮
         UIButton* btn1 = (UIButton*) [nsOfferwall objectAtIndex:0];
@@ -170,12 +184,12 @@ static OnlineWallViewController* _sharedInstance;
         
         CGRect rect = btn1.frame;
         [btn1 setHidden:NO];
-        rect.origin.y = 321;
+        rect.origin.y = 275;
         [btn1 setFrame:rect];
         
         rect = btn2.frame;
         [btn2 setHidden:NO];
-        rect.origin.y = 380;
+        rect.origin.y = 335;
         [btn2 setFrame:rect];
     } else if ( [nsOfferwall count] == 1 ) {
         // 只显示一个按钮
@@ -183,7 +197,7 @@ static OnlineWallViewController* _sharedInstance;
         
         CGRect rect = btn1.frame;
         [btn1 setHidden:NO];
-        rect.origin.y = 360;
+        rect.origin.y = 310;
         [btn1 setFrame:rect];
     } else {
         return ;
@@ -215,6 +229,45 @@ static OnlineWallViewController* _sharedInstance;
     [_alertView show];
 }
 
+- (void)repositionMore {
+    NSMutableArray* nsOfferwall = [[[NSMutableArray alloc] init] autorelease];
+    if ( [[LoginAndRegister sharedInstance] isInMoreDomob] ) {
+        [nsOfferwall pushTail:[_moreView viewWithTag:51] ];
+    }
+    
+    if ( [[LoginAndRegister sharedInstance] isInMoreYoumi] ) {
+        [nsOfferwall pushTail:[_moreView viewWithTag:52] ];
+    }
+    
+    if ( [[LoginAndRegister sharedInstance] isInMoreLimei] ) {
+        [nsOfferwall pushTail:[_moreView viewWithTag:53] ];
+    }
+    
+    if ( [[LoginAndRegister sharedInstance] isInMoreMobsmar] ) {
+        [nsOfferwall pushTail:[_moreView viewWithTag:54] ];
+    }
+    
+    if ( [[LoginAndRegister sharedInstance] isInMoreMopan] ) {
+        [nsOfferwall pushTail:[_moreView viewWithTag:55] ];
+    }
+    
+    [[_moreView viewWithTag:51] setHidden:YES];
+    [[_moreView viewWithTag:52] setHidden:YES];
+    [[_moreView viewWithTag:53] setHidden:YES];
+    [[_moreView viewWithTag:54] setHidden:YES];
+    [[_moreView viewWithTag:55] setHidden:YES];
+    
+    for (int i = 0; i < [nsOfferwall count]; i ++ ) {
+        UIView* btnView = [nsOfferwall objectAtIndex:i];
+        [btnView setHidden:NO];
+        CGRect rect = btnView.frame;
+        rect.origin.y = 87 + (60 * i);
+        [btnView setFrame:rect];
+    }
+}
+    
+    
+    
 - (IBAction)clickYoumi:(id)sender {
     if ( _alertView != nil ) {
         [_alertView hideAlertView];
@@ -224,6 +277,10 @@ static OnlineWallViewController* _sharedInstance;
     [YouMiWall showOffers:YES didShowBlock:^{
     }didDismissBlock:^{
     }];
+}
+
+- (IBAction) clickMore:(id)sender {
+    [_moreView setHidden:NO];
 }
 
 - (IBAction)clickMobsmar:(id)sender {

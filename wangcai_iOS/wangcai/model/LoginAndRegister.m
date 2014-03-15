@@ -270,10 +270,10 @@ static LoginAndRegister* _sharedInstance = nil;
                 }
                 
                 /*
-                _showLimei = 1;
-                _showMopan = 1;
-                _showYoumi = 2;
-                _showMobsmar = 0;
+                _showLimei = 3;
+                _showMopan = 0;
+                _showYoumi = 1;
+                _showMobsmar = 3;
                 _showDomob = 0;
                 */
 
@@ -619,6 +619,41 @@ static LoginAndRegister* _sharedInstance = nil;
         return NO;
     }
     return YES;
+}
+
+-(BOOL) isInMoreDomob {
+    if ( _showDomob == 3 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isInMoreYoumi {
+    if ( _showYoumi == 3 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isInMoreLimei {
+    if ( _showLimei == 3 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isInMoreMobsmar {
+    if ( _showMobsmar == 3 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isInMoreMopan {
+    if ( _showMopan == 3 ) {
+        return YES;
+    }
+    return NO;
 }
 
 -(BOOL) isRecommendDomob {

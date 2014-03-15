@@ -130,6 +130,12 @@ typedef enum LoginStatus {
 -(BOOL) isShowMobsmar;
 -(BOOL) isShowMopan;
 
+-(BOOL) isInMoreDomob;
+-(BOOL) isInMoreYoumi;
+-(BOOL) isInMoreLimei;
+-(BOOL) isInMoreMobsmar;
+-(BOOL) isInMoreMopan;
+
 -(BOOL) isRecommendDomob;
 -(BOOL) isRecommendYoumi;
 -(BOOL) isRecommendLimei;

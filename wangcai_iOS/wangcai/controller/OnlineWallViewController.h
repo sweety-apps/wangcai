@@ -42,6 +42,8 @@
     MopanAdWall* _mopanAdWallControl;
     
     int         _nRecommend;
+    
+    UIView*     _moreView;
 }
 
 @property (nonatomic,assign) id<OnlineWallViewControllerDelegate>  delegate;
