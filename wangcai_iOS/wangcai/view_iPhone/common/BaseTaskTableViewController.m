@@ -783,8 +783,19 @@ static BOOL gNeedReloadTaskList = NO;
     } else {
         // 登陆错误，必须登陆成功才能进入下一步
         _needRetry = YES;
-        UIAlertView* alertError = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络不可用，请检查网络连接" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil] autorelease];
-        [alertError show];
+        
+        if ( httpCode == 200 && (errCode == 511 || errCode == 403) ) {
+            NSString* errMsg = [[msg copy] autorelease];
+            NSRange range = [errMsg rangeOfString:@"$"];
+            NSString* title = [errMsg substringToIndex:range.location];
+            NSString* body = [errMsg substringFromIndex:range.location + range.length];
+            
+            UIAlertView* alertError = [[[UIAlertView alloc] initWithTitle:title message:body delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil] autorelease];
+            [alertError show];
+        } else {
+            UIAlertView* alertError = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络不可用，请检查网络连接" delegate:self cancelButtonTitle:@"重试" otherButtonTitles:nil, nil] autorelease];
+            [alertError show];
+        }
     }
 }
 

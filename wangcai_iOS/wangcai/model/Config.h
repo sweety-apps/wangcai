@@ -36,6 +36,8 @@
 #define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcaifriend&"
 
 #define YOUMI_APP_ID    @"c43af0b9f90601cf"
+
+
 #define YOUMI_APP_SECRET    @"14706b7214e01b2b"
 
 #define DOMOB_PUBLISHER_ID @"96ZJ0Q7gzeykPwTAVP"
