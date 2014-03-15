@@ -2509,7 +2509,6 @@
 				F3359FC718882F8000C1E636 /* libz.dylib in Frameworks */,
 				F3359FC918882F8000C1E636 /* CoreText.framework in Frameworks */,
 				7153FCFB18CDC2C50026B4B5 /* MopanAdLib.a in Frameworks */,
-				7153FCF218CDB8130026B4B5 /* libZhiYCM.a in Frameworks */,
 				F3359FCA18882F8000C1E636 /* MobileCoreServices.framework in Frameworks */,
 				7135558B188D17800007784A /* TencentWeiboConnection.framework in Frameworks */,
 				71355561188D17800007784A /* EverNoteConnection.framework in Frameworks */,
@@ -2538,6 +2537,7 @@
 				71355577188D17800007784A /* PocketConnection.framework in Frameworks */,
 				7135558D188D17800007784A /* TumblrConnection.framework in Frameworks */,
 				7135557F188D17800007784A /* RenRenConnection.framework in Frameworks */,
+				7153FCF218CDB8130026B4B5 /* libZhiYCM.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6125,6 +6125,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/mobsmarlib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "905355E2-3729-45D5-A744-7A46D06B828F";
@@ -6222,6 +6223,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/mobsmarlib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
