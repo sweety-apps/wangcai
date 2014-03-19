@@ -269,13 +269,13 @@ static LoginAndRegister* _sharedInstance = nil;
                     _showMopan = [[offerwall valueForKey:@"mopan"] intValue];
                 }
                 
-                /*
-                _showLimei = 3;
-                _showMopan = 0;
-                _showYoumi = 1;
-                _showMobsmar = 3;
-                _showDomob = 0;
-                */
+                //
+                //_showLimei = 1;
+                //_showMopan = 0;
+                //_showYoumi = 1;
+                //_showMobsmar = 0;
+                //_showDomob = 0;
+                //
 
                 int userLevel = [[dict valueForKey:@"level"] intValue];
                 int currentEXP = [[dict valueForKey:@"exp_current"] intValue];

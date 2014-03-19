@@ -71,11 +71,47 @@
             self._textName = (UITextField*)[self._containerView viewWithTag:73];
             self._textNameTip = (UILabel*)[self._containerView viewWithTag:53];
         }
+        
+        [self initBtn];
     }
     
     return self;
 }
 
+- (void)initBtn {
+    CGRect rect;
+    rect.size.height = 50;
+    rect.size.width = 95;
+    
+    if ( _type == 1 ) {
+        rect.origin.y = 252;
+    } else if ( _type == 2 ) {
+        rect.origin.y = 200;
+    } else if ( _type == 3 ) {
+        rect.origin.y = 200;
+    }
+    
+    _btn1 = [[UIPayButton alloc] initWithNibName:@"UIPayButton" bundle:nil];
+    _btn2 = [[UIPayButton alloc] initWithNibName:@"UIPayButton" bundle:nil];
+    _btn3 = [[UIPayButton alloc] initWithNibName:@"UIPayButton" bundle:nil];
+    
+    rect.origin.x = 10;
+    [_btn1.view setFrame:rect];
+    
+    rect.origin.x = 113;
+    [_btn2.view setFrame:rect];
+    
+    rect.origin.x = 216;
+    [_btn3.view setFrame:rect];
+    
+    [self._containerView addSubview:_btn1.view];
+    [self._containerView addSubview:_btn2.view];
+    [self._containerView addSubview:_btn3.view];
+    
+    [_btn1 setAmount:1000 Reward:0 Hot:NO Delegate:self];
+    [_btn2 setAmount:3000 Reward:300 Hot:YES Delegate:self];
+    [_btn3 setAmount:5000 Reward:1000 Hot:NO Delegate:self];
+}
 
 - (void)viewDidLoad
 {
@@ -178,6 +214,11 @@
         [_orderId release];
         _orderId = nil;
     }
+    
+    [_btn1 release];
+    [_btn2 release];
+    [_btn3 release];
+    
     [super dealloc];
 }
 
@@ -630,101 +671,15 @@
     return YES;
 }
 
-- (IBAction)clickPhone10:(id)sender {
+- (void) onClickPay:(int)amount Reward:(int)reward {
     [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:10] ) {
-        self->_nDiscount = 1000;
-        self->_nAmount = 1000;
-    
-        [self clickNext];
-    }
-}
-
-- (IBAction)clickPhone30:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:30] ) {
-        self->_nDiscount = 2700;
-        self->_nAmount = 3000;
-    
-        [self clickNext];
-    }
-}
-
-- (IBAction)clickPhone50:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:50] ) {
-        self->_nDiscount = 4000;
-        self->_nAmount = 5000;
-    
-        [self clickNext];
-    }
-}
-
-- (IBAction)clickAlipay10:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:10] ) {
-        self->_nDiscount = 1000;
-        self->_nAmount = 1000;
-    
-        [self clickNext];
-    }
-}
-
-- (IBAction)clickAlipay30:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:30] ) {
-        self->_nDiscount = 2700;
-        self->_nAmount = 3000;
-    
-        [self clickNext];
-    }
-}
-
-- (IBAction)clickAlipay50:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:50] ) {
-        self->_nDiscount = 4000;
-        self->_nAmount = 5000;
-    
-        [self clickNext];
-    }
-}
-
-
-
-
-- (IBAction)clickQQ10:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:10] ) {
-        self->_nDiscount = 1000;
-        self->_nAmount = 1000;
+    if ( [self checkBalanceAndBindPhone:(amount / 100)] ) {
+        self->_nDiscount = amount - reward;
+        self->_nAmount = amount;
         
         [self clickNext];
     }
 }
-
-- (IBAction)clickQQ30:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:30] ) {
-        self->_nDiscount = 2700;
-        self->_nAmount = 3000;
-        
-        [self clickNext];
-    }
-}
-
-- (IBAction)clickQQ50:(id)sender {
-    [self hideKeyboard];
-    if ( [self checkBalanceAndBindPhone:50] ) {
-        self->_nDiscount = 4000;
-        self->_nAmount = 5000;
-        
-        [self clickNext];
-    }
-}
-
-
-
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ( _alertBindPhone != nil ) {

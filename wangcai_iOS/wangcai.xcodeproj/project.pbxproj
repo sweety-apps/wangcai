@@ -67,6 +67,14 @@
 		711F439818B4F49C00AEE1D5 /* extract_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F439418B4F49C00AEE1D5 /* extract_phone@2x.png */; };
 		711F439A18B4F9A300AEE1D5 /* chongzhi_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F439918B4F9A300AEE1D5 /* chongzhi_btn@2x.png */; };
 		711F439B18B4F9A300AEE1D5 /* chongzhi_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F439918B4F9A300AEE1D5 /* chongzhi_btn@2x.png */; };
+		712D019C18D96DD100A84228 /* pay_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019A18D96DD100A84228 /* pay_bkg@2x.png */; };
+		712D019D18D96DD100A84228 /* pay_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019A18D96DD100A84228 /* pay_bkg@2x.png */; };
+		712D019E18D96DD100A84228 /* pay_hot_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */; };
+		712D019F18D96DD100A84228 /* pay_hot_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */; };
+		712D01A918D9703600A84228 /* UIPayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 712D01A718D9703600A84228 /* UIPayButton.m */; };
+		712D01AA18D9703600A84228 /* UIPayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 712D01A718D9703600A84228 /* UIPayButton.m */; };
+		712D01AB18D9703600A84228 /* UIPayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712D01A818D9703600A84228 /* UIPayButton.xib */; };
+		712D01AC18D9703600A84228 /* UIPayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712D01A818D9703600A84228 /* UIPayButton.xib */; };
 		712DA7D218C85978008414D4 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */; };
 		712DA7D318C85978008414D4 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */; };
 		712DA7D518C8615F008414D4 /* qq@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7D418C8615F008414D4 /* qq@2x.PNG */; };
@@ -1446,6 +1454,11 @@
 		711F439318B4F49C00AEE1D5 /* extract_alipay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extract_alipay@2x.png"; sourceTree = "<group>"; };
 		711F439418B4F49C00AEE1D5 /* extract_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extract_phone@2x.png"; sourceTree = "<group>"; };
 		711F439918B4F9A300AEE1D5 /* chongzhi_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chongzhi_btn@2x.png"; sourceTree = "<group>"; };
+		712D019A18D96DD100A84228 /* pay_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_bkg@2x.png"; sourceTree = "<group>"; };
+		712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_hot_bkg@2x.png"; sourceTree = "<group>"; };
+		712D01A618D9703600A84228 /* UIPayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPayButton.h; sourceTree = "<group>"; };
+		712D01A718D9703600A84228 /* UIPayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPayButton.m; sourceTree = "<group>"; };
+		712D01A818D9703600A84228 /* UIPayButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIPayButton.xib; sourceTree = "<group>"; };
 		712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = SOURCE_ROOT; };
 		712DA7D418C8615F008414D4 /* qq@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq@2x.PNG"; sourceTree = "<group>"; };
 		712DA7D718C8616E008414D4 /* qq_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq_input@2x.png"; sourceTree = "<group>"; };
@@ -2897,6 +2910,8 @@
 		A60C57EB186FF8A30068425C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				712D019A18D96DD100A84228 /* pay_bkg@2x.png */,
+				712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */,
 				712DA7D718C8616E008414D4 /* qq_input@2x.png */,
 				7153FD0518CDF78A0026B4B5 /* app_tip_recommand@2x.png */,
 				712DA7DA18C86202008414D4 /* Qbi@2x.png */,
@@ -3324,6 +3339,9 @@
 				A6438ED5185EF0F3001A84AD /* TransferToAlipayAndPhoneController.h */,
 				A6438ED6185EF0F3001A84AD /* TransferToAlipayAndPhoneController.m */,
 				A6438ED8185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib */,
+				712D01A618D9703600A84228 /* UIPayButton.h */,
+				712D01A718D9703600A84228 /* UIPayButton.m */,
+				712D01A818D9703600A84228 /* UIPayButton.xib */,
 			);
 			path = extractmoney;
 			sourceTree = "<group>";
@@ -4800,6 +4818,7 @@
 				F3359FEF18882F8000C1E636 /* invite_seg_normal@2x.png in Resources */,
 				F3359FF018882F8000C1E636 /* navigation-bar@2x.png in Resources */,
 				F3359FF118882F8000C1E636 /* phone_num_border@2x.png in Resources */,
+				712D019F18D96DD100A84228 /* pay_hot_bkg@2x.png in Resources */,
 				F3359FF218882F8000C1E636 /* package_icon_1mao@2x.png in Resources */,
 				F394DBD118B89841003311CD /* mywangcai_dog_4@2x.png in Resources */,
 				F394DBC318B89841003311CD /* mywangcai_dog_11@2x.png in Resources */,
@@ -4924,6 +4943,7 @@
 				F335A03D18882F8000C1E636 /* SettingViewController.xib in Resources */,
 				F31F951D18AF623B0035792B /* mywangcai_bingdphone_btn_pressed@2x.png in Resources */,
 				71008A341891046100689E2F /* app_tip_bkg@2x.png in Resources */,
+				712D01AC18D9703600A84228 /* UIPayButton.xib in Resources */,
 				F335A03E18882F8000C1E636 /* choujiang_border_selected2@2x.png in Resources */,
 				F335A03F18882F8000C1E636 /* choujiang_title@2x.png in Resources */,
 				F335A04018882F8000C1E636 /* ExchangeController.xib in Resources */,
@@ -4938,6 +4958,7 @@
 				F335A04518882F8000C1E636 /* sms_code_border@2x.png in Resources */,
 				F31F951F18AF623B0035792B /* mywangcai_cell_baifabaizhong@2x.png in Resources */,
 				F31F898D18962B8600F34F20 /* iPodTouch5.plist in Resources */,
+				712D019D18D96DD100A84228 /* pay_bkg@2x.png in Resources */,
 				719F188318AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */,
 				F335A04618882F8000C1E636 /* user_info_commit_btn@2x.png in Resources */,
 				F335A04718882F8000C1E636 /* user_hobby_selected@2x.png in Resources */,
@@ -5118,6 +5139,7 @@
 				71A9C7D618B8D563006119F6 /* exchange_bkg@2x.png in Resources */,
 				A60C5859186FF8A30068425C /* navigation_bar@2x.png in Resources */,
 				A60C584A186FF8A30068425C /* bottom_arraw@2x.png in Resources */,
+				712D019E18D96DD100A84228 /* pay_hot_bkg@2x.png in Resources */,
 				A6FEE28B187D9AB800E5AF3E /* grayArrow.png in Resources */,
 				A60C58A818703AE60068425C /* invite_invited_edit@2x.png in Resources */,
 				A60C587D186FF8A30068425C /* table_view_cell_icon_bg@2x.png in Resources */,
@@ -5196,6 +5218,7 @@
 				A60C5860186FF8A30068425C /* setting_bell@2x.png in Resources */,
 				A60C5848186FF8A30068425C /* body_bkg@2x.png in Resources */,
 				A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */,
+				712D01AB18D9703600A84228 /* UIPayButton.xib in Resources */,
 				F36049B21871A9AE00FAD1F3 /* menu_icon_tixian@2x.png in Resources */,
 				A6FA6A5C18827C88003F8399 /* cloud@2x.png in Resources */,
 				A60C58A718703AE60068425C /* invite_invite_code_bkg@2x.png in Resources */,
@@ -5329,6 +5352,7 @@
 				711F439A18B4F9A300AEE1D5 /* chongzhi_btn@2x.png in Resources */,
 				A6E051611886CF0E00780F02 /* about2@2x.png in Resources */,
 				A60C588E186FF8A30068425C /* recommand_task_icon@2x.png in Resources */,
+				712D019C18D96DD100A84228 /* pay_bkg@2x.png in Resources */,
 				A6FA6A651882E284003F8399 /* apptask_tip@2x.png in Resources */,
 				F394DBC218B89841003311CD /* mywangcai_dog_11@2x.png in Resources */,
 				A6FEE28A187D9AB800E5AF3E /* blueArrow@2x.png in Resources */,
@@ -5628,6 +5652,7 @@
 				F3359F6218882F8000C1E636 /* FMDatabaseAdditions.m in Sources */,
 				F3359F6318882F8000C1E636 /* UIView+LifeCycle.m in Sources */,
 				F3359F6418882F8000C1E636 /* Bee_SystemInfo.mm in Sources */,
+				712D01AA18D9703600A84228 /* UIPayButton.m in Sources */,
 				F394DBED18B8D705003311CD /* UILevelUpAlertView.m in Sources */,
 				F3359F6518882F8000C1E636 /* UIViewController+BeeUILayout.m in Sources */,
 				F3359F6618882F8000C1E636 /* Bee_UICameraView.m in Sources */,
@@ -5934,6 +5959,7 @@
 				F3F1872318543A420098C852 /* FMDatabaseAdditions.m in Sources */,
 				F3F1888C18543A430098C852 /* UIView+LifeCycle.m in Sources */,
 				F3F189A118543A440098C852 /* Bee_SystemInfo.mm in Sources */,
+				712D01A918D9703600A84228 /* UIPayButton.m in Sources */,
 				F394DBEC18B8D705003311CD /* UILevelUpAlertView.m in Sources */,
 				F3F188EF18543A440098C852 /* UIViewController+BeeUILayout.m in Sources */,
 				F3F188AB18543A430098C852 /* Bee_UICameraView.m in Sources */,

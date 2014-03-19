@@ -128,39 +128,6 @@
                         <action selector="clickClear2:" destination="-1" eventType="touchUpInside" id="TBX-WX-bd6"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="n13-LQ-eOQ">
-                    <rect key="frame" x="10" y="200" width="95" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="10yuan.PNG">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickPhone10:" destination="-1" eventType="touchUpInside" id="qPL-xE-rjc"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="knl-lg-5yT">
-                    <rect key="frame" x="113" y="200" width="95" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="30yuan.PNG">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickPhone30:" destination="-1" eventType="touchUpInside" id="ouM-72-dss"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lJU-w9-GTJ">
-                    <rect key="frame" x="216" y="200" width="95" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="50yuan.PNG">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickPhone50:" destination="-1" eventType="touchUpInside" id="y1U-B4-cdP"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
         </view>
@@ -271,39 +238,6 @@
                         <action selector="clickClear3:" destination="-1" eventType="touchUpInside" id="LPD-vD-trc"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DNE-ja-nxF">
-                    <rect key="frame" x="10" y="252" width="95" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="10yuan.PNG">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickAlipay10:" destination="-1" eventType="touchUpInside" id="F63-Xf-tw0"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Zw-Zo-Qqc">
-                    <rect key="frame" x="113" y="252" width="95" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="30yuan.PNG">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickAlipay30:" destination="-1" eventType="touchUpInside" id="BRv-WZ-kce"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1L6-UV-Tq1">
-                    <rect key="frame" x="216" y="252" width="95" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="50yuan.PNG">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickAlipay50:" destination="-1" eventType="touchUpInside" id="lBt-m6-0hk"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
         </view>
@@ -386,39 +320,6 @@
                     </state>
                     <connections>
                         <action selector="clickClear2:" destination="-1" eventType="touchUpInside" id="2vr-aa-ZI0"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sDe-nq-bJp">
-                    <rect key="frame" x="10" y="200" width="95" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="10yuan.PNG">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickQQ10:" destination="-1" eventType="touchUpInside" id="0v1-lD-jRZ"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VFx-mp-IRT">
-                    <rect key="frame" x="113" y="200" width="95" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="30yuan.PNG">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickQQ30:" destination="-1" eventType="touchUpInside" id="x3p-fr-c7m"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4mf-fS-kSC">
-                    <rect key="frame" x="216" y="200" width="95" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="50yuan.PNG">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickQQ50:" destination="-1" eventType="touchUpInside" id="beO-5P-ciS"/>
                     </connections>
                 </button>
             </subviews>
@@ -545,9 +446,6 @@
         </view>
     </objects>
     <resources>
-        <image name="10yuan.PNG" width="95" height="50"/>
-        <image name="30yuan.PNG" width="95" height="50"/>
-        <image name="50yuan.PNG" width="95" height="50"/>
         <image name="alipay.png" width="65" height="21"/>
         <image name="alipay_input.PNG" width="320" height="164"/>
         <image name="back.png" width="11" height="22"/>

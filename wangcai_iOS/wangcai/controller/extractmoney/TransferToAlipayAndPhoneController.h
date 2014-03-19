@@ -10,8 +10,9 @@
 #import "PhoneValidation.h"
 #import "TabController.h"
 #import "UICustomAlertView.h"
+#import "UIPayButton.h"
 
-@interface TransferToAlipayAndPhoneController : UIViewController<UITextFieldDelegate, HttpRequestDelegate, UIAlertViewDelegate> {
+@interface TransferToAlipayAndPhoneController : UIViewController<UITextFieldDelegate, HttpRequestDelegate, UIAlertViewDelegate, UIPayButtonDelegate> {
     int _nDiscount;
     int _nAmount;
     UICustomAlertView* _alertView;
@@ -19,6 +20,10 @@
     BeeUIStack*     _beeStack;
     NSString* _orderId;
     int       _type; // type=1 支付宝  2 话费充值  3 qq币
+    
+    UIPayButton* _btn1;
+    UIPayButton* _btn2;
+    UIPayButton* _btn3;
 }
 
 @property (assign, nonatomic) UIView *_completeView;
@@ -46,17 +51,4 @@
 - (IBAction)clickClear2:(id)sender;
 - (IBAction)clickClear3:(id)sender;
 
-
-
-- (IBAction)clickPhone10:(id)sender;
-- (IBAction)clickPhone30:(id)sender;
-- (IBAction)clickPhone50:(id)sender;
-
-- (IBAction)clickAlipay10:(id)sender;
-- (IBAction)clickAlipay30:(id)sender;
-- (IBAction)clickAlipay50:(id)sender;
-
-- (IBAction)clickQQ10:(id)sender;
-- (IBAction)clickQQ30:(id)sender;
-- (IBAction)clickQQ50:(id)sender;
 @end
