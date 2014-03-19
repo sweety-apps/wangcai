@@ -18,6 +18,8 @@
 #define kTaskTypeIntallApp (10000)
 #define kTaskTypeCommon (10001)
 
+#define kTaskTypeYoumiEc (99999)
+
 
 @class CommonTaskList;
 

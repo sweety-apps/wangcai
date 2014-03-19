@@ -27,6 +27,8 @@
 #import "MobClick.h"
 #import "UIGetRedBagAlertView.h"
 #import "UILevelUpAlertView.h"
+#import "ECManager.h"
+#import "EcomConfig.h"
 
 static BOOL gNeedReloadTaskList = NO;
 
@@ -621,6 +623,13 @@ static BOOL gNeedReloadTaskList = NO;
                 [[BeeUIRouter sharedInstance] open:@"my_wangcai" animated:YES];
             }
                 break;
+            case kTaskTypeYoumiEc:
+            {
+                ECManager *mgr = [[ECManager alloc]init];
+                BeeUIRouter * router = [BeeUIRouter sharedInstance];
+                [router presentViewController:mgr.wallNavController animated:YES completion:nil];
+                break;
+            }
             default:
                 break;
         }

@@ -216,6 +216,22 @@ static CommonTaskList* gInstance = nil;
         [resultTaskList addObjectsFromArray:localTestTask];
     }
     
+    if ( [[LoginAndRegister sharedInstance] isInReview] ) {
+        CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
+        task.taskId = [NSNumber numberWithInt:99999];
+        task.taskType = [NSNumber numberWithInt:kTaskTypeYoumiEc];
+        task.taskTitle = @"购物赢红包";
+        task.taskStatus = [NSNumber numberWithInt:0];
+        task.taskMoney = [NSNumber numberWithInt:5000];
+        task.taskIntro = @"";
+        task.taskDesc = @"购物即可获得一定红包奖励";
+        task.taskStepStrings = nil;
+        task.taskIsLocalIcon = YES;
+        task.taskIconUrl = @"tiyanzhongxin_cell_icon";
+        
+        [resultTaskList addObject:task];
+    }
+    
     for (NSDictionary* taskDict in taskList)
     {
         CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];

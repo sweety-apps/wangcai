@@ -11,6 +11,8 @@
 		59D8E0C2189230DE003D5F3F /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D8E0C0189230DE003D5F3F /* libPushSDK.a */; };
 		59FE833218C77BCF00E4205A /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FE833118C77BCF00E4205A /* immobSDK.framework */; };
 		59FE833318C77BCF00E4205A /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FE833118C77BCF00E4205A /* immobSDK.framework */; };
+		71007DBE18D9B9B000FCF2D9 /* libEcom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71007DBD18D9B9B000FCF2D9 /* libEcom.a */; };
+		71007DBF18D9B9B000FCF2D9 /* libEcom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71007DBD18D9B9B000FCF2D9 /* libEcom.a */; };
 		71008A331891046100689E2F /* app_tip_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71008A321891046100689E2F /* app_tip_bkg@2x.png */; };
 		71008A341891046100689E2F /* app_tip_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71008A321891046100689E2F /* app_tip_bkg@2x.png */; };
 		71008A361891073800689E2F /* app_tip_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71008A351891073800689E2F /* app_tip_close@2x.png */; };
@@ -1431,6 +1433,9 @@
 		59D8E0BF189230DE003D5F3F /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
 		59D8E0C0189230DE003D5F3F /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushSDK.a; sourceTree = "<group>"; };
 		59FE833118C77BCF00E4205A /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
+		71007DBB18D9B9B000FCF2D9 /* ECManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECManager.h; sourceTree = "<group>"; };
+		71007DBC18D9B9B000FCF2D9 /* EcomConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcomConfig.h; sourceTree = "<group>"; };
+		71007DBD18D9B9B000FCF2D9 /* libEcom.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEcom.a; sourceTree = "<group>"; };
 		71008A321891046100689E2F /* app_tip_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_bkg@2x.png"; sourceTree = "<group>"; };
 		71008A351891073800689E2F /* app_tip_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_close@2x.png"; sourceTree = "<group>"; };
 		71008A38189108D900689E2F /* app_tip_domob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_domob@2x.png"; sourceTree = "<group>"; };
@@ -2558,6 +2563,7 @@
 				71355563188D17800007784A /* FacebookConnection.framework in Frameworks */,
 				71355595188D17800007784A /* YouDaoNoteConnection.framework in Frameworks */,
 				713555AD188D17810007784A /* ShareSDKiPadDefaultShareViewUI.framework in Frameworks */,
+				71007DBF18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
 				713555B3188D17810007784A /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				7135557D188D17800007784A /* QZoneConnection.framework in Frameworks */,
 				7135555B188D17800007784A /* CopyConnection.framework in Frameworks */,
@@ -2575,6 +2581,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
+				F3F186D618543A410098C852 /* SystemConfiguration.framework in Frameworks */,
+				F3F186D218543A410098C852 /* QuartzCore.framework in Frameworks */,
+				F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */,
+				F3F186C018543A410098C852 /* UIKit.framework in Frameworks */,
 				71D1976318BE0CF400D3D48D /* MapKit.framework in Frameworks */,
 				719F187818AA17D000C29765 /* EventKit.framework in Frameworks */,
 				71D1976218BE0CED00D3D48D /* EventKitUI.framework in Frameworks */,
@@ -2584,7 +2595,6 @@
 				719F187C18AA17E300C29765 /* PassKit.framework in Frameworks */,
 				A60A43921872A1E400B5C319 /* CoreLocation.framework in Frameworks */,
 				719F187A18AA17D600C29765 /* Social.framework in Frameworks */,
-				F3F186D218543A410098C852 /* QuartzCore.framework in Frameworks */,
 				719F187618AA15B800C29765 /* MediaPlayer.framework in Frameworks */,
 				F3F186D018543A410098C852 /* MobileCoreServices.framework in Frameworks */,
 				F3F186C818543A410098C852 /* CFNetwork.framework in Frameworks */,
@@ -2594,13 +2604,9 @@
 				A60C589318703AD80068425C /* libqrencode.a in Frameworks */,
 				712D01B918D98E5900A84228 /* libPunchBoxAd.a in Frameworks */,
 				713555A6188D17810007784A /* libWeChatSDK.a in Frameworks */,
-				F3F186C018543A410098C852 /* UIKit.framework in Frameworks */,
-				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
 				7135555E188D17800007784A /* DropboxConnection.framework in Frameworks */,
-				F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */,
 				7153FCFA18CDC2C50026B4B5 /* MopanAdLib.a in Frameworks */,
 				7135556E188D17800007784A /* KaiXinConnection.framework in Frameworks */,
-				F3F186D618543A410098C852 /* SystemConfiguration.framework in Frameworks */,
 				71355588188D17800007784A /* T163WeiboConnection.framework in Frameworks */,
 				F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */,
 				71355582188D17800007784A /* SMSConnection.framework in Frameworks */,
@@ -2616,6 +2622,7 @@
 				7135558E188D17800007784A /* TwitterConnection.framework in Frameworks */,
 				59D8E0C1189230DE003D5F3F /* libPushSDK.a in Frameworks */,
 				713555A8188D17810007784A /* ShareSDK.framework in Frameworks */,
+				71007DBE18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
 				71355590188D17800007784A /* VKontakteConnection.framework in Frameworks */,
 				71355574188D17800007784A /* PinterestConnection.framework in Frameworks */,
 				A60A43901872A1CF00B5C319 /* AdSupport.framework in Frameworks */,
@@ -2683,6 +2690,24 @@
 			);
 			name = JPushlib;
 			path = wangcai/JPushlib;
+			sourceTree = "<group>";
+		};
+		71007DB918D9B9B000FCF2D9 /* Ecomlib */ = {
+			isa = PBXGroup;
+			children = (
+				71007DBA18D9B9B000FCF2D9 /* include */,
+				71007DBD18D9B9B000FCF2D9 /* libEcom.a */,
+			);
+			path = Ecomlib;
+			sourceTree = "<group>";
+		};
+		71007DBA18D9B9B000FCF2D9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				71007DBB18D9B9B000FCF2D9 /* ECManager.h */,
+				71007DBC18D9B9B000FCF2D9 /* EcomConfig.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 		712D01AF18D98E5900A84228 /* libPunchBoxAd */ = {
@@ -3448,6 +3473,7 @@
 				59D8E0BE189230DE003D5F3F /* JPushlib */,
 				71355518188D17800007784A /* ShareSDK_v2.6.1 */,
 				7135550A188D16060007784A /* DMOfferWallSDK */,
+				71007DB918D9B9B000FCF2D9 /* Ecomlib */,
 				712D01AF18D98E5900A84228 /* libPunchBoxAd */,
 				713554FA188D14110007784A /* libYouMi */,
 				7153FCF718CDC2C50026B4B5 /* mopanlib */,
@@ -6193,6 +6219,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "905355E2-3729-45D5-A744-7A46D06B828F";
@@ -6292,6 +6319,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
@@ -6470,6 +6498,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6568,6 +6597,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "594D6C65-DB25-4AAA-8A31-CBF232EEFA04";

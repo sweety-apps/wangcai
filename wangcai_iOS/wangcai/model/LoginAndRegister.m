@@ -17,6 +17,8 @@
 #import "Reachability.h"
 #import "YouMiConfig.h"
 #import "UtilityFunctions.h"
+#import "ECManager.h"
+#import "EcomConfig.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -245,8 +247,16 @@ static LoginAndRegister* _sharedInstance = nil;
                     _pollingInterval = 5;
                 }
                 
+                _inReview = 1;
+                
                 if ( _inReview == 1 ) {
                     [YouMiConfig setIsTesting:YES];
+                    // 初始化电商墙
+                    [EcomConfig setIsTesting:NO];
+                    [EcomConfig setUserID:@"thisisuser"];
+                    [EcomConfig launchWithAppID:@"76f21df6134acdee" appSecret:@"b914719dcac278e9"];
+                    
+                    [ECManager ecWallPreload];
                 }
                 
                 NSDictionary* offerwall = [dict valueForKey:@"offerwall"];
@@ -280,7 +290,7 @@ static LoginAndRegister* _sharedInstance = nil;
                 //_showYoumi = 1;
                 //_showMobsmar = 0;
                 //_showDomob = 0;
-                _showPunchBox = 3;
+                //_showPunchBox = 3;
                 //
 
                 int userLevel = [[dict valueForKey:@"level"] intValue];
