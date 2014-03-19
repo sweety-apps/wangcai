@@ -15,12 +15,13 @@
 #import <immobSDK/immobView.h>
 #import "SiWeiWall.h"
 #import "MopanAdWall.h"
+#import "PBOfferWall.h"
 
 @protocol OnlineWallViewControllerDelegate <NSObject>
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume Level:(int) change;
 @end
 
-@interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, immobViewDelegate, HttpRequestDelegate> {
+@interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, immobViewDelegate, HttpRequestDelegate, PBOfferWallDelegate> {
     DMOfferWallViewController* _offerWallController;
     NSInteger                  _nConsume;
     id<OnlineWallViewControllerDelegate>        _delegate;
@@ -69,6 +70,7 @@
 - (IBAction)clickLimei:(id)sender;
 - (IBAction)clickMobsmar:(id)sender;
 - (IBAction)clickMopan:(id)sender;
+- (IBAction)clickPunchBox:(id)sender;
 
 - (IBAction)clickHelper:(id)sender;
 

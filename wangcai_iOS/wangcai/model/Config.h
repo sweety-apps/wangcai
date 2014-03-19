@@ -28,6 +28,8 @@
 #define MOPAN_APP_ID       @"12408"
 #define MOPAN_APP_SECRET   @"y5g1zmonrorhern6"
 
+#define PUNCHBOX_APP_SECRET @"100142-99B3FD-3DD7-15B3-957E55CAD324"
+
 #elif TARGET_VERSION_LITE == 2
 
 #define APP_NAME   @"WangCaiFriend"
@@ -48,6 +50,8 @@
 
 #define MOPAN_APP_ID       @"12407"
 #define MOPAN_APP_SECRET   @"urpq0gffsc6vbykq"
+
+#define PUNCHBOX_APP_SECRET @"100141-A0318C-F04A-EFA6-9CD67A79E5C5"
 #endif
 
 

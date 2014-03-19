@@ -21,7 +21,8 @@
 
 #import "SiWeiAdConfig.h"
 #import "SiWeiPointsManger.h"
-
+#import "PunchBoxAd.h"
+#import "PBOfferWall.h"
 #import "BaseTaskTableViewController.h"
 
 @interface OnlineWallViewController ()
@@ -62,6 +63,11 @@ static OnlineWallViewController* _sharedInstance;
         _request = NO;
         _baseTaskTableViewController = nil;
         
+        // 触控
+        [PunchBoxAd startSession:PUNCHBOX_APP_SECRET];
+        [PunchBoxAd setVersion:1];
+        [PBOfferWall sharedOfferWall].delegate = self;
+        
         // 有米积分墙
 #if TEST == 1
         NSString* did = [[NSString alloc] initWithFormat:@"dev_%@", deviceId];
@@ -77,6 +83,8 @@ static OnlineWallViewController* _sharedInstance;
         
         _mopanAdWallControl = [[MopanAdWall alloc] initWithMopan:MOPAN_APP_ID withAppSecret:MOPAN_APP_SECRET];
         [_mopanAdWallControl setCustomParam:did];
+        
+        [PunchBoxAd setUserInfo:did];
 #else 
         _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:deviceId];
         _offerWallController.delegate = self;
@@ -89,6 +97,8 @@ static OnlineWallViewController* _sharedInstance;
         
         _mopanAdWallControl = [[MopanAdWall alloc] initWithMopan:MOPAN_APP_ID withAppSecret:MOPAN_APP_SECRET];
         [_mopanAdWallControl setCustomParam:deviceId];
+        
+        [PunchBoxAd setUserInfo:deviceId];
 #endif
         
         _siweWall = [SiWeiWall siwei];
@@ -101,6 +111,8 @@ static OnlineWallViewController* _sharedInstance;
         [YouMiPointsManager enable];
         
         [deviceId release];
+        
+        [[PBOfferWall sharedOfferWall] loadOfferWall:[PBADRequest request]];
     }
     return self;
 }
@@ -119,6 +131,7 @@ static OnlineWallViewController* _sharedInstance;
     BOOL showLimei = [[LoginAndRegister sharedInstance] isShowLimei] && (![[LoginAndRegister sharedInstance] isInMoreLimei]);
     BOOL showMobsmar = [[LoginAndRegister sharedInstance] isShowMobsmar] && (![[LoginAndRegister sharedInstance] isInMoreMobsmar]);
     BOOL showMopan = [[LoginAndRegister sharedInstance] isShowMopan] && (![[LoginAndRegister sharedInstance] isInMoreMopan]);
+    BOOL showPunchBox = [[LoginAndRegister sharedInstance] isShowPunchBox] && (![[LoginAndRegister sharedInstance] isInMorePunchBox]);
     
     UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
     
@@ -157,11 +170,19 @@ static OnlineWallViewController* _sharedInstance;
         }
     }
     
+    if ( showPunchBox && [nsOfferwall count] < 2 ) {
+        [nsOfferwall pushTail:[view viewWithTag:16] ];
+        if ( [[LoginAndRegister sharedInstance] isRecommendPunchBox] ) {
+            _nRecommend = 16;
+        }
+    }
+    
     [[view viewWithTag:11] setHidden:YES];
     [[view viewWithTag:12] setHidden:YES];
     [[view viewWithTag:13] setHidden:YES];
     [[view viewWithTag:14] setHidden:YES];
     [[view viewWithTag:15] setHidden:YES];
+    [[view viewWithTag:16] setHidden:YES];
     
     _moreView = [view viewWithTag:97];
     [[view viewWithTag:97] setHidden:YES];
@@ -169,7 +190,8 @@ static OnlineWallViewController* _sharedInstance;
         [[LoginAndRegister sharedInstance] isInMoreYoumi] ||
         [[LoginAndRegister sharedInstance] isInMoreLimei] ||
         [[LoginAndRegister sharedInstance] isInMoreMobsmar] ||
-        [[LoginAndRegister sharedInstance] isInMoreMopan] ) {
+        [[LoginAndRegister sharedInstance] isInMoreMopan] ||
+        [[LoginAndRegister sharedInstance] isInMorePunchBox] ) {
         // 显示更多按钮
         [[view viewWithTag:91] setHidden:NO];
         [self repositionMore];
@@ -251,11 +273,16 @@ static OnlineWallViewController* _sharedInstance;
         [nsOfferwall pushTail:[_moreView viewWithTag:55] ];
     }
     
+    if ( [[LoginAndRegister sharedInstance] isInMorePunchBox] ) {
+        [nsOfferwall pushTail:[_moreView viewWithTag:56] ];
+    }
+    
     [[_moreView viewWithTag:51] setHidden:YES];
     [[_moreView viewWithTag:52] setHidden:YES];
     [[_moreView viewWithTag:53] setHidden:YES];
     [[_moreView viewWithTag:54] setHidden:YES];
     [[_moreView viewWithTag:55] setHidden:YES];
+    [[_moreView viewWithTag:56] setHidden:YES];
     
     for (int i = 0; i < [nsOfferwall count]; i ++ ) {
         UIView* btnView = [nsOfferwall objectAtIndex:i];
@@ -302,6 +329,47 @@ static OnlineWallViewController* _sharedInstance;
     _mopanAdWallControl.rootViewController = _viewController;
     [_mopanAdWallControl showAppOffers];
 }
+
+- (IBAction)clickPunchBox:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    [MobClick event:@"task_list_click_pubchbox" attributes:@{@"currentpage":@"任务列表"}];
+    [PBOfferWall sharedOfferWall].orientationSupported = PBOrientationSupported_Auto;
+    [[PBOfferWall sharedOfferWall] showOfferWallWithScale:1.0f];
+}
+
+- (void)pbOfferWall:(PBOfferWall *)pbOfferWall finishTaskRewardCoin:(NSArray *)taskCoins {
+    
+}
+
+
+// 积分墙加载完成
+- (void)pbOfferWallDidLoadAd:(PBOfferWall *)pbOfferWall {
+    
+}
+
+// 积分墙加载错误
+- (void)pbOfferWall:(PBOfferWall *)pbOfferWall loadAdFailureWithError:(PBRequestError *)requestError {
+    
+}
+
+// 积分墙打开完成
+- (void)pbOfferWallDidPresentScreen:(PBOfferWall *)pbOfferWall {
+    
+}
+
+// 积分墙将要关闭
+- (void)pbOfferWallWillDismissScreen:(PBOfferWall *)pbOfferWall {
+    
+}
+
+// 积分墙关闭完成
+- (void)pbOfferWallDidDismissScreen:(PBOfferWall *)pbOfferWall {
+    
+}
+
 
 - (IBAction)clickLimei:(id)sender {
     if ( _alertView != nil ) {
@@ -398,6 +466,10 @@ static OnlineWallViewController* _sharedInstance;
         [self->_alertView release];
         self->_alertView = nil;
     }
+    
+    [PBOfferWall sharedOfferWall].delegate = nil;
+    [[PBOfferWall sharedOfferWall] closeOfferWall];
+    
     [super dealloc];
 }
 

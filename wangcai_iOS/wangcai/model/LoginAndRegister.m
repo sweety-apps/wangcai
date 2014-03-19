@@ -42,12 +42,13 @@ static LoginAndRegister* _sharedInstance = nil;
     self->_delegateBalanceArray = [[NSMutableArray alloc]init];
     self->_balance = 0;
     self->_firstLogin = YES;
+    
     self->_showDomob = 0;
     self->_showYoumi = 0;
-    
     self->_showMobsmar = 0;
     self->_showLimei = 0;
     self->_showMopan = 0;
+    self->_showPunchBox = 0;
     
     _tipsString = @"";
     
@@ -269,12 +270,17 @@ static LoginAndRegister* _sharedInstance = nil;
                     _showMopan = [[offerwall valueForKey:@"mopan"] intValue];
                 }
                 
+                if ( [[offerwall allKeys] containsObject:@"punchbox"] ) {
+                    _showPunchBox = [[offerwall valueForKey:@"punchbox"] intValue];
+                }
+                
                 //
                 //_showLimei = 1;
                 //_showMopan = 0;
                 //_showYoumi = 1;
                 //_showMobsmar = 0;
                 //_showDomob = 0;
+                _showPunchBox = 3;
                 //
 
                 int userLevel = [[dict valueForKey:@"level"] intValue];
@@ -621,6 +627,13 @@ static LoginAndRegister* _sharedInstance = nil;
     return YES;
 }
 
+-(BOOL) isShowPunchBox {
+    if ( _showPunchBox == 0 ) {
+        return NO;
+    }
+    return YES;
+}
+
 -(BOOL) isInMoreDomob {
     if ( _showDomob == 3 ) {
         return YES;
@@ -656,6 +669,13 @@ static LoginAndRegister* _sharedInstance = nil;
     return NO;
 }
 
+-(BOOL) isInMorePunchBox {
+    if ( _showPunchBox == 3 ) {
+        return YES;
+    }
+    return NO;
+}
+
 -(BOOL) isRecommendDomob {
     if ( _showDomob == 2 ) {
         return YES;
@@ -686,6 +706,13 @@ static LoginAndRegister* _sharedInstance = nil;
 
 -(BOOL) isRecommendMopan {
     if ( _showMopan == 2 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isRecommendPunchBox {
+    if ( _showPunchBox == 2 ) {
         return YES;
     }
     return NO;

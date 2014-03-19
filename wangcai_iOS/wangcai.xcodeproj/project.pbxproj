@@ -75,6 +75,10 @@
 		712D01AA18D9703600A84228 /* UIPayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 712D01A718D9703600A84228 /* UIPayButton.m */; };
 		712D01AB18D9703600A84228 /* UIPayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712D01A818D9703600A84228 /* UIPayButton.xib */; };
 		712D01AC18D9703600A84228 /* UIPayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712D01A818D9703600A84228 /* UIPayButton.xib */; };
+		712D01B918D98E5900A84228 /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D01B018D98E5900A84228 /* libPunchBoxAd.a */; };
+		712D01BA18D98E5900A84228 /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D01B018D98E5900A84228 /* libPunchBoxAd.a */; };
+		712D01BB18D98E5900A84228 /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 712D01B818D98E5900A84228 /* PunchBoxAdRes.bundle */; };
+		712D01BC18D98E5900A84228 /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 712D01B818D98E5900A84228 /* PunchBoxAdRes.bundle */; };
 		712DA7D218C85978008414D4 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */; };
 		712DA7D318C85978008414D4 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */; };
 		712DA7D518C8615F008414D4 /* qq@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7D418C8615F008414D4 /* qq@2x.PNG */; };
@@ -1461,6 +1465,15 @@
 		712D01A618D9703600A84228 /* UIPayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPayButton.h; sourceTree = "<group>"; };
 		712D01A718D9703600A84228 /* UIPayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPayButton.m; sourceTree = "<group>"; };
 		712D01A818D9703600A84228 /* UIPayButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIPayButton.xib; sourceTree = "<group>"; };
+		712D01B018D98E5900A84228 /* libPunchBoxAd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPunchBoxAd.a; sourceTree = "<group>"; };
+		712D01B118D98E5900A84228 /* PBADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBADRequest.h; sourceTree = "<group>"; };
+		712D01B218D98E5900A84228 /* PBBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBannerView.h; sourceTree = "<group>"; };
+		712D01B318D98E5900A84228 /* PBInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBInterstitial.h; sourceTree = "<group>"; };
+		712D01B418D98E5900A84228 /* PBMoreGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMoreGame.h; sourceTree = "<group>"; };
+		712D01B518D98E5900A84228 /* PBOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBOfferWall.h; sourceTree = "<group>"; };
+		712D01B618D98E5900A84228 /* PBRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRequestError.h; sourceTree = "<group>"; };
+		712D01B718D98E5900A84228 /* PunchBoxAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchBoxAd.h; sourceTree = "<group>"; };
+		712D01B818D98E5900A84228 /* PunchBoxAdRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PunchBoxAdRes.bundle; sourceTree = "<group>"; };
 		712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = SOURCE_ROOT; };
 		712DA7D418C8615F008414D4 /* qq@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq@2x.PNG"; sourceTree = "<group>"; };
 		712DA7D718C8616E008414D4 /* qq_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq_input@2x.png"; sourceTree = "<group>"; };
@@ -2488,6 +2501,7 @@
 				F3359F9F18882F8000C1E636 /* Security.framework in Frameworks */,
 				71D1975A18BE00F600D3D48D /* MapKit.framework in Frameworks */,
 				F3359F9218882F8000C1E636 /* CoreTelephony.framework in Frameworks */,
+				712D01BA18D98E5900A84228 /* libPunchBoxAd.a in Frameworks */,
 				F3359F9B18882F8000C1E636 /* CoreLocation.framework in Frameworks */,
 				F3359F9418882F8000C1E636 /* CFNetwork.framework in Frameworks */,
 				71D1975618BE00D300D3D48D /* AudioToolbox.framework in Frameworks */,
@@ -2578,6 +2592,7 @@
 				713555A0188D17800007784A /* RennSDK.framework in Frameworks */,
 				A62C5F54187697E300172334 /* libMobClickLibrary.a in Frameworks */,
 				A60C589318703AD80068425C /* libqrencode.a in Frameworks */,
+				712D01B918D98E5900A84228 /* libPunchBoxAd.a in Frameworks */,
 				713555A6188D17810007784A /* libWeChatSDK.a in Frameworks */,
 				F3F186C018543A410098C852 /* UIKit.framework in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
@@ -2668,6 +2683,22 @@
 			);
 			name = JPushlib;
 			path = wangcai/JPushlib;
+			sourceTree = "<group>";
+		};
+		712D01AF18D98E5900A84228 /* libPunchBoxAd */ = {
+			isa = PBXGroup;
+			children = (
+				712D01B018D98E5900A84228 /* libPunchBoxAd.a */,
+				712D01B118D98E5900A84228 /* PBADRequest.h */,
+				712D01B218D98E5900A84228 /* PBBannerView.h */,
+				712D01B318D98E5900A84228 /* PBInterstitial.h */,
+				712D01B418D98E5900A84228 /* PBMoreGame.h */,
+				712D01B518D98E5900A84228 /* PBOfferWall.h */,
+				712D01B618D98E5900A84228 /* PBRequestError.h */,
+				712D01B718D98E5900A84228 /* PunchBoxAd.h */,
+				712D01B818D98E5900A84228 /* PunchBoxAdRes.bundle */,
+			);
+			path = libPunchBoxAd;
 			sourceTree = "<group>";
 		};
 		713554FA188D14110007784A /* libYouMi */ = {
@@ -3417,6 +3448,7 @@
 				59D8E0BE189230DE003D5F3F /* JPushlib */,
 				71355518188D17800007784A /* ShareSDK_v2.6.1 */,
 				7135550A188D16060007784A /* DMOfferWallSDK */,
+				712D01AF18D98E5900A84228 /* libPunchBoxAd */,
 				713554FA188D14110007784A /* libYouMi */,
 				7153FCF718CDC2C50026B4B5 /* mopanlib */,
 				7153FCE718CDB8130026B4B5 /* mobsmarlib */,
@@ -4801,6 +4833,7 @@
 				F3359FE018882F8000C1E636 /* menu_icon_jiaoyimingxi@2x.png in Resources */,
 				7112721E18B339400068C33E /* phone_validation_code@2x.png in Resources */,
 				F3359FE118882F8000C1E636 /* setting_right@2x.PNG in Resources */,
+				712D01BC18D98E5900A84228 /* PunchBoxAdRes.bundle in Resources */,
 				F3359FE218882F8000C1E636 /* choujiang_8yuan@2x.png in Resources */,
 				F3359FE318882F8000C1E636 /* WebViewController.xib in Resources */,
 				F3359FE418882F8000C1E636 /* blackArrow.png in Resources */,
@@ -5167,6 +5200,7 @@
 				71008A361891073800689E2F /* app_tip_close@2x.png in Resources */,
 				F3813D2A18753ED400350C27 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
 				F3813D2018753ED400350C27 /* choujiang_thanks3@2x.png in Resources */,
+				712D01BB18D98E5900A84228 /* PunchBoxAdRes.bundle in Resources */,
 				719F188218AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */,
 				F31F952618AF623B0035792B /* mywangcai_jiangyan_bg@2x.png in Resources */,
 				7112720918B330580068C33E /* phone_validation_disable@2x.png in Resources */,
@@ -6158,6 +6192,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/mobsmarlib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "905355E2-3729-45D5-A744-7A46D06B828F";
@@ -6256,6 +6291,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/mobsmarlib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
@@ -6433,6 +6469,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6530,6 +6567,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/DomobAdSDK,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "594D6C65-DB25-4AAA-8A31-CBF232EEFA04";
