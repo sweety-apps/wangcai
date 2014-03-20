@@ -246,9 +246,7 @@ static LoginAndRegister* _sharedInstance = nil;
                 if ( _pollingInterval < 5 ) {
                     _pollingInterval = 5;
                 }
-                
-                _inReview = 1;
-                
+
                 if ( _inReview == 1 ) {
                     [YouMiConfig setIsTesting:YES];
                     // 初始化电商墙
@@ -284,15 +282,15 @@ static LoginAndRegister* _sharedInstance = nil;
                     _showPunchBox = [[offerwall valueForKey:@"punchbox"] intValue];
                 }
                 
-                //
-                //_showLimei = 1;
-                //_showMopan = 0;
-                //_showYoumi = 1;
-                //_showMobsmar = 0;
-                //_showDomob = 0;
-                //_showPunchBox = 3;
-                //
-
+                /*
+                _showLimei = 0;
+                _showMopan = 0;
+                _showYoumi = 1;
+                _showMobsmar = 0;
+                _showDomob = 0;
+                _showPunchBox = 3;
+                */
+                
                 int userLevel = [[dict valueForKey:@"level"] intValue];
                 int currentEXP = [[dict valueForKey:@"exp_current"] intValue];
                 int nextLevelEXP = [[dict valueForKey:@"exp_next_level"] intValue];

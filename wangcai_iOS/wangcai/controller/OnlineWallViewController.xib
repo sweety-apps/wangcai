@@ -55,7 +55,7 @@
                     <rect key="frame" x="32" y="433" width="254" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="触控">
+                    <state key="normal" image="punchbox.png">
                         <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -129,7 +129,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_tip_more.png" id="E8X-vg-OED">
-                            <rect key="frame" x="0.0" y="9" width="115" height="19"/>
+                            <rect key="frame" x="0.0" y="9" width="62" height="19"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <button opaque="NO" tag="51" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qb1-Ii-PUo">
@@ -193,10 +193,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="56" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tZp-43-URl">
-                            <rect key="frame" x="8" y="142" width="254" height="49"/>
+                            <rect key="frame" x="0.0" y="141" width="254" height="49"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="触控">
+                            <state key="normal" image="punchbox.png">
                                 <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -217,9 +217,10 @@
         <image name="app_tip_domob.png" width="254" height="49"/>
         <image name="app_tip_mobsmar.png" width="254" height="49"/>
         <image name="app_tip_mopan.png" width="254" height="49"/>
-        <image name="app_tip_more.png" width="115" height="19"/>
+        <image name="app_tip_more.png" width="62" height="19"/>
         <image name="app_tip_recommand.png" width="254" height="49"/>
         <image name="app_tip_youmi.png" width="254" height="49"/>
         <image name="limei.png" width="254" height="49"/>
+        <image name="punchbox.png" width="254" height="49"/>
     </resources>
 </document>
