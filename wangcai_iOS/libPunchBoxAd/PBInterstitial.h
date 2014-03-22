@@ -94,7 +94,5 @@ loadAdFailureWithError:(PBRequestError *)requestError;
 // 弹出广告关闭完成
 - (void)pbInterstitialDidDismissScreen:(PBInterstitial *)pbInterstitial;
 
-// 弹出广告被点击
-- (void)pbInterstitialClicked:(PBInterstitial *)pbInterstitial;
 
 @end

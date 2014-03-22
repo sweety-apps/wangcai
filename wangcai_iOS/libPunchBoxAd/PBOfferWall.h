@@ -27,7 +27,9 @@
 + (PBOfferWall *)sharedOfferWall;
 
 /**
- *	@brief	查询积分
+ *	@brief	查询积分。
+ *
+ *  注意：查询前须设置delegate并实现相当协议方法
  */
 - (void)queryRewardCoin;
 

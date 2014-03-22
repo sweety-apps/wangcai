@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "PBADRequest.h"
+#import "PBBannerView.h"
+#import "PBInterstitial.h"
+#import "PBMoreGame.h"
+#import "PBOfferWall.h"
 
 
 // 该类是为开发者提供的展示Banner、精品推荐、弹出广告的快捷调用
