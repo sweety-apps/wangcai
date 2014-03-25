@@ -52,6 +52,10 @@ static LoginAndRegister* _sharedInstance = nil;
     self->_showMopan = 0;
     self->_showPunchBox = 0;
     
+    self->_phonePay = nil;
+    self->_aliPay = nil;
+    self->_qbiPay = nil;
+    
     _tipsString = @"";
     
     return self;
@@ -290,6 +294,7 @@ static LoginAndRegister* _sharedInstance = nil;
                 _showDomob = 0;
                 _showPunchBox = 3;
                 */
+                [self initWithDraw:dict];
                 
                 int userLevel = [[dict valueForKey:@"level"] intValue];
                 int currentEXP = [[dict valueForKey:@"exp_current"] intValue];
@@ -330,6 +335,38 @@ static LoginAndRegister* _sharedInstance = nil;
                 
                 [self setLoginStatus:Login_Error HttpCode:req.responseStatusCode ErrCode:[res intValue] Msg:err];
             }
+        }
+    }
+}
+
+- (void) initWithDraw:(NSDictionary*) dict {
+    NSArray* withDraw = (NSArray*)[dict valueForKey:@"withdraw_config"];
+    if ( withDraw == nil ) {
+        return ;
+    }
+    
+    if ( _aliPay != nil ) {
+        [_aliPay release];
+    }
+    if ( _qbiPay != nil ) {
+        [_qbiPay release];
+    }
+    if ( _phonePay != nil ) {
+        [_phonePay release];
+    }
+    
+    for (int i = 0; i < [withDraw count]; i ++ ) {
+        NSDictionary* item = (NSDictionary*)[withDraw objectAtIndex:i];
+        int nType = [[item objectForKey:@"type"] intValue];
+        if ( nType == 1 ) {
+            // 支付宝
+            _aliPay = [(NSArray*)[item objectForKey:@"info"] copy];
+        } else if ( nType == 2 ) {
+            // 话费
+            _phonePay = [(NSArray*)[item objectForKey:@"info"] copy];
+        } else if ( nType == 4 ) {
+            // Q币
+            _qbiPay = [(NSArray*)[item objectForKey:@"info"] copy];
         }
     }
 }
@@ -737,6 +774,18 @@ static LoginAndRegister* _sharedInstance = nil;
 
 -(int) getOfferwallIncome {
     return _offerwallIncome;
+}
+
+-(NSArray*) getPhonePay {
+    return _phonePay;
+}
+
+-(NSArray*) getAlipay {
+    return _aliPay;
+}
+
+-(NSArray*) getQbiPay {
+    return _qbiPay;
 }
 
 @end

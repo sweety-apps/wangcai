@@ -80,6 +80,10 @@ typedef enum LoginStatus {
     int        _benefit;
     
     BOOL       _hasLevelUp;
+    
+    NSArray*   _phonePay;
+    NSArray*   _aliPay;
+    NSArray*   _qbiPay;
 }
 
 +(id) sharedInstance;
@@ -169,5 +173,10 @@ typedef enum LoginStatus {
 -(void) setBenefit:(int)benefit;
 
 -(BOOL)checkAndConsumeLevel;
+
+
+-(NSArray*) getPhonePay;
+-(NSArray*) getAlipay;
+-(NSArray*) getQbiPay;
 
 @end

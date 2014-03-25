@@ -108,9 +108,41 @@
     [self._containerView addSubview:_btn2.view];
     [self._containerView addSubview:_btn3.view];
     
-    [_btn1 setAmount:1000 Reward:0 Hot:NO Delegate:self];
-    [_btn2 setAmount:3000 Reward:300 Hot:YES Delegate:self];
-    [_btn3 setAmount:5000 Reward:1000 Hot:NO Delegate:self];
+    NSArray* payInfo = nil;
+    if ( _type == 1 ) {
+        payInfo = [[LoginAndRegister sharedInstance] getAlipay];
+    } else if ( _type == 2 ) {
+        payInfo = [[LoginAndRegister sharedInstance] getPhonePay];
+    } else if ( _type == 3 ) {
+        payInfo = [[LoginAndRegister sharedInstance] getQbiPay];
+    }
+    
+    if ( [payInfo count] != 3 ) {
+        [_btn1 setAmount:1000 Reward:0 Hot:NO Delegate:self];
+        [_btn2 setAmount:3000 Reward:300 Hot:YES Delegate:self];
+        [_btn3 setAmount:5000 Reward:1000 Hot:NO Delegate:self];
+    } else {
+        NSDictionary* dict = [payInfo objectAtIndex:0];
+        int nAmount = [[dict objectForKey:@"amount"] intValue];
+        int nPrice = [[dict objectForKey:@"price"] intValue];
+        BOOL bHot = [[dict objectForKey:@"hot"] boolValue];
+        
+        [_btn1 setAmount:nAmount Reward:(nAmount-nPrice) Hot:bHot Delegate:self];
+        
+        dict = [payInfo objectAtIndex:1];
+        nAmount = [[dict objectForKey:@"amount"] intValue];
+        nPrice = [[dict objectForKey:@"price"] intValue];
+        bHot = [[dict objectForKey:@"hot"] boolValue];
+        
+        [_btn2 setAmount:nAmount Reward:(nAmount-nPrice) Hot:bHot Delegate:self];
+        
+        dict = [payInfo objectAtIndex:2];
+        nAmount = [[dict objectForKey:@"amount"] intValue];
+        nPrice = [[dict objectForKey:@"price"] intValue];
+        bHot = [[dict objectForKey:@"hot"] boolValue];
+        
+        [_btn3 setAmount:nAmount Reward:(nAmount-nPrice) Hot:bHot Delegate:self];
+    }
 }
 
 - (void)viewDidLoad
