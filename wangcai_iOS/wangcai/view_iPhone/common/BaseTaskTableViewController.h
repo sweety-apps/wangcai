@@ -14,7 +14,7 @@
 #import "RateAppLogic.h"
 #import "CommonTaskTableViewCell.h"
 
-@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate, UIAlertViewDelegate,RateAppLogicDelegate>
+@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate, UIAlertViewDelegate,RateAppLogicDelegate, HttpRequestDelegate>
 {
     CommonZhanghuYuETableViewCell* _zhanghuYuEHeaderCell;
     TaskInfoTableViewCell* _infoCell;
@@ -43,6 +43,8 @@
     BOOL _needAddCommentIncome;
     
     int _levelChange;
+    
+    UIAlertView* _alertLevel;
 }
 
 @property (nonatomic,retain) IBOutlet CommonZhanghuYuETableViewCell* zhanghuYuEHeaderCell;

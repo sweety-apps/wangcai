@@ -29,6 +29,7 @@
 #import "UILevelUpAlertView.h"
 #import "ECManager.h"
 #import "EcomConfig.h"
+#import <ShareSDK/ShareSDK.h>
 
 static BOOL gNeedReloadTaskList = NO;
 
@@ -74,6 +75,7 @@ static BOOL gNeedReloadTaskList = NO;
     _hisCellCount = 0;
     _levelCell = nil;
     _levelChange = 0;
+    _alertLevel = nil;
     
     self.staticCells = [NSMutableArray array];
     _bounceHeader = NO;
@@ -542,6 +544,23 @@ static BOOL gNeedReloadTaskList = NO;
     {
         int taskIndex = row - [_staticCells count];
         CommonTaskInfo* task = [[[CommonTaskList sharedInstance] taskList] objectAtIndex:taskIndex];
+        
+        int nLevel = [[LoginAndRegister sharedInstance] getUserLevel];
+        int nNeedLevel = [task.taskLevel intValue];
+        
+        /*
+        if ( nLevel < nNeedLevel ) {
+            // 等级不够
+            if ( _alertLevel != nil ) {
+                [_alertLevel release];
+            }
+            
+            _alertLevel = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"该任务需要等级达到%d级才能进行", nNeedLevel] delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"我的等级", nil];
+            [_alertLevel show];
+            
+            return ;
+        }
+         */
         switch ([task.taskType intValue])
         {
             case kTaskTypeUserInfo:
@@ -614,6 +633,15 @@ static BOOL gNeedReloadTaskList = NO;
                 {
                     [SettingViewController jumpToAppStoreAndRate];
                     [[RateAppLogic sharedInstance] requestRated:self];
+                }
+            }
+                break;
+            case kTaskTypeShare:
+            {
+                [MobClick event:@"task_list_share_wangcai" attributes:@{@"currentpage":@"任务列表"}];
+                if ([task.taskStatus intValue] == 0)
+                {   // 分享
+                    [self onClickShare];
                 }
             }
                 break;
@@ -847,6 +875,13 @@ static BOOL gNeedReloadTaskList = NO;
     _needRetry = NO;
     _needUpdateApp = NO;
     _needAddCommentIncome = NO;
+    
+    if ( _alertLevel != nil && [_alertLevel isEqual:alertView] ) {
+        if ( buttonIndex == 1 ) {
+            // 显示我的旺财
+            [[BeeUIRouter sharedInstance] open:@"my_wangcai" animated:YES];
+        }
+    }
 }
 
 #pragma mark <RateAppLogicDelegate>
@@ -926,6 +961,70 @@ ON_NOTIFICATION( notification )
         NSString* downText = [NSString stringWithFormat:@"再赚%.2f元，即可升级领红包", 1.0*nExp / 100];
         [_levelCell setUpText:upText];
         [_levelCell setDownText:downText];
+    }
+}
+
+- (void) showLoading {
+    [MBHUDView hudWithBody:@"请等待..." type:MBAlertViewHUDTypeActivityIndicator hidesAfter:-1 show:YES];
+}
+
+- (void) hideLoading {
+    [MBHUDView dismissCurrentHUD];
+}
+
+
+- (void) onClickShare {
+    NSString* imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
+    
+    NSString* invite = [[LoginAndRegister sharedInstance] getInviteCode];
+    NSString* content = [NSString stringWithFormat:@"晒一晒我用旺财赚的话费，你也可以的，填我的邀请码%@可领取2元红包。", invite];
+                         
+    id<ISSContent> publishContent = [ShareSDK content:content defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"玩应用领红包" url: [NSString stringWithFormat: INVITE_TASK, invite] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
+    
+    [ShareSDK showShareActionSheet: nil shareList: nil content: publishContent statusBarTips: YES authOptions: nil shareOptions: nil result: ^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
+     {
+         if (state == SSResponseStateSuccess)
+         {  // todo 分享成功，发送成功请求到服务器，返回获得的红包
+             [self showLoading];
+             HttpRequest* req = [[HttpRequest alloc] init:self];
+             NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
+             
+             [req request:HTTP_TASK_SHARE Param:dictionary method:@"post"];
+         }
+         else if (state == SSResponseStateFail)
+         {  // todo 分享失败
+         }
+     }];
+}
+
+-(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
+    [self hideLoading];
+    
+    if (httpCode == 200)
+    {
+        int result = [[body objectForKey:@"res"] intValue];
+        if ( result != 0 ) {   // 返回失败了。。。
+            NSString* msg = [body objectForKey:@"msg"];
+            UIAlertView* view = [[[UIAlertView alloc] initWithTitle:@"错误" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] autorelease];
+            [view show];
+        }
+        else {
+            // 请求完成
+            int nIncome = [[body objectForKey:@"income"] intValue];
+            if ( nIncome > 0 ) {
+                // 获得了金币
+                NSString* strIncome = [NSString stringWithFloatRoundToPrecision:((float)nIncome)/100.f precision:2 ignoreBackZeros:YES];
+                
+                UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
+                [getMoneyAlertView setRMBString:strIncome];
+                [getMoneyAlertView setLevel:3];
+                [getMoneyAlertView setTitle:@"分享送红包"];
+                [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:nIncome];
+                [getMoneyAlertView show];
+                
+                [[LoginAndRegister sharedInstance] increaseBalance:nIncome];
+            }
+        }
     }
 }
 

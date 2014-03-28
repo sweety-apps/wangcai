@@ -69,6 +69,7 @@ typedef enum LoginStatus {
     int        _showMobsmar; //指盟
     int        _showMopan;
     int        _showPunchBox; // 触控
+    int        _showMiidi;    // 米迪
     
     int        _inReview;
     
@@ -135,6 +136,7 @@ typedef enum LoginStatus {
 -(BOOL) isShowMobsmar;
 -(BOOL) isShowMopan;
 -(BOOL) isShowPunchBox;
+-(BOOL) isShowMiidi;
 
 -(BOOL) isInMoreDomob;
 -(BOOL) isInMoreYoumi;
@@ -142,6 +144,7 @@ typedef enum LoginStatus {
 -(BOOL) isInMoreMobsmar;
 -(BOOL) isInMoreMopan;
 -(BOOL) isInMorePunchBox;
+-(BOOL) isInMoreMiidi;
 
 -(BOOL) isRecommendDomob;
 -(BOOL) isRecommendYoumi;
@@ -149,7 +152,7 @@ typedef enum LoginStatus {
 -(BOOL) isRecommendMobsmar;
 -(BOOL) isRecommendMopan;
 -(BOOL) isRecommendPunchBox;
-
+-(BOOL) isRecommendMiidi;
 
 
 -(int)  getNoWithDraw;

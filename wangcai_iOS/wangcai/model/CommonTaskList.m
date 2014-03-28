@@ -244,6 +244,7 @@ static CommonTaskList* gInstance = nil;
         task.taskIntro = [taskDict objectForKey:@"intro"];
         task.taskDesc = [taskDict objectForKey:@"desc"];
         task.taskStepStrings = [taskDict objectForKey:@"steps"];
+        task.taskLevel = [taskDict objectForKey:@"level"];
         
         NSInteger taskType = [task.taskType intValue];
         
@@ -311,6 +312,10 @@ static CommonTaskList* gInstance = nil;
             case KTaskTypeUpgrade:
                 task.taskIsLocalIcon = YES;
                 task.taskIconUrl = @"upgrade";
+                break;
+            case kTaskTypeShare:
+                task.taskIsLocalIcon = YES;
+                task.taskIconUrl = @"share_cell_icon";
                 break;
             default:
                 if ([task.taskIconUrl rangeOfString:@"http://"].length > 0)

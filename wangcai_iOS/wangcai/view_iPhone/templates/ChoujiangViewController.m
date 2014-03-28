@@ -15,6 +15,7 @@
 #import "UIGetRedBagAlertView.h"
 #import "NSString+FloatFormat.h"
 #import "BaseTaskTableViewController.h"
+#import "Config.h"
 
 @interface ChoiceMoveNode : NSObject
 
@@ -56,6 +57,7 @@
     // Do any additional setup after loading the view from its nib.
     _choiceViews = [[NSArray arrayWithObjects:self.choice0,self.choice1,self.choice2,self.choice3,self.choice4,self.choice5,self.choice6,self.choice7,self.choice8,self.choice9,self.choice10,self.choice11, nil] retain];
     _beilv = 1;
+    _share = NO;
     
     if ([SettingLocalRecords hasCheckInRecent2Days])
     {
@@ -313,6 +315,7 @@
     int income = 0;
     int old_balance = [[LoginAndRegister sharedInstance] getBalance];
     
+    _share = NO;
     switch (_choiceIndex)
     {
         case 1:
@@ -351,6 +354,7 @@
             //3元
             title = @"获得签到红包";
             msg = @"3元";
+            _share = YES;
             income = 300;
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:300];
@@ -362,6 +366,7 @@
             title = @"获得签到红包";
             msg = @"8元";
             income = 800;
+            _share = YES;
             //加钱
             [[LoginAndRegister sharedInstance] increaseBalance:800];
             //统计
@@ -449,7 +454,37 @@
         [BaseTaskTableViewController setNeedReloadTaskList];
     }
 #endif
+    
     [self onPressedBackButton:self.backButton];
+
+    if ( _share ) {
+        UIAlertView* view = [[[UIAlertView alloc] initWithTitle:@"分享" message:@"分享了" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"分享", nil] autorelease];
+        [view show];
+        
+        _share = NO;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( buttonIndex == 1 ) {
+        // 分享
+        NSString* imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
+        
+        NSString* invite = [[LoginAndRegister sharedInstance] getInviteCode];
+        NSString* content = [NSString stringWithFormat:@"晒一晒我用旺财赚的话费，你也可以的，填我的邀请码%@可领取2元红包。", invite];
+        
+        id<ISSContent> publishContent = [ShareSDK content:content defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"玩应用领红包" url: [NSString stringWithFormat: INVITE_TASK, invite] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
+        
+        [ShareSDK showShareActionSheet: nil shareList: nil content: publishContent statusBarTips: YES authOptions: nil shareOptions: nil result: ^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
+         {
+             if (state == SSResponseStateSuccess)
+             {  // todo 分享成功
+             }
+             else if (state == SSResponseStateFail)
+             {  // todo 分享失败
+             }
+         }];
+    }
 }
 
 - (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
@@ -466,37 +501,6 @@
 }
 
 #pragma mark - <UIAlertViewDelegate>
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch (buttonIndex)
-    {
-        case 0:
-            //返回
-            [self onPressedBackButton:self.backButton];
-            break;
-        case 1:
-            //分享
-        {
-            id<ISSContent> publishContent = [ShareSDK content:@"http://wangcai.meme-da.com" defaultContent:@"http://wangcai.meme-da.com" image: nil title: @"旺财分享" url:@"http://wangcai.meme-da.com" description: @"旺财分享" mediaType:SSPublishContentMediaTypeNews];
-            
-            [ShareSDK showShareActionSheet: nil shareList: nil content: publishContent statusBarTips: YES authOptions: nil shareOptions: nil result: ^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
-             {
-                 if (state == SSResponseStateSuccess)
-                 {
-                     // todo 分享成功
-                 }
-                 else if (state == SSResponseStateFail)
-                 {
-                     // todo 分享失败
-                 }
-             }];
-        }
-            break;
-        default:
-            break;
-    }
-}
 
 #pragma mark - <ChoujiangLogicDelegate>
 

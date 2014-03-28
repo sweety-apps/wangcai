@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChoujiangViewController : UIViewController<UIAlertViewDelegate> {
+@interface ChoujiangViewController : UIViewController<UIAlertViewDelegate, UIAlertViewDelegate> {
     BOOL _hasStarted;
+    BOOL _share;
 }
 
 @property (nonatomic,retain) IBOutlet UIImageView* beilv1x;

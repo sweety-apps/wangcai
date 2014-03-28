@@ -17,11 +17,22 @@
 #import "MopanAdWall.h"
 #import "PBOfferWall.h"
 
+#import "MiidiManager.h"
+#import "MiidiAdWallSpendPointsDelegate.h"
+#import "MiidiAdWallAwardPointsDelegate.h"
+#import "MiidiAdWallGetPointsDelegate.h"
+#import "MiidiAdWallShowAppOffersDelegate.h"
+#import "MiidiAdWallRequestToggleDelegate.h"
+
+#import "MiidiAdWall.h"
+#import "MiidiAdDesc.h"
+
+
 @protocol OnlineWallViewControllerDelegate <NSObject>
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume Level:(int) change;
 @end
 
-@interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, immobViewDelegate, HttpRequestDelegate, PBOfferWallDelegate> {
+@interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, immobViewDelegate, HttpRequestDelegate, PBOfferWallDelegate, MiidiAdWallShowAppOffersDelegate> {
     DMOfferWallViewController* _offerWallController;
     NSInteger                  _nConsume;
     id<OnlineWallViewControllerDelegate>        _delegate;
@@ -71,6 +82,7 @@
 - (IBAction)clickMobsmar:(id)sender;
 - (IBAction)clickMopan:(id)sender;
 - (IBAction)clickPunchBox:(id)sender;
+- (IBAction)clickMiidi:(id)sender;
 
 - (IBAction)clickHelper:(id)sender;
 

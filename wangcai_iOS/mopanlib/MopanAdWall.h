@@ -64,17 +64,17 @@
 - (void)adwallFailAddMoney:(NSError *)error;
 
 
-// 成功请求积分墙开关
+// 成功请求积分墙是否可以正常使用
 //
 // 详解:当接收服务器返回积分墙开关成功后调用该函数
-// 补充：adWallSwitch: 返回积分墙是否开启
-- (void)adwallGetSwitch:(BOOL)adWallSwitch;
+// 补充：adWallEnable: 返回积分墙是否开启
+- (void)adwallSuccessAskEnable:(BOOL)adWallEnable;
 
 // 请求积分墙开关失败后调用
 //
 // 详解:当接收服务器返回的数据失败后调用该函数
 // 补充：
-- (void)adwallFailGetSwitch:(NSError *)error;
+- (void)adwallFailAskEnable:(NSError *)error;
 @end
 
 
@@ -105,12 +105,12 @@
 // 增加积分,通过委托,异步通知是否成功
 - (void)	  addMoney:(NSInteger)money;
 
-// 是否启动积分墙开关,应用启动,从服务器获取
-- (void)	  requestSwitchOfAdWall;
+// 是否启动积分墙是否可以正常,应用启动,从服务器获取 。设置的开关在开发者后台
+- (void)	  queryWallEnable;
 
 // 用于服务器积分对接,设置自定义参数,参数可以传递给对接服务器
 // 参数 paramText				: 需要传递给对接服务器的自定义参数
-- (void)	  setCustomParam:(NSString*)paramText;
+- (void)	  setCustomUserID:(NSString*)paramText;
 
 
 @end

@@ -51,6 +51,7 @@ static LoginAndRegister* _sharedInstance = nil;
     self->_showLimei = 0;
     self->_showMopan = 0;
     self->_showPunchBox = 0;
+    self->_showMiidi = 0;
     
     self->_phonePay = nil;
     self->_aliPay = nil;
@@ -286,14 +287,20 @@ static LoginAndRegister* _sharedInstance = nil;
                     _showPunchBox = [[offerwall valueForKey:@"punchbox"] intValue];
                 }
                 
-                /*
+                if ( [[offerwall allKeys] containsObject:@"miidi"] ) {
+                    _showMiidi = [[offerwall valueForKey:@"miidi"] intValue];
+                }
+                
+#if TEST == 1
                 _showLimei = 0;
                 _showMopan = 0;
                 _showYoumi = 1;
                 _showMobsmar = 0;
                 _showDomob = 0;
                 _showPunchBox = 3;
-                */
+                _showMiidi = 2;
+#endif
+                
                 [self initWithDraw:dict];
                 
                 int userLevel = [[dict valueForKey:@"level"] intValue];
@@ -679,6 +686,13 @@ static LoginAndRegister* _sharedInstance = nil;
     return YES;
 }
 
+-(BOOL) isShowMiidi {
+    if ( _showMiidi == 0 ) {
+        return NO;
+    }
+    return YES;
+}
+
 -(BOOL) isInMoreDomob {
     if ( _showDomob == 3 ) {
         return YES;
@@ -721,6 +735,13 @@ static LoginAndRegister* _sharedInstance = nil;
     return NO;
 }
 
+-(BOOL) isInMoreMiidi {
+    if ( _showMiidi == 3 ) {
+        return YES;
+    }
+    return NO;
+}
+
 -(BOOL) isRecommendDomob {
     if ( _showDomob == 2 ) {
         return YES;
@@ -758,6 +779,13 @@ static LoginAndRegister* _sharedInstance = nil;
 
 -(BOOL) isRecommendPunchBox {
     if ( _showPunchBox == 2 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isRecommendMiidi {
+    if ( _showMiidi == 2 ) {
         return YES;
     }
     return NO;

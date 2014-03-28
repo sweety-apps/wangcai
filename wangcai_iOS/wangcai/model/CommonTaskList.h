@@ -15,6 +15,7 @@
 #define kTaskTypeOfferWall (5)
 #define kTaskTypeCommetWangcai (6)
 #define KTaskTypeUpgrade (7)
+#define kTaskTypeShare   (8)
 #define kTaskTypeIntallApp (10000)
 #define kTaskTypeCommon (10001)
 
@@ -41,6 +42,7 @@
 @property (nonatomic,retain) NSNumber* taskStatus;
 @property (nonatomic,retain) NSNumber* taskMoney;
 @property (nonatomic,assign) BOOL taskIsLocalIcon;
+@property (nonatomic, assign) NSNumber* taskLevel;
 //@property (nonatomic,retain) NSNumber* taskStartTime;
 //@property (nonatomic,retain) NSNumber* taskEndTime;
 

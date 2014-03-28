@@ -13,6 +13,8 @@
 #define APP_NAME   @"WangCai"
 #define INVITE_URL @"http://invite.getwangcai.com/index.php?code=%@"
 
+#define INVITE_TASK @"http://www.getwangcai.com/?code=%@&name=wangcai"
+
 #define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcai&"
 
 
@@ -30,10 +32,17 @@
 
 #define PUNCHBOX_APP_SECRET @"100142-99B3FD-3DD7-15B3-957E55CAD324"
 
+#define UMENG_KEY   @"5334f6df56240b43b309cfaa"
+
+#define APP_MIIDI_ID       @"17251"
+#define APP_MIIDI_SECRET   @"dtl59j3m47wclc1g"
+
 #elif TARGET_VERSION_LITE == 2
 
 #define APP_NAME   @"WangCaiFriend"
 #define INVITE_URL @"http://invite.getwangcai.com/index.php?app=wangcaifriend&code=%@"
+
+#define INVITE_TASK @"http://www.getwangcai.com/?code=%@&name=wangcaifriend"
 
 #define WEB_FORCE_UPDATE    @"http://wangcai.meme-da.com/web/update.php?app=wangcaifriend&"
 
@@ -52,10 +61,16 @@
 #define MOPAN_APP_SECRET   @"urpq0gffsc6vbykq"
 
 #define PUNCHBOX_APP_SECRET @"100141-A0318C-F04A-EFA6-9CD67A79E5C5"
+
+#define UMENG_KEY   @"5334f7c756240b43a00a9aaa"
+
+
+#define APP_MIIDI_ID       @"17250"
+#define APP_MIIDI_SECRET   @"zujvxsva5xt3v9nr"
+
 #endif
 
 
-#define UMENG_KEY   @"52c65fc056240b00c1128d1e"
 #define AES_KEY     @"cd421509726b38a2ffd2997caed6dab9"
 
 
@@ -91,6 +106,10 @@
 
 #define HTTP_TASK_COMMENT         @"https://ssl.getwangcai.com/0/task/comment"
 
+
+#define HTTP_TASK_SHARE         @"https://ssl.getwangcai.com/0/task/share"
+
+
 #define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
 #define WEB_TASK          @"http://wangcai.meme-da.com/web/task/app_task.php"
 #define WEB_EXCHANGE_INFO @"http://wangcai.meme-da.com/web/exchange_info2.php"
@@ -124,6 +143,8 @@
 #define HTTP_TASK_OFFERWALL         @"https://dev.getwangcai.com/0/task/poll"
 
 #define HTTP_TASK_COMMENT         @"https://dev.getwangcai.com/0/task/comment"
+
+#define HTTP_TASK_SHARE         @"https://dev.getwangcai.com/0/task/share"
 
 #define WEB_EXTRACT_MONEY         @"http://dev.meme-da.com/web/extract_money.php"
 #define WEB_TASK                  @"http://dev.meme-da.com/web/task/app_task.php"

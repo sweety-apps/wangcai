@@ -71,6 +71,12 @@
 		711F439818B4F49C00AEE1D5 /* extract_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F439418B4F49C00AEE1D5 /* extract_phone@2x.png */; };
 		711F439A18B4F9A300AEE1D5 /* chongzhi_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F439918B4F9A300AEE1D5 /* chongzhi_btn@2x.png */; };
 		711F439B18B4F9A300AEE1D5 /* chongzhi_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F439918B4F9A300AEE1D5 /* chongzhi_btn@2x.png */; };
+		7126B88318E544370060ECB7 /* MiidiAdLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7126B87818E544370060ECB7 /* MiidiAdLib.a */; };
+		7126B88418E544370060ECB7 /* MiidiAdLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7126B87818E544370060ECB7 /* MiidiAdLib.a */; };
+		7126B88818E557E20060ECB7 /* app_tip_miidi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7126B88718E557E20060ECB7 /* app_tip_miidi@2x.png */; };
+		7126B88918E557E20060ECB7 /* app_tip_miidi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7126B88718E557E20060ECB7 /* app_tip_miidi@2x.png */; };
+		7126B88B18E559950060ECB7 /* share_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7126B88A18E559950060ECB7 /* share_cell_icon@2x.png */; };
+		7126B88C18E559950060ECB7 /* share_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7126B88A18E559950060ECB7 /* share_cell_icon@2x.png */; };
 		712D019C18D96DD100A84228 /* pay_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019A18D96DD100A84228 /* pay_bkg@2x.png */; };
 		712D019D18D96DD100A84228 /* pay_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019A18D96DD100A84228 /* pay_bkg@2x.png */; };
 		712D019E18D96DD100A84228 /* pay_hot_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */; };
@@ -1468,6 +1474,20 @@
 		711F439318B4F49C00AEE1D5 /* extract_alipay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extract_alipay@2x.png"; sourceTree = "<group>"; };
 		711F439418B4F49C00AEE1D5 /* extract_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extract_phone@2x.png"; sourceTree = "<group>"; };
 		711F439918B4F9A300AEE1D5 /* chongzhi_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chongzhi_btn@2x.png"; sourceTree = "<group>"; };
+		7126B87718E544370060ECB7 /* MiidiAdDesc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdDesc.h; sourceTree = "<group>"; };
+		7126B87818E544370060ECB7 /* MiidiAdLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = MiidiAdLib.a; sourceTree = "<group>"; };
+		7126B87918E544370060ECB7 /* MiidiAdSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdSpot.h; sourceTree = "<group>"; };
+		7126B87A18E544370060ECB7 /* MiidiAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdView.h; sourceTree = "<group>"; };
+		7126B87B18E544370060ECB7 /* MiidiAdViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdViewDelegate.h; sourceTree = "<group>"; };
+		7126B87C18E544370060ECB7 /* MiidiAdWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdWall.h; sourceTree = "<group>"; };
+		7126B87D18E544370060ECB7 /* MiidiAdWallAwardPointsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdWallAwardPointsDelegate.h; sourceTree = "<group>"; };
+		7126B87E18E544370060ECB7 /* MiidiAdWallGetPointsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdWallGetPointsDelegate.h; sourceTree = "<group>"; };
+		7126B87F18E544370060ECB7 /* MiidiAdWallRequestToggleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdWallRequestToggleDelegate.h; sourceTree = "<group>"; };
+		7126B88018E544370060ECB7 /* MiidiAdWallShowAppOffersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdWallShowAppOffersDelegate.h; sourceTree = "<group>"; };
+		7126B88118E544370060ECB7 /* MiidiAdWallSpendPointsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiAdWallSpendPointsDelegate.h; sourceTree = "<group>"; };
+		7126B88218E544370060ECB7 /* MiidiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiManager.h; sourceTree = "<group>"; };
+		7126B88718E557E20060ECB7 /* app_tip_miidi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_miidi@2x.png"; sourceTree = "<group>"; };
+		7126B88A18E559950060ECB7 /* share_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_cell_icon@2x.png"; sourceTree = "<group>"; };
 		712D019A18D96DD100A84228 /* pay_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_bkg@2x.png"; sourceTree = "<group>"; };
 		712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_hot_bkg@2x.png"; sourceTree = "<group>"; };
 		712D01A618D9703600A84228 /* UIPayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPayButton.h; sourceTree = "<group>"; };
@@ -2569,6 +2589,7 @@
 				71007DBF18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
 				713555B3188D17810007784A /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				7135557D188D17800007784A /* QZoneConnection.framework in Frameworks */,
+				7126B88418E544370060ECB7 /* MiidiAdLib.a in Frameworks */,
 				7135555B188D17800007784A /* CopyConnection.framework in Frameworks */,
 				71355573188D17800007784A /* MailConnection.framework in Frameworks */,
 				71355585188D17800007784A /* SohuConnection.framework in Frameworks */,
@@ -2621,6 +2642,7 @@
 				A60A438E1872A1BB00B5C319 /* libsqlite3.dylib in Frameworks */,
 				71355578188D17800007784A /* PrintConnection.framework in Frameworks */,
 				7135555C188D17800007784A /* DouBanConnection.framework in Frameworks */,
+				7126B88318E544370060ECB7 /* MiidiAdLib.a in Frameworks */,
 				7135556A188D17800007784A /* InstapaperConnection.framework in Frameworks */,
 				7135558E188D17800007784A /* TwitterConnection.framework in Frameworks */,
 				59D8E0C1189230DE003D5F3F /* libPushSDK.a in Frameworks */,
@@ -2711,6 +2733,25 @@
 				71007DBC18D9B9B000FCF2D9 /* EcomConfig.h */,
 			);
 			path = include;
+			sourceTree = "<group>";
+		};
+		7126B87618E544360060ECB7 /* MiidiLib */ = {
+			isa = PBXGroup;
+			children = (
+				7126B87718E544370060ECB7 /* MiidiAdDesc.h */,
+				7126B87818E544370060ECB7 /* MiidiAdLib.a */,
+				7126B87918E544370060ECB7 /* MiidiAdSpot.h */,
+				7126B87A18E544370060ECB7 /* MiidiAdView.h */,
+				7126B87B18E544370060ECB7 /* MiidiAdViewDelegate.h */,
+				7126B87C18E544370060ECB7 /* MiidiAdWall.h */,
+				7126B87D18E544370060ECB7 /* MiidiAdWallAwardPointsDelegate.h */,
+				7126B87E18E544370060ECB7 /* MiidiAdWallGetPointsDelegate.h */,
+				7126B87F18E544370060ECB7 /* MiidiAdWallRequestToggleDelegate.h */,
+				7126B88018E544370060ECB7 /* MiidiAdWallShowAppOffersDelegate.h */,
+				7126B88118E544370060ECB7 /* MiidiAdWallSpendPointsDelegate.h */,
+				7126B88218E544370060ECB7 /* MiidiManager.h */,
+			);
+			path = MiidiLib;
 			sourceTree = "<group>";
 		};
 		712D01AF18D98E5900A84228 /* libPunchBoxAd */ = {
@@ -2973,6 +3014,7 @@
 			isa = PBXGroup;
 			children = (
 				71007DC218D9DA6A00FCF2D9 /* punchbox@2x.png */,
+				7126B88718E557E20060ECB7 /* app_tip_miidi@2x.png */,
 				712D019A18D96DD100A84228 /* pay_bkg@2x.png */,
 				712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */,
 				F3E45FF718D495E900C8E952 /* app_tip_more@2x.png */,
@@ -3127,6 +3169,7 @@
 			children = (
 				7153FCFC18CDE4490026B4B5 /* upgrade@2x.png */,
 				F3359E4F1886C11100C1E636 /* qrcode_cell_icon@2x.png */,
+				7126B88A18E559950060ECB7 /* share_cell_icon@2x.png */,
 				F3359E501886C11100C1E636 /* rate_app_cell_icon@2x.png */,
 				F3DD64121880251B00E56A0B /* tiyanzhongxin_cell_icon@2x.png */,
 				F3FB92AE187C5AB5001D702E /* qiandao_button_red_dot@2x.png */,
@@ -3475,6 +3518,7 @@
 			children = (
 				F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */,
 				59D8E0BE189230DE003D5F3F /* JPushlib */,
+				7126B87618E544360060ECB7 /* MiidiLib */,
 				71355518188D17800007784A /* ShareSDK_v2.6.1 */,
 				7135550A188D16060007784A /* DMOfferWallSDK */,
 				71007DB918D9B9B000FCF2D9 /* Ecomlib */,
@@ -4911,6 +4955,7 @@
 				F31F897918962B8600F34F20 /* iPadMini.plist in Resources */,
 				7135556D188D17800007784A /* InstapaperResource.bundle in Resources */,
 				F3359FFD18882F8000C1E636 /* invite_invited_edit@2x.png in Resources */,
+				7126B88C18E559950060ECB7 /* share_cell_icon@2x.png in Resources */,
 				F3359FFE18882F8000C1E636 /* table_view_cell_icon_bg@2x.png in Resources */,
 				F3359FFF18882F8000C1E636 /* head_extension_part@2x.png in Resources */,
 				71008A3D189108D900689E2F /* app_tip_youmi@2x.png in Resources */,
@@ -4950,6 +4995,7 @@
 				F335A01718882F8000C1E636 /* invite_error@2x.png in Resources */,
 				F335A01818882F8000C1E636 /* choujiang_thanks2@2x.png in Resources */,
 				F335A01918882F8000C1E636 /* ChoujiangViewController.xib in Resources */,
+				7126B88918E557E20060ECB7 /* app_tip_miidi@2x.png in Resources */,
 				F335A01A18882F8000C1E636 /* InviteController.xib in Resources */,
 				F394DC0018B8EB9B003311CD /* levelup_close_btn_up@2x.png in Resources */,
 				F335A01B18882F8000C1E636 /* about@2x.png in Resources */,
@@ -5156,6 +5202,7 @@
 				71A9C7D918B8D884006119F6 /* exchange_btn2@2x.png in Resources */,
 				A60C586F186FF8A30068425C /* warn@2x.png in Resources */,
 				A63AC921186C566B00A106A0 /* StartupController.xib in Resources */,
+				7126B88B18E559950060ECB7 /* share_cell_icon@2x.png in Resources */,
 				A60C5841186FF8A30068425C /* package_icon_3@2x.png in Resources */,
 				A66E3A681887FB6C00EB19DE /* PushConfig.plist in Resources */,
 				711F437D18B4A03400AEE1D5 /* phone_input@2x.png in Resources */,
@@ -5424,6 +5471,7 @@
 				711F439A18B4F9A300AEE1D5 /* chongzhi_btn@2x.png in Resources */,
 				A6E051611886CF0E00780F02 /* about2@2x.png in Resources */,
 				A60C588E186FF8A30068425C /* recommand_task_icon@2x.png in Resources */,
+				7126B88818E557E20060ECB7 /* app_tip_miidi@2x.png in Resources */,
 				712D019C18D96DD100A84228 /* pay_bkg@2x.png in Resources */,
 				A6FA6A651882E284003F8399 /* apptask_tip@2x.png in Resources */,
 				F394DBC218B89841003311CD /* mywangcai_dog_11@2x.png in Resources */,
@@ -6136,7 +6184,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhang chen (63V38R7FF7)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhang chen (63V38R7FF7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6226,9 +6274,10 @@
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/MiidiLib,
 				);
 				PRODUCT_NAME = "wangcai copy";
-				PROVISIONING_PROFILE = "905355E2-3729-45D5-A744-7A46D06B828F";
+				PROVISIONING_PROFILE = "14FC1422-457E-4D11-A4DA-5B56ECB1E28F";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -6326,6 +6375,7 @@
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/MiidiLib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
@@ -6419,6 +6469,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
@@ -6505,6 +6556,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/MiidiLib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6604,6 +6656,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/mopanlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/MiidiLib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "594D6C65-DB25-4AAA-8A31-CBF232EEFA04";

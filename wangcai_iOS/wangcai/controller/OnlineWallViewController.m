@@ -68,6 +68,9 @@ static OnlineWallViewController* _sharedInstance;
         [PunchBoxAd setVersion:1];
         [PBOfferWall sharedOfferWall].delegate = self;
         
+        // 米迪
+        [MiidiManager setAppPublisher:APP_MIIDI_ID withAppSecret:APP_MIIDI_SECRET];
+        
         // 有米积分墙
 #if TEST == 1
         NSString* did = [[NSString alloc] initWithFormat:@"dev_%@", deviceId];
@@ -85,6 +88,8 @@ static OnlineWallViewController* _sharedInstance;
         [_mopanAdWallControl setCustomParam:did];
         
         [PunchBoxAd setUserInfo:did];
+        
+        [MiidiAdWall setUserParam:did];
 #else 
         _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:deviceId];
         _offerWallController.delegate = self;
@@ -99,6 +104,8 @@ static OnlineWallViewController* _sharedInstance;
         [_mopanAdWallControl setCustomParam:deviceId];
         
         [PunchBoxAd setUserInfo:deviceId];
+        
+        [MiidiAdWall setUserParam:deviceId];
 #endif
         
         _siweWall = [SiWeiWall siwei];
@@ -132,6 +139,7 @@ static OnlineWallViewController* _sharedInstance;
     BOOL showMobsmar = [[LoginAndRegister sharedInstance] isShowMobsmar] && (![[LoginAndRegister sharedInstance] isInMoreMobsmar]);
     BOOL showMopan = [[LoginAndRegister sharedInstance] isShowMopan] && (![[LoginAndRegister sharedInstance] isInMoreMopan]);
     BOOL showPunchBox = [[LoginAndRegister sharedInstance] isShowPunchBox] && (![[LoginAndRegister sharedInstance] isInMorePunchBox]);
+    BOOL showMiidi = [[LoginAndRegister sharedInstance] isShowMiidi] && (![[LoginAndRegister sharedInstance] isInMoreMiidi]);
     
     UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
     
@@ -177,12 +185,21 @@ static OnlineWallViewController* _sharedInstance;
         }
     }
     
+    if ( showMiidi && [nsOfferwall count] < 2 ) {
+        [nsOfferwall pushTail:[view viewWithTag:17] ];
+        if ( [[LoginAndRegister sharedInstance] isRecommendMiidi] ) {
+            _nRecommend = 17;
+        }
+    }
+
+    
     [[view viewWithTag:11] setHidden:YES];
     [[view viewWithTag:12] setHidden:YES];
     [[view viewWithTag:13] setHidden:YES];
     [[view viewWithTag:14] setHidden:YES];
     [[view viewWithTag:15] setHidden:YES];
     [[view viewWithTag:16] setHidden:YES];
+    [[view viewWithTag:17] setHidden:YES];
     
     _moreView = [view viewWithTag:97];
     [[view viewWithTag:97] setHidden:YES];
@@ -277,12 +294,17 @@ static OnlineWallViewController* _sharedInstance;
         [nsOfferwall pushTail:[_moreView viewWithTag:56] ];
     }
     
+    if ( [[LoginAndRegister sharedInstance] isInMoreMiidi] ) {
+        [nsOfferwall pushTail:[_moreView viewWithTag:57] ];
+    }
+    
     [[_moreView viewWithTag:51] setHidden:YES];
     [[_moreView viewWithTag:52] setHidden:YES];
     [[_moreView viewWithTag:53] setHidden:YES];
     [[_moreView viewWithTag:54] setHidden:YES];
     [[_moreView viewWithTag:55] setHidden:YES];
     [[_moreView viewWithTag:56] setHidden:YES];
+    [[_moreView viewWithTag:57] setHidden:YES];
     
     for (int i = 0; i < [nsOfferwall count]; i ++ ) {
         UIView* btnView = [nsOfferwall objectAtIndex:i];
@@ -561,4 +583,11 @@ static OnlineWallViewController* _sharedInstance;
     }
 }
 
+- (IBAction)clickMiidi:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    [MiidiAdWall showAppOffers:_viewController withDelegate:self];
+}
 @end
