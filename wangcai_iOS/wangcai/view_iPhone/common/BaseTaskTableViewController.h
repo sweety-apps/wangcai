@@ -13,8 +13,9 @@
 #import "OnlineWallViewController.h"
 #import "RateAppLogic.h"
 #import "CommonTaskTableViewCell.h"
+#import "UIGetRedBagAlertView.h"
 
-@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate, UIAlertViewDelegate,RateAppLogicDelegate, HttpRequestDelegate>
+@interface BaseTaskTableViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,OnlineWallViewControllerDelegate, UIAlertViewDelegate,RateAppLogicDelegate, HttpRequestDelegate, UIGetRedBagAlertViewDelegate>
 {
     CommonZhanghuYuETableViewCell* _zhanghuYuEHeaderCell;
     TaskInfoTableViewCell* _infoCell;

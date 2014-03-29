@@ -916,30 +916,6 @@ static BOOL gNeedReloadTaskList = NO;
     }
 }
 
-#pragma mark <UIGetRedBagAlertViewDelegate>
-
-- (void)onPressedCloseUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
-{
-    if ( _levelChange > 0 )
-    {
-        UILevelUpAlertView* talert = [UILevelUpAlertView sharedInstance];
-        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel] level:_levelChange];
-        
-        _levelChange = 0;
-        [talert show];
-    }
-}
-
-- (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
-{
-    if ( _levelChange > 0 )
-    {
-        UILevelUpAlertView* talert = [UILevelUpAlertView sharedInstance];
-        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel] level:_levelChange];
-        _levelChange = 0;
-        [talert show];
-    }
-}
 
 ON_NOTIFICATION( notification )
 {
@@ -1022,9 +998,37 @@ ON_NOTIFICATION( notification )
                 [getMoneyAlertView show];
                 
                 [[LoginAndRegister sharedInstance] increaseBalance:nIncome];
+                
+                [self refreshTaskList];
             }
         }
     }
 }
+
+#pragma mark <UIGetRedBagAlertViewDelegate>
+
+- (void)onPressedCloseUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
+{
+    if ( _levelChange > 0 )
+    {
+        UILevelUpAlertView* talert = [UILevelUpAlertView sharedInstance];
+        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel] level:_levelChange];
+        
+        _levelChange = 0;
+        [talert show];
+    }
+}
+
+- (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
+{
+    if ( _levelChange > 0 )
+    {
+        UILevelUpAlertView* talert = [UILevelUpAlertView sharedInstance];
+        [talert setLevel:[[LoginAndRegister sharedInstance] getUserLevel] level:_levelChange];
+        _levelChange = 0;
+        [talert show];
+    }
+}
+
 
 @end

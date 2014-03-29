@@ -301,7 +301,7 @@ static LoginAndRegister* _sharedInstance = nil;
                 _showPunchBox = 3;
                 _showMiidi = 2;
 #endif        
- */
+*/
                 
                 [self initWithDraw:dict];
                 
