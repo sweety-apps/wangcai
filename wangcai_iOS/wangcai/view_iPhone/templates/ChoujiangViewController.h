@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIGetRedBagAlertView.h"
 
-@interface ChoujiangViewController : UIViewController<UIAlertViewDelegate, UIAlertViewDelegate> {
+@interface ChoujiangViewController : UIViewController<UIAlertViewDelegate, UIAlertViewDelegate, UIGetRedBagAlertViewDelegate> {
     BOOL _hasStarted;
     BOOL _share;
+    int  _income;
 }
 
 @property (nonatomic,retain) IBOutlet UIImageView* beilv1x;

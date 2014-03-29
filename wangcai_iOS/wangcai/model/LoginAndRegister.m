@@ -290,7 +290,8 @@ static LoginAndRegister* _sharedInstance = nil;
                 if ( [[offerwall allKeys] containsObject:@"miidi"] ) {
                     _showMiidi = [[offerwall valueForKey:@"miidi"] intValue];
                 }
-                
+              
+/*
 #if TEST == 1
                 _showLimei = 0;
                 _showMopan = 0;
@@ -299,7 +300,8 @@ static LoginAndRegister* _sharedInstance = nil;
                 _showDomob = 0;
                 _showPunchBox = 3;
                 _showMiidi = 2;
-#endif
+#endif        
+ */
                 
                 [self initWithDraw:dict];
                 

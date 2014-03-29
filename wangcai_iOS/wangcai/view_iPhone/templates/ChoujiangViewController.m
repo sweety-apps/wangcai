@@ -376,6 +376,8 @@
         default:
             break;
     }
+    
+    _income = income;
     if (income > 0)
     {
         UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
@@ -455,13 +457,13 @@
     }
 #endif
     
-    [self onPressedBackButton:self.backButton];
-
     if ( _share ) {
-        UIAlertView* view = [[[UIAlertView alloc] initWithTitle:@"分享" message:@"分享了" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"分享", nil] autorelease];
+        UIAlertView* view = [[[UIAlertView alloc] initWithTitle:@"中奖了" message:@"恭喜您中奖，快来分享给朋友们吧！" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"分享", nil] autorelease];
         [view show];
         
         _share = NO;
+    } else {
+        [self onPressedBackButton:self.backButton];
     }
 }
 
@@ -471,7 +473,7 @@
         NSString* imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
         
         NSString* invite = [[LoginAndRegister sharedInstance] getInviteCode];
-        NSString* content = [NSString stringWithFormat:@"晒一晒我用旺财赚的话费，你也可以的，填我的邀请码%@可领取2元红包。", invite];
+        NSString* content = [NSString stringWithFormat:@"今日大吉，签到都中了%d元红包。来旺财签到赚话费吧。", (_income / 100)];
         
         id<ISSContent> publishContent = [ShareSDK content:content defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"玩应用领红包" url: [NSString stringWithFormat: INVITE_TASK, invite] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
         
@@ -497,7 +499,15 @@
         [BaseTaskTableViewController setNeedReloadTaskList];
     }
 #endif
-    [self onPressedBackButton:self.backButton];
+
+    if ( _share ) {
+        UIAlertView* view = [[[UIAlertView alloc] initWithTitle:@"中奖了" message:@"恭喜您中奖，快来分享给朋友们吧！" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"分享", nil] autorelease];
+        [view show];
+        
+        _share = NO;
+    } else {
+        [self onPressedBackButton:self.backButton];
+    }
 }
 
 #pragma mark - <UIAlertViewDelegate>
@@ -509,9 +519,19 @@
     [MBHUDView dismissCurrentHUD];
     if (isSucceed)
     {
+/*
+#if TEST == 1
+        result = 0;
+#endif
+*/
         if (result == 0)
         {
             [SettingLocalRecords saveLastCheckInDateTime:[NSDate date]];
+/*
+#if TEST == 1
+            awardCode = kGetAwardType8Yuan;
+#endif
+*/
             if (awardCode == kGetAwardTypeAlreadyGot)
             {
                 UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"今天已经签到过了，明天记得来哟" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] autorelease];

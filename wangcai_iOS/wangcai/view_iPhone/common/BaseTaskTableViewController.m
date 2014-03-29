@@ -548,7 +548,6 @@ static BOOL gNeedReloadTaskList = NO;
         int nLevel = [[LoginAndRegister sharedInstance] getUserLevel];
         int nNeedLevel = [task.taskLevel intValue];
         
-        /*
         if ( nLevel < nNeedLevel ) {
             // 等级不够
             if ( _alertLevel != nil ) {
@@ -560,7 +559,7 @@ static BOOL gNeedReloadTaskList = NO;
             
             return ;
         }
-         */
+         
         switch ([task.taskType intValue])
         {
             case kTaskTypeUserInfo:

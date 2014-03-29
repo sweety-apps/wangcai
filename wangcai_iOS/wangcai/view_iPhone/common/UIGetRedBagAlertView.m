@@ -70,6 +70,9 @@ static UIGetRedBagAlertView* gInstance = nil;
         blocksNum = ((float)[[LoginAndRegister sharedInstance] getCurrentExp])/((float)[[LoginAndRegister sharedInstance] getNextLevelExp]);
     }
     int blockN = (int)(blocksNum*5.0f);
+    if ( blockN > 5 ) {
+        blockN = 5;
+    }
     
     for (int i = 0; i < 5; ++i)
     {

@@ -37,6 +37,11 @@ DEF_SINGLETON( ChoujiangLogic )
 
 - (GetAwardType)getAwardCode
 {
+/*
+#if TEST == 1 
+    return kGetAwardTypeNotGet;
+#endif
+*/
     if (![SettingLocalRecords getCheckIn])
     {
         _awardCode = kGetAwardTypeNotGet;

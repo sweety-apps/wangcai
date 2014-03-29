@@ -97,6 +97,7 @@
 		712DA7D918C8616E008414D4 /* qq_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7D718C8616E008414D4 /* qq_input@2x.png */; };
 		712DA7DB18C86202008414D4 /* Qbi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7DA18C86202008414D4 /* Qbi@2x.png */; };
 		712DA7DC18C86202008414D4 /* Qbi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712DA7DA18C86202008414D4 /* Qbi@2x.png */; };
+		712EB78118E68611005910CD /* libOpenIDFA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712EB78018E68611005910CD /* libOpenIDFA.a */; };
 		71355508188D14110007784A /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355505188D14110007784A /* libYouMi.a */; };
 		71355509188D14110007784A /* libYouMi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355505188D14110007784A /* libYouMi.a */; };
 		71355512188D16060007784A /* DomobOfferWallBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71355510188D16060007784A /* DomobOfferWallBundle.bundle */; };
@@ -1506,6 +1507,7 @@
 		712DA7D418C8615F008414D4 /* qq@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq@2x.PNG"; sourceTree = "<group>"; };
 		712DA7D718C8616E008414D4 /* qq_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq_input@2x.png"; sourceTree = "<group>"; };
 		712DA7DA18C86202008414D4 /* Qbi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Qbi@2x.png"; sourceTree = "<group>"; };
+		712EB78018E68611005910CD /* libOpenIDFA.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOpenIDFA.a; path = wangcai/libYouMi/libOpenIDFA.a; sourceTree = "<group>"; };
 		713554FC188D14110007784A /* YouMiConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiConfig.h; sourceTree = "<group>"; };
 		713554FD188D14110007784A /* YouMiDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiDelegateProtocol.h; sourceTree = "<group>"; };
 		713554FE188D14110007784A /* YouMiPointsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiPointsManager.h; sourceTree = "<group>"; };
@@ -2515,6 +2517,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712EB78118E68611005910CD /* libOpenIDFA.a in Frameworks */,
 				F3359F8E18882F8000C1E636 /* UIKit.framework in Frameworks */,
 				F3359F9018882F8000C1E636 /* CoreGraphics.framework in Frameworks */,
 				F3359F8F18882F8000C1E636 /* Foundation.framework in Frameworks */,
@@ -3549,6 +3552,7 @@
 		F3F186BE18543A410098C852 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				712EB78018E68611005910CD /* libOpenIDFA.a */,
 				71D1975D18BE037100D3D48D /* EventKitUI.framework */,
 				71D1975B18BE01F400D3D48D /* immobSDK.framework */,
 				71D1975918BE00F600D3D48D /* MapKit.framework */,
