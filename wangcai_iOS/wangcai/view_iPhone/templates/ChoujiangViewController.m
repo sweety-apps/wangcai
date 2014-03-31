@@ -458,41 +458,14 @@
 #endif
     
     if ( _share ) {
-        UIAlertView* view = [[[UIAlertView alloc] initWithTitle:@"中奖了" message:@"恭喜您中奖，快来分享给朋友们吧！" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"分享", nil] autorelease];
-        [view show];
-        
+        [BaseTaskTableViewController setNeedShowChoujiangShare:_income];
         _share = NO;
-    } else {
-        [self onPressedBackButton:self.backButton];
     }
+    
+    [self onPressedBackButton:self.backButton];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if ( buttonIndex == 1 ) {
-        // 分享
-        NSString* imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
-        
-        NSString* invite = [[LoginAndRegister sharedInstance] getInviteCode];
-        NSString* content = [NSString stringWithFormat:@"今日大吉，签到都中了%d元红包。来旺财签到赚话费吧。旺财下载地址:%@", (_income / 100), [NSString stringWithFormat: INVITE_TASK, invite] ];
-        
-        id<ISSContent> publishContent = [ShareSDK content:content defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"玩应用领红包" url: [NSString stringWithFormat: INVITE_TASK, invite] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
-        
-        [ShareSDK showShareActionSheet: nil shareList: nil content: publishContent statusBarTips: YES authOptions: nil shareOptions: nil result: ^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
-         {
-             if (state == SSResponseStateSuccess)
-             {  // todo 分享成功
-                [self onPressedBackButton:self.backButton];
-             }
-             else if (state == SSResponseStateFail)
-             {  // todo 分享失败
-                [self onPressedBackButton:self.backButton];
-             }
-             else if (state == SSResponseStateCancel )
-             {  //
-                [self onPressedBackButton:self.backButton];
-             }
-         }];
-    }
 }
 
 - (void)onPressedGetRmbUIGetRedBagAlertView:(UIGetRedBagAlertView*)alertView
@@ -507,13 +480,11 @@
 #endif
 
     if ( _share ) {
-        UIAlertView* view = [[[UIAlertView alloc] initWithTitle:@"中奖了" message:@"恭喜您中奖，快来分享给朋友们吧！" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"分享", nil] autorelease];
-        [view show];
-        
+        [BaseTaskTableViewController setNeedShowChoujiangShare:_income];
         _share = NO;
-    } else {
-        [self onPressedBackButton:self.backButton];
     }
+    
+    [self onPressedBackButton:self.backButton];
 }
 
 #pragma mark - <UIAlertViewDelegate>
@@ -538,6 +509,7 @@
             awardCode = kGetAwardType8Yuan;
 #endif
 */
+
             if (awardCode == kGetAwardTypeAlreadyGot)
             {
                 UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"今天已经签到过了，明天记得来哟" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] autorelease];

@@ -57,7 +57,7 @@
     // Do any additional setup after loading the view from its nib.
     
     _currentlevel = 1;
-    
+    _nDogHight = 0;
     _iconImages = [[NSArray arrayWithObjects:[UIImage imageNamed:@"mywangcai_cell_baifabaizhong"],[UIImage imageNamed:@"mywangcai_cell_xiongdibang"],[UIImage imageNamed:@"mywangcai_cell_dianshichengjin"], nil] retain];
     
     _titleImages = [[NSArray arrayWithObjects:[UIImage imageNamed:@"mywangcai_cell_baifabaizhong_title"],[UIImage imageNamed:@"mywangcai_cell_xiongdibang_title"],[UIImage imageNamed:@"mywangcai_cell_dianshichengjin_title"], nil] retain];
@@ -117,6 +117,8 @@
     
     [self performSelector:@selector(adjustDogCell) withObject:nil afterDelay:0.0];
     [self hideBindTips:NO];
+    
+    [self setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
     [self setEXP:[[LoginAndRegister sharedInstance] getCurrentExp]
     nextLevelEXP:[[LoginAndRegister sharedInstance] getNextLevelExp]
    withAnimation:YES];
@@ -401,7 +403,10 @@
     NSInteger row = indexPath.row;
     if (row == 0)
     {
-        CGFloat height = self.dogCell.frame.size.height;
+        if ( _nDogHight == 0 ) {
+            _nDogHight = self.dogCell.frame.size.height;
+        }
+        CGFloat height = _nDogHight;
         if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]> 0)
         {
             height = height - DOG_CELL_ADJUST_OFFSET_Y;

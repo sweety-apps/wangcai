@@ -11,6 +11,7 @@
 @interface MyWangcaiViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 {
     BeeUIStack* _beeStack;
+    int _nDogHight;
 }
 
 - (void)setUIStack : (BeeUIStack*) beeStack;

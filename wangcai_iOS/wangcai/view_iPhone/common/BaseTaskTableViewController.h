@@ -46,6 +46,7 @@
     int _levelChange;
     
     UIAlertView* _alertLevel;
+    UIAlertView* _alertChoujiangeShare;
 }
 
 @property (nonatomic,retain) IBOutlet CommonZhanghuYuETableViewCell* zhanghuYuEHeaderCell;
@@ -73,5 +74,5 @@
 - (void)updateLevel;
 
 + (void)setNeedReloadTaskList;
-
++ (void)setNeedShowChoujiangShare:(int)choujiang;
 @end
