@@ -2517,9 +2517,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712D01BA18D98E5900A84228 /* libPunchBoxAd.a in Frameworks */,
 				7153FCF218CDB8130026B4B5 /* libZhiYCM.a in Frameworks */,
 				71007DBF18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
-				712D01BA18D98E5900A84228 /* libPunchBoxAd.a in Frameworks */,
 				712EB78118E68611005910CD /* libOpenIDFA.a in Frameworks */,
 				F3359F8E18882F8000C1E636 /* UIKit.framework in Frameworks */,
 				F3359F9018882F8000C1E636 /* CoreGraphics.framework in Frameworks */,
@@ -6282,6 +6282,8 @@
 					/Users/zc/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/Ecomlib,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/mobsmarlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/Ecomlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/libPunchBoxAd,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "";
@@ -6386,6 +6388,8 @@
 					/Users/zc/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/Ecomlib,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/mobsmarlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/Ecomlib,
+					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/libPunchBoxAd,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
