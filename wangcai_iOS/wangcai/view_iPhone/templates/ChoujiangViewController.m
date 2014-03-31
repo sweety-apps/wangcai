@@ -473,7 +473,7 @@
         NSString* imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
         
         NSString* invite = [[LoginAndRegister sharedInstance] getInviteCode];
-        NSString* content = [NSString stringWithFormat:@"今日大吉，签到都中了%d元红包。来旺财签到赚话费吧。", (_income / 100)];
+        NSString* content = [NSString stringWithFormat:@"今日大吉，签到都中了%d元红包。来旺财签到赚话费吧。旺财下载地址:%@", (_income / 100), [NSString stringWithFormat: INVITE_TASK, invite] ];
         
         id<ISSContent> publishContent = [ShareSDK content:content defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"玩应用领红包" url: [NSString stringWithFormat: INVITE_TASK, invite] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
         
@@ -481,9 +481,15 @@
          {
              if (state == SSResponseStateSuccess)
              {  // todo 分享成功
+                [self onPressedBackButton:self.backButton];
              }
              else if (state == SSResponseStateFail)
              {  // todo 分享失败
+                [self onPressedBackButton:self.backButton];
+             }
+             else if (state == SSResponseStateCancel )
+             {  //
+                [self onPressedBackButton:self.backButton];
              }
          }];
     }

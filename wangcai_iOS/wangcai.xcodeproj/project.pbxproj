@@ -2517,6 +2517,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7153FCF218CDB8130026B4B5 /* libZhiYCM.a in Frameworks */,
+				71007DBF18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
+				712D01BA18D98E5900A84228 /* libPunchBoxAd.a in Frameworks */,
 				712EB78118E68611005910CD /* libOpenIDFA.a in Frameworks */,
 				F3359F8E18882F8000C1E636 /* UIKit.framework in Frameworks */,
 				F3359F9018882F8000C1E636 /* CoreGraphics.framework in Frameworks */,
@@ -2532,7 +2535,6 @@
 				F3359F9F18882F8000C1E636 /* Security.framework in Frameworks */,
 				71D1975A18BE00F600D3D48D /* MapKit.framework in Frameworks */,
 				F3359F9218882F8000C1E636 /* CoreTelephony.framework in Frameworks */,
-				712D01BA18D98E5900A84228 /* libPunchBoxAd.a in Frameworks */,
 				F3359F9B18882F8000C1E636 /* CoreLocation.framework in Frameworks */,
 				F3359F9418882F8000C1E636 /* CFNetwork.framework in Frameworks */,
 				71D1975618BE00D300D3D48D /* AudioToolbox.framework in Frameworks */,
@@ -2589,7 +2591,6 @@
 				71355563188D17800007784A /* FacebookConnection.framework in Frameworks */,
 				71355595188D17800007784A /* YouDaoNoteConnection.framework in Frameworks */,
 				713555AD188D17810007784A /* ShareSDKiPadDefaultShareViewUI.framework in Frameworks */,
-				71007DBF18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
 				713555B3188D17810007784A /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				7135557D188D17800007784A /* QZoneConnection.framework in Frameworks */,
 				7126B88418E544370060ECB7 /* MiidiAdLib.a in Frameworks */,
@@ -2600,7 +2601,6 @@
 				71355577188D17800007784A /* PocketConnection.framework in Frameworks */,
 				7135558D188D17800007784A /* TumblrConnection.framework in Frameworks */,
 				7135557F188D17800007784A /* RenRenConnection.framework in Frameworks */,
-				7153FCF218CDB8130026B4B5 /* libZhiYCM.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6188,8 +6188,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhang chen (63V38R7FF7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhang chen (63V38R7FF7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/wangcai/ALSystemUtilities/**",
@@ -6279,9 +6279,12 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/MiidiLib,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Ecomlib,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 				);
 				PRODUCT_NAME = "wangcai copy";
-				PROVISIONING_PROFILE = "14FC1422-457E-4D11-A4DA-5B56ECB1E28F";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -6380,6 +6383,9 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/MiidiLib,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Ecomlib,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";

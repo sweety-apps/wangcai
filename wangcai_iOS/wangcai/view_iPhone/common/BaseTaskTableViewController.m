@@ -952,7 +952,8 @@ ON_NOTIFICATION( notification )
     NSString* imagePath = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
     
     NSString* invite = [[LoginAndRegister sharedInstance] getInviteCode];
-    NSString* content = [NSString stringWithFormat:@"晒一晒我用旺财赚的话费，你也可以的，填我的邀请码%@可领取2元红包。", invite];
+    int nBalance = [[LoginAndRegister sharedInstance] getIncome];
+    NSString* content = [NSString stringWithFormat:@"我用旺财赚了%d元，你也可以的，填我的邀请码%@可领取2元红包。旺财下载地址:%@", nBalance/100, invite, [NSString stringWithFormat: INVITE_TASK, invite]];
                          
     id<ISSContent> publishContent = [ShareSDK content:content defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"玩应用领红包" url: [NSString stringWithFormat: INVITE_TASK, invite] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
     
