@@ -903,7 +903,7 @@ static int  gChoujiang = 0;
             NSString* invite = [[LoginAndRegister sharedInstance] getInviteCode];
             NSString* content = [NSString stringWithFormat:@"今日大吉，签到都中了%d元红包。来旺财签到赚话费吧。旺财下载地址:%@", (gChoujiang / 100), [NSString stringWithFormat: INVITE_TASK, invite] ];
             
-            id<ISSContent> publishContent = [ShareSDK content:content defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"玩应用领红包" url: [NSString stringWithFormat: INVITE_TASK, invite] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
+            id<ISSContent> publishContent = [ShareSDK content:content defaultContent:@"" image:[ShareSDK imageWithPath:imagePath] title: @"中奖了！" url: [NSString stringWithFormat: INVITE_TASK, invite] description: @"旺财分享" mediaType: SSPublishContentMediaTypeNews];
             
             [ShareSDK showShareActionSheet: nil shareList: nil content: publishContent statusBarTips: YES authOptions: nil shareOptions: nil result: ^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end)
              {

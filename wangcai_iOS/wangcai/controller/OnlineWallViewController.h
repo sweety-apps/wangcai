@@ -83,8 +83,11 @@
 - (IBAction)clickMopan:(id)sender;
 - (IBAction)clickPunchBox:(id)sender;
 - (IBAction)clickMiidi:(id)sender;
+- (IBAction)clickJupeng:(id)sender;
 
 - (IBAction)clickHelper:(id)sender;
 
 - (IBAction)clickClose:(id)sender;
+
+- (IBAction)onClickBack:(id)sender;
 @end

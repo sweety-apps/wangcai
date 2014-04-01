@@ -219,6 +219,12 @@
 		718FB1911893FF2900851D2A /* register_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718FB1901893FF2900851D2A /* register_btn@2x.png */; };
 		718FB1921893FF2900851D2A /* register_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718FB1901893FF2900851D2A /* register_btn@2x.png */; };
 		7194FE3E18EA8FEE004A303B /* libOpenIDFA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712EB78018E68611005910CD /* libOpenIDFA.a */; };
+		7194FE4518EA95D4004A303B /* JupengSdkLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7194FE4318EA95D4004A303B /* JupengSdkLib.a */; };
+		7194FE4618EA95D4004A303B /* JupengSdkLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7194FE4318EA95D4004A303B /* JupengSdkLib.a */; };
+		7194FE4818EA9F37004A303B /* jupeng@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7194FE4718EA9F37004A303B /* jupeng@2x.png */; };
+		7194FE4918EA9F37004A303B /* jupeng@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7194FE4718EA9F37004A303B /* jupeng@2x.png */; };
+		7194FE4B18EAA1FB004A303B /* app_tip_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7194FE4A18EAA1FB004A303B /* app_tip_back@2x.png */; };
+		7194FE4C18EAA1FB004A303B /* app_tip_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7194FE4A18EAA1FB004A303B /* app_tip_back@2x.png */; };
 		719F187618AA15B800C29765 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187518AA15B800C29765 /* MediaPlayer.framework */; };
 		719F187818AA17D000C29765 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187718AA17D000C29765 /* EventKit.framework */; };
 		719F187A18AA17D600C29765 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187918AA17D600C29765 /* Social.framework */; };
@@ -1597,6 +1603,13 @@
 		7153FD0018CDF6F00026B4B5 /* app_tip_mopan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_mopan@2x.png"; sourceTree = "<group>"; };
 		7153FD0518CDF78A0026B4B5 /* app_tip_recommand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_recommand@2x.png"; sourceTree = "<group>"; };
 		718FB1901893FF2900851D2A /* register_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register_btn@2x.png"; sourceTree = "<group>"; };
+		7194FE4018EA95D4004A303B /* JupengAdOpenData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JupengAdOpenData.h; sourceTree = "<group>"; };
+		7194FE4118EA95D4004A303B /* JupengConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JupengConfig.h; sourceTree = "<group>"; };
+		7194FE4218EA95D4004A303B /* JupengPopScreenADs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JupengPopScreenADs.h; sourceTree = "<group>"; };
+		7194FE4318EA95D4004A303B /* JupengSdkLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = JupengSdkLib.a; sourceTree = "<group>"; };
+		7194FE4418EA95D4004A303B /* JupengWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JupengWall.h; sourceTree = "<group>"; };
+		7194FE4718EA9F37004A303B /* jupeng@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jupeng@2x.png"; sourceTree = "<group>"; };
+		7194FE4A18EAA1FB004A303B /* app_tip_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_back@2x.png"; sourceTree = "<group>"; };
 		719F187518AA15B800C29765 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		719F187718AA17D000C29765 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		719F187918AA17D600C29765 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -2599,6 +2612,7 @@
 				71355573188D17800007784A /* MailConnection.framework in Frameworks */,
 				71355585188D17800007784A /* SohuConnection.framework in Frameworks */,
 				71355593188D17800007784A /* WeChatConnection.framework in Frameworks */,
+				7194FE4618EA95D4004A303B /* JupengSdkLib.a in Frameworks */,
 				71355577188D17800007784A /* PocketConnection.framework in Frameworks */,
 				7135558D188D17800007784A /* TumblrConnection.framework in Frameworks */,
 				7135557F188D17800007784A /* RenRenConnection.framework in Frameworks */,
@@ -2680,6 +2694,7 @@
 				F3F186CC18543A410098C852 /* CoreText.framework in Frameworks */,
 				713555BA188D17810007784A /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
 				7135557A188D17800007784A /* QQConnection.framework in Frameworks */,
+				7194FE4518EA95D4004A303B /* JupengSdkLib.a in Frameworks */,
 				F3F186CE18543A410098C852 /* CoreVideo.framework in Frameworks */,
 				71355564188D17800007784A /* FlickrConnection.framework in Frameworks */,
 				F3F186FB18543A410098C852 /* libxml2.dylib in Frameworks */,
@@ -2982,6 +2997,18 @@
 			path = mopanlib;
 			sourceTree = "<group>";
 		};
+		7194FE3F18EA95D4004A303B /* JuPenglib */ = {
+			isa = PBXGroup;
+			children = (
+				7194FE4018EA95D4004A303B /* JupengAdOpenData.h */,
+				7194FE4118EA95D4004A303B /* JupengConfig.h */,
+				7194FE4218EA95D4004A303B /* JupengPopScreenADs.h */,
+				7194FE4318EA95D4004A303B /* JupengSdkLib.a */,
+				7194FE4418EA95D4004A303B /* JupengWall.h */,
+			);
+			path = JuPenglib;
+			sourceTree = "<group>";
+		};
 		A60C57E3186FF8A30068425C /* BindPhoneTips */ = {
 			isa = PBXGroup;
 			children = (
@@ -3018,6 +3045,8 @@
 		A60C57EB186FF8A30068425C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				7194FE4A18EAA1FB004A303B /* app_tip_back@2x.png */,
+				7194FE4718EA9F37004A303B /* jupeng@2x.png */,
 				71007DC218D9DA6A00FCF2D9 /* punchbox@2x.png */,
 				7126B88718E557E20060ECB7 /* app_tip_miidi@2x.png */,
 				712D019A18D96DD100A84228 /* pay_bkg@2x.png */,
@@ -3522,6 +3551,7 @@
 			isa = PBXGroup;
 			children = (
 				F3F3C02518962852003809D5 /* ALSystemUtilities.xcodeproj */,
+				7194FE3F18EA95D4004A303B /* JuPenglib */,
 				59D8E0BE189230DE003D5F3F /* JPushlib */,
 				7126B87618E544360060ECB7 /* MiidiLib */,
 				71355518188D17800007784A /* ShareSDK_v2.6.1 */,
@@ -4979,6 +5009,7 @@
 				7153FCFE18CDE4490026B4B5 /* upgrade@2x.png in Resources */,
 				F335A00718882F8000C1E636 /* yue_5@2x.png in Resources */,
 				F335A00818882F8000C1E636 /* package_icon_many@2x.png in Resources */,
+				7194FE4C18EAA1FB004A303B /* app_tip_back@2x.png in Resources */,
 				F335A00918882F8000C1E636 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
 				F394DBC718B89841003311CD /* mywangcai_dog_13@2x.png in Resources */,
 				F335A00A18882F8000C1E636 /* choujiang_thanks3@2x.png in Resources */,
@@ -5128,6 +5159,7 @@
 				F335A06118882F8000C1E636 /* main_menu_title_text@2x.png in Resources */,
 				F335A06218882F8000C1E636 /* head_left_menu_btn@2x.png in Resources */,
 				F335A06318882F8000C1E636 /* choujiang_baojie@2x.png in Resources */,
+				7194FE4918EA9F37004A303B /* jupeng@2x.png in Resources */,
 				F335A06418882F8000C1E636 /* yue_1@2x.png in Resources */,
 				F335A06518882F8000C1E636 /* testIconSetting222@2x.jpg in Resources */,
 				F335A06618882F8000C1E636 /* rate_app_cell_icon@2x.png in Resources */,
@@ -5329,6 +5361,7 @@
 				A60C5842186FF8A30068425C /* package_icon_8@2x.png in Resources */,
 				711F439718B4F49C00AEE1D5 /* extract_phone@2x.png in Resources */,
 				A60C58AF18703AE60068425C /* invite_seg_unsel_unsel@2x.png in Resources */,
+				7194FE4B18EAA1FB004A303B /* app_tip_back@2x.png in Resources */,
 				F3813D321875796F00350C27 /* choujiang_back_btn@2x.png in Resources */,
 				712DA7D518C8615F008414D4 /* qq@2x.PNG in Resources */,
 				A60C5847186FF8A30068425C /* back@2x.png in Resources */,
@@ -5434,6 +5467,7 @@
 				71008A3F18915E0900689E2F /* nav_Header2@2x.png in Resources */,
 				A60C5875186FF8A30068425C /* yue_3@2x.png in Resources */,
 				71007DC318D9DA6A00FCF2D9 /* punchbox@2x.png in Resources */,
+				7194FE4818EA9F37004A303B /* jupeng@2x.png in Resources */,
 				A60C5871186FF8A30068425C /* main_menu_title_text@2x.png in Resources */,
 				F3FB9295187AF825001D702E /* head_left_menu_btn@2x.png in Resources */,
 				F31F952418AF623B0035792B /* mywangcai_cell_line@2x.png in Resources */,
@@ -6286,6 +6320,7 @@
 					/Users/zc/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/Ecomlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/JuPenglib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "";
@@ -6392,6 +6427,7 @@
 					/Users/zc/Desktop/wangcai/wangcai_iOS/mobsmarlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/Ecomlib,
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/JuPenglib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
@@ -6573,6 +6609,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/MiidiLib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/JuPenglib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6673,6 +6710,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Ecomlib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/MiidiLib,
+					/Users/NPHD/Desktop/wangcai/wangcai_iOS/JuPenglib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "594D6C65-DB25-4AAA-8A31-CBF232EEFA04";

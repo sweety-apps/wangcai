@@ -37,6 +37,9 @@
 #define APP_MIIDI_ID       @"17251"
 #define APP_MIIDI_SECRET   @"dtl59j3m47wclc1g"
 
+#define APP_JUPENG_ID      @"10073"
+#define APP_JUPENG_SECRET  @"er6hqigbccbh9bvp"
+
 #elif TARGET_VERSION_LITE == 2
 
 #define APP_NAME   @"WangCaiFriend"
@@ -67,6 +70,9 @@
 
 #define APP_MIIDI_ID       @"17250"
 #define APP_MIIDI_SECRET   @"zujvxsva5xt3v9nr"
+
+#define APP_JUPENG_ID      @"10072"
+#define APP_JUPENG_SECRET  @"8s92a9febf2faxdr"
 
 #endif
 

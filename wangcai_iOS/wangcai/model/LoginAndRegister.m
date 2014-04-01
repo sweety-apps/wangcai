@@ -52,6 +52,7 @@ static LoginAndRegister* _sharedInstance = nil;
     self->_showMopan = 0;
     self->_showPunchBox = 0;
     self->_showMiidi = 0;
+    self->_showJupeng = 0;
     
     self->_phonePay = nil;
     self->_aliPay = nil;
@@ -290,18 +291,23 @@ static LoginAndRegister* _sharedInstance = nil;
                 if ( [[offerwall allKeys] containsObject:@"miidi"] ) {
                     _showMiidi = [[offerwall valueForKey:@"miidi"] intValue];
                 }
-              
+                
+                if ( [[offerwall allKeys] containsObject:@"jupeng"] ) {
+                    _showJupeng = [[offerwall valueForKey:@"jupeng"] intValue];
+                }
 /*
 #if TEST == 1
                 _showLimei = 0;
-                _showMopan = 0;
+                _showMopan = 3;
                 _showYoumi = 1;
                 _showMobsmar = 0;
                 _showDomob = 0;
                 _showPunchBox = 3;
-                _showMiidi = 2;
-#endif        
+                _showMiidi = 3;
+                _showJupeng = 3;
+#endif
 */
+
                 
                 [self initWithDraw:dict];
                 
@@ -695,6 +701,13 @@ static LoginAndRegister* _sharedInstance = nil;
     return YES;
 }
 
+-(BOOL) isShowJupeng {
+    if ( _showJupeng == 0 ) {
+        return NO;
+    }
+    return YES;
+}
+
 -(BOOL) isInMoreDomob {
     if ( _showDomob == 3 ) {
         return YES;
@@ -744,6 +757,13 @@ static LoginAndRegister* _sharedInstance = nil;
     return NO;
 }
 
+-(BOOL) isInMoreJupeng {
+    if ( _showJupeng == 3 ) {
+        return YES;
+    }
+    return NO;
+}
+
 -(BOOL) isRecommendDomob {
     if ( _showDomob == 2 ) {
         return YES;
@@ -788,6 +808,13 @@ static LoginAndRegister* _sharedInstance = nil;
 
 -(BOOL) isRecommendMiidi {
     if ( _showMiidi == 2 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isRecommendJupeng {
+    if ( _showJupeng == 2 ) {
         return YES;
     }
     return NO;
