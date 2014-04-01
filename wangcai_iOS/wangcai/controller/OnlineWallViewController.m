@@ -358,7 +358,7 @@ static OnlineWallViewController* _sharedInstance;
     }
     
     [MobClick event:@"task_list_click_pubchbox" attributes:@{@"currentpage":@"任务列表"}];
-    [PBOfferWall sharedOfferWall].orientationSupported = PBOrientationSupported_Auto;
+    [PBOfferWall sharedOfferWall].orientationSupported = PBOrientationSupported_Vertical;
     [[PBOfferWall sharedOfferWall] showOfferWallWithScale:1.0f];
 }
 

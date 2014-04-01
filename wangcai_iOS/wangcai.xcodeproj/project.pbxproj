@@ -218,6 +218,7 @@
 		7153FD0718CDF78A0026B4B5 /* app_tip_recommand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7153FD0518CDF78A0026B4B5 /* app_tip_recommand@2x.png */; };
 		718FB1911893FF2900851D2A /* register_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718FB1901893FF2900851D2A /* register_btn@2x.png */; };
 		718FB1921893FF2900851D2A /* register_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718FB1901893FF2900851D2A /* register_btn@2x.png */; };
+		7194FE3E18EA8FEE004A303B /* libOpenIDFA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712EB78018E68611005910CD /* libOpenIDFA.a */; };
 		719F187618AA15B800C29765 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187518AA15B800C29765 /* MediaPlayer.framework */; };
 		719F187818AA17D000C29765 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187718AA17D000C29765 /* EventKit.framework */; };
 		719F187A18AA17D600C29765 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187918AA17D600C29765 /* Social.framework */; };
@@ -2608,6 +2609,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7194FE3E18EA8FEE004A303B /* libOpenIDFA.a in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
 				F3F186D618543A410098C852 /* SystemConfiguration.framework in Frameworks */,
 				F3F186D218543A410098C852 /* QuartzCore.framework in Frameworks */,
