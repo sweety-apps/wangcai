@@ -22,12 +22,10 @@
 @property (nonatomic,retain) IBOutlet UIImageView* jingyan2View;
 @property (nonatomic,retain) IBOutlet UILabel* dengjiNumLabel;
 @property (nonatomic,retain) IBOutlet UILabel* jiachengInfoLabel;
-@property (nonatomic,retain) IBOutlet UILabel* jiachengInfoLabel2;
 @property (nonatomic,retain) IBOutlet UIView* bingphoneTipsView;
 @property (nonatomic,retain) IBOutlet UITableViewCell* dogCell;
 @property (nonatomic,retain) IBOutlet UILabel* EXPLabel;
 @property (nonatomic,retain) IBOutlet UIView* dogcellContentView;
-@property (nonatomic,retain) IBOutlet UIView* dogcellContentView2;
 
 - (IBAction)onPressedBindPhone:(id)sender;
 - (IBAction)onPressedBack:(id)sender;

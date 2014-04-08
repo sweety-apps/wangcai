@@ -35,12 +35,10 @@
 @synthesize jingyan2View;
 @synthesize dengjiNumLabel;
 @synthesize jiachengInfoLabel;
-@synthesize jiachengInfoLabel2;
 @synthesize bingphoneTipsView;
 @synthesize dogCell;
 @synthesize EXPLabel;
 @synthesize dogcellContentView;
-@synthesize dogcellContentView2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -67,14 +65,6 @@
     _isSkillLocks = [[NSMutableArray arrayWithArray:@[@YES,@YES,@YES]] retain];
     
     
-    
-    jiachengInfoLabel2 = [[UILabel alloc] initWithFrame:jiachengInfoLabel.frame];
-    jiachengInfoLabel2.textAlignment = jiachengInfoLabel.textAlignment;
-    jiachengInfoLabel2.contentMode = jiachengInfoLabel.contentMode;
-    jiachengInfoLabel2.backgroundColor = [UIColor clearColor];
-    jiachengInfoLabel2.textColor = [UIColor blackColor];
-    jiachengInfoLabel2.font = jiachengInfoLabel.font;
-    
     [self setLevel:[[LoginAndRegister sharedInstance] getUserLevel]];
     [self setEXP:[[LoginAndRegister sharedInstance] getCurrentExp]
     nextLevelEXP:[[LoginAndRegister sharedInstance] getNextLevelExp]
@@ -84,13 +74,8 @@
     jingyan2View.image = jingyanView.image;
     jingyan2View.contentMode = jingyanView.contentMode;
     
-    
-    
-    dogcellContentView2 = [[UIView alloc] initWithFrame:dogcellContentView2.frame];
-    dogcellContentView2.backgroundColor = [UIColor clearColor];
-    [self.dogCell.contentView addSubview:dogcellContentView2];
-    dogcellContentView.hidden = YES;
-    
+    [self.dogCell.contentView addSubview:dogcellContentView];
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(onLevelUp) name:kNotificationNameLevelUp object:nil];
 }
@@ -126,27 +111,7 @@
 
 - (void)moveContentViews
 {
-    NSArray* subViewsArray = [NSArray arrayWithArray:[dogcellContentView subviews]];
-    
-    for (UIView* v in subViewsArray)
-    {
-        CGRect rect = v.frame;
-        [dogcellContentView2 addSubview:v];
-        v.frame = rect;
-    }
-    
-    if (self.EXPLabel)
-    {
-        [dogcellContentView2 insertSubview:jingyan2View belowSubview:self.EXPLabel];
-    }
-    else
-    {
-        [dogcellContentView2 addSubview:jingyan2View];
-    }
-    
-    jiachengInfoLabel.hidden = YES;
-    jiachengInfoLabel2.hidden = NO;
-    [dogcellContentView2 addSubview:jiachengInfoLabel2];
+    jiachengInfoLabel.hidden = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -200,7 +165,6 @@
     [jingyan2View release];
     [EXPLabel release];
     [dogcellContentView release];
-    [dogcellContentView2 release];
     [super dealloc];
 }
 
@@ -241,7 +205,7 @@
 
 - (void)adjustDogCell
 {
-    CGRect rect = self.dogcellContentView2.frame;
+    CGRect rect = self.dogcellContentView.frame;
     if ([[[LoginAndRegister sharedInstance] getPhoneNum] length]> 0)
     {
         rect.origin = CGPointMake(0, -DOG_CELL_ADJUST_OFFSET_Y);
@@ -250,7 +214,7 @@
     {
         rect.origin = CGPointZero;
     }
-    self.dogcellContentView2.frame = rect;
+    self.dogcellContentView.frame = rect;
     self.jiachengInfoLabel.frame = CGRectMake(132, 144, 163, 21);
     self.jiachengInfoLabel.textAlignment = NSTextAlignmentLeft;
     //[self.dogcellContentView setNeedsDisplay];
@@ -301,7 +265,7 @@
     }
     
     self.dengjiNumLabel.text = [NSString stringWithFormat:@"%d",level];
-    self.jiachengInfoLabel2.text = [NSString stringWithFormat:@"可获得额外%d%@的红包",extraPlus,@"%"];
+    self.jiachengInfoLabel.text = [NSString stringWithFormat:@"可获得额外%d%@的红包",extraPlus,@"%"];
     self.jiachengInfoLabel.textAlignment = NSTextAlignmentLeft;
     
     
