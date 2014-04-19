@@ -21,7 +21,7 @@
 
 #import "JupengConfig.h"
 #import "JupengWall.h"
-
+#import "CommonTaskList.h"
 #import "SiWeiAdConfig.h"
 #import "SiWeiPointsManger.h"
 #import "PunchBoxAd.h"
@@ -567,6 +567,11 @@ static OnlineWallViewController* _sharedInstance;
 
 
 -(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
+    /*NSError* error;
+    NSString* tmp = @"{\"offerwall_income\": 0, \"benefit\": 0, \"wangcai_income\": [{\"task_id\":10000,\"income\":300}], \"exp_next_level\": 2000, \"income\": 0, \"msg\": \"\", \"res\": 0, \"level\": 1, \"exp_current\": 0}";
+    NSData* aData = [tmp dataUsingEncoding: NSASCIIStringEncoding];
+    body = [NSJSONSerialization JSONObjectWithData:aData options:NSJSONReadingMutableLeaves error:&error];
+    */
     if ( httpCode == 200 ) {
         int res = [[body objectForKey:@"res"] intValue];
         if ( res == 0 ) {
@@ -595,11 +600,25 @@ static OnlineWallViewController* _sharedInstance;
                 [_baseTaskTableViewController updateLevel];
             }
             
-            if ( offerwallIncome > _offerwallIncome ) {
+            NSArray* wangcaiIncome = [body valueForKey:@"wangcai_income"];
+            int nWangcaiIncome = 0; // 旺财任务获得的钱
+            if ( wangcaiIncome != nil ) {
+                for ( int i = 0; i < [wangcaiIncome count]; i ++ ) {
+                    NSDictionary* item = [wangcaiIncome objectAtIndex:i];
+                    
+                    int taskId = [[item objectForKey:@"task_id"] intValue];
+                    
+                    if ( [self isUnfinished:taskId] ) {
+                        nWangcaiIncome += [[item objectForKey:@"income"] intValue];
+                    }
+                }
+            }
+            
+            if ( offerwallIncome > _offerwallIncome || nWangcaiIncome > 0 ) {
                 int diff = offerwallIncome - _offerwallIncome;
                 
                 _offerwallIncome = offerwallIncome;
-                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:diff Level:levelChange];
+                [self->_delegate onRequestAndConsumePointCompleted:YES Consume:diff Level:levelChange wangcaiIncome:nWangcaiIncome];
             }
 
             _request = NO;
@@ -609,6 +628,18 @@ static OnlineWallViewController* _sharedInstance;
     } else {
         _request = NO;
     }
+}
+
+- (BOOL) isUnfinished:(int) taskId {
+    NSArray* unfinished = [[CommonTaskList sharedInstance] getUnfinishedTaskList];
+    for ( int i = 0; i < [unfinished count]; i ++ ) {
+        CommonTaskInfo* obj = [unfinished objectAtIndex:i];
+        if ( [obj.taskId intValue] == taskId ) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 - (IBAction)clickMiidi:(id)sender {

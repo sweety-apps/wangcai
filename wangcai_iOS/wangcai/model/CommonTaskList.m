@@ -41,6 +41,9 @@
 @synthesize taskDesc;
 @synthesize taskStepStrings;
 @synthesize taskIsLocalIcon;
+@synthesize taskRediectUrl;
+@synthesize taskAppId;
+
 //@synthesize taskStartTime;
 //@synthesize taskEndTime;
 
@@ -55,6 +58,9 @@
     self.taskMoney = nil;
     self.taskDesc = nil;
     self.taskStepStrings = nil;
+    self.taskRediectUrl = nil;
+    self.taskAppId = nil;
+    
     //self.taskStartTime = nil;
     //self.taskEndTime = nil;
     [super dealloc];
@@ -228,6 +234,8 @@ static CommonTaskList* gInstance = nil;
         task.taskStepStrings = nil;
         task.taskIsLocalIcon = YES;
         task.taskIconUrl = @"tiyanzhongxin_cell_icon";
+        task.taskRediectUrl = nil;
+        task.taskAppId = nil;
         
         [resultTaskList addObject:task];
     }
@@ -245,6 +253,8 @@ static CommonTaskList* gInstance = nil;
         task.taskDesc = [taskDict objectForKey:@"desc"];
         task.taskStepStrings = [taskDict objectForKey:@"steps"];
         task.taskLevel = [taskDict objectForKey:@"level"];
+        task.taskRediectUrl = [taskDict objectForKey:@"rediect_url"];
+        task.taskAppId = [taskDict objectForKey:@"appid"];
         
         NSInteger taskType = [task.taskType intValue];
         

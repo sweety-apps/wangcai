@@ -47,6 +47,8 @@
     
     UIAlertView* _alertLevel;
     UIAlertView* _alertChoujiangeShare;
+    UICustomAlertView* _alertInstallApp;
+    NSString*    _installUrl;
 }
 
 @property (nonatomic,retain) IBOutlet CommonZhanghuYuETableViewCell* zhanghuYuEHeaderCell;
@@ -75,4 +77,8 @@
 
 + (void)setNeedReloadTaskList;
 + (void)setNeedShowChoujiangShare:(int)choujiang;
+
+
+- (IBAction)onClickCancelInstall:(id)sender;
+- (IBAction)onClickInstall:(id)sender;
 @end

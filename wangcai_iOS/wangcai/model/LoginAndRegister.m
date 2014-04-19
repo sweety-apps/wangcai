@@ -300,15 +300,13 @@ static LoginAndRegister* _sharedInstance = nil;
                 _showLimei = 0;
                 _showMopan = 3;
                 _showYoumi = 1;
-                _showMobsmar = 0;
+                _showMobsmar = 3;
                 _showDomob = 0;
-                _showPunchBox = 3;
-                _showMiidi = 3;
+                _showPunchBox = 0;
+                _showMiidi = 0;
                 _showJupeng = 3;
 #endif
 */
-
-                
                 [self initWithDraw:dict];
                 
                 int userLevel = [[dict valueForKey:@"level"] intValue];

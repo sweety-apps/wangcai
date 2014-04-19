@@ -50,6 +50,8 @@ DEF_SINGLETON( AppBoard_iPhone )
     _remoteNotificationTitle = nil;
     _remoteNotificationUrl = nil;
     
+    float fl = [UIScreen mainScreen].scale;
+    
     if ( [[LoginAndRegister sharedInstance] isInReview] ) {
         _adView = [[YouMiView alloc] initWithContentSizeIdentifier:YouMiBannerContentSizeIdentifier320x50 delegate:nil];
         _adView.indicateTranslucency = YES;
@@ -82,9 +84,9 @@ ON_SIGNAL2( BeeUIBoard, signal )
 
 		MenuBoard_iPhone * menu = [MenuBoard_iPhone sharedInstance];
 		menu.parentBoard = self;
-        
-		[self.view addSubview:menu.view];
 
+		[self.view addSubview:menu.view];
+        
 		BeeUIRouter * router = [BeeUIRouter sharedInstance];
 		router.parentBoard = self;
 		[self.view addSubview:router.view];

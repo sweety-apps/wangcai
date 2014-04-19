@@ -130,6 +130,11 @@ NSString * macaddress()
     return [[adid copy] autorelease];
 }
 
++ (NSString*) getIDFV {
+    NSString *idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    return [[idfv copy] autorelease];
+}
+
 + (NSString*) getMACAddress {
     NSString* macAddr = macaddress();
     

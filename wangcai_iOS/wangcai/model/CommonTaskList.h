@@ -43,6 +43,9 @@
 @property (nonatomic,retain) NSNumber* taskMoney;
 @property (nonatomic,assign) BOOL taskIsLocalIcon;
 @property (nonatomic, assign) NSNumber* taskLevel;
+@property (nonatomic, retain) NSString* taskRediectUrl;
+@property (nonatomic, retain) NSString* taskAppId;
+
 //@property (nonatomic,retain) NSNumber* taskStartTime;
 //@property (nonatomic,retain) NSNumber* taskEndTime;
 

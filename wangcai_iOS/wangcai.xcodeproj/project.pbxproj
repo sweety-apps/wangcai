@@ -77,6 +77,8 @@
 		7126B88918E557E20060ECB7 /* app_tip_miidi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7126B88718E557E20060ECB7 /* app_tip_miidi@2x.png */; };
 		7126B88B18E559950060ECB7 /* share_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7126B88A18E559950060ECB7 /* share_cell_icon@2x.png */; };
 		7126B88C18E559950060ECB7 /* share_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7126B88A18E559950060ECB7 /* share_cell_icon@2x.png */; };
+		7127C5FC18FBA85400D53118 /* AppInstallTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7127C5FB18FBA85400D53118 /* AppInstallTipView.xib */; };
+		7127C5FD18FBA85400D53118 /* AppInstallTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7127C5FB18FBA85400D53118 /* AppInstallTipView.xib */; };
 		712D019C18D96DD100A84228 /* pay_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019A18D96DD100A84228 /* pay_bkg@2x.png */; };
 		712D019D18D96DD100A84228 /* pay_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019A18D96DD100A84228 /* pay_bkg@2x.png */; };
 		712D019E18D96DD100A84228 /* pay_hot_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */; };
@@ -202,6 +204,10 @@
 		713555B9188D17810007784A /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71355558188D17800007784A /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
 		713555BA188D17810007784A /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355559188D17800007784A /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
 		713555BB188D17810007784A /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355559188D17800007784A /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
+		7147969018FBE21100A6EB45 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 7147968F18FBE21100A6EB45 /* 58.png */; };
+		7147969118FBE21100A6EB45 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 7147968F18FBE21100A6EB45 /* 58.png */; };
+		7147969318FBE29800A6EB45 /* 80.png in Resources */ = {isa = PBXBuildFile; fileRef = 7147969218FBE29800A6EB45 /* 80.png */; };
+		7147969418FBE29800A6EB45 /* 80.png in Resources */ = {isa = PBXBuildFile; fileRef = 7147969218FBE29800A6EB45 /* 80.png */; };
 		7153FCF118CDB8130026B4B5 /* libZhiYCM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7153FCE818CDB8130026B4B5 /* libZhiYCM.a */; };
 		7153FCF218CDB8130026B4B5 /* libZhiYCM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7153FCE818CDB8130026B4B5 /* libZhiYCM.a */; };
 		7153FCF318CDB8130026B4B5 /* zhimeng.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7153FCF018CDB8130026B4B5 /* zhimeng.bundle */; };
@@ -1496,6 +1502,7 @@
 		7126B88218E544370060ECB7 /* MiidiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiidiManager.h; sourceTree = "<group>"; };
 		7126B88718E557E20060ECB7 /* app_tip_miidi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_miidi@2x.png"; sourceTree = "<group>"; };
 		7126B88A18E559950060ECB7 /* share_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_cell_icon@2x.png"; sourceTree = "<group>"; };
+		7127C5FB18FBA85400D53118 /* AppInstallTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppInstallTipView.xib; sourceTree = "<group>"; };
 		712D019A18D96DD100A84228 /* pay_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_bkg@2x.png"; sourceTree = "<group>"; };
 		712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_hot_bkg@2x.png"; sourceTree = "<group>"; };
 		712D01A618D9703600A84228 /* UIPayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPayButton.h; sourceTree = "<group>"; };
@@ -1587,6 +1594,8 @@
 		71355557188D17800007784A /* ShareSDKiPhoneDefaultShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneDefaultShareViewUI.framework; sourceTree = "<group>"; };
 		71355558188D17800007784A /* ShareSDKiPhoneSimpleShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPhoneSimpleShareViewUI.bundle; sourceTree = "<group>"; };
 		71355559188D17800007784A /* ShareSDKiPhoneSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneSimpleShareViewUI.framework; sourceTree = "<group>"; };
+		7147968F18FBE21100A6EB45 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
+		7147969218FBE29800A6EB45 /* 80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 80.png; sourceTree = "<group>"; };
 		7153FCE818CDB8130026B4B5 /* libZhiYCM.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZhiYCM.a; sourceTree = "<group>"; };
 		7153FCE918CDB8130026B4B5 /* SiWeiAdConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiWeiAdConfig.h; sourceTree = "<group>"; };
 		7153FCEA18CDB8130026B4B5 /* SiWeiBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiWeiBannerView.h; sourceTree = "<group>"; };
@@ -3466,6 +3475,7 @@
 				F3FEC52A1891479C00A297C8 /* UIGetRedBagAlertView.m */,
 				F394DBEA18B8D705003311CD /* UILevelUpAlertView.h */,
 				F394DBEB18B8D705003311CD /* UILevelUpAlertView.m */,
+				7127C5FB18FBA85400D53118 /* AppInstallTipView.xib */,
 			);
 			name = common;
 			path = view_iPhone/common;
@@ -3641,9 +3651,11 @@
 		F3F186D818543A410098C852 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7147969218FBE29800A6EB45 /* 80.png */,
 				712DA7D118C85978008414D4 /* KeychainAccessGroups.plist */,
 				71355516188D169D0007784A /* PushConfig.plist */,
 				A6C1A634188942F70011FBBC /* icon_120_120.png */,
+				7147968F18FBE21100A6EB45 /* 58.png */,
 				F3F186D918543A410098C852 /* wangcai-Info.plist */,
 				F3F186DA18543A410098C852 /* InfoPlist.strings */,
 				F3F186DD18543A410098C852 /* main.m */,
@@ -5076,6 +5088,7 @@
 				F3FEC522189146E100A297C8 /* redbag_mb_btn_pressed@2x.png in Resources */,
 				71A9C7DA18B8D884006119F6 /* exchange_btn2@2x.png in Resources */,
 				F335A03218882F8000C1E636 /* Default-568h@2x.png in Resources */,
+				7147969118FBE21100A6EB45 /* 58.png in Resources */,
 				71355599188D17800007784A /* ShareSDKLocalizable.strings in Resources */,
 				712DA7D918C8616E008414D4 /* qq_input@2x.png in Resources */,
 				F335A03318882F8000C1E636 /* grayArrow@2x.png in Resources */,
@@ -5159,6 +5172,7 @@
 				F335A06118882F8000C1E636 /* main_menu_title_text@2x.png in Resources */,
 				F335A06218882F8000C1E636 /* head_left_menu_btn@2x.png in Resources */,
 				F335A06318882F8000C1E636 /* choujiang_baojie@2x.png in Resources */,
+				7147969418FBE29800A6EB45 /* 80.png in Resources */,
 				7194FE4918EA9F37004A303B /* jupeng@2x.png in Resources */,
 				F335A06418882F8000C1E636 /* yue_1@2x.png in Resources */,
 				F335A06518882F8000C1E636 /* testIconSetting222@2x.jpg in Resources */,
@@ -5194,6 +5208,7 @@
 				F335A07518882F8000C1E636 /* apptask_rmb@2x.png in Resources */,
 				F335A07618882F8000C1E636 /* Default.png in Resources */,
 				F335A07718882F8000C1E636 /* WCMainPageBoard_iPhone.xml in Resources */,
+				7127C5FD18FBA85400D53118 /* AppInstallTipView.xib in Resources */,
 				F335A07818882F8000C1E636 /* invite_seg_unsel_sel@2x.png in Resources */,
 				71008A4018915E0900689E2F /* nav_Header2@2x.png in Resources */,
 				F335A07918882F8000C1E636 /* zhanghuyue@2x.png in Resources */,
@@ -5444,11 +5459,13 @@
 				A60C5861186FF8A30068425C /* setting_message@2x.PNG in Resources */,
 				713555B8188D17810007784A /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
 				7112B1B518B3203F0067F3E8 /* PhoneValidationController.xib in Resources */,
+				7147969018FBE21100A6EB45 /* 58.png in Resources */,
 				F31F951A18AF623B0035792B /* mywangcai_bingdphone_btn@2x.png in Resources */,
 				A60C5867186FF8A30068425C /* splash-slogan@2x.png in Resources */,
 				A60C5864186FF8A30068425C /* splash-bg@2x.png in Resources */,
 				7112720D18B330580068C33E /* phone_validation_normal@2x.png in Resources */,
 				F394DBC818B89841003311CD /* mywangcai_dog_14@2x.png in Resources */,
+				7127C5FC18FBA85400D53118 /* AppInstallTipView.xib in Resources */,
 				71008A3C189108D900689E2F /* app_tip_youmi@2x.png in Resources */,
 				A60C5840186FF8A30068425C /* BindTipsDuihao.png in Resources */,
 				A60C588A186FF8A30068425C /* head_top_part@2x.png in Resources */,
@@ -5530,6 +5547,7 @@
 				F3813D2818753ED400350C27 /* choujiang_x3selected@2x.png in Resources */,
 				F3BD471E187EDFF2009F3673 /* MJRefresh.bundle in Resources */,
 				A60C5855186FF8A30068425C /* menu-icon@2x.png in Resources */,
+				7147969318FBE29800A6EB45 /* 80.png in Resources */,
 				A60C584D186FF8A30068425C /* deal_btn@2x.png in Resources */,
 				A60C5888186FF8A30068425C /* head_left_icon@2x.png in Resources */,
 				A6FEE288187D9AB800E5AF3E /* blackArrow@2x.png in Resources */,
@@ -6613,6 +6631,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -6714,6 +6733,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "594D6C65-DB25-4AAA-8A31-CBF232EEFA04";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "armv7 armv7s arm64";

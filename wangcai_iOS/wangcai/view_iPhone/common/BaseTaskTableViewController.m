@@ -29,6 +29,8 @@
 #import "UILevelUpAlertView.h"
 #import "ECManager.h"
 #import "EcomConfig.h"
+#import "Common.h"
+#import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDK.h>
 
 static BOOL gNeedReloadTaskList = NO;
@@ -79,6 +81,8 @@ static int  gChoujiang = 0;
     _levelChange = 0;
     _alertLevel = nil;
     _alertChoujiangeShare = nil;
+    _alertInstallApp = nil;
+    _installUrl = nil;
     
     self.staticCells = [NSMutableArray array];
     _bounceHeader = NO;
@@ -534,6 +538,94 @@ static int  gChoujiang = 0;
     return 74.f;
 }
 
+- (void) onClickInstallApp: (CommonTaskInfo* ) task {
+    if ( _alertInstallApp != nil ) {
+        [_alertInstallApp release];
+    }
+    
+    
+    if ( _installUrl != nil ) {
+        [_installUrl release];
+        _installUrl = nil;
+    }
+    
+    UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"AppInstallTipView" owner:self options:nil] lastObject] autorelease];
+    view.layer.masksToBounds = YES;
+    view.layer.cornerRadius = 10.0;
+    view.layer.borderWidth = 0.0;
+    view.layer.borderColor = [[UIColor whiteColor] CGColor];
+        
+    UIColor *color = [UIColor colorWithRed:179.0/255 green:179.0/255 blue:179.0/255 alpha:1];
+        
+    UIButton* btn = (UIButton*)[view viewWithTag:11];
+    [btn.layer setBorderWidth:0.5];
+    [btn.layer setBorderColor:[color CGColor]];
+    [btn setTitleColor:color forState:UIControlStateHighlighted];
+        
+    btn = (UIButton*)[view viewWithTag:12];
+    [btn.layer setBorderWidth:0.5];
+    [btn.layer setBorderColor:[color CGColor]];
+    [btn setTitleColor:color forState:UIControlStateHighlighted];
+    
+    NSString* text = [NSString stringWithFormat:@"安装%@赚取%.1f元红包", task.taskTitle, [task.taskMoney intValue]*1.0/100];
+    
+    NSString* text2 = [NSString stringWithFormat:@"提示：%@", task.taskIntro];
+    ((UILabel*)[view viewWithTag:21]).text = text;
+    ((UILabel*)[view viewWithTag:22]).text = text2;
+    
+    NSRange range = [task.taskRediectUrl rangeOfString:@"?"];
+    NSString* urlHeader = nil;
+    if ( range.length == 0 ) {
+        // 没有?
+        urlHeader = [NSString stringWithFormat:@"%@?", task.taskRediectUrl];
+    } else {
+        // 有?
+        urlHeader = [NSString stringWithFormat:@"%@&", task.taskRediectUrl];
+    }
+    
+    NSString* deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
+    NSString* mac = [Common getMACAddress];
+    NSString* idfa = [Common getIDFAAddress];
+    NSString* idfv = [Common getIDFV];
+    
+    NSString* md5param = [NSString stringWithFormat:@"appid=%@&deviceid=%@&idfa=%@&idfv=%@&mac=%@&cf1618a14ef2f600f89092fb3ccd7cf3", task.taskAppId, deviceId, idfa, idfv, mac];
+    
+    const char* cStr = [md5param UTF8String];
+    unsigned char result[16];
+    CC_MD5(cStr, strlen(cStr), result);
+    NSMutableString* hash = [NSMutableString string];
+    for (int i = 0; i < 16; i ++ ) {
+        [hash appendFormat:@"%02x", result[i]];
+    }
+    
+    NSString* param = [NSString stringWithFormat:@"appid=%@&deviceid=%@&idfa=%@&idfv=%@&mac=%@&sign=%@", task.taskAppId, deviceId, idfa, idfv, mac, [hash lowercaseString]];
+    
+    [deviceId release];
+    
+    _installUrl = [[NSString alloc] initWithFormat:@"%@%@", urlHeader, param];
+
+    
+    _alertInstallApp = [[UICustomAlertView alloc]init:view];
+        
+    [_alertInstallApp show];
+}
+
+- (IBAction)onClickCancelInstall:(id)sender {
+    if ( _alertInstallApp != nil ) {
+        [_alertInstallApp hideAlertView];
+    }
+}
+
+- (IBAction)onClickInstall:(id)sender {
+    if ( _alertInstallApp != nil ) {
+        [_alertInstallApp hideAlertView];
+    }
+    
+    // 安装app
+    NSURL* url = [NSURL URLWithString:_installUrl];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -597,8 +689,18 @@ static int  gChoujiang = 0;
                 [[OnlineWallViewController sharedInstance] showWithModal];
             }
                 break;
-            case kTaskTypeInstallWangcai:
             case kTaskTypeIntallApp:
+            {
+                //统计
+                [MobClick event:@"task_list_click_install_app" attributes:@{@"currentpage":@"任务列表"}];
+                
+                if ([task.taskStatus intValue] == 0)
+                {
+                    [self onClickInstallApp:task];
+                }
+            }
+                break;
+            case kTaskTypeInstallWangcai:
             case kTaskTypeCommon:
             {
                 //统计
@@ -770,13 +872,18 @@ static int  gChoujiang = 0;
 
 #pragma mark <OnlineWallViewControllerDelegate>
 
-- (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume Level:(int)levelChange
+- (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume Level:(int)levelChange wangcaiIncome:(int) income
 {
     if ([[LoginAndRegister sharedInstance] checkAndConsumeLevel])
     {
         //TODO:弹窗
     }
-    if (suc && consume > 0)
+    
+    if ( consume == -1 ) {
+        consume = 0;
+    }
+    
+    if (suc && (consume+income) > 0)
     {
         [[CommonTaskList sharedInstance] increaseEarned:consume];
         [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[[CommonTaskList sharedInstance] allMoneyCanBeEarnedInRMBYuan]];
@@ -789,15 +896,17 @@ static int  gChoujiang = 0;
         }
         
         UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
-        [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)consume)/100.f precision:2 ignoreBackZeros:YES]];
+        [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:((float)(consume + income))/100.f precision:2 ignoreBackZeros:YES]];
         [getMoneyAlertView setLevel:3];
         [getMoneyAlertView setTitle:@"获得应用体验红包"];
         [getMoneyAlertView setDelegate:self];
-        [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:consume];
+        [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:(consume + income)];
         [getMoneyAlertView show];
         
-        [[LoginAndRegister sharedInstance] increaseBalance:consume];
+        [[LoginAndRegister sharedInstance] increaseBalance:(consume + income)];
         [self checkBalanceAndAnimateYuE];
+        
+        [self refreshTaskList];
     }
 }
 

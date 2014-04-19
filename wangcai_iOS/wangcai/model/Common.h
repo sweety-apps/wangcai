@@ -14,6 +14,7 @@
 
 + (void) openUrl:(NSString*) url;
 + (NSString*) getIDFAAddress;
++ (NSString*) getIDFV;
 + (NSString*) getMACAddress;
 + (NSString*) getTimestamp;
 + (NSString*) buildURL:(NSString*) url Params:(NSMutableDictionary*) params;
