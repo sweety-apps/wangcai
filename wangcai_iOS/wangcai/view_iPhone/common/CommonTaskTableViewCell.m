@@ -28,6 +28,9 @@
         
         _bottomLineImage.image = [UIImage imageNamed:@"table_view_cell_line"];
         
+        
+        _leftIcon.contentMode = UIViewContentModeScaleToFill;
+        
         //_redLabel.textColor = [UIColor colorWithRed:255.f/255.f green:102.f/255.f blue:0.f/255.f alpha:1.0];
         _redLabel.textColor = RGB(0, 0, 0);
         _redLabel.backgroundColor = [UIColor clearColor];
