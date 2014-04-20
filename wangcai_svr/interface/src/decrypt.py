@@ -1,5 +1,0 @@
-
-
-def decrypt(str):
-    pass
-    
