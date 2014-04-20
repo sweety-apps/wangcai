@@ -621,7 +621,7 @@ static NSUInteger		__identSeed = 1;
 																  attributes:nil
 																	   error:nil];
 			if ( NO == ret )
-				return NO;
+				return nil;
 		}
 		
 		return [fullPath stringByAppendingPathComponent:path];
