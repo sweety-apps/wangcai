@@ -48,6 +48,25 @@
 	<string name="invite_other">邀请好友</string>
 	<string name="the_one_invite_me">谁邀请我</string>
 	<string name="input_code_tip">请输入邀请码</string>
+
+	<string name="duplicate_singin_hint">今天已经签到过了，明天记得来哟</string>
+
+	<string name="phone_bill">手机话费</string>
+	<string name="phone_bill_hint">即时到帐，多重多送</string>
+	<string name="paypal">支付宝</string>
+	<string name="paypal_hint">即时到帐，多重多送</string>
+	<string name="tecent_qbi">腾讯Q币</string>
+	<string name="tecent_qbi_hint">即时到帐，多重多送</string>
+	<string name="recharge">充值</string>
+	
+
+	<string name="exchage">兑换</string>
+	<string name="gift_price_count">价格：%1$d元，剩余：%2$d</string>
+	<string name="jidong_card_50">50元京东商品卡</string>
+
+	<string name="xunlei_white_gold_card">迅雷白金会员月卡</string>
+
+	<string name="usable_balance">可用余额：%1$d元</string>
 	
 	<string name="app_wall_win_title">安装应用获得丰厚奖励</string>
 	<string name="app_wall_win_text">请按应用要求安装并试玩一段时间后(部分要求注册)，返回旺财即可领取红包。部分时间由于网络延迟，红包不能立即到账，请耐心等待。注意：相同的应用只能领取一次奖励，且在在接受任务前已安装的应用不能领取红包。</string>

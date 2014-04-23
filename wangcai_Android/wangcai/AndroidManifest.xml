@@ -29,6 +29,8 @@
         <activity android:name="com.example.wangcai.LotteryActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name="com.example.wangcai.OptionsActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name="com.example.wangcai.WebviewActivity" android:theme="@android:style/Theme.NoTitleBar" />
+        <activity android:name="com.example.wangcai.ExchageGiftActivity" android:theme="@android:style/Theme.NoTitleBar" />
+        <activity android:name="com.example.wangcai.ExtractMoneyActivity" android:theme="@android:style/Theme.NoTitleBar" />
     </application>
 
 </manifest>

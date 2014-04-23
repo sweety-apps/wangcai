@@ -3,7 +3,7 @@
     android:layout_width="360dp"
     android:layout_height="420dp"
     android:orientation="vertical" >
-	
+
 	<LinearLayout
 		android:id="@+id/default_page"
 		android:layout_width="360dp"
