@@ -1,6 +1,4 @@
 package com.example.wangcai;
-
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;

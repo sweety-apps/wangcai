@@ -39,6 +39,9 @@
 	<string name="options">功能设置</string>
 	<string name="help">客服帮助</string>
 	
+
+	<string name="show_complete_task">点击查看已领取的红包</string>
+
 	<string name="level_label">等级：</string>
 	<string name="level_unit">级</string>	
 	<string name="level_privilege_tip">可获得%1$s%%额外的红包</string>
@@ -49,16 +52,48 @@
 	<string name="the_one_invite_me">谁邀请我</string>
 	<string name="input_code_tip">请输入邀请码</string>
 
+	<string name="bind">绑定</string>
+	<string name="cancel">取消</string>
+	<string name="bind_phone">绑定手机</string>
+	<string name="hint_bind_phone">尚未绑定手机，清先绑定手机</string>
+	<string name="china_area">中国地区</string>
+	<string name="input_phone_number_hint">请输入手机号</string>
+	<string name="invlide_phoneNumber_hint">请输入有效的手机号码</string>
+	<string name="bind_phone_limit_hint">一个手机号一个月内最多绑定3台设备，你已绑定了第%d台设备，请谨慎使用剩余机会。</string>
+	<string name="bind_phone_count_down">%1$d秒后重发</string>
+	<string name="hint_send_sms_fail">发送验证短信失败</string>
+	
 	<string name="duplicate_singin_hint">今天已经签到过了，明天记得来哟</string>
 
-	<string name="phone_bill">手机话费</string>
-	<string name="phone_bill_hint">即时到帐，多重多送</string>
-	<string name="paypal">支付宝</string>
-	<string name="paypal_hint">即时到帐，多重多送</string>
-	<string name="tecent_qbi">腾讯Q币</string>
-	<string name="tecent_qbi_hint">即时到帐，多重多送</string>
-	<string name="recharge">充值</string>
+	<string name="user_info_title">填写信息</string>
+	<string name="my_infomation">我的信息</string>
+	<string name="my_infomation_hint">信息越准确，任务越符合你的喜好</string>
+	<string name="sex">性别</string>
+	<string name="male">男</string>
+	<string name="female">女</string>
+	<string name="age">年龄</string>
+	<string name="select_help_hint">请输入你感兴趣的关键字（多选）</string>
+	<string name="userinfo_relaxation_game">休闲游戏</string>
+	<string name="userinfo_rpg_game">升级打宝</string>
+	<string name="userinfo_ebuy">打折促销</string>
+	<string name="userinfo_social_contact">结交朋友</string>
+	<string name="userinfo_travel">旅行生活</string>
+	<string name="userinfo_competitive_game">竞技游戏</string>
+	<string name="userinfo_sport">强身健体</string>
+	<string name="userinfo_beautify">美丽达人</string>
+	<string name="userinfo_confirm">确认并领取1元</string>
+	<string name="hint_select_interest">请选择至少一个兴趣</string>
+	<string name="hint_select_age">请选择年龄</string>
+	<string name="hint_select_sex">请选择性别</string>
 	
+
+	<string name="share_content">分享分享分享分享分享</string>
+
+	<string name="phone_bill">手机话费</string>
+	<string name="paypal">支付宝</string>
+	<string name="tecent_qbi">腾讯Q币</string>
+	<string name="extract_money_hint">即时到帐，多重多送</string>
+	<string name="recharge">充值</string>
 
 	<string name="exchage">兑换</string>
 	<string name="gift_price_count">价格：%1$d元，剩余：%2$d</string>

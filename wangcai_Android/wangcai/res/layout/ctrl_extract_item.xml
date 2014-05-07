@@ -11,7 +11,6 @@
 		 />
 	<TextView 
 		android:id="@+id/type_name"
-		android:text="@string/balance"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@id/type_icon"
@@ -19,7 +18,7 @@
 	/> 
 	<TextView 
 		android:id="@+id/extract_hint"
-		android:text="@string/balance"
+		android:text="@string/extract_money_hint"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/type_name"

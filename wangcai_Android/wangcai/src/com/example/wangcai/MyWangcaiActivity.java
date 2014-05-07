@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MyWangcaiActivity extends Activity {
+public class MyWangcaiActivity extends ManagedActivity {
 	static class ItemInfo
 	{
 		ItemInfo(int nLevel,	int nBkgId,	int nLevelImgId, int nTipImgId)
@@ -47,7 +47,7 @@ public class MyWangcaiActivity extends Activity {
         
         Intent intent = getIntent();
         
-        int nCurrentLevel = intent.getIntExtra(ActivityParams.nLevel, 1);
+        int nCurrentLevel = WangcaiApp.GetInstance().GetUserInfo().GetCurrentLevel();
         InitView(nCurrentLevel);
         AttachEvents();
      }

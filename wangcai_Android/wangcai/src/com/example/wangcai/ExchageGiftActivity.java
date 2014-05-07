@@ -1,34 +1,44 @@
 package com.example.wangcai;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.webkit.WebView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class ExchageGiftActivity extends Activity implements TitleCtrl.TitleEvent {
+public class ExchageGiftActivity extends ManagedActivity implements ExchageGiftItem.ExchageItemEvent {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ctrl_exchage_gift_item);        
+        setContentView(R.layout.activity_exchage_gift);        
 
         InitView();
      }
+    
+
+	public void OnDoExchage(String strItemName) {
+		
+	}
 
 
     private void InitView() {
-    	TitleCtrl titleCtrl = (TitleCtrl)this.findViewById(R.id.title);
-    	titleCtrl.SetEventLinstener(this);
-
-    	Intent intent = getIntent();
-    	String strUrl = intent.getStringExtra(ActivityParams.strUrl);
-    	if (!strUrl.endsWith("")) {
-    	   	WebView webView = (WebView)this.findViewById(R.id.web_view);
-        	webView.loadUrl(strUrl);
-    	}
+    	((Button)this.findViewById(R.id.task_detail)).setOnClickListener(new OnClickListener(){
+    		public void onClick(View v) {
+    			ActivityHelper.ShowDetailActivity(ExchageGiftActivity.this);
+    		}
+    	});
+    	
+    	ViewGroup parentView = (ViewGroup)this.findViewById(R.id.item_list);
+    	AddItem(parentView, "JingDong", R.drawable.gift, "50元京东礼品卡", 50, 32);
+    	AddItem(parentView, "Xunlei", R.drawable.gift, "迅雷白金会员月卡", 10, 32);
     }
 
-    public void OnRequestClose() {
-    	this.finish();
+    private void AddItem(ViewGroup parentView, String strItemName, int nIconId, String strName, int nPrice, int nRemainCount) {
+    	ExchageGiftItem item = new ExchageGiftItem(strItemName);
+    	item.SetItemEventLinstener(this);
+    	View view = item.Create(getApplicationContext(), nIconId, strName, nPrice, nRemainCount);
+    	parentView.addView(view);
     }
 }

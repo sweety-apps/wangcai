@@ -78,19 +78,23 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
   
     
     //将界面滚动到右侧菜单界面，滚动速度设定为-30. 
-    public void scrollToRightView() {  
-        new RightViewScrollTask().execute(-30);  
+    public void scrollToRightView() {
+    	if (m_rightViewLayout != null && m_rightViewLayoutParams != null) {
+    		new RightViewScrollTask().execute(-30);  
+    	}
     }  
     
     //将界面从左侧菜单滚动到内容界面，滚动速度设定为30. 
     public void scrollToContentFromLeftView() {  
-        new LeftViewScrollTask().execute(30);  
+    		new LeftViewScrollTask().execute(30);
     }  
   
     
     //将界面从右侧菜单滚动到内容界面，滚动速度设定为30. 
     public void scrollToContentFromRightView() {  
-        new RightViewScrollTask().execute(30);  
+    	if (m_rightViewLayout != null && m_rightViewLayoutParams != null) {
+    		new RightViewScrollTask().execute(30);
+    	}
     }  
   
     
@@ -235,14 +239,12 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
             }  
             return false;  
         }  
-		*/
-       
+		*/       
         return true;  
     }  
   
     
     //根据手指移动的距离，判断当前用户的滑动意图，然后给slideState赋值成相应的滑动状态值。 
-      
     private void checkSlideState(int moveDistanceX, int moveDistanceY) {  
         if (m_isLeftViewVisible) {  
             if (!m_isSliding && Math.abs(moveDistanceX) >= m_touchSlop && moveDistanceX < 0) {  
@@ -379,7 +381,6 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
         @Override  
         protected Integer doInBackground(Integer... speed) {  
             int rightMargin = m_contentLayoutParams.rightMargin;  
-            int nWidth = m_leftViewLayout.getWidth();
             int nLayoutWidth = m_leftViewLayoutParams.width;
             // 根据传入的速度来滚动界面，当滚动到达边界值时，跳出循环。  
             while (true) {  
@@ -394,7 +395,6 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
                 }  
                 Log.i("doInBackground",  String.format("rightMargin(%d)", rightMargin));
                 publishProgress(rightMargin);  
-                // 为了要有滚动效果产生，每次循环使线程睡眠一段时间，这样肉眼才能够看到滚动动画。  
                 sleep(15);  
             }  
             if (speed[0] > 0) {  
@@ -439,8 +439,7 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
                     leftMargin = 0;  
                     break;  
                 }  
-                publishProgress(leftMargin);  
-                // 为了要有滚动效果产生，每次循环使线程睡眠一段时间，这样肉眼才能够看到滚动动画。  
+                publishProgress(leftMargin);    
                 sleep(15);  
             }  
             if (speed[0] > 0) {  
@@ -465,13 +464,7 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
             m_contentLayout.setLayoutParams(m_contentLayoutParams);  
         }  
     }  
-  
-    
-    //使当前线程睡眠指定的毫秒数。 
-    // 
-    //@param millis 
-    //           指定当前线程睡眠多久，以毫秒为单位 
-      
+ 
     private void sleep(long millis) {  
         try {  
             Thread.sleep(millis);  

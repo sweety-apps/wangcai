@@ -3,13 +3,12 @@ package com.example.wangcai;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class InviteActivity extends Activity implements TitleCtrl.TitleEvent {
+public class InviteActivity extends ManagedActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +32,7 @@ public class InviteActivity extends Activity implements TitleCtrl.TitleEvent {
     	inviteCodeView.setText("http://invite.getwangcai.com/s34sfsdf");
     }
     
-    private void AttachEvents() {
-    	TitleCtrl titleCtrl = (TitleCtrl)this.findViewById(R.id.title);
-    	titleCtrl.SetEventLinstener(this);
-    	
+    private void AttachEvents() {    	
     	final View invitePanel = this.findViewById(R.id.invite_panel);
     	final View inviteCodePanel = this.findViewById(R.id.invite_code_panel);
     	
@@ -80,14 +76,10 @@ public class InviteActivity extends Activity implements TitleCtrl.TitleEvent {
             }
         });
     }
-    
-    
-	public void OnRequestClose() {
-		finish();
-	}
 
     @Override 
     protected void onDestroy() {
+    	super.onDestroy();
     	TitleCtrl titleCtrl = (TitleCtrl)this.findViewById(R.id.title);
     	titleCtrl.SetEventLinstener(null);    	
     }

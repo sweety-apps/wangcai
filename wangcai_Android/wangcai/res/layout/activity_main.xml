@@ -146,6 +146,19 @@
 				android:layout_toLeftOf="@id/remain_taks_balance"
 			/> 
 		 </RelativeLayout>
+		 <LinearLayout android:id="@+id/tasks_list_container"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+     		android:orientation="vertical"
+		   >
+		 </LinearLayout>
+		<TextView 
+			android:id="@+id/show_complete_task"
+			android:text="@string/show_complete_task"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+		/> 
     </LinearLayout>
 
 </com.example.wangcai.SlidingLayout>

@@ -1,19 +1,19 @@
 package com.example.wangcai;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewConfiguration;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 public class TitleCtrl extends FrameLayout {
 
 	public interface TitleEvent{
-		void OnRequestClose();
+		boolean OnRequestClose();	//return true表示close
 	}
 	
     public TitleCtrl(Context context) {
@@ -22,8 +22,21 @@ public class TitleCtrl extends FrameLayout {
      }
     public TitleCtrl(Context context, AttributeSet attrs) {  
         super(context, attrs);  
-        
+
         DoInit(context);
+ 
+        TypedArray typeArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.TitleCtrl, 0, 0);
+        int nIndexCount = typeArray.getIndexCount();  
+        for (int i = 0; i < nIndexCount; i++) {  
+            int attr = typeArray.getIndex(i);  
+            switch (attr) {  
+	            case R.styleable.TitleCtrl_titleText:
+	            	String strText = typeArray.getString(attr);
+	            	TextView titleText = (TextView)this.findViewById(R.id.titile_text);
+	            	titleText.setText(strText);
+	            	break;
+            }
+        }
     }  
     public TitleCtrl(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);  
@@ -31,6 +44,7 @@ public class TitleCtrl extends FrameLayout {
         DoInit(context);
     }  
   
+
     private void DoInit(Context context) {
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
         inflater.inflate(R.layout.ctrl_title, this);
@@ -41,21 +55,37 @@ public class TitleCtrl extends FrameLayout {
 	    	returnButton.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) {
 	            	if (m_eventLinsterner != null) {
-	            		m_eventLinsterner.OnRequestClose();
+	            		if (m_eventLinsterner.OnRequestClose()) {
+							Finish();
+						}
 	            	}
+					else {
+						Finish();
+					}
 	            }
 	        });
     	}    		
     }
+	
+	private void Finish() {
+		Activity ownerActivity = null;
+		Context context = getContext();
+		if (context != null && context instanceof Activity)
+		{
+			ownerActivity = (Activity)context;
+		}
+		if (ownerActivity != null) {
+			ownerActivity.finish();
+		}
+		m_eventLinsterner = null;
+	}
 
     public boolean SetEventLinstener(TitleEvent eventLinstener)
     {
-    	m_eventLinsterner = eventLinstener;
-    	
+    	m_eventLinsterner = eventLinstener;    	
     	return true;    	
     }
  
 
-    
-    private TitleEvent m_eventLinsterner;
+    private TitleEvent m_eventLinsterner = null;
 }

@@ -1,12 +1,10 @@
 package com.example.wangcai;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 
- public class WebviewActivity extends Activity implements TitleCtrl.TitleEvent{
+ public class WebviewActivity extends ManagedActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,19 +15,18 @@ import android.webkit.WebView;
 
 
     private void InitView() {
-    	TitleCtrl titleCtrl = (TitleCtrl)this.findViewById(R.id.title);
-    	titleCtrl.SetEventLinstener(this);
-
+	   	WebView webView = (WebView)this.findViewById(R.id.web_view);
+	   	webView.addJavascriptInterface(this, "ViewObject");
+	   	
     	Intent intent = getIntent();
-    	String strUrl = intent.getStringExtra(ActivityParams.strUrl);
-    	if (!strUrl.endsWith("")) {
-    	   	WebView webView = (WebView)this.findViewById(R.id.web_view);
+    	String strUrl = intent.getStringExtra("URL");
+    	if (strUrl != null && !strUrl.endsWith("")) {
         	webView.loadUrl(strUrl);
     	}
+    	
+    	
+    	
     }
 
-    public void OnRequestClose() {
-    	this.finish();
-    }
     
 }

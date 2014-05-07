@@ -1,11 +1,13 @@
 package com.example.wangcai;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.webkit.WebView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class ExtractMoneyActivity extends Activity implements TitleCtrl.TitleEvent {
+public class ExtractMoneyActivity extends ManagedActivity implements ExtraItem.ExtractItemEvent{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,19 +18,27 @@ public class ExtractMoneyActivity extends Activity implements TitleCtrl.TitleEve
      }
 
 
-    private void InitView() {
-    	TitleCtrl titleCtrl = (TitleCtrl)this.findViewById(R.id.title);
-    	titleCtrl.SetEventLinstener(this);
-
-    	Intent intent = getIntent();
-    	String strUrl = intent.getStringExtra(ActivityParams.strUrl);
-    	if (!strUrl.endsWith("")) {
-    	   	WebView webView = (WebView)this.findViewById(R.id.web_view);
-        	webView.loadUrl(strUrl);
-    	}
+    public void OnDoExtract(String strItemName) {
+    	
     }
 
-    public void OnRequestClose() {
-    	this.finish();
+    private void InitView() {
+    	((Button)this.findViewById(R.id.task_detail)).setOnClickListener(new OnClickListener(){
+    		public void onClick(View v) {
+    			ActivityHelper.ShowDetailActivity(ExtractMoneyActivity.this);
+    		}
+    	});
+    	
+    	ViewGroup parentView = (ViewGroup)this.findViewById(R.id.item_list);
+    	AddItem(parentView, "PhoneBill", R.drawable.extract_phone, "手机话费");
+    	AddItem(parentView, "AliPay", R.drawable.extract_alipay, "支付宝");
+    	AddItem(parentView, "Qbi", R.drawable.extract_qbi, "腾讯Q币");
+    }
+
+    private void AddItem(ViewGroup parentView, String strItemName, int nIconId, String strName) {
+    	ExtraItem item = new ExtraItem(strItemName);
+    	item.SetItemEventLinstener(this);
+    	View view = item.Create(getApplicationContext(), nIconId, strName);
+    	parentView.addView(view);
     }
 }

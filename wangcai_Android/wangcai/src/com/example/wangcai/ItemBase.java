@@ -15,7 +15,7 @@ public class ItemBase implements View.OnClickListener{
 		m_viewRoot = null;
 	}
 
-
+	
 	public void SetVisibility(int nVisibility) {
 		if (m_viewRoot != null)	{
 			m_viewRoot.setVisibility(nVisibility);
@@ -52,7 +52,7 @@ public class ItemBase implements View.OnClickListener{
 		return true;
 	}
 	
-	protected String m_strItemName;
-	protected ViewGroup m_viewRoot;
-	protected ItemClickEvent m_clickEventLinstener;
+	protected String m_strItemName = null;
+	protected ViewGroup m_viewRoot = null;
+	protected ItemClickEvent m_clickEventLinstener = null;
 }

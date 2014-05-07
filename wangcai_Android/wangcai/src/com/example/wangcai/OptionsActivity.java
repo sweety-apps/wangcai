@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class OptionsActivity extends Activity implements TitleCtrl.TitleEvent {
+public class OptionsActivity extends ManagedActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,14 +16,7 @@ public class OptionsActivity extends Activity implements TitleCtrl.TitleEvent {
         InitView();
      }
 
-
-    public void OnRequestClose() {
-    	this.finish();
-    }
-    
     private void InitView()
     {
-    	TitleCtrl titleCtrl = (TitleCtrl)this.findViewById(R.id.title);
-    	titleCtrl.SetEventLinstener(this);
     }
 }
