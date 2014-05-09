@@ -124,10 +124,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="19" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fom-rm-A2L">
-                    <rect key="frame" x="36" y="217" width="254" height="49"/>
+                    <rect key="frame" x="32" y="217" width="254" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="点入体验中心">
+                    <state key="normal" image="app_tip_dianru.png">
                         <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -136,10 +136,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gsv-1K-5EH">
-                    <rect key="frame" x="36" y="217" width="254" height="49"/>
+                    <rect key="frame" x="32" y="217" width="254" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="安沃体验中心">
+                    <state key="normal" image="app_tip_anwo.png">
                         <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -273,10 +273,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="59" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EGH-tB-hrG">
-                            <rect key="frame" x="8" y="142" width="254" height="49"/>
+                            <rect key="frame" x="0.0" y="142" width="254" height="49"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="点入体验中心">
+                            <state key="normal" image="app_tip_dianru.png">
                                 <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -285,10 +285,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="60" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NxT-M6-O1R">
-                            <rect key="frame" x="8" y="142" width="254" height="49"/>
+                            <rect key="frame" x="0.0" y="142" width="254" height="49"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="安沃体验中心">
+                            <state key="normal" image="app_tip_anwo.png">
                                 <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -312,9 +312,11 @@
     </objects>
     <resources>
         <image name="app_install_tip.png" width="94" height="19"/>
+        <image name="app_tip_anwo.png" width="254" height="49"/>
         <image name="app_tip_back.png" width="62" height="19"/>
         <image name="app_tip_bkg.png" width="285" height="430"/>
         <image name="app_tip_close.png" width="42" height="42"/>
+        <image name="app_tip_dianru.png" width="254" height="49"/>
         <image name="app_tip_domob.png" width="254" height="49"/>
         <image name="app_tip_miidi.png" width="254" height="49"/>
         <image name="app_tip_mobsmar.png" width="254" height="49"/>

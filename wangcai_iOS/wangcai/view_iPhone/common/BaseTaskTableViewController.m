@@ -460,13 +460,21 @@ static int  gChoujiang = 0;
             {
                 pic = @"package_icon_half";
             }
-            if (moneyInYuan >= 1.0f && moneyInYuan < 2.0f)
+            if (moneyInYuan >= 1.0f && moneyInYuan < 1.5f)
             {
                 pic = @"package_icon_one";
             }
-            if (moneyInYuan >= 2.0f && moneyInYuan < 3.0f)
+            if (moneyInYuan >= 1.5f && moneyInYuan < 2.0f)
+            {
+                pic = @"package_icon_1_5";
+            }
+            if (moneyInYuan >= 2.0f && moneyInYuan < 2.5f)
             {
                 pic = @"package_icon_2";
+            }
+            if (moneyInYuan >= 2.5f && moneyInYuan < 3.0f)
+            {
+                pic = @"package_icon_2_5";
             }
             if (moneyInYuan >= 3.0f && moneyInYuan < 8.0f)
             {
