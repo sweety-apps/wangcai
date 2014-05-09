@@ -72,6 +72,7 @@ typedef enum LoginStatus {
     int        _showMiidi;    // 米迪
     int        _showJupeng;   // 巨朋
     int        _showDianru;   // 点入
+    int        _showAdwo;     // 安沃
     
     int        _inReview;
     
@@ -141,6 +142,7 @@ typedef enum LoginStatus {
 -(BOOL) isShowMiidi;
 -(BOOL) isShowJupeng;
 -(BOOL) isShowDianru;
+-(BOOL) isShowAdwo;
 
 -(BOOL) isInMoreDomob;
 -(BOOL) isInMoreYoumi;
@@ -151,6 +153,7 @@ typedef enum LoginStatus {
 -(BOOL) isInMoreMiidi;
 -(BOOL) isInMoreJupeng;
 -(BOOL) isInMoreDianru;
+-(BOOL) isInMoreAdwo;
 
 -(BOOL) isRecommendDomob;
 -(BOOL) isRecommendYoumi;
@@ -161,6 +164,7 @@ typedef enum LoginStatus {
 -(BOOL) isRecommendMiidi;
 -(BOOL) isRecommendJupeng;
 -(BOOL) isRecommendDianru;
+-(BOOL) isRecommendAdwo;
 
 -(int)  getNoWithDraw;
 -(NSString*) getTipsStrings;

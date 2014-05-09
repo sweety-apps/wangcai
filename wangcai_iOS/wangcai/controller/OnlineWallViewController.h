@@ -86,6 +86,7 @@
 - (IBAction)clickMiidi:(id)sender;
 - (IBAction)clickJupeng:(id)sender;
 - (IBAction)clickDianru:(id)sender;
+- (IBAction)clickAdwo:(id)sender;
 
 - (IBAction)clickHelper:(id)sender;
 
