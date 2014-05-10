@@ -13,6 +13,7 @@
 @end
 
 @implementation MessageViewController
+@synthesize tbView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +28,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    CGRect rect = [[UIScreen mainScreen]bounds];
+    rect.origin.y = 96;
+    rect.size.height -= 96;
+    
+    //[_tableView setHeight:rect.size.height];
+    
+    [tbView setFrame:rect];
 }
 
 - (void)didReceiveMemoryWarning

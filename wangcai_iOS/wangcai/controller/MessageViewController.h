@@ -17,4 +17,5 @@
 
 - (void)setUIStack:(BeeUIStack*) stack;
 
+@property (retain, nonatomic) IBOutlet UITableView* tbView;
 @end

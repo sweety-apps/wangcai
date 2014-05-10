@@ -42,4 +42,10 @@
 
 + (BOOL)isFirstRun;
 
+
+
++ (void)setClickMaxID:(int) mid;
++ (int) getClickMaxID;
+
+
 @end
