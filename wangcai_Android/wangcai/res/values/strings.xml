@@ -13,6 +13,7 @@
 	<string name="recommand_task">推荐任务</string>
 	<string name="remain_task_money">今天还能赚：</string>
 
+	<!--
 	<string name="invite_member_title">填写邀请人</string>
 	<string name="invite_member_tip">与好友一起旺财，填写后领取2元红包</string>
 	<string name="app_wall_title">应用体验中心</string>
@@ -28,7 +29,10 @@
 	<string name="share_title">晒单有奖</string>
 	<string name="share_tip">与好友分享旺财成果</string>
 	<string name="show_complete_tasks">点击查看已经领取的红包</string>
+	-->
+
 	<string name="task_complete">已完成</string>
+
 	
 	<string name="menu">菜单</string>
 	<string name="my_wangcai">我的旺财</string>
@@ -52,18 +56,40 @@
 	<string name="the_one_invite_me">谁邀请我</string>
 	<string name="input_code_tip">请输入邀请码</string>
 
+	<string name="my_level">我的等级</string>
+	<string name="close_button">关闭</string>
+	<string name="loading_text">处理中，请稍后……</string>
+	<string name="cancel_text">取消</string>
+	<string name="ok_text">确定</string>
+	<string name="retry_text">重试</string>
+	<string name="exit_text">重试</string>
+	<string name="attention_text">注意</string>
+
 	<string name="bind">绑定</string>
-	<string name="cancel">取消</string>
 	<string name="bind_phone">绑定手机</string>
-	<string name="hint_bind_phone">尚未绑定手机，清先绑定手机</string>
 	<string name="china_area">中国地区</string>
-	<string name="input_phone_number_hint">请输入手机号</string>
-	<string name="invlide_phoneNumber_hint">请输入有效的手机号码</string>
-	<string name="bind_phone_limit_hint">一个手机号一个月内最多绑定3台设备，你已绑定了第%d台设备，请谨慎使用剩余机会。</string>
+	<string name="hint_bind_phone">尚未绑定手机，请先绑定手机</string>
+	<string name="hint_input_phone_number">请输入手机号</string>
+	<string name="hint_invlide_phoneNumber">请输入有效的手机号码</string>
+	<string name="hint_bind_phone_limit">一个手机号一个月内最多绑定3台设备，你已绑定了第%d台设备，请谨慎使用剩余机会。</string>
 	<string name="bind_phone_count_down">%1$d秒后重发</string>
 	<string name="hint_send_sms_fail">发送验证短信失败</string>
+	<string name="hint_invite_captcha">请输入5位数的验证码</string>
+	<string name="hint_verifying_captcha">正在检验验证码……</string>
+	<string name="hint_verify_captcha_fail">验证码错误，请重新输入</string>
+	<string name="hint_invlide_invite_code">请输入正确的邀请码</string>
+	<string name="hint_bind_invite_code_succeed">绑定邀请人成功</string>
+	<string name="hint_bind_invite_code_fail">绑定邀请人失败</string>
 	
-	<string name="duplicate_singin_hint">今天已经签到过了，明天记得来哟</string>
+
+	<string name="resend">重新发送</string>
+	
+	<string name="hint_over_5_yuan_bind_phone">您已积累了超过5元红包，为了红包的安全建议立即绑定手机号。</string>
+	<string name="hint_sward_share">恭喜您中奖，快来分享给朋友们吧！</string>
+	<string name="hint_update_wangcai">发现新版旺财！更安全更好赚，请立即升级。</string>
+	<string name="hint_network_error">当前网络不可用，请检查网络连接</string>
+	<string name="hint_new_install_award">新装旺财获得红包</string>
+	<string name="hint_duplicate_signin">今天已经签到过了，明天记得来哟</string>
 
 	<string name="user_info_title">填写信息</string>
 	<string name="my_infomation">我的信息</string>
@@ -85,9 +111,11 @@
 	<string name="hint_select_interest">请选择至少一个兴趣</string>
 	<string name="hint_select_age">请选择年龄</string>
 	<string name="hint_select_sex">请选择性别</string>
-	
 
-	<string name="share_content">分享分享分享分享分享</string>
+	<string name="task_level_limit_hint">该任务需要等级达到%1$d级才能进行</string>
+
+	<string name="wangcai_share">旺财分享</string>
+	<string name="share_content">我用旺财赚了%1$f元，你也可以的，填我的邀请码%2$s可领取2元红包。旺财下载地址:%3$s</string>
 
 	<string name="phone_bill">手机话费</string>
 	<string name="paypal">支付宝</string>

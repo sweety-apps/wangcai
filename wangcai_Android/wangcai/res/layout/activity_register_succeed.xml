@@ -5,19 +5,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-	<com.example.wangcai.TitleCtrl
+	<com.example.wangcai.ctrls.TitleCtrl
 		android:id="@+id/title"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" 
 		wangcai:titleText ="@string/bind_phone" />
 
-	<ImageView
-	    android:src="@drawable/register_succeed"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content" />
-	<ImageButton 
-	    android:id="@+id/go_mainpage_button"
-	    android:src="@drawable/register_succeed_goback"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content" />
+	<RelativeLayout 
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" >
+		<ImageView
+		    android:src="@drawable/register_succeed"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content" />
+		<ImageButton 
+		    android:id="@+id/go_mainpage_button"
+		    android:src="@drawable/register_succeed_goback"
+		    android:layout_centerInParent="true"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content" />
+	</RelativeLayout>
 </LinearLayout>

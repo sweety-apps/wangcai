@@ -12,7 +12,7 @@ public class Request_ResendCaptcha extends Requester{
 			mapRequestInfo.put("token", m_strOldToken);
 			mapRequestInfo.put("code_length", "5");	//todo втвх?
 			
-			m_requestInfo = new Requester.RequestInfo(Config.GetBindPhoneUrl(), "", mapRequestInfo);
+			m_requestInfo = new Requester.RequestInfo(Config.GetResendCaptchaUrl(), "", mapRequestInfo);
 		}
 		return m_requestInfo;
 	}

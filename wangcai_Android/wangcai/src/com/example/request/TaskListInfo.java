@@ -41,7 +41,28 @@ public class TaskListInfo {
 		}
 		return m_listTaskInfos.get(nIndex);
 	}
-
+	public TaskInfo GetTaskInfoByType(int nType) {
+		for(TaskInfo info : m_listTaskInfos) {
+			if (nType == info.m_nTaskType) {
+				return info;
+			}
+		}
+		return null;
+	}
+	public int GetRemainMoneyToday() {
+		int nMoney = 0;
+		for(TaskInfo info : m_listTaskInfos) {
+			if (!IsComplete(info)) {
+				nMoney = info.m_nMoney;
+			}
+		}		
+		return nMoney;
+	}
+	   
+	public static boolean IsComplete(TaskInfo taskInfo) {
+		return taskInfo.m_nTaskStatus != 0;
+	}
+			
 	
 	private ArrayList<TaskInfo> m_listTaskInfos = new ArrayList<TaskInfo>();
 }

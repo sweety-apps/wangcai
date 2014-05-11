@@ -11,7 +11,7 @@ public class Request_VerifyCaptcha  extends Requester{
 			Map<String, String> mapRequestInfo = new HashMap<String, String>();
 			mapRequestInfo.put("token", m_strToken);
 			mapRequestInfo.put("sms_code", m_strCaptcha);
-			m_requestInfo = new Requester.RequestInfo(Config.GetBindPhoneUrl(), "", mapRequestInfo);
+			m_requestInfo = new Requester.RequestInfo(Config.GetVerifyCaptchaUrl(), "", mapRequestInfo);
 		}
 		return m_requestInfo;
 	}

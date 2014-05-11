@@ -10,13 +10,14 @@ import com.example.request.Requester;
 import com.example.request.RequesterFactory;
 import com.example.request.TaskListInfo;
 import com.example.request.UserInfo;
+import com.example.wangcai.base.SystemInfo;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;
 
 public class WangcaiApp implements RequestManager.IRequestManagerCallback{
 	public interface WangcaiAppEvent {
-		void OnLoginComplete(int nResult);
+		void OnLoginComplete(int nResult, String strMsg);
 		void OnUserInfoUpdate();
 	}
 	public class TaskInfo {
@@ -37,7 +38,7 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback{
 	public void Initialize(Context context) {
 		m_AppContext =  context;
 		
-		Config.Initlialize(Config.EnvType.EnvType_Dev);
+		Config.Initlialize(Config.EnvType.EnvType_Formal);
 		
 		SystemInfo.Initialize(context);
 		
@@ -75,7 +76,7 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback{
 			@SuppressWarnings("unchecked")
 			ArrayList<WangcaiAppEvent> listEventLinsteners = (ArrayList<WangcaiAppEvent>) m_listEventLinsteners.clone();
 			for (WangcaiAppEvent eventLinstener: listEventLinsteners) {
-				eventLinstener.OnLoginComplete(loginRequester.GetResult());
+				eventLinstener.OnLoginComplete(loginRequester.GetResult(), loginRequester.GetMsg());
 			}
 		}
 	}
@@ -119,6 +120,7 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback{
 	}
 	public void UpdateUserInfo(UserInfo  userInfo) {
 		m_userInfo = userInfo;
+		@SuppressWarnings("unchecked")
 		ArrayList<WangcaiAppEvent> listEventLinsteners = (ArrayList<WangcaiAppEvent>) m_listEventLinsteners.clone();
 		for (WangcaiAppEvent eventLinstener: listEventLinsteners) {
 			eventLinstener.OnUserInfoUpdate();

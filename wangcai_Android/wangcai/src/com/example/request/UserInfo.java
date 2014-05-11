@@ -6,7 +6,7 @@ public class UserInfo {
 		return m_strPhoneNumber;
 	}
 	public void SetPhoneNumber(String strPhone) {
-		m_strPhone = strPhone;
+		m_strPhoneNumber = strPhone;
 	}
 	public void SetCurrentLevel(int nLevel) {
 		m_nCurrentLevel = nLevel;
@@ -95,12 +95,26 @@ public class UserInfo {
 	public boolean HasBindPhone() {
 		return !Util.IsEmptyString(m_strPhoneNumber);
 	}
+	public String GetInviteTaskUrl() {
+		if (Util.IsEmptyString(m_strInviteCode)) {
+			return null;
+		}
+		String strInviteUrl = String.format(Config.GetInviteTaskUrl(), m_strInviteCode);
+		return strInviteUrl;
+	}
+	public String GetInviteUrl() {
+		if (Util.IsEmptyString(m_strInviteCode)) {
+			return null;
+		}
+		String strInviteUrl = String.format(Config.GetInviteUrl(), m_strInviteCode);
+		return strInviteUrl;
+	}
 	//data member
 	private String m_strPhoneNumber;
 
 	private int m_nNextLevel = 0;
-	private String m_strInviter;		
-	private String m_strInviteCode;
+	private String m_strInviter = "";
+	private String m_strInviteCode = "";
 	
 	private int m_nUserId = 0;
 	private int m_nBalance = 0;
@@ -113,5 +127,4 @@ public class UserInfo {
 	private int m_nCurrentExperience = 0;
 	private int m_nNextLevelExperience = 0;
 	private String m_strDeviceId;
-	private String m_strPhone;
 }

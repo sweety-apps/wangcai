@@ -14,7 +14,7 @@ public class Request_BindPhone extends Requester{
 		if (m_requestInfo == null) {
 			Map<String, String> mapRequestInfo = new HashMap<String, String>();
 			mapRequestInfo.put("phone", m_strPhoneNumber);
-			m_requestInfo = new Requester.RequestInfo(Config.GetBindPhoneUrl(), "", mapRequestInfo);
+			m_requestInfo = new Requester.RequestInfo(Config.GetSendCaptchaUrl(), "", mapRequestInfo);
 		}
 		return m_requestInfo;
 	}

@@ -148,6 +148,18 @@
 					android:layout_height="wrap_content" 	 
 					android:layout_alignTop="@id/icon41" 
 					android:layout_toRightOf="@id/icon43"/>
+
+				<ImageView
+					android:id="@+id/select_cover"
+					android:src="@drawable/choujiang_border_moving"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:visibility="gone" />
+				<ImageView
+					android:id="@+id/select_border"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:visibility="gone"   />
 		  </RelativeLayout>
 	</FrameLayout>
 	<ImageView

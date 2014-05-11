@@ -125,8 +125,10 @@ public class RequestManager {
                 HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory()); 
                 HttpsURLConnection.setDefaultHostnameVerifier(new HttpsHelper.MyHostnameVerifier());
 				URL url = new URL(requestInfo.m_strUrl);
-                HttpsURLConnection connection = (HttpsURLConnection)url.openConnection(); 
-                if (!Util.IsEmptyString(requestInfo.m_strCookie)) {
+
+				HttpsURLConnection connection = (HttpsURLConnection)url.openConnection(); 
+				connection.setConnectTimeout(10 * 1000);
+				if (!Util.IsEmptyString(requestInfo.m_strCookie)) {
                 	connection.addRequestProperty("Cookie", requestInfo.m_strCookie);
                 }else {//todo
                 	connection.addRequestProperty("Cookie", GetCookie());

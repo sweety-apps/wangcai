@@ -13,6 +13,7 @@ public class RequesterFactory {
 		RequestType_ExtractPhoneBill,	//话费充值
 		RequestType_ExtractQBi,			//Q币充值
 		RequestType_ExtractAliPay,		//支付宝充值
+		RequestType_UpdateInviter,		//跟新邀请人
 	}
 	
 
@@ -46,8 +47,14 @@ public class RequesterFactory {
 		case RequestType_ExtractAliPay:
 			req = new Request_ExtractAliPay();
 			break;
+		case RequestType_VerifyCaptcha:
+			req = new Request_VerifyCaptcha();
+			break;
+		case RequestType_UpdateInviter:
+			req = new Request_UpdateInviter();
+			break;
 		default:
-				return req;
+			return req;
 		}
 		req.SetRequestType(enumRequestType);
 		return req;

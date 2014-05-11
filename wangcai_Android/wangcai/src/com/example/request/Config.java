@@ -25,13 +25,29 @@ public class Config {
 			return "https://dev.getwangcai.com/0/task/check-in";
 		}		
 	}
-	public static String GetBindPhoneUrl() {
+	public static String GetSendCaptchaUrl() {
 		if (m_enumEvnType == EnvType.EnvType_Dev) {
 			return "https://dev.getwangcai.com/0/account/bind_phone";
 		}
 		else {
 			return "https://ssl.getwangcai.com/0/account/bind_phone";			
 		}
+	}
+	public static String GetResendCaptchaUrl() {
+		if (m_enumEvnType == EnvType.EnvType_Dev) {
+			return "https://dev.getwangcai.com/0/sms/resend_sms_code";
+		}
+		else {
+			return "https://ssl.getwangcai.com/0/sms/resend_sms_code";			
+		}		
+	}
+	public static String GetVerifyCaptchaUrl() {
+		if (m_enumEvnType == EnvType.EnvType_Dev) {
+			return "https://dev.getwangcai.com/0/account/bind_phone_confirm";
+		}
+		else {
+			return "https://ssl.getwangcai.com/0/account/bind_phone_confirm";			
+		}		
 	}
 	public static String GetUserInfoUrl() {
 		if (m_enumEvnType == EnvType.EnvType_Dev) {
@@ -68,6 +84,7 @@ public class Config {
 			return "https://ssl.getwangcai.com/0/order/alipay";			
 		}
 	}
+	
 	public static String GetExtractPhoneBillUrl() {
 		if (m_enumEvnType == EnvType.EnvType_Dev) {
 			return "https://dev.getwangcai.com/0/order/phone_pay";
@@ -76,6 +93,7 @@ public class Config {
 			return "https://ssl.getwangcai.com/0/order/phone_pay";			
 		}
 	}
+	
 	public static String GetExtractQbiUrl() {
 		if (m_enumEvnType == EnvType.EnvType_Dev) {
 			return "https://dev.getwangcai.com/0/order/qb_pay";
@@ -84,7 +102,16 @@ public class Config {
 			return "https://ssl.getwangcai.com/0/order/qb_pay";			
 		}
 	}
+
 	
+	public static String GetInviteUrl() {
+		return "http://invite.getwangcai.com/index.php?code=%s";				
+	}
+	
+
+	public static String GetInviteTaskUrl() {
+		return "http://www.getwangcai.com/?code=%s&name=wangcai";				
+	}
 	
 	
 	

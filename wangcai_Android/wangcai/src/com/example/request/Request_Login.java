@@ -5,7 +5,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.example.wangcai.SystemInfo;
+import com.example.wangcai.base.SystemInfo;
 
 
 public class Request_Login extends Requester{	
@@ -16,7 +16,7 @@ public class Request_Login extends Requester{
 	public Requester.RequestInfo GetRequestInfo() {
 		if (m_requestInfo == null) {
 			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("idfa", "599F9C00-92DC-4B5C-9464-7971F01F8370");
+			mapRequestInfo.put("idfa", "3461AC00-92DC-5B5C-9464-7971F01F4961");
 			mapRequestInfo.put("mac", SystemInfo.GetMacAddress());		
 			mapRequestInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
 			m_requestInfo = new Requester.RequestInfo(Config.GetLoginUrl(), "", mapRequestInfo);
