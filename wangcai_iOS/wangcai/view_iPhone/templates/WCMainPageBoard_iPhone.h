@@ -23,9 +23,10 @@
 @interface WCMainPageBoard_iPhone : BeeUIBoard
 {
     BaseTaskTableViewController* _taskTableViewController;
-    UIImageView* _headRightBtnImageView;
-    UIImageView* _dotView;
     UICustomAlertView* _alertView;
+    
+    UIImageView* _headLeftBtnImageView;
+    UIImageView* _headRightBtnImageView;
 }
 
 @end

@@ -53,6 +53,8 @@ static LoginAndRegister* _sharedInstance = nil;
     self->_showPunchBox = 0;
     self->_showMiidi = 0;
     self->_showJupeng = 0;
+    self->_showDianru = 0;
+    self->_showAdwo = 0;
     
     self->_phonePay = nil;
     self->_aliPay = nil;
@@ -295,7 +297,15 @@ static LoginAndRegister* _sharedInstance = nil;
                 if ( [[offerwall allKeys] containsObject:@"jupeng"] ) {
                     _showJupeng = [[offerwall valueForKey:@"jupeng"] intValue];
                 }
-/*
+                
+                if ( [[offerwall allKeys] containsObject:@"dianru"] ) {
+                    _showDianru = [[offerwall valueForKey:@"dianru"] intValue];
+                }
+                
+                if ( [[offerwall allKeys] containsObject:@"adwo"] ) {
+                    _showAdwo = [[offerwall valueForKey:@"adwo"] intValue];
+                }
+
 #if TEST == 1
                 _showLimei = 0;
                 _showMopan = 3;
@@ -305,8 +315,10 @@ static LoginAndRegister* _sharedInstance = nil;
                 _showPunchBox = 0;
                 _showMiidi = 0;
                 _showJupeng = 3;
+                _showDianru = 3;
+                _showAdwo = 3;
 #endif
-*/
+
                 [self initWithDraw:dict];
                 
                 int userLevel = [[dict valueForKey:@"level"] intValue];
@@ -706,6 +718,21 @@ static LoginAndRegister* _sharedInstance = nil;
     return YES;
 }
 
+-(BOOL) isShowDianru {
+    if ( _showDianru == 0 ) {
+        return NO;
+    }
+    return YES;
+}
+
+-(BOOL) isShowAdwo {
+    if ( _showAdwo == 0 ) {
+        return NO;
+    }
+    return YES;
+}
+
+
 -(BOOL) isInMoreDomob {
     if ( _showDomob == 3 ) {
         return YES;
@@ -748,6 +775,13 @@ static LoginAndRegister* _sharedInstance = nil;
     return NO;
 }
 
+-(BOOL) isInMoreAdwo {
+    if ( _showAdwo == 3 ) {
+        return YES;
+    }
+    return NO;
+}
+
 -(BOOL) isInMoreMiidi {
     if ( _showMiidi == 3 ) {
         return YES;
@@ -757,6 +791,13 @@ static LoginAndRegister* _sharedInstance = nil;
 
 -(BOOL) isInMoreJupeng {
     if ( _showJupeng == 3 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isInMoreDianru {
+    if ( _showDianru == 3 ) {
         return YES;
     }
     return NO;
@@ -811,8 +852,22 @@ static LoginAndRegister* _sharedInstance = nil;
     return NO;
 }
 
+-(BOOL) isRecommendAdwo {
+    if ( _showAdwo == 2 ) {
+        return YES;
+    }
+    return NO;
+}
+
 -(BOOL) isRecommendJupeng {
     if ( _showJupeng == 2 ) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL) isRecommendDianru {
+    if ( _showDianru == 2 ) {
         return YES;
     }
     return NO;

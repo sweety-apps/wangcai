@@ -28,6 +28,9 @@
 #import "PBOfferWall.h"
 #import "BaseTaskTableViewController.h"
 
+#import "DianRuAdWall.h"
+#import "AdwoOfferWall.h"
+
 @interface OnlineWallViewController ()
 
 @end
@@ -76,6 +79,9 @@ static OnlineWallViewController* _sharedInstance;
         
         // 巨朋
         [JupengConfig launchWithAppID:APP_JUPENG_ID withAppSecret:APP_JUPENG_SECRET];
+        
+        // 点入
+        [DianRuAdWall initAdWallWithDianRuAdWallDelegate:self];
         
         // 有米积分墙
 #if TEST == 1
@@ -151,6 +157,8 @@ static OnlineWallViewController* _sharedInstance;
     BOOL showPunchBox = [[LoginAndRegister sharedInstance] isShowPunchBox] && (![[LoginAndRegister sharedInstance] isInMorePunchBox]);
     BOOL showMiidi = [[LoginAndRegister sharedInstance] isShowMiidi] && (![[LoginAndRegister sharedInstance] isInMoreMiidi]);
     BOOL showJupeng = [[LoginAndRegister sharedInstance] isShowJupeng] && (![[LoginAndRegister sharedInstance] isInMoreJupeng]);
+    BOOL showDianru = [[LoginAndRegister sharedInstance] isShowDianru] && (![[LoginAndRegister sharedInstance] isInMoreDianru]);
+    BOOL showAdwo = [[LoginAndRegister sharedInstance] isShowAdwo] && (![[LoginAndRegister sharedInstance] isInMoreAdwo]);
     
     UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
     
@@ -210,6 +218,20 @@ static OnlineWallViewController* _sharedInstance;
         }
     }
     
+    if ( showDianru && [nsOfferwall count] < 2 ) {
+        [nsOfferwall pushTail:[view viewWithTag:19] ];
+        if ( [[LoginAndRegister sharedInstance] isRecommendDianru] ) {
+            _nRecommend = 19;
+        }
+    }
+    
+    if ( showAdwo && [nsOfferwall count] < 2 ) {
+        [nsOfferwall pushTail:[view viewWithTag:20] ];
+        if ( [[LoginAndRegister sharedInstance] isRecommendAdwo] ) {
+            _nRecommend = 20;
+        }
+    }
+    
     [[view viewWithTag:11] setHidden:YES];
     [[view viewWithTag:12] setHidden:YES];
     [[view viewWithTag:13] setHidden:YES];
@@ -218,6 +240,8 @@ static OnlineWallViewController* _sharedInstance;
     [[view viewWithTag:16] setHidden:YES];
     [[view viewWithTag:17] setHidden:YES];
     [[view viewWithTag:18] setHidden:YES];
+    [[view viewWithTag:19] setHidden:YES];
+    [[view viewWithTag:20] setHidden:YES];
     
     _moreView = [view viewWithTag:97];
     [[view viewWithTag:97] setHidden:YES];
@@ -227,7 +251,9 @@ static OnlineWallViewController* _sharedInstance;
         [[LoginAndRegister sharedInstance] isInMoreMobsmar] ||
         [[LoginAndRegister sharedInstance] isInMoreMopan] ||
         [[LoginAndRegister sharedInstance] isInMorePunchBox] ||
-        [[LoginAndRegister sharedInstance] isInMoreJupeng] ) {
+        [[LoginAndRegister sharedInstance] isInMoreJupeng] ||
+        [[LoginAndRegister sharedInstance] isInMoreDianru] ||
+        [[LoginAndRegister sharedInstance] isInMoreAdwo] ) {
         // 显示更多按钮
         [[view viewWithTag:91] setHidden:NO];
         [self repositionMore];
@@ -289,6 +315,15 @@ static OnlineWallViewController* _sharedInstance;
 
 - (void)repositionMore {
     NSMutableArray* nsOfferwall = [[[NSMutableArray alloc] init] autorelease];
+
+    if ( [[LoginAndRegister sharedInstance] isInMoreDianru] ) {
+        [nsOfferwall pushTail:[_moreView viewWithTag:59] ];
+    }
+    
+    if ( [[LoginAndRegister sharedInstance] isInMoreAdwo] ) {
+        [nsOfferwall pushTail:[_moreView viewWithTag:60] ];
+    }
+    
     if ( [[LoginAndRegister sharedInstance] isInMoreDomob] ) {
         [nsOfferwall pushTail:[_moreView viewWithTag:51] ];
     }
@@ -329,12 +364,14 @@ static OnlineWallViewController* _sharedInstance;
     [[_moreView viewWithTag:56] setHidden:YES];
     [[_moreView viewWithTag:57] setHidden:YES];
     [[_moreView viewWithTag:58] setHidden:YES];
+    [[_moreView viewWithTag:59] setHidden:YES];
+    [[_moreView viewWithTag:60] setHidden:YES];
     
     for (int i = 0; i < [nsOfferwall count]; i ++ ) {
         UIView* btnView = [nsOfferwall objectAtIndex:i];
         [btnView setHidden:NO];
         CGRect rect = btnView.frame;
-        rect.origin.y = 87 + (60 * i);
+        rect.origin.y = 47 + (60 * i);
         [btnView setFrame:rect];
     }
 }
@@ -656,6 +693,40 @@ static OnlineWallViewController* _sharedInstance;
     }
     
     [JupengWall showOffers:_viewController didShowBlock:nil didDismissBlock:nil];
+}
+
+- (IBAction)clickDianru:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    [DianRuAdWall showAdWall:_viewController];
+}
+
+- (IBAction)clickAdwo:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    // 安沃
+    AdwoOWPresentOfferWall(ADWO_OFFERWALL_BASIC_PID, _viewController);
+}
+
+- (NSString *)applicationKey {
+    return @"00003215130000F0";
+}
+
+- (NSString*) dianruAdWallAppUserId {
+    NSString* deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
+#if TEST == 1
+    NSString* userid = [NSString stringWithFormat:@"dev_%@", deviceId];
+#else
+    NSString* userid = [NSString stringWithFormat:@"%@", deviceId];
+#endif
+
+    [deviceId release];
+    
+    return userid;
 }
 
 @end

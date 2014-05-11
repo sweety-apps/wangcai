@@ -40,6 +40,10 @@
 #define APP_JUPENG_ID      @"10073"
 #define APP_JUPENG_SECRET  @"er6hqigbccbh9bvp"
 
+#define APP_DIANRU_ID      @"00003215130000F0"
+
+#define ADWO_OFFERWALL_BASIC_PID  @"b6e89ca0dad04766a03c0b04db24e182"
+
 #elif TARGET_VERSION_LITE == 2
 
 #define APP_NAME   @"WangCaiFriend"
@@ -74,6 +78,11 @@
 #define APP_JUPENG_ID      @"10072"
 #define APP_JUPENG_SECRET  @"8s92a9febf2faxdr"
 
+#define APP_DIANRU_ID      @"00003315130000F0"
+
+#define ADWO_OFFERWALL_BASIC_PID  @"612388f9b2334244acc025db8e9ec0be"
+
+
 #endif
 
 
@@ -81,7 +90,7 @@
 
 
 
-#define TEST 0
+#define TEST 1
 
 #if TEST == 0
 

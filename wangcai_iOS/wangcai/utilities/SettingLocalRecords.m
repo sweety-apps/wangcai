@@ -20,6 +20,7 @@
 #define kCheckInTimeArray @"checkInTimeArray"
 #define kShareTimeArray @"shareTimeArray"
 //#define kLastOfferWallAlertView @"offerWallClearPoint"
+#define kClickMaxID @"clickMaxID"
 
 #define NKEY(x) ([SettingLocalRecords getUserNamedKey:(x)])
 
@@ -342,6 +343,23 @@
         ret = [boolNum boolValue];
     }
     return ret;
+}
+
++ (void)setClickMaxID:(int) mid {
+    NSNumber* number = [NSNumber numberWithInt:mid];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:number forKey:kClickMaxID];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (int) getClickMaxID {
+    NSNumber* num = [[NSUserDefaults standardUserDefaults] objectForKey:kClickMaxID];
+    if (num)
+    {
+        return [num intValue];
+    }
+    
+    return 0;
 }
 
 + (void)setPopedInstallWangcaiAlertView:(BOOL)alerted

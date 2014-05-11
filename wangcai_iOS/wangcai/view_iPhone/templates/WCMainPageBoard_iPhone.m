@@ -21,6 +21,7 @@
 #import "AppBoard_iPhone.h"
 #import "MobClick.h"
 #import "SettingLocalRecords.h"
+#import "MessageViewController.h"
 
 #pragma mark -
 
@@ -63,7 +64,6 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self observeNotification:@"balanceChanged"];
         
         _alertView = nil;
-        _dotView = nil;
         self.view.hintString = @"This is the  board";
         self.view.backgroundColor = [UIColor whiteColor];
         self.view.clipsToBounds = NO;
@@ -104,12 +104,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         [self.view addSubview:headWangcaiIconImageView];
         
         //左上角按钮
-        UIImageView* headLeftBtnImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head_left_menu_btn"]] autorelease];
-        headLeftBtnImageView.contentMode = UIViewContentModeTopLeft;
-        rectFrame = headLeftBtnImageView.frame;
-        rectFrame.origin.x = 14;
-        rectFrame.origin.y = 15;
-        headLeftBtnImageView.frame = rectFrame;
+        _headLeftBtnImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"main_menu1"]] autorelease];
+        _headLeftBtnImageView.contentMode = UIViewContentModeTopLeft;
+        rectFrame = _headLeftBtnImageView.frame;
+        rectFrame.origin.x = 18;
+        rectFrame.origin.y = 11;
+        _headLeftBtnImageView.frame = rectFrame;
         
         rectFrame = CGRectMake(0, 0, 107, 48);
         UIButton* headLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -117,14 +117,14 @@ ON_SIGNAL2( BeeUIBoard, signal )
         headLeftBtn.frame = rectFrame;
         [headLeftBtn addTarget:self action:@selector(onPressedLeftBackBtn:) forControlEvents:UIControlEventTouchUpInside];
         
-        [self.view addSubview:headLeftBtnImageView];
+        [self.view addSubview:_headLeftBtnImageView];
         [self.view addSubview:headLeftBtn];
         
         //右上角按钮
-        UIImageView* headRightBtnImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head_right_icon"]] autorelease];
+        UIImageView* headRightBtnImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"msg_icon1"]] autorelease];
         rectFrame = headRightBtnImageView.frame;
         rectFrame.origin.x = 267;
-        rectFrame.origin.y = -38;
+        rectFrame.origin.y = 8;
         headRightBtnImageView.frame = rectFrame;
         _headRightBtnImageView = headRightBtnImageView;
         
@@ -143,12 +143,7 @@ ON_SIGNAL2( BeeUIBoard, signal )
         //判断是否是首次启动
         BOOL isFirst = [SettingLocalRecords isFirstRun];
         if ( isFirst ) {
-            _dotView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"qiandao_button_red_dot"]] autorelease];
-            rectFrame = _dotView.frame;
-            rectFrame.origin.x = 28;
-            rectFrame.origin.y = 8;
-            _dotView.frame = rectFrame;
-            [self.view addSubview:_dotView];
+            [self showLeftAni:YES];
         }
         
         //列表
@@ -231,41 +226,25 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
 
 -(void)onPressedLeftBackBtn:(id)sender
 {
-    if ( _dotView != nil ) {
-        [_dotView setHidden:YES];
-    }
-    
+    [self showLeftAni:NO];
     [self postNotification:@"showMenu"];
 }
 
 -(void)onTouchDownRightBtn:(id)sender
 {
-    CGRect rectFrame = _headRightBtnImageView.frame;
-    rectFrame.origin.x = 267;
-    rectFrame.origin.y = -10;
-    
-    [UIView animateWithDuration:0.2 animations:^(){
-        _headRightBtnImageView.frame = rectFrame;
-    } completion:^(BOOL finished){
-    }];
 }
 
 -(void)onTouchReleaseRightBtn:(id)sender
 {
-    CGRect rectFrame = _headRightBtnImageView.frame;
-    rectFrame.origin.x = 267;
-    rectFrame.origin.y = -38;
-    
-    [UIView animateWithDuration:0.2 animations:^(){
-        _headRightBtnImageView.frame = rectFrame;
-    } completion:^(BOOL finished){
-    }];
 }
 
--(void)onTouchUpInsideRightBtn:(id)sender
-{
-    [self onTouchReleaseRightBtn:sender];
-    [self naviToExchangeController];
+-(void)onTouchUpInsideRightBtn:(id)sender {
+    MessageViewController* msgController = [[MessageViewController alloc] initWithNibName:nil bundle:nil];
+    
+    [msgController setUIStack:self.stack];
+    [self.stack pushViewController:msgController animated:YES];
+    
+    [msgController release];
 }
 
 -(void)naviToUserInfoEditor
@@ -326,6 +305,29 @@ ON_NOTIFICATION( notification )
 - (IBAction)clickContinue:(id)sender {
     if ( _alertView != nil ) {
         [_alertView hideAlertView];
+    }
+}
+
+- (void) showLeftAni:(BOOL) show {
+    if ( show ) {
+        [_headLeftBtnImageView stopAnimating];
+        
+        NSMutableArray* imageArray = [NSMutableArray array];
+        
+        for (int i = 0; i < 4; ++i)
+        {
+            UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"main_menu%d",i+1]];
+            [imageArray addObject:image];
+        }
+        
+        _headLeftBtnImageView.animationImages = imageArray;
+        _headLeftBtnImageView.animationDuration = 0.6;
+        _headLeftBtnImageView.animationRepeatCount = 0;
+        [_headLeftBtnImageView startAnimating];
+    } else {
+        [_headLeftBtnImageView stopAnimating];
+        
+        [_headLeftBtnImageView setImage:[UIImage imageNamed:@"main_menu1"]];
     }
 }
 

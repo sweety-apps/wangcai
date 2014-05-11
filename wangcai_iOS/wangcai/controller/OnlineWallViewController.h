@@ -27,12 +27,13 @@
 #import "MiidiAdWall.h"
 #import "MiidiAdDesc.h"
 
+#import "DianRuAdWall.h"
 
 @protocol OnlineWallViewControllerDelegate <NSObject>
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume Level:(int) change wangcaiIncome:(int) income;
 @end
 
-@interface OnlineWallViewController : UIViewController<DMOfferWallDelegate, DMOfferWallManagerDelegate, immobViewDelegate, HttpRequestDelegate, PBOfferWallDelegate, MiidiAdWallShowAppOffersDelegate> {
+@interface OnlineWallViewController : UIViewController<DianRuAdWallDelegate, DMOfferWallDelegate, DMOfferWallManagerDelegate, immobViewDelegate, HttpRequestDelegate, PBOfferWallDelegate, MiidiAdWallShowAppOffersDelegate> {
     DMOfferWallViewController* _offerWallController;
     NSInteger                  _nConsume;
     id<OnlineWallViewControllerDelegate>        _delegate;
@@ -84,6 +85,8 @@
 - (IBAction)clickPunchBox:(id)sender;
 - (IBAction)clickMiidi:(id)sender;
 - (IBAction)clickJupeng:(id)sender;
+- (IBAction)clickDianru:(id)sender;
+- (IBAction)clickAdwo:(id)sender;
 
 - (IBAction)clickHelper:(id)sender;
 
