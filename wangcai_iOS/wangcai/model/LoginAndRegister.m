@@ -305,7 +305,7 @@ static LoginAndRegister* _sharedInstance = nil;
                 if ( [[offerwall allKeys] containsObject:@"adwo"] ) {
                     _showAdwo = [[offerwall valueForKey:@"adwo"] intValue];
                 }
-
+/*
 #if TEST == 1
                 _showLimei = 0;
                 _showMopan = 3;
@@ -318,7 +318,7 @@ static LoginAndRegister* _sharedInstance = nil;
                 _showDianru = 3;
                 _showAdwo = 3;
 #endif
-
+*/
                 [self initWithDraw:dict];
                 
                 int userLevel = [[dict valueForKey:@"level"] intValue];

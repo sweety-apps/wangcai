@@ -18,6 +18,7 @@
 #import "MobClick.h"
 #import "BeeUIBoard+ModalBoard.h"
 #import "WebPageController.h"
+#import "MessageMgr.h"
 
 #import "JupengConfig.h"
 #import "JupengWall.h"
@@ -51,6 +52,15 @@ static OnlineWallViewController* _sharedInstance;
 
 -(void)setViewController:(UIViewController*) viewController {
     _viewController = viewController;
+}
+
+-(void)pushViewController:(UIViewController*) viewController {
+    _backupViewController = _viewController;
+    _viewController = viewController;
+}
+
+-(void)popViewController {
+    _viewController = _backupViewController;
 }
 
 -(void)setTaskTableViewController:(BaseTaskTableViewController*)taskTableViewController {
@@ -599,6 +609,9 @@ static OnlineWallViewController* _sharedInstance;
     
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
     
+    int nMsgID = [[MessageMgr sharedInstance] getCurMaxID];
+    [dictionary setObject:[NSString stringWithFormat:@"%d", nMsgID] forKey:@"msgid"];
+    
     [request request:HTTP_TASK_OFFERWALL Param:dictionary method:@"get"];
 }
 
@@ -618,7 +631,12 @@ static OnlineWallViewController* _sharedInstance;
             int currentEXP = [[body valueForKey:@"exp_current"] intValue];
             int nextLevelEXP = [[body valueForKey:@"exp_next_level"] intValue];
             int benefit = [[body valueForKey:@"benefit"] intValue];
-
+            BOOL newMsg = [[body valueForKey:@"new_msg"] boolValue];
+            
+            if ( newMsg ) {
+                [[MessageMgr sharedInstance] updateMsg];
+            }
+            
             int levelChange = 0;
             if (userLevel > 0)
             {
@@ -677,6 +695,30 @@ static OnlineWallViewController* _sharedInstance;
     }
     
     return NO;
+}
+
+- (void) open:(NSString*) name {
+    if ( [name isEqualToString:@"limei"] ) {
+        [self clickLimei:nil];
+    } else if ( [name isEqualToString:@"mopan"] ) {
+        [self clickMopan:nil];
+    } else if ( [name isEqualToString:@"youmi"] ) {
+        [self clickYoumi:nil];
+    } else if ( [name isEqualToString:@"mobsmar"] ) {
+        [self clickMobsmar:nil];
+    } else if ( [name isEqualToString:@"domob"] ) {
+        [self clickDomob:nil];
+    } else if ( [name isEqualToString:@"punchbox"] ) {
+        [self clickPunchBox:nil];
+    } else if ( [name isEqualToString:@"miidi"] ) {
+        [self clickMiidi:nil];
+    } else if ( [name isEqualToString:@"jupeng"] ) {
+        [self clickJupeng:nil];
+    } else if ( [name isEqualToString:@"dianru"] ) {
+        [self clickDianru:nil];
+    } else if ( [name isEqualToString:@"adwo"] ) {
+        [self clickAdwo:nil];
+    }
 }
 
 - (IBAction)clickMiidi:(id)sender {

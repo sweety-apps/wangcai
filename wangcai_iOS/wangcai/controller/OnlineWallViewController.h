@@ -48,6 +48,8 @@
     int                _offerwallIncome;
     
     UIViewController* _viewController;
+    UIViewController* _backupViewController;
+    
     id _baseTaskTableViewController;
     
     SiWeiWall *_siweWall;
@@ -66,6 +68,10 @@
 @property (nonatomic, retain)immobView *adView_adWall;
 
 -(void)setViewController:(UIViewController*) viewController;
+
+-(void)pushViewController:(UIViewController*) viewController;
+-(void)popViewController;
+
 -(void)setTaskTableViewController:(id)taskTableViewController;
 
 
@@ -93,4 +99,6 @@
 - (IBAction)clickClose:(id)sender;
 
 - (IBAction)onClickBack:(id)sender;
+
+- (void) open:(NSString*) name;
 @end

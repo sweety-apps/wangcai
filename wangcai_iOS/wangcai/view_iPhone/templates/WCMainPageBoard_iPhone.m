@@ -44,10 +44,14 @@ SUPPORT_RESOURCE_LOADING( YES )
 - (void)load
 {
 	[super load];
+    
+    [[MessageMgr sharedInstance] attachEvent:self];
 }
 
 - (void)unload
 {
+    [[MessageMgr sharedInstance] detachEvent:self];
+    
     [_taskTableViewController release];
 	[super unload];
 }
@@ -245,6 +249,8 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     [self.stack pushViewController:msgController animated:YES];
     
     [msgController release];
+    
+    [self showRightAni:NO];
 }
 
 -(void)naviToUserInfoEditor
@@ -328,6 +334,37 @@ ON_NOTIFICATION( notification )
         [_headLeftBtnImageView stopAnimating];
         
         [_headLeftBtnImageView setImage:[UIImage imageNamed:@"main_menu1"]];
+    }
+}
+
+- (void) showRightAni:(BOOL) show {
+    if ( show ) {
+        [_headRightBtnImageView stopAnimating];
+        
+        NSMutableArray* imageArray = [NSMutableArray array];
+        
+        for (int i = 0; i < 4; ++i)
+        {
+            UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"msg_icon%d",i+1]];
+            [imageArray addObject:image];
+        }
+        
+        _headRightBtnImageView.animationImages = imageArray;
+        _headRightBtnImageView.animationDuration = 0.6;
+        _headRightBtnImageView.animationRepeatCount = 0;
+        [_headRightBtnImageView startAnimating];
+    } else {
+        [_headRightBtnImageView stopAnimating];
+        
+        [_headRightBtnImageView setImage:[UIImage imageNamed:@"msg_icon1"]];
+    }
+}
+
+- (void) messageUpdated {
+    if ( [[MessageMgr sharedInstance] hasNewMsg] ) {
+        [self showRightAni:YES];
+    } else {
+        [self showRightAni:NO];
     }
 }
 

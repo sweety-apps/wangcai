@@ -32,6 +32,7 @@
 #import "Common.h"
 #import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDK.h>
+#import "MessageMgr.h"
 
 static BOOL gNeedReloadTaskList = NO;
 static BOOL gNeedShowChoujiangShare = NO;
@@ -913,6 +914,8 @@ static int  gChoujiang = 0;
         
         [[LoginAndRegister sharedInstance] increaseBalance:(consume + income)];
         [self checkBalanceAndAnimateYuE];
+        
+        [[MessageMgr sharedInstance] updateMsg];
         
         [self refreshTaskList];
     }

@@ -7,12 +7,35 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HttpRequest.h"
 
-@interface MessageMgr : NSObject {
+@protocol MessageMgrDelegate <NSObject>
+-(void) messageUpdated;
+@end
+
+@interface MessageMgr : NSObject <HttpRequestDelegate> {
     int _nCurMaxID;
     int _nClickMaxID;
+    
+    BOOL _request;
+    
+    NSArray* _listInfo;
+    
+    NSMutableArray* _delegates;
 }
 
 + (MessageMgr*) sharedInstance;
 
+- (void) saveClickId:(int) mid;
+- (int) getClickMaxID;
+
+- (int) getCurMaxID;
+- (void) updateMsg;
+
+- (BOOL) hasNewMsg;
+
+- (void) attachEvent:(id) delegate;
+- (void) detachEvent:(id) delegate;
+
+- (NSArray*) getMsgList;
 @end
