@@ -55,26 +55,16 @@
 
 - (void) load:(NSString*)nibNameOrNil {
     self.inviteView = [[[NSBundle mainBundle] loadNibNamed:nibNameOrNil owner:self options:nil] objectAtIndex:1];
-    self.invitedView = [[[NSBundle mainBundle] loadNibNamed:nibNameOrNil owner:self options:nil] objectAtIndex:2];
-    
+
     self.containerView = [self.view viewWithTag:11];
-    self.errorImage = (UIImageView*)[self.invitedView viewWithTag:12];
-    self.errorMessage = (UILabel*)[self.invitedView viewWithTag:13];
     self.inviteCodeLabel = (UILabel*)[self.inviteView viewWithTag:14];
-    self.invitedButton = (UIButton*)[self.invitedView viewWithTag:15];
-    self.invitedPeopleTextfield = (UITextField*)[self.invitedView viewWithTag:16];
-    self.inviterLabel = (UILabel*)[self.invitedView viewWithTag:17];
     self.inviteUrlTextField = (UITextField*)[self.inviteView viewWithTag:18];
     self.qrcodeView = (UIImageView*)[self.inviteView viewWithTag:20];
     self.segment = (UISegmentedControl*)[self.view viewWithTag:21];
     self.shareButton = (UIButton*)[self.inviteView viewWithTag:22];
-    self.inputInviteTip = (UILabel*)[self.invitedView viewWithTag:33];
-    
-    
+
     self.inviteIncome = (UILabel*)[self.inviteView viewWithTag:41];
     self.inviteIncomeTip = (UILabel*)[self.inviteView viewWithTag:42];
-    
-    self.invitedPeopleTextfield.delegate = self;
     
     [self.containerView addSubview: self.inviteView];
     
@@ -82,7 +72,6 @@
     
     UIImage* shareButtonBkg = [[UIImage imageNamed: @"invite_share_button"] resizableImageWithCapInsets: UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.shareButton setBackgroundImage: shareButtonBkg forState:UIControlStateNormal];
-    [self.invitedButton setBackgroundImage: shareButtonBkg forState: UIControlStateNormal];
     
     UIImage* segmentSelected = [[UIImage imageNamed: @"invite_seg_select"] resizableImageWithCapInsets: UIEdgeInsetsMake(9, 8, 9, 8)];
     
@@ -124,16 +113,11 @@
     {
         [self.inputInviteTip setHidden:YES];
         [self setInvitedPeople: inviter];
-        [self updateInvitersControls: YES];
     }
     else
     {
         [self.inputInviteTip setHidden:NO];
-        [self updateInvitersControls: NO];
     }
-    
-    [self updateErrorMsg: NO msg: nil];
-    
     
     int income = [[LoginAndRegister sharedInstance] getInviteIncome];
     if ( income < 0 ) {
@@ -159,35 +143,6 @@
     [super updateViewConstraints];
 }
 
-- (void)updateErrorMsg: (BOOL)error msg: (NSString *)errMsg
-{
-    if (error)
-    {
-        [self.errorImage setHidden: NO];
-        [self.errorMessage setHidden: NO];
-        [self.errorMessage setText: errMsg];
-    }
-    else
-    {
-        [self.errorImage setHidden: YES];
-        [self.errorMessage setHidden: YES];
-    }
-}
-
-- (void)updateInvitersControls: (BOOL)hasInviter
-{
-    if (hasInviter)
-    {
-        self.invitedPeopleTextfield.enabled = NO;
-        self.invitedButton.hidden = YES;
-    }
-    else
-    {
-        self.invitedPeopleTextfield.enabled = YES;
-        self.invitedButton.hidden = NO;
-    }
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -196,7 +151,6 @@
 - (void)dealloc {
     self._beeStack = nil;
     [self.inviteView release];
-    [self.invitedView release];
     [self.inviteCode release];
     [self.invitedPeople release];
     [_inviterUpdate release];
@@ -242,31 +196,6 @@
      }];
 }
 
-- (IBAction)switchView:(id)sender
-{
-    UIView* fromView, *toView;
-    
-    if ([self.inviteView superview] != nil)
-    {
-        fromView = self.inviteView;
-        toView = self.invitedView;
-        self.segment.selectedSegmentIndex = 1;
-    }
-    else
-    {
-        fromView = self.invitedView;
-        toView = self.inviteView;
-        self.segment.selectedSegmentIndex = 0;
-    }
-    
-    NSArray* priorConstraints = self.priorConstraints;
-    [UIView transitionFromView: fromView toView: toView duration: 0.4 options: UIViewAnimationOptionTransitionCrossDissolve completion: ^(BOOL finished)
-    {
-        [self.containerView removeConstraints: priorConstraints];
-    }];
-    self.priorConstraints = [self constrainSubview: toView toMatchWithSuperview: self.containerView];
-}
-
 - (void)setInviteCode: (NSString *)inviteCode
 {
     if (_inviteCode != inviteCode)
@@ -277,17 +206,6 @@
         self.inviteCodeLabel.text = _inviteCode;
         self.inviteUrlTextField.text = [NSString stringWithFormat: INVITE_URL, _inviteCode];
         self.qrcodeView.image = [self QRCodeGenerator: [NSString stringWithFormat: INVITE_URL, _inviteCode] andLightColor: [UIColor whiteColor] andDarkColor: [UIColor blackColor] andQuietZone: 1 andSize: 128];
-    }
-}
-
-- (void)setInvitedPeople: (NSString *)invitedPeople
-{
-    if (_invitedPeople != invitedPeople)
-    {
-        [_invitedPeople release];
-        _invitedPeople = [invitedPeople copy];
-        
-        self.invitedPeopleTextfield.text = _invitedPeople;
     }
 }
 
@@ -342,98 +260,6 @@
 - (IBAction)clickBack:(id)sender
 {
     [[BeeUIRouter sharedInstance] open:@"wc_main" animated:YES];
-}
-
-- (IBAction)hideKeyboard:(id)sender
-{
-    [_invitedPeopleTextfield resignFirstResponder];
-}
-
-- (void)showLoading
-{
-    [MBHUDView hudWithBody: @"请等待..." type:MBAlertViewHUDTypeActivityIndicator hidesAfter: -1 show: YES];
-}
-
-- (void)hideLoading
-{
-    [MBHUDView dismissCurrentHUD];
-}
-
-- (IBAction)updateInviter:(id)sender
-{
-    NSString* inviter = self.invitedPeopleTextfield.text;
-    if (inviter != nil)
-    {
-        //统计
-        [MobClick event:@"click_submit_invite_code" attributes:@{@"current_page":@"邀请",@"code":inviter}];
-        
-        [_inviterUpdate updateInviter: inviter delegate: self];
-        [self showLoading];
-    }
-}
-
-- (void)updateInviterCompleted:(BOOL)suc errMsg:(NSString *)errMsg
-{
-    [self hideLoading];
-    if (suc)
-    {
-        // 发送成功
-        [self setInvitedPeople: self.invitedPeopleTextfield.text];
-        [self updateInvitersControls: YES];
-        [self updateErrorMsg: NO msg: nil];
-        
-        UIGetRedBagAlertView* getMoneyAlertView = [UIGetRedBagAlertView sharedInstance];
-        [getMoneyAlertView setRMBString:[NSString stringWithFloatRoundToPrecision:2 precision:2 ignoreBackZeros:YES]];
-        [getMoneyAlertView setLevel:3];
-        [getMoneyAlertView setTitle:@"邀请码红包"];
-        [getMoneyAlertView setShowCurrentBanlance:[[LoginAndRegister sharedInstance] getBalance] andIncrease:200];
-        [getMoneyAlertView show];
-        
-        //统计
-        [MobClick event:@"money_get_from_all" attributes:@{@"RMB":[NSString stringWithFormat:@"%d",200],@"FROM": @"绑定邀请人成功"}];
-        
-        // 给用户加二块钱
-        [[LoginAndRegister sharedInstance] increaseBalance:200];
-        [BaseTaskTableViewController setNeedReloadTaskList];
-    }
-    else
-    {
-        // 发送失败
-        if (errMsg == nil)
-        {
-            [self updateErrorMsg: YES msg: @"绑定邀请人失败"];
-        }
-        else
-        {
-            [self updateErrorMsg: YES msg: errMsg];
-        }
-    }
-}
-
-#pragma mark - Text Field Delegate
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    [self.inputInviteTip setHidden:YES];
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    NSString* text = textField.text;
-    NSUInteger n = text.length;
-    if ( n == 0 ) {
-        [self.inputInviteTip setHidden:NO];
-    } else {
-        [self.inputInviteTip setHidden:YES];
-    }
-}
-
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {  // return NO to not change text
-    if ([@"\n" isEqualToString:string] ) {
-        [_invitedPeopleTextfield resignFirstResponder];
-        return NO;
-    }
-    return YES;
 }
 
 - (IBAction)clickTextLink:(id)sender {

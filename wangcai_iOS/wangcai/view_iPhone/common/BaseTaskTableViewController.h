@@ -49,6 +49,8 @@
     UIAlertView* _alertChoujiangeShare;
     UICustomAlertView* _alertInstallApp;
     NSString*    _installUrl;
+    
+    UIAlertView* _alertBandPhoneView;
 }
 
 @property (nonatomic,retain) IBOutlet CommonZhanghuYuETableViewCell* zhanghuYuEHeaderCell;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InviteController"/>
@@ -14,26 +14,6 @@
                 <userLayoutGuide location="54" affinity="minY"/>
             </userGuides>
             <subviews>
-                <segmentedControl opaque="NO" tag="21" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lhc-2F-Cg4">
-                    <rect key="frame" x="20" y="70" width="280" height="38"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="280" id="jJw-xD-3D4"/>
-                        <constraint firstAttribute="height" constant="37" id="xew-a3-9B5"/>
-                    </constraints>
-                    <segments>
-                        <segment title="邀请好友"/>
-                        <segment title="谁邀请我"/>
-                    </segments>
-                    <connections>
-                        <action selector="switchView:" destination="-1" eventType="valueChanged" id="ldv-Jk-J7J"/>
-                    </connections>
-                </segmentedControl>
-                <view tag="11" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C07-pL-sbi">
-                    <rect key="frame" x="0.0" y="116" width="320" height="365"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nav_Header.png" translatesAutoresizingMaskIntoConstraints="NO" id="JWo-Gy-xdb">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -58,13 +38,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
-            <constraints>
-                <constraint firstItem="C07-pL-sbi" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="ABO-CF-cIQ"/>
-                <constraint firstAttribute="trailing" secondItem="C07-pL-sbi" secondAttribute="trailing" id="DBE-Rk-qWa"/>
-                <constraint firstItem="C07-pL-sbi" firstAttribute="top" secondItem="Lhc-2F-Cg4" secondAttribute="bottom" constant="9" id="F8E-gN-M7C"/>
-                <constraint firstItem="Lhc-2F-Cg4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="Ys8-73-UJ7"/>
-                <constraint firstAttribute="bottom" secondItem="C07-pL-sbi" secondAttribute="bottom" id="yrV-ve-3ZN"/>
-            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outletCollection property="gestureRecognizers" destination="CWb-UR-iVv" appends="YES" id="BFy-62-iAr"/>
@@ -168,56 +141,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <view contentMode="scaleToFill" id="Idb-Pa-yFr">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="17" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="输入邀请码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jf3-kN-qIT">
-                    <rect key="frame" x="20" y="53" width="110" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" tag="16" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="invite_invited_edit.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fw1-WI-wjd">
-                    <rect key="frame" x="20" y="83" width="280" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" keyboardType="URL"/>
-                </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="33" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请输入邀请码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIi-U3-3Dr">
-                    <rect key="frame" x="103" y="96" width="114" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" tag="15" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISm-V3-BfW">
-                    <rect key="frame" x="20" y="268" width="280" height="62"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <state key="normal" title="领取2元">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="updateInviter:" destination="-1" eventType="touchUpInside" id="76B-E5-hVd"/>
-                    </connections>
-                </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mL2-rS-wsh">
-                    <rect key="frame" x="45" y="138" width="255" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="invite_error.png" translatesAutoresizingMaskIntoConstraints="NO" id="U5R-VH-5Ae">
-                    <rect key="frame" x="23" y="139" width="14" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-            </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-        </view>
         <tapGestureRecognizer id="CWb-UR-iVv">
             <connections>
                 <action selector="hideKeyboard:" destination="-1" id="l7V-1M-jPs"/>
@@ -228,9 +151,7 @@
         <image name="back.png" width="11" height="22"/>
         <image name="invite_copy_button" width="320" height="54"/>
         <image name="invite_edit_bkg" width="320" height="54"/>
-        <image name="invite_error.png" width="12" height="12"/>
         <image name="invite_invite_code_bkg.png" width="275" height="48"/>
-        <image name="invite_invited_edit.png" width="275" height="48"/>
         <image name="nav_Header.png" width="320" height="54"/>
     </resources>
 </document>

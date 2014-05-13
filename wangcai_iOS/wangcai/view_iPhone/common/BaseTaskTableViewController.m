@@ -33,6 +33,7 @@
 #import <Foundation/Foundation.h>
 #import <ShareSDK/ShareSDK.h>
 #import "MessageMgr.h"
+#import "InviteViewController.h"
 
 static BOOL gNeedReloadTaskList = NO;
 static BOOL gNeedShowChoujiangShare = NO;
@@ -75,6 +76,7 @@ static int  gChoujiang = 0;
     // Do any additional setup after loading the view from its nib.
     [self observeNotification:@"applicationDidBecomeActive"];
     
+    _alertBandPhoneView = nil;
     _justOnePage = NO;
     _curCellCount = 0;
     _hisCellCount = 0;
@@ -746,7 +748,26 @@ static int  gChoujiang = 0;
                 [MobClick event:@"task_list_click_inviter" attributes:@{@"currentpage":@"任务列表"}];
                 if ([task.taskStatus intValue] == 0)
                 {
-                    [[AppBoard_iPhone sharedInstance] onTouchedInvite:YES];
+                    NSString* phoneNum = [[LoginAndRegister sharedInstance] getPhoneNum];
+                    if ( phoneNum == nil || [phoneNum isEqualToString:@""] ) {
+                        if ( _alertBandPhoneView != nil ) {
+                            [_alertBandPhoneView release];
+                        }
+                        
+                        if ( phoneNum != nil ) {
+                            [phoneNum release];
+                        }
+                        
+                        _alertBandPhoneView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"尚未绑定手机，请先绑定手机" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"绑定手机", nil];
+                        [_alertBandPhoneView show];
+                    } else {
+                        //[[AppBoard_iPhone sharedInstance] onTouchedInvite:YES];
+                        InviteViewController* controller = [[InviteViewController alloc] initWithNibName:nil bundle:nil];
+                        
+                        [controller setUIStack:_beeStack];
+                        
+                        [_beeStack pushViewController:controller animated:YES];
+                    }
                 }
             }
                 break;
@@ -1010,7 +1031,13 @@ static int  gChoujiang = 0;
     _needUpdateApp = NO;
     _needAddCommentIncome = NO;
     
-    if ( _alertLevel != nil && [_alertLevel isEqual:alertView] ) {
+    if ( _alertBandPhoneView != nil && [_alertBandPhoneView isEqual:alertView] ) {
+        if ( buttonIndex == 1 ) {
+            PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
+            
+            [self.beeStack pushViewController:phoneVal animated:YES];
+        }
+    } else if ( _alertLevel != nil && [_alertLevel isEqual:alertView] ) {
         if ( buttonIndex == 1 ) {
             // 显示我的旺财
             [[BeeUIRouter sharedInstance] open:@"my_wangcai" animated:YES];
