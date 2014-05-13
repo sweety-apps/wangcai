@@ -441,6 +441,12 @@
 		719F188018AA188900C29765 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355511188D16060007784A /* libDomobOfferWallSDK.a */; };
 		719F188218AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */; };
 		719F188318AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */; };
+		71A19DA11921D2B200692465 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A19D9F1921D2B200692465 /* InviteViewController.m */; };
+		71A19DA21921D2B200692465 /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71A19DA01921D2B200692465 /* InviteViewController.xib */; };
+		71A19DA91921D9C800692465 /* invite_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A19DA81921D9C800692465 /* invite_top@2x.png */; };
+		71A19DAA1921D9C800692465 /* invite_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A19DA81921D9C800692465 /* invite_top@2x.png */; };
+		71A19DAF1921ECE200692465 /* invite_error_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A19DAE1921ECE200692465 /* invite_error_bkg@2x.png */; };
+		71A19DB01921ECE200692465 /* invite_error_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A19DAE1921ECE200692465 /* invite_error_bkg@2x.png */; };
 		71A9C7D618B8D563006119F6 /* exchange_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */; };
 		71A9C7D718B8D563006119F6 /* exchange_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */; };
 		71A9C7D918B8D884006119F6 /* exchange_btn2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */; };
@@ -1953,6 +1959,11 @@
 		719F187B18AA17E300C29765 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		719F187D18AA17EB00C29765 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = MenuBoardInReview_iPhone.xml; path = view_iPhone/MenuBoardInReview_iPhone.xml; sourceTree = "<group>"; };
+		71A19D9E1921D2B200692465 /* InviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteViewController.h; sourceTree = "<group>"; };
+		71A19D9F1921D2B200692465 /* InviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteViewController.m; sourceTree = "<group>"; };
+		71A19DA01921D2B200692465 /* InviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteViewController.xib; sourceTree = "<group>"; };
+		71A19DA81921D9C800692465 /* invite_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite_top@2x.png"; sourceTree = "<group>"; };
+		71A19DAE1921ECE200692465 /* invite_error_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite_error_bkg@2x.png"; sourceTree = "<group>"; };
 		71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_bkg@2x.png"; sourceTree = "<group>"; };
 		71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_btn2@2x.png"; sourceTree = "<group>"; };
 		71AE4C9C18B488D200B820EC /* back2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back2@2x.png"; sourceTree = "<group>"; };
@@ -3575,6 +3586,8 @@
 		A60C57EB186FF8A30068425C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				71A19DAE1921ECE200692465 /* invite_error_bkg@2x.png */,
+				71A19DA81921D9C800692465 /* invite_top@2x.png */,
 				71D700121920B78700A4F083 /* open_app@2x.png */,
 				71D700131920B78700A4F083 /* btn_open_onlinewall@2x.png */,
 				71D700141920B78700A4F083 /* msg_line@2x.png */,
@@ -4285,6 +4298,9 @@
 				7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */,
 				7112721518B331380068C33E /* PhoneValidationController.h */,
 				7112721618B331380068C33E /* PhoneValidationController.m */,
+				71A19D9E1921D2B200692465 /* InviteViewController.h */,
+				71A19D9F1921D2B200692465 /* InviteViewController.m */,
+				71A19DA01921D2B200692465 /* InviteViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -5585,6 +5601,7 @@
 				712D9B9E191B416F0035D29C /* dianru_red_dianru_iphone_download.png in Resources */,
 				F335A00718882F8000C1E636 /* yue_5@2x.png in Resources */,
 				F335A00818882F8000C1E636 /* package_icon_many@2x.png in Resources */,
+				71A19DAA1921D9C800692465 /* invite_top@2x.png in Resources */,
 				7194FE4C18EAA1FB004A303B /* app_tip_back@2x.png in Resources */,
 				F335A00918882F8000C1E636 /* choujiang_zhongjiangbeilv@2x.png in Resources */,
 				F394DBC718B89841003311CD /* mywangcai_dog_13@2x.png in Resources */,
@@ -5702,6 +5719,7 @@
 				F335A03F18882F8000C1E636 /* choujiang_title@2x.png in Resources */,
 				F335A04018882F8000C1E636 /* ExchangeController.xib in Resources */,
 				F335A04118882F8000C1E636 /* ExtractMoneyController.xib in Resources */,
+				71A19DB01921ECE200692465 /* invite_error_bkg@2x.png in Resources */,
 				71420EB1191E2D9700376AA9 /* msg_icon1@2x.png in Resources */,
 				F335A04218882F8000C1E636 /* Icon.png in Resources */,
 				712D9B6A191B416F0035D29C /* dianru_orange_dianru_bottom.png in Resources */,
@@ -5886,6 +5904,7 @@
 				712D9B6F191B416F0035D29C /* dianru_orange_dianru_iphone_download.png in Resources */,
 				F3D9D6B01865791600392C40 /* UserInfoEditorViewController.xib in Resources */,
 				F31F897018962B8600F34F20 /* iPad2.plist in Resources */,
+				71A19DAF1921ECE200692465 /* invite_error_bkg@2x.png in Resources */,
 				F3813D2118753ED400350C27 /* choujiang_thanks4@2x.png in Resources */,
 				712D9B9F191B416F0035D29C /* dianru_red_dianru_titlebg.jpg in Resources */,
 				712D9B47191B416F0035D29C /* dianru_title.jpg in Resources */,
@@ -6048,6 +6067,7 @@
 				A60C585E186FF8A30068425C /* resend_normal@2x.png in Resources */,
 				F394DBC618B89841003311CD /* mywangcai_dog_13@2x.png in Resources */,
 				F394DBD818B89841003311CD /* mywangcai_dog_8@2x.png in Resources */,
+				71A19DA91921D9C800692465 /* invite_top@2x.png in Resources */,
 				712D9B77191B416F0035D29C /* dianru_orange_left_view.png in Resources */,
 				712D9B49191B416F0035D29C /* dianru_title_1.jpg in Resources */,
 				A60C5842186FF8A30068425C /* package_icon_8@2x.png in Resources */,
@@ -6240,6 +6260,7 @@
 				F3F186E118543A410098C852 /* Default.png in Resources */,
 				F3F18A26185472A90098C852 /* WCMainPageBoard_iPhone.xml in Resources */,
 				A60C58AE18703AE60068425C /* invite_seg_unsel_sel@2x.png in Resources */,
+				71A19DA21921D2B200692465 /* InviteViewController.xib in Resources */,
 				A60C5890186FF8A30068425C /* zhanghuyue@2x.png in Resources */,
 				F3D9D564185D876D00392C40 /* TaskController.xib in Resources */,
 				71D1976518BE1EA400D3D48D /* limei@2x.png in Resources */,
@@ -6823,6 +6844,7 @@
 				F3F1886A18543A430098C852 /* Bee_UISwitch.m in Sources */,
 				A60C876F1865949700F6889C /* HttpRequest.m in Sources */,
 				F3F1895118543A440098C852 /* Bee_Keychain.mm in Sources */,
+				71A19DA11921D2B200692465 /* InviteViewController.m in Sources */,
 				F3F1881D18543A430098C852 /* UITextField+UIDataBinding.m in Sources */,
 				F3F1883718543A430098C852 /* Bee_UIAlertView.m in Sources */,
 				F3F189C918543A450098C852 /* NSObject+BeeTicker.mm in Sources */,

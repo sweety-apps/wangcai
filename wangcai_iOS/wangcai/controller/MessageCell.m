@@ -41,6 +41,9 @@
         [_desc setFont:[UIFont fontWithName:nil size:12]];
         [self.contentView addSubview:_desc];
         
+        _desc.lineBreakMode = UILineBreakModeWordWrap;
+        _desc.numberOfLines = 0;
+        
         [_desc setTextColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1]];
         
         _newImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 42, 42)];
