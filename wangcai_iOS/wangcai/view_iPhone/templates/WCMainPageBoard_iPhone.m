@@ -327,7 +327,7 @@ ON_NOTIFICATION( notification )
         }
         
         _headLeftBtnImageView.animationImages = imageArray;
-        _headLeftBtnImageView.animationDuration = 0.6;
+        _headLeftBtnImageView.animationDuration = 0.8;
         _headLeftBtnImageView.animationRepeatCount = 0;
         [_headLeftBtnImageView startAnimating];
     } else {
@@ -350,7 +350,7 @@ ON_NOTIFICATION( notification )
         }
         
         _headRightBtnImageView.animationImages = imageArray;
-        _headRightBtnImageView.animationDuration = 0.6;
+        _headRightBtnImageView.animationDuration = 0.8;
         _headRightBtnImageView.animationRepeatCount = 0;
         [_headRightBtnImageView startAnimating];
     } else {
