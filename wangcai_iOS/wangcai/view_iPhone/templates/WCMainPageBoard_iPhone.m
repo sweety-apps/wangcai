@@ -22,6 +22,7 @@
 #import "MobClick.h"
 #import "SettingLocalRecords.h"
 #import "MessageViewController.h"
+#import "LoginAndRegister.h"
 
 #pragma mark -
 
@@ -44,10 +45,14 @@ SUPPORT_RESOURCE_LOADING( YES )
 - (void)load
 {
 	[super load];
+    
+    [[MessageMgr sharedInstance] attachEvent:self];
 }
 
 - (void)unload
 {
+    [[MessageMgr sharedInstance] detachEvent:self];
+    
     [_taskTableViewController release];
 	[super unload];
 }
@@ -139,6 +144,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         [self.view addSubview:headRightBtnImageView];
         [self.view addSubview:headRightBtn];
+        
+        
+        if ( [[LoginAndRegister sharedInstance] isInReview] ) {
+            [_headRightBtnImageView setHidden:YES];
+            [headRightBtn setHidden:YES];
+        }
         
         //判断是否是首次启动
         BOOL isFirst = [SettingLocalRecords isFirstRun];
@@ -245,6 +256,8 @@ ON_SIGNAL2( BeeUINavigationBar, signal )
     [self.stack pushViewController:msgController animated:YES];
     
     [msgController release];
+    
+    [self showRightAni:NO];
 }
 
 -(void)naviToUserInfoEditor
@@ -321,13 +334,44 @@ ON_NOTIFICATION( notification )
         }
         
         _headLeftBtnImageView.animationImages = imageArray;
-        _headLeftBtnImageView.animationDuration = 0.6;
+        _headLeftBtnImageView.animationDuration = 0.8;
         _headLeftBtnImageView.animationRepeatCount = 0;
         [_headLeftBtnImageView startAnimating];
     } else {
         [_headLeftBtnImageView stopAnimating];
         
         [_headLeftBtnImageView setImage:[UIImage imageNamed:@"main_menu1"]];
+    }
+}
+
+- (void) showRightAni:(BOOL) show {
+    if ( show ) {
+        [_headRightBtnImageView stopAnimating];
+        
+        NSMutableArray* imageArray = [NSMutableArray array];
+        
+        for (int i = 0; i < 4; ++i)
+        {
+            UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"msg_icon%d",i+1]];
+            [imageArray addObject:image];
+        }
+        
+        _headRightBtnImageView.animationImages = imageArray;
+        _headRightBtnImageView.animationDuration = 0.8;
+        _headRightBtnImageView.animationRepeatCount = 0;
+        [_headRightBtnImageView startAnimating];
+    } else {
+        [_headRightBtnImageView stopAnimating];
+        
+        [_headRightBtnImageView setImage:[UIImage imageNamed:@"msg_icon1"]];
+    }
+}
+
+- (void) messageUpdated {
+    if ( [[MessageMgr sharedInstance] hasNewMsg] ) {
+        [self showRightAni:YES];
+    } else {
+        [self showRightAni:NO];
     }
 }
 

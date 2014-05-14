@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MessageMgr.h"
 
-@interface MessageViewController : UIViewController {
+@interface MessageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MessageMgrDelegate> {
     BeeUIStack* _beeUIStack;
     
+    NSArray*    _msgList;
 }
 
 - (IBAction)clickBack:(id)sender;

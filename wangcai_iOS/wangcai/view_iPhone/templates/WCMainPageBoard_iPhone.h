@@ -17,10 +17,11 @@
 
 #import "Bee.h"
 #import "BaseTaskTableViewController.h"
+#import "MessageMgr.h"
 
 #pragma mark -
 
-@interface WCMainPageBoard_iPhone : BeeUIBoard
+@interface WCMainPageBoard_iPhone : BeeUIBoard <MessageMgrDelegate>
 {
     BaseTaskTableViewController* _taskTableViewController;
     UICustomAlertView* _alertView;

@@ -26,13 +26,6 @@
 @property (assign, nonatomic) UILabel *inviteCodeLabel;
 @property (assign, nonatomic) UIButton *shareButton;
 
-@property (retain, nonatomic) UIView *invitedView;
-@property (assign, nonatomic) UITextField *invitedPeopleTextfield;
-@property (assign, nonatomic) UILabel *errorMessage;
-@property (assign, nonatomic) UIButton *invitedButton;
-@property (assign, nonatomic) UILabel *inviterLabel;
-@property (assign, nonatomic) UIImageView *errorImage;
-
 @property (retain, nonatomic) NSArray* priorConstraints;
 @property (retain, nonatomic) UILabel* inputInviteTip;
 
@@ -45,10 +38,8 @@
 
 - (IBAction)copyUrl:(id)sender;
 - (IBAction)share:(id)sender;
-- (IBAction)switchView:(id)sender;
 - (IBAction)clickBack:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
-- (IBAction)updateInviter:(id)sender;
 
 - (IBAction)clickTextLink:(id)sender;
 
