@@ -2,6 +2,7 @@ package com.example.wangcai;
 
 import java.util.ArrayList;
 
+import com.example.request.AppWallConfig;
 import com.example.request.Config;
 import com.example.request.ExtractInfo;
 import com.example.request.RequestManager;
@@ -72,6 +73,7 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback{
 			m_userInfo = loginRequester.GetUserInfo();
 			m_extractInfo = loginRequester.GetExtractInfo();
 			m_taskListInfo = loginRequester.GetTaskListInfo();
+			m_appWallConfig = loginRequester.GetWallConfig();
 
 			@SuppressWarnings("unchecked")
 			ArrayList<WangcaiAppEvent> listEventLinsteners = (ArrayList<WangcaiAppEvent>) m_listEventLinsteners.clone();
@@ -135,6 +137,9 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback{
     public TaskListInfo GetTaskListInfo() {
     	return m_taskListInfo;
     }
+    public AppWallConfig GetAppWallConfig() {
+    	return m_appWallConfig; 
+    }
     
 	private UserInfo m_userInfo = null;
 	private TaskListInfo m_taskListInfo = null;	
@@ -145,7 +150,7 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback{
 	private boolean m_bNeedForceUpdate = false;
 	private boolean m_bHasLogin;
 	private ArrayList<TaskInfo> m_listTaskInfos;
-
+	private AppWallConfig m_appWallConfig;
 		
 	private Context m_AppContext;
 

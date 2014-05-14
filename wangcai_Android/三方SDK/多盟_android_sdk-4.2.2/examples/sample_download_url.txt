@@ -1,0 +1,2 @@
+下载地址：https://github.com/Domob-SDK/domob-android-ad-sdk-sample.git
+打开网页后点击右下角按钮“Download ZIP”下载sample实例。

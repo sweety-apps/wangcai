@@ -26,7 +26,11 @@
 		<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />	
 		<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />  
 		<uses-permission android:name="android.permission.GET_TASKS" />
-
+		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+		<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+		<uses-permission android:name="android.permission.WAKE_LOCK" />
+		
+		
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -54,6 +58,7 @@
         <activity android:name="com.example.wangcai.activity.RegisterActivity" android:windowSoftInputMode="adjustResize|stateHidden" android:theme="@style/WangcaiTheme" />
         <activity android:name="com.example.wangcai.activity.RegisterSucceedActivity" android:theme="@style/WangcaiTheme" />
         <activity android:name="com.example.wangcai.activity.SurveyActivity" android:theme="@style/WangcaiTheme" />
+        
         <activity
 			android:name="cn.sharesdk.framework.ShareSDKUIShell"
 			android:theme="@android:style/Theme.Translucent.NoTitleBar"
@@ -66,11 +71,50 @@
 			android:configChanges="keyboardHidden|orientation|screenSize"
 			android:exported="true"
 			android:screenOrientation="portrait" />
+        
+        <activity android:name="cn.domob.download.OActivity" />
+		
+		<activity android:name="com.jpmob.sdk.wall.JupengWallActivity" android:configChanges="keyboardHidden|orientation" /> 
+		
 		<receiver android:name="com.example.wangcai.base.SmsReader">
 			<intent-filter>	
 			    <action android:name="android.provider.Telephony.SMS_RECEIVED" />	
 			</intent-filter>	
 		</receiver>
+		
+		<service android:name="com.punchbox.engine.PunchBoxService"
+				android:process="com.punchbox.punchboxservice"
+				android:exported="true">
+			<intent-filter>
+				<action android:name="com.punchbox.service"/>
+			</intent-filter>
+		</service> 
+		<activity
+		    android:name="net.youmi.android.AdBrowser"
+		    android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+		    android:theme="@android:style/Theme.Light.NoTitleBar" >
+		</activity>
+		<service
+		    android:name="net.youmi.android.AdService"
+		    android:exported="false" >
+		</service>
+		<service
+		    android:name="net.youmi.android.ExpService"
+		    android:exported="false" >
+		</service>
+		<receiver
+		    android:name="net.youmi.android.AdReceiver" >
+		    <intent-filter>
+		        <action android:name="android.intent.action.PACKAGE_ADDED" />
+		        <data android:scheme="package" />
+		    </intent-filter>
+		</receiver>
+		<receiver
+		    android:name="net.youmi.android.offers.OffersReceiver"
+		    android:exported="false" >
+		</receiver>
+		<meta-data android:name="chukong_publisherid" android:value="100011-0A2E90-7CDB-6FD3-A9B983ABBBBA"/>
+		
     </application>
-
+    
 </manifest>

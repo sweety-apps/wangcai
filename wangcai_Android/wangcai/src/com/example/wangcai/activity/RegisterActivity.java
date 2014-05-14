@@ -19,7 +19,6 @@ import com.example.wangcai.base.ActivityHelper;
 import com.example.wangcai.base.BuildSetting;
 import com.example.wangcai.base.ManagedActivity;
 import com.example.wangcai.base.SmsReader;
-import com.example.wangcai.base.ViewDrawer;
 import com.example.wangcai.base.ViewHelper;
 
 import android.app.ProgressDialog;

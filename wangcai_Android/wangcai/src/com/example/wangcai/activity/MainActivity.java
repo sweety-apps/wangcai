@@ -1,10 +1,11 @@
 package com.example.wangcai.activity;
 import java.util.ArrayList;
 
+import net.youmi.android.AdManager;
+import net.youmi.android.offers.OffersManager;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
-import com.example.request.Config;
 import com.example.request.Request_GetUserInfo;
 import com.example.request.Request_Lottery;
 import com.example.request.Requester;
@@ -20,6 +21,7 @@ import com.example.wangcai.base.ActivityRegistry;
 import com.example.wangcai.base.BuildSetting;
 import com.example.wangcai.base.ManagedDialog;
 import com.example.wangcai.base.ManagedDialogActivity;
+import com.example.wangcai.base.ViewHelper;
 import com.example.wangcai.ctrls.ItemBase;
 import com.example.wangcai.ctrls.MainItem;
 import com.example.wangcai.ctrls.SlidingLayout;
@@ -35,6 +37,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -54,10 +57,18 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     
 	SlidingLayout m_slidingLayout;
 
+	private void Init3rdSdk() {
+    	ShareSDK.initSDK(this);
+
+        AdManager.getInstance(this).init("AppId", "AppSecret", false);
+        OffersManager.getInstance(this).onAppLaunch();
+
+	}
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    	ShareSDK.initSDK(this);
-   
+    	Init3rdSdk();
+    	
     	ActivityRegistry.GetInstance().PushActivity(this);
  
         super.onCreate(savedInstanceState);
@@ -65,7 +76,6 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	
         InitView();
         
-        AtachEvents();
      }
 	
     
@@ -115,8 +125,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
         UserInfo userInfo = app.GetUserInfo();
 
         //余额
-        TextView balanceTextValue = (TextView)this.findViewById(R.id.balance_value);
-        balanceTextValue.setText(String.valueOf((float)userInfo.GetBalance() / 100.0f));
+        SetBalance(userInfo.GetBalance());
         
         //今天还能赚
         TaskListInfo taskListInfo = app.GetTaskListInfo();
@@ -129,6 +138,38 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
         
         
         InitMemuList();
+        
+
+    	//左上角的菜单按钮
+    	View viewButton = this.findViewById(R.id.option_button);
+    	ViewHelper.SetStateViewBkg(viewButton, this, R.drawable.main_menu1, R.drawable.main_menu2, 0);
+    	viewButton.setOnClickListener(this);
+    	
+    	//右上角兑换按钮
+    	this.findViewById(R.id.exchange_gift_button).setOnClickListener(this);
+    	
+    	//提取现金按钮
+    	this.findViewById(R.id.extract_cash).setOnClickListener(this);
+    	
+    	//签到抽奖按钮
+    	this.findViewById(R.id.sign_in).setOnClickListener(this);
+   
+    	//查看已领到的红包
+    	this.findViewById(R.id.show_complete_task).setOnClickListener(this);
+    }
+    
+    private void SetBalance(int nBalance) {
+        final int sg_listNumberResId[] = {R.drawable.yue_0, R.drawable.yue_1, R.drawable.yue_2, R.drawable.yue_3, 
+            	R.drawable.yue_4, R.drawable.yue_5, R.drawable.yue_6, R.drawable.yue_7, R.drawable.yue_8, R.drawable.yue_9};
+        final int sg_viewIdResId[] = {R.id.money_dot2, R.id.money_dot1, R.id.money_4, R.id.money_3, R.id.money_2, R.id.money_1};
+        final int nViewCount = sg_viewIdResId.length;
+ 
+        for (int i = 0; i < nViewCount && nBalance > 0; i++, nBalance /= 10) {
+        	int nValue = nBalance % 10;
+        	ImageView view = (ImageView)this.findViewById(sg_viewIdResId[i]);
+        	view.setBackgroundResource(sg_listNumberResId[nValue]);
+        	view.setVisibility(View.VISIBLE);
+    	}
     }
     
     //显示菜单
@@ -231,19 +272,6 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 				break;
 		}
 	}
-    private void AtachEvents() {
-    	//左上角的菜单按钮
-    	this.findViewById(R.id.option_button).setOnClickListener(this);
-    	//右上角兑换按钮
-    	this.findViewById(R.id.exchange_gift_button).setOnClickListener(this);
-    	//提取现金按钮
-    	this.findViewById(R.id.extract_cash).setOnClickListener(this);
-    	//签到抽奖按钮
-    	this.findViewById(R.id.sign_in).setOnClickListener(this);
-    	//查看已领到的红包
-    	this.findViewById(R.id.show_complete_task).setOnClickListener(this);
-    }
-
 
 	public void OnItemClicked(String strItemName)
 	{

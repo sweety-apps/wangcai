@@ -79,6 +79,9 @@ public class Requester {
 		}
 		return true;
 	}
+	public void OnEndParse() {
+		m_rootObject = null;
+	}
 	
 	public void SetRequestType(RequesterFactory.RequestType enumRequestType) {
 		m_enumRequestType = enumRequestType;

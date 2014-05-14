@@ -1,9 +1,6 @@
 package com.example.wangcai.ctrls;
 
 import com.example.wangcai.R;
-import com.example.wangcai.R.id;
-import com.example.wangcai.R.layout;
-import com.example.wangcai.R.styleable;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +8,6 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -55,7 +51,7 @@ public class TitleCtrl extends FrameLayout {
         inflater.inflate(R.layout.ctrl_title, this);
         
 
-    	Button returnButton = (Button)this.findViewById(R.id.return_button);
+    	View returnButton = this.findViewById(R.id.return_button);
     	if (returnButton != null) {
 	    	returnButton.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="download_prepare">正在准备下载 </string>
+    <string name="download_start">正在下载</string>
+    <string name="download_finished">下载成功</string>
+    <string name="download_error">下载失败</string>
+    <string name="download_confirm_tip">您现在使用的是非WIFI网络(2G/3G网络)，确定要下载吗?</string>
+    <string name="download_confirm">确认下载</string>
+</resources>

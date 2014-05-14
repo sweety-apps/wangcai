@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/nav_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
-	<Button 
+	<ImageButton 
 		android:id="@+id/return_button"
 		android:text="@string/test_return_text" 
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:src="@drawable/back"
 		android:gravity="center_vertical"
 	/> 
 
@@ -20,6 +22,6 @@
 		android:layout_toRightOf="@id/option_button"
 		android:gravity="center_vertical"
 		android:text="@string/app_description"
-		android:textColor="#0000ff" />
+		android:textColor="#ffffff" />
 
 </LinearLayout>

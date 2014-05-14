@@ -1,53 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp" 
+    android:layout_height="90dp" 
 	android:layout_marginTop="10dp">
     
    <ImageView
 		android:id="@+id/main_item_icon"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_centerVertical="true"
+		android:layout_marginLeft="@dimen/common_margin_left"
 		android:layout_marginRight="20dp"
 		 />
-	<TextView 
-		android:id="@+id/main_item_title"
-		android:text="@string/balance"
+	 <LinearLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@id/main_item_icon"
-		android:textSize="14dp"
-	/> 
-	<TextView 
-		android:id="@+id/main_item_tip"
-		android:text="@string/balance"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_toRightOf="@id/main_item_icon"
-		android:layout_below="@id/main_item_title"
-		android:textSize="8dp"
-	/> 
+		android:orientation="vertical"
+		android:layout_centerVertical="true"
+		android:layout_toRightOf="@id/main_item_icon" >
+		<TextView 
+			android:id="@+id/main_item_title"
+			android:text="@string/balance"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="14dp"
+		/> 
+		<TextView 
+			android:id="@+id/main_item_tip"
+			android:text="@string/balance"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="8dp"
+		/> 
+	</LinearLayout>
    <ImageView
 		android:id="@+id/main_item_money_icon"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:src="@drawable/package_icon_many"
-		android:layout_alignParentRight="true"
-		 />
+		android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"	
+		android:layout_marginRight="@dimen/common_margin_right"	 />
 	<TextView 
 		android:id="@+id/main_item_task_status"
 		android:text="@string/task_complete"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:gravity="right"
+		android:layout_centerVertical="true"
 		android:layout_alignParentRight="true"
 		android:visibility="gone"
+		android:layout_marginRight="@dimen/common_margin_right"
 	/> 
 	<!-- 分割线 -->
    <ImageView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
+		android:src="@drawable/menu_icon_line"
 		android:visibility="gone"
 		 />
 </RelativeLayout>

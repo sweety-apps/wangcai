@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dev_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff" >
+
+    <Button
+        android:id="@+id/btn_wall_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取积分" />
+
+    <Button
+        android:id="@+id/btn_wall_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_wall_get"
+        android:text="检查积分" />
+
+    <TextView android:id="@+id/btn_wall_check_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_wall_check"
+        />
+    
+    <TextView android:id="@+id/btn_wall_use_points_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_wall_check_result"
+        android:text="请在下面输入要消费的积分数:"/>
+        
+     <EditText android:id="@+id/btn_wall_use_points"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_wall_use_points_tx"
+        android:numeric="integer"/>
+   
+    <Button
+        android:id="@+id/btn_wall_use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_wall_use_points"
+        android:text="消费积分" />
+    
+    <TextView android:id="@+id/btn_wall_use_points_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_wall_use"
+        />
+    
+    <Button
+        android:id="@+id/btn_wall_cache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_wall_use"
+        android:text="点此按钮开始视频广告缓存" />
+    
+    <Button
+        android:id="@+id/btn_wall_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_wall_cache"
+        android:text="点此按钮进入视频广告播放页面" />
+    
+</RelativeLayout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+            android:id="@+id/PointsTextView"  
+            android:text="积分"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:visibility="visible"
+            android:gravity="center" 
+            
+            />
+    
+   <LinearLayout
+			android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+		>
+    <Button android:id="@+id/btn_1"  
+        android:text="赚积分广告墙"  
+         android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:visibility="visible"
+	        android:layout_weight="1"  />
+    
+    <Button android:id="@+id/btn_2"  
+        android:text="无积分推荐墙"  
+         android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:visibility="visible"
+	        android:layout_weight="1"  />
+	</LinearLayout>	
+	
+	
+	<LinearLayout
+			android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+		>
+		<Button android:id="@+id/btn_3"  
+		    android:text="查看积分[异步]"  
+		    android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:visibility="visible"
+	        android:layout_weight="1"  />
+		
+		
+	</LinearLayout>
+	
+	<LinearLayout
+			android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+		>
+		<Button android:id="@+id/btn_4"  
+		    android:text="消费20个积分[异步]"  
+		    android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:visibility="visible"
+	        android:layout_weight="1" >
+		</Button>
+		
+		
+	</LinearLayout>
+	
+	<LinearLayout
+			android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+		>
+		    <Button android:id="@+id/btn_5"  
+		    	android:text="增加20个积分[异步]"  
+		    	android:layout_height="wrap_content"
+	        	android:layout_width="fill_parent"
+	        	android:visibility="visible"
+	        	android:layout_weight="1" />
+		    
+			
+	</LinearLayout>
+	
+	<LinearLayout
+			android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+		>
+		    <Button
+	            android:id="@+id/btn_6"
+	            android:text="广告列表数据源[异步]"
+	            android:layout_height="wrap_content"
+	            android:layout_width="fill_parent"
+	            android:visibility="visible"
+	            android:layout_weight="1" />
+
+			
+	</LinearLayout>
+	
+	<LinearLayout
+			android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+		>
+		    <Button
+	            android:id="@+id/btn_7"
+	            android:text="单条广告数据源[异步]"
+	            android:layout_height="wrap_content"
+	            android:layout_width="fill_parent"
+	            android:visibility="visible"
+	            android:layout_weight="1" />
+
+			
+	</LinearLayout>
+	
+	<LinearLayout
+			android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+		>
+		    <Button
+	            android:id="@+id/btn_8"
+	            android:text="应用签到"
+	            android:layout_height="wrap_content"
+	            android:layout_width="fill_parent"
+	            android:visibility="visible"
+	            android:layout_weight="1" />
+
+			
+	</LinearLayout>
+	
+	<TextView
+            android:id="@+id/SdkVersionTextView"   
+            android:text="Sdk Version:"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:visibility="visible"
+            android:gravity="center" />
+
+</LinearLayout>

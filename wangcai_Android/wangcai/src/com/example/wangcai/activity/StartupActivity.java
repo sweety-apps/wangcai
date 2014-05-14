@@ -1,5 +1,8 @@
 package com.example.wangcai.activity;
 
+import net.youmi.android.AdManager;
+import net.youmi.android.offers.OffersManager;
+
 import com.example.request.Util;
 import com.example.wangcai.R;
 import com.example.wangcai.WangcaiApp;
@@ -7,6 +10,7 @@ import com.example.wangcai.base.ManagedDialog;
 import com.example.wangcai.base.ManagedDialogActivity;
 import com.example.wangcai.dialog.HintLoginErrorDialog;
 import com.example.wangcai.dialog.HintNetwordErrorDialog;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +21,7 @@ public class StartupActivity extends ManagedDialogActivity implements WangcaiApp
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+                
         setContentView(R.layout.activity_startup);
 
         WangcaiApp app = WangcaiApp.GetInstance();

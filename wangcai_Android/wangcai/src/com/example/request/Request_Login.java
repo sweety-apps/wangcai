@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.wangcai.base.SystemInfo;
@@ -41,7 +42,9 @@ public class Request_Login extends Requester{
 		m_userInfo = ReadUserInfo();
 		m_extractInfo = ReadExtractInfo();
 		m_taskListInfo = ReadTaskListInfo();
+		m_appwalConfig = ParseAppwallConfig();
 
+		OnEndParse();
     	return true;
 	}
     
@@ -151,6 +154,24 @@ public class Request_Login extends Requester{
 		}
 		return taskListInfo;
     }
+    private AppWallConfig ParseAppwallConfig() {
+    	AppWallConfig appwallConfig = new AppWallConfig();
+		try {
+			JSONObject jsonObject = m_rootObject.getJSONObject("offerwall");
+			appwallConfig.AddWall("mopan", Util.ReadJsonInt(jsonObject, "mopan"));
+			appwallConfig.AddWall("jupeng", Util.ReadJsonInt(jsonObject, "jupeng"));
+			appwallConfig.AddWall("miidi", Util.ReadJsonInt(jsonObject, "miidi"));
+			appwallConfig.AddWall("domob", Util.ReadJsonInt(jsonObject, "domob"));
+			appwallConfig.AddWall("punchbox", Util.ReadJsonInt(jsonObject, "punchbox"));
+			appwallConfig.AddWall("mobsmar", Util.ReadJsonInt(jsonObject, "mobsmar"));
+			appwallConfig.AddWall("limei", Util.ReadJsonInt(jsonObject, "limei"));
+			appwallConfig.AddWall("youmi", Util.ReadJsonInt(jsonObject, "youmi"));
+		} catch (JSONException e) {
+			appwallConfig = null;
+		}	
+		return appwallConfig;
+    }
+    
     
     public UserInfo GetUserInfo() {
     	return m_userInfo;
@@ -164,11 +185,15 @@ public class Request_Login extends Requester{
     public boolean GetNeedForceUpdate() {
     	return m_bNeedForceUpdate;
     }
+    public AppWallConfig GetWallConfig() {
+    	return m_appwalConfig;
+    }
 
     private boolean m_bNeedForceUpdate;
 	private UserInfo m_userInfo = null;
 	private TaskListInfo m_taskListInfo = null;	
 	private ExtractInfo m_extractInfo = null;
+	private AppWallConfig m_appwalConfig = null;
 }
 
 
