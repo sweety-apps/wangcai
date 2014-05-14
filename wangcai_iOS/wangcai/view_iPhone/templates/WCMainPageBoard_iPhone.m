@@ -22,6 +22,7 @@
 #import "MobClick.h"
 #import "SettingLocalRecords.h"
 #import "MessageViewController.h"
+#import "LoginAndRegister.h"
 
 #pragma mark -
 
@@ -143,6 +144,12 @@ ON_SIGNAL2( BeeUIBoard, signal )
         
         [self.view addSubview:headRightBtnImageView];
         [self.view addSubview:headRightBtn];
+        
+        
+        if ( [[LoginAndRegister sharedInstance] isInReview] ) {
+            [_headRightBtnImageView setHidden:YES];
+            [headRightBtn setHidden:YES];
+        }
         
         //判断是否是首次启动
         BOOL isFirst = [SettingLocalRecords isFirstRun];
