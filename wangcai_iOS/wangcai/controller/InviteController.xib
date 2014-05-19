@@ -44,9 +44,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="CWb-UR-iVv" appends="YES" id="BFy-62-iAr"/>
-            </connections>
         </view>
         <view contentMode="scaleToFill" id="dAQ-Tf-erb">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -146,11 +143,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <tapGestureRecognizer id="CWb-UR-iVv">
-            <connections>
-                <action selector="hideKeyboard:" destination="-1" id="l7V-1M-jPs"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="back.png" width="11" height="22"/>

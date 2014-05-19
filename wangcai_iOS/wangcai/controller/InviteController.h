@@ -11,13 +11,11 @@
 
 @interface InviteController : UIViewController <InviterUpdateDelegate, UITextFieldDelegate>
 {
-    InviterUpdate* _inviterUpdate;
 }
 
 @property (assign, nonatomic) BeeUIStack* _beeStack;
 
 @property (assign, nonatomic) UIView *containerView;
-@property (assign, nonatomic) UISegmentedControl *segment;
 
 @property (retain, nonatomic) UIView *inviteView;
 @property (assign, nonatomic) UITextField *inviteUrlTextField;
@@ -27,11 +25,9 @@
 @property (assign, nonatomic) UIButton *shareButton;
 
 @property (retain, nonatomic) NSArray* priorConstraints;
-@property (retain, nonatomic) UILabel* inputInviteTip;
 
 @property (assign, nonatomic) NSUInteger receiveMoney;
 @property (copy, nonatomic) NSString* inviteCode;
-@property (copy, nonatomic) NSString* invitedPeople;
 
 @property (assign, nonatomic) UILabel* inviteIncome;
 @property (assign, nonatomic) UILabel* inviteIncomeTip;

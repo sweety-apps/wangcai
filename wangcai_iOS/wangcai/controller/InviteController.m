@@ -36,7 +36,6 @@
         
         self._beeStack = nil;
         self.title = @"邀请送红包";
-        _inviterUpdate = [[InviterUpdate alloc] init];
     }
     return self;
 }
@@ -60,7 +59,6 @@
     self.inviteCodeLabel = (UILabel*)[self.inviteView viewWithTag:14];
     self.inviteUrlTextField = (UITextField*)[self.inviteView viewWithTag:18];
     self.qrcodeView = (UIImageView*)[self.inviteView viewWithTag:20];
-    self.segment = (UISegmentedControl*)[self.view viewWithTag:21];
     self.shareButton = (UIButton*)[self.inviteView viewWithTag:22];
 
     self.inviteIncome = (UILabel*)[self.inviteView viewWithTag:41];
@@ -73,50 +71,10 @@
     UIImage* shareButtonBkg = [[UIImage imageNamed: @"invite_share_button"] resizableImageWithCapInsets: UIEdgeInsetsMake(8, 8, 8, 8)];
     [self.shareButton setBackgroundImage: shareButtonBkg forState:UIControlStateNormal];
     
-    UIImage* segmentSelected = [[UIImage imageNamed: @"invite_seg_select"] resizableImageWithCapInsets: UIEdgeInsetsMake(9, 8, 9, 8)];
-    
-    UIImage* segmentUnselected = [[UIImage imageNamed: @"invite_seg_normal"] resizableImageWithCapInsets: UIEdgeInsetsMake(9, 8, 9, 8)];
-    
-    UIImage* segmentSelectedUnselected = [UIImage imageNamed: @"invite_seg_sel_unsel"];
-    
-    UIImage* segmentUnselectedSelected = [UIImage imageNamed: @"invite_seg_unsel_sel"];
-    
-    UIImage* segmentUnselectedUnselected = [UIImage imageNamed: @"invite_seg_unsel_unsel"];
-    
-    UIImage* segmentSelectedSelected = [UIImage imageNamed: @"invite_seg_sel_sel"];
-    
-    [self.segment setBackgroundImage: segmentUnselected forState: UIControlStateNormal barMetrics: UIBarMetricsDefault];
-    [self.segment setBackgroundImage: segmentSelected forState: UIControlStateSelected barMetrics: UIBarMetricsDefault];
-    [self.segment setBackgroundImage: segmentSelected forState: UIControlStateHighlighted barMetrics: UIBarMetricsDefault];
-    
-    [self.segment setDividerImage: segmentSelectedUnselected forLeftSegmentState: UIControlStateSelected rightSegmentState: UIControlStateNormal barMetrics: UIBarMetricsDefault];
-    [self.segment setDividerImage: segmentUnselectedSelected forLeftSegmentState: UIControlStateNormal rightSegmentState: UIControlStateSelected barMetrics: UIBarMetricsDefault];
-    [self.segment setDividerImage: segmentUnselectedUnselected forLeftSegmentState: UIControlStateNormal rightSegmentState: UIControlStateNormal barMetrics: UIBarMetricsDefault];
-    
-    [self.segment setDividerImage: segmentSelectedSelected forLeftSegmentState: UIControlStateHighlighted rightSegmentState: UIControlStateSelected barMetrics: UIBarMetricsDefault];
-    [self.segment setDividerImage: segmentSelectedSelected forLeftSegmentState: UIControlStateSelected rightSegmentState: UIControlStateHighlighted barMetrics: UIBarMetricsDefault];
-    
-    NSDictionary* textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:17], UITextAttributeFont, [UIColor grayColor], UITextAttributeTextColor, nil];
-    [self.segment setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
-    
-    textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:17], UITextAttributeFont, [UIColor whiteColor], UITextAttributeTextColor, nil];
-    [self.segment setTitleTextAttributes:textAttributes forState:UIControlStateSelected];
-    
     NSString* inviteCode = [[LoginAndRegister sharedInstance] getInviteCode];
     if (inviteCode != nil)
     {
         [self setInviteCode: inviteCode];
-    }
-    
-    NSString* inviter = [[LoginAndRegister sharedInstance] getInviter];
-    if (!(inviter == nil || [inviter length] == 0))
-    {
-        [self.inputInviteTip setHidden:YES];
-        [self setInvitedPeople: inviter];
-    }
-    else
-    {
-        [self.inputInviteTip setHidden:NO];
     }
     
     int income = [[LoginAndRegister sharedInstance] getInviteIncome];
@@ -152,8 +110,6 @@
     self._beeStack = nil;
     [self.inviteView release];
     [self.inviteCode release];
-    [self.invitedPeople release];
-    [_inviterUpdate release];
     [super dealloc];
 }
 
@@ -211,8 +167,6 @@
 
 - (void)setReceiveMoney:(NSUInteger)receiveMoney
 {
-    _receiveMoney = receiveMoney;
-    self.receiveMoneyLabel.text = [NSString stringWithFormat: @"%lu", (unsigned long)_receiveMoney];
 }
 
 - (UIImage *)QRCodeGenerator: (NSString *)iData andLightColor: (UIColor *)iLightColor andDarkColor: (UIColor *)iDarkColor andQuietZone: (NSInteger)iQuietZone andSize: (NSInteger)iSize
