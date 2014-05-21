@@ -16,6 +16,8 @@
 #define kTaskTypeCommetWangcai (6)
 #define KTaskTypeUpgrade (7)
 #define kTaskTypeShare   (8)
+#define kTaskTypeWangcaiApp (9)
+#define kTaskTypeQuest   (10)
 #define kTaskTypeIntallApp (10000)
 #define kTaskTypeCommon (10001)
 

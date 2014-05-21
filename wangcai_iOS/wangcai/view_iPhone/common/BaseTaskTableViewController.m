@@ -34,6 +34,8 @@
 #import <ShareSDK/ShareSDK.h>
 #import "MessageMgr.h"
 #import "InviteViewController.h"
+#import "QuestViewController.h"
+#import "WangcaiTaskViewController.h"
 
 static BOOL gNeedReloadTaskList = NO;
 static BOOL gNeedShowChoujiangShare = NO;
@@ -804,12 +806,23 @@ static int  gChoujiang = 0;
                 [router presentViewController:mgr.wallNavController animated:YES completion:nil];
                 break;
             }
+            case kTaskTypeQuest:
+            {
+                QuestViewController* controller = [QuestViewController sharedInstance];
+                [controller setUIStack:self.beeStack];
+                [_beeStack pushViewController:controller animated:YES];
+            }
+                break;
+            case kTaskTypeWangcaiApp:
+            {
+                WangcaiTaskViewController* controller = [WangcaiTaskViewController sharedInstance];
+                [controller setUIStack:self.beeStack];
+                [_beeStack pushViewController:controller animated:YES];
+            }
+                break;
             default:
                 break;
         }
-        
-        
-        
     }
 }
 

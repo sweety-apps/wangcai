@@ -33,6 +33,14 @@
 		710A3F72192C75B9002420C8 /* WapsOffer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710A3F70192C75B9002420C8 /* WapsOffer.framework */; };
 		710A3F76192C8463002420C8 /* app_tip_waps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 710A3F75192C8463002420C8 /* app_tip_waps@2x.png */; };
 		710A3F77192C8463002420C8 /* app_tip_waps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 710A3F75192C8463002420C8 /* app_tip_waps@2x.png */; };
+		710A3F7B192C971A002420C8 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 710A3F79192C971A002420C8 /* QuestViewController.m */; };
+		710A3F7C192C971A002420C8 /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 710A3F79192C971A002420C8 /* QuestViewController.m */; };
+		710A3F7D192C971A002420C8 /* QuestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 710A3F7A192C971A002420C8 /* QuestViewController.xib */; };
+		710A3F7E192C971A002420C8 /* QuestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 710A3F7A192C971A002420C8 /* QuestViewController.xib */; };
+		710A3F82192C9A93002420C8 /* WangcaiTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 710A3F80192C9A93002420C8 /* WangcaiTaskViewController.m */; };
+		710A3F83192C9A93002420C8 /* WangcaiTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 710A3F80192C9A93002420C8 /* WangcaiTaskViewController.m */; };
+		710A3F84192C9A93002420C8 /* WangcaiTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 710A3F81192C9A93002420C8 /* WangcaiTaskViewController.xib */; };
+		710A3F85192C9A93002420C8 /* WangcaiTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 710A3F81192C9A93002420C8 /* WangcaiTaskViewController.xib */; };
 		7112720918B330580068C33E /* phone_validation_disable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112720618B330580068C33E /* phone_validation_disable@2x.png */; };
 		7112720A18B330580068C33E /* phone_validation_disable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112720618B330580068C33E /* phone_validation_disable@2x.png */; };
 		7112720B18B330580068C33E /* phone_validation_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112720718B330580068C33E /* phone_validation_down@2x.png */; };
@@ -1690,6 +1698,12 @@
 		71008A44189160F800689E2F /* goback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goback@2x.png"; sourceTree = "<group>"; };
 		710A3F70192C75B9002420C8 /* WapsOffer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WapsOffer.framework; sourceTree = "<group>"; };
 		710A3F75192C8463002420C8 /* app_tip_waps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_waps@2x.png"; sourceTree = "<group>"; };
+		710A3F78192C971A002420C8 /* QuestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestViewController.h; sourceTree = "<group>"; };
+		710A3F79192C971A002420C8 /* QuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestViewController.m; sourceTree = "<group>"; };
+		710A3F7A192C971A002420C8 /* QuestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestViewController.xib; sourceTree = "<group>"; };
+		710A3F7F192C9A93002420C8 /* WangcaiTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WangcaiTaskViewController.h; sourceTree = "<group>"; };
+		710A3F80192C9A93002420C8 /* WangcaiTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WangcaiTaskViewController.m; sourceTree = "<group>"; };
+		710A3F81192C9A93002420C8 /* WangcaiTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WangcaiTaskViewController.xib; sourceTree = "<group>"; };
 		7112720618B330580068C33E /* phone_validation_disable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_disable@2x.png"; sourceTree = "<group>"; };
 		7112720718B330580068C33E /* phone_validation_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_down@2x.png"; sourceTree = "<group>"; };
 		7112720818B330580068C33E /* phone_validation_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_normal@2x.png"; sourceTree = "<group>"; };
@@ -4247,6 +4261,12 @@
 				71420EB8191E305500376AA9 /* MessageViewController.h */,
 				71420EB9191E305500376AA9 /* MessageViewController.m */,
 				71420EBA191E305500376AA9 /* MessageViewController.xib */,
+				710A3F78192C971A002420C8 /* QuestViewController.h */,
+				710A3F79192C971A002420C8 /* QuestViewController.m */,
+				710A3F7A192C971A002420C8 /* QuestViewController.xib */,
+				710A3F7F192C9A93002420C8 /* WangcaiTaskViewController.h */,
+				710A3F80192C9A93002420C8 /* WangcaiTaskViewController.m */,
+				710A3F81192C9A93002420C8 /* WangcaiTaskViewController.xib */,
 				A6FEE27B187D971C00E5AF3E /* EGORefreshTableHeaderView.h */,
 				A6FEE27C187D971C00E5AF3E /* EGORefreshTableHeaderView.m */,
 				A60C58B418703B0C0068425C /* qrencode.h */,
@@ -5541,6 +5561,7 @@
 				F394DBD118B89841003311CD /* mywangcai_dog_4@2x.png in Resources */,
 				F394DBC318B89841003311CD /* mywangcai_dog_11@2x.png in Resources */,
 				71008A3B189108D900689E2F /* app_tip_domob@2x.png in Resources */,
+				710A3F7E192C971A002420C8 /* QuestViewController.xib in Resources */,
 				F3359FF318882F8000C1E636 /* menu-button@2x.png in Resources */,
 				F3359FF418882F8000C1E636 /* choujiang_guize@2x.png in Resources */,
 				F394DBF618B8EB9B003311CD /* levelup_bg@2x.png in Resources */,
@@ -5833,6 +5854,7 @@
 				F394DBE718B89841003311CD /* mywangcai_cell_xiongdibang_title@2x.png in Resources */,
 				71AE4C9E18B488D200B820EC /* back2@2x.png in Resources */,
 				F335A07118882F8000C1E636 /* user_info_bg_paper@2x.png in Resources */,
+				710A3F85192C9A93002420C8 /* WangcaiTaskViewController.xib in Resources */,
 				F335A07218882F8000C1E636 /* invite_edit_bkg@2x.png in Resources */,
 				F394DBFA18B8EB9B003311CD /* levelup_check_btn_pressed@2x.png in Resources */,
 				F335A07318882F8000C1E636 /* choujiang_xiaomi@2x.png in Resources */,
@@ -5889,6 +5911,7 @@
 				A6D591BE187C00BB004DF4E0 /* alipay@2x.png in Resources */,
 				A60C5845186FF8A30068425C /* !@2x.png in Resources */,
 				712D9B4F191B416F0035D29C /* dianru_yuanjiao_horizontal.png in Resources */,
+				710A3F84192C9A93002420C8 /* WangcaiTaskViewController.xib in Resources */,
 				F394DBE818B89841003311CD /* mywangcai_cell_xiongdibang@2x.png in Resources */,
 				A60C58A318703AE60068425C /* invite_banner@2x.png in Resources */,
 				712D9B6F191B416F0035D29C /* dianru_orange_dianru_iphone_download.png in Resources */,
@@ -6129,6 +6152,7 @@
 				712D9B6D191B416F0035D29C /* dianru_orange_dianru_info.png in Resources */,
 				F36049B41871A9AE00FAD1F3 /* menu_icon_wodewangcai@2x.png in Resources */,
 				A60C587F186FF8A30068425C /* table_view_cell_line@2x.png in Resources */,
+				710A3F7D192C971A002420C8 /* QuestViewController.xib in Resources */,
 				F31F898018962B8600F34F20 /* iPhone4s.plist in Resources */,
 				A60C5863186FF8A30068425C /* sms_code_border@2x.png in Resources */,
 				712D9B63191B416F0035D29C /* dianru_green_right_cell.png in Resources */,
@@ -6377,12 +6401,14 @@
 				F3359EA118882F8000C1E636 /* BeeUIQuery+Miscellaneous.m in Sources */,
 				F3359EA218882F8000C1E636 /* UIView+Transition.m in Sources */,
 				F3359EA318882F8000C1E636 /* CXMLElement.m in Sources */,
+				710A3F83192C9A93002420C8 /* WangcaiTaskViewController.m in Sources */,
 				F3359EA418882F8000C1E636 /* MBSpinningCircle.m in Sources */,
 				F3359EA518882F8000C1E636 /* ExchangeController.m in Sources */,
 				F3359EA618882F8000C1E636 /* Bee_UIActivityIndicatorView.m in Sources */,
 				F3359EA718882F8000C1E636 /* Bee_ActiveBuilder.m in Sources */,
 				F3359EA818882F8000C1E636 /* Bee_MYSQL.m in Sources */,
 				F3359EA918882F8000C1E636 /* CXHTMLDocument.m in Sources */,
+				710A3F7C192C971A002420C8 /* QuestViewController.m in Sources */,
 				F3359EAA18882F8000C1E636 /* Bee_UIVideoEditorController.m in Sources */,
 				F3359EAB18882F8000C1E636 /* Bee_UISearchBar.m in Sources */,
 				F3359EAC18882F8000C1E636 /* Bee_SQLITE.m in Sources */,
@@ -6796,6 +6822,7 @@
 				F3F189A718543A440098C852 /* Bee_Ticker.mm in Sources */,
 				712D9BAD191B416F0035D29C /* _SDImageCache.m in Sources */,
 				F3F1871918543A410098C852 /* ASINetworkQueue.m in Sources */,
+				710A3F82192C9A93002420C8 /* WangcaiTaskViewController.m in Sources */,
 				F3F189CF18543A450098C852 /* NSObject+BeeTypeConversion.mm in Sources */,
 				F3F1877518543A420098C852 /* Bee_Routine.mm in Sources */,
 				F3F188F318543A440098C852 /* Bee_UIQuery.m in Sources */,
@@ -6893,6 +6920,7 @@
 				F3F1889518543A430098C852 /* UIView+PanGesture.m in Sources */,
 				F3F1894018543A440098C852 /* Bee_Service.m in Sources */,
 				F3F187CC18543A420098C852 /* UIViewController+UINavigationBar.m in Sources */,
+				710A3F7B192C971A002420C8 /* QuestViewController.m in Sources */,
 				F3F1898518543A440098C852 /* NSObject+BeeActiveRecord.m in Sources */,
 				F3F187BA18543A420098C852 /* UIView+UINavigationController.m in Sources */,
 				F3F1872318543A420098C852 /* FMDatabaseAdditions.m in Sources */,
