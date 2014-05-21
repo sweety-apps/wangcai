@@ -45,17 +45,6 @@ static LoginAndRegister* _sharedInstance = nil;
     self->_balance = 0;
     self->_firstLogin = YES;
     
-    self->_showDomob = 0;
-    self->_showYoumi = 0;
-    self->_showMobsmar = 0;
-    self->_showLimei = 0;
-    self->_showMopan = 0;
-    self->_showPunchBox = 0;
-    self->_showMiidi = 0;
-    self->_showJupeng = 0;
-    self->_showDianru = 0;
-    self->_showAdwo = 0;
-    
     self->_phonePay = nil;
     self->_aliPay = nil;
     self->_qbiPay = nil;
@@ -186,12 +175,45 @@ static LoginAndRegister* _sharedInstance = nil;
     req.TIMEOUT(10);
     
     [data release];
+    
+    
+    _offwallArray = [[NSArray alloc] initWithObjects:@"domob", @"jupeng", @"miidi", @"youmi", @"limei", @"mopan", @"punchbox", @"dianru", @"waps", @"adwo", nil];
+    
+    _offwallShow = [[NSMutableDictionary alloc] init];
+    _offwallOrder = [[NSMutableArray alloc] init];
 }
 
 - (void) setLoginStatus : (LoginStatus) status HttpCode:(int)code ErrCode:(int) errCode Msg:(NSString*) msg {
     self->loginStatus = status;
     
     [self sendEvent:status HttpCode:code ErrCode:errCode Msg:msg];
+}
+
+-(void) adjustOrder:(NSString*) response order:(NSMutableArray*) order {
+    NSMutableDictionary* mutTmp = [[[NSMutableDictionary alloc] init] autorelease];
+    
+    for ( int i = 0; i < [_offwallArray count]; i ++ ) {
+        NSString* name = [_offwallArray objectAtIndex:i];
+        NSRange range = [response rangeOfString:name];
+        if ( range.length != 0 ) {
+            [mutTmp setObject:name forKey:[NSNumber numberWithInteger:range.location]];
+        }
+    }
+    
+    NSArray* keys = [mutTmp allKeys];
+    NSArray* sortedArray = [keys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        if ( [obj1 intValue] < [obj2 intValue] ) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }];
+    
+    for ( int i = 0; i < [sortedArray count]; i ++ ) {
+        NSString* value = [mutTmp objectForKey:[sortedArray objectAtIndex:i] ];
+        
+        [order addObject:value];
+    }
 }
 
 - (void) handleRequest:(BeeHTTPRequest *)req {
@@ -265,60 +287,30 @@ static LoginAndRegister* _sharedInstance = nil;
                     [ECManager ecWallPreload];
                 }
                 
+                if ( _offwallOrder != nil ) {
+                    [_offwallOrder release];
+                }
+                if ( _offwallShow != nil ) {
+                    [_offwallShow release];
+                }
+                
+                _offwallShow = [[NSMutableDictionary alloc] init];
+                _offwallOrder = [[NSMutableArray alloc] init];
+                
+                [self adjustOrder:req.responseString order:_offwallOrder];
+                
                 NSDictionary* offerwall = [dict valueForKey:@"offerwall"];
-                if ( [[offerwall allKeys] containsObject:@"domob"] ) {
-                    _showDomob = [[offerwall valueForKey:@"domob"] intValue];
+                for ( int i = 0; i < [_offwallOrder count]; i ++ ) {
+                    NSString* name = [_offwallOrder objectAtIndex:i];
+                    int nValue = [[offerwall valueForKey:name] intValue];
+                    [_offwallShow setObject:[NSNumber numberWithInt:nValue] forKey:name];
                 }
                 
-                if ( [[offerwall allKeys] containsObject:@"youmi"] ) {
-                    _showYoumi = [[offerwall valueForKey:@"youmi"] intValue];
-                }
+                // todo: test
+                [self test];
+                //
                 
-                if ( [[offerwall allKeys] containsObject:@"mobsmar"] ) {
-                    _showMobsmar = [[offerwall valueForKey:@"mobsmar"] intValue];
-                }
                 
-                if ( [[offerwall allKeys] containsObject:@"limei"] ) {
-                    _showLimei = [[offerwall valueForKey:@"limei"] intValue];
-                }
-            
-                if ( [[offerwall allKeys] containsObject:@"mopan"] ) {
-                    _showMopan = [[offerwall valueForKey:@"mopan"] intValue];
-                }
-                
-                if ( [[offerwall allKeys] containsObject:@"punchbox"] ) {
-                    _showPunchBox = [[offerwall valueForKey:@"punchbox"] intValue];
-                }
-                
-                if ( [[offerwall allKeys] containsObject:@"miidi"] ) {
-                    _showMiidi = [[offerwall valueForKey:@"miidi"] intValue];
-                }
-                
-                if ( [[offerwall allKeys] containsObject:@"jupeng"] ) {
-                    _showJupeng = [[offerwall valueForKey:@"jupeng"] intValue];
-                }
-                
-                if ( [[offerwall allKeys] containsObject:@"dianru"] ) {
-                    _showDianru = [[offerwall valueForKey:@"dianru"] intValue];
-                }
-                
-                if ( [[offerwall allKeys] containsObject:@"adwo"] ) {
-                    _showAdwo = [[offerwall valueForKey:@"adwo"] intValue];
-                }
-/*
-#if TEST == 1
-                _showLimei = 0;
-                _showMopan = 3;
-                _showYoumi = 1;
-                _showMobsmar = 3;
-                _showDomob = 0;
-                _showPunchBox = 0;
-                _showMiidi = 0;
-                _showJupeng = 3;
-                _showDianru = 3;
-                _showAdwo = 3;
-#endif
-*/
                 [self initWithDraw:dict];
                 
                 int userLevel = [[dict valueForKey:@"level"] intValue];
@@ -362,6 +354,20 @@ static LoginAndRegister* _sharedInstance = nil;
             }
         }
     }
+}
+
+-(void) test {
+    //[_offwallOrder pushHead:@"waps"];
+    //[_offwallShow setObject:[NSNumber numberWithInt:3] forKey:@"waps"];
+    
+    //[_offwallShow setObject:[NSNumber numberWithInt:0] forKey:@"youmi"];
+    
+    //[_offwallOrder pushHead:@"dianru"];
+    //[_offwallShow setObject:[NSNumber numberWithInt:1] forKey:@"dianru"];
+}
+
+-(NSArray*) getOfferwallList {
+    return _offwallOrder;
 }
 
 - (void) initWithDraw:(NSDictionary*) dict {
@@ -662,212 +668,31 @@ static LoginAndRegister* _sharedInstance = nil;
     return _inviteIncome;
 }
 
--(BOOL) isShowDomob {
-    if ( _showDomob == 0 ) {
+
+
+-(BOOL) isShowOfferwall:(NSString*) offerwall {
+    int nValue = [[_offwallShow objectForKey:offerwall] intValue];
+    
+    if ( nValue == 0 ) {
         return NO;
     }
     return YES;
 }
 
--(BOOL) isShowYoumi {
-    if ( _showYoumi == 0 ) {
-        return NO;
-    }
-    return YES;
-}
-
--(BOOL) isShowLimei {
-    if ( _showLimei == 0 ) {
-        return NO;
-    }
-    return YES;
-}
-
--(BOOL) isShowMobsmar {
-    if ( _showMobsmar == 0 ) {
-        return NO;
-    }
-    return YES;
-}
-
--(BOOL) isShowMopan {
-    if ( _showMopan == 0 ) {
-        return NO;
-    }
-    return YES;
-}
-
--(BOOL) isShowPunchBox {
-    if ( _showPunchBox == 0 ) {
-        return NO;
-    }
-    return YES;
-}
-
--(BOOL) isShowMiidi {
-    if ( _showMiidi == 0 ) {
-        return NO;
-    }
-    return YES;
-}
-
--(BOOL) isShowJupeng {
-    if ( _showJupeng == 0 ) {
-        return NO;
-    }
-    return YES;
-}
-
--(BOOL) isShowDianru {
-    if ( _showDianru == 0 ) {
-        return NO;
-    }
-    return YES;
-}
-
--(BOOL) isShowAdwo {
-    if ( _showAdwo == 0 ) {
-        return NO;
-    }
-    return YES;
-}
-
-
--(BOOL) isInMoreDomob {
-    if ( _showDomob == 3 ) {
+-(BOOL) isInMoreOfferwall:(NSString*) offerwall {
+    int nValue = [[_offwallShow objectForKey:offerwall] intValue];
+    
+    if ( nValue == 3 ) {
         return YES;
     }
     return NO;
+    
 }
 
--(BOOL) isInMoreYoumi {
-    if ( _showYoumi == 3 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isInMoreLimei {
-    if ( _showLimei == 3 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isInMoreMobsmar {
-    if ( _showMobsmar == 3 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isInMoreMopan {
-    if ( _showMopan == 3 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isInMorePunchBox {
-    if ( _showPunchBox == 3 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isInMoreAdwo {
-    if ( _showAdwo == 3 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isInMoreMiidi {
-    if ( _showMiidi == 3 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isInMoreJupeng {
-    if ( _showJupeng == 3 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isInMoreDianru {
-    if ( _showDianru == 3 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendDomob {
-    if ( _showDomob == 2 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendYoumi {
-    if ( _showYoumi == 2 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendLimei {
-    if ( _showLimei == 2 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendMobsmar {
-    if ( _showMobsmar == 2 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendMopan {
-    if ( _showMopan == 2 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendPunchBox {
-    if ( _showPunchBox == 2 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendMiidi {
-    if ( _showMiidi == 2 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendAdwo {
-    if ( _showAdwo == 2 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendJupeng {
-    if ( _showJupeng == 2 ) {
-        return YES;
-    }
-    return NO;
-}
-
--(BOOL) isRecommendDianru {
-    if ( _showDianru == 2 ) {
+-(BOOL) isRecommendOfferwall:(NSString*) offerwall {
+    int nValue = [[_offwallShow objectForKey:offerwall] intValue];
+    
+    if ( nValue == 2 ) {
         return YES;
     }
     return NO;

@@ -44,6 +44,8 @@
 
 #define ADWO_OFFERWALL_BASIC_PID  @"b6e89ca0dad04766a03c0b04db24e182"
 
+#define WAPS_ID            @"94038f653c8290738381bd5811610574"
+
 #elif TARGET_VERSION_LITE == 2
 
 #define APP_NAME   @"WangCaiFriend"
@@ -82,6 +84,7 @@
 
 #define ADWO_OFFERWALL_BASIC_PID  @"612388f9b2334244acc025db8e9ec0be"
 
+#define WAPS_ID            @"059eed0ebf876eed3efbb2099aa4ebe9"
 
 #endif
 
@@ -90,7 +93,7 @@
 
 
 
-#define TEST 0
+#define TEST 1
 
 #if TEST == 0
 

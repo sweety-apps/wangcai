@@ -49,8 +49,6 @@
 #import "UtilityFunctions.h"
 #import "WebPageController.h"
 
-#import "SiWeiAdConfig.h"
-#import "SiWeiPointsManger.h"
 
 #pragma mark -
 

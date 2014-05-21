@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -75,18 +75,6 @@
                         <action selector="clickMiidi:" destination="-1" eventType="touchUpInside" id="IcJ-eD-2cT"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mAv-My-VUD">
-                    <rect key="frame" x="32" y="333" width="254" height="49"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" image="app_tip_mobsmar.png">
-                        <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clickMobsmar:" destination="-1" eventType="touchUpInside" id="lSN-yf-PYd"/>
-                    </connections>
-                </button>
                 <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3SM-sg-1GI">
                     <rect key="frame" x="32" y="271" width="254" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -147,6 +135,18 @@
                         <action selector="clickAdwo:" destination="-1" eventType="touchUpInside" id="Kcr-N6-2D3"/>
                     </connections>
                 </button>
+                <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="I6c-ir-RgM">
+                    <rect key="frame" x="32" y="217" width="254" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" image="app_tip_waps.png">
+                        <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickWaps:" destination="-1" eventType="touchUpInside" id="970-Zi-tfI"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yu5-5y-M1l">
                     <rect key="frame" x="47" y="237" width="94" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -186,18 +186,6 @@
                             </state>
                             <connections>
                                 <action selector="clickDomob:" destination="-1" eventType="touchUpInside" id="eeh-SO-QGo"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="54" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xef-Fe-GQl">
-                            <rect key="frame" x="0.0" y="221" width="254" height="49"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" image="app_tip_mobsmar.png">
-                                <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="clickMobsmar:" destination="-1" eventType="touchUpInside" id="2t8-yT-LW7"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="52" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dnc-Eb-ncx">
@@ -296,6 +284,18 @@
                                 <action selector="clickAdwo:" destination="-1" eventType="touchUpInside" id="S6n-cW-Vyr"/>
                             </connections>
                         </button>
+                        <button opaque="NO" tag="61" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="b3W-tf-UnL">
+                            <rect key="frame" x="0.0" y="142" width="254" height="49"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" image="app_tip_waps.png">
+                                <color key="titleColor" red="0.050980392159999999" green="0.50196078430000002" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="clickWaps:" destination="-1" eventType="touchUpInside" id="FTJ-rT-eDR"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eNw-n8-ymK">
                             <rect key="frame" x="-13" y="6" width="92" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -319,10 +319,10 @@
         <image name="app_tip_dianru.png" width="254" height="49"/>
         <image name="app_tip_domob.png" width="254" height="49"/>
         <image name="app_tip_miidi.png" width="254" height="49"/>
-        <image name="app_tip_mobsmar.png" width="254" height="49"/>
         <image name="app_tip_mopan.png" width="254" height="49"/>
         <image name="app_tip_more.png" width="62" height="19"/>
         <image name="app_tip_recommand.png" width="254" height="49"/>
+        <image name="app_tip_waps.png" width="254" height="49"/>
         <image name="app_tip_youmi.png" width="254" height="49"/>
         <image name="jupeng.png" width="254" height="49"/>
         <image name="limei.png" width="254" height="49"/>

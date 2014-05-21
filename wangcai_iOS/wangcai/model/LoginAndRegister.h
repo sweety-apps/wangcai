@@ -63,17 +63,6 @@ typedef enum LoginStatus {
     
     int        _nowithdraw;
     
-    int        _showDomob;
-    int        _showYoumi;
-    int        _showLimei;
-    int        _showMobsmar; //指盟
-    int        _showMopan;
-    int        _showPunchBox; // 触控
-    int        _showMiidi;    // 米迪
-    int        _showJupeng;   // 巨朋
-    int        _showDianru;   // 点入
-    int        _showAdwo;     // 安沃
-    
     int        _inReview;
     
     int        _pollingInterval;
@@ -88,6 +77,11 @@ typedef enum LoginStatus {
     NSArray*   _phonePay;
     NSArray*   _aliPay;
     NSArray*   _qbiPay;
+    
+    NSArray*   _offwallArray;
+    
+    NSMutableDictionary* _offwallShow;
+    NSMutableArray*      _offwallOrder;
 }
 
 +(id) sharedInstance;
@@ -116,6 +110,8 @@ typedef enum LoginStatus {
 -(void) setIncome:(int) income;
 -(void) setOutgo:(int) outgo;
 
+-(NSArray*) getOfferwallList;
+
 -(void) attachPhone : (NSString*) phoneNum UserId:(NSString*) userid InviteCode:(NSString*) inviteCode;
 
 -(void) attachBindPhoneEvent : (id) delegate;
@@ -133,38 +129,9 @@ typedef enum LoginStatus {
 -(void) setShareIncome:(int) nShareIncome;
 -(void) setInviter:(NSString*) inviter;
 
--(BOOL) isShowDomob;
--(BOOL) isShowYoumi;
--(BOOL) isShowLimei;
--(BOOL) isShowMobsmar;
--(BOOL) isShowMopan;
--(BOOL) isShowPunchBox;
--(BOOL) isShowMiidi;
--(BOOL) isShowJupeng;
--(BOOL) isShowDianru;
--(BOOL) isShowAdwo;
-
--(BOOL) isInMoreDomob;
--(BOOL) isInMoreYoumi;
--(BOOL) isInMoreLimei;
--(BOOL) isInMoreMobsmar;
--(BOOL) isInMoreMopan;
--(BOOL) isInMorePunchBox;
--(BOOL) isInMoreMiidi;
--(BOOL) isInMoreJupeng;
--(BOOL) isInMoreDianru;
--(BOOL) isInMoreAdwo;
-
--(BOOL) isRecommendDomob;
--(BOOL) isRecommendYoumi;
--(BOOL) isRecommendLimei;
--(BOOL) isRecommendMobsmar;
--(BOOL) isRecommendMopan;
--(BOOL) isRecommendPunchBox;
--(BOOL) isRecommendMiidi;
--(BOOL) isRecommendJupeng;
--(BOOL) isRecommendDianru;
--(BOOL) isRecommendAdwo;
+-(BOOL) isShowOfferwall:(NSString*) offerwall;
+-(BOOL) isInMoreOfferwall:(NSString*) offerwall;
+-(BOOL) isRecommendOfferwall:(NSString*) offerwall;
 
 -(int)  getNoWithDraw;
 -(NSString*) getTipsStrings;

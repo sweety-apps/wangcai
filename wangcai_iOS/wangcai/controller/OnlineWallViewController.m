@@ -23,14 +23,13 @@
 #import "JupengConfig.h"
 #import "JupengWall.h"
 #import "CommonTaskList.h"
-#import "SiWeiAdConfig.h"
-#import "SiWeiPointsManger.h"
 #import "PunchBoxAd.h"
 #import "PBOfferWall.h"
 #import "BaseTaskTableViewController.h"
 
 #import "DianRuAdWall.h"
 #import "AdwoOfferWall.h"
+#import "WapsOffer/AppConnect.h"
 
 @interface OnlineWallViewController ()
 
@@ -101,11 +100,7 @@ static OnlineWallViewController* _sharedInstance;
         _offerWallController.delegate = self;
         
         [YouMiConfig setUserID:did];
-        
-        [SiWeiAdConfig launchWithAppID:MOBSMAR_APP_ID];//初始化appid
-        [SiWeiAdConfig setDeveloperParam:did];
-        [SiWeiPointsManger enableSiweiWall];
-        
+
         _mopanAdWallControl = [[MopanAdWall alloc] initWithMopan:MOPAN_APP_ID withAppSecret:MOPAN_APP_SECRET];
         [_mopanAdWallControl setCustomUserID:did];
         
@@ -114,15 +109,14 @@ static OnlineWallViewController* _sharedInstance;
         [MiidiAdWall setUserParam:did];
         
         [JupengWall setServerUserID:did];
+        
+        // 万普
+        [AppConnect getConnect:WAPS_ID pid:@"appstore" userID:did];
 #else 
         _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:deviceId];
         _offerWallController.delegate = self;
 
         [YouMiConfig setUserID:deviceId];
-        
-        [SiWeiAdConfig launchWithAppID:MOBSMAR_APP_ID];//初始化appid
-        [SiWeiAdConfig setDeveloperParam:deviceId];
-        [SiWeiPointsManger enableSiweiWall];
         
         _mopanAdWallControl = [[MopanAdWall alloc] initWithMopan:MOPAN_APP_ID withAppSecret:MOPAN_APP_SECRET];
         [_mopanAdWallControl setCustomUserID:deviceId];
@@ -132,10 +126,11 @@ static OnlineWallViewController* _sharedInstance;
         [MiidiAdWall setUserParam:deviceId];
         
         [JupengWall setServerUserID:deviceId];
+        
+        // 万普
+        [AppConnect getConnect:WAPS_ID pid:@"appstore" userID:deviceId];
 #endif
-        
-        _siweWall = [SiWeiWall siwei];
-        
+
         [YouMiConfig setUseInAppStore:YES];
         
         [YouMiConfig launchWithAppID:YOUMI_APP_ID appSecret:YOUMI_APP_SECRET];  //服务器版
@@ -158,117 +153,72 @@ static OnlineWallViewController* _sharedInstance;
     if ( _alertView != nil ) {
         [_alertView release];
     }
-    
-    BOOL showDomob = [[LoginAndRegister sharedInstance] isShowDomob] && (![[LoginAndRegister sharedInstance] isInMoreDomob]);
-    BOOL showYoumi = [[LoginAndRegister sharedInstance] isShowYoumi] && (![[LoginAndRegister sharedInstance] isInMoreYoumi]);
-    BOOL showLimei = [[LoginAndRegister sharedInstance] isShowLimei] && (![[LoginAndRegister sharedInstance] isInMoreLimei]);
-    BOOL showMobsmar = [[LoginAndRegister sharedInstance] isShowMobsmar] && (![[LoginAndRegister sharedInstance] isInMoreMobsmar]);
-    BOOL showMopan = [[LoginAndRegister sharedInstance] isShowMopan] && (![[LoginAndRegister sharedInstance] isInMoreMopan]);
-    BOOL showPunchBox = [[LoginAndRegister sharedInstance] isShowPunchBox] && (![[LoginAndRegister sharedInstance] isInMorePunchBox]);
-    BOOL showMiidi = [[LoginAndRegister sharedInstance] isShowMiidi] && (![[LoginAndRegister sharedInstance] isInMoreMiidi]);
-    BOOL showJupeng = [[LoginAndRegister sharedInstance] isShowJupeng] && (![[LoginAndRegister sharedInstance] isInMoreJupeng]);
-    BOOL showDianru = [[LoginAndRegister sharedInstance] isShowDianru] && (![[LoginAndRegister sharedInstance] isInMoreDianru]);
-    BOOL showAdwo = [[LoginAndRegister sharedInstance] isShowAdwo] && (![[LoginAndRegister sharedInstance] isInMoreAdwo]);
-    
+
     UIView* view = [[[[NSBundle mainBundle] loadNibNamed:@"OnlineWallViewController" owner:self options:nil] firstObject] autorelease];
     
     _nRecommend = 0;
     NSMutableArray* nsOfferwall = [[[NSMutableArray alloc] init] autorelease];
-    if ( showDomob ) {
-        [nsOfferwall pushTail:[view viewWithTag:11] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendDomob] ) {
-            _nRecommend = 11;
-        }
-    }
-    if ( showYoumi ) {
-        [nsOfferwall pushTail:[view viewWithTag:12] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendYoumi] ) {
-            _nRecommend = 12;
-        }
-    }
-    if ( showLimei && [nsOfferwall count] < 2 ) {
-        [nsOfferwall pushTail:[view viewWithTag:13] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendLimei] ) {
-            _nRecommend = 13;
+    
+    NSArray* offerlist = [[LoginAndRegister sharedInstance] getOfferwallList];
+    for ( int i = 0; i < [offerlist count] && [nsOfferwall count] < 2; i ++ ) {
+        NSString* name = [offerlist objectAtIndex:i];
+        if ( [[LoginAndRegister sharedInstance] isShowOfferwall:name] && (![[LoginAndRegister sharedInstance] isInMoreOfferwall:name]) ) {
+            int nTag = 0;
+            if ( [name isEqualToString:@"domob"] ) {
+                nTag = 11;
+            } else if ( [name isEqualToString:@"youmi"] ) {
+                nTag = 12;
+            } else if ( [name isEqualToString:@"limei"] ) {
+                nTag = 13;
+            } else if ( [name isEqualToString:@"mopan"] ) {
+                nTag = 15;
+            } else if ( [name isEqualToString:@"punchbox"] ) {
+                nTag = 16;
+            } else if ( [name isEqualToString:@"miidi"] ) {
+                nTag = 17;
+            } else if ( [name isEqualToString:@"jupeng"] ) {
+                nTag = 18;
+            } else if ( [name isEqualToString:@"dianru"] ) {
+                nTag = 19;
+            } else if ( [name isEqualToString:@"adwo"] ) {
+                nTag = 20;
+            } else if ( [name isEqualToString:@"waps"] ) {
+                nTag = 21;
+            }
+            
+            [nsOfferwall pushTail:[view viewWithTag:nTag]];
+            
+            ASSERT(nTag != 0 );
+            
+            if ( [[LoginAndRegister sharedInstance] isRecommendOfferwall:name] ) {
+                _nRecommend = nTag;
+            }
         }
     }
     
-    if ( showMobsmar && [nsOfferwall count] < 2 ) {
-        [nsOfferwall pushTail:[view viewWithTag:14] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendMobsmar] ) {
-            _nRecommend = 14;
-        }
-    }
-    
-    if ( showMopan && [nsOfferwall count] < 2 ) {
-        [nsOfferwall pushTail:[view viewWithTag:15] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendMopan] ) {
-            _nRecommend = 15;
-        }
-    }
-    
-    if ( showPunchBox && [nsOfferwall count] < 2 ) {
-        [nsOfferwall pushTail:[view viewWithTag:16] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendPunchBox] ) {
-            _nRecommend = 16;
-        }
-    }
-    
-    if ( showMiidi && [nsOfferwall count] < 2 ) {
-        [nsOfferwall pushTail:[view viewWithTag:17] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendMiidi] ) {
-            _nRecommend = 17;
-        }
-    }
-
-    if ( showJupeng && [nsOfferwall count] < 2 ) {
-        [nsOfferwall pushTail:[view viewWithTag:18] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendJupeng] ) {
-            _nRecommend = 18;
-        }
-    }
-    
-    if ( showDianru && [nsOfferwall count] < 2 ) {
-        [nsOfferwall pushTail:[view viewWithTag:19] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendDianru] ) {
-            _nRecommend = 19;
-        }
-    }
-    
-    if ( showAdwo && [nsOfferwall count] < 2 ) {
-        [nsOfferwall pushTail:[view viewWithTag:20] ];
-        if ( [[LoginAndRegister sharedInstance] isRecommendAdwo] ) {
-            _nRecommend = 20;
-        }
-    }
     
     [[view viewWithTag:11] setHidden:YES];
     [[view viewWithTag:12] setHidden:YES];
     [[view viewWithTag:13] setHidden:YES];
-    [[view viewWithTag:14] setHidden:YES];
     [[view viewWithTag:15] setHidden:YES];
     [[view viewWithTag:16] setHidden:YES];
     [[view viewWithTag:17] setHidden:YES];
     [[view viewWithTag:18] setHidden:YES];
     [[view viewWithTag:19] setHidden:YES];
     [[view viewWithTag:20] setHidden:YES];
+    [[view viewWithTag:21] setHidden:YES];
     
     _moreView = [view viewWithTag:97];
     [[view viewWithTag:97] setHidden:YES];
-    if ( [[LoginAndRegister sharedInstance] isInMoreDomob] ||
-        [[LoginAndRegister sharedInstance] isInMoreYoumi] ||
-        [[LoginAndRegister sharedInstance] isInMoreLimei] ||
-        [[LoginAndRegister sharedInstance] isInMoreMobsmar] ||
-        [[LoginAndRegister sharedInstance] isInMoreMopan] ||
-        [[LoginAndRegister sharedInstance] isInMorePunchBox] ||
-        [[LoginAndRegister sharedInstance] isInMoreJupeng] ||
-        [[LoginAndRegister sharedInstance] isInMoreDianru] ||
-        [[LoginAndRegister sharedInstance] isInMoreAdwo] ) {
-        // 显示更多按钮
-        [[view viewWithTag:91] setHidden:NO];
-        [self repositionMore];
-    } else {
-        [[view viewWithTag:91] setHidden:YES];
+    
+    [[view viewWithTag:91] setHidden:YES];
+    for ( int i = 0; i < [offerlist count]; i ++ ) {
+        NSString* name = [offerlist objectAtIndex:i];
+        if ( [[LoginAndRegister sharedInstance] isInMoreOfferwall:name] ) {
+            [[view viewWithTag:91] setHidden:NO];
+            [self repositionMore];
+            break;
+        }
     }
     
     if ( [nsOfferwall count] == 2 ) {
@@ -325,57 +275,51 @@ static OnlineWallViewController* _sharedInstance;
 
 - (void)repositionMore {
     NSMutableArray* nsOfferwall = [[[NSMutableArray alloc] init] autorelease];
-
-    if ( [[LoginAndRegister sharedInstance] isInMoreDianru] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:59] ];
-    }
     
-    if ( [[LoginAndRegister sharedInstance] isInMoreAdwo] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:60] ];
-    }
-    
-    if ( [[LoginAndRegister sharedInstance] isInMoreDomob] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:51] ];
-    }
-    
-    if ( [[LoginAndRegister sharedInstance] isInMoreYoumi] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:52] ];
-    }
-    
-    if ( [[LoginAndRegister sharedInstance] isInMoreLimei] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:53] ];
-    }
-    
-    if ( [[LoginAndRegister sharedInstance] isInMoreMobsmar] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:54] ];
-    }
-    
-    if ( [[LoginAndRegister sharedInstance] isInMoreMopan] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:55] ];
-    }
-    
-    if ( [[LoginAndRegister sharedInstance] isInMorePunchBox] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:56] ];
-    }
-    
-    if ( [[LoginAndRegister sharedInstance] isInMoreMiidi] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:57] ];
-    }
-    
-    if ( [[LoginAndRegister sharedInstance] isInMoreJupeng] ) {
-        [nsOfferwall pushTail:[_moreView viewWithTag:58] ];
+    NSArray* offerlist = [[LoginAndRegister sharedInstance] getOfferwallList];
+    for ( int i = 0; i < [offerlist count]; i ++ ) {
+        NSString* name = [offerlist objectAtIndex:i];
+        
+        if ( [[LoginAndRegister sharedInstance] isInMoreOfferwall:name] ) {
+            int nTag = 0;
+            if ( [name isEqualToString:@"domob"] ) {
+                nTag = 51;
+            } else if ( [name isEqualToString:@"youmi"] ) {
+                nTag = 52;
+            } else if ( [name isEqualToString:@"limei"] ) {
+                nTag = 53;
+            } else if ( [name isEqualToString:@"mopan"] ) {
+                nTag = 55;
+            } else if ( [name isEqualToString:@"punchbox"] ) {
+                nTag = 56;
+            } else if ( [name isEqualToString:@"miidi"] ) {
+                nTag = 57;
+            } else if ( [name isEqualToString:@"jupeng"] ) {
+                nTag = 58;
+            } else if ( [name isEqualToString:@"dianru"] ) {
+                nTag = 59;
+            } else if ( [name isEqualToString:@"adwo"] ) {
+                nTag = 60;
+            } else if ( [name isEqualToString:@"waps"] ) {
+                nTag = 61;
+            }
+            
+            [nsOfferwall pushTail:[_moreView viewWithTag:nTag]];
+            
+            ASSERT(nTag != 0 );
+        }
     }
     
     [[_moreView viewWithTag:51] setHidden:YES];
     [[_moreView viewWithTag:52] setHidden:YES];
     [[_moreView viewWithTag:53] setHidden:YES];
-    [[_moreView viewWithTag:54] setHidden:YES];
     [[_moreView viewWithTag:55] setHidden:YES];
     [[_moreView viewWithTag:56] setHidden:YES];
     [[_moreView viewWithTag:57] setHidden:YES];
     [[_moreView viewWithTag:58] setHidden:YES];
     [[_moreView viewWithTag:59] setHidden:YES];
     [[_moreView viewWithTag:60] setHidden:YES];
+    [[_moreView viewWithTag:61] setHidden:YES];
     
     for (int i = 0; i < [nsOfferwall count]; i ++ ) {
         UIView* btnView = [nsOfferwall objectAtIndex:i];
@@ -405,15 +349,6 @@ static OnlineWallViewController* _sharedInstance;
 
 - (IBAction) clickMore:(id)sender {
     [_moreView setHidden:NO];
-}
-
-- (IBAction)clickMobsmar:(id)sender {
-    if ( _alertView != nil ) {
-        [_alertView hideAlertView];
-    }
-    
-    [MobClick event:@"task_list_click_mobsmar" attributes:@{@"currentpage":@"任务列表"}];
-    [_siweWall showOfferWall:_viewController];//打开积分墙
 }
 
 - (IBAction)clickMopan:(id)sender {
@@ -703,8 +638,6 @@ static OnlineWallViewController* _sharedInstance;
         [self clickMopan:nil];
     } else if ( [name isEqualToString:@"youmi"] ) {
         [self clickYoumi:nil];
-    } else if ( [name isEqualToString:@"mobsmar"] ) {
-        [self clickMobsmar:nil];
     } else if ( [name isEqualToString:@"domob"] ) {
         [self clickDomob:nil];
     } else if ( [name isEqualToString:@"punchbox"] ) {
@@ -717,7 +650,17 @@ static OnlineWallViewController* _sharedInstance;
         [self clickDianru:nil];
     } else if ( [name isEqualToString:@"adwo"] ) {
         [self clickAdwo:nil];
+    } else if ( [name isEqualToString:@"waps"] ) {
+        [self clickWaps:nil];
     }
+}
+
+- (IBAction)clickWaps:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    [AppConnect showOffers:_viewController];
 }
 
 - (IBAction)clickMiidi:(id)sender {

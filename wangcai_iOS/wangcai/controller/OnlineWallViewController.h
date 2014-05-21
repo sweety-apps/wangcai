@@ -13,7 +13,6 @@
 #import "UICustomAlertView.h"
 #import "YouMiConfig.h"
 #import <immobSDK/immobView.h>
-#import "SiWeiWall.h"
 #import "MopanAdWall.h"
 #import "PBOfferWall.h"
 
@@ -52,8 +51,6 @@
     
     id _baseTaskTableViewController;
     
-    SiWeiWall *_siweWall;
-    
     MopanAdWall* _mopanAdWallControl;
     
     int         _nRecommend;
@@ -86,7 +83,7 @@
 - (IBAction)clickDomob:(id)sender;
 - (IBAction)clickYoumi:(id)sender;
 - (IBAction)clickLimei:(id)sender;
-- (IBAction)clickMobsmar:(id)sender;
+- (IBAction)clickWaps:(id)sender;
 - (IBAction)clickMopan:(id)sender;
 - (IBAction)clickPunchBox:(id)sender;
 - (IBAction)clickMiidi:(id)sender;
