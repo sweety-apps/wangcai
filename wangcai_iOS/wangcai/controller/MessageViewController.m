@@ -32,8 +32,8 @@
     // Do any additional setup after loading the view from its nib.
     
     CGRect rect = [[UIScreen mainScreen]bounds];
-    rect.origin.y = 96;
-    rect.size.height -= 96;
+    rect.origin.y = 54;
+    rect.size.height -= 54;
     
     //[_tableView setHeight:rect.size.height];
     

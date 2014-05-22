@@ -953,6 +953,11 @@ static int  gChoujiang = 0;
         
         [self refreshTaskList];
     }
+
+    if ( income > 0 ) {
+        // 旺财自有任务完成了，刷新列表
+        [[WangcaiTaskViewController sharedInstance] requestList];
+    }
 }
 
 #pragma mark <LoginAndRegisterDelegate>

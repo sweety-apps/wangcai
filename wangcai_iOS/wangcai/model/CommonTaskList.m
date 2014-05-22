@@ -281,6 +281,14 @@ static CommonTaskList* gInstance = nil;
                 task.taskIsLocalIcon = YES;
                 task.taskIconUrl = @"qrcode_cell_icon";
                 break;
+            case kTaskTypeWangcaiApp:
+                task.taskIsLocalIcon = YES;
+                task.taskIconUrl = @"wangcai_icon";
+                break;
+            case kTaskTypeQuest:
+                task.taskIsLocalIcon = YES;
+                task.taskIconUrl = @"quest_icon";
+                break;
             case kTaskTypeEverydaySign:
                 task.taskIsLocalIcon = NO;
                 if ([task.taskStatus intValue] == 10)

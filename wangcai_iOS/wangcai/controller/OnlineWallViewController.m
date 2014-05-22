@@ -602,11 +602,12 @@ static OnlineWallViewController* _sharedInstance;
                     }
                 }
             }
-            
+       
             if ( offerwallIncome > _offerwallIncome || nWangcaiIncome > 0 ) {
                 int diff = offerwallIncome - _offerwallIncome;
                 
                 _offerwallIncome = offerwallIncome;
+                
                 [self->_delegate onRequestAndConsumePointCompleted:YES Consume:diff Level:levelChange wangcaiIncome:nWangcaiIncome];
             }
 
