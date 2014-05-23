@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommonTaskList.h"
 
 @interface QuestCaptionViewController : UIViewController {
-    
+    CommonTaskInfo* _info;
 }
 
 @property (retain, nonatomic) IBOutlet UIView* _subView;
+
+- (void) setQuestInfo : (CommonTaskInfo*) info;
 
 - (IBAction)clickBack:(id)sender;
 - (IBAction)clickOk:(id)sender;

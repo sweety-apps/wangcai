@@ -7,6 +7,8 @@
 //
 
 #import "QuestCaptionViewController.h"
+#import "WebPageController.h"
+#import "QuestWebViewController.h"
 
 @interface QuestCaptionViewController ()
 
@@ -20,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _info = nil;
     }
     return self;
 }
@@ -49,7 +52,16 @@
 }
 
 - (IBAction)clickOk:(id)sender {
+    BeeUIStack* stack = [BeeUIRouter sharedInstance].currentStack;
     
+    QuestWebViewController* controller = [[[QuestWebViewController alloc] init] autorelease];
+    [stack pushViewController:controller animated:YES];
+    
+    [controller setQuestInfo:_info];
+}
+
+- (void) setQuestInfo : (CommonTaskInfo*) info {
+    _info = info;
 }
 
 @end

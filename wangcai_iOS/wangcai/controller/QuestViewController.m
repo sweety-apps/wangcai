@@ -378,6 +378,7 @@ static QuestViewController* _sharedInstance = nil;
         {   //统计
             if ([task.taskStatus intValue] == 0) {
                 QuestCaptionViewController* controller = [[[QuestCaptionViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+                [controller setQuestInfo:task];
                 [_beeUIStack pushViewController:controller animated:YES];
             }
             break;

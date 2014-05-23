@@ -67,6 +67,8 @@
 		71187A44192B27AD00267D1E /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71187A39192B27AD00267D1E /* libPunchBoxAd.a */; };
 		71187A45192B27AD00267D1E /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */; };
 		71187A46192B27AD00267D1E /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */; };
+		7119760E192F017C00059E48 /* QuestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119760C192F017C00059E48 /* QuestWebViewController.m */; };
+		7119760F192F017C00059E48 /* QuestWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7119760D192F017C00059E48 /* QuestWebViewController.xib */; };
 		711F437B18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */; };
 		711F437C18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */; };
 		711F437D18B4A03400AEE1D5 /* phone_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F437A18B4A03400AEE1D5 /* phone_input@2x.png */; };
@@ -1742,6 +1744,9 @@
 		71187A40192B27AD00267D1E /* PBRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRequestError.h; sourceTree = "<group>"; };
 		71187A41192B27AD00267D1E /* PunchBoxAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchBoxAd.h; sourceTree = "<group>"; };
 		71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PunchBoxAdRes.bundle; sourceTree = "<group>"; };
+		7119760B192F017C00059E48 /* QuestWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestWebViewController.h; sourceTree = "<group>"; };
+		7119760C192F017C00059E48 /* QuestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestWebViewController.m; sourceTree = "<group>"; };
+		7119760D192F017C00059E48 /* QuestWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestWebViewController.xib; sourceTree = "<group>"; };
 		711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipay_input@2x.PNG"; sourceTree = "<group>"; };
 		711F437A18B4A03400AEE1D5 /* phone_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_input@2x.png"; sourceTree = "<group>"; };
 		711F438118B4A85B00AEE1D5 /* 10yuan@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10yuan@2x.PNG"; sourceTree = "<group>"; };
@@ -4338,11 +4343,14 @@
 				7112721518B331380068C33E /* PhoneValidationController.h */,
 				7112721618B331380068C33E /* PhoneValidationController.m */,
 				71A19D9E1921D2B200692465 /* InviteViewController.h */,
-				71A19D9F1921D2B200692465 /* InviteViewController.m */,
 				71A19DA01921D2B200692465 /* InviteViewController.xib */,
+				71A19D9F1921D2B200692465 /* InviteViewController.m */,
 				71455F33192DD9E700AA69FD /* QuestCaptionViewController.h */,
 				71455F34192DD9E700AA69FD /* QuestCaptionViewController.m */,
 				71455F35192DD9E700AA69FD /* QuestCaptionViewController.xib */,
+				7119760B192F017C00059E48 /* QuestWebViewController.h */,
+				7119760C192F017C00059E48 /* QuestWebViewController.m */,
+				7119760D192F017C00059E48 /* QuestWebViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -6186,6 +6194,7 @@
 				A6FA00EE186ABEF6008302F0 /* SettingViewController.xib in Resources */,
 				7112720B18B330580068C33E /* phone_validation_down@2x.png in Resources */,
 				712D9B8B191B416F0035D29C /* dianru_purple_left_cell.png in Resources */,
+				7119760F192F017C00059E48 /* QuestWebViewController.xib in Resources */,
 				712D9BA7191B416F0035D29C /* dianru_red_right_cell.png in Resources */,
 				F3813D1918753ED400350C27 /* choujiang_border_selected2@2x.png in Resources */,
 				F3813D2218753ED400350C27 /* choujiang_title@2x.png in Resources */,
@@ -6896,6 +6905,7 @@
 				F36049B81871B0C500FAD1F3 /* ChoujiangViewController.m in Sources */,
 				F3F187F318543A420098C852 /* Bee_UIAnimation.m in Sources */,
 				F3F189D218543A450098C852 /* NSString+BeeExtension.mm in Sources */,
+				7119760E192F017C00059E48 /* QuestWebViewController.m in Sources */,
 				F3F1898C18543A440098C852 /* Bee_Assertion.mm in Sources */,
 				F3F188BE18543A430098C852 /* BeeUISignal+BeeUICell.m in Sources */,
 				F3F187B418543A420098C852 /* BeeUIBoard+Traversing.m in Sources */,
