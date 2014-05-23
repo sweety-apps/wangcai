@@ -128,6 +128,13 @@
 
 #define HTTP_TASK_SHARE         @"https://ssl.getwangcai.com/0/task/share"
 
+#define HTTP_TASK_APP_LIST         @"https://ssl.getwangcai.com/0/task/app_list"
+
+#define HTTP_TASK_SURVEY_LIST         @"https://ssl.getwangcai.com/0/task/survey_list"
+
+#define HTTP_TASK_SURVEY            @"https://ssl.getwangcai.com/0/task/survey"
+
+
 
 #define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
 #define WEB_TASK          @"http://wangcai.meme-da.com/web/task/app_task.php"
@@ -165,7 +172,13 @@
 
 #define HTTP_TASK_SHARE         @"https://dev.getwangcai.com/0/task/share"
 
+#define HTTP_TASK_APP_LIST         @"https://dev.getwangcai.com/0/task/app_list"
+
+#define HTTP_TASK_SURVEY_LIST         @"https://dev.getwangcai.com/0/task/survey_list"
+
 #define HTTP_MSG_LIST         @"https://dev.getwangcai.com/0/account/msg_list"
+
+#define HTTP_TASK_SURVEY            @"https://dev.getwangcai.com/0/task/survey"
 
 #define WEB_EXTRACT_MONEY         @"http://dev.meme-da.com/web/extract_money.php"
 #define WEB_TASK                  @"http://dev.meme-da.com/web/task/app_task.php"
@@ -178,4 +191,5 @@
 #define HTTP_SERVICE_CENTER     @"http://service.meme-da.com/index.php/mobile/consulting"
 #define WEB_SERVICE_VIEW @"http://service.meme-da.com/index.php/mobile/shouce/view/h_id/"
 
+#define WEB_SURVEY       @"http://wangcai.meme-da.com/survey/%@.php"
 #endif

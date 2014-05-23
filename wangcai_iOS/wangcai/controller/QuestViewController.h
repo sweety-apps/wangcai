@@ -11,6 +11,20 @@
 #import "HttpRequest.h"
 #import "UICustomAlertView.h"
 
+
+@interface SurveyInfo : NSObject {
+    
+}
+
+@property (retain, nonatomic) NSNumber* sid;
+@property (retain, nonatomic) NSString* title;
+@property (retain, nonatomic) NSString* url;
+@property (retain, nonatomic) NSNumber* status;
+@property (retain, nonatomic) NSNumber* money;
+@property (retain, nonatomic) NSNumber* level;
+@property (retain, nonatomic) NSString* intro;
+@end
+
 @interface QuestViewController : UIViewController <EGORefreshTableHeaderDelegate, HttpRequestDelegate, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate> {
     BeeUIStack* _beeUIStack;
     

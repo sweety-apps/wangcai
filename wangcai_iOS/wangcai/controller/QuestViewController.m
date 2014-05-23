@@ -10,13 +10,25 @@
 #import "MBHUDView.h"
 #import "Common.h"
 #import "Config.h"
-#import "CommonTaskList.h"
 #import "CommonTaskTableViewCell.h"
 #import "QuestCaptionViewController.h"
 
 @interface QuestViewController ()
 
 @end
+
+
+@implementation SurveyInfo
+
+@synthesize sid;
+@synthesize title;
+@synthesize url;
+@synthesize status;
+@synthesize money;
+@synthesize level;
+@synthesize intro;
+@end
+
 
 @implementation QuestViewController
 @synthesize tbView;
@@ -137,7 +149,7 @@ static QuestViewController* _sharedInstance = nil;
     [dictionary setObject:appVersion forKey:@"ver"];
     [dictionary setObject:APP_NAME forKey:@"app"];
     
-    [_request request:HTTP_EXCHANGE_LIST Param:dictionary method:@"get"];
+    [_request request:HTTP_TASK_SURVEY_LIST Param:dictionary method:@"get"];
 }
 
 
@@ -153,7 +165,7 @@ static QuestViewController* _sharedInstance = nil;
             NSNumber* res = [body valueForKey: @"res"];
             int nRes = [res intValue];
             if (nRes == 0) {
-                NSArray* list = [body valueForKey: @"list"];
+                NSArray* list = [body valueForKey: @"survey_list"];
                 if ( _list != nil ) {
                     [_list release];
                 }
@@ -175,49 +187,21 @@ static QuestViewController* _sharedInstance = nil;
     for ( int i = 0; i < [list count]; i ++ ) {
         NSDictionary* taskDict = [list objectAtIndex:i];
         
-        CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
+        SurveyInfo* task = [[[SurveyInfo alloc] init] autorelease];
         
-        task.taskId = [taskDict objectForKey:@"id"];
-        task.taskType = [taskDict objectForKey:@"type"];
-        task.taskTitle = [taskDict objectForKey:@"title"];
-        task.taskStatus = [taskDict objectForKey:@"status"];
-        task.taskMoney = [taskDict objectForKey:@"money"];
-        task.taskIconUrl = [taskDict objectForKey:@"icon"];
-        task.taskIntro = [taskDict objectForKey:@"intro"];
-        task.taskDesc = [taskDict objectForKey:@"desc"];
-        task.taskStepStrings = [taskDict objectForKey:@"steps"];
-        task.taskLevel = [taskDict objectForKey:@"level"];
-        task.taskRediectUrl = [taskDict objectForKey:@"rediect_url"];
-        task.taskAppId = [taskDict objectForKey:@"appid"];
+        task.sid = [taskDict objectForKey:@"id"];
+        task.title = [taskDict objectForKey:@"title"];
+        task.status = [taskDict objectForKey:@"status"];
+        task.money = [taskDict objectForKey:@"money"];
+        task.level = [taskDict objectForKey:@"level"];
+        task.intro = [taskDict objectForKey:@"intro"];
         
-        if ( [task.taskStatus intValue] == CommonTaskTableViewCellStateFinished ) {
+        if ( [task.status intValue] != 0 ) {
             [finished addObject:task];
         } else {
             [unfinished addObject:task];
         }
     }
-    
-    // test
-    
-     for ( int i = 0; i < 10; i ++ ) {
-     CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
-     
-     task.taskId = [NSNumber numberWithInt:10001 + i];
-     task.taskType = [NSNumber numberWithInt:10000];
-     task.taskTitle = @"考拉fm";
-     task.taskStatus = [NSNumber numberWithInt:CommonTaskTableViewCellStateUnfinish];
-     task.taskMoney = [NSNumber numberWithInt:100];
-     task.taskIconUrl = @"http://www.getwangcai.com/images/kaolafm.jpg";
-     task.taskIntro = @"testtest";
-     task.taskDesc = @"testtest";
-     task.taskLevel = [NSNumber numberWithInt:0];
-     task.taskRediectUrl = @"http://app.getwangcai.com/redirect_kaolafm";
-     task.taskAppId = @"659345215";
-     
-     [unfinished addObject:task];
-     }
-     
-    //
     
     [unfinished addObjectsFromArray:finished];
     
@@ -288,11 +272,11 @@ static QuestViewController* _sharedInstance = nil;
         comCell = [[[CommonTaskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"wangcaiTaskCell"] autorelease];
     }
     
-    CommonTaskInfo* task = [_list objectAtIndex:row];
+    SurveyInfo* task = [_list objectAtIndex:row];
     [comCell setTaskCellType:CommonTaskTableViewCellShowTypeRedTextUp];
-    [comCell setUpText:task.taskTitle];
-    [comCell setDownText:task.taskDesc];
-    float moneyInYuan = [task.taskMoney floatValue]/100.f;
+    [comCell setUpText:task.title];
+    [comCell setDownText:task.intro];
+    float moneyInYuan = [task.money floatValue]/100.f;
     NSString* pic = nil;
     if (moneyInYuan >= 0.001f && moneyInYuan < 0.5) {
         pic = @"package_icon_1mao";
@@ -324,12 +308,12 @@ static QuestViewController* _sharedInstance = nil;
     
     [comCell setRedBagIcon:pic];
     [comCell setLeftIconNamed:@"table_view_cell_icon_bg"];
-    [comCell setLeftIconUrl:task.taskIconUrl];
+    [comCell setLeftIconNamed:@"quest_icon"];
     
-    if ([task.taskStatus intValue] == CommonTaskTableViewCellStateFinished) {
-        [comCell setCellState:CommonTaskTableViewCellStateFinished];
-    } else {
+    if ([task.status intValue] == 0) {
         [comCell setCellState:CommonTaskTableViewCellStateUnfinish];
+    } else {
+        [comCell setCellState:CommonTaskTableViewCellStateFinished];
     }
     
     return comCell;
@@ -355,10 +339,10 @@ static QuestViewController* _sharedInstance = nil;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSInteger row = indexPath.row;
     
-    CommonTaskInfo* task = [_list objectAtIndex:row];
+    SurveyInfo* task = [_list objectAtIndex:row];
     
     int nLevel = [[LoginAndRegister sharedInstance] getUserLevel];
-    int nNeedLevel = [task.taskLevel intValue];
+    int nNeedLevel = [task.level intValue];
     
     if ( nLevel < nNeedLevel ) {
         // 等级不够
@@ -372,19 +356,10 @@ static QuestViewController* _sharedInstance = nil;
         return ;
     }
     
-    switch ([task.taskType intValue])
-    {
-        case kTaskTypeIntallApp:
-        {   //统计
-            if ([task.taskStatus intValue] == 0) {
-                QuestCaptionViewController* controller = [[[QuestCaptionViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-                [controller setQuestInfo:task];
-                [_beeUIStack pushViewController:controller animated:YES];
-            }
-            break;
-        default:
-            break;
-        }
+    if ( [task.status intValue] == 0 ) {
+        QuestCaptionViewController* controller = [[[QuestCaptionViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+        [controller setQuestInfo:task];
+        [_beeUIStack pushViewController:controller animated:YES];
     }
 }
 

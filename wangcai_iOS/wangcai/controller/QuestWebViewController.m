@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void) setQuestInfo : (CommonTaskInfo*) info {
+- (void) setQuestInfo : (SurveyInfo*) info {
     _info = info;
 }
 
@@ -36,6 +36,8 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view from its nib.
+    _alertView = nil;
+    
     CGRect rect = [[UIScreen mainScreen]bounds];
     rect.origin.y = 54;
     rect.size.height -= 54;
@@ -44,7 +46,7 @@
     [_webView setFrame:rect];
     
     if ( _info != nil ) {
-        NSString* url = @"http://wangcai.meme-da.com/questionnaire/user_info.php";
+        NSString* url = [NSString stringWithFormat:WEB_SURVEY, _info.sid];
         NSURL* nsurl = [[NSURL alloc] initWithString:url];
         [_webView loadRequest:[NSURLRequest requestWithURL:nsurl]];
         [nsurl release];
@@ -97,7 +99,15 @@
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/commit"] ) {
         // 把数据提交到服务器
-        NSMutableDictionary* params = [self buildParams:query];
+        NSMutableDictionary* tmp = [self buildParams:query];
+        NSMutableDictionary* params = [[[NSMutableDictionary alloc] init] autorelease];
+        
+        NSString* json = [tmp JSONString];
+        
+        NSString* sid = [NSString stringWithFormat:@"%@", _info.sid];
+        [params setObject:sid forKey:@"id"];
+        [params setObject:json forKey:@"survey"];
+        
         [self commitData:params];
         return NO;
     }
@@ -110,7 +120,7 @@
     
     HttpRequest* req = [[HttpRequest alloc] init:self];
     
-    [req request:HTTP_TASK_SHARE Param:params method:@"post"];
+    [req request:HTTP_TASK_SURVEY Param:params method:@"post"];
 }
 
 - (void) showLoading {
@@ -135,6 +145,11 @@
             [view show];
         } else {
             // 请求完成
+            QuestViewController* controller = [QuestViewController sharedInstance];
+            [controller requestList];
+            
+            _alertView = [[[UIAlertView alloc] initWithTitle:@"问卷已提交" message:@"提交后6小时，人工审核后方可获得红包" delegate:self cancelButtonTitle:@"返回问卷中心" otherButtonTitles:nil, nil] autorelease];
+            [_alertView show];
         }
     } else {
         UIAlertView* view = [[[UIAlertView alloc] initWithTitle:@"错误" message:@"提交失败，连接服务器错误！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] autorelease];
@@ -189,5 +204,13 @@
     }
     
     return params;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( [alertView isEqual:_alertView] ) {
+        // 返回
+        QuestViewController* controller = [QuestViewController sharedInstance];
+        [self.navigationController popToViewController:controller animated:YES];
+    }
 }
 @end

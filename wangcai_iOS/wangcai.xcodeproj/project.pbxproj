@@ -11,6 +11,8 @@
 		59D8E0C2189230DE003D5F3F /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D8E0C0189230DE003D5F3F /* libPushSDK.a */; };
 		59FE833218C77BCF00E4205A /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FE833118C77BCF00E4205A /* immobSDK.framework */; };
 		59FE833318C77BCF00E4205A /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FE833118C77BCF00E4205A /* immobSDK.framework */; };
+		7100021E192F77880046D334 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7100021D192F77880046D334 /* arrow@2x.png */; };
+		7100021F192F77880046D334 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7100021D192F77880046D334 /* arrow@2x.png */; };
 		71007DBE18D9B9B000FCF2D9 /* libEcom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71007DBD18D9B9B000FCF2D9 /* libEcom.a */; };
 		71007DBF18D9B9B000FCF2D9 /* libEcom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71007DBD18D9B9B000FCF2D9 /* libEcom.a */; };
 		71007DC318D9DA6A00FCF2D9 /* punchbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71007DC218D9DA6A00FCF2D9 /* punchbox@2x.png */; };
@@ -1707,6 +1709,7 @@
 		59D8E0BF189230DE003D5F3F /* APService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APService.h; sourceTree = "<group>"; };
 		59D8E0C0189230DE003D5F3F /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPushSDK.a; sourceTree = "<group>"; };
 		59FE833118C77BCF00E4205A /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = immobSDK.framework; sourceTree = "<group>"; };
+		7100021D192F77880046D334 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		71007DBB18D9B9B000FCF2D9 /* ECManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECManager.h; sourceTree = "<group>"; };
 		71007DBC18D9B9B000FCF2D9 /* EcomConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcomConfig.h; sourceTree = "<group>"; };
 		71007DBD18D9B9B000FCF2D9 /* libEcom.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEcom.a; sourceTree = "<group>"; };
@@ -3619,6 +3622,7 @@
 		A60C57EB186FF8A30068425C /* img */ = {
 			isa = PBXGroup;
 			children = (
+				7100021D192F77880046D334 /* arrow@2x.png */,
 				71455F3C192DDDAF00AA69FD /* caption_no_down@2x.png */,
 				71455F3D192DDDAF00AA69FD /* caption_no_normal@2x.png */,
 				71455F3E192DDDAF00AA69FD /* caption_yes_down@2x.png */,
@@ -5552,6 +5556,7 @@
 				F3359FD618882F8000C1E636 /* Default@2x.png in Resources */,
 				F3359FD718882F8000C1E636 /* BusionessPageBoard_iPhone.xml in Resources */,
 				F3359FD818882F8000C1E636 /* warn@2x.png in Resources */,
+				7100021F192F77880046D334 /* arrow@2x.png in Resources */,
 				F394DBE518B89841003311CD /* mywangcai_cell_xiongdibang_des@2x.png in Resources */,
 				F394DBE318B89841003311CD /* mywangcai_cell_dianshichengjin_title@2x.png in Resources */,
 				F394DBE118B89841003311CD /* mywangcai_cell_dianshichengjin_des@2x.png in Resources */,
@@ -6022,6 +6027,7 @@
 				F394DBE018B89841003311CD /* mywangcai_cell_dianshichengjin_des@2x.png in Resources */,
 				712D9B57191B416F0035D29C /* dianru_green_dianru_info.png in Resources */,
 				712D9B67191B416F0035D29C /* dianru_orange_all_cell.png in Resources */,
+				7100021E192F77880046D334 /* arrow@2x.png in Resources */,
 				A60C584C186FF8A30068425C /* btn_normal@2x.png in Resources */,
 				F394DBFF18B8EB9B003311CD /* levelup_close_btn_up@2x.png in Resources */,
 				A67BA6E11888F11100CEC89B /* iTunesArtwrok.png in Resources */,

@@ -302,10 +302,6 @@ static CommonTaskList* gInstance = nil;
                 shouldAddTask = NO;
                 //task.taskIconUrl = @"";
                 break;
-            case kTaskTypeIntallApp:
-                task.taskIsLocalIcon = NO;
-                //task.taskIconUrl = @"";
-                break;
             case kTaskTypeCommon:
                 task.taskIsLocalIcon = NO;
                 //task.taskIconUrl = @"";

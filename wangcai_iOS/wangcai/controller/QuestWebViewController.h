@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CommonTaskList.h"
+#import "QuestViewController.h"
 
-@interface QuestWebViewController : UIViewController<UIWebViewDelegate, HttpRequestDelegate> {
-    CommonTaskInfo* _info;
+@interface QuestWebViewController : UIViewController<UIWebViewDelegate, HttpRequestDelegate, UIAlertViewDelegate> {
+    SurveyInfo* _info;
+    UIAlertView* _alertView;
 }
 
 @property (retain, nonatomic) IBOutlet UIWebView* _webView;
 
 - (IBAction)clickBack:(id)sender;
 
-- (void) setQuestInfo:(CommonTaskInfo*) info;
+- (void) setQuestInfo:(SurveyInfo*) info;
 
 @end

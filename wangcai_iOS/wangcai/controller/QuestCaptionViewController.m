@@ -60,7 +60,7 @@
     [controller setQuestInfo:_info];
 }
 
-- (void) setQuestInfo : (CommonTaskInfo*) info {
+- (void) setQuestInfo : (SurveyInfo*) info {
     _info = info;
 }
 

@@ -493,7 +493,13 @@ static int  gChoujiang = 0;
             {
                 pic = @"package_icon_many";
             }
-            
+            if ( [task.taskType intValue] == kTaskTypeOfferWall ||
+                [task.taskType intValue] == kTaskTypeWangcaiApp ||
+                [task.taskType intValue] == kTaskTypeQuest ) {
+                pic = @"arrow";
+            }
+                
+                
             [comCell setRedBagIcon:pic];
             [comCell setLeftIconNamed:@"table_view_cell_icon_bg"];
             if (task.taskIsLocalIcon)
@@ -700,17 +706,6 @@ static int  gChoujiang = 0;
             {
                 [MobClick event:@"task_list_offer_wall" attributes:@{@"currentpage":@"任务列表"}];
                 [[OnlineWallViewController sharedInstance] showWithModal];
-            }
-                break;
-            case kTaskTypeIntallApp:
-            {
-                //统计
-                [MobClick event:@"task_list_click_install_app" attributes:@{@"currentpage":@"任务列表"}];
-                
-                if ([task.taskStatus intValue] == 0)
-                {
-                    [self onClickInstallApp:task];
-                }
             }
                 break;
             case kTaskTypeInstallWangcai:

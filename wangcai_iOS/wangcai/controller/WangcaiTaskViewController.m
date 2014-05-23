@@ -136,7 +136,7 @@ static WangcaiTaskViewController* _sharedInstance = nil;
     [dictionary setObject:appVersion forKey:@"ver"];
     [dictionary setObject:APP_NAME forKey:@"app"];
     
-    [_request request:HTTP_EXCHANGE_LIST Param:dictionary method:@"get"];
+    [_request request:HTTP_TASK_APP_LIST Param:dictionary method:@"get"];
 }
 
 
@@ -152,7 +152,7 @@ static WangcaiTaskViewController* _sharedInstance = nil;
             NSNumber* res = [body valueForKey: @"res"];
             int nRes = [res intValue];
             if (nRes == 0) {
-                NSArray* list = [body valueForKey: @"list"];
+                NSArray* list = [body valueForKey: @"task_list"];
                 if ( _list != nil ) {
                     [_list release];
                 }
@@ -195,28 +195,6 @@ static WangcaiTaskViewController* _sharedInstance = nil;
             [unfinished addObject:task];
         }
     }
-    
-    // test
-    /*
-    for ( int i = 0; i < 10; i ++ ) {
-        CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
-        
-        task.taskId = [NSNumber numberWithInt:10001 + i];
-        task.taskType = [NSNumber numberWithInt:10000];
-        task.taskTitle = @"考拉fm";
-        task.taskStatus = [NSNumber numberWithInt:CommonTaskTableViewCellStateUnfinish];
-        task.taskMoney = [NSNumber numberWithInt:100];
-        task.taskIconUrl = @"http://www.getwangcai.com/images/kaolafm.jpg";
-        task.taskIntro = @"testtest";
-        task.taskDesc = @"testtest";
-        task.taskLevel = [NSNumber numberWithInt:3];
-        task.taskRediectUrl = @"http://app.getwangcai.com/redirect_kaolafm";
-        task.taskAppId = @"659345215";
-
-        [unfinished addObject:task];
-    }
-    */
-    //
     
     [unfinished addObjectsFromArray:finished];
     
@@ -370,18 +348,9 @@ static WangcaiTaskViewController* _sharedInstance = nil;
             
         return ;
     }
-        
-    switch ([task.taskType intValue])
-    {
-        case kTaskTypeIntallApp:
-        {   //统计
-            if ([task.taskStatus intValue] == 0) {
-                [self onClickInstallApp:task];
-            }
-                break;
-            default:
-                break;
-        }
+
+    if ([task.taskStatus intValue] == 0) {
+        [self onClickInstallApp:task];
     }
 }
 
