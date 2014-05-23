@@ -69,6 +69,12 @@
 		71187A46192B27AD00267D1E /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */; };
 		7119760E192F017C00059E48 /* QuestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119760C192F017C00059E48 /* QuestWebViewController.m */; };
 		7119760F192F017C00059E48 /* QuestWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7119760D192F017C00059E48 /* QuestWebViewController.xib */; };
+		71197615192F2E6700059E48 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71197613192F2E6700059E48 /* InviteViewController.m */; };
+		71197616192F2E6700059E48 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71197613192F2E6700059E48 /* InviteViewController.m */; };
+		71197617192F2E6700059E48 /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71197614192F2E6700059E48 /* InviteViewController.xib */; };
+		71197618192F2E6700059E48 /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71197614192F2E6700059E48 /* InviteViewController.xib */; };
+		71197619192F2E9B00059E48 /* QuestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119760C192F017C00059E48 /* QuestWebViewController.m */; };
+		7119761A192F2EA100059E48 /* QuestWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7119760D192F017C00059E48 /* QuestWebViewController.xib */; };
 		711F437B18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */; };
 		711F437C18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */; };
 		711F437D18B4A03400AEE1D5 /* phone_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F437A18B4A03400AEE1D5 /* phone_input@2x.png */; };
@@ -471,8 +477,6 @@
 		719F188018AA188900C29765 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71355511188D16060007784A /* libDomobOfferWallSDK.a */; };
 		719F188218AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */; };
 		719F188318AA288800C29765 /* MenuBoardInReview_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = 719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */; };
-		71A19DA11921D2B200692465 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A19D9F1921D2B200692465 /* InviteViewController.m */; };
-		71A19DA21921D2B200692465 /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71A19DA01921D2B200692465 /* InviteViewController.xib */; };
 		71A19DA91921D9C800692465 /* invite_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A19DA81921D9C800692465 /* invite_top@2x.png */; };
 		71A19DAA1921D9C800692465 /* invite_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A19DA81921D9C800692465 /* invite_top@2x.png */; };
 		71A19DAF1921ECE200692465 /* invite_error_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A19DAE1921ECE200692465 /* invite_error_bkg@2x.png */; };
@@ -1747,6 +1751,9 @@
 		7119760B192F017C00059E48 /* QuestWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestWebViewController.h; sourceTree = "<group>"; };
 		7119760C192F017C00059E48 /* QuestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestWebViewController.m; sourceTree = "<group>"; };
 		7119760D192F017C00059E48 /* QuestWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestWebViewController.xib; sourceTree = "<group>"; };
+		71197612192F2E6700059E48 /* InviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteViewController.h; sourceTree = "<group>"; };
+		71197613192F2E6700059E48 /* InviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteViewController.m; sourceTree = "<group>"; };
+		71197614192F2E6700059E48 /* InviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteViewController.xib; sourceTree = "<group>"; };
 		711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipay_input@2x.PNG"; sourceTree = "<group>"; };
 		711F437A18B4A03400AEE1D5 /* phone_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_input@2x.png"; sourceTree = "<group>"; };
 		711F438118B4A85B00AEE1D5 /* 10yuan@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10yuan@2x.PNG"; sourceTree = "<group>"; };
@@ -2003,9 +2010,6 @@
 		719F187B18AA17E300C29765 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		719F187D18AA17EB00C29765 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		719F188118AA288800C29765 /* MenuBoardInReview_iPhone.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = MenuBoardInReview_iPhone.xml; path = view_iPhone/MenuBoardInReview_iPhone.xml; sourceTree = "<group>"; };
-		71A19D9E1921D2B200692465 /* InviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteViewController.h; sourceTree = "<group>"; };
-		71A19D9F1921D2B200692465 /* InviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteViewController.m; sourceTree = "<group>"; };
-		71A19DA01921D2B200692465 /* InviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteViewController.xib; sourceTree = "<group>"; };
 		71A19DA81921D9C800692465 /* invite_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite_top@2x.png"; sourceTree = "<group>"; };
 		71A19DAE1921ECE200692465 /* invite_error_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite_error_bkg@2x.png"; sourceTree = "<group>"; };
 		71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_bkg@2x.png"; sourceTree = "<group>"; };
@@ -4292,6 +4296,9 @@
 		F3F186EE18543A410098C852 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				71197612192F2E6700059E48 /* InviteViewController.h */,
+				71197613192F2E6700059E48 /* InviteViewController.m */,
+				71197614192F2E6700059E48 /* InviteViewController.xib */,
 				71D700091920A06700A4F083 /* MessageCell.h */,
 				71D7000A1920A06700A4F083 /* MessageCell.m */,
 				71420EB8191E305500376AA9 /* MessageViewController.h */,
@@ -4342,9 +4349,6 @@
 				7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */,
 				7112721518B331380068C33E /* PhoneValidationController.h */,
 				7112721618B331380068C33E /* PhoneValidationController.m */,
-				71A19D9E1921D2B200692465 /* InviteViewController.h */,
-				71A19DA01921D2B200692465 /* InviteViewController.xib */,
-				71A19D9F1921D2B200692465 /* InviteViewController.m */,
 				71455F33192DD9E700AA69FD /* QuestCaptionViewController.h */,
 				71455F34192DD9E700AA69FD /* QuestCaptionViewController.m */,
 				71455F35192DD9E700AA69FD /* QuestCaptionViewController.xib */,
@@ -5579,6 +5583,7 @@
 				F3359FE218882F8000C1E636 /* choujiang_8yuan@2x.png in Resources */,
 				F3359FE318882F8000C1E636 /* WebViewController.xib in Resources */,
 				F3359FE418882F8000C1E636 /* blackArrow.png in Resources */,
+				7119761A192F2EA100059E48 /* QuestWebViewController.xib in Resources */,
 				71D1976618BE1EA400D3D48D /* limei@2x.png in Resources */,
 				F31F898718962B8600F34F20 /* iPhone5s.plist in Resources */,
 				F394DBDB18B89841003311CD /* mywangcai_dog_9@2x.png in Resources */,
@@ -5941,6 +5946,7 @@
 				71455F39192DD9E700AA69FD /* QuestCaptionViewController.xib in Resources */,
 				F394DBE918B89841003311CD /* mywangcai_cell_xiongdibang@2x.png in Resources */,
 				F335A08A18882F8000C1E636 /* deal_btn@2x.png in Resources */,
+				71197618192F2E6700059E48 /* InviteViewController.xib in Resources */,
 				F335A08B18882F8000C1E636 /* head_left_icon@2x.png in Resources */,
 				F335A08C18882F8000C1E636 /* blackArrow@2x.png in Resources */,
 				7112B1B918B321720067F3E8 /* phone_validation_input@2x.png in Resources */,
@@ -6127,6 +6133,7 @@
 				71D700101920ADC100A4F083 /* left_new@2x.png in Resources */,
 				F394DBC418B89841003311CD /* mywangcai_dog_12@2x.png in Resources */,
 				712DA7D218C85978008414D4 /* KeychainAccessGroups.plist in Resources */,
+				71197617192F2E6700059E48 /* InviteViewController.xib in Resources */,
 				71213B58192DB4F000F1D085 /* wangcai_icon@2x.png in Resources */,
 				A60C585C186FF8A30068425C /* reg_success@2x.png in Resources */,
 				7153FD0118CDF6F00026B4B5 /* app_tip_mobsmar@2x.png in Resources */,
@@ -6334,7 +6341,6 @@
 				712D0B62192B45400055F13B /* app_tip_anwo@2x.png in Resources */,
 				F3F18A26185472A90098C852 /* WCMainPageBoard_iPhone.xml in Resources */,
 				A60C58AE18703AE60068425C /* invite_seg_unsel_sel@2x.png in Resources */,
-				71A19DA21921D2B200692465 /* InviteViewController.xib in Resources */,
 				A60C5890186FF8A30068425C /* zhanghuyue@2x.png in Resources */,
 				F3D9D564185D876D00392C40 /* TaskController.xib in Resources */,
 				71D1976518BE1EA400D3D48D /* limei@2x.png in Resources */,
@@ -6491,6 +6497,7 @@
 				F3359EBF18882F8000C1E636 /* Bee_UIRouter.m in Sources */,
 				F3359EC018882F8000C1E636 /* JSONKit.m in Sources */,
 				F3359EC118882F8000C1E636 /* AppBoard_iPhone.m in Sources */,
+				71197616192F2E6700059E48 /* InviteViewController.m in Sources */,
 				F3359EC218882F8000C1E636 /* UITextView+UIDataBinding.m in Sources */,
 				F3359EC318882F8000C1E636 /* NSBundle+BeeExtension.m in Sources */,
 				F3359EC418882F8000C1E636 /* Bee_UIDatePicker.m in Sources */,
@@ -6584,6 +6591,7 @@
 				F3359F1518882F8000C1E636 /* ASIDataCompressor.m in Sources */,
 				F3359F1618882F8000C1E636 /* Bee_UIPullLoader.m in Sources */,
 				F3359F1718882F8000C1E636 /* ChoujiangViewController.m in Sources */,
+				71197619192F2E9B00059E48 /* QuestWebViewController.m in Sources */,
 				F3359F1818882F8000C1E636 /* Bee_UIAnimation.m in Sources */,
 				F3359F1918882F8000C1E636 /* NSString+BeeExtension.mm in Sources */,
 				F3359F1A18882F8000C1E636 /* Bee_Assertion.mm in Sources */,
@@ -6758,6 +6766,7 @@
 				F3F1895718543A440098C852 /* Bee_UserDefaults.mm in Sources */,
 				A6F6DE6B186028B700D089C7 /* WebPageController.m in Sources */,
 				F3F1896E18543A440098C852 /* Bee_Database.mm in Sources */,
+				71197615192F2E6700059E48 /* InviteViewController.m in Sources */,
 				F3F1876C18543A420098C852 /* Bee_Controller.mm in Sources */,
 				F3F1874E18543A420098C852 /* CXMLElement_CreationExtensions.m in Sources */,
 				71455F36192DD9E700AA69FD /* QuestCaptionViewController.m in Sources */,
@@ -6923,7 +6932,6 @@
 				F3F1886A18543A430098C852 /* Bee_UISwitch.m in Sources */,
 				A60C876F1865949700F6889C /* HttpRequest.m in Sources */,
 				F3F1895118543A440098C852 /* Bee_Keychain.mm in Sources */,
-				71A19DA11921D2B200692465 /* InviteViewController.m in Sources */,
 				F3F1881D18543A430098C852 /* UITextField+UIDataBinding.m in Sources */,
 				F3F1883718543A430098C852 /* Bee_UIAlertView.m in Sources */,
 				F3F189C918543A450098C852 /* NSObject+BeeTicker.mm in Sources */,
