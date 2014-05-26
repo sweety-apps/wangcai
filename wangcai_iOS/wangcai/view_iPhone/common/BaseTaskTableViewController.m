@@ -100,6 +100,20 @@ static int  gChoujiang = 0;
     [self performSelector:@selector(resetTableViewFrame) withObject:nil afterDelay:0.05];
     [self resetStaticCells];
     
+    if ( [[UIScreen mainScreen] bounds].size.height < 568 ) {
+        CGRect rect = self.infoCell.frame;
+        rect.size.height -= 10;
+        [self.infoCell setFrame:rect];
+        
+        NSArray* subViews = [self.infoCell.contentView subviews];
+        for ( int i = 0; i < [subViews count]; i ++ ) {
+            UIView* view = [subViews objectAtIndex:i];
+            rect = view.frame;
+            rect.origin.y -= 10;
+            [view setFrame:rect];
+        }
+    }
+    
     [self.infoCell setJinTianHaiNengZhuanNumLabelTextNum:[[CommonTaskList sharedInstance] allMoneyCanBeEarnedInRMBYuan]];
     
     [self.zhanghuYuEHeaderCell.yuENumView setNum:[[LoginAndRegister sharedInstance] getBalance]];
