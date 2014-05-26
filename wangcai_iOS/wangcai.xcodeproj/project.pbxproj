@@ -489,6 +489,10 @@
 		71A9C7DA18B8D884006119F6 /* exchange_btn2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */; };
 		71AE4C9D18B488D200B820EC /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AE4C9C18B488D200B820EC /* back2@2x.png */; };
 		71AE4C9E18B488D200B820EC /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AE4C9C18B488D200B820EC /* back2@2x.png */; };
+		71B7C1A61932EB3600FC0766 /* package_icon_1_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B7C1A41932EB3600FC0766 /* package_icon_1_5@2x.png */; };
+		71B7C1A71932EB3600FC0766 /* package_icon_1_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B7C1A41932EB3600FC0766 /* package_icon_1_5@2x.png */; };
+		71B7C1A81932EB3600FC0766 /* package_icon_2_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B7C1A51932EB3600FC0766 /* package_icon_2_5@2x.png */; };
+		71B7C1A91932EB3600FC0766 /* package_icon_2_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B7C1A51932EB3600FC0766 /* package_icon_2_5@2x.png */; };
 		71D1975618BE00D300D3D48D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719F187D18AA17EB00C29765 /* AudioToolbox.framework */; };
 		71D1975A18BE00F600D3D48D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D1975918BE00F600D3D48D /* MapKit.framework */; };
 		71D1975C18BE01F400D3D48D /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D1975B18BE01F400D3D48D /* immobSDK.framework */; };
@@ -2018,6 +2022,8 @@
 		71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_bkg@2x.png"; sourceTree = "<group>"; };
 		71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_btn2@2x.png"; sourceTree = "<group>"; };
 		71AE4C9C18B488D200B820EC /* back2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back2@2x.png"; sourceTree = "<group>"; };
+		71B7C1A41932EB3600FC0766 /* package_icon_1_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_1_5@2x.png"; sourceTree = "<group>"; };
+		71B7C1A51932EB3600FC0766 /* package_icon_2_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_2_5@2x.png"; sourceTree = "<group>"; };
 		71D1975918BE00F600D3D48D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		71D1975B18BE01F400D3D48D /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = immobSDK.framework; path = wangcai/immobSDK.framework; sourceTree = "<group>"; };
 		71D1975D18BE037100D3D48D /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
@@ -3598,6 +3604,8 @@
 		A60C57E6186FF8A30068425C /* CommonIcons */ = {
 			isa = PBXGroup;
 			children = (
+				71B7C1A41932EB3600FC0766 /* package_icon_1_5@2x.png */,
+				71B7C1A51932EB3600FC0766 /* package_icon_2_5@2x.png */,
 				F3359E561886D2A800C1E636 /* package_icon_1mao@2x.png */,
 				F3359E4D1886C0FB00C1E636 /* package_icon_2@2x.png */,
 				F3DD641F1882D7B400E56A0B /* package_icon_many@2x.png */,
@@ -5587,6 +5595,7 @@
 				71420EA2191E1CCC00376AA9 /* main_menu3@2x.png in Resources */,
 				F3359FE218882F8000C1E636 /* choujiang_8yuan@2x.png in Resources */,
 				F3359FE318882F8000C1E636 /* WebViewController.xib in Resources */,
+				71B7C1A91932EB3600FC0766 /* package_icon_2_5@2x.png in Resources */,
 				F3359FE418882F8000C1E636 /* blackArrow.png in Resources */,
 				7119761A192F2EA100059E48 /* QuestWebViewController.xib in Resources */,
 				71D1976618BE1EA400D3D48D /* limei@2x.png in Resources */,
@@ -5920,6 +5929,7 @@
 				7153FD0718CDF78A0026B4B5 /* app_tip_recommand@2x.png in Resources */,
 				7112722518B33A1A0068C33E /* phone_validation_sendcode_down@2x.png in Resources */,
 				71A9C7D718B8D563006119F6 /* exchange_bkg@2x.png in Resources */,
+				71B7C1A71932EB3600FC0766 /* package_icon_1_5@2x.png in Resources */,
 				F335A07518882F8000C1E636 /* apptask_rmb@2x.png in Resources */,
 				712D9B58191B416F0035D29C /* dianru_green_dianru_info.png in Resources */,
 				F335A07618882F8000C1E636 /* Default.png in Resources */,
@@ -6207,6 +6217,7 @@
 				A6FA00EE186ABEF6008302F0 /* SettingViewController.xib in Resources */,
 				7112720B18B330580068C33E /* phone_validation_down@2x.png in Resources */,
 				712D9B8B191B416F0035D29C /* dianru_purple_left_cell.png in Resources */,
+				71B7C1A81932EB3600FC0766 /* package_icon_2_5@2x.png in Resources */,
 				7119760F192F017C00059E48 /* QuestWebViewController.xib in Resources */,
 				712D9BA7191B416F0035D29C /* dianru_red_right_cell.png in Resources */,
 				F3813D1918753ED400350C27 /* choujiang_border_selected2@2x.png in Resources */,
@@ -6279,6 +6290,7 @@
 				F394DBFB18B8EB9B003311CD /* levelup_close_btn@2x.png in Resources */,
 				7153FCFD18CDE4490026B4B5 /* upgrade@2x.png in Resources */,
 				A60C584E186FF8A30068425C /* exchange_btn@2x.png in Resources */,
+				71B7C1A61932EB3600FC0766 /* package_icon_1_5@2x.png in Resources */,
 				718FB1911893FF2900851D2A /* register_btn@2x.png in Resources */,
 				712D9B39191B416F0035D29C /* dianru_DRBGLogo@2x.png in Resources */,
 				712D9B21191B416F0035D29C /* dianru_blue_left_cell.png in Resources */,
