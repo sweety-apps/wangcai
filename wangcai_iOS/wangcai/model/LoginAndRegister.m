@@ -19,6 +19,8 @@
 #import "UtilityFunctions.h"
 #import "ECManager.h"
 #import "EcomConfig.h"
+#import "QuestViewController.h"
+#import "WangcaiTaskViewController.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -333,6 +335,10 @@ static LoginAndRegister* _sharedInstance = nil;
                 
                 [[CommonTaskList sharedInstance] resetTaskListWithJsonArray:taskList];
 
+                
+                [[QuestViewController sharedInstance] requestList];
+                [[WangcaiTaskViewController sharedInstance] requestList];
+                
                 [self RegisterDeviceIDToAPService];
                 
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode ErrCode:[res intValue] Msg:nil];
