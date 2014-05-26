@@ -533,7 +533,8 @@
         _startDate = nil;
     }
     
-    [BaseTaskTableViewController setNeedReloadTaskList];
+    [[LoginAndRegister sharedInstance] login];
+    //[BaseTaskTableViewController setNeedReloadTaskList];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {

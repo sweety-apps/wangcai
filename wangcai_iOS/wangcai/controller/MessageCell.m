@@ -142,6 +142,9 @@
     [_desc setFrame:CGRectMake(72, 32, 230, descSize.height)];
     
     NSString* time = [info objectForKey:@"time"];
+    NSRange range = [time rangeOfString:@" "];
+    time = [time substringToIndex:range.location];
+    
     [_date setText:time];
     
     int nHeight = [MessageCell getHeight:info];
