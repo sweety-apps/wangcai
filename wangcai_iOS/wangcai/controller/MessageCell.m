@@ -19,7 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(16, 8, 48, 48)];
+        _imageView = [[BeeUIImageView alloc] initWithFrame:CGRectMake(16, 20, 35, 34)];
         _imageView.contentMode = UIViewContentModeScaleToFill;
         _info = nil;
         _alertLevel = nil;
@@ -28,23 +28,24 @@
         
         [self.contentView addSubview:_imageView];
         
-        _title = [[UILabel alloc] initWithFrame:CGRectMake(72, 6, 160, 20)];
-        [_title setFont:[UIFont fontWithName:nil size:14]];
+        _title = [[UILabel alloc] initWithFrame:CGRectMake(62, 20, 170, 20)];
+        [_title setFont:[UIFont fontWithName:nil size:16]];
         [self.contentView addSubview:_title];
         
-        _date = [[UILabel alloc] initWithFrame:CGRectMake(72, 6, 230, 20)];
+        _date = [[UILabel alloc] initWithFrame:CGRectMake(72, 20, 230, 20)];
         [_date setTextAlignment:NSTextAlignmentRight];
         [_date setFont:[UIFont fontWithName:nil size:12]];
         [self.contentView addSubview:_date];
+        [_date setTextColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1]];
         
-        _desc = [[UILabel alloc] initWithFrame:CGRectMake(72, 32, 230, 32)];
+        _desc = [[UILabel alloc] initWithFrame:CGRectMake(62, 46, 240, 32)];
         [_desc setFont:[UIFont fontWithName:nil size:12]];
         [self.contentView addSubview:_desc];
         
         _desc.lineBreakMode = UILineBreakModeWordWrap;
         _desc.numberOfLines = 0;
         
-        [_desc setTextColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1]];
+        [_desc setTextColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1]];
         
         _newImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 42, 42)];
         [_newImage setImage:[UIImage imageNamed:@"left_new"]];
@@ -84,7 +85,7 @@
 + (int) getHeight:(NSDictionary*) info {
     int type = [[info objectForKey:@"type"] intValue];
     
-    int nHeight = 34;   // 标题加上上下边距
+    int nHeight = 64;   // 标题加上上下边距
     // 描述文字的高度
     NSString* desc = [info objectForKey:@"intro"];
     CGSize size = CGSizeMake(230, MAXFLOAT);
@@ -96,8 +97,8 @@
         nHeight += 40;
     }
     
-    if ( nHeight < 64 ) {
-        nHeight = 64;
+    if ( nHeight < 94 ) {
+        nHeight = 94;
     }
     return nHeight;
 }
@@ -139,7 +140,7 @@
     if ( descSize.height < 32 ) {
         descSize.height = 32;
     }
-    [_desc setFrame:CGRectMake(72, 32, 230, descSize.height)];
+    [_desc setFrame:CGRectMake(62, 46, 240, descSize.height)];
     
     NSString* time = [info objectForKey:@"time"];
     NSRange range = [time rangeOfString:@" "];
@@ -159,7 +160,7 @@
         [_btnOpen setHidden:NO];
         
         rect = _btnOpen.frame;
-        rect.origin.y = nHeight - 40;
+        rect.origin.y = nHeight - 52;
         
         [_btnOpen setFrame:rect];
         

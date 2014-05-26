@@ -195,6 +195,7 @@ static QuestViewController* _sharedInstance = nil;
         task.money = [taskDict objectForKey:@"money"];
         task.level = [taskDict objectForKey:@"level"];
         task.intro = [taskDict objectForKey:@"intro"];
+        task.url = [taskDict objectForKey:@"url"];
         
         if ( [task.status intValue] != 0 ) {
             [finished addObject:task];

@@ -46,8 +46,7 @@
     [_webView setFrame:rect];
     
     if ( _info != nil ) {
-        NSString* url = [NSString stringWithFormat:WEB_SURVEY, _info.sid];
-        NSURL* nsurl = [[NSURL alloc] initWithString:url];
+        NSURL* nsurl = [[NSURL alloc] initWithString:_info.url];
         [_webView loadRequest:[NSURLRequest requestWithURL:nsurl]];
         [nsurl release];
     }
@@ -64,7 +63,8 @@
 }
 
 - (IBAction)clickBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    QuestViewController* controller = [QuestViewController sharedInstance];
+    [self.navigationController popToViewController:controller animated:YES];
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
