@@ -32,7 +32,6 @@
 @synthesize tableView;
 @synthesize dogImageView;
 @synthesize jingyanView;
-@synthesize jingyan2View;
 @synthesize dengjiNumLabel;
 @synthesize jiachengInfoLabel;
 @synthesize bingphoneTipsView;
@@ -69,10 +68,6 @@
     [self setEXP:[[LoginAndRegister sharedInstance] getCurrentExp]
     nextLevelEXP:[[LoginAndRegister sharedInstance] getNextLevelExp]
    withAnimation:YES];
-    
-    jingyan2View = [[UIImageView alloc] initWithFrame:self.jingyanView.frame];
-    jingyan2View.image = jingyanView.image;
-    jingyan2View.contentMode = jingyanView.contentMode;
     
     [self.dogCell.contentView addSubview:dogcellContentView];
 
@@ -162,7 +157,6 @@
     [_descriptionImages release];
     [_titleImages release];
     [_isSkillLocks release];
-    [jingyan2View release];
     [EXPLabel release];
     [dogcellContentView release];
     [super dealloc];
@@ -303,13 +297,10 @@
     length *= ratio;
     
     CGRect rectEXP = self.jingyanView.frame;
-    rectEXP.size.width = 0.f;
-    self.jingyan2View.frame = rectEXP;
-    
     rectEXP.size.width = length;
     
     void (^block)(void) = ^(){
-        self.jingyan2View.frame = rectEXP;
+        self.jingyanView.frame = rectEXP;
     };
     
     self.EXPLabel.text = [NSString stringWithFormat:@"￥%@ / ￥%@",[NSString stringWithFloatRoundToPrecision:EXP/100.f precision:2 ignoreBackZeros:YES],[NSString stringWithFloatRoundToPrecision:nextLevelEXP/100.f precision:2 ignoreBackZeros:YES]];

@@ -19,7 +19,6 @@
 @property (nonatomic,retain) IBOutlet UITableView* tableView;
 @property (nonatomic,retain) IBOutlet UIImageView* dogImageView;
 @property (nonatomic,retain) IBOutlet UIImageView* jingyanView;
-@property (nonatomic,retain) IBOutlet UIImageView* jingyan2View;
 @property (nonatomic,retain) IBOutlet UILabel* dengjiNumLabel;
 @property (nonatomic,retain) IBOutlet UILabel* jiachengInfoLabel;
 @property (nonatomic,retain) IBOutlet UIView* bingphoneTipsView;
