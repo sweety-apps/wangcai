@@ -6,6 +6,8 @@ import java.util.Map.Entry;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.common.Util;
+
 
 public class Requester {
 
@@ -62,25 +64,31 @@ public class Requester {
 	
 
 	public RequestInfo GetRequestInfo() {
-		return null;
+		return m_requestInfo;
 	}
-	public boolean ParseResponse(String strResponse) {
+	protected boolean ParseResponse(JSONObject rootObject) {
+		return true;
+	}
+	
+	public boolean Parse(String strResponse) {
 		if (strResponse == null) {
-			m_nResult = -1;
+			m_nResult = RequestManager.sg_nNetworkdError;
 			return false;
 		}
+		JSONObject rootObject = null;
 		try {
-			m_rootObject = new JSONObject(strResponse);
-			m_nResult = Util.ReadJsonInt(m_rootObject, "res");
-			m_strMsg = Util.ReadJsonString(m_rootObject, "msg");
+			rootObject = new JSONObject(strResponse);
+			m_nResult = Util.ReadJsonInt(rootObject, "res");
+			m_strMsg = Util.ReadJsonString(rootObject, "msg");
 		} catch (JSONException e) {
-			m_rootObject = null;
+			return false;
+		}
+		
+		if (!ParseResponse(rootObject)) {
+			m_nResult = RequestManager.sg_nNetworkdError;
 			return false;
 		}
 		return true;
-	}
-	public void OnEndParse() {
-		m_rootObject = null;
 	}
 	
 	public void SetRequestType(RequesterFactory.RequestType enumRequestType) {
@@ -95,7 +103,6 @@ public class Requester {
 	public String GetMsg() {
 		return m_strMsg;
 	}
-	protected JSONObject m_rootObject;
 	private int m_nResult = 0;
 	private String m_strMsg;
 	protected RequesterFactory.RequestType m_enumRequestType;

@@ -11,12 +11,12 @@ public class ExtractInfo {
 	public static class ExtractSubItem {
 		public ExtractSubItem(int nAmount, int nPrice, boolean bHot) {
 			m_nAmount = nAmount;
-			m_nPrice = nPrice;
+			m_nRealPrice = nPrice;
 			m_bHot = bHot;
 		}
 		public int m_nAmount;
-		public int m_nPrice;
-		boolean m_bHot;
+		public int m_nRealPrice;
+		public boolean m_bHot;
 	}
 	public static class ExtractItem {
 		public ExtractItem(ExtractType enumType) {
@@ -30,6 +30,14 @@ public class ExtractInfo {
 	public int GetExtractItemCount() {
 		return m_listExtractItems.size();
 	}
+	public ExtractItem GetExtractItem(ExtractType enumType) {
+		for (ExtractItem item: m_listExtractItems) {
+			if (item.m_enumType == enumType) {
+				return item;
+			}
+		}
+		return null;
+	}
 	public ExtractItem GetExtractItem(int nIndex) {
 		if (nIndex < 0 || nIndex >= m_listExtractItems.size()) {
 			return null;
@@ -39,6 +47,5 @@ public class ExtractInfo {
 	public void AddItem(ExtractItem item) {
 		m_listExtractItems.add(item);
 	}
-
 	private ArrayList<ExtractItem> m_listExtractItems = new ArrayList<ExtractItem>();
 }

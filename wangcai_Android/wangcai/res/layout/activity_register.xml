@@ -49,6 +49,7 @@
 			android:layout_width="190dp"
 			android:layout_height="wrap_content"
 			android:maxLength="5"
+			android:hint="@string/hint_input_captcha"
 			android:inputType="number"
 			android:visibility="gone"
 		/>

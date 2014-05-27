@@ -58,7 +58,14 @@ public class TaskListInfo {
 		}		
 		return nMoney;
 	}
-	   
+	public boolean IsComplete(int nTaskId) {
+		for(TaskInfo info : m_listTaskInfos) {
+			if (info.m_nId == nTaskId) {
+				return IsComplete(info);
+			}
+		}
+		return false;
+	}
 	public static boolean IsComplete(TaskInfo taskInfo) {
 		return taskInfo.m_nTaskStatus != 0;
 	}

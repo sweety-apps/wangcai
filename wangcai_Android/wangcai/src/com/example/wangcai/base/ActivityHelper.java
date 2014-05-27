@@ -1,29 +1,40 @@
 package com.example.wangcai.base;
 
+import com.example.request.Config;
 import com.example.wangcai.R;
 import com.example.wangcai.activity.ExchageGiftActivity;
-import com.example.wangcai.activity.ExtractMoneyActivity;
+import com.example.wangcai.activity.ExtractAliPayActivity;
+import com.example.wangcai.activity.ExtractListActivity;
+import com.example.wangcai.activity.ExtractPhoneBillActivity;
+import com.example.wangcai.activity.ExtractQBiActivity;
 import com.example.wangcai.activity.InviteActivity;
 import com.example.wangcai.activity.LotteryActivity;
 import com.example.wangcai.activity.MyWangcaiActivity;
 import com.example.wangcai.activity.OptionsActivity;
+import com.example.wangcai.activity.PopupWinAppWall;
+import com.example.wangcai.activity.PopupWinLevelUpgrate;
+import com.example.wangcai.activity.PopupWinNewAward;
 import com.example.wangcai.activity.RegisterActivity;
 import com.example.wangcai.activity.RegisterSucceedActivity;
 import com.example.wangcai.activity.SurveyActivity;
 import com.example.wangcai.activity.WebviewActivity;
+import com.example.wangcai.activity.WriteInviteCodeAcitivty;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 public class ActivityHelper {
-	public final static String sg_strBonus = "Bonuse";
 	public final static String sg_strBindDeviceCount = "BindDeviceCount";
 	public final static String sg_strAge = "Age";
 	public final static String sg_strSex = "Sex";
+	public final static String sg_strUrl = "URL";
+	public final static String sg_strTitle = "Title";
 	public final static String sg_strInterest = "Interest";
 	
     //显示要邀请页面
@@ -31,14 +42,17 @@ public class ActivityHelper {
     	Intent it = new Intent(owner, InviteActivity.class);
     	owner.startActivity(it);
     }
+    public static void ShowWriteInviteCodeActivity(Activity owner) {
+    	Intent it = new Intent(owner, WriteInviteCodeAcitivty.class);
+    	owner.startActivity(it);    	
+    }
     //显示交易明细
     public static void ShowDetailActivity(Activity owner) {
-    	ShowWebViewActivity(owner, "http://www.biadu.com");
+    	ShowWebViewActivity(owner, null, "http://www.biadu.com");
     }
     //显示签到抽奖
-    public static void ShowLotteryActivity(Activity owner, int nBonus) {
+    public static void ShowLotteryActivity(Activity owner) {
     	Intent it = new Intent(owner, LotteryActivity.class);
-    	it.putExtra(sg_strBonus, nBonus);
     	owner.startActivity(it);
     }	
     //显示我的旺财
@@ -53,7 +67,7 @@ public class ActivityHelper {
     }
     //显示提取现金
     public static void ShowExtractActivity(Activity owner) {
-    	Intent it = new Intent(owner, ExtractMoneyActivity.class);
+    	Intent it = new Intent(owner, ExtractListActivity.class);
     	owner.startActivity(it);
     }
     //显示
@@ -66,7 +80,7 @@ public class ActivityHelper {
     }
     //客服帮助
     public static void ShowHelpActivity(Activity owner) {
-    	ShowWebViewActivity(owner, "http://www.sina.com.cn");
+    	ShowWebViewActivity(owner, null, "http://www.sina.com.cn");
     }
     //好评旺财
     public static void ShowCommentActivity(Activity owner) {
@@ -84,18 +98,51 @@ public class ActivityHelper {
     	Intent it = new Intent(owner, RegisterActivity.class);
     	owner.startActivity(it);
     }
+    public static void ShowExtractQBiActivtiy(Activity owner) {
+    	Intent it = new Intent(owner, ExtractQBiActivity.class);
+    	owner.startActivity(it);    	
+    }
+    public static void ShowExtractPhoneBillActivity(Activity owner) {
+    	Intent it = new Intent(owner, ExtractPhoneBillActivity.class);
+    	owner.startActivity(it);    	
+    }
+    public static void ShowExtractAliPayActivtiy(Activity owner) {
+    	Intent it = new Intent(owner, ExtractAliPayActivity.class);
+    	owner.startActivity(it);    	
+    }
     public static void ShowRegisterSucceedActivity(Activity owner, int nBindDeviceCount) {
     	Intent it = new Intent(owner, RegisterSucceedActivity.class);
     	it.putExtra(sg_strBindDeviceCount, nBindDeviceCount);
     	owner.startActivity(it);
     }
-    public static void ShowWebViewActivity(Activity owner, String strUrl) {
+    public static void ShowWebViewActivity(Activity owner, String strTitle, String strUrl) {
     	Intent it = new Intent(owner, WebviewActivity.class);
-    	it.putExtra(strUrl, strUrl);
+    	it.putExtra(sg_strUrl, strUrl);
+    	it.putExtra(sg_strTitle, strTitle);
     	owner.startActivity(it);
     }
 
+    public static void ShowAppInstallActivity(Activity owner) {
+    	ShowWebViewActivity(owner, null, Config.GetWebServiceUrl() + "132");
+    }
 
+    //显示积分墙
+    public static PopupWindow ShowAppWall(Activity owner, View viewParent) {
+    	PopupWinAppWall appWall = new PopupWinAppWall(owner);
+    	appWall.showAtLocation(viewParent, Gravity.CENTER, 0, 0);
+    	return appWall;
+    }
+    public static PopupWindow ShowNewArawdWin(Activity owner, View viewParent, String strAwardName, int nNewAward) {
+    	PopupWinNewAward win = new PopupWinNewAward(owner, strAwardName, nNewAward);
+    	win.showAtLocation(viewParent, Gravity.CENTER, 0, 0); 
+    	return win;
+    }
+    public static PopupWindow ShowLevelUpgrateWin(Activity owner, View viewParent) {
+    	PopupWinLevelUpgrate win = new PopupWinLevelUpgrate(owner);
+    	win.showAtLocation(viewParent, Gravity.CENTER, 0, 0);    	
+    	return win;
+    }
+    
 	public static void ShowToast(Context context, int nStringId) {
 		ShowToast(context, context.getString(nStringId));
 	}

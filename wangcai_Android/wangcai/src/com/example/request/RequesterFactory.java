@@ -1,5 +1,7 @@
 package com.example.request;
 
+import com.example.request.Requesters.*;
+
 public class RequesterFactory {
 
 	public static enum RequestType {
@@ -13,7 +15,12 @@ public class RequesterFactory {
 		RequestType_ExtractPhoneBill,	//话费充值
 		RequestType_ExtractQBi,			//Q币充值
 		RequestType_ExtractAliPay,		//支付宝充值
-		RequestType_UpdateInviter,		//跟新邀请人
+		RequestType_UpdateInviter,		//更新邀请人
+		RequestType_GetExchangeList,	//
+		RequestType_GetExchangeCode,	//
+		RequestType_Poll,					//
+		RequetsType_DownloadApp,		//
+		RequestType_Share,					//
 	}
 	
 
@@ -52,6 +59,20 @@ public class RequesterFactory {
 			break;
 		case RequestType_UpdateInviter:
 			req = new Request_UpdateInviter();
+			break;
+		case RequestType_GetExchangeList:
+			req = new Request_GetExchangeList();
+			break;
+		case RequestType_GetExchangeCode:
+			req = new Request_GetExchangeCode();
+			break;
+		case RequestType_Poll:
+			req = new Request_Poll();
+			break;
+		case RequetsType_DownloadApp:
+			req = new Request_DownloadApp();
+		case RequestType_Share:
+			req = new Request_Share();
 			break;
 		default:
 			return req;

@@ -103,6 +103,51 @@ public class Config {
 		}
 	}
 
+	public static String GetExchageListUrl() {
+		if (m_enumEvnType == EnvType.EnvType_Dev) {
+			return "https://ssl.getwangcai.com/0/order/exchange_list";
+		}
+		else {
+			return "https://dev.getwangcai.com/0/order/exchange_list";			
+		}
+	}
+
+
+	public static String GetExchangeCodeUrl() {
+		if (m_enumEvnType == EnvType.EnvType_Dev) {
+			return "https://ssl.getwangcai.com/0/order/exchange_code";
+		}
+		else {
+			return "https://dev.getwangcai.com/0/order/exchange_code";			
+		}
+	}
+	
+	public static String GetDownloadAppUrl() {
+		if (m_enumEvnType == EnvType.EnvType_Dev) {
+			return "https://dev.getwangcai.com/0/task/download_app"; 
+		}
+		else {
+			return "https://ssl.getwangcai.com/0/task/download_app";
+		}		
+	}
+	
+	public static String GetPollUrl() {
+		if (m_enumEvnType == EnvType.EnvType_Dev) {
+			return "https://dev.getwangcai.com/0/task/poll";
+		}
+		else {
+			return "https://ssl.getwangcai.com/0/task/poll";
+		}
+	}
+	
+	public static String GetShareTaskUrl() {
+		if (m_enumEvnType == EnvType.EnvType_Dev) {
+			return "https://dev.getwangcai.com/0/task/share";
+		}
+		else {
+			return "https://ssl.getwangcai.com/0/task/share";
+		}
+	}
 	
 	public static String GetInviteUrl() {
 		return "http://invite.getwangcai.com/index.php?code=%s";				
@@ -113,6 +158,9 @@ public class Config {
 		return "http://www.getwangcai.com/?code=%s&name=wangcai";				
 	}
 	
+	public static String GetWebServiceUrl() {
+		return "http://service.meme-da.com/index.php/mobile/shouce/view/h_id/";
+	}
 	
 	
 	

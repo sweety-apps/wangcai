@@ -1,9 +1,9 @@
 package com.example.wangcai.activity;
 
-import net.youmi.android.AdManager;
-import net.youmi.android.offers.OffersManager;
 
-import com.example.request.Util;
+import com.example.common.BuildSetting;
+import com.example.common.Util;
+import com.example.request.Config;
 import com.example.wangcai.R;
 import com.example.wangcai.WangcaiApp;
 import com.example.wangcai.base.ManagedDialog;
@@ -15,20 +15,25 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class StartupActivity extends ManagedDialogActivity implements WangcaiApp.WangcaiAppEvent{
+public class StartupActivity extends ManagedDialogActivity {
 	
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-                
+
+        if (BuildSetting.sg_bIsDebug) {
+        	Config.Initlialize(Config.EnvType.EnvType_Dev);
+        }
+        else {
+        	Config.Initlialize(Config.EnvType.EnvType_Formal);
+        }
+    	//Config.Initlialize(Config.EnvType.EnvType_Formal);
         setContentView(R.layout.activity_startup);
 
         WangcaiApp app = WangcaiApp.GetInstance();
         app.Initialize(this.getApplicationContext());
-        
-        app.AddEventLinstener(this);
-        
+
         app.Login();
 
      }
@@ -63,26 +68,24 @@ public class StartupActivity extends ManagedDialogActivity implements WangcaiApp
     			m_hintLoginErrorDialog.Show();	
     		}
     	}
+    	super.OnLoginComplete(nResult, strMsg);
     }
     //对话框返回
 	public void OnDialogFinish(ManagedDialog dlg, int inClickedViewId) {
-		if (dlg.GetDialogId() == m_hintNetworkErrorDialog.GetDialogId()) {
+		if (m_hintNetworkErrorDialog != null && dlg.GetDialogId() == m_hintNetworkErrorDialog.GetDialogId()) {
 			//绑定手机
 			if (inClickedViewId == DialogInterface.BUTTON_POSITIVE) {
 		        WangcaiApp app = WangcaiApp.GetInstance();
 		        app.Login();
 			}
 		}
-		else if (dlg.GetDialogId() == m_hintLoginErrorDialog.GetDialogId()) {
+		else if (m_hintLoginErrorDialog != null && dlg.GetDialogId() == m_hintLoginErrorDialog.GetDialogId()) {
 			//绑定手机
 			if (inClickedViewId == DialogInterface.BUTTON_POSITIVE) {
 				finish();
 			}
 		}
 	}
-    public void OnUserInfoUpdate() {
-    }
-
     HintNetwordErrorDialog m_hintNetworkErrorDialog;
     HintLoginErrorDialog m_hintLoginErrorDialog;
 }

@@ -1,14 +1,14 @@
 package com.example.wangcai.activity;
 
 import com.example.request.RequestManager;
-import com.example.request.Request_UpdateUserInfo;
 import com.example.request.Requester;
 import com.example.request.RequesterFactory;
-import com.example.request.Util;
+import com.example.request.Requesters.Request_UpdateUserInfo;
+import com.example.common.Util;
 import com.example.wangcai.R;
 import com.example.wangcai.base.ActivityHelper;
-import com.example.wangcai.base.BuildSetting;
-import com.example.wangcai.base.ManagedActivity;
+import com.example.common.BuildSetting;
+import com.example.wangcai.base.WangcaiActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-public class SurveyActivity extends ManagedActivity implements RequestManager.IRequestManagerCallback, OnClickListener{
+public class SurveyActivity extends WangcaiActivity implements RequestManager.IRequestManagerCallback, OnClickListener{
 	private final int sg_nMale = 1;
 	private final int sg_nFemale = 2;
 	
@@ -46,7 +46,7 @@ public class SurveyActivity extends ManagedActivity implements RequestManager.IR
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_survey);        
+        setContentView(R.layout.activity_wriate_invite_code);        
 
         InitView();
         

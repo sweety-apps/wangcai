@@ -5,7 +5,7 @@ package com.example.wangcai.base;
 
 import java.util.ArrayList;
 
-import com.example.request.Util;
+import com.example.common.Util;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

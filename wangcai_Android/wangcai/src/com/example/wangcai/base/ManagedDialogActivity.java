@@ -1,10 +1,11 @@
 package com.example.wangcai.base;
 
-import android.app.Activity;
+import com.example.common.IdGenerator;
+
 import android.app.Dialog;
 import android.util.SparseArray;
 
-public class ManagedDialogActivity extends Activity{
+public class ManagedDialogActivity extends WangcaiActivity{
 
 	@Override
 	protected Dialog onCreateDialog(int nId) {
@@ -29,9 +30,8 @@ public class ManagedDialogActivity extends Activity{
 	}
 	
 	public void RegisterDialog(ManagedDialog dlg) {
-		dlg.SetId(m_idGen.NewId());
+		dlg.SetId(IdGenerator.NewId());
 		m_listDialogs.put(dlg.GetDialogId(), dlg);
 	}
 	protected SparseArray<ManagedDialog> m_listDialogs = new SparseArray<ManagedDialog>();
-	private IdGenerator m_idGen = new IdGenerator();
 }

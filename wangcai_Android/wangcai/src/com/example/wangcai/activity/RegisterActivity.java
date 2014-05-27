@@ -5,21 +5,21 @@ import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.example.request.Request_VerifyCaptcha;
+import com.example.common.Util;
 import com.example.request.RequestManager;
-import com.example.request.Request_BindPhone;
-import com.example.request.Request_ResendCaptcha;
 import com.example.request.Requester;
 import com.example.request.RequesterFactory;
 import com.example.request.UserInfo;
-import com.example.request.Util;
+import com.example.request.Requesters.Request_BindPhone;
+import com.example.request.Requesters.Request_ResendCaptcha;
+import com.example.request.Requesters.Request_VerifyCaptcha;
 import com.example.wangcai.R;
 import com.example.wangcai.WangcaiApp;
 import com.example.wangcai.base.ActivityHelper;
-import com.example.wangcai.base.BuildSetting;
-import com.example.wangcai.base.ManagedActivity;
+import com.example.common.BuildSetting;
+import com.example.common.ViewHelper;
+import com.example.wangcai.base.WangcaiActivity;
 import com.example.wangcai.base.SmsReader;
-import com.example.wangcai.base.ViewHelper;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -36,7 +36,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class RegisterActivity extends ManagedActivity implements OnClickListener, 
+public class RegisterActivity extends WangcaiActivity implements OnClickListener, 
 														RequestManager.IRequestManagerCallback,
 														SmsReader.SmsEvent{
 
@@ -115,14 +115,14 @@ public class RegisterActivity extends ManagedActivity implements OnClickListener
 		if (nId == R.id.get_captcha_button) {
 			//获取验证码按钮
 	        EditText editPhoneNumber = (EditText)this.findViewById(R.id.phone_number_edit);
-	        String strPhoneNumber = editPhoneNumber.getText().toString();
-	        if (!CheckPhoneNumber(strPhoneNumber)) {
+	        m_strPhoneNumber = editPhoneNumber.getText().toString();
+	        if (!CheckPhoneNumber(m_strPhoneNumber)) {
 	        	ActivityHelper.ShowToast(this, R.string.hint_invlide_phoneNumber);
 	        	return;
 	        }
 
 	        Request_BindPhone req = (Request_BindPhone)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_BindPhone);
-	        req.SetPhoneNumber(strPhoneNumber);
+	        req.SetPhoneNumber(m_strPhoneNumber);
 	        
 	        RequestManager.GetInstance().SendRequest(req, false, this);
 	        
@@ -161,7 +161,9 @@ public class RegisterActivity extends ManagedActivity implements OnClickListener
 
 		findViewById(R.id.resend_text).setVisibility(View.GONE);
 		findViewById(R.id.get_captcha_button).setVisibility(View.GONE);
-		findViewById(R.id.captcha_edit).setVisibility(View.VISIBLE);
+		EditText edit = (EditText)findViewById(R.id.captcha_edit);
+		edit.setVisibility(View.VISIBLE);
+		edit.requestFocus();
 		StartTimer();		
 	}
 	private void OnRequestCaptchaComplete(int nResult, String strMsg, String strToken) {
@@ -208,6 +210,7 @@ public class RegisterActivity extends ManagedActivity implements OnClickListener
 				userInfo.SetTotalIncome(verifyReq.GetIncome());
 				userInfo.SetTotalOutgo(verifyReq.GetOutgo());
 				userInfo.SetShareIncome(verifyReq.GetShareIncome());
+				userInfo.SetPhoneNumber(m_strPhoneNumber);
 				//更新UserInfo以刷新界面
 				WangcaiApp.GetInstance().UpdateUserInfo(userInfo);
 				
@@ -347,7 +350,7 @@ public class RegisterActivity extends ManagedActivity implements OnClickListener
     private Handler m_handler = null;
     private Timer m_timer = null;  
     private TimerTask m_timerTask = null;  
-
+    private String m_strPhoneNumber;
     private ProgressDialog m_progressDialog;
 	//private ViewDrawer m_viewerDrawer = new ViewDrawer();
 	private String m_strToken;

@@ -24,7 +24,7 @@ public class ConfigCenter {
 		editor.putString(sg_strHasSignInKey, String.valueOf(System.currentTimeMillis()));
 		editor.commit();
 	}
-	public boolean GetHasSignInToday() {
+	public boolean HasSignInToday() {
 		String strTime =  m_sharedPreference.getString(sg_strHasSignInKey, "0");
 		
 		//上次抽奖时间

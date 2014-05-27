@@ -22,7 +22,11 @@ public class TitleCtrl extends FrameLayout {
         DoInit(context);
      }
     public TitleCtrl(Context context, AttributeSet attrs) {  
-        super(context, attrs);  
+        this(context, attrs, 0);  
+
+    }  
+    public TitleCtrl(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);  
 
         DoInit(context);
  
@@ -38,11 +42,6 @@ public class TitleCtrl extends FrameLayout {
 	            	break;
             }
         }
-    }  
-    public TitleCtrl(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);  
-        
-        DoInit(context);
     }  
   
 
@@ -67,7 +66,10 @@ public class TitleCtrl extends FrameLayout {
 	        });
     	}    		
     }
-	
+	public void SetTitle(String strTitle) {
+		TextView title = (TextView)findViewById(R.id.titile_text);
+		title.setText(strTitle);
+	}
 	private void Finish() {
 		Activity ownerActivity = null;
 		Context context = getContext();

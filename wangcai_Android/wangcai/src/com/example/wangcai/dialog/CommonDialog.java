@@ -3,7 +3,7 @@ package com.example.wangcai.dialog;
 import android.app.AlertDialog;
 import android.app.Dialog;
 
-import com.example.request.Util;
+import com.example.common.Util;
 import com.example.wangcai.R;
 import com.example.wangcai.base.ManagedDialog;
 import com.example.wangcai.base.ManagedDialogActivity;

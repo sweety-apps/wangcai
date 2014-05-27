@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="backgroud_color">#FEFEFE</color>  
+	<color name="pop_win_bkg_color">#45909090</color>  
 </resources>

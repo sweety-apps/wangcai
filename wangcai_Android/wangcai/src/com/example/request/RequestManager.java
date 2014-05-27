@@ -14,9 +14,21 @@ import javax.net.ssl.TrustManager;
 
 
 
+
+
+
+
+
+
+import com.example.common.BuildSetting;
+import com.example.common.IdGenerator;
+import com.example.common.Util;
+import com.example.wangcai.base.SystemInfo;
+
 import android.os.AsyncTask;
 
 public class RequestManager {
+	public static final int sg_nNetworkdError = -1;
 	public static final String g_strPost = "POST";
 	public static final String g_strGet = "GET";
 	
@@ -41,7 +53,6 @@ public class RequestManager {
 	}
 	
 	
-	@SuppressWarnings("deprecation")
 	public void Initialize(InputStream caInput) {
 		// Load CAs from an InputStream
 		// (could be from a resource or ByteArrayInputStream or ...)
@@ -84,7 +95,7 @@ public class RequestManager {
 	
 	public int SendRequest(Requester req, boolean bOverwrite, IRequestManagerCallback pCallback) {
 		//todo ШЅжи
-		int nRequestId = m_idGen.NewId();
+		int nRequestId = IdGenerator.NewId();
 		RequestRecord pRecord = new RequestRecord(nRequestId, req, pCallback);
 		Map<String, String> mapData = new HashMap<String, String>();
 		if (!Util.IsEmptyString(m_strDeviceId)) {
@@ -104,7 +115,10 @@ public class RequestManager {
 	}
 
 	private String GetCookie() {
-		String strCookie = "iPhone 5s_7.0.4; os=android; net=wifi; app=wangcai; ver=2.2; local_ip=10.66.149.88";
+		String strCookie = String.format("%s; os=android; net=%s; app=wangcai; ver=%s; local_ip=%s", 
+				SystemInfo.GetPhoneModel(), SystemInfo.GetNetworkType(), BuildSetting.sg_strVersion, SystemInfo.GetIp());
+
+		strCookie = "iPhone 5s_7.0.4; os=android; net=wifi; app=wangcai; ver=2.2; local_ip=10.66.149.88";
 		return strCookie;
 	}
 
@@ -124,7 +138,12 @@ public class RequestManager {
                 sc.init(null, new TrustManager[]{new HttpsHelper.MyTrustManager()}, new SecureRandom());
                 HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory()); 
                 HttpsURLConnection.setDefaultHostnameVerifier(new HttpsHelper.MyHostnameVerifier());
-				URL url = new URL(requestInfo.m_strUrl);
+
+                String strUrl = requestInfo.m_strUrl;
+				if (requestInfo.m_strRequestMethod.equals(g_strGet)) {
+					strUrl = String.format("%s?device_id=%s&session_id=%s&userid=%d", requestInfo.m_strUrl, m_strDeviceId, m_strSessionId, m_nUserId);
+				}
+				URL url = new URL(strUrl);
 
 				HttpsURLConnection connection = (HttpsURLConnection)url.openConnection(); 
 				connection.setConnectTimeout(10 * 1000);
@@ -169,10 +188,10 @@ public class RequestManager {
 					}
 				}
 				String strRespData = stringBuffer.toString();
-				reqRecord.m_requester.ParseResponse(strRespData);
+				reqRecord.m_requester.Parse(strRespData);
 			}
 			catch(Exception ex){
-				reqRecord.m_requester.ParseResponse(null);
+				reqRecord.m_requester.Parse(null);
 			}
 			return reqRecord;
 		}
@@ -195,12 +214,6 @@ public class RequestManager {
     }
 	
 
-    private class IdGenerator {
-    	public int NewId() {
-    		return ++m_id;
-    	}
-    	private int m_id = 1;
-    }
 	public void SetUserId(int nUserId) {
 		m_nUserId = nUserId;
 	}
@@ -210,8 +223,7 @@ public class RequestManager {
 	public void SetDeviceId(String strDeviceId) {
 		m_strDeviceId = strDeviceId;
 	}
-	
-    private IdGenerator m_idGen = new IdGenerator();
+
     private SSLContext m_sslContext;
 	private String m_strSessionId;
 	private String m_strDeviceId;

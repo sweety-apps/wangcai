@@ -3,19 +3,25 @@ package com.example.wangcai.activity;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.example.common.BuildSetting;
+import com.example.request.RequestManager;
+import com.example.request.Requester;
+import com.example.request.RequesterFactory;
+import com.example.request.Requesters.Request_Lottery;
 import com.example.wangcai.R;
+import com.example.wangcai.WangcaiApp;
 import com.example.wangcai.base.ActivityHelper;
-import com.example.wangcai.base.ManagedActivity;
+import com.example.wangcai.base.WangcaiActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-public class LotteryActivity extends ManagedActivity {
+public class LotteryActivity extends WangcaiActivity implements RequestManager.IRequestManagerCallback{
 	final static int sg_nBaseTimerElapse = 100;
 	final static int sg_nSlowdownItems = 10;	//剩下多少个item开始减速
 	final static int sg_nSlowSpeed = 80;
@@ -68,27 +74,60 @@ public class LotteryActivity extends ManagedActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lottery);
         
-        Intent intent = this.getIntent();
-        m_nBonus = intent.getIntExtra(ActivityHelper.sg_strBonus, 0);
-        int nLoopCount = new Random().nextInt(sg_nMaxLoops - sg_nMinLoops) + sg_nMinLoops;
-        m_nTotalAnimationTimes = nLoopCount * sg_bonusArray.length + GetItemIndex(m_nBonus);
-
-        m_imageCover =  (ImageView)findViewById(R.id.select_cover);
-        m_imageBorder = (ImageView)findViewById(R.id.select_border);
         AttachEvents();
 
+        if (BuildSetting.sg_bIsDebug) {
+        	WangcaiApp.GetInstance().ChangeBalance(200);
+        }
      }
-    
+
+	public void OnRequestComplete(int nRequestId, Requester req) {
+		if (req instanceof Request_Lottery) {
+			if (m_progressDialog != null) {
+				m_progressDialog.dismiss();
+				m_progressDialog = null;
+			}
+			//请求抽奖
+			int nResult = req.GetResult();
+			if (nResult == RequestManager.sg_nNetworkdError) {
+				ActivityHelper.ShowToast(this, R.string.hint_request_error);
+				return;				
+			}
+			Request_Lottery lotteryRequester = (Request_Lottery)req;
+
+			m_nBonus = lotteryRequester.GetBouns();
+			if (BuildSetting.sg_bIsRelease) {
+				if (nResult != 0 || m_nBonus <= 0)
+				{
+					ActivityHelper.ShowToast(this, R.string.hint_duplicate_signin);
+					return;
+				}
+			}
+			
+			WangcaiApp.GetInstance().ChangeBalance(m_nBonus);
+
+	        int nLoopCount = new Random().nextInt(sg_nMaxLoops - sg_nMinLoops) + sg_nMinLoops;
+	        m_nTotalAnimationTimes = nLoopCount * sg_bonusArray.length + GetItemIndex(m_nBonus);
+
+	        m_imageCover =  (ImageView)findViewById(R.id.select_cover);
+	        m_imageBorder = (ImageView)findViewById(R.id.select_border);
+
+        	if (m_animationTask != null) {
+        		return;
+        	}
+        	m_animationTask = new AnimationTask();
+        	m_animationTask.execute(m_nTotalAnimationTimes); 
+		}
+	}
     private void AttachEvents()
     {
     	//抽奖按钮
     	this.findViewById(R.id.lottery_button).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-            	if (m_animationTask != null) {
-            		return;
-            	}
-            	m_animationTask = new AnimationTask();
-            	m_animationTask.execute(m_nTotalAnimationTimes); 
+				RequestManager requestManager = RequestManager.GetInstance();
+				Request_Lottery request = (Request_Lottery)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_Lottery);
+				requestManager.SendRequest(request, true, LotteryActivity.this);
+		        m_progressDialog = ActivityHelper.ShowLoadingDialog(LotteryActivity.this);
             }
         });
     	
@@ -194,6 +233,7 @@ public class LotteryActivity extends ManagedActivity {
     private boolean m_bLoopComplete = false;
     private ImageView m_imageCover;
     private ImageView m_imageBorder;
+    private ProgressDialog m_progressDialog = null;
 }
 
 

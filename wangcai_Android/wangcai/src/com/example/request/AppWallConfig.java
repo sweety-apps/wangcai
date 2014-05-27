@@ -14,7 +14,7 @@ public class AppWallConfig {
     
 	
 	private final static int sg_nHide = 0;
-	private final static int sg_nVisible = 1;
+	//private final static int sg_nVisible = 1;
 	private final static int sg_nRecommand = 2;
 	private final static int sg_nInMorePanel = 3;
 	
@@ -57,6 +57,9 @@ public class AppWallConfig {
 	
 	private ArrayList<AppWallInfo> m_listWallInfos = new ArrayList<AppWallInfo>();
 }
+
+
+
 
 
 

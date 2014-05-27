@@ -11,11 +11,11 @@ public class ActivityRegistry {
 		return m_obj;
 	}
 	
-	public void PushActivity(Activity activity) {
+	public void PushActivity(WangcaiActivity activity) {
 		m_stackActivity.add(activity);
 	}
 	
-	public boolean PopActivity(Activity activity) {
+	public boolean PopActivity(WangcaiActivity activity) {
 		return m_stackActivity.remove(activity);
 	}
 	
@@ -27,6 +27,12 @@ public class ActivityRegistry {
 		return true;
 	}
 	
+	public WangcaiActivity GetTopActivity() {
+		if (m_stackActivity.isEmpty()) {
+			return null;
+		}
+		return m_stackActivity.get(m_stackActivity.size() - 1);
+	}
 	public int GetActivityCount() {
 		return m_stackActivity.size();
 	}
@@ -38,5 +44,5 @@ public class ActivityRegistry {
 		return m_stackActivity.get(nIndex);
 	}
 
-	private ArrayList<Activity> m_stackActivity = new ArrayList<Activity>();
+	private ArrayList<WangcaiActivity> m_stackActivity = new ArrayList<WangcaiActivity>();
 }

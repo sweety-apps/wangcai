@@ -1,17 +1,21 @@
 package com.example.wangcai.activity;
 
+import com.example.common.Util;
+import com.example.request.Config;
 import com.example.request.RequestManager;
-import com.example.request.Request_UpdateInviter;
 import com.example.request.Requester;
 import com.example.request.RequesterFactory;
 import com.example.request.UserInfo;
-import com.example.request.Util;
+import com.example.request.Requesters.Request_UpdateInviter;
 import com.example.wangcai.R;
 import com.example.wangcai.WangcaiApp;
 import com.example.wangcai.base.ActivityHelper;
-import com.example.wangcai.base.ManagedActivity;
+import com.example.wangcai.base.WangcaiActivity;
 import com.example.wangcai.ctrls.TitleCtrl;
 
+import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class InviteActivity extends ManagedActivity implements RequestManager.IRequestManagerCallback{
+public class InviteActivity extends WangcaiActivity implements RequestManager.IRequestManagerCallback, OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,88 +50,54 @@ public class InviteActivity extends ManagedActivity implements RequestManager.IR
     		inviteCodeView.setText(strInvideCode);
 
         	ImageView qrcodeView = (ImageView)this.findViewById(R.id.qrcode);
-
-            WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);  
-            int nScreenWidth = wm.getDefaultDisplay().getWidth();  
             
-        	qrcodeView.setImageBitmap(Util.CreateQRCodeBitmap(strInvideCode, nScreenWidth * 3 / 4));
+        	qrcodeView.setImageBitmap(Util.CreateQRCodeBitmap(strInvideCode, getResources().getDimensionPixelSize(R.dimen.qrcode_size)));
     	}
 
     	//邀请链接
-    	TextView invateUrlView = (TextView)this.findViewById(R.id.invite_url);
-    	String strInviteUrl = userInfo.GetInviteUrl();
-    	if (!Util.IsEmptyString(strInviteUrl)) {
-    		invateUrlView.setText(strInviteUrl);
+    	View view = this.findViewById(R.id.invite_url_text);;
+    	TextView invateUrlView = (TextView)view;
+    	m_strInviteUrl = userInfo.GetInviteUrl();
+    	if (!Util.IsEmptyString(m_strInviteUrl)) {
+    		invateUrlView.setText(m_strInviteUrl);
+    	}
+    	
+    	TextView awardText = ((TextView)findViewById(R.id.friend_award));
+    	String strText = String.format(getString(R.string.invite_friend_award), (float)userInfo.GetShareIncome() / 100.0f);
+    	awardText.setText(strText);
+    }
+
+    @SuppressLint("NewApi") public void onClick(View v) {
+    	int nId = v.getId();
+    	if (nId == R.id.copy_url_button) {
+    		ClipboardManager clipboardManager = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);  
+    		clipboardManager.setPrimaryClip(ClipData.newPlainText(null, m_strInviteUrl));  
+    		ActivityHelper.ShowToast(this, R.string.copy_succeed);
+    	}
+    	else if (nId == R.id.share_button) {
+    		
+    	}
+    	else if (nId == R.id.view_detail) {
+    		ActivityHelper.ShowWebViewActivity(this, getString(R.string.invite_rull_detail_title), Config.GetWebServiceUrl() + "123");
+    	    //NSString* url = [[[NSString alloc] initWithFormat:@"%@123", WEB_SERVICE_VIEW] autorelease];
+    	    
+    	   // WebPageController* controller = [[[WebPageController alloc] init:@""
+    	   //                                                              Url:url Stack:stack] autorelease];
     	}
     }
-    
-    private void AttachEvents() {    	
-    	final View invitePanel = this.findViewById(R.id.invite_panel);
-    	final View inviteCodePanel = this.findViewById(R.id.invite_code_panel);
-    	
-    	//邀请好友按钮
-    	((Button)this.findViewById(R.id.invite_other)).setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-            	invitePanel.setVisibility(View.VISIBLE);
-            	inviteCodePanel.setVisibility(View.GONE);
-            }
-        });
+    private void AttachEvents() { 
 
-    	//谁邀请我按钮
-    	((Button)this.findViewById(R.id.the_one_invite_me)).setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-            	invitePanel.setVisibility(View.GONE);
-            	inviteCodePanel.setVisibility(View.VISIBLE);
-            }
-        });
-
-    	//复制到剪贴板按钮
-    	((Button)this.findViewById(R.id.copy_url_button)).setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-            }
-        });
+    	//复制到剪贴板按钮如何成为推广员
+    	this.findViewById(R.id.copy_url_button).setOnClickListener(this);
     	
     	//分享赚红包按钮
-    	((Button)this.findViewById(R.id.share_button)).setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-            }
-        });
-    	
-    	//领取赚x元按钮(绑定邀请人)
-    	((Button)this.findViewById(R.id.get_reward_button)).setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-            	EditText edit = (EditText)findViewById(R.id.code_editor);
-            	String strInviteCode = edit.getText().toString();
-            	if (Util.IsEmptyString(strInviteCode)) {
-            		ActivityHelper.ShowToast(InviteActivity.this, R.string.hint_invlide_invite_code);
-            		return;
-            	}
-				RequestManager requestManager = RequestManager.GetInstance();
-				Request_UpdateInviter request = (Request_UpdateInviter)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_UpdateInviter);
-				request.SetInviter(strInviteCode);
-				requestManager.SendRequest(request, true, InviteActivity.this);
-            }
-        });
+    	this.findViewById(R.id.share_button).setOnClickListener(this);
+
+    	this.findViewById(R.id.view_detail).setOnClickListener(this);
     }
     
 
 	public void OnRequestComplete(int nRequestId, Requester req) {
-		if (req instanceof Request_UpdateInviter) {
-			int nResult = req.GetResult();
-			String strMsg = req.GetMsg();
-			if (nResult == 0) {
-        		ActivityHelper.ShowToast(InviteActivity.this, R.string.hint_bind_invite_code_succeed);	
-        		//nfoxtodo 加钱
-			}
-			else {
-				if (Util.IsEmptyString(strMsg)) {
-            		ActivityHelper.ShowToast(InviteActivity.this, R.string.hint_bind_invite_code_fail);					
-				}
-				else {
-            		ActivityHelper.ShowToast(InviteActivity.this, strMsg);					
-				}
-			}
-		}
 	}
 
     @Override 
@@ -136,4 +106,6 @@ public class InviteActivity extends ManagedActivity implements RequestManager.IR
     	TitleCtrl titleCtrl = (TitleCtrl)this.findViewById(R.id.title);
     	titleCtrl.SetEventLinstener(null);    	
     }
+    
+    private String m_strInviteUrl;
 }

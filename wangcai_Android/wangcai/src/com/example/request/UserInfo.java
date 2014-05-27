@@ -1,5 +1,7 @@
 package com.example.request;
 
+import com.example.common.Util;
+
 public class UserInfo {
 
 	public String GetPhoneNumber() {
@@ -109,6 +111,18 @@ public class UserInfo {
 		String strInviteUrl = String.format(Config.GetInviteUrl(), m_strInviteCode);
 		return strInviteUrl;
 	}
+	public int GetOfferWallIncome() {
+		return m_nOfferWallIncome;
+	}
+	public void SetOfferWallIncome(int nOfferWallIncome) {
+		m_nOfferWallIncome = nOfferWallIncome;
+	}
+	public void SetBenefit(int nBenefit) {
+		m_nBenefit = nBenefit;
+	}
+	public int GetBenefit() {
+		return m_nBenefit;
+	}
 	//data member
 	private String m_strPhoneNumber;
 
@@ -122,9 +136,11 @@ public class UserInfo {
 	private int m_nTotalOutgo = 0;
 	private int m_nShareIncome = 0;
 	private int m_nRecentIncome = 0;
+	private int m_nOfferWallIncome = 0;
 	private int m_nCurrentLevel = 0;
 	private boolean m_bCanWithdrawal = true;
 	private int m_nCurrentExperience = 0;
 	private int m_nNextLevelExperience = 0;
 	private String m_strDeviceId;
+	private int m_nBenefit = 0;
 }

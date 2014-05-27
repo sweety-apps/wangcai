@@ -1,11 +1,11 @@
 package com.example.wangcai.activity;
 
 import com.example.wangcai.R;
-import com.example.wangcai.base.ManagedActivity;
+import com.example.wangcai.base.WangcaiActivity;
 
 import android.os.Bundle;
 
-public class OptionsActivity extends ManagedActivity {
+public class OptionsActivity extends WangcaiActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

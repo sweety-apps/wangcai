@@ -3,7 +3,7 @@ package com.example.wangcai.activity;
 
 import com.example.wangcai.R;
 import com.example.wangcai.WangcaiApp;
-import com.example.wangcai.base.ManagedActivity;
+import com.example.wangcai.base.WangcaiActivity;
 import com.example.wangcai.ctrls.MyWangcaiItem;
 
 import android.content.Context;
@@ -14,7 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MyWangcaiActivity extends ManagedActivity {
+public class MyWangcaiActivity extends WangcaiActivity {
 	static class ItemInfo
 	{
 		ItemInfo(int nLevel,	int nBkgId,	int nLevelImgId, int nTipImgId)

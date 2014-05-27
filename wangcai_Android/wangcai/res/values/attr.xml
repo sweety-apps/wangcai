@@ -3,4 +3,13 @@
 	<declare-styleable name="TitleCtrl">  
 		<attr name="titleText" format="string"/>
 	</declare-styleable>  
+	<declare-styleable name="ExtractLineCtrl">  
+		<attr name="lebalText" format="string"/>
+		<attr name="editHintText" format="string"/>
+	</declare-styleable>  
+	<declare-styleable name="ExtractPrieceCtrl">  
+		<attr name="price" format="integer"/>
+		<attr name="off" format="integer"/>
+		<attr name="isHot" format="boolean"/>
+	</declare-styleable>  
 </resources>  

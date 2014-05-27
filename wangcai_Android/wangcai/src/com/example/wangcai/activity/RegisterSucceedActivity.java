@@ -3,7 +3,7 @@ package com.example.wangcai.activity;
 import com.example.wangcai.R;
 import com.example.wangcai.base.ActivityHelper;
 import com.example.wangcai.base.ActivityRegistry;
-import com.example.wangcai.base.ManagedActivity;
+import com.example.wangcai.base.WangcaiActivity;
 import com.example.wangcai.base.ManagedDialogActivity;
 import com.example.wangcai.dialog.CommonDialog;
 
@@ -18,8 +18,6 @@ public class RegisterSucceedActivity extends ManagedDialogActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-		ActivityRegistry.GetInstance().PushActivity(this);
 
         setContentView(R.layout.activity_register_succeed);        
 
@@ -53,7 +51,6 @@ public class RegisterSucceedActivity extends ManagedDialogActivity{
 
     @Override 
     protected void onDestroy() {
-    	ActivityRegistry.GetInstance().PopActivity(this);
     	super.onDestroy();
     }
 }

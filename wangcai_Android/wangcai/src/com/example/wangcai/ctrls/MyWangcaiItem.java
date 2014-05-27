@@ -3,7 +3,7 @@ package com.example.wangcai.ctrls;
 import com.example.wangcai.R;
 import com.example.wangcai.R.id;
 import com.example.wangcai.R.layout;
-import com.example.wangcai.base.ViewHelper;
+import com.example.common.ViewHelper;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:wangcai = "http://schemas.android.com/apk/res/com.example.wangcai"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+	android:orientation="vertical"
+	android:background="#FFFFFF" >
+	<com.example.wangcai.ctrls.TitleCtrl xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/title"
+		wangcai:titleText="@string/write_invite_code_title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+	
+	<LinearLayout
+	    android:id="@+id/edit_frame"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/title"
+	    android:layout_marginTop="50dp" >
+	    
+		<TextView
+			android:id="@+id/label"
+			android:textColor="#E0E0E0"
+			android:paddingLeft="20dp"
+			android:paddingRight="20dp"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_gravity="center_vertical"
+	    	android:text="@string/input_invite_code_lable" />
+		<EditText 
+			android:id="@+id/invite_code_edit"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+	    	android:layout_gravity="center_vertical"
+			android:hint="@string/hint_input_invite_code"
+			android:background="@null"
+			/>
+	</LinearLayout>
+	<Button
+		android:id="@+id/commit_invite_code"
+		android:text="@string/write_invaite_code_get_award"
+		android:background="@drawable/invite_share_button"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/edit_frame"
+    	android:layout_marginTop="100dp"
+    	android:layout_centerHorizontal="true"
+		/>
+</RelativeLayout>

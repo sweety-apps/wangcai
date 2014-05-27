@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+		<TextView 
+			android:id="@+id/lebal"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="20sp"
+			android:layout_centerVertical="true" 
+		/> 
+		<EditText 
+			android:id="@+id/edit"
+			android:layout_width="220dp"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="120dp"
+			android:textSize="20sp"
+			android:imeOptions="actionDone"
+			android:background="@null"
+			android:singleLine="true"
+			android:layout_centerVertical="true" /> 
+</RelativeLayout>
