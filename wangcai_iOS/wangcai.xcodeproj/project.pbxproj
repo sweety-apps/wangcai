@@ -3037,6 +3037,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712D9BAB191B416F0035D29C /* libDianRuAdWall.a in Frameworks */,
+				71420E8C191E0B9700376AA9 /* libminizip.a in Frameworks */,
+				71420E8A191E0B9700376AA9 /* libAdwoOfferWall2.0.a in Frameworks */,
+				71007DBE18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
+				712B4ED61944543600C6DE13 /* libPunchBoxAd.a in Frameworks */,
 				710A3F71192C75B9002420C8 /* WapsOffer.framework in Frameworks */,
 				7194FE3E18EA8FEE004A303B /* libOpenIDFA.a in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
@@ -3068,7 +3073,6 @@
 				F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */,
 				71355582188D17800007784A /* SMSConnection.framework in Frameworks */,
 				71355580188D17800007784A /* SinaWeiboConnection.framework in Frameworks */,
-				712B4ED61944543600C6DE13 /* libPunchBoxAd.a in Frameworks */,
 				713555B6188D17810007784A /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
 				A66E3A661887FA7600EB19DE /* CoreFoundation.framework in Frameworks */,
 				713555A2188D17800007784A /* libSinaWeiboSDK.a in Frameworks */,
@@ -3081,7 +3085,6 @@
 				7135558E188D17800007784A /* TwitterConnection.framework in Frameworks */,
 				59D8E0C1189230DE003D5F3F /* libPushSDK.a in Frameworks */,
 				713555A8188D17810007784A /* ShareSDK.framework in Frameworks */,
-				71007DBE18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
 				71355590188D17800007784A /* VKontakteConnection.framework in Frameworks */,
 				71355574188D17800007784A /* PinterestConnection.framework in Frameworks */,
 				A60A43901872A1CF00B5C319 /* AdSupport.framework in Frameworks */,
@@ -3095,7 +3098,6 @@
 				59FE833218C77BCF00E4205A /* immobSDK.framework in Frameworks */,
 				F3D9D5F9185D89A600392C40 /* libicucore.dylib in Frameworks */,
 				7135559E188D17800007784A /* TencentOpenAPI.framework in Frameworks */,
-				71420E8A191E0B9700376AA9 /* libAdwoOfferWall2.0.a in Frameworks */,
 				F3D9D5F7185D893D00392C40 /* MessageUI.framework in Frameworks */,
 				F3F186F918543A410098C852 /* libsqlite3.dylib in Frameworks */,
 				A66E3A6A1887FD2100EB19DE /* libPushSDK.a in Frameworks */,
@@ -3111,7 +3113,6 @@
 				7135557A188D17800007784A /* QQConnection.framework in Frameworks */,
 				7194FE4518EA95D4004A303B /* JupengSdkLib.a in Frameworks */,
 				F3F186CE18543A410098C852 /* CoreVideo.framework in Frameworks */,
-				71420E8C191E0B9700376AA9 /* libminizip.a in Frameworks */,
 				71355564188D17800007784A /* FlickrConnection.framework in Frameworks */,
 				F3F186FB18543A410098C852 /* libxml2.dylib in Frameworks */,
 				71355596188D17800007784A /* AGCommon.framework in Frameworks */,
@@ -3127,7 +3128,6 @@
 				71355576188D17800007784A /* PocketConnection.framework in Frameworks */,
 				7135558C188D17800007784A /* TumblrConnection.framework in Frameworks */,
 				7135557E188D17800007784A /* RenRenConnection.framework in Frameworks */,
-				712D9BAB191B416F0035D29C /* libDianRuAdWall.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7466,6 +7466,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS,
+					/Users/zc/Desktop/wangcai/wangcai_iOS,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
@@ -7522,6 +7523,11 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Dianrulib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Adwolib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Adwolib/res,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Ecomlib,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Adwolib,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Adwolib/res,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Dianrulib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -7576,6 +7582,7 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/wangcai,
 					/Users/zc/Desktop/wangcai/wangcai_iOS/wangcai,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS,
+					/Users/zc/Desktop/wangcai/wangcai_iOS,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
@@ -7628,6 +7635,11 @@
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Dianrulib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Adwolib,
 					/Users/NPHD/Desktop/wangcai/wangcai_iOS/Adwolib/res,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Ecomlib,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Adwolib,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Adwolib/res,
+					/Users/zc/Desktop/wangcai/wangcai_iOS/Dianrulib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "594D6C65-DB25-4AAA-8A31-CBF232EEFA04";
