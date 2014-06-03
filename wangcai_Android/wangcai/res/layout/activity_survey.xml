@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:wangcai = "http://schemas.android.com/apk/res/com.example.wangcai"
+	xmlns:wangcai = "http://schemas.android.com/apk/res/com.coolstore.wangcai"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+	android:background="#FFFFFF" 
     android:orientation="vertical" >
-	<com.example.wangcai.ctrls.TitleCtrl
+	<com.coolstore.wangcai.ctrls.TitleCtrl
 		android:id="@+id/title"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" 

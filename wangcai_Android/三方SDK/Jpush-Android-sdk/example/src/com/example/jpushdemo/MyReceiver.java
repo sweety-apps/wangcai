@@ -1,4 +1,4 @@
-package com.example.jpushdemo;
+package com.coolstore.jpushdemo;
 
 import org.json.JSONException;
 import org.json.JSONObject;

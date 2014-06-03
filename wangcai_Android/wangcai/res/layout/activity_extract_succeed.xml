@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:wangcai = "http://schemas.android.com/apk/res/com.coolstore.wangcai"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical"
+	android:background="#FFFFFF" >
+	<com.coolstore.wangcai.ctrls.TitleCtrl
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/title"
+		wangcai:titleText="@string/invite_activity_title"
+		android:layout_gravity="center_horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/extract_succeed"
+		android:textSize="30sp"
+		android:layout_marginTop="100dp"
+		android:layout_gravity="center_horizontal"
+		/>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:layout_marginTop="15dp"
+		android:orientation="horizontal" >
+		<TextView 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/extract_order_number_label"
+			android:textSize="18sp"/>
+		<TextView
+		    android:id="@+id/order_number"
+			android:layout_width="210dp"
+			android:layout_height="wrap_content"
+			android:textSize="18sp"
+			android:ellipsize="middle"
+			android:textColor="#2C8CF4"
+			android:singleLine="true"
+			/>
+	</LinearLayout>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/extract_succeed_tip"
+		android:textSize="12sp"
+		android:textColor="#B9B9B9"
+		android:layout_marginTop="150dp"
+		android:layout_gravity="center_horizontal"
+		/>
+	<Button
+		android:id="@+id/return_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/button_normal"
+		android:layout_gravity="center_horizontal"
+		android:text="@string/return_text"
+		android:textColor="#FFFFFF"
+		android:layout_marginTop="20dp"
+		android:textSize="10sp" />
+</LinearLayout>

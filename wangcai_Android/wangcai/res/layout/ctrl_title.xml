@@ -12,6 +12,7 @@
 		android:layout_height="wrap_content"
 		android:layout_centerVertical="true"
 		android:src="@drawable/back"
+		android:layout_marginLeft="@dimen/common_margin_left"
 		android:layout_gravity="center_vertical"
 	/> 
 
@@ -22,7 +23,7 @@
 		android:layout_centerInParent="true"
 		android:layout_toRightOf="@id/option_button"
 		android:text="@string/app_description"
-		android:textSize="28sp"
+		android:textSize="@dimen/title_text_size"
 		android:textColor="#ffffff" />
 
 </RelativeLayout>

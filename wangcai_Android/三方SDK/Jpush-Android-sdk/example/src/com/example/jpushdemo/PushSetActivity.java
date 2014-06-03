@@ -1,4 +1,4 @@
-package com.example.jpushdemo;
+package com.coolstore.jpushdemo;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

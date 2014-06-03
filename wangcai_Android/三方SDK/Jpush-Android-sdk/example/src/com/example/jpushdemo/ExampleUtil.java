@@ -1,4 +1,4 @@
-package com.example.jpushdemo;
+package com.coolstore.jpushdemo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

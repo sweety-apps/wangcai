@@ -1,4 +1,4 @@
-package com.example.jpushdemo;
+package com.coolstore.jpushdemo;
 
 import cn.jpush.android.api.JPushInterface;
 import android.app.Activity;

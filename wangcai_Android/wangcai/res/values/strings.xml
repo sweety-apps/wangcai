@@ -13,15 +13,15 @@
 	<string name="recommand_task">推荐任务</string>
 	<string name="remain_task_money">今天还能赚：</string>
 
-
 	<string name="task_complete">已完成</string>
 
+	<string name="select_gift_lebal">请选择要兑换的商品：</string>
 	
 	<string name="menu">菜单</string>
 	<string name="my_wangcai">我的旺财</string>
 	<string name="cash_extract">现金提取</string>
 	<string name="task_detail">交易明细</string>
-	<string name="exchange_gift">超值兑换</string>
+	<string name="exchange_gift">超值换购</string>
 	<string name="get_money_by_invite">邀请送红包</string>
 	<string name="options">功能设置</string>
 	<string name="help">客服帮助</string>
@@ -30,7 +30,13 @@
 	<string name="extract_alipay">现金提取</string>
 	<string name="extract_qbi">腾讯Q币</string>
 
+	<string name="extract_activity_title">现金提取</string>
+
 	<string name="show_complete_task">点击查看已领取的红包</string>
+
+	<string name="extract_succeed">您的订单已确认</string>
+	<string name="extract_order_number_label">单号：</string>
+	<string name="extract_succeed_tip">注：提现在一个工作日内到账，请耐心等待</string>
 
 	<string name="level_label">等级：</string>
 	<string name="level_unit">级</string>	
@@ -79,7 +85,7 @@
 	<string name="resend">重新发送</string>
 	<string name="invite_activity_title">邀请送红包</string>
 	
-	<string name="invite_friend_award">好友奖励: %1$.2f元</string>
+	<string name="invite_friend_award">好友奖励: %1$s元</string>
 	<string name="invite_award_tip">获得额外10%的好友任务奖励</string>
 	<string name="view_detail">查看详情</string>
 
@@ -87,6 +93,14 @@
 
 	<string name="invite_rull_detail_title">如何成为推广员</string>
 	
+	<string name="leve_up_titel">恭喜您升级到</string>
+	<string name="level_label">LV%1$d</string>
+	<string name="additional_percent_label">额外红包：</string>
+	<string name="new_skill_lable">获得技能：</string>
+	<string name="leve_up_award_label">升级奖励：</string>
+	<string name="skill3">百发百中</string>	
+	<string name="skill5">基友情深</string>	
+	<string name="skill10">一石二鸟</string>	
 	
 	<string name="hint_over_5_yuan_bind_phone">您已积累了超过5元红包，为了红包的安全建议立即绑定手机号。</string>
 	<string name="hint_sward_share">恭喜您中奖，快来分享给朋友们吧！</string>
@@ -138,13 +152,21 @@
 	<string name="tecent_qbi">腾讯Q币</string>
 	<string name="extract_money_hint">即时到帐，多重多送</string>
 	<string name="recharge">充值</string>
+	
+	<string name="extract_alipay_lebal">请输入支付宝信息</string>
+	<string name="extract_qbi_lebal">请输入QQ号码</string>
+	<string name="extract_phone_bill_lebal">请输入手机号码</string>
+	<string name="extract_phone_bill_sub_text">（提醒：仅限中国大陆地区）</string>
 
 	<string name="extract_label">充值数额：</string>
 
+	<string name="money_with_unit">%1$s元</string>
+	<string name="discount_text">返现%1$s元</string>
+
 	<string name="balance_not_enough">您的余额不足</string>
 
-	<string name="exchage">兑换</string>
-	<string name="gift_price_count">价格：%1$d元，剩余：%2$d</string>
+	<string name="exchage_button_text">兑换  ></string>
+	<string name="gift_price_count">价格：%1$s元，剩余：%2$d</string>
 	<string name="jidong_card_50">50元京东商品卡</string>
 
 	<string name="alipay_number_label">支付宝账号：</string>
@@ -160,7 +182,7 @@
 
 	<string name="xunlei_white_gold_card">迅雷白金会员月卡</string>
 
-	<string name="usable_balance">可用余额：%1$d元</string>
+	<string name="usable_balance">可用余额：%1$s元</string>
 	
 	<string name="app_wall_win_title">安装应用获得丰厚奖励</string>
 	<string name="app_wall_win_text">请按应用要求安装并试玩一段时间后(部分要求注册)，返回旺财即可领取红包。部分时间由于网络延迟，红包不能立即到账，请耐心等待。注意：相同的应用只能领取一次奖励，且在在接受任务前已安装的应用不能领取红包。</string>

@@ -1,9 +1,9 @@
-<com.example.wangcai.ctrls.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.coolstore.wangcai.ctrls.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/main_wnd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wangcai.MainActivity$PlaceholderFragment" >
+    tools:context="com.coolstore.wangcai.MainActivity$PlaceholderFragment" >
     <LinearLayout android:id="@+id/menu_page"
         android:layout_width="190dp"
         android:layout_height="fill_parent"
@@ -39,7 +39,18 @@
 				android:layout_centerVertical="true"	 
 				android:layout_marginLeft="@dimen/common_margin_left"
 			/> 
+			<ImageView
+				android:id="@+id/menu_dot_image"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/qiandao_button_red_dot"
+				android:layout_alignRight="@id/option_button"
+				android:layout_marginRight="-3dp"
+				android:layout_marginTop="6dp"
+				android:layout_alignParentTop="true"
+					 />
 			<TextView
+				android:id="@+id/title_text"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_centerVertical="true"
@@ -48,7 +59,8 @@
 				android:paddingLeft="15dp"
 				android:text="@string/app_description"
 				android:textColor="#ffffff"
-				android:textSize="32sp" />
+				android:textSize="@dimen/title_text_size" />
+
 			<ImageButton 
 				android:id="@+id/exchange_gift_button"
 				android:src="@drawable/head_right_icon" 
@@ -88,6 +100,8 @@
 						android:layout_height="wrap_content"
 						android:layout_alignParentRight="true"
 						android:text="@string/balance_unit" 
+						android:textColor="#FFFFFF"
+						android:textSize="14sp"
 						android:layout_marginRight="@dimen/common_margin_right"
 						android:layout_alignBottom="@id/begin_text" />
 
@@ -241,4 +255,4 @@
 		</ScrollView>
 	</LinearLayout>
 
-</com.example.wangcai.ctrls.SlidingLayout>
+</com.coolstore.wangcai.ctrls.SlidingLayout>

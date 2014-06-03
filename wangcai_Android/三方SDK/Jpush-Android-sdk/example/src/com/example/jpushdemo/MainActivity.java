@@ -1,4 +1,4 @@
-package com.example.jpushdemo;
+package com.coolstore.jpushdemo;
 
 
 import android.content.BroadcastReceiver;
@@ -114,7 +114,7 @@ public class MainActivity extends InstrumentedActivity implements OnClickListene
 
 	//for receive customer msg from jpush server
 	private MessageReceiver mMessageReceiver;
-	public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+	public static final String MESSAGE_RECEIVED_ACTION = "com.coolstore.jpushdemo.MESSAGE_RECEIVED_ACTION";
 	public static final String KEY_TITLE = "title";
 	public static final String KEY_MESSAGE = "message";
 	public static final String KEY_EXTRAS = "extras";
