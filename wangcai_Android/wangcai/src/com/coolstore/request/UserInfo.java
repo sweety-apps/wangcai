@@ -1,5 +1,6 @@
 package com.coolstore.request;
 
+import com.coolstore.common.Config;
 import com.coolstore.common.Util;
 
 public class UserInfo {

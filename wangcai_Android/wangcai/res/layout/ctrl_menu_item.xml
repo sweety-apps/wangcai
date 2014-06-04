@@ -7,14 +7,15 @@
 		android:id="@+id/option_item_icon"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_gravity="center_vertical|left"
+		android:layout_centerVertical="true"
 		 />
 	<TextView 
 		android:id="@+id/option_item_text"
 		android:text="@string/balance"
+		android:layout_marginLeft="10dp"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_gravity="center_vertical"
+		android:layout_centerVertical="true"
 		android:layout_toRightOf="@id/option_item_icon"
 	/> 
 </RelativeLayout>

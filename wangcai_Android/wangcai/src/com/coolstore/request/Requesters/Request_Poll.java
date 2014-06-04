@@ -8,8 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.coolstore.common.Config;
 import com.coolstore.common.Util;
-import com.coolstore.request.Config;
 import com.coolstore.request.Requester;
 
 public class Request_Poll extends Requester{

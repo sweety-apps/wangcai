@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
-import com.coolstore.request.AppWallConfig;
 import com.coolstore.request.UserInfo;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
@@ -21,7 +19,7 @@ public class PopupWinNewAward extends PopupWindow implements OnClickListener{
 
     public PopupWinNewAward(Activity holderActivity, String strAwardName, int nAward) {  
         super(holderActivity);
-        m_ownerActivity = holderActivity;
+        //m_ownerActivity = holderActivity;
         LayoutInflater inflater = (LayoutInflater) holderActivity  
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
         m_win = inflater.inflate(R.layout.win_new_award, null);  
@@ -69,6 +67,6 @@ public class PopupWinNewAward extends PopupWindow implements OnClickListener{
     	}
     }
     
-    private Activity m_ownerActivity;
+    //private Activity m_ownerActivity;
     private View m_win;
 }

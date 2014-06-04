@@ -2,8 +2,8 @@ package com.coolstore.wangcai.activity;
 
 
 import com.coolstore.common.BuildSetting;
+import com.coolstore.common.Config;
 import com.coolstore.common.Util;
-import com.coolstore.request.Config;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ManagedDialog;

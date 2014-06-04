@@ -1,5 +1,7 @@
 package com.coolstore.wangcai.ctrls;
 
+import java.lang.ref.WeakReference;
+
 import com.coolstore.wangcai.R;
 
 import android.app.Activity;
@@ -55,7 +57,8 @@ public class TitleCtrl extends FrameLayout {
 	    	returnButton.setOnClickListener(new OnClickListener() {
 	            public void onClick(View v) {
 	            	if (m_eventLinsterner != null) {
-	            		if (m_eventLinsterner.OnRequestClose()) {
+	            		TitleEvent eventListener = m_eventLinsterner.get();
+	            		if (eventListener != null && eventListener.OnRequestClose()) {
 							Finish();
 						}
 	            	}
@@ -80,15 +83,17 @@ public class TitleCtrl extends FrameLayout {
 		if (ownerActivity != null) {
 			ownerActivity.finish();
 		}
-		m_eventLinsterner = null;
+		if (m_eventLinsterner != null) {
+			m_eventLinsterner.clear();
+		}
 	}
 
     public boolean SetEventLinstener(TitleEvent eventLinstener)
     {
-    	m_eventLinsterner = eventLinstener;    	
+    	m_eventLinsterner = new WeakReference<TitleEvent>(eventLinstener);    	
     	return true;    	
     }
  
 
-    private TitleEvent m_eventLinsterner = null;
+    private WeakReference<TitleEvent> m_eventLinsterner = null;
 }

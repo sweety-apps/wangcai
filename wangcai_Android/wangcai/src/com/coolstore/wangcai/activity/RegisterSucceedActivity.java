@@ -3,7 +3,6 @@ package com.coolstore.wangcai.activity;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.ActivityRegistry;
-import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
 import com.coolstore.wangcai.dialog.CommonDialog;
 

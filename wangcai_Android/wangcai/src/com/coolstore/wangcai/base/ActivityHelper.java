@@ -1,6 +1,6 @@
 package com.coolstore.wangcai.base;
 
-import com.coolstore.request.Config;
+import com.coolstore.common.Config;
 import com.coolstore.request.RequestManager;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.activity.ExchageGiftActivity;

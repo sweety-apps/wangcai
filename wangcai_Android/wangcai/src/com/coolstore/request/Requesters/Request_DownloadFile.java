@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 
-import com.coolstore.request.Config;
+import com.coolstore.common.Config;
 import com.coolstore.request.Requester;
 
 public class Request_DownloadFile extends Requester{

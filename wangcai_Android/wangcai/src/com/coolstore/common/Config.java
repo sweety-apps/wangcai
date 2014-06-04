@@ -1,4 +1,4 @@
-package com.coolstore.request;
+package com.coolstore.common;
 
 public class Config {
 	public enum EnvType {
@@ -170,10 +170,19 @@ public class Config {
 		else {
 			return "http://wangcai.meme-da.com/web/exchange_info2.php";
 		}
-		
 	}
+
 	
-	
+	//============================================================================================
+	//====================================				积分墙				====================================
+	//有米
+	public static String sg_strYoumiAppId = "bc15bcaee2f5d263";
+	public static String sg_strYoumiAppSecret = "6306937f74dd8f5f";
+
+	//触控	
+	public static String sg_strPunchboxPlacementId = "818634143n6msqe";
+
+	//============================================================================================
 	
 	private static EnvType m_enumEvnType = EnvType.EnvType_Formal;
 }

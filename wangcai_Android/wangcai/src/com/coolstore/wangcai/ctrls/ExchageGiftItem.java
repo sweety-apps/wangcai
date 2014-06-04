@@ -1,11 +1,14 @@
 package com.coolstore.wangcai.ctrls;
 
+import java.lang.ref.WeakReference;
+
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.RequesterFactory;
 import com.coolstore.request.Requesters.Request_DownloadFile;
 import com.coolstore.request.Requesters.Request_GetExchangeList;
 import com.coolstore.wangcai.R;
+import com.coolstore.wangcai.ctrls.ExtractPrieceCtrl.ExtractPrieceCtrlEvent;
 import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
 
@@ -27,7 +30,7 @@ public class ExchageGiftItem extends ItemBase implements OnClickListener, Reques
 	}
 
 	public void SetItemEventLinstener(ExchageItemEvent eventLinstener) {
-		m_itemEventLinstener = eventLinstener;
+		m_itemEventLinstener = new WeakReference<ExchageItemEvent>(eventLinstener);
 	}
 
 	public ViewGroup Create(Context context, String strIconUrl, String strName, int nPrice, int nRemainCount) {
@@ -48,7 +51,10 @@ public class ExchageGiftItem extends ItemBase implements OnClickListener, Reques
 		int nId = v.getId();
 		if (nId == R.id.recharge_button) {
 			if (m_itemEventLinstener != null) {
-				m_itemEventLinstener.OnDoExchage(m_strItemName);
+				ExchageItemEvent eventListener = m_itemEventLinstener.get();
+				if (eventListener != null) {
+					eventListener.OnDoExchage(m_strItemName);
+				}
 			}
 		}
 	}
@@ -82,7 +88,7 @@ public class ExchageGiftItem extends ItemBase implements OnClickListener, Reques
 	}
 	
 	private String m_strSaveName;
-	private ExchageItemEvent m_itemEventLinstener = null;
+	private WeakReference<ExchageItemEvent> m_itemEventLinstener = null;
 	private String m_strIconUrl = null;
 }
 

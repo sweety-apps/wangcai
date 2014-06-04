@@ -5,10 +5,7 @@ import java.net.NetworkInterface;
 import java.util.Enumeration;
 
 import org.apache.http.conn.util.InetAddressUtils;
-
 import com.coolstore.common.BuildSetting;
-import com.coolstore.common.Util;
-
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;

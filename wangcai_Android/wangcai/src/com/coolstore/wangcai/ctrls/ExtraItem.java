@@ -1,5 +1,7 @@
 package com.coolstore.wangcai.ctrls;
 
+import java.lang.ref.WeakReference;
+
 import com.coolstore.wangcai.R;
 import com.coolstore.common.ViewHelper;
 
@@ -18,7 +20,7 @@ public class ExtraItem extends ItemBase implements OnClickListener
 	}
 
 	public void SetItemEventLinstener(ExtractItemEvent eventLinstener) {
-		m_itemEventLinstener = eventLinstener;
+		m_itemEventLinstener = new WeakReference<ExtractItemEvent>(eventLinstener);
 	}
 
 	public ViewGroup Create(Context context, int nIconId, String strName) {
@@ -32,7 +34,10 @@ public class ExtraItem extends ItemBase implements OnClickListener
 		int nId = v.getId();
 		if (nId == R.id.recharge_button) {
 			if (m_itemEventLinstener != null) {
-				m_itemEventLinstener.OnDoExtract(m_strItemName);
+				ExtractItemEvent eventListener = m_itemEventLinstener.get();
+				if (eventListener != null) {
+					eventListener.OnDoExtract(m_strItemName);
+				}
 			}
 		}
 	}
@@ -45,7 +50,7 @@ public class ExtraItem extends ItemBase implements OnClickListener
 		m_viewRoot.findViewById(R.id.recharge_button).setOnClickListener(this);
 	}
 
-	ExtractItemEvent m_itemEventLinstener = null;
+	WeakReference<ExtractItemEvent> m_itemEventLinstener = null;
 }
 
 

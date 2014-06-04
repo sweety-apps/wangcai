@@ -1,5 +1,7 @@
 package com.coolstore.wangcai.ctrls;
 
+import java.lang.ref.WeakReference;
+
 import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
 import com.coolstore.wangcai.R;
@@ -50,11 +52,14 @@ public class ExtractPrieceCtrl extends LinearLayout implements View.OnClickListe
         }
     }
     public void SetEventListener(ExtractPrieceCtrlEvent event) {
-    	m_eventListener = event;
+    	m_eventListener = new WeakReference<ExtractPrieceCtrlEvent>(event);
     }
     public void onClick(View v) {
     	if (m_eventListener != null) {
-    		m_eventListener.OnPriceClick(this);
+    		ExtractPrieceCtrlEvent eventListener = m_eventListener.get();
+    		if (eventListener != null) {
+    			eventListener.OnPriceClick(this);
+    		}
     	}
     }
     private void DoInit(Context context) {
@@ -84,5 +89,5 @@ public class ExtractPrieceCtrl extends LinearLayout implements View.OnClickListe
     	}    	
     }
     
-    ExtractPrieceCtrlEvent m_eventListener = null;
+    WeakReference<ExtractPrieceCtrlEvent> m_eventListener = null;
 }

@@ -2,14 +2,13 @@ package com.coolstore.wangcai.base;
 
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
-
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 
 public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEvent{
+	private final static int sg_nInvlidLevelChanged = -99999;
 	@Override  
 	protected void onCreate(Bundle savedInstanceState) {  
 		super.onCreate(savedInstanceState); 
@@ -35,6 +34,7 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 		m_bVisible = true;
 		super.onResume();
 	}
+	
 	public boolean IsVisible() {
 		return m_bVisible;
 	}
@@ -50,12 +50,28 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 			@Override
 			public void onDismiss() {				
 				m_winNewAward = null;
+				if (m_nLevelChange != sg_nInvlidLevelChanged) {
+					ActivityHelper.ShowLevelUpgrateWin(WangcaiActivity.this, getWindow().getDecorView(), GetCurrentLevel(), m_nLevelChange);
+					m_nLevelChange = sg_nInvlidLevelChanged;
+				}
 			}
 		});
+	}
+	private int GetCurrentLevel() {
+		return WangcaiApp.GetInstance().GetUserInfo().GetCurrentLevel();
+	}
+	public void OnLevelChanged(int nLevel, int nLevelChange) {
+		if (m_winNewAward == null) {
+			ActivityHelper.ShowLevelUpgrateWin(this, getWindow().getDecorView(), GetCurrentLevel(), nLevelChange);
+		}
+		else {
+			m_nLevelChange = nLevelChange;
+		}
 	}
 	public void OnLevelUpgrate(int nLevelChanged) {
 	}
 	
 	protected boolean m_bVisible = false;
 	private PopupWindow m_winNewAward = null;
+	private int m_nLevelChange = sg_nInvlidLevelChanged;
 }

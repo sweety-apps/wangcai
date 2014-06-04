@@ -29,13 +29,11 @@ import com.coolstore.wangcai.dialog.HintTaskLevelDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -96,13 +94,13 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private void InitMemuList() {
         Context context = getApplicationContext();
         ViewGroup meunPage = (ViewGroup)this.findViewById(R.id.menu_page);
-        //InsertMenuItem(meunPage, String.valueOf(sg_MyWangcai), R.drawable.ic_launcher, context.getString(R.string.my_wangcai));
-        InsertMenuItem(meunPage, String.valueOf(sg_CashExtract), R.drawable.ic_launcher, context.getString(R.string.cash_extract));
-        InsertMenuItem(meunPage, String.valueOf(sg_TaskDetail), R.drawable.ic_launcher, context.getString(R.string.task_detail));
-        InsertMenuItem(meunPage, String.valueOf(sg_ExchageGift), R.drawable.ic_launcher, context.getString(R.string.exchange_gift));
-        InsertMenuItem(meunPage, String.valueOf(sg_Invite), R.drawable.ic_launcher, context.getString(R.string.get_money_by_invite));
-        InsertMenuItem(meunPage, String.valueOf(sg_Options), R.drawable.ic_launcher, context.getString(R.string.options));
-        InsertMenuItem(meunPage, String.valueOf(sg_Help), R.drawable.ic_launcher, context.getString(R.string.help));    	
+        InsertMenuItem(meunPage, String.valueOf(sg_MyWangcai), R.drawable.menu_icon_wodewangcai, context.getString(R.string.my_wangcai));
+        InsertMenuItem(meunPage, String.valueOf(sg_CashExtract), R.drawable.menu_icon_tixian, context.getString(R.string.cash_extract));
+        InsertMenuItem(meunPage, String.valueOf(sg_TaskDetail), R.drawable.menu_icon_jiaoyimingxi, context.getString(R.string.task_detail));
+        InsertMenuItem(meunPage, String.valueOf(sg_ExchageGift), R.drawable.menu_icon_chaozhiduihua, context.getString(R.string.exchange_gift));
+        InsertMenuItem(meunPage, String.valueOf(sg_Invite), R.drawable.menu_icon_tuhaobang, context.getString(R.string.get_money_by_invite));
+        InsertMenuItem(meunPage, String.valueOf(sg_Options), R.drawable.menu_icon_setting, context.getString(R.string.options));
+        InsertMenuItem(meunPage, String.valueOf(sg_Help), R.drawable.menu_icon_help, context.getString(R.string.help));    	
     }
     private void CheckHasSignin() {
         if (!ConfigCenter.GetInstance().HasSignInToday()) {

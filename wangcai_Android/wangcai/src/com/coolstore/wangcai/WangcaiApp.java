@@ -10,6 +10,7 @@ import cn.jpush.android.api.JPushInterface;
 import cn.sharesdk.framework.ShareSDK;
 
 import com.coolstore.common.BuildSetting;
+import com.coolstore.common.Config;
 import com.coolstore.common.TimerManager;
 import com.coolstore.request.AppWallConfig;
 import com.coolstore.request.ExtractInfo;
@@ -30,7 +31,7 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 		void OnLoginComplete(int nResult, String strMsg);
 		void OnUserInfoUpdate();
 		void OnBalanceUpdate(int nCurrentBalance, int nNewBalance);
-		//void OnLevelChanged();
+		void OnLevelChanged(int nLevel, int nLevelChange);
 		void OnGetAppAward(int nAward);
 		void OnLevelUpgrate(int nLevelChanged);
 	}
@@ -63,9 +64,13 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 	private void Init3rdSdk() {
     	ShareSDK.initSDK(m_AppContext);
 
-        AdManager.getInstance(m_AppContext).init("AppId", "AppSecret", false);
-        OffersManager.getInstance(m_AppContext).onAppLaunch();
+		//有米
+        AdManager.getInstance(m_AppContext).init(Config.sg_strYoumiAppId, Config.sg_strYoumiAppSecret, true);
+        AdManager.getInstance(m_AppContext).setEnableDebugLog(true);
+
+		OffersManager.getInstance(m_AppContext).onAppLaunch();
 	
+		//极光推送
         JPushInterface.setDebugMode(true);
 		JPushInterface.init(m_AppContext);
 	}
@@ -143,7 +148,7 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 				int nCurrentLevel = detailReq.GetCurrentLevel();
 				if (nCurrentLevel > 0) {
 					if (m_userInfo.GetCurrentLevel() < nCurrentLevel) {
-						nLevelChange = nCurrentLevel - m_userInfo.GetCurrentLevel();
+						nLevelChange = 200;
 					}
 					m_userInfo.SetCurrentLevel(nCurrentLevel);
 					m_userInfo.SetCurrentExperience(detailReq.GetCurrentExperience());
@@ -153,7 +158,15 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 					if (nBenefit > 0) {
 						m_userInfo.SetBenefit(nBenefit);
 					}
-					//todo 升级提示
+					
+					//通知等级改变
+					if (nLevelChange > 0) {
+					ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners1 = GetEventListClone();
+						for (WeakReference<WangcaiAppEvent> weakPtr:listEventLinsteners1) {
+							WangcaiAppEvent eventLinstener = weakPtr.get();
+							eventLinstener.OnLevelChanged(nCurrentLevel, nLevelChange);
+						}
+					}
 				}
 				int nWangcaiIncome = 0;
 				int nTaskCount = detailReq.GetTaskCount();
@@ -283,15 +296,15 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 	private TaskListInfo m_taskListInfo = null;	
 	private ExtractInfo m_extractInfo = null;
 
-	private String m_strHintMsg;
-	private String m_strPhoneId;	
+	private String m_strHintMsg = null;
+	private String m_strPhoneId = null;	
 	private boolean m_bNeedForceUpdate = false;
-	private boolean m_bHasLogin;
-	private ArrayList<TaskInfo> m_listTaskInfos;
-	private AppWallConfig m_appWallConfig;
+	private boolean m_bHasLogin = false;
+	private ArrayList<TaskInfo> m_listTaskInfos = null;
+	private AppWallConfig m_appWallConfig = null;
 	
-	private int m_nPollElapse;		
-	private Context m_AppContext;
+	private int m_nPollElapse = 0;
+	private Context m_AppContext = null;
 	private boolean m_bForceGround = false;;
 	private int m_nPollTimerId = 0;
 

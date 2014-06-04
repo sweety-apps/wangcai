@@ -4,10 +4,10 @@ import net.miidiwall.SDK.AdWall;
 import net.miidiwall.SDK.IAdWallShowAppsNotifier;
 import net.youmi.android.offers.OffersManager;
 import android.app.Activity;
-import android.content.Context;
 import cn.domob.data.OErrorInfo;
 import cn.domob.data.OManager;
 
+import com.coolstore.common.Config;
 import com.jpmob.sdk.wall.JupengWallConnector;
 import com.jpmob.sdk.wall.JupengWallListener;
 import com.punchbox.ads.AdRequest;
@@ -160,10 +160,10 @@ public class AppWallHelper {
 	    	m_chukongAd.loadAd(new AdRequest());
 	    	
 	        try {
-	        	String placementID = "";
-	        	m_chukongAd.showFloatView(m_activity, 1.0, placementID);
+	        	m_chukongAd.showFloatView(m_activity, 1.0, Config.sg_strPunchboxPlacementId);
 	        } catch (Exception e) {
 	            //当设置的scale不在范围内，或者isReady()属性为false
+	        	e.printStackTrace();
 	        }
 			return true;
 		}

@@ -1,7 +1,7 @@
 package com.coolstore.wangcai.activity;
 
+import com.coolstore.common.Config;
 import com.coolstore.common.Util;
-import com.coolstore.request.Config;
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.UserInfo;
@@ -17,10 +17,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 

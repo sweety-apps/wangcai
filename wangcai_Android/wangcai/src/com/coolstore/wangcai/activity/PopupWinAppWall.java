@@ -95,6 +95,9 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     			continue;
     		}
 			WallInfo wallInfo = GetWallInfo(info.GetName());
+			if (wallInfo == null) {
+				continue;
+			}
 			wallInfo.SetReommand(info.IsRecommand());
 			
 			ImageButton button = CreateButton(wallInfo);
@@ -104,6 +107,7 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     		else {
     			morePanel.addView(button,  layoutParams);
     		}
+    		button.setOnClickListener(this);
 			m_listViisibleWalls.add(wallInfo);
     	}        
     }
@@ -116,7 +120,16 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     private WallInfo GetWallInfo(String strName) {
     	AppWallHelper.AppWall wall = null;
     	int nResId = 0;
-    	if (strName.equals(AppWallConfig.sg_strMopan)) {					//磨盘
+    	if (strName.equals(AppWallConfig.sg_strPunchbox)) {		//触控
+    		nResId = R.drawable.app_tip_punchbox;
+    		wall = new AppWallHelper.ChukongAppWall(m_ownerActivity);
+    	}
+    	else if (strName.equals(AppWallConfig.sg_strYoumi)) {			//有米
+    		nResId = R.drawable.app_tip_youmi;
+    		wall = new AppWallHelper.YoumiAppWall(m_ownerActivity);
+    	}
+    	/*
+    	else if (strName.equals(AppWallConfig.sg_strMopan)) {					//磨盘
     		nResId = R.drawable.app_tip_domob;
     		//wall = new AppWallHelper.				//磨盘todo
     	}
@@ -132,19 +145,15 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     		nResId = R.drawable.app_tip_domob;
     		wall = new AppWallHelper.DuomengAppWall(m_ownerActivity);
     	}
-    	else if (strName.equals(AppWallConfig.sg_strPunchbox)) {		//触控
-    		nResId = R.drawable.app_tip_punchbox;
-    		wall = new AppWallHelper.ChukongAppWall(m_ownerActivity);
-    	}
     	else if (strName.equals(AppWallConfig.sg_strMobsmar)) {		//指盟
     		nResId = R.drawable.app_tip_mobsmar;
     	}
     	else if (strName.equals(AppWallConfig.sg_strLimei)) {			//力美
     		nResId = R.drawable.app_tip_limei;
     	}
-    	else if (strName.equals(AppWallConfig.sg_strYoumi)) {			//有米
-    		nResId = R.drawable.app_tip_youmi;
-    		wall = new AppWallHelper.YoumiAppWall(m_ownerActivity);
+    	*/
+    	else {
+    		return null;	
     	}
     	return new WallInfo(strName, nResId, wall);
     }	
@@ -173,6 +182,15 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     	}
     	else if (nId == R.id.close_button) {
     		dismiss();
+    	}
+    	else {
+    		for (WallInfo info:m_listViisibleWalls) {
+    			if (info.m_nId == nId) {
+    				info.m_appWall.Show();
+    				dismiss();
+    				break;
+    			}
+    		}
     	}
     }
     private void AttachEvents() {
