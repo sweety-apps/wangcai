@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/new_award_tip_width"
+    android:layout_height="@dimen/new_award_tip_height">
+	<RelativeLayout
+	    android:id="@+id/main_client"
+	    android:layout_width="570px"
+	    android:layout_height="624px"
+		android:background="@drawable/levelup_bg"
+		android:layout_centerInParent="true"
+		android:layout_marginTop="@dimen/new_award_tip_top_padding"
+		android:layout_marginRight="@dimen/new_award_tip_top_padding">
+	
+		<LinearLayout
+			android:id="@+id/title_frame"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_marginTop="35dp"
+			android:layout_centerHorizontal="true"
+			>
+			<TextView
+				android:id="@+id/title"
+				android:text="@string/leve_up_titel"
+				android:textSize="22sp"
+				android:layout_marginLeft="@dimen/common_margin_left"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+			<TextView
+				android:id="@+id/level"
+				android:text="@string/level_label"
+				android:textSize="23sp"
+				android:textColor="#D50000"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+		</LinearLayout>
+
+		<!--					额外红包				-->
+		<TextView
+			android:id="@+id/addition_percent_label"
+			android:text="@string/additional_percent_label"
+			android:layout_marginLeft="@dimen/common_margin_left"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="30dp"
+			android:textSize="16sp"
+			android:textColor="#959595"
+			android:layout_below="@id/title_frame" />
+		<TextView
+			android:id="@+id/addition_percent_text"
+			android:text="@string/leve_up_titel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:textSize="16sp"
+			android:textColor="#0A67CF"
+			android:layout_toRightOf="@id/addition_percent_label"
+			android:layout_alignBottom="@id/addition_percent_label" />
+
+		<!--						额外技能				-->
+		<TextView
+			android:id="@+id/new_skill_label"
+			android:text="@string/new_skill_lable"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="12dp"
+			android:textSize="16sp"
+			android:textColor="#959595"
+			android:layout_below="@id/addition_percent_label"
+			android:layout_alignLeft="@id/addition_percent_label" />
+		<TextView
+			android:id="@+id/new_skill_text"
+			android:text="@string/leve_up_titel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:textSize="16sp"
+			android:textColor="#0A67CF"
+			android:layout_toRightOf="@id/new_skill_label"
+			android:layout_alignBottom="@id/new_skill_label" />
+
+		<!--							升级奖励				-->
+		<TextView
+			android:id="@+id/award_label"
+			android:text="@string/leve_up_award_label"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/new_skill_label"
+			android:layout_marginTop="12dp"
+			android:textSize="16sp"
+			android:textColor="#959595"
+			android:layout_alignLeft="@id/new_skill_label" />
+		<TextView
+			android:id="@+id/award_text"
+			android:text="@string/leve_up_titel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:textSize="16sp"
+			android:textColor="#D83434"
+			android:layout_toRightOf="@id/award_label"
+			android:layout_alignBottom="@id/award_label" />
+
+		<LinearLayout				
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_centerHorizontal="true"
+			android:layout_alignParentBottom="true"
+			android:layout_marginBottom="45dp"
+			>
+			<ImageButton
+				android:id="@+id/close_button"
+				android:background="@drawable/levelup_close_btn"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+			<ImageButton
+				android:id="@+id/show_level"
+				android:background="@drawable/levelup_check_btn"
+				android:layout_marginLeft="@dimen/common_margin_left"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+		</LinearLayout>
+	
+	</RelativeLayout>
+	<ImageView 
+		android:id="@+id/sys_close_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignRight="@id/main_client"
+		android:layout_alignTop="@id/main_client"
+		android:layout_marginRight="-35px"
+		android:layout_marginTop="-35px"
+		android:src="@drawable/redbag_mb_close"
+	/> 
+</RelativeLayout>

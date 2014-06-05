@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.punchbox.cocoaddemo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="10" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.punchbox.cocoaddemo.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <service android:name="com.punchbox.engine.PunchBoxService"
+            android:process="com.punchbox.punchboxservice"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.punchbox.service"/>
+            </intent-filter>
+		</service>	
+		<meta-data android:name="chukong_publisherid" android:value="100011-0A2E90-7CDB-6FD3-A9B983ABBBBA"/>
+		<activity android:name="BannerXMLActivity"></activity>
+		<activity android:name="BannerCodeActivity"></activity>
+		<activity android:name="MoreGameActivity"></activity>
+		<activity android:name="MoreGameButtonActivity"></activity>
+		<activity android:name="InterstitialAdActivity"></activity>
+		<activity android:name="BannerWithMoreGameActivity"></activity>
+        <activity android:name="OfferWallActivity"></activity>
+		<activity android:name="OfferWallButtonActivity"></activity>
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
+</manifest>

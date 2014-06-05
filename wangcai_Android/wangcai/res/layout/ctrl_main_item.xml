@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp" 
+    android:layout_height="wrap_content" 
 	android:layout_marginTop="10dp">
     
    <ImageView
@@ -9,6 +9,8 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_centerVertical="true"
+		android:layout_marginTop="17dp"
+		android:layout_marginBottom="17dp"
 		android:layout_marginLeft="@dimen/common_margin_left"
 		android:layout_marginRight="20dp"
 		 />
@@ -20,14 +22,13 @@
 		android:layout_toRightOf="@id/main_item_icon" >
 		<TextView 
 			android:id="@+id/main_item_title"
-			android:text="@string/balance"
+			android:textColor="#000000"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textSize="14dp"
 		/> 
 		<TextView 
 			android:id="@+id/main_item_tip"
-			android:text="@string/balance"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textSize="8dp"
@@ -53,7 +54,7 @@
 		android:layout_centerVertical="true"
 		android:layout_alignParentRight="true"
 		android:visibility="gone"
-		android:layout_marginRight="@dimen/common_margin_right"
+		android:layout_marginRight="22dp"
 	/> 
 	<!-- 分割线 -->
    <ImageView

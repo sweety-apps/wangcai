@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/transparent_rect"
+			android:paddingTop="16dp"
+			android:paddingBottom="16dp"
+			android:orientation="horizontal">
+		<TextView 
+			android:id="@+id/lebal"
+			android:layout_marginLeft="@dimen/common_margin_left"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="13sp"
+			android:textColor="@color/gray_text_color"
+			android:layout_centerVertical="true" 
+		/> 
+		<EditText 
+			android:id="@+id/edit"
+			android:layout_width="220dp"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="120dp"
+			android:textSize="13sp"
+			android:textColor="#000000"
+			android:imeOptions="actionDone"
+			android:singleLine="true"
+			android:background="@null"
+			android:layout_centerVertical="true" /> 
+</RelativeLayout>

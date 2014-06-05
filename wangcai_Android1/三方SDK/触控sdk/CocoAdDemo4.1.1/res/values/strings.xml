@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">CoCoAdSDK</string>
+    <string name="download_prepare">Preparing to download </string>
+    <string name="download_start">Download in progress</string>
+    <string name="download_finished">Download complete</string>
+    <string name="download_error">Error happens while downloading</string>
+    <string name="download_confirm_tip">Your current network is not WIFI, are you sure to start downloading?</string>
+    <string name="download_confirm">Download Confirm</string>
+</resources>

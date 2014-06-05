@@ -1,0 +1,259 @@
+<com.coolstore.wangcai.ctrls.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pullfre="http://schemas.android.com/apk/res/PullToRefresh"  
+    xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/main_wnd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.coolstore.wangcai.MainActivity$PlaceholderFragment" >
+    <LinearLayout android:id="@+id/menu_page"
+        android:layout_width="190dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+		android:layout_alignParentLeft="true"
+       >
+		<TextView 
+			android:text="@string/menu"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical|right"
+		/> 
+    </LinearLayout>
+	<LinearLayout android:id="@+id/main_client"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical"
+		android:background="@color/backgroud_color"
+	   >
+	   
+		 <!--标题栏-->
+		 <RelativeLayout android:id="@+id/title"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:background="@drawable/nav_title"
+		   >
+			<ImageButton 
+				android:id="@+id/option_button"
+				android:background="@drawable/main_menu1" 
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"	 
+				android:layout_marginLeft="@dimen/common_margin_left"
+			/> 
+			<ImageView
+				android:id="@+id/menu_dot_image"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/qiandao_button_red_dot"
+				android:layout_alignRight="@id/option_button"
+				android:layout_marginRight="-3dp"
+				android:layout_marginTop="6dp"
+				android:layout_alignParentTop="true"
+					 />
+			<TextView
+				android:id="@+id/title_text"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_toRightOf="@id/option_button"
+				android:layout_gravity="center"	 
+				android:paddingLeft="15dp"
+				android:text="@string/app_description"
+				android:textColor="#ffffff"
+				android:textSize="@dimen/title_text_size" />
+
+			<ImageButton 
+				android:id="@+id/exchange_gift_button"
+				android:src="@drawable/head_right_icon" 
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="-77px"
+				android:layout_alignParentRight="true"
+			/> 
+		</RelativeLayout>
+		<ScrollView 
+			android:layout_height="wrap_content" 
+			android:layout_width="fill_parent" 
+			android:scrollbars="none">
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:orientation="vertical"
+				android:background="@color/backgroud_color"
+			   >
+				<!--余额-->
+				<RelativeLayout android:id="@+id/balance"
+					android:layout_width="fill_parent"
+					android:layout_height="110dp"
+					android:background="#198abf"
+				>
+					<ImageView
+						android:id="@+id/begin_text"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:src="@drawable/zhanghuyue"
+						android:layout_marginLeft="@dimen/common_margin_left"
+						android:layout_centerVertical="true"	 />
+
+					<TextView
+						android:id="@+id/balance_unit"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentRight="true"
+						android:text="@string/balance_unit" 
+						android:textColor="#FFFFFF"
+						android:textSize="14sp"
+						android:layout_marginRight="@dimen/common_margin_right"
+						android:layout_alignBottom="@id/begin_text" />
+
+					<ImageView
+						android:id="@+id/money_dot2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/yue_0"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@id/balance_unit"	 />
+					<ImageView
+						android:id="@+id/money_dot1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/yue_0"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@id/money_dot2"	 />
+					<ImageView
+						android:id="@+id/money_dot"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/yue_dot"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@id/money_dot1"	 />
+					<ImageView
+						android:id="@+id/money_4"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/yue_0"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@id/money_dot"	 />
+					<ImageView
+						android:id="@+id/money_3"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/yue_0"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@id/money_4"	
+						android:visibility="gone" 	 />
+					<ImageView
+						android:id="@+id/money_2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/yue_0"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@id/money_3"	
+						android:visibility="gone" 	 />
+					<ImageView
+						android:id="@+id/money_1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/yue_0"
+						android:layout_centerVertical="true"
+						android:layout_toLeftOf="@id/money_2"	
+						android:visibility="gone" />
+				</RelativeLayout>
+				<!--签到捡钱，提取现金-->
+				<RelativeLayout android:id="@+id/tool_bar"
+					android:layout_width="fill_parent"
+					android:layout_height="30dp"
+					android:background="#1684b9"
+				>
+					
+					<ImageButton 
+						android:id="@+id/extract_cash"
+						android:background="@drawable/main_tiquxianjin_icon" 
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"
+						android:layout_marginRight="@dimen/common_margin_right"
+					/> 
+					<ImageButton
+						android:id="@+id/sign_in"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_toLeftOf="@id/extract_cash"
+						android:background="@drawable/main_qiandao_button_icon" 
+						android:layout_marginRight="@dimen/common_margin_right"
+						android:layout_centerVertical="true"	 />
+					<ImageView
+						android:id="@+id/lottery_dot_image"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/qiandao_button_red_dot"
+						android:layout_toLeftOf="@id/extract_cash"
+						android:layout_marginRight="5dp"
+						android:layout_alignParentTop="true"
+						android:visibility="gone"	 />
+
+				</RelativeLayout>
+				 <!--推荐任务-->
+				 <RelativeLayout android:id="@+id/tasks"
+					android:layout_width="fill_parent"
+					android:layout_height="60dp"
+				   >
+					<TextView 
+						android:id="@+id/task_balance_unit"
+						android:text="@string/balance_unit"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentRight="true"
+						android:layout_alignParentBottom="true"
+						android:layout_marginBottom="8dp"
+						android:layout_marginRight="@dimen/common_margin_right"
+					/> 
+					<TextView 
+						android:id="@+id/remain_taks_balance"
+						android:text="@string/hello_world"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="35sp"
+						android:layout_toLeftOf="@id/task_balance_unit"
+						android:layout_alignBottom="@id/task_balance_unit"
+					/> 
+					<!--今天还能赚：-->
+					<TextView 
+						android:text="@string/remain_task_money"		
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_toLeftOf="@id/remain_taks_balance"
+						android:layout_alignBottom="@id/task_balance_unit"
+					/> 
+					<!--"推荐任务"-->
+					<TextView 
+						android:text="@string/recommand_task"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="@dimen/common_margin_left"
+						android:layout_alignBottom="@id/task_balance_unit"
+					/>		
+				 </RelativeLayout>
+				 <!--###################		任务列表		#############################-->
+				 <LinearLayout android:id="@+id/tasks_list_container"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+				   >
+				 </LinearLayout>
+				<TextView 
+					android:id="@+id/show_complete_task"
+					android:text="@string/show_complete_task"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginTop="20dp"
+					android:layout_marginBottom="20dp"
+				/> 
+			</LinearLayout>
+
+		</ScrollView>
+	</LinearLayout>
+
+</com.coolstore.wangcai.ctrls.SlidingLayout>

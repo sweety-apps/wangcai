@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jpmob.walldemo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="4"
+        android:targetSdkVersion="4" />
+    
+     <!-- kupush(必须) -->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!-- kupush(必须) -->	
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<!-- kupush(必须) -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  	<!-- kupush(必须) -->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />		
+    <!-- kupush(必须) -->  
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.jpmob.walldemo.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+         <!-- 电子市场渠道号，请参考帮助文档  (可选)-->
+      	<meta-data android:name="jupeng_marketid" android:value="000000" />
+      	
+        <!-- kupush显示广告详情(必须) --> 
+        <activity android:name="com.jpmob.sdk.wall.JupengWallActivity" android:configChanges="keyboardHidden|orientation" /> 
+        
+    </application>
+
+</manifest>

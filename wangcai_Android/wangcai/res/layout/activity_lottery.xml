@@ -9,9 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-		<Button 
+		<ImageButton 
 			android:id="@+id/return_button"
-			android:text="@string/test_return_text" 
+			android:background="@drawable/head_back"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 		/> 
@@ -32,18 +32,23 @@
 			android:layout_gravity="center" >
 			<ImageView
 				android:src="@drawable/choujiang_zhongjiangbeilv"
+				android:layout_gravity="center_vertical"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 			<ImageView
 				android:src="@drawable/choujiang_x1selected"
+				android:layout_marginLeft="4dp"
+				android:layout_gravity="center_vertical"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 			<ImageView
 				android:src="@drawable/choujiang_x2selected"
+				android:layout_gravity="center_vertical"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 			<ImageView
 				android:src="@drawable/choujiang_x3selected"
+				android:layout_gravity="center_vertical"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 		</LinearLayout>

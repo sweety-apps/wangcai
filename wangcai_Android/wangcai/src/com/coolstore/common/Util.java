@@ -101,12 +101,14 @@ public class Util {
 		}
 		StringBuffer stringBuffer = new StringBuffer();
 		for (Entry<String, String> entry : mapData.entrySet()) {
-			   String strKey = entry.getKey().toString();
-			   String strValue = entry.getValue().toString();
-			   stringBuffer.append(strKey);
-			   stringBuffer.append("=");
-			   stringBuffer.append(strValue);
-			   stringBuffer.append("&");
+			   String strKey = entry.getKey();			   
+			   String strValue = entry.getValue();
+			   if (!Util.IsEmptyString(strKey) && !Util.IsEmptyString(strValue)) {
+				   stringBuffer.append(strKey);
+				   stringBuffer.append("=");
+				   stringBuffer.append(strValue);
+				   stringBuffer.append("&");
+			   }
 		}
 		stringBuffer.deleteCharAt(stringBuffer.length() - 1);
 		return stringBuffer.toString();

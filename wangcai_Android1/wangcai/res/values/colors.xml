@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="backgroud_color">#FEFEFE</color>  
+	<color name="pop_win_bkg_color">#45909090</color>  
+	<color name="header_line_bkg_color">#E4E4E4</color>
+	<color name="gray_text_color">#969696</color>
+	<color name="split_line_color">#D0D0D0</color>
+</resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">wangcai</string>
+    <string name="app_name">旺财</string>
     <string name="hello_world">123123</string>
     <string name="action_settings">Settings</string>
 	<string name="app_description">旺财</string>
@@ -94,7 +94,7 @@
 	<string name="invite_rull_detail_title">如何成为推广员</string>
 	
 	<string name="leve_up_titel">恭喜您升级到</string>
-	<string name="level_label">LV%1$d</string>
+	<string name="level_value_label">LV%1$d</string>
 	<string name="additional_percent_label">额外红包：</string>
 	<string name="new_skill_lable">获得技能：</string>
 	<string name="leve_up_award_label">升级奖励：</string>

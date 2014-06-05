@@ -588,7 +588,7 @@
 
     [dictionary setObject:discount forKey:@"discount"];
     [dictionary setObject:amount forKey:@"amount"];
-    
+
     if ( _type == 1 ) {
         NSString* account = self._textField.text;
         
@@ -604,7 +604,6 @@
     } else {
         // QQ币
         NSString* qq = self._textField.text;
-        
         [dictionary setObject:qq forKey:@"qq"];
         [dictionary setObject:discount forKey:@"price"];
         

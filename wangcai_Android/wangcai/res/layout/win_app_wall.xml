@@ -8,8 +8,10 @@
 		android:layout_height="@dimen/app_wall_height"
 		android:layout_centerInParent="true" >
 		<FrameLayout 
+			android:id="@+id/main_client"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
 			android:background="@drawable/app_tip_bkg"
 			android:layout_marginTop="@dimen/app_wall_top_padding"
 			android:layout_marginRight="@dimen/app_wall_top_padding">
@@ -18,7 +20,7 @@
 				android:id="@+id/default_page"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:layout_marginTop="210dp"
+				android:layout_marginTop="220dp"
 				android:layout_marginLeft="@dimen/app_wall_left_margin"
 				android:orientation="vertical" >
 				<ImageView
@@ -66,7 +68,10 @@
 			android:id="@+id/close_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_alignParentRight="true"
+			android:layout_alignRight="@id/main_client"
+			android:layout_alignTop="@id/main_client"
+			android:layout_marginRight="-35px"
+			android:layout_marginTop="-20px"
 			android:src="@drawable/app_tip_close"
 		/> 
 	</RelativeLayout>

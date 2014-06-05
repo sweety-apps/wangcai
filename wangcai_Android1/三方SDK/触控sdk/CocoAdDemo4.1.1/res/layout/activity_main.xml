@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  	android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Banner Code" 
+        android:onClick="bannerCode"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Banner XML" 
+        android:onClick="bannerXML"/>
+    
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="插屏" 
+        android:onClick="interstitialAd"/>
+    
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="精品推荐" 
+        android:onClick="moregame"/>
+     <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="精品推荐按钮" 
+        android:onClick="moregameButton"/>
+     
+     <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="banner和精品同时存在" 
+        android:onClick="bannerwithmoregame"/>
+     
+      <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="积分墙" 
+        android:onClick="offerwall"/>
+     <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="积分墙按钮" 
+        android:onClick="offerwallButton"/>
+</LinearLayout>

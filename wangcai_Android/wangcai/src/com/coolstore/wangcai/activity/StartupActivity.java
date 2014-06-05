@@ -21,7 +21,7 @@ public class StartupActivity extends ManagedDialogActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+		
         if (BuildSetting.sg_bIsDebug) {
         	Config.Initlialize(Config.EnvType.EnvType_Dev);
         }
@@ -44,6 +44,8 @@ public class StartupActivity extends ManagedDialogActivity {
     		if (app.NeedForceUpdate()) {
     			//强制升级
     		}else {
+    			app.Init3rdSdk();
+   
     			//正常启动
     			Intent it = new Intent(StartupActivity.this, MainActivity.class);
     			startActivity(it);

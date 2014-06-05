@@ -11,6 +11,7 @@ import cn.sharesdk.framework.ShareSDK;
 
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Config;
+import com.coolstore.common.SystemInfo;
 import com.coolstore.common.TimerManager;
 import com.coolstore.request.AppWallConfig;
 import com.coolstore.request.ExtractInfo;
@@ -21,7 +22,6 @@ import com.coolstore.request.TaskListInfo;
 import com.coolstore.request.UserInfo;
 import com.coolstore.request.Requesters.Request_Login;
 import com.coolstore.request.Requesters.Request_Poll;
-import com.coolstore.wangcai.base.SystemInfo;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;
@@ -58,20 +58,21 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 		ConfigCenter.GetInstance().Initialize(context);
 		RequestManager.GetInstance().Initialize(context.getResources().openRawResource(R.raw.cert));
 		
-		Init3rdSdk();
 	}
 
-	private void Init3rdSdk() {
+	public void Init3rdSdk() {
     	ShareSDK.initSDK(m_AppContext);
 
 		//有米
         AdManager.getInstance(m_AppContext).init(Config.sg_strYoumiAppId, Config.sg_strYoumiAppSecret, true);
-        AdManager.getInstance(m_AppContext).setEnableDebugLog(true);
+        AdManager.getInstance(m_AppContext).setEnableDebugLog(BuildSetting.sg_bIsDebug);
 
 		OffersManager.getInstance(m_AppContext).onAppLaunch();
 	
 		//极光推送
-        JPushInterface.setDebugMode(true);
+		String strDeviceId = m_userInfo.GetDeviceId();
+		JPushInterface.setAlias(m_AppContext, strDeviceId, null);
+        JPushInterface.setDebugMode(BuildSetting.sg_bIsDebug);
 		JPushInterface.init(m_AppContext);
 	}
 	public boolean NeedForceUpdate() {
@@ -130,14 +131,6 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 		}
 		else if (req instanceof Request_Poll) {
 			Request_Poll detailReq = (Request_Poll)req;
-			if (BuildSetting.sg_bIsDebug && !test_show) {
-				test_show = true;
-				ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners1 = GetEventListClone();
-				for (WeakReference<WangcaiAppEvent> weakPtr:listEventLinsteners1) {
-					WangcaiAppEvent eventLinstener = weakPtr.get();
-					eventLinstener.OnGetAppAward(123);
-				}
-			}
 			if (req.GetResult() == 0) {
 				boolean bIsNewMsg = detailReq.IsNewMsg();
 				if (bIsNewMsg) {

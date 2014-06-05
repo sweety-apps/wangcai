@@ -31,7 +31,7 @@ public class PopupWinLevelUpgrate extends PopupWindow implements OnClickListener
         this.setHeight(ViewGroup.LayoutParams.MATCH_PARENT); 
         this.setFocusable(true);  
   
-        String strText = String.format(holderActivity.getString(R.string.level_label), nLevel);
+        String strText = String.format(holderActivity.getString(R.string.level_value_label), nLevel);
         ViewHelper.SetTextStr(m_appWin, R.id.level, strText);
         
     	m_appWin.findViewById(R.id.show_level).setOnClickListener(this);	        

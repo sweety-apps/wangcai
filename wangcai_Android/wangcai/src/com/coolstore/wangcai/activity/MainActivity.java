@@ -25,6 +25,8 @@ import com.coolstore.wangcai.ctrls.MainItem;
 import com.coolstore.wangcai.ctrls.SlidingLayout;
 import com.coolstore.wangcai.dialog.HintBindPhoneDialog;
 import com.coolstore.wangcai.dialog.HintTaskLevelDialog;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -35,6 +37,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 
@@ -124,6 +127,14 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	
     	//右上角兑换按钮
     	this.findViewById(R.id.exchange_gift_button).setOnClickListener(this);
+       	
+    	m_pullRefreshScrollView = (PullToRefreshScrollView) findViewById(R.id.scroll_wnd);
+    	m_pullRefreshScrollView.setOnRefreshListener(new PullToRefreshScrollView.OnRefreshListener<ScrollView>() {
+			@Override
+			public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
+				WangcaiApp.GetInstance().Login();
+			}
+    	});
     	
     	//提取现金按钮
     	this.findViewById(R.id.extract_cash).setOnClickListener(this);
@@ -220,7 +231,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 		    	}
 		    	
 				ShowMenu(true);
-				break;
+				return ;		//注意:直接返回
 			case R.id.exchange_gift_button:
 				//超值兑换
 				ActivityHelper.ShowExchageGiftActivity(this);
@@ -251,6 +262,8 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 				}
 				break;
 		}
+
+		ShowMenu(false);
 	}
 
 	public void OnItemClicked(String strItemName)
@@ -363,6 +376,8 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			ActivityHelper.ShowHelpActivity(this);
 			break;
 		}
+
+		ShowMenu(false);
 	}
     
 
@@ -436,6 +451,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	UpdateUI();
 	}
     public void OnLoginComplete(int nResult, String strMsg) {
+    	m_pullRefreshScrollView.onRefreshComplete();
     	RefreshTaskList();
     	super.OnLoginComplete(nResult, strMsg);		
     }
@@ -557,4 +573,5 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private HintBindPhoneDialog m_bindPhoneDialog;
     private ArrayList<TaskListInfo.TaskInfo> m_listCompleteTasks = new ArrayList<TaskListInfo.TaskInfo>();
     private int m_nUpdateBalanceTimerId = 0;
+    private PullToRefreshScrollView m_pullRefreshScrollView = null;
 }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   	android:background="#5a5a5a">
+   	
+   	<RelativeLayout
+        android:id="@+id/OffersMiniBannerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+    </RelativeLayout>
+    
+    <ScrollView
+        android:id="@+id/offersTestItems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/offersBannerLayout"
+        android:layout_below="@+id/OffersMiniBannerLayout" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/pointsBalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#87CEFA" />
+
+            <Button
+                android:id="@+id/showOffersWall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonbg"
+                android:layout_margin="10dp"
+                android:text="@string/showOffersWall" />
+
+            <Button
+                android:id="@+id/showOffersDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonbg"
+                android:layout_margin="10dp"
+                android:text="@string/showOffersDialog" />
+            
+            <Button
+                android:id="@+id/showOffersSpot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonbg"
+                android:layout_margin="10dp"
+                android:text="@string/showOffersSpot" />
+
+            <Button
+                android:id="@+id/awardPoints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonbg"
+                android:layout_margin="10dp"
+                android:text="@string/awardPoints" />
+
+            <Button
+                android:id="@+id/spendPoints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonbg"
+                android:layout_margin="10dp"
+                android:text="@string/spendPoints" />
+        </LinearLayout>
+    </ScrollView>
+    
+    <RelativeLayout
+        android:id="@+id/offersBannerLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+    </RelativeLayout>
+</RelativeLayout>

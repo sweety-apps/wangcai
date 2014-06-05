@@ -148,7 +148,7 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
 		}
 
 		//Óà¶î²»×ã
-		if (BuildSetting.sg_bIsDebug || m_selectedExchangeItem.m_nPrice > WangcaiApp.GetInstance().GetUserInfo().GetBalance()){
+		if (m_selectedExchangeItem.m_nPrice > WangcaiApp.GetInstance().GetUserInfo().GetBalance()){
 			ActivityHelper.ShowToast(this, R.string.hint_no_enough_balance);
 			return;
 		}

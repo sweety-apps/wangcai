@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+	android:background="#5a5a5a"
+    >
+
+    <Button
+            android:id="@+id/showSpot"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonbg"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp"
+            android:text="@string/showSpot" />
+
+    <Button
+            android:id="@+id/showSmartBanner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonbg"
+            android:layout_margin="10dp"
+            android:text="@string/showSmartBanner"
+            android:layout_below="@+id/showSpot"
+            android:layout_centerHorizontal="true"/>
+
+    <Button
+            android:id="@+id/diy"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonbg"
+            android:layout_margin="10dp"
+            android:text="@string/diy"
+            android:layout_below="@+id/showSmartBanner"
+            android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+            android:id="@+id/adLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            >
+    </LinearLayout>
+</RelativeLayout>
