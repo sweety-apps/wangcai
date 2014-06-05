@@ -7,10 +7,12 @@ import com.coolstore.wangcai.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class TitleCtrl extends FrameLayout {
@@ -41,6 +43,21 @@ public class TitleCtrl extends FrameLayout {
 	            	String strText = typeArray.getString(attr);
 	            	TextView titleText = (TextView)this.findViewById(R.id.titile_text);
 	            	titleText.setText(strText);
+	            	break;
+	            case R.styleable.TitleCtrl_titleTextColor:
+	            	int nColor = typeArray.getColor(attr, context.getResources().getColor(R.color.default_text_color));
+	            	TextView text = (TextView)this.findViewById(R.id.titile_text);
+	            	text.setTextColor(nColor);
+	            	break;
+	            case R.styleable.TitleCtrl_returnImg:
+	            	int nResId = typeArray.getResourceId(attr, R.drawable.head_back);
+	            	ImageButton button = (ImageButton)this.findViewById(R.id.return_button);
+	            	button.setImageResource(nResId);
+	            	break;
+	            case R.styleable.TitleCtrl_bkgImg:
+	            	int nBkgResId = typeArray.getResourceId(attr, R.drawable.nav_title);
+	            	View view = this.findViewById(R.id.title_frame);
+	            	view.setBackgroundResource(nBkgResId);
 	            	break;
             }
         }

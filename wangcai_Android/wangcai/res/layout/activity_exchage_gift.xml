@@ -13,7 +13,7 @@
 		android:layout_height="wrap_content" />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="42sp"
+        android:layout_height="48sp"
         android:orientation="horizontal" 
 		android:background="@drawable/gray_rect" >
 			<TextView
@@ -31,7 +31,13 @@
 				android:background="@drawable/jiaoyi"
 				android:layout_marginRight="@dimen/common_margin_right"	
 				android:layout_centerVertical="true"
-				android:layout_alignParentRight="true" /> 		
+				android:layout_alignParentRight="true" /> 	
+		<ViewStub   
+		    android:id="@+id/bind_phone_tip"  
+		    android:layout_width="wrap_content"  
+		    android:layout_height="wrap_content" 
+			android:layout_centerHorizontal="true"
+		    android:layout="@layout/ctrl_bint_phone_tip"/>  	
 	</RelativeLayout>
 	<FrameLayout
 		android:layout_width="match_parent"

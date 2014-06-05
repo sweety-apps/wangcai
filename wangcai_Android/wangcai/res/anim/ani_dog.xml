@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false" 
+xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_1" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_2" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_3" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_4" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_5" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_6" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_7" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_8" />	
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_9" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_10" />	
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_11" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_12" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_13" />
+	<item android:duration="100" android:drawable="@drawable/mywangcai_dog_14" />
+</animation-list>

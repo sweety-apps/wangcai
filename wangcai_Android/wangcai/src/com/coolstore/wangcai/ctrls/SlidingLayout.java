@@ -133,10 +133,16 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
 			}
         }
     }  
-  
-    public boolean onTouch(View v, MotionEvent event) {  
+
+	@Override
+    public boolean onTouch(View v, MotionEvent event) {
+		return false;  
+    }
+	@Override
+	public final boolean onInterceptTouchEvent(MotionEvent event) {
         createVelocityTracker(event);  
         int nAction = event.getAction();
+		Log.i("DragView", "SlidingLayout  onInterceptTouchEvent");
         switch (nAction) {  
         case MotionEvent.ACTION_DOWN:  
             // 手指按下时，记录按下时的坐标  
@@ -240,7 +246,7 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
             return false;  
         }  
 		*/       
-        return true;  
+        return false;  
     }  
   
     

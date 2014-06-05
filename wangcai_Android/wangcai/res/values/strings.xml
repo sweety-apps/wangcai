@@ -57,6 +57,7 @@
 	<string name="exit_text">重试</string>
 	<string name="attention_text">注意</string>
 
+	<string name="bind_phone_hint_text">您还没绑定手机，为了有效兑换，请</string>
 	<string name="bind">绑定</string>
 	<string name="bind_phone">绑定手机</string>
 	<string name="china_area">中国地区</string>
@@ -101,6 +102,12 @@
 	<string name="skill3">百发百中</string>	
 	<string name="skill5">基友情深</string>	
 	<string name="skill10">一石二鸟</string>	
+	
+	<string name="unlock_at_level">LV%1$d解锁：</string>
+	
+	<string name="lv3_benefit">签到大转盘中奖率100%</string>
+	<string name="lv5_benefit">好友奖励提升至15%</string>
+	<string name="lv10_benefit">有机会获得双倍任务奖励</string>
 	
 	<string name="hint_over_5_yuan_bind_phone">您已积累了超过5元红包，为了红包的安全建议立即绑定手机号。</string>
 	<string name="hint_sward_share">恭喜您中奖，快来分享给朋友们吧！</string>

@@ -2,6 +2,9 @@
 <resources>  
 	<declare-styleable name="TitleCtrl">  
 		<attr name="titleText" format="string"/>
+		<attr name="titleTextColor" format="color" />
+		<attr name="returnImg" format="reference" />
+		<attr name="bkgImg" format="reference" />
 	</declare-styleable>  
 	<declare-styleable name="ExtractLineCtrl">  
 		<attr name="lebalText" format="string"/>

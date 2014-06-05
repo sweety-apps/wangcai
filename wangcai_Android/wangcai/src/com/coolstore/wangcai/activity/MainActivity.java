@@ -135,6 +135,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 				WangcaiApp.GetInstance().Login();
 			}
     	});
+    	m_pullRefreshScrollView.scrollTo(0, 0);
     	
     	//提取现金按钮
     	this.findViewById(R.id.extract_cash).setOnClickListener(this);
@@ -186,7 +187,12 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     
     //显示菜单
     private void ShowMenu(boolean bShow) {
-    	m_slidingLayout.scrollToLeftView();
+    	if (bShow) {
+    		m_slidingLayout.scrollToLeftView();
+    	}
+    	else {
+    		m_slidingLayout.scrollToContentFromLeftView();
+    	}
     }
  
     //对话框返回
@@ -336,7 +342,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			String strInviteUrl = userInfo.GetInviteTaskUrl();
 			String strMsg = String.format(getString(R.string.share_content), (float)userInfo.GetBalance() / 100.0f, strInviteCode, strInviteUrl);
 			oks.setText(strMsg);
-			oks.show(this);
+			oks.show(this.getApplicationContext());
 			break;
 		case TaskListInfo.TaskTypeUpgrade:
 			//我的旺财
@@ -450,21 +456,25 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	
     	UpdateUI();
 	}
+	
     public void OnLoginComplete(int nResult, String strMsg) {
     	m_pullRefreshScrollView.onRefreshComplete();
     	RefreshTaskList();
     	super.OnLoginComplete(nResult, strMsg);		
     }
+    
     public void OnUserInfoUpdate() {
     	RefreshTaskList();
     	super.OnUserInfoUpdate();		
     }
+ 
     private void InsertMenuItem(ViewGroup parentView, String strItemName, int nIconId, String strText) {
     	com.coolstore.wangcai.ctrls.MenuItem menuItem = new com.coolstore.wangcai.ctrls.MenuItem(strItemName);
     	View itemView = menuItem.Create(getApplicationContext(), nIconId, strText);
     	menuItem.SetClickEventLinstener(this);
     	parentView.addView(itemView);
     }
+ 
     private boolean ShouldAddTask(TaskListInfo.TaskInfo taskInfo) {
    	 boolean bAdd = false;
    	switch (taskInfo.m_nTaskType) {

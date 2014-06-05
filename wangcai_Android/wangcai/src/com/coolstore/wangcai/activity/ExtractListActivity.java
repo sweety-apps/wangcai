@@ -14,6 +14,7 @@ import com.coolstore.wangcai.ctrls.ExtraItem;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
@@ -61,6 +62,20 @@ public class ExtractListActivity extends WangcaiActivity implements ExtraItem.Ex
     	AddItem(parentView, sg_strPhoneBill, R.drawable.extract_phone, "手机话费");
     	AddItem(parentView, sg_strAliPay, R.drawable.extract_alipay, "支付宝");
     	AddItem(parentView, sg_strQbi, R.drawable.extract_qbi, "腾讯Q币");
+
+    	if (!WangcaiApp.GetInstance().GetUserInfo().HasBindPhone()) {
+    		ViewStub stub = (ViewStub) findViewById(R.id.bind_phone_tip);  
+    		stub.inflate(); 
+
+    		View bindButton = findViewById(R.id.bind_phone_button);
+        	ViewHelper.SetStateViewBkg(bindButton, this, R.drawable.mywangcai_bingdphone_btn, R.drawable.mywangcai_bingdphone_btn_pressed);
+        	bindButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					ActivityHelper.ShowRegisterActivity(ExtractListActivity.this);
+				}    		
+    		});
+    	}
     }
 
     private void AddItem(ViewGroup parentView, String strItemName, int nIconId, String strName) {

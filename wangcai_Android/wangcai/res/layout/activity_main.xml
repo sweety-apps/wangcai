@@ -73,9 +73,9 @@
 		</RelativeLayout>
 		<com.handmark.pulltorefresh.library.PullToRefreshScrollView 
 		    android:id="@+id/scroll_wnd"
-			android:layout_height="wrap_content" 
+			android:layout_height="fill_parent" 
 			android:layout_width="fill_parent"         
-			wangcai:ptrMode="both"  
+			wangcai:ptrMode="pullDownFromTop"  
         	wangcai:ptrAnimationStyle="flip"
 			android:scrollbars="none">
 			<LinearLayout

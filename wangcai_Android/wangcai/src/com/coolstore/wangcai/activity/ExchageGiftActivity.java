@@ -24,6 +24,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
@@ -60,6 +61,21 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
     	RequestManager.GetInstance().SendRequest(req, false, this);
 
         m_progressDialog = ActivityHelper.ShowLoadingDialog(this);
+        
+      	
+    	if (!WangcaiApp.GetInstance().GetUserInfo().HasBindPhone()) {
+    		ViewStub stub = (ViewStub) findViewById(R.id.bind_phone_tip);  
+    		stub.inflate(); 
+
+    		View bindButton = findViewById(R.id.bind_phone_button);
+        	ViewHelper.SetStateViewBkg(bindButton, this, R.drawable.mywangcai_bingdphone_btn, R.drawable.mywangcai_bingdphone_btn_pressed);
+        	bindButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					ActivityHelper.ShowRegisterActivity(ExchageGiftActivity.this);
+				}    		
+    		});
+    	}
     }
 
 	public void OnRequestComplete(int nRequestId, Requester req) {

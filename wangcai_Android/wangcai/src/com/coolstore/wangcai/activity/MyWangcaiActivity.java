@@ -1,47 +1,36 @@
 package com.coolstore.wangcai.activity;
 
 
+import java.lang.ref.WeakReference;
+
+import com.coolstore.common.TimerManager;
+import com.coolstore.common.ViewHelper;
+import com.coolstore.common.TimerManager.TimerManagerCallback;
+import com.coolstore.request.UserInfo;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
+import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.ctrls.MyWangcaiItem;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewStub;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MyWangcaiActivity extends WangcaiActivity {
-	static class ItemInfo
-	{
-		ItemInfo(int nLevel,	int nBkgId,	int nLevelImgId, int nTipImgId)
-		{
-			m_nLevel = nLevel;
-			m_nBkgId = nBkgId;
-			m_nLevelImgId = nLevelImgId;
-			m_nTipImgId = nTipImgId;
-		}
-		public int m_nLevel;
-		public int m_nBkgId;
-		public int m_nLevelImgId;
-		public int m_nTipImgId;
-	}
-	private final static ItemInfo sg_listItems[] = {
-		new ItemInfo(3, 
-				R.drawable.mywangcai_cell_baifabaizhong, 
-				R.drawable.mywangcai_cell_baifabaizhong_title,
-				R.drawable.mywangcai_cell_baifabaizhong_des),
-		new ItemInfo(3, 
-				R.drawable.mywangcai_cell_xiongdibang, 
-				R.drawable.mywangcai_cell_xiongdibang_title,
-				R.drawable.mywangcai_cell_xiongdibang_des),
-		new ItemInfo(10, 
-				R.drawable.mywangcai_cell_dianshichengjin, 
-				R.drawable.mywangcai_cell_dianshichengjin_title,
-				R.drawable.mywangcai_cell_dianshichengjin_des)};
+	private final static int ms_nRunAnimationTaskId = 1818;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,39 +39,73 @@ public class MyWangcaiActivity extends WangcaiActivity {
         
         int nCurrentLevel = WangcaiApp.GetInstance().GetUserInfo().GetCurrentLevel();
         InitView(nCurrentLevel);
-        AttachEvents();
      }
 
 
-    private void InitView(int nCurrentLevel) {
-    	TextView levelText = (TextView)this.findViewById(R.id.level_value);
-    	levelText.setTag(String.valueOf(nCurrentLevel));
+    @SuppressLint("NewApi") private void InitView(int nCurrentLevel) {
+    	UserInfo userInfo = WangcaiApp.GetInstance().GetUserInfo();
+    	float fPercent = 0.0f;
+    	if (userInfo.GetNextLevelExperience() > 0) {
+    		fPercent = (float)userInfo.GetCurrentExperience() / (float)userInfo.GetNextLevelExperience();
+    	}
+    	int nWidth = findViewById(R.id.progress).getWidth();
+    	nWidth = (int)((float)nWidth * fPercent);
+    	View view = findViewById(R.id.progress_front);
+    	view.setRight(view.getLeft() + nWidth);
+    	
+    	String strText;
+    	TextView textView; 
+    	textView = (TextView)this.findViewById(R.id.level_value);
+    	textView.setText(String.valueOf(nCurrentLevel));
+    	
+    	textView = (TextView)this.findViewById(R.id.level_benefit);
+    	strText = String.format(getString(R.string.level_privilege_tip), nCurrentLevel);
+    	textView.setText(strText);
     	
     	ViewGroup parentView = (ViewGroup)this.findViewById(R.id.main_wnd);
     	
-    	for (int i = 0; i < sg_listItems.length; i++) {
-    		ItemInfo itemInfo = sg_listItems[i];
-    		if (nCurrentLevel >= itemInfo.m_nLevel){
-    			continue;
-    		}
-    		AddItem(parentView, itemInfo);
+    	AddItem(parentView, 3, R.drawable.mywangcai_lv3_logo, getString(R.string.skill3), getString(R.string.lv3_benefit));
+    	AddItem(parentView, 5, R.drawable.mywangcai_lv5_logo, getString(R.string.skill5), getString(R.string.lv5_benefit));
+    	AddItem(parentView, 10, R.drawable.mywangcai_lv10_logo, getString(R.string.skill10), getString(R.string.lv10_benefit));
+    	
+    	if (!userInfo.HasBindPhone()) {
+    		ViewStub stub = (ViewStub) findViewById(R.id.bind_phone_tip);  
+    		stub.inflate(); 
+
+    		View bindButton = findViewById(R.id.bind_phone_button);
+        	ViewHelper.SetStateViewBkg(bindButton, this, R.drawable.mywangcai_bingdphone_btn, R.drawable.mywangcai_bingdphone_btn_pressed);
+        	bindButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					ActivityHelper.ShowRegisterActivity(MyWangcaiActivity.this);
+				}    		
+    		});
     	}
+    	
+    	
+    	ImageView image = (ImageView) findViewById(R.id.dog_image);
+    	image.setBackgroundResource(R.anim.ani_dog);
+    	m_dogAnimationDrawable = (AnimationDrawable)  image.getBackground();    	
+
+    	m_handler = new Handler();   
+    	m_handler.postDelayed(new Runnable() { 
+            public void run() { 
+				m_dogAnimationDrawable.stop();
+				m_dogAnimationDrawable.start();
+				m_handler = null;
+            } 
+        }, 50);
     }
     
-    private void AddItem(ViewGroup parentView, ItemInfo itemInfo) {
+    private void AddItem(ViewGroup parentView, int nLevel, int nIconId, String strLevelName, String strLevelBenefit) {
         Context context = getApplicationContext();
     	MyWangcaiItem item = new MyWangcaiItem();
-    	View view = item.Create(context, itemInfo.m_nBkgId, itemInfo.m_nLevelImgId, itemInfo.m_nTipImgId);
+    	View view = item.Create(this, nLevel, nIconId, strLevelName, strLevelBenefit);
     	parentView.addView(view);
     }
-    private void AttachEvents()
-    {
-    	((Button)this.findViewById(R.id.return_button)).setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-            	finish();
-            }
-        });
+
+
     
-    }
-    
+    AnimationDrawable m_dogAnimationDrawable; 
+    Handler m_handler = null;
 }

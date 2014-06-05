@@ -4,22 +4,54 @@
     android:layout_height="wrap_content" >
     
    <ImageView
-		android:id="@+id/item_bkg"
+		android:id="@+id/logo_icon"
+		android:layout_marginLeft="15dp"
+		android:layout_marginTop="18dp"
+		android:layout_marginBottom="18dp"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-   />
+   />  
    <ImageView
-		android:id="@+id/level_unlock_tip"
+		android:id="@+id/lock_icon"
+		android:layout_alignTop="@id/logo_icon"
+		android:layout_alignLeft="@id/logo_icon"
+		android:background="@drawable/mywangcai_lock"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-	    android:layout_alignBottom="@id/item_bkg"
+		android:visibility="gone"
    />
-
-	<ImageView
-	    android:id="@+id/level_privilege_tip"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-		android:layout_toRightOf="@id/level_unlock_tip"
-	    android:layout_alignBottom="@id/item_bkg" />
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+	   android:layout_toRightOf="@id/logo_icon"
+	   android:layout_centerVertical="true"
+	   android:layout_marginLeft="15dp"
+	>
+	  <TextView
+		android:id="@+id/level_name"
+		android:textSize="23sp"
+		android:textColor="#000000"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	  />
+	
+	  <TextView
+		android:id="@+id/unlock_level"
+		android:textSize="15sp"
+		android:textColor="#2C72CA"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/level_name"
+		android:layout_alignLeft="@id/level_name"
+	  />
+	  <TextView
+		android:id="@+id/level_benefit"
+		android:textSize="15sp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBottom="@id/unlock_level"
+		android:layout_toRightOf="@id/unlock_level"
+	  />
+	</RelativeLayout>
  
 </RelativeLayout>
