@@ -65,10 +65,6 @@
 		7112B1B618B3203F0067F3E8 /* PhoneValidationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */; };
 		7112B1B818B321720067F3E8 /* phone_validation_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */; };
 		7112B1B918B321720067F3E8 /* phone_validation_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */; };
-		71187A43192B27AD00267D1E /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71187A39192B27AD00267D1E /* libPunchBoxAd.a */; };
-		71187A44192B27AD00267D1E /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71187A39192B27AD00267D1E /* libPunchBoxAd.a */; };
-		71187A45192B27AD00267D1E /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */; };
-		71187A46192B27AD00267D1E /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */; };
 		7119760E192F017C00059E48 /* QuestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119760C192F017C00059E48 /* QuestWebViewController.m */; };
 		7119760F192F017C00059E48 /* QuestWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7119760D192F017C00059E48 /* QuestWebViewController.xib */; };
 		71197615192F2E6700059E48 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71197613192F2E6700059E48 /* InviteViewController.m */; };
@@ -109,6 +105,10 @@
 		7126B88C18E559950060ECB7 /* share_cell_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7126B88A18E559950060ECB7 /* share_cell_icon@2x.png */; };
 		7127C5FC18FBA85400D53118 /* AppInstallTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7127C5FB18FBA85400D53118 /* AppInstallTipView.xib */; };
 		7127C5FD18FBA85400D53118 /* AppInstallTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7127C5FB18FBA85400D53118 /* AppInstallTipView.xib */; };
+		712B4ED61944543600C6DE13 /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712B4ECD1944543600C6DE13 /* libPunchBoxAd.a */; };
+		712B4ED71944543600C6DE13 /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 712B4ECD1944543600C6DE13 /* libPunchBoxAd.a */; };
+		712B4ED81944543600C6DE13 /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 712B4ED51944543600C6DE13 /* PunchBoxAdRes.bundle */; };
+		712B4ED91944543600C6DE13 /* PunchBoxAdRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 712B4ED51944543600C6DE13 /* PunchBoxAdRes.bundle */; };
 		712D019C18D96DD100A84228 /* pay_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019A18D96DD100A84228 /* pay_bkg@2x.png */; };
 		712D019D18D96DD100A84228 /* pay_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019A18D96DD100A84228 /* pay_bkg@2x.png */; };
 		712D019E18D96DD100A84228 /* pay_hot_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */; };
@@ -626,7 +626,6 @@
 		A66E3A681887FB6C00EB19DE /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A66E3A671887FB6C00EB19DE /* PushConfig.plist */; };
 		A66E3A6A1887FD2100EB19DE /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66E3A691887FD2000EB19DE /* libPushSDK.a */; };
 		A66E3A6D1888183E00EB19DE /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = A66E3A6C1888183E00EB19DE /* Encryption.m */; };
-		A67BA6E11888F11100CEC89B /* iTunesArtwrok.png in Resources */ = {isa = PBXBuildFile; fileRef = A67BA6E01888F11100CEC89B /* iTunesArtwrok.png */; };
 		A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		A6AA900118647E03006DB7D2 /* BusionessPageBoard_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */; };
 		A6AA900218647E03006DB7D2 /* BusionessPageBoard_iPhone.xml in Resources */ = {isa = PBXBuildFile; fileRef = A6AA900018647E03006DB7D2 /* BusionessPageBoard_iPhone.xml */; };
@@ -1745,15 +1744,6 @@
 		7112722318B33A1A0068C33E /* phone_validation_sendcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_sendcode@2x.png"; sourceTree = "<group>"; };
 		7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneValidationController.xib; sourceTree = "<group>"; };
 		7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_input@2x.png"; sourceTree = "<group>"; };
-		71187A39192B27AD00267D1E /* libPunchBoxAd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPunchBoxAd.a; sourceTree = "<group>"; };
-		71187A3A192B27AD00267D1E /* PBADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBADRequest.h; sourceTree = "<group>"; };
-		71187A3B192B27AD00267D1E /* PBBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBannerView.h; sourceTree = "<group>"; };
-		71187A3C192B27AD00267D1E /* PBInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBInterstitial.h; sourceTree = "<group>"; };
-		71187A3D192B27AD00267D1E /* PBMoreGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMoreGame.h; sourceTree = "<group>"; };
-		71187A3E192B27AD00267D1E /* PBOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBOfferWall.h; sourceTree = "<group>"; };
-		71187A40192B27AD00267D1E /* PBRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRequestError.h; sourceTree = "<group>"; };
-		71187A41192B27AD00267D1E /* PunchBoxAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchBoxAd.h; sourceTree = "<group>"; };
-		71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PunchBoxAdRes.bundle; sourceTree = "<group>"; };
 		7119760B192F017C00059E48 /* QuestWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestWebViewController.h; sourceTree = "<group>"; };
 		7119760C192F017C00059E48 /* QuestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestWebViewController.m; sourceTree = "<group>"; };
 		7119760D192F017C00059E48 /* QuestWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestWebViewController.xib; sourceTree = "<group>"; };
@@ -1787,6 +1777,15 @@
 		7126B88718E557E20060ECB7 /* app_tip_miidi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app_tip_miidi@2x.png"; sourceTree = "<group>"; };
 		7126B88A18E559950060ECB7 /* share_cell_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_cell_icon@2x.png"; sourceTree = "<group>"; };
 		7127C5FB18FBA85400D53118 /* AppInstallTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppInstallTipView.xib; sourceTree = "<group>"; };
+		712B4ECD1944543600C6DE13 /* libPunchBoxAd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPunchBoxAd.a; sourceTree = "<group>"; };
+		712B4ECE1944543600C6DE13 /* PBADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBADRequest.h; sourceTree = "<group>"; };
+		712B4ECF1944543600C6DE13 /* PBBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBBannerView.h; sourceTree = "<group>"; };
+		712B4ED01944543600C6DE13 /* PBInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBInterstitial.h; sourceTree = "<group>"; };
+		712B4ED11944543600C6DE13 /* PBMoreGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMoreGame.h; sourceTree = "<group>"; };
+		712B4ED21944543600C6DE13 /* PBOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBOfferWall.h; sourceTree = "<group>"; };
+		712B4ED31944543600C6DE13 /* PBRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRequestError.h; sourceTree = "<group>"; };
+		712B4ED41944543600C6DE13 /* PunchBoxAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchBoxAd.h; sourceTree = "<group>"; };
+		712B4ED51944543600C6DE13 /* PunchBoxAdRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PunchBoxAdRes.bundle; sourceTree = "<group>"; };
 		712D019A18D96DD100A84228 /* pay_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_bkg@2x.png"; sourceTree = "<group>"; };
 		712D019B18D96DD100A84228 /* pay_hot_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_hot_bkg@2x.png"; sourceTree = "<group>"; };
 		712D01A618D9703600A84228 /* UIPayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPayButton.h; sourceTree = "<group>"; };
@@ -2155,7 +2154,6 @@
 		A66E3A691887FD2000EB19DE /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPushSDK.a; path = wangcai/JPushlib/libPushSDK.a; sourceTree = "<group>"; };
 		A66E3A6B1888183E00EB19DE /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
 		A66E3A6C1888183E00EB19DE /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
-		A67BA6E01888F11100CEC89B /* iTunesArtwrok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwrok.png; sourceTree = "<group>"; };
 		A6AA8FFC18646D08006DB7D2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A6AA8FFE18647E03006DB7D2 /* BusionessPageBoard_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusionessPageBoard_iPhone.h; sourceTree = "<group>"; };
 		A6AA8FFF18647E03006DB7D2 /* BusionessPageBoard_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusionessPageBoard_iPhone.m; sourceTree = "<group>"; };
@@ -2974,7 +2972,7 @@
 				71355583188D17800007784A /* SMSConnection.framework in Frameworks */,
 				71355581188D17800007784A /* SinaWeiboConnection.framework in Frameworks */,
 				713555B7188D17810007784A /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
-				71187A44192B27AD00267D1E /* libPunchBoxAd.a in Frameworks */,
+				712B4ED71944543600C6DE13 /* libPunchBoxAd.a in Frameworks */,
 				71420E8D191E0B9700376AA9 /* libminizip.a in Frameworks */,
 				713555A3188D17800007784A /* libSinaWeiboSDK.a in Frameworks */,
 				F3359F9918882F8000C1E636 /* libsqlite3.dylib in Frameworks */,
@@ -3067,8 +3065,8 @@
 				F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */,
 				71355582188D17800007784A /* SMSConnection.framework in Frameworks */,
 				71355580188D17800007784A /* SinaWeiboConnection.framework in Frameworks */,
+				712B4ED61944543600C6DE13 /* libPunchBoxAd.a in Frameworks */,
 				713555B6188D17810007784A /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
-				71187A43192B27AD00267D1E /* libPunchBoxAd.a in Frameworks */,
 				A66E3A661887FA7600EB19DE /* CoreFoundation.framework in Frameworks */,
 				713555A2188D17800007784A /* libSinaWeiboSDK.a in Frameworks */,
 				A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */,
@@ -3193,15 +3191,15 @@
 		712D01AF18D98E5900A84228 /* libPunchBoxAd */ = {
 			isa = PBXGroup;
 			children = (
-				71187A39192B27AD00267D1E /* libPunchBoxAd.a */,
-				71187A3A192B27AD00267D1E /* PBADRequest.h */,
-				71187A3B192B27AD00267D1E /* PBBannerView.h */,
-				71187A3C192B27AD00267D1E /* PBInterstitial.h */,
-				71187A3D192B27AD00267D1E /* PBMoreGame.h */,
-				71187A3E192B27AD00267D1E /* PBOfferWall.h */,
-				71187A40192B27AD00267D1E /* PBRequestError.h */,
-				71187A41192B27AD00267D1E /* PunchBoxAd.h */,
-				71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */,
+				712B4ECD1944543600C6DE13 /* libPunchBoxAd.a */,
+				712B4ECE1944543600C6DE13 /* PBADRequest.h */,
+				712B4ECF1944543600C6DE13 /* PBBannerView.h */,
+				712B4ED01944543600C6DE13 /* PBInterstitial.h */,
+				712B4ED11944543600C6DE13 /* PBMoreGame.h */,
+				712B4ED21944543600C6DE13 /* PBOfferWall.h */,
+				712B4ED31944543600C6DE13 /* PBRequestError.h */,
+				712B4ED41944543600C6DE13 /* PunchBoxAd.h */,
+				712B4ED51944543600C6DE13 /* PunchBoxAdRes.bundle */,
 			);
 			path = libPunchBoxAd;
 			sourceTree = "<group>";
@@ -5388,7 +5386,6 @@
 				A60C582C186FF8A30068425C /* UserInfo */,
 				A60C5830186FF8A30068425C /* WCMainPageBoard */,
 				A60C583E186FF8A30068425C /* yellow_circle@2x.png */,
-				A67BA6E01888F11100CEC89B /* iTunesArtwrok.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -5610,7 +5607,6 @@
 				F3359FEB18882F8000C1E636 /* MenuBoard_iPhone.xml in Resources */,
 				F3359FEC18882F8000C1E636 /* btn_normal@2x.png in Resources */,
 				F3359FED18882F8000C1E636 /* update@2x.png in Resources */,
-				71187A46192B27AD00267D1E /* PunchBoxAdRes.bundle in Resources */,
 				F3359FEE18882F8000C1E636 /* menu_icon_tuhaobang@2x.png in Resources */,
 				F3359FEF18882F8000C1E636 /* invite_seg_normal@2x.png in Resources */,
 				F3E45FF918D495E900C8E952 /* app_tip_more@2x.png in Resources */,
@@ -5823,6 +5819,7 @@
 				712D9B96191B416F0035D29C /* dianru_red_all_cell11.png in Resources */,
 				7112722118B339C00068C33E /* phone_validation_code2@2x.png in Resources */,
 				712D9B8C191B416F0035D29C /* dianru_purple_left_cell.png in Resources */,
+				712B4ED91944543600C6DE13 /* PunchBoxAdRes.bundle in Resources */,
 				712D9B2E191B416F0035D29C /* dianru_background.png in Resources */,
 				F335A04D18882F8000C1E636 /* arrow-down@2x.png in Resources */,
 				712D9B2C191B416F0035D29C /* dianru_back_btn.png in Resources */,
@@ -6013,7 +6010,6 @@
 				A60C5862186FF8A30068425C /* setting_right@2x.PNG in Resources */,
 				F3813D1518753ED400350C27 /* choujiang_8yuan@2x.png in Resources */,
 				712D9B37191B416F0035D29C /* dianru_DRBGLogo.png in Resources */,
-				71187A45192B27AD00267D1E /* PunchBoxAdRes.bundle in Resources */,
 				F3D9D566185D876D00392C40 /* WebViewController.xib in Resources */,
 				F394DBE418B89841003311CD /* mywangcai_cell_xiongdibang_des@2x.png in Resources */,
 				7112722418B33A1A0068C33E /* phone_validation_sendcode_down@2x.png in Resources */,
@@ -6038,7 +6034,6 @@
 				7100021E192F77880046D334 /* arrow@2x.png in Resources */,
 				A60C584C186FF8A30068425C /* btn_normal@2x.png in Resources */,
 				F394DBFF18B8EB9B003311CD /* levelup_close_btn_up@2x.png in Resources */,
-				A67BA6E11888F11100CEC89B /* iTunesArtwrok.png in Resources */,
 				A6FA6A5D18827C88003F8399 /* update@2x.png in Resources */,
 				F36049B31871A9AE00FAD1F3 /* menu_icon_tuhaobang@2x.png in Resources */,
 				A60C58AA18703AE60068425C /* invite_seg_normal@2x.png in Resources */,
@@ -6257,6 +6252,7 @@
 				712D9B3D191B416F0035D29C /* dianru_help.png in Resources */,
 				71008A3A189108D900689E2F /* app_tip_domob@2x.png in Resources */,
 				712D9B25191B416F0035D29C /* dianru_blue_right_cell.png in Resources */,
+				712B4ED81944543600C6DE13 /* PunchBoxAdRes.bundle in Resources */,
 				711F439518B4F49C00AEE1D5 /* extract_alipay@2x.png in Resources */,
 				A60C588C186FF8A30068425C /* person_info_icon@2x.png in Resources */,
 				A6438ED9185EF21F001A84AD /* TransferToAlipayAndPhoneController.xib in Resources */,
