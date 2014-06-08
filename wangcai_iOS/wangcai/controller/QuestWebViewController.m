@@ -16,6 +16,10 @@
 
 @implementation QuestWebViewController
 @synthesize _webView;
+@synthesize _loadingView;
+@synthesize _errBtn;
+@synthesize _errText;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -213,4 +217,37 @@
         [self.navigationController popToViewController:controller animated:YES];
     }
 }
+
+
+
+- (IBAction)onRequest:(id)sender {
+    NSURL* nsurl = [[NSURL alloc] initWithString:_info.url];
+    [self->_webView loadRequest:[NSURLRequest requestWithURL:nsurl]];
+    [nsurl release];
+}
+
+
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [_webView setHidden:YES];
+    [_loadingView setHidden:NO];
+    [_errBtn setHidden:YES];
+    [_errText setHidden:YES];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [_webView setHidden:NO];
+    [_loadingView setHidden:YES];
+    [_errBtn setHidden:YES];
+    [_errText setHidden:YES];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [_webView setHidden:YES];
+    [_loadingView setHidden:YES];
+    [_errBtn setHidden:NO];
+    [_errText setHidden:NO];
+}
+
+
 @end

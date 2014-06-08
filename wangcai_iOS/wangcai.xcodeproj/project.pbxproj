@@ -1751,7 +1751,6 @@
 		71187A3C192B27AD00267D1E /* PBInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBInterstitial.h; sourceTree = "<group>"; };
 		71187A3D192B27AD00267D1E /* PBMoreGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMoreGame.h; sourceTree = "<group>"; };
 		71187A3E192B27AD00267D1E /* PBOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBOfferWall.h; sourceTree = "<group>"; };
-		71187A3F192B27AD00267D1E /* PBOfferWallData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBOfferWallData.h; sourceTree = "<group>"; };
 		71187A40192B27AD00267D1E /* PBRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBRequestError.h; sourceTree = "<group>"; };
 		71187A41192B27AD00267D1E /* PunchBoxAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchBoxAd.h; sourceTree = "<group>"; };
 		71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PunchBoxAdRes.bundle; sourceTree = "<group>"; };
@@ -3200,7 +3199,6 @@
 				71187A3C192B27AD00267D1E /* PBInterstitial.h */,
 				71187A3D192B27AD00267D1E /* PBMoreGame.h */,
 				71187A3E192B27AD00267D1E /* PBOfferWall.h */,
-				71187A3F192B27AD00267D1E /* PBOfferWallData.h */,
 				71187A40192B27AD00267D1E /* PBRequestError.h */,
 				71187A41192B27AD00267D1E /* PunchBoxAd.h */,
 				71187A42192B27AD00267D1E /* PunchBoxAdRes.bundle */,

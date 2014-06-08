@@ -363,6 +363,9 @@ static LoginAndRegister* _sharedInstance = nil;
 }
 
 -(void) test {
+    //[_offwallOrder pushHead:@"adwo"];
+    //[_offwallShow setObject:[NSNumber numberWithInt:3] forKey:@"adwo"];
+    
     //[_offwallOrder pushHead:@"waps"];
     //[_offwallShow setObject:[NSNumber numberWithInt:3] forKey:@"waps"];
     
