@@ -197,7 +197,7 @@ static UserInfoAPI* gDefaultUserInfo = nil;
             }
             else
             {
-                self.uiAge = nil;`
+                self.uiAge = nil;
                 self.uiSex = [NSNumber numberWithInt:0];
                 self.uiInterest = @"";
             }

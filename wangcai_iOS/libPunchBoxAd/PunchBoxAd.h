@@ -14,10 +14,9 @@
 #import "PBInterstitial.h"
 #import "PBMoreGame.h"
 #import "PBOfferWall.h"
-#import "PBOfferWallData.h"
 
 
-#define SDK_Version  @"4.2.1"
+#define SDK_Version  @"4.2.2"
 
 
 // 该类是为开发者提供的展示Banner、精品推荐、弹出广告的快捷调用，即一句代码展现广告
@@ -32,7 +31,7 @@
 + (void)startSession:(NSString *)publisherID;
 
 /**
- *	@brief	用于积分墙广告，开发者设置自己的用户系统信息，长度限制64（不建议使用中文符号）
+ *	@brief	用于积分墙广告，开发者设置自己的用户系统信息，长度限制80（不建议使用中文符号）
  *
  *	@param 	userInfo 	用户信息，可设置用户ID等信息
  */

@@ -15,9 +15,14 @@
 }
 
 @property (retain, nonatomic) IBOutlet UIWebView* _webView;
+@property (retain, nonatomic) IBOutlet UIActivityIndicatorView* _loadingView;
+@property (retain, nonatomic) IBOutlet UIButton* _errBtn;
+@property (retain, nonatomic) IBOutlet UILabel* _errText;
 
 - (IBAction)clickBack:(id)sender;
 
 - (void) setQuestInfo:(SurveyInfo*) info;
+
+- (IBAction)onRequest:(id)sender;
 
 @end

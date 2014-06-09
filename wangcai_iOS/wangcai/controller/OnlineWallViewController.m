@@ -595,11 +595,11 @@ static OnlineWallViewController* _sharedInstance;
                 for ( int i = 0; i < [wangcaiIncome count]; i ++ ) {
                     NSDictionary* item = [wangcaiIncome objectAtIndex:i];
                     
-                    int taskId = [[item objectForKey:@"task_id"] intValue];
+                    //int taskId = [[item objectForKey:@"task_id"] intValue];
                     
-                    if ( [self isUnfinished:taskId] ) {
-                        nWangcaiIncome += [[item objectForKey:@"income"] intValue];
-                    }
+                    //if ( [self isUnfinished:taskId] ) {
+                    nWangcaiIncome += [[item objectForKey:@"income"] intValue];
+                    //}
                 }
             }
        
@@ -694,6 +694,18 @@ static OnlineWallViewController* _sharedInstance;
     }
     
     // 安沃
+    NSString* deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
+#if TEST == 1
+    NSString* userid = [NSString stringWithFormat:@"dev_%@", deviceId];
+#else
+    NSString* userid = [NSString stringWithFormat:@"%@", deviceId];
+#endif
+    
+    NSArray *arr = [NSArray arrayWithObjects:userid, nil];
+    AdwoOWSetKeywords(arr);
+    
+    [deviceId release];
+    
     AdwoOWPresentOfferWall(ADWO_OFFERWALL_BASIC_PID, _viewController);
 }
 
