@@ -60,7 +60,7 @@
        <activity android:name="com.coolstore.wangcai.activity.MyWangcaiActivity" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.InviteActivity" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.LotteryActivity" android:theme="@style/WangcaiTheme" />
-    	<activity android:name="com.coolstore.wangcai.activity.OptionsActivity" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.SettingActivity" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.WebviewActivity" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.ExchageGiftActivity" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.ExtractListActivity" android:theme="@style/WangcaiTheme" />
@@ -173,6 +173,17 @@
 	<meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
 	<!-- Required. AppKey copied from Portal -->
 	<meta-data android:name="JPUSH_APPKEY" android:value="f7166a77eb250c605a468df3"/>
+	
+	<receiver android:name="com.coolstore.wangcai.base.PushReceiver" android:enabled="true">
+	    <intent-filter>
+	        <action android:name="cn.jpush.android.intent.REGISTRATION" />
+	        <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+	        <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+	        <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+	        
+	        <category android:name="com.coolstore.wangcai" />
+	    </intent-filter>
+	</receiver>
    </application>
    
 </manifest>

@@ -41,8 +41,7 @@
 				android:textStyle="bold"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_centerInParent="true"
-				android:text="@string/test_invlide_code" /> 
+				android:layout_centerInParent="true" /> 
 		</RelativeLayout>
 		<RelativeLayout
 			android:layout_marginTop="15dp"
@@ -68,16 +67,15 @@
 						android:ellipsize="end"
 						android:singleLine="true"
 						android:textColor="#b0b0b0"
-						android:layout_gravity="center_vertical"
-						android:text="@string/test_invlide_url" />
+						android:layout_gravity="center_vertical" />
 				</FrameLayout> 
 		</RelativeLayout>
 		<Button 
 			android:layout_marginTop="15dp"
 			android:id="@+id/share_button"
-			android:text="@string/test_share_button"
 			android:textColor="#ffffff"
 			android:textSize="20sp"
+			android:text="@string/invite_activity_button"
 			android:background="@drawable/invite_share_button"
 			android:layout_width="match_parent"
 			android:layout_height="60dp" /> 

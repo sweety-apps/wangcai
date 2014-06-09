@@ -12,12 +12,12 @@ import com.coolstore.wangcai.activity.ExtractSucceedActivity;
 import com.coolstore.wangcai.activity.InviteActivity;
 import com.coolstore.wangcai.activity.LotteryActivity;
 import com.coolstore.wangcai.activity.MyWangcaiActivity;
-import com.coolstore.wangcai.activity.OptionsActivity;
 import com.coolstore.wangcai.activity.PopupWinAppWall;
 import com.coolstore.wangcai.activity.PopupWinLevelUpgrate;
 import com.coolstore.wangcai.activity.PopupWinNewAward;
 import com.coolstore.wangcai.activity.RegisterActivity;
 import com.coolstore.wangcai.activity.RegisterSucceedActivity;
+import com.coolstore.wangcai.activity.SettingActivity;
 import com.coolstore.wangcai.activity.SurveyActivity;
 import com.coolstore.wangcai.activity.WebviewActivity;
 import com.coolstore.wangcai.activity.WriteInviteCodeAcitivty;
@@ -51,7 +51,7 @@ public class ActivityHelper {
     }
 
     public static void ShowAppInstallActivity(Activity owner) {
-    	String strUrl = RequestManager.GetInstance().BuildSessoinUrl(Config.GetWebServiceUrl() + "132");
+    	String strUrl = RequestManager.GetInstance().BuildSessoinUrl(Config.GetAppWallRuleUrl());
     	ShowWebViewActivity(owner, "重要提示", strUrl);
     }
 
@@ -84,7 +84,7 @@ public class ActivityHelper {
     }
     //显示
     public static void ShowOptionActivity(Activity owner) {
-    	Intent it = new Intent(owner, OptionsActivity.class);
+    	Intent it = new Intent(owner, SettingActivity.class);
     	owner.startActivity(it);
     }
     //分享
@@ -92,7 +92,8 @@ public class ActivityHelper {
     }
     //客服帮助
     public static void ShowHelpActivity(Activity owner) {
-    	ShowWebViewActivity(owner, null, "http://www.sina.com.cn");
+    	String strUrl = RequestManager.GetInstance().BuildSessoinUrl(Config.GetHelpUrl());
+    	ShowWebViewActivity(owner, owner.getString(R.string.help_actiity_title), strUrl);
     }
     //好评旺财
     public static void ShowCommentActivity(Activity owner) {

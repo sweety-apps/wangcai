@@ -3,9 +3,8 @@ package com.coolstore.common;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
-
 import org.apache.http.conn.util.InetAddressUtils;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -21,15 +20,7 @@ public class SystemInfo {
 	public static String sg_strNetwork4G = "4g";
 	
 	public static void Initialize(Context context) {
-		m_AppContext = context;;
-		String str1 = android.os.Build.MODEL;
-		String str2 = android.os.Build.BOARD;
-		String str3 = android.os.Build.BRAND;
-		String str4 = android.os.Build.DEVICE;
-		String str5 = android.os.Build.ID;
-		String str6 = android.os.Build.PRODUCT;
-		String str7 = android.os.Build.MANUFACTURER;
-		String str8 = android.os.Build.MANUFACTURER;
+		m_AppContext = context;
 	}
 	public static String GetMacAddress() {
 		if (ms_strMacAddress == null) {
@@ -54,9 +45,15 @@ public class SystemInfo {
 		}
 		return ms_strPhoneNumber;
 	}
+	public static String GetSystemVersion() {
+		return android.os.Build.VERSION.RELEASE;
+	}
+	@SuppressLint("NewApi")
+	public static String GetSerial() {
+		return android.os.Build.SERIAL;
+	}
 	public static String GetPhoneModel() {
-		return "iPhone 5s_7.0.4";
-		//return android.os.Build.PRODUCT;
+		return android.os.Build.PRODUCT;
 	}
 	public static String GetIp() { 
 		String strIpAddress = "";
@@ -116,13 +113,28 @@ public class SystemInfo {
 		 return strType;
 	}
 	public static String GetImsi() {
-		return ((TelephonyManager) m_AppContext.getSystemService(Context.TELEPHONY_SERVICE)).getSubscriberId();
+		try {
+			return ((TelephonyManager) m_AppContext.getSystemService(Context.TELEPHONY_SERVICE)).getSubscriberId();
+		}
+		catch (Exception E) {
+			return "";
+		}
 	}
 	public static String GetImei() {
-		return ((TelephonyManager) m_AppContext.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+		try {
+			return ((TelephonyManager) m_AppContext.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+		}
+		catch (Exception E) {
+			return "";
+		}
 	}
 	public static String GetAndroidId() {
-		return Settings.Secure.getString(m_AppContext.getContentResolver(), Settings.Secure.ANDROID_ID);		
+		try {
+			return Settings.Secure.getString(m_AppContext.getContentResolver(), Settings.Secure.ANDROID_ID);	
+		}
+		catch (Exception E) {
+			return "";
+		}	
 	}
 	private static String ms_strDeviceId;
 	private static String ms_strMacAddress;

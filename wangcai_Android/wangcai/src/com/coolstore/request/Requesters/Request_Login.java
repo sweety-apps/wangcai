@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.coolstore.common.Config;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.common.Util;
@@ -25,9 +27,9 @@ public class Request_Login extends Requester{
 	public Requester.RequestInfo GetRequestInfo() {
 		if (m_requestInfo == null) {
 			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("idfa", "3461AC00-92DC-5B5C-9464-7971F01F4963");
 			mapRequestInfo.put("imei", SystemInfo.GetImei());
-			mapRequestInfo.put("imsi", SystemInfo.GetImsi());
+			mapRequestInfo.put("serial", SystemInfo.GetSerial());
+			mapRequestInfo.put("phone", SystemInfo.GetPhoneNumber());
 			mapRequestInfo.put("android_id", SystemInfo.GetAndroidId());
 			mapRequestInfo.put("mac", SystemInfo.GetMacAddress());		
 			mapRequestInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
@@ -71,6 +73,9 @@ public class Request_Login extends Requester{
 			//Util.ReadJsonInt(rootObject, "in_review");
 			m_nPollElapse = Util.ReadJsonInt(rootObject, "polling_interval");
 			userInfo.SetOfferWallIncome(Util.ReadJsonInt(rootObject, "offerwall_income"));
+			
+
+			Log.i("PollIncome", String.format("Login----OfferWallInfo(%d)", userInfo.GetOfferWallIncome()));
 
 			userInfo.SetUserId(Util.ReadJsonInt(rootObject, "userid"));
 			userInfo.SetBalance(Util.ReadJsonInt(rootObject, "balance"));

@@ -1,6 +1,8 @@
 package com.coolstore.wangcai.ctrls;
 
 
+import com.coolstore.common.LogUtil;
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
@@ -23,6 +25,22 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
     public static final int HIDE_LEFT_VIEW = 3;	//滑动状态的一种，表示正在隐藏左侧菜单。      
     public static final int HIDE_RIGHT_VIEW = 4;		//滑动状态的一种，表示正在隐藏右侧菜单。 
   
+    private String GetStateName(int nState) {
+    	switch (nState) {
+    	case DO_NOTHING:
+    		return "DO_NOTHING";
+    	case SHOW_LEFT_VIEW:
+    		return "SHOW_LEFT_VIEW";
+    	case SHOW_RIGHT_VIEW:
+    		return "SHOW_RIGHT_VIEW";
+    	case HIDE_LEFT_VIEW:
+    		return "HIDE_LEFT_VIEW";
+    	case HIDE_RIGHT_VIEW:
+    		return "HIDE_RIGHT_VIEW";  
+    	default:
+    		return "UnknwonState";
+    	}
+    }
     private int m_slideState;		//记录当前的滑动状态
     
     private int m_screenWidth;  //屏幕宽度值。
@@ -54,6 +72,7 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
 
     private VelocityTracker m_mVelocityTracker;  //用于计算手指滑动的速度。
   
+    private LeftViewScrollTask m_leftViewScrollTask;
     
     //重写BidirSlidingLayout的构造函数，其中获取了屏幕的宽度和touchSlop的值。 
       
@@ -73,7 +92,14 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
       
     //将界面滚动到左侧菜单界面，滚动速度设定为-30. 
     public void scrollToLeftView() {  
-        new LeftViewScrollTask().execute(-30);  
+    	LogUtil.LogMainListDrag("scrollToLeftView");
+    	if (m_leftViewScrollTask != null) {
+    		m_leftViewScrollTask.cancel(true);
+            m_contentLayoutParams.rightMargin = 0;  
+            m_contentLayout.setLayoutParams(m_contentLayoutParams);  
+    	}
+    	m_leftViewScrollTask = new LeftViewScrollTask();
+    	m_leftViewScrollTask.execute(-30);  
     }  
   
     
@@ -86,7 +112,16 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
     
     //将界面从左侧菜单滚动到内容界面，滚动速度设定为30. 
     public void scrollToContentFromLeftView() {  
-    		new LeftViewScrollTask().execute(30);
+    	LogUtil.LogMainListDrag("scrollToContentFromLeftView");
+    	if (m_leftViewScrollTask != null) {
+    		m_leftViewScrollTask.cancel(true);
+
+        	LogUtil.LogMainListDrag("scrollToContentFromLeftView  cancel current Task");
+            m_contentLayoutParams.rightMargin = -m_leftViewLayoutParams.width;  
+            m_contentLayout.setLayoutParams(m_contentLayoutParams);  
+    	}
+		m_leftViewScrollTask = new LeftViewScrollTask();
+    	m_leftViewScrollTask.execute(30);
     }  
   
     
@@ -103,7 +138,6 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
     public boolean isLeftLayoutVisible() {  
         return m_isLeftViewVisible;  
     }  
-  
     
     //右侧菜单是否完全显示出来，滑动过程中此值无效。 
     //@return 右侧菜单完全显示返回true，否则返回false。 
@@ -134,6 +168,21 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
         }
     }  
 
+	private String GetActionName(int nAction) {
+		switch (nAction) {
+		case MotionEvent.ACTION_DOWN: 
+			return "ACTION_DOWN";
+		case MotionEvent.ACTION_MOVE:
+			return "ACTION_MOVE";
+		case MotionEvent.ACTION_OUTSIDE:
+			return "ACTION_OUTSIDE";
+		case MotionEvent.ACTION_CANCEL:
+			return "ACTION_CANCEL";
+		case MotionEvent.ACTION_UP:
+			return "ACTION_UP";
+		}
+		return "Unknown Action";
+	}
 	@Override
     public boolean onTouch(View v, MotionEvent event) {
 		return false;  
@@ -142,7 +191,8 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
 	public final boolean onInterceptTouchEvent(MotionEvent event) {
         createVelocityTracker(event);  
         int nAction = event.getAction();
-		Log.i("DragView", "SlidingLayout  onInterceptTouchEvent");
+        LogUtil.LogMainListDrag("SlidingLayout  onInterceptTouchEvent(%s)  State(%s)  m_touchSlop(%d)  m_isSliding(%b) m_isLeftViewVisible(%b)", 
+        								GetActionName(nAction), GetStateName(m_slideState), m_touchSlop, m_isSliding, m_isLeftViewVisible);
         switch (nAction) {  
         case MotionEvent.ACTION_DOWN:  
             // 手指按下时，记录按下时的坐标  
@@ -159,6 +209,8 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
             int moveDistanceY = (int) (m_yMove - m_yDown);  
             // 检查当前的滑动状态  
             checkSlideState(moveDistanceX, moveDistanceY);  
+            LogUtil.LogMainListDrag("SlidingLayout  onInterceptTouchEvent   DisX(%d) DisY(%d)  State(%s)", 
+            		moveDistanceX, moveDistanceY, GetStateName(m_slideState));
             // 根据当前滑动状态决定如何偏移内容布局  
             switch (m_slideState) {  
             case SHOW_LEFT_VIEW:  
@@ -187,7 +239,8 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
             break;  
         case MotionEvent.ACTION_UP:  
             m_xUp = event.getRawX();  
-            int upDistanceX = (int) (m_xUp - m_xDown);  
+            int upDistanceX = (int) (m_xUp - m_xDown); 
+            LogUtil.LogMainListDrag("MoveDistance(%d) ", upDistanceX);
             if (m_isSliding) {  
                 // 手指抬起时，进行判断当前手势的意图  
                 switch (m_slideState) {  
@@ -231,27 +284,26 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
             }  
             recycleVelocityTracker();  
             break;  
-        }  
+        case MotionEvent.ACTION_CANCEL:
+        case MotionEvent.ACTION_OUTSIDE:
+        	m_isSliding = false;
+        	break;
+        } 
         /*
-        if (v.isEnabled()) {  
-            if (m_isSliding) {  
-                // 正在滑动时让控件得不到焦点  
-                unFocusBindView();  
-                return true;  
-            }  
-            if (m_isLeftViewVisible || m_isRightViewVisible) {  
-                // 当左侧或右侧布局显示时，将绑定控件的事件屏蔽掉  
-                return true;  
-            }  
-            return false;  
-        }  
-		*/       
+        if (m_isSliding) {  
+            // 正在滑动时让控件得不到焦点  
+            unFocusBindView();  
+            return true;  
+        } 
+        */
         return false;  
     }  
   
     
     //根据手指移动的距离，判断当前用户的滑动意图，然后给slideState赋值成相应的滑动状态值。 
     private void checkSlideState(int moveDistanceX, int moveDistanceY) {  
+    	LogUtil.LogMainListDrag("checkSlideState  m_isSliding(%b)  m_isLeftViewVisible(%b)  moveDistanceX(%d)  moveDistanceY(%d)", 
+    			m_isSliding, m_isLeftViewVisible, moveDistanceX, moveDistanceY);
         if (m_isLeftViewVisible) {  
             if (!m_isSliding && Math.abs(moveDistanceX) >= m_touchSlop && moveDistanceX < 0) {  
                 m_isSliding = true;  
@@ -294,8 +346,7 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
     }  
   
     
-    //在滑动过程中检查左侧菜单的边界值，防止绑定布局滑出屏幕。 
-      
+    //在滑动过程中检查左侧菜单的边界值，防止绑定布局滑出屏幕。       
     private void checkLeftViewBorder() {  
         if (m_contentLayoutParams.rightMargin > 0) {  
             m_contentLayoutParams.rightMargin = 0;  
@@ -399,7 +450,7 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
                     rightMargin = 0;  
                     break;  
                 }  
-                Log.i("doInBackground",  String.format("rightMargin(%d)", rightMargin));
+                LogUtil.LogMainListDrag(String.format("rightMargin(%d)", rightMargin));
                 publishProgress(rightMargin);  
                 sleep(15);  
             }  
@@ -409,14 +460,14 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
                 m_isLeftViewVisible = true;  
             }  
             m_isSliding = false;  
-            Log.i("doInBackground",  String.format("TaskEnd: rightMargin(%d)", rightMargin));
+            LogUtil.LogMainListDrag(String.format("TaskEnd: rightMargin(%d)", rightMargin));
             return rightMargin;  
         }  
   
         @Override  
         protected void onProgressUpdate(Integer... rightMargin) {  
             m_contentLayoutParams.rightMargin = rightMargin[0];  
-            Log.i("onProgressUpdate",  String.format("TaskEnd: rightMargin(%d)", rightMargin[0]));
+            LogUtil.LogMainListDrag(String.format("TaskEnd: rightMargin(%d)", rightMargin[0]));
             m_contentLayout.setLayoutParams(m_contentLayoutParams);  
             unFocusBindView();  
         }  
@@ -424,7 +475,7 @@ public class SlidingLayout extends RelativeLayout implements android.view.View.O
         @Override  
         protected void onPostExecute(Integer rightMargin) {  
             m_contentLayoutParams.rightMargin = rightMargin;  
-            Log.i("onPostExecute",  String.format("TaskEnd: rightMargin(%d)", rightMargin));
+            LogUtil.LogMainListDrag(String.format("TaskEnd: rightMargin(%d)", rightMargin));
             m_contentLayout.setLayoutParams(m_contentLayoutParams);  
         }  
     }  

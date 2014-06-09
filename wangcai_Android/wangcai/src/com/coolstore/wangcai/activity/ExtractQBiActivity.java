@@ -18,13 +18,12 @@ import com.coolstore.request.Requesters.Request_ExtractQBi;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
-import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.base.ManagedDialog;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
 import com.coolstore.wangcai.ctrls.ExtractLineCtrl;
 import com.coolstore.wangcai.ctrls.ExtractPrieceCtrl;
 import com.coolstore.wangcai.ctrls.TitleCtrl;
-import com.coolstore.wangcai.dialog.CommonDialog;
+import com.coolstore.wangcai.dialog.ExtractHintDialog;
 import com.coolstore.wangcai.dialog.HintBindPhoneDialog;
 
 public class ExtractQBiActivity extends ManagedDialogActivity 
@@ -134,23 +133,25 @@ public class ExtractQBiActivity extends ManagedDialogActivity
 			ActivityHelper.ShowToast(this, R.string.hint_no_enough_balance);
 			return;
 		}
-		float fAmount = (float)m_selectedSubItem.m_nAmount / 100.0f;
-		float fPrice = (float)m_selectedSubItem.m_nRealPrice / 100.0f;
-		String strText = null;
+		
+		String strAccount = String.format(getString(R.string.extract_dialog_qq_account), strPhoneNumber1);
+		
+		String strMoney = null;
 		if (m_selectedSubItem.m_nAmount == m_selectedSubItem.m_nRealPrice) {
-			strText = String.format("提现金额：%.0f元。", fAmount);
+			strMoney = String.format(getString(R.string.extract_dialog_qq_money), Util.FormatMoney(m_selectedSubItem.m_nRealPrice));
 		}
 		else {
-			strText = String.format("提现金额：%.0f元，返现%.0f元。", fAmount, fAmount - fPrice);
+			strMoney = String.format(getString(R.string.extract_dialog_qq_money_with_discount), 
+					Util.FormatMoney(m_selectedSubItem.m_nRealPrice), Util.FormatMoney(m_selectedSubItem.m_nRealPrice));
 		}
-		strText += getString(R.string.hint_extract);
 
 		if (m_hintExtractDialog == null) {
-			m_hintExtractDialog = new CommonDialog(this);
+			m_hintExtractDialog = new ExtractHintDialog(this);
 			RegisterDialog(m_hintExtractDialog);
 		}
-		m_hintExtractDialog.SetInfo(null, strText, getString(R.string.confirm_extract), getString(R.string.cancel_text));
+		m_hintExtractDialog.SetInfo(strAccount, strMoney);
 		m_hintExtractDialog.Show();
+
 
 	}
 	public void OnRequestComplete(int nRequestId, Requester req) {
@@ -177,7 +178,7 @@ public class ExtractQBiActivity extends ManagedDialogActivity
 	
 	private ExtractInfo.ExtractItem m_extractItem = null;
     private HintBindPhoneDialog m_bindPhoneDialog = null;
-    private CommonDialog m_hintExtractDialog = null;
+    private ExtractHintDialog m_hintExtractDialog = null;
 
     private ProgressDialog m_progressDialog = null;
     private ExtractInfo.ExtractSubItem m_selectedSubItem = null;

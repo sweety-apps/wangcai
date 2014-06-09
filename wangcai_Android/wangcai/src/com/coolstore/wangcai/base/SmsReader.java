@@ -3,6 +3,7 @@
 
 package com.coolstore.wangcai.base;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import com.coolstore.common.Util;
@@ -22,18 +23,18 @@ public class SmsReader extends BroadcastReceiver
 	public interface SmsEvent {
 		void OnNewSms(String strMsg);
 	}
-	private static ArrayList<SmsEvent> m_listSmsEvents;
+	private static ArrayList<WeakReference<SmsEvent>> m_listSmsEvents;
 	
 	
 	public static void AddListener(SmsEvent eventListener) {
 		if (m_listSmsEvents == null) {
-			m_listSmsEvents = new ArrayList<SmsEvent>();
+			m_listSmsEvents = new ArrayList<WeakReference<SmsEvent>>();
 		}
 
 		if (m_listSmsEvents.contains(eventListener)) {
 			return ;
 		}
-		m_listSmsEvents.add(eventListener);
+		m_listSmsEvents.add(new WeakReference<SmsEvent>(eventListener));
 	}
 	public static void RemoveListener(SmsEvent eventListener) {
 		if (m_listSmsEvents == null) {
@@ -64,8 +65,11 @@ public class SmsReader extends BroadcastReceiver
         	   if (Util.IsEmptyString(strMsg)) {
         		   continue;
         	   }
-        	   for (SmsEvent eventListener:m_listSmsEvents) {
-        		   eventListener.OnNewSms(strMsg);
+        	   for (WeakReference<SmsEvent> eventListener:m_listSmsEvents) {
+        		   SmsEvent listener = eventListener.get();
+        		   if (listener != null) {
+        			   listener.OnNewSms(strMsg);
+        		   }
         		}        	   
            }
        }

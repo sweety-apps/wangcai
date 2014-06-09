@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content" >
+	 <RelativeLayout 
+	    android:id="@+id/top_frame"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="@dimen/common_margin_left" 
+		android:paddingRight="@dimen/common_margin_right" >
+		<ImageView
+			android:id="@+id/icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/setting_message"
+			android:layout_centerVertical="true"  />	
+		<TextView 
+			android:id="@+id/title"
+			android:textSize="24sp"
+			android:textColor="#000000"
+			android:text="@string/setting_push_title"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/icon"
+			android:layout_marginLeft="10dp"
+			android:layout_centerVertical="true" 
+		/> 	
+		<ToggleButton 
+			android:id="@+id/on_off"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:text=""
+			android:textOn=""
+			android:textOff=""
+			android:background="@drawable/toggle_button"
+			android:layout_centerVertical="true" />
+	</RelativeLayout> 	
+	<TextView 
+		android:id="@+id/sub_text"
+		android:textSize="13sp"
+		android:textColor="#000000"
+		android:text="@string/setting_push_text"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/common_margin_left" 
+		android:layout_marginTop="16dp"
+		android:layout_below="@id/top_frame" />
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="@drawable/line"
+		android:layout_below="@id/sub_text"
+		android:layout_marginTop="20dp" />	 		
+</RelativeLayout>	
+
+
+ 

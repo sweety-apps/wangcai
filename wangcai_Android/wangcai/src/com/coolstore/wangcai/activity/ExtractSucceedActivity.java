@@ -27,7 +27,7 @@ public class ExtractSucceedActivity extends WangcaiActivity{
     	String strOrderId = intent.getStringExtra(ActivityHelper.sg_strOrderId);
     	ViewHelper.SetTextStr(this, R.id.order_number, strOrderId);
     	
-    	findViewById(R.id.return_button).setOnClickListener(new OnClickListener() {
+    	findViewById(R.id.exit_button).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {		
 				ExtractSucceedActivity.this.finish();

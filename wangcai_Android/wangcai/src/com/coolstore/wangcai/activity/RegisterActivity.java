@@ -17,6 +17,8 @@ import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.common.BuildSetting;
+import com.coolstore.common.Config;
+import com.coolstore.common.TimerManager;
 import com.coolstore.common.ViewHelper;
 import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.base.SmsReader;
@@ -38,9 +40,9 @@ import android.widget.TextView;
 
 public class RegisterActivity extends WangcaiActivity implements OnClickListener, 
 														RequestManager.IRequestManagerCallback,
+														TimerManager.TimerManagerCallback,
 														SmsReader.SmsEvent{
 
-	private final static int sg_nUpdateMsg = 1818;
 	private final static int sg_nTimerElapse = 1000;
 	private final static int sg_nTotalCountDownSeconds = 60;
 	
@@ -257,70 +259,60 @@ public class RegisterActivity extends WangcaiActivity implements OnClickListener
     	super.onDestroy();
     }
 
-    private static class TimerHandler extends Handler {
-    	TimerHandler(RegisterActivity owner) {
-    		m_owner = new WeakReference<RegisterActivity>(owner);
-    	}
-		@Override  
-		public void handleMessage(Message msg) {  
-			if (msg.what == sg_nUpdateMsg) {
-				RegisterActivity activity = m_owner.get();
-				if (activity == null) {
-					return;
-				}
-				activity.m_nRemainSeconds--;
-				if (activity.m_nRemainSeconds < 0) {
-					activity.StopTimer();
-					activity.findViewById(R.id.resend_text).setVisibility(View.VISIBLE);
-					activity.findViewById(R.id.count_down_text).setVisibility(View.GONE);
-					return;
-				}
-				String strText = String.format(activity.getString(R.string.bind_phone_count_down), activity.m_nRemainSeconds);
-		    	TextView countDownText = (TextView)activity.findViewById(R.id.count_down_text);
-				countDownText.setText(strText);
-			}  
-		}  
-		private WeakReference<RegisterActivity> m_owner;
-    }
-    private void StartTimer() {   
-    	m_nRemainSeconds = sg_nTotalCountDownSeconds;
-    	if (m_handler == null) {
-	    	m_handler = new TimerHandler(this);
-    	}
 
-    	if (m_timerTask == null) {  
-    		m_timerTask = new TimerTask() {  
-    			@Override  
-    			public void run() {
-	    			sendMessage(sg_nUpdateMsg);  
-    			}
-    		}; 
-    	} 
-    	if (m_timer == null) {  
-    		m_timer = new Timer();  
-        }  
-    	m_timer.schedule(m_timerTask, 0, sg_nTimerElapse);
+    private void StartTimer() {
+    	m_nRemainSeconds = sg_nTotalCountDownSeconds;
+
+    	m_nCountDownTimerId = TimerManager.GetInstance().StartTimer(sg_nTimerElapse, this);
     }
     private void StopTimer() {
-    	if (m_timer != null) {  
-    		m_timer.cancel();  
-    		m_timer = null;  
-		}  
-		 
-		if (m_timerTask != null) {  
-			m_timerTask.cancel();  
-			m_timerTask = null;  
-		}
+    	if (m_nCountDownTimerId > 0) {
+    		TimerManager.GetInstance().StopTimer(m_nCountDownTimerId);
+    		m_nCountDownTimerId = 0;
+    	}
 	}
-    public void sendMessage(int id){  
-        if (m_handler != null) {  
-            Message message = Message.obtain(m_handler, id);     
-            m_handler.sendMessage(message);   
-        }  
-    } 
+
+	@Override
+	public void OnTimer(int nId, int nHitTimes) {
+		// TODO Auto-generated method stub
+		m_nRemainSeconds--;
+		if (m_nRemainSeconds < 0) {
+			StopTimer();
+			findViewById(R.id.resend_text).setVisibility(View.VISIBLE);
+			findViewById(R.id.count_down_text).setVisibility(View.GONE);
+			return;
+		}
+		String strText = String.format(getString(R.string.bind_phone_count_down), m_nRemainSeconds);
+    	TextView countDownText = (TextView)findViewById(R.id.count_down_text);
+		countDownText.setText(strText);
+	}
     
+    private static class MsgHandler extends Handler {
+    	public MsgHandler(RegisterActivity owner) {
+    		m_owner = new WeakReference<RegisterActivity>(owner);
+    	}
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == sg_nNewSms) {
+                Bundle b = msg.getData();
+                String strCode = b.getString("Code");
 
+                RegisterActivity owner = m_owner.get();
+                if (owner != null) {
+	                EditText editCaptcha = (EditText)owner.findViewById(R.id.captcha_edit);
+	                editCaptcha.setText(strCode);
+                }
+            }
+            super.handleMessage(msg);
+        }
+		private WeakReference<RegisterActivity> m_owner;
+    }
+    
+    private Handler m_msgHandler = new MsgHandler(this);
+    
+    private final static int sg_nNewSms = 1212;
 
+    
     //您的验证码是：【22425】。请不要把验证码泄露给其他人。如非本人操作，可不用理会！【旺财】
   	public void OnNewSms(String strMsg){
   		//收到短信
@@ -339,19 +331,24 @@ public class RegisterActivity extends WangcaiActivity implements OnClickListener
   	   int nBeginIndex = strMsg.indexOf("【", nIndex);
   	   int nEndIndex = strMsg.indexOf("】", nBeginIndex);
   	   String strCode = strMsg.substring(nBeginIndex + 1, nEndIndex);
+  	   
 
-         EditText editCaptcha = (EditText)this.findViewById(R.id.captcha_edit);
-         editCaptcha.setText(strCode);
+		Message msg = new Message();
+		msg.what = sg_nNewSms;
+		Bundle b = new Bundle();
+		b.putString("Code",  strCode);
+		msg.setData(b);
+		m_msgHandler.sendMessage(msg);
+
   	}
   	
   
     //data member
     private int m_nRemainSeconds = sg_nTotalCountDownSeconds;
-    private Handler m_handler = null;
-    private Timer m_timer = null;  
-    private TimerTask m_timerTask = null;  
     private String m_strPhoneNumber;
     private ProgressDialog m_progressDialog;
 	//private ViewDrawer m_viewerDrawer = new ViewDrawer();
 	private String m_strToken;
+	private int m_nCountDownTimerId = 0;
+
 }

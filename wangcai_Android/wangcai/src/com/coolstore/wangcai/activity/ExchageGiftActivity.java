@@ -26,7 +26,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class ExchageGiftActivity extends ManagedDialogActivity implements ExchageGiftItem.ExchageItemEvent, RequestManager.IRequestManagerCallback{
@@ -102,7 +101,7 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
 			}
 		}
 		else if (req instanceof Request_GetExchangeCode) {
-			Request_GetExchangeCode detailReq = (Request_GetExchangeCode)req;
+			//Request_GetExchangeCode detailReq = (Request_GetExchangeCode)req;
 			if (nResult == 0) {				
 				//ºı”‡∂Ó
 				WangcaiApp.GetInstance().ChangeBalance(-m_selectedExchangeItem.m_nPrice);

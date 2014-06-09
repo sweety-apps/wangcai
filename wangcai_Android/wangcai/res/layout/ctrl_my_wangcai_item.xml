@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content" >
     
-   <ImageView
-		android:id="@+id/logo_icon"
-		android:layout_marginLeft="15dp"
-		android:layout_marginTop="18dp"
-		android:layout_marginBottom="18dp"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-   />  
-   <ImageView
-		android:id="@+id/lock_icon"
-		android:layout_alignTop="@id/logo_icon"
-		android:layout_alignLeft="@id/logo_icon"
-		android:background="@drawable/mywangcai_lock"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:visibility="gone"
-   />
    <RelativeLayout
+       	android:id="@+id/icon_frame"
+		android:layout_marginLeft="15dp"
+		android:layout_centerVertical="true"
+       	android:layout_width="wrap_content"
+       	android:layout_height="wrap_content" >
+	   <ImageView
+			android:id="@+id/logo_icon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+	   />  
+	   <ImageView
+			android:id="@+id/lock_icon"
+			android:background="@drawable/mywangcai_lock"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:visibility="gone"
+			android:layout_centerInParent="true"
+	   />
+   </RelativeLayout>
+   <RelativeLayout
+       android:id="@+id/text_frame"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-	   android:layout_toRightOf="@id/logo_icon"
+	   android:layout_toRightOf="@id/icon_frame"
 	   android:layout_centerVertical="true"
 	   android:layout_marginLeft="15dp"
 	>
@@ -34,7 +39,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 	  />
-	
 	  <TextView
 		android:id="@+id/unlock_level"
 		android:textSize="15sp"
@@ -42,6 +46,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/level_name"
+		android:layout_marginTop="20dp"
 		android:layout_alignLeft="@id/level_name"
 	  />
 	  <TextView
@@ -53,5 +58,12 @@
 		android:layout_toRightOf="@id/unlock_level"
 	  />
 	</RelativeLayout>
+
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		android:background="@drawable/line"
+		android:layout_marginTop="100dp"
+		android:layout_alignParentTop="true" />
  
 </RelativeLayout>

@@ -148,13 +148,13 @@ public class AppWallHelper {
 				public void onDismissScreen() {				
 				}
 				@Override
-				public void onFailedToReceiveAd(PBException arg0) {
-				}
-				@Override
 				public void onPresentScreen() {
 				}
 				@Override
 				public void onReceiveAd() {
+				}
+				@Override
+				public void onFailedToReceiveAd(PBException arg0) {					
 				}
 	    	});
 	    	m_chukongAd.loadAd(new AdRequest());

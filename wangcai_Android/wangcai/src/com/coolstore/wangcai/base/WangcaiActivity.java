@@ -1,7 +1,10 @@
 package com.coolstore.wangcai.base;
 
+import cn.jpush.android.api.JPushInterface;
+
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.PopupWindow;
@@ -27,11 +30,14 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
     protected void onPause() {
     	WangcaiApp.GetInstance().SetForceGround(false);
     	m_bVisible = false;
+
+    	JPushInterface.onPause(this);
 		super.onPause();
 	}
 	protected void onResume() {
 		WangcaiApp.GetInstance().SetForceGround(true);
 		m_bVisible = true;
+    	JPushInterface.onResume(this);
 		super.onResume();
 	}
 	

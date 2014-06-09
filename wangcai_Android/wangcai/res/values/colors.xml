@@ -5,5 +5,6 @@
 	<color name="header_line_bkg_color">#E4E4E4</color>
 	<color name="gray_text_color">#969696</color>
 	<color name="split_line_color">#D0D0D0</color>
+	<color name="main_split_line_color">#EEEEEE</color>
 	<color name="default_text_color">#ffffff</color>
 </resources>

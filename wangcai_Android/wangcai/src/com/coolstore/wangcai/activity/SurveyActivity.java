@@ -62,7 +62,7 @@ public class SurveyActivity extends WangcaiActivity implements RequestManager.IR
     	return null;
     }
     private void InitView() {
-    	this.findViewById(R.id.confirm_button).setOnClickListener(this);
+    	//this.findViewById(R.id.confirm_button).setOnClickListener(this);
     	
     	Intent it = getIntent();
     	int nAge = it.getIntExtra(ActivityHelper.sg_strAge, 0);

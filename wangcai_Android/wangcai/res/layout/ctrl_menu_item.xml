@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent" 
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp" >
+    android:layout_height="match_parent" >
     
    <ImageView
 		android:id="@+id/option_item_icon"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_centerVertical="true"
-		android:layout_marginLeft="@dimen/common_margin_left"
-		android:paddingTop="5dp"
-		android:paddingRight="5dp"
+		android:layout_marginLeft="@dimen/main_menu_margin_left"
 		/>
 	<TextView 
 		android:id="@+id/option_item_text"
 		android:text="@string/balance"
+		android:textSize="18sp"
+		android:textColor="#EEEEEE"
 		android:layout_marginLeft="10dp"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_centerVertical="true"
 		android:layout_toRightOf="@id/option_item_icon"
 	/> 
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		android:layout_alignLeft="@id/option_item_icon"
+		android:background="@drawable/menu_split_line"
+		android:layout_marginTop="50dp"
+		android:layout_alignParentTop="true" />
+ 
 </RelativeLayout>

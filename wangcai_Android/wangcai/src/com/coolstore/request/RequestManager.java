@@ -111,7 +111,7 @@ public class RequestManager {
 	}
 	
 	public int SendRequest(Requester req, boolean bOverwrite, IRequestManagerCallback pCallback) {
-		//todo 去重
+		//todo   去重
 		int nRequestId = IdGenerator.NewId();
 		req.SetId(nRequestId);
 		RequestRecord pRecord = new RequestRecord(nRequestId, req, pCallback);
@@ -124,8 +124,13 @@ public class RequestManager {
 	}
 
 	private String GetCookie() {
-		String strCookie = String.format("%s; os=android; net=%s; app=%s; ver=%s; local_ip=%s", 
-				SystemInfo.GetPhoneModel(), SystemInfo.GetNetworkType(), BuildSetting.sg_strAppName, BuildSetting.sg_strVersion, SystemInfo.GetIp());
+		String strCookie = String.format("p=android_%s_%s; net=%s; app=%s; ver=%s; local_ip=%s", 
+				SystemInfo.GetSystemVersion(), 
+				SystemInfo.GetPhoneModel(), 
+				SystemInfo.GetNetworkType(), 
+				BuildSetting.sg_strAppName, 
+				BuildSetting.sg_strVersion, 
+				SystemInfo.GetIp());
 
 		//strCookie = "iPhone 5s_7.0.4; os=android; net=wifi; app=wangcai; ver=2.2; local_ip=10.66.149.88";
 		return strCookie;

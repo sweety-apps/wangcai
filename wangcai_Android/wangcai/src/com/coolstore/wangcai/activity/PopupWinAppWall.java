@@ -98,9 +98,14 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
 			if (wallInfo == null) {
 				continue;
 			}
-			wallInfo.SetReommand(info.IsRecommand());
+			boolean bIsRecommand = info.IsRecommand();
+			wallInfo.SetReommand(bIsRecommand);
 			
 			ImageButton button = CreateButton(wallInfo);
+			bIsRecommand = true;
+			if (bIsRecommand) {
+				button.setImageResource(R.drawable.app_tip_recommand);
+			}
     		if (!info.IsInMorePanel()) {
     			defaultPanel.addView(button,  layoutParams);
     		}

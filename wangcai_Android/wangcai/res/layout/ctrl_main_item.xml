@@ -35,7 +35,8 @@
 		/> 
 	</LinearLayout>
 	<RelativeLayout
-		android:layout_alignParentRight="true"	
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"	
 		android:layout_width="100dp"
 		android:layout_height="fill_parent" >
 	   <ImageView
@@ -57,11 +58,10 @@
 		android:layout_marginRight="22dp"
 	/> 
 	<!-- 分割线 -->
-   <ImageView
+	<ImageView
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:src="@drawable/menu_icon_line"
-		android:visibility="gone"
-		 />
+		android:layout_height="3dp"
+		android:background="@drawable/line"
+		android:layout_marginTop="80dp"
+		android:layout_alignParentTop="true" />
 </RelativeLayout>

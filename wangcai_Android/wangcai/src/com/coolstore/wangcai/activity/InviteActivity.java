@@ -46,7 +46,8 @@ public class InviteActivity extends WangcaiActivity implements RequestManager.IR
 
         	ImageView qrcodeView = (ImageView)this.findViewById(R.id.qrcode);
             
-        	qrcodeView.setImageBitmap(Util.CreateQRCodeBitmap(strInvideCode, getResources().getDimensionPixelSize(R.dimen.qrcode_size)));
+        	String strInviteUrl = String.format(Config.GetInviteUrl(), strInvideCode);
+        	qrcodeView.setImageBitmap(Util.CreateQRCodeBitmap(strInviteUrl, getResources().getDimensionPixelSize(R.dimen.qrcode_size)));
     	}
 
     	//ÑûÇëÁ´½Ó
@@ -73,7 +74,7 @@ public class InviteActivity extends WangcaiActivity implements RequestManager.IR
     		
     	}
     	else if (nId == R.id.view_detail) {
-    		ActivityHelper.ShowWebViewActivity(this, getString(R.string.invite_rull_detail_title), Config.GetWebServiceUrl() + "123");
+    		ActivityHelper.ShowWebViewActivity(this, getString(R.string.invite_rull_detail_title), Config.GetInviteRuleUrl());
     	    //NSString* url = [[[NSString alloc] initWithFormat:@"%@123", WEB_SERVICE_VIEW] autorelease];
     	    
     	   // WebPageController* controller = [[[WebPageController alloc] init:@""

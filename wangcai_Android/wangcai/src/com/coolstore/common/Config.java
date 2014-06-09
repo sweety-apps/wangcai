@@ -158,17 +158,35 @@ public class Config {
 		return "http://www.getwangcai.com/?code=%s&name=wangcai";				
 	}
 	
-	public static String GetWebServiceUrl() {
-		return "http://service.meme-da.com/index.php/mobile/shouce/view/h_id/";
+	private final static String sg_strWebServiceUrl = "http://service.meme-da.com/index.php/mobile/shouce/view/h_id/";
+	
+	//邀请规则
+	public static String GetInviteRuleUrl() {
+		return sg_strWebServiceUrl + "123";
 	}
 	
+	//积分墙规则
+	public static String GetAppWallRuleUrl() {
+		return sg_strWebServiceUrl + "132";
+	}
+
+	//使用条款
+	public static String GetLineseUrl() {
+		return sg_strWebServiceUrl + "128";
+	}
 	
+	//客服帮助
+	public static String GetHelpUrl() {
+		return "http://service.meme-da.com/index.php/mobile/shouce/list/hc_id/76";
+	}
+	
+	// 交易明细
 	public static String GetTransactionDetailUrl() {
 		if (m_enumEvnType == EnvType.EnvType_Dev) {
-			return "http://dev.meme-da.com/web/exchange_info2.php";
+			return "http://dev.meme-da.com/android_web/exchange_info2.php";
 		}
 		else {
-			return "http://wangcai.meme-da.com/web/exchange_info2.php";
+			return "http://wangcai.meme-da.com/android_web/exchange_info2.php";
 		}
 	}
 
@@ -179,8 +197,14 @@ public class Config {
 	public static String sg_strYoumiAppId = "bc15bcaee2f5d263";
 	public static String sg_strYoumiAppSecret = "6306937f74dd8f5f";
 
-	//触控	
+	//触控
+	//1DA13AE6B85966B4172AB369B21610D3
 	public static String sg_strPunchboxPlacementId = "818634143n6msqe";
+	
+
+	//============================================================================================
+	public static String sg_strPushKeyName_NewAward = "NewAward";
+	
 
 	//============================================================================================
 	

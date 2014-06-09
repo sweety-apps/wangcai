@@ -13,7 +13,11 @@ import com.coolstore.wangcai.dialog.HintNetwordErrorDialog;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
 
 public class StartupActivity extends ManagedDialogActivity {
 	
@@ -36,9 +40,24 @@ public class StartupActivity extends ManagedDialogActivity {
 
         app.Login();
 
+    	ImageView image = (ImageView) findViewById(R.id.loading);
+    	image.setBackgroundResource(R.anim.ani_loading);
+    	m_loadingAnimationDrawable = (AnimationDrawable)  image.getBackground(); 
+    	image.setVisibility(View.VISIBLE);
+    	
+    	Handler handler = new Handler();   
+    	handler.postDelayed(new Runnable() { 
+            public void run() { 
+            	m_loadingAnimationDrawable.stop();
+				m_loadingAnimationDrawable.start();
+            } 
+        }, 50);
      }
     
     public void OnLoginComplete(int nResult, String strMsg) {
+    	m_loadingAnimationDrawable.stop();
+    	findViewById(R.id.loading).setVisibility(View.GONE);
+    	
         WangcaiApp app = WangcaiApp.GetInstance();
     	if (nResult == 0) {
     		if (app.NeedForceUpdate()) {
@@ -75,10 +94,11 @@ public class StartupActivity extends ManagedDialogActivity {
     //对话框返回
 	public void OnDialogFinish(ManagedDialog dlg, int inClickedViewId) {
 		if (m_hintNetworkErrorDialog != null && dlg.GetDialogId() == m_hintNetworkErrorDialog.GetDialogId()) {
-			//绑定手机
+			//重新登录
 			if (inClickedViewId == DialogInterface.BUTTON_POSITIVE) {
 		        WangcaiApp app = WangcaiApp.GetInstance();
 		        app.Login();
+				m_loadingAnimationDrawable.start();
 			}
 		}
 		else if (m_hintLoginErrorDialog != null && dlg.GetDialogId() == m_hintLoginErrorDialog.GetDialogId()) {
@@ -88,6 +108,8 @@ public class StartupActivity extends ManagedDialogActivity {
 			}
 		}
 	}
+	
+	AnimationDrawable m_loadingAnimationDrawable;
     HintNetwordErrorDialog m_hintNetworkErrorDialog;
     HintLoginErrorDialog m_hintLoginErrorDialog;
 }

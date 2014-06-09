@@ -38,9 +38,21 @@
 	<string name="extract_order_number_label">单号：</string>
 	<string name="extract_succeed_tip">注：提现在一个工作日内到账，请耐心等待</string>
 
+	<string name="extract_dialog_phone_account">充值账号：%1$s</string>
+	<string name="extract_dialog_phone_money">充值金额：%1$s元</string>
+	<string name="extract_dialog_phone_money_with_discount">充值金额：%1$s元，返现%1$s元</string>
+
+	<string name="extract_dialog_alipay_account">提现账号：%1$s</string>
+	<string name="extract_dialog_alipay_money">提现金额：%1$s元</string>
+	<string name="extract_dialog_alipay_money_with_discount">提现金额：%1$s元，返现%1$s元</string>
+	
+	<string name="extract_dialog_qq_account">充值QQ号：%1$s</string>
+	<string name="extract_dialog_qq_money">充值金额：%1$s元</string>
+	<string name="extract_dialog_qq_money_with_discount">充值金额：%1$s元，返现%1$s元</string>
+
 	<string name="level_label">等级：</string>
 	<string name="level_unit">级</string>	
-	<string name="level_privilege_tip">可获得%1$s%%额外的红包</string>
+	<string name="level_privilege_tip">可获得%1$d%%额外的红包</string>	 
 	
 	<string name="write_invite_code_tip">输入邀请码</string>
 	<string name="my_invite_code_tip">我的邀请码</string>
@@ -127,6 +139,8 @@
 	<string name="hint_exchange_succeed">恭喜您，换购请求已确认，请您耐心等待。</string>
 	<string name="exchange_complete">交易完成</string>
 
+	<string name="help_actiity_title">常见问题</string>
+
 	<string name="user_info_title">填写信息</string>
 	<string name="my_infomation">我的信息</string>
 	<string name="my_infomation_hint">信息越准确，任务越符合你的喜好</string>
@@ -148,11 +162,13 @@
 	<string name="hint_select_age">请选择年龄</string>
 	<string name="hint_select_sex">请选择性别</string>
 
+	<string name="invite_activity_button">分享赚红包</string>
+
 	<string name="write_invaite_code_get_award">领取2元</string>
 	<string name="task_level_limit_hint">该任务需要等级达到%1$d级才能进行</string>
 
 	<string name="wangcai_share">旺财分享</string>
-	<string name="share_content">我用旺财赚了%1$f元，你也可以的，填我的邀请码%2$s可领取2元红包。旺财下载地址:%3$s</string>
+	<string name="share_content">我用旺财赚了%1$s元，你也可以的，填我的邀请码%2$s可领取2元红包。旺财下载地址:%3$s</string>
 
 	<string name="phone_bill">手机话费</string>
 	<string name="paypal">支付宝</string>
@@ -198,16 +214,14 @@
 	
 	<string name="return_text">返回</string>
 
-	<string name="youmi_app_wall">有米体验中心</string>
-	<string name="chukong_app_wall">触控体验中心</string>
-	<string name="mopan_app_wall">磨盘体验中心</string>
-	<string name="midi_app_wall">米迪体验中心</string>
-	<string name="jupeng_app_wall">巨鹏体验中心</string>
-	
-	
-	<string name="test_return_text">返回</string>
-	<string name="test_invlide_code">XDFEFS</string>
-	<string name="test_invlide_url">http://www.google.com</string>
-	<string name="test_share_button">分享赚红包</string>
-	<string name="test_get_reword">领取2元</string>
+	<string name="setting_push_title">接受消息</string>
+	<string name="setting_push_text">有任务的时候通过消息提醒</string>
+
+	<string name="setting_sournd_title">声音</string>
+	<string name="setting_sournd_text">有新任务的时候通过声音提醒</string>
+
+	<string name="setting_version_title">版本号：%1$s</string>
+	<string name="setting_version_text">使用条款和隐私策略</string>
+
+	<string name="load_error">加载失败</string>
 </resources>

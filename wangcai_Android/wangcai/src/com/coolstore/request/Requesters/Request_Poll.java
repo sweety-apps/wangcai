@@ -8,6 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.coolstore.common.Config;
 import com.coolstore.common.Util;
 import com.coolstore.request.Requester;
@@ -28,6 +30,8 @@ public class Request_Poll extends Requester{
 	public boolean ParseResponse(JSONObject rootObject) {
 		
     	m_nOfferWallIncome = Util.ReadJsonInt(rootObject, "offerwall_income");
+
+		Log.i("PollIncome", String.format("POLL----OfferWallInfo(%d)", m_nOfferWallIncome));
     	m_nCurrentLevel = Util.ReadJsonInt(rootObject, "level");
     	m_nCurrentExperience = Util.ReadJsonInt(rootObject, "exp_current");
     	m_nNextLevelExperience = Util.ReadJsonInt(rootObject, "exp_next_level");

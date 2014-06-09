@@ -74,11 +74,16 @@ public class ExtractPrieceCtrl extends LinearLayout implements View.OnClickListe
     	
     }
     public void SetDiscountMoney(int nDiscountMoney) {
-    	TextView discountText = (TextView)this.findViewById(R.id.off);
-    	String strPattern = Html.fromHtml("返现<font color=\"#ff0000\">%s</font>元").toString();
-    	String strText = String.format(strPattern, Util.FormatMoney(nDiscountMoney));
-    	discountText.setHint(strText);
-    	discountText.setVisibility(View.VISIBLE);
+    	if (nDiscountMoney <= 0) {
+    		this.findViewById(R.id.off).setVisibility(View.GONE);
+    	}
+    	else {
+    		TextView discountText = (TextView)this.findViewById(R.id.off);
+	    	String strPattern = Html.fromHtml("返现<font color=\"#ff0000\">%s</font>元").toString();
+	    	String strText = String.format(strPattern, Util.FormatMoney(nDiscountMoney));
+	    	discountText.setHint(strText);
+	    	discountText.setVisibility(View.VISIBLE);
+    	}
     }
     public void SetIsHot(boolean bIsHot) {
     	if (bIsHot) {

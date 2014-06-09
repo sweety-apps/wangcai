@@ -17,6 +17,7 @@ import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.TimerManager;
+import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
 import com.coolstore.wangcai.base.ManagedDialog;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
@@ -31,6 +32,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,12 +71,12 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
         InitView();
 
 		 JPushInterface.init(getApplicationContext());
-     }	
+     }
     
     private void InitTaskList(TaskListInfo taskListInfo, boolean bShowCompleteTask) {
-        
         ViewGroup taskListContainer = (ViewGroup)this.findViewById(R.id.tasks_list_container);
 
+        m_listCompleteTasks.clear();
         int nTaskCount = taskListInfo.GetTaskCount();
         for (int i = 0; i < nTaskCount; ++i) {
         	TaskListInfo.TaskInfo taskInfo = taskListInfo.GetTaskInfo(i);
@@ -135,7 +137,13 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 				WangcaiApp.GetInstance().Login();
 			}
     	});
-    	m_pullRefreshScrollView.scrollTo(0, 0);
+
+    	Handler handler = new Handler();   
+    	handler.postDelayed(new Runnable() { 
+            public void run() { 
+            	m_pullRefreshScrollView.scrollTo(0, 0);
+            } 
+        }, 10);
     	
     	//提取现金按钮
     	this.findViewById(R.id.extract_cash).setOnClickListener(this);
@@ -170,12 +178,12 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
         //任务列表
         InitTaskList(taskListInfo, false);
     }
-    
+
+    private final static int sg_listNumberResId[] = {R.drawable.yue_0, R.drawable.yue_1, R.drawable.yue_2, R.drawable.yue_3, 
+        	R.drawable.yue_4, R.drawable.yue_5, R.drawable.yue_6, R.drawable.yue_7, R.drawable.yue_8, R.drawable.yue_9};
+    private final static int sg_viewIdResId[] = {R.id.money_dot2, R.id.money_dot1, R.id.money_4, R.id.money_3, R.id.money_2, R.id.money_1};
+    private final static int nViewCount = sg_viewIdResId.length;
     private void SetBalance(int nBalance) {
-        final int sg_listNumberResId[] = {R.drawable.yue_0, R.drawable.yue_1, R.drawable.yue_2, R.drawable.yue_3, 
-            	R.drawable.yue_4, R.drawable.yue_5, R.drawable.yue_6, R.drawable.yue_7, R.drawable.yue_8, R.drawable.yue_9};
-        final int sg_viewIdResId[] = {R.id.money_dot2, R.id.money_dot1, R.id.money_4, R.id.money_3, R.id.money_2, R.id.money_1};
-        final int nViewCount = sg_viewIdResId.length;
  
         for (int i = 0; i < nViewCount && nBalance > 0; i++, nBalance /= 10) {
         	int nValue = nBalance % 10;
@@ -236,7 +244,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 		    		ConfigCenter.GetInstance().SetHasClickMenu(true);		    	
 		    	}
 		    	
-				ShowMenu(true);
+				ShowMenu(!m_slidingLayout.isLeftLayoutVisible());
 				return ;		//注意:直接返回
 			case R.id.exchange_gift_button:
 				//超值兑换
@@ -286,7 +294,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 
 					if (m_hintTaskLevelDialog == null) {
 						m_hintTaskLevelDialog = new HintTaskLevelDialog(this, nCurrentLevel);
-						RegisterDialog(m_bindPhoneDialog);
+						RegisterDialog(m_hintTaskLevelDialog);
 					}
 					m_bindPhoneDialog.Show();
 			
@@ -313,6 +321,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 		case TaskListInfo.TaskTypeOfferWall:
 			//积分墙
 			//ActivityHelper.ShowExtractSucceed(this, "xxsdf", "234324U234LKJLSDF23423423423fsgfsSFS234234");
+			//ActivityHelper.ShowRegisterActivity(this);
 			ActivityHelper.ShowAppWall(this, findViewById(R.id.main_wnd));
 			
 			//PopupWinLevelUpgrate appWall = new PopupWinLevelUpgrate(this, 4, 200);
@@ -340,7 +349,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			
 			String strInviteCode = userInfo.GetInviteCode();
 			String strInviteUrl = userInfo.GetInviteTaskUrl();
-			String strMsg = String.format(getString(R.string.share_content), (float)userInfo.GetBalance() / 100.0f, strInviteCode, strInviteUrl);
+			String strMsg = String.format(getString(R.string.share_content), Util.FormatMoney(userInfo.GetTotalIncome()) , strInviteCode, strInviteUrl);
 			oks.setText(strMsg);
 			oks.show(this.getApplicationContext());
 			break;
@@ -542,19 +551,18 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
    	return nIconId;
    }
    private void InsertTaskItem(ViewGroup parentView, String strItemName, int nIconId, String strTitle, String strTip, int nMoneyIconId, Boolean bComplete) {
-   	MainItem mainItem = new MainItem(strItemName);
-   	View itemView = mainItem.Create(getApplicationContext(), nIconId, strTitle, strTip, nMoneyIconId, bComplete);
-   	mainItem.SetClickEventLinstener(this);
-   	parentView.addView(itemView);
+		MainItem mainItem = new MainItem(strItemName);
+		View itemView = mainItem.Create(getApplicationContext(), nIconId, strTitle, strTip, nMoneyIconId, bComplete);
+		mainItem.SetClickEventLinstener(this);
+		parentView.addView(itemView);
    }
    private void InsertTaskItem(ViewGroup mainClient, TaskListInfo.TaskInfo taskInfo) {
-   	InsertTaskItem(mainClient, String.valueOf(taskInfo.m_nTaskType), GetItemIcon(taskInfo), 
-   			taskInfo.m_strTitle, taskInfo.m_strDescription, GetMoneyIconId(taskInfo), TaskListInfo.IsComplete(taskInfo));
+   		InsertTaskItem(mainClient, String.valueOf(taskInfo.m_nTaskType), GetItemIcon(taskInfo), 
+   		taskInfo.m_strTitle, taskInfo.m_strDescription, GetMoneyIconId(taskInfo), TaskListInfo.IsComplete(taskInfo));
    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
     	ShowMenu(true);
         return true;

@@ -24,7 +24,6 @@ public class TimerManager {
 
 
     private static class TimerHandler extends Handler {
-    	
     	TimerHandler(int nId, TimerManagerCallback callback) {
     		m_nId = nId;
     		m_callback = new WeakReference<TimerManagerCallback>(callback);

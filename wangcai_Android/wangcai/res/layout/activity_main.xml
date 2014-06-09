@@ -12,13 +12,19 @@
         android:orientation="vertical"
 		android:layout_alignParentLeft="true"
        >
-		<TextView 
-			android:text="@string/menu"
+      	 <ImageView
+			android:background="@drawable/main_menu_title_text"
+			android:layout_marginTop="18dp"
+			android:layout_marginBottom="18dp"
+			android:layout_marginLeft="@dimen/main_menu_margin_left"
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center_vertical|right"
-		/> 
-    </LinearLayout>
+			android:layout_height="wrap_content" />
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="3dp"
+			android:background="@drawable/menu_split_line"
+			android:layout_alignParentTop="true" />
+	    </LinearLayout>
 	<LinearLayout android:id="@+id/main_client"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
@@ -64,10 +70,12 @@
 
 			<ImageButton 
 				android:id="@+id/exchange_gift_button"
+				android:background="@android:color/transparent"
 				android:src="@drawable/head_right_icon" 
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="-77px"
+				android:layout_marginTop="-50px"
+				android:layout_marginRight="10dp"
 				android:layout_alignParentRight="true"
 			/> 
 		</RelativeLayout>
@@ -165,7 +173,7 @@
 				<!--签到捡钱，提取现金-->
 				<RelativeLayout android:id="@+id/tool_bar"
 					android:layout_width="fill_parent"
-					android:layout_height="30dp"
+					android:layout_height="38dp"
 					android:background="#1684b9"
 				>
 					
@@ -218,6 +226,8 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:textSize="35sp"
+						android:layout_marginBottom="-8dp"
+						android:layout_marginRight="14dp"
 						android:layout_toLeftOf="@id/task_balance_unit"
 						android:layout_alignBottom="@id/task_balance_unit"
 					/> 
@@ -226,6 +236,7 @@
 						android:text="@string/remain_task_money"		
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
+						android:layout_marginRight="14dp"
 						android:layout_toLeftOf="@id/remain_taks_balance"
 						android:layout_alignBottom="@id/task_balance_unit"
 					/> 
@@ -238,6 +249,11 @@
 						android:layout_alignBottom="@id/task_balance_unit"
 					/>		
 				 </RelativeLayout>
+				<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="3dp"
+					android:background="@drawable/line"/>
+				 		
 				 <!--###################		任务列表		#############################-->
 				 <LinearLayout android:id="@+id/tasks_list_container"
 					android:layout_width="fill_parent"

@@ -4,9 +4,6 @@ import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
-import com.coolstore.wangcai.R.drawable;
-import com.coolstore.wangcai.R.id;
-import com.coolstore.wangcai.R.layout;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.ctrls.ExtraItem;
@@ -16,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 
 public class ExtractListActivity extends WangcaiActivity implements ExtraItem.ExtractItemEvent{
 	private final static String sg_strPhoneBill = "PhoneBill";

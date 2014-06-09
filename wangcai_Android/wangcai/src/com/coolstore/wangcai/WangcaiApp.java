@@ -22,11 +22,21 @@ import com.coolstore.request.TaskListInfo;
 import com.coolstore.request.UserInfo;
 import com.coolstore.request.Requesters.Request_Login;
 import com.coolstore.request.Requesters.Request_Poll;
+import com.coolstore.wangcai.activity.RegisterActivity;
+import com.coolstore.wangcai.base.PushReceiver;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.telephony.TelephonyManager;
+import android.util.Log;
+import android.widget.EditText;
 
-public class WangcaiApp implements RequestManager.IRequestManagerCallback, TimerManager.TimerManagerCallback{
+public class WangcaiApp implements 
+									RequestManager.IRequestManagerCallback, 
+									PushReceiver.PushEvent,
+									TimerManager.TimerManagerCallback{
 	public interface WangcaiAppEvent {
 		void OnLoginComplete(int nResult, String strMsg);
 		void OnUserInfoUpdate();
@@ -63,14 +73,16 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 	public void Init3rdSdk() {
     	ShareSDK.initSDK(m_AppContext);
 
+		String strDeviceId = m_userInfo.GetDeviceId();
+		
 		//有米
-        AdManager.getInstance(m_AppContext).init(Config.sg_strYoumiAppId, Config.sg_strYoumiAppSecret, true);
-        AdManager.getInstance(m_AppContext).setEnableDebugLog(BuildSetting.sg_bIsDebug);
-
+        AdManager.getInstance(m_AppContext).init(Config.sg_strYoumiAppId, Config.sg_strYoumiAppSecret, false);
+        AdManager.getInstance(m_AppContext).setEnableDebugLog(false);
+        
+        OffersManager.getInstance(m_AppContext).setCustomUserId(strDeviceId);
 		OffersManager.getInstance(m_AppContext).onAppLaunch();
 	
 		//极光推送
-		String strDeviceId = m_userInfo.GetDeviceId();
 		JPushInterface.setAlias(m_AppContext, strDeviceId, null);
         JPushInterface.setDebugMode(BuildSetting.sg_bIsDebug);
 		JPushInterface.init(m_AppContext);
@@ -121,7 +133,6 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 					m_nPollTimerId = TimerManager.GetInstance().StartTimer(GetPollElapse() * 1000, this);
 				}
 			}
-			
 			ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners = GetEventListClone();
 			for (WeakReference<WangcaiAppEvent> weakPtr: listEventLinsteners) {
 				WangcaiAppEvent eventLinstener = weakPtr.get();
@@ -131,6 +142,8 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 		}
 		else if (req instanceof Request_Poll) {
 			Request_Poll detailReq = (Request_Poll)req;
+
+			Log.i("PollIncome", String.format("req.GetResult() (%d)", req.GetResult()));
 			if (req.GetResult() == 0) {
 				boolean bIsNewMsg = detailReq.IsNewMsg();
 				if (bIsNewMsg) {
@@ -139,6 +152,7 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 
 				int nLevelChange = 0;
 				int nCurrentLevel = detailReq.GetCurrentLevel();
+				Log.i("PollIncome", String.format("Level (%d)", nCurrentLevel));
 				if (nCurrentLevel > 0) {
 					if (m_userInfo.GetCurrentLevel() < nCurrentLevel) {
 						nLevelChange = 200;
@@ -171,7 +185,10 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 				}
 
 				int nOfferWallIncome = detailReq.GetOfferWallIncome();
+				
 				int nPreOfferWallIncome = m_userInfo.GetOfferWallIncome();
+				Log.i("PollIncome", String.format("nOfferWallIncome(%d)  nPreOfferWallIncome(%d)  nWangcaiIncome(%d)  ", 
+						nOfferWallIncome, nPreOfferWallIncome, nWangcaiIncome));
 				if (nOfferWallIncome > nPreOfferWallIncome || nWangcaiIncome > 0) {
 					m_userInfo.SetOfferWallIncome(nOfferWallIncome);
 
@@ -195,11 +212,13 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
 
 	public void OnTimer(int nId, int nHitTimes) {
 		if (nId == m_nPollTimerId) {
-			if (IsForceGround()) {
-				Request_Poll req = (Request_Poll)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_Poll);
-				RequestManager.GetInstance().SendRequest(req, false, this);
-			}
+			//if (IsForceGround()) {
+			//}
 		}
+	}
+	public void QueryChanges() {
+		Request_Poll req = (Request_Poll)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_Poll);
+		RequestManager.GetInstance().SendRequest(req, false, this);		
 	}
 	
 	//登陆
@@ -284,6 +303,39 @@ public class WangcaiApp implements RequestManager.IRequestManagerCallback, Timer
     	}
     	return listEventLinsteners;
     }
+    private static class MsgHandler extends Handler {
+    	public MsgHandler(WangcaiApp owner) {
+    		m_owner = new WeakReference<WangcaiApp>(owner);
+    	}
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == sg_nNewPush) {
+            	WangcaiApp owner = m_owner.get();
+            	if (owner == null) {
+            		return;
+            	}
+                Bundle b = msg.getData();
+                String strMsg = b.getString("Message");
+                if (strMsg != null && strMsg.equals(Config.sg_strPushKeyName_NewAward)) {
+                	owner.QueryChanges();
+                }
+            }
+            super.handleMessage(msg);
+        }
+		private WeakReference<WangcaiApp> m_owner;
+    }
+    private Handler m_handler = new MsgHandler(this);
+   
+	public void OnNewCustomMsg(String strMsg) {
+		Message msg = new Message();
+		msg.what = sg_nNewPush;
+		Bundle b = new Bundle();
+		b.putString("Message",  strMsg);
+		msg.setData(b);
+		m_handler.sendMessage(msg);
+	}
+    private final static int sg_nNewPush = 1212;
+
     
 	private UserInfo m_userInfo = null;
 	private TaskListInfo m_taskListInfo = null;	
