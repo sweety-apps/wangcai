@@ -65,6 +65,8 @@
 		7112B1B618B3203F0067F3E8 /* PhoneValidationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */; };
 		7112B1B818B321720067F3E8 /* phone_validation_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */; };
 		7112B1B918B321720067F3E8 /* phone_validation_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */; };
+		71184A6B19459F8600C70EC1 /* default_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71184A6A19459F8600C70EC1 /* default_icon@2x.png */; };
+		71184A6C19459F8600C70EC1 /* default_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71184A6A19459F8600C70EC1 /* default_icon@2x.png */; };
 		7119760E192F017C00059E48 /* QuestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119760C192F017C00059E48 /* QuestWebViewController.m */; };
 		7119760F192F017C00059E48 /* QuestWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7119760D192F017C00059E48 /* QuestWebViewController.xib */; };
 		71197615192F2E6700059E48 /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71197613192F2E6700059E48 /* InviteViewController.m */; };
@@ -1744,6 +1746,7 @@
 		7112722318B33A1A0068C33E /* phone_validation_sendcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_sendcode@2x.png"; sourceTree = "<group>"; };
 		7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneValidationController.xib; sourceTree = "<group>"; };
 		7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_input@2x.png"; sourceTree = "<group>"; };
+		71184A6A19459F8600C70EC1 /* default_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_icon@2x.png"; sourceTree = "<group>"; };
 		7119760B192F017C00059E48 /* QuestWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestWebViewController.h; sourceTree = "<group>"; };
 		7119760C192F017C00059E48 /* QuestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestWebViewController.m; sourceTree = "<group>"; };
 		7119760D192F017C00059E48 /* QuestWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestWebViewController.xib; sourceTree = "<group>"; };
@@ -3812,6 +3815,7 @@
 				F3359E501886C11100C1E636 /* rate_app_cell_icon@2x.png */,
 				F3DD64121880251B00E56A0B /* tiyanzhongxin_cell_icon@2x.png */,
 				F3FB92AE187C5AB5001D702E /* qiandao_button_red_dot@2x.png */,
+				71184A6A19459F8600C70EC1 /* default_icon@2x.png */,
 				F3FB9294187AF825001D702E /* head_left_menu_btn@2x.png */,
 				A60C5831186FF8A30068425C /* about_wangcai_cell_icon@2x.png */,
 				A60C5832186FF8A30068425C /* bottom_bg@2x.png */,
@@ -5655,6 +5659,7 @@
 				F335A00218882F8000C1E636 /* choujiang_1mao@2x.png in Resources */,
 				F335A00318882F8000C1E636 /* nav_Header@2x.png in Resources */,
 				F335A00418882F8000C1E636 /* head_right_icon@2x.png in Resources */,
+				71184A6C19459F8600C70EC1 /* default_icon@2x.png in Resources */,
 				71420EA4191E1CCC00376AA9 /* main_menu4@2x.png in Resources */,
 				718FB1921893FF2900851D2A /* register_btn@2x.png in Resources */,
 				F335A00518882F8000C1E636 /* tab_bkg@2x.png in Resources */,
@@ -6082,6 +6087,7 @@
 				A60C5877186FF8A30068425C /* yue_5@2x.png in Resources */,
 				711F438818B4A85B00AEE1D5 /* 50yuan@2x.PNG in Resources */,
 				712D9B33191B416F0035D29C /* dianru_cell_.jpg in Resources */,
+				71184A6B19459F8600C70EC1 /* default_icon@2x.png in Resources */,
 				7112721D18B339400068C33E /* phone_validation_code@2x.png in Resources */,
 				F3DD64201882D7B400E56A0B /* package_icon_many@2x.png in Resources */,
 				71008A361891073800689E2F /* app_tip_close@2x.png in Resources */,

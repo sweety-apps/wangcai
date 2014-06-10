@@ -215,7 +215,7 @@
     }
     else
     {
-        [_leftIcon GET:imageUrl useCache:YES];
+        [_leftIcon GET:imageUrl useCache:YES placeHolder:[UIImage imageNamed:@"default_icon"]];
     }
 }
 

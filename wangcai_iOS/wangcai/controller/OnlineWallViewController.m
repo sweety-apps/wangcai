@@ -367,7 +367,7 @@ static OnlineWallViewController* _sharedInstance;
         [_alertView hideAlertView];
     }
     
-    [MobClick event:@"task_list_click_pubchbox" attributes:@{@"currentpage":@"任务列表"}];
+    [MobClick event:@"task_list_click_punchbox" attributes:@{@"currentpage":@"任务列表"}];
     [[PBOfferWall sharedOfferWall] showOfferWallWithScale:1.0f];
 }
 
@@ -661,6 +661,8 @@ static OnlineWallViewController* _sharedInstance;
         [_alertView hideAlertView];
     }
     
+    [MobClick event:@"task_list_click_waps" attributes:@{@"currentpage":@"任务列表"}];
+    
     [AppConnect showOffers:_viewController];
 }
 
@@ -668,6 +670,8 @@ static OnlineWallViewController* _sharedInstance;
     if ( _alertView != nil ) {
         [_alertView hideAlertView];
     }
+    
+    [MobClick event:@"task_list_click_miidi" attributes:@{@"currentpage":@"任务列表"}];
     
     [MiidiAdWall showAppOffers:_viewController withDelegate:self];
 }
@@ -677,6 +681,7 @@ static OnlineWallViewController* _sharedInstance;
         [_alertView hideAlertView];
     }
     
+    [MobClick event:@"task_list_click_jupeng" attributes:@{@"currentpage":@"任务列表"}];
     [JupengWall showOffers:_viewController didShowBlock:nil didDismissBlock:nil];
 }
 
@@ -685,6 +690,7 @@ static OnlineWallViewController* _sharedInstance;
         [_alertView hideAlertView];
     }
     
+    [MobClick event:@"task_list_click_dianru" attributes:@{@"currentpage":@"任务列表"}];
     [DianRuAdWall showAdWall:_viewController];
 }
 
@@ -706,6 +712,7 @@ static OnlineWallViewController* _sharedInstance;
     
     [deviceId release];
     
+    [MobClick event:@"task_list_click_adwo" attributes:@{@"currentpage":@"任务列表"}];
     AdwoOWPresentOfferWall(ADWO_OFFERWALL_BASIC_PID, _viewController);
 }
 
