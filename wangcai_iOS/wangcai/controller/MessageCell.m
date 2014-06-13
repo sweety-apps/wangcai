@@ -28,18 +28,20 @@
         
         [self.contentView addSubview:_imageView];
         
-        _title = [[UILabel alloc] initWithFrame:CGRectMake(62, 20, 170, 20)];
-        [_title setFont:[UIFont fontWithName:nil size:16]];
+        _title = [[UILabel alloc] initWithFrame:CGRectMake(62, 20, 230, 20)];
+        [_title setTextAlignment:NSTextAlignmentLeft];
+        [_title setFont:[UIFont systemFontOfSize:16]];
         [self.contentView addSubview:_title];
         
         _date = [[UILabel alloc] initWithFrame:CGRectMake(72, 20, 230, 20)];
         [_date setTextAlignment:NSTextAlignmentRight];
-        [_date setFont:[UIFont fontWithName:nil size:12]];
+        [_date setFont:[UIFont systemFontOfSize:12]];
         [self.contentView addSubview:_date];
+        [_date setBackgroundColor:[UIColor clearColor]];
         [_date setTextColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1]];
         
         _desc = [[UILabel alloc] initWithFrame:CGRectMake(62, 46, 240, 32)];
-        [_desc setFont:[UIFont fontWithName:nil size:12]];
+        [_desc setFont:[UIFont systemFontOfSize:12]];
         [self.contentView addSubview:_desc];
         
         _desc.lineBreakMode = UILineBreakModeWordWrap;
@@ -88,8 +90,11 @@
     int nHeight = 64;   // 标题加上上下边距
     // 描述文字的高度
     NSString* desc = [info objectForKey:@"intro"];
+    
     CGSize size = CGSizeMake(230, MAXFLOAT);
-    CGSize descSize = [desc sizeWithFont:[UIFont fontWithName:nil size:12] constrainedToSize:size];
+    
+    UIFont *font = [UIFont systemFontOfSize:12];
+    CGSize descSize = [desc sizeWithFont:font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     nHeight = nHeight + descSize.height + 10;
     
     if ( type != 0 ) {
@@ -136,7 +141,7 @@
     [_desc setText:desc];
     
     CGSize size = CGSizeMake(230, MAXFLOAT);
-    CGSize descSize = [desc sizeWithFont:[UIFont fontWithName:nil size:12] constrainedToSize:size];
+    CGSize descSize = [desc sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:size];
     if ( descSize.height < 32 ) {
         descSize.height = 32;
     }

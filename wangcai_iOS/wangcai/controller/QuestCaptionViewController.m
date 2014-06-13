@@ -55,9 +55,10 @@
     BeeUIStack* stack = [BeeUIRouter sharedInstance].currentStack;
     
     QuestWebViewController* controller = [[[QuestWebViewController alloc] init] autorelease];
-    [stack pushViewController:controller animated:YES];
-    
+
     [controller setQuestInfo:_info];
+
+    [stack pushViewController:controller animated:YES];
 }
 
 - (void) setQuestInfo : (SurveyInfo*) info {
