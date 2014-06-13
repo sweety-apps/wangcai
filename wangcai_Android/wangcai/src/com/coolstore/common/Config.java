@@ -171,7 +171,7 @@ public class Config {
 	}
 
 	//使用条款
-	public static String GetLineseUrl() {
+	public static String GetLicenseUrl() {
 		return sg_strWebServiceUrl + "128";
 	}
 	
@@ -196,7 +196,7 @@ public class Config {
 	//有米
 	public static String sg_strYoumiAppId = "bc15bcaee2f5d263";
 	public static String sg_strYoumiAppSecret = "6306937f74dd8f5f";
-
+																//2ca43fa93e8cae3e
 	//触控
 	//1DA13AE6B85966B4172AB369B21610D3
 	public static String sg_strPunchboxPlacementId = "818634143n6msqe";

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class SettingItem {
 	public View Create(Context context, int nIconId, String strTitle, String strText, boolean bShowToggleButton) {
@@ -24,6 +25,20 @@ public class SettingItem {
 	
 	public void SetSubTextColor(int nColor) {
 		((TextView)(m_viewRoot.findViewById(R.id.sub_text))).setTextColor(nColor);
+	}
+	public void SetButtonCheck(boolean bCheck) {
+		ToggleButton button = ((ToggleButton)(m_viewRoot.findViewById(R.id.on_off)));	
+		button.setChecked(bCheck);
+	}
+	public boolean GetButtonCheck() {
+		ToggleButton button = ((ToggleButton)(m_viewRoot.findViewById(R.id.on_off)));	
+		if (button.getVisibility() != View.VISIBLE) {
+			return false;
+		}
+		return button.isChecked();		
+	}
+	public View GetTextView() {
+		return m_viewRoot.findViewById(R.id.sub_text);
 	}
 	private View m_viewRoot = null;
 }

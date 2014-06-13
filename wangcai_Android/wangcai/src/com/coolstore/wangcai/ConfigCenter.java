@@ -12,6 +12,8 @@ public class ConfigCenter {
 	private final static String sg_strConfigName = "WangcaiConfig";
 	private final static String sg_strHasSignInKey = "HasSignIn";
 	private final static String sg_strHasClickMenu = "HasClickMenu";
+	private final static String sg_strShouldReceiveMsg = "ShouldReceiveMsg";
+	private final static String sg_strShouldPlaySound = "ShouldPlaySound";
 	
 	interface ConfigCenterEvent {
 		
@@ -55,6 +57,22 @@ public class ConfigCenter {
 		editor.commit();		
 	}
 	
+	public boolean ShouldReceivePush() {
+		return m_sharedPreference.getBoolean(sg_strShouldReceiveMsg, true);
+	}
+	public void SetShouldReceivePush(boolean bReceive) {
+		Editor editor = m_sharedPreference.edit();
+		editor.putBoolean(sg_strShouldReceiveMsg, bReceive);
+		editor.commit();
+	}
+	public boolean ShouldPlaySound() {
+		return m_sharedPreference.getBoolean(sg_strShouldPlaySound, true);		
+	}
+	public void SetShouldPlaySound(boolean bPlay) {
+		Editor editor = m_sharedPreference.edit();
+		editor.putBoolean(sg_strShouldPlaySound, bPlay);
+		editor.commit();
+	}
 	
 	private SharedPreferences m_sharedPreference;
 	private ArrayList<WeakReference<ConfigCenterEvent>> m_listEventListener = new ArrayList<WeakReference<ConfigCenterEvent>>(); 

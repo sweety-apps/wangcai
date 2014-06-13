@@ -11,8 +11,10 @@ import cn.sharesdk.framework.ShareSDK;
 
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Config;
+import com.coolstore.common.SLog;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.common.TimerManager;
+import com.coolstore.common.Util;
 import com.coolstore.request.AppWallConfig;
 import com.coolstore.request.ExtractInfo;
 import com.coolstore.request.RequestManager;
@@ -22,16 +24,16 @@ import com.coolstore.request.TaskListInfo;
 import com.coolstore.request.UserInfo;
 import com.coolstore.request.Requesters.Request_Login;
 import com.coolstore.request.Requesters.Request_Poll;
-import com.coolstore.wangcai.activity.RegisterActivity;
 import com.coolstore.wangcai.base.PushReceiver;
+import com.coolstore.wangcai.base.PushReceiver.PushInfo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.widget.EditText;
 
 public class WangcaiApp implements 
 									RequestManager.IRequestManagerCallback, 
@@ -68,6 +70,7 @@ public class WangcaiApp implements
 		ConfigCenter.GetInstance().Initialize(context);
 		RequestManager.GetInstance().Initialize(context.getResources().openRawResource(R.raw.cert));
 		
+		PushReceiver.AddListener(this);
 	}
 
 	public void Init3rdSdk() {
@@ -115,7 +118,6 @@ public class WangcaiApp implements
 			eventLinstener.OnBalanceUpdate(nCurrentBalance, nNewBalance);
 		}
 	}
-	private boolean test_show = false;
 	public void OnRequestComplete(int nRequestId, Requester req) {
 		if (req instanceof Request_Login) {
 			int nResult = req.GetResult();
@@ -138,12 +140,12 @@ public class WangcaiApp implements
 				WangcaiAppEvent eventLinstener = weakPtr.get();
 				eventLinstener.OnLoginComplete(nResult, req.GetMsg());
 			}
-			
+			//send();			
 		}
 		else if (req instanceof Request_Poll) {
 			Request_Poll detailReq = (Request_Poll)req;
 
-			Log.i("PollIncome", String.format("req.GetResult() (%d)", req.GetResult()));
+			SLog.i("PollIncome", String.format("req.GetResult() (%d)", req.GetResult()));
 			if (req.GetResult() == 0) {
 				boolean bIsNewMsg = detailReq.IsNewMsg();
 				if (bIsNewMsg) {
@@ -152,7 +154,7 @@ public class WangcaiApp implements
 
 				int nLevelChange = 0;
 				int nCurrentLevel = detailReq.GetCurrentLevel();
-				Log.i("PollIncome", String.format("Level (%d)", nCurrentLevel));
+				SLog.i("PollIncome", String.format("Level (%d)", nCurrentLevel));
 				if (nCurrentLevel > 0) {
 					if (m_userInfo.GetCurrentLevel() < nCurrentLevel) {
 						nLevelChange = 200;
@@ -187,7 +189,7 @@ public class WangcaiApp implements
 				int nOfferWallIncome = detailReq.GetOfferWallIncome();
 				
 				int nPreOfferWallIncome = m_userInfo.GetOfferWallIncome();
-				Log.i("PollIncome", String.format("nOfferWallIncome(%d)  nPreOfferWallIncome(%d)  nWangcaiIncome(%d)  ", 
+				SLog.i("PollIncome", String.format("nOfferWallIncome(%d)  nPreOfferWallIncome(%d)  nWangcaiIncome(%d)  ", 
 						nOfferWallIncome, nPreOfferWallIncome, nWangcaiIncome));
 				if (nOfferWallIncome > nPreOfferWallIncome || nWangcaiIncome > 0) {
 					m_userInfo.SetOfferWallIncome(nOfferWallIncome);
@@ -289,6 +291,7 @@ public class WangcaiApp implements
     public void SetForceGround(boolean bForceGround) {
     	m_bForceGround = bForceGround;
     }
+    
     private ArrayList<WeakReference<WangcaiAppEvent>>  GetEventListClone() {
     	ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners = new ArrayList<WeakReference<WangcaiAppEvent>>(); 
     	Iterator<WeakReference<WangcaiAppEvent>> sListIterator = m_listEventLinsteners.iterator();  
@@ -314,8 +317,21 @@ public class WangcaiApp implements
             	if (owner == null) {
             		return;
             	}
+
                 Bundle b = msg.getData();
-                String strMsg = b.getString("Message");
+                
+        		int nPushType = b.getInt("PushType");
+        		int nMsgType = b.getInt("MsgType");
+                String strTitle = b.getString("Title");
+                String strMsg = b.getString("Text");
+                if (nPushType != PushReceiver.nPushType_Custom) {
+                	return;
+                }
+                
+                if (ConfigCenter.GetInstance().ShouldReceivePush() &&
+                		(!Util.IsEmptyString(strTitle) || !Util.IsEmptyString(strMsg))) {
+                	Util.SendNotification(owner.m_lastActivity, R.drawable.ic_launcher, strTitle, strMsg);
+                }
                 if (strMsg != null && strMsg.equals(Config.sg_strPushKeyName_NewAward)) {
                 	owner.QueryChanges();
                 }
@@ -326,14 +342,22 @@ public class WangcaiApp implements
     }
     private Handler m_handler = new MsgHandler(this);
    
-	public void OnNewCustomMsg(String strMsg) {
+	public void OnNewPushMsg(PushInfo pushInfo) {
 		Message msg = new Message();
 		msg.what = sg_nNewPush;
 		Bundle b = new Bundle();
-		b.putString("Message",  strMsg);
+		b.putInt("PushType", pushInfo.m_nPushType);
+		b.putInt("MsgType", pushInfo.m_nTextType);
+		b.putString("Title", pushInfo.m_strTitle);
+		b.putString("Text", pushInfo.m_strText);
 		msg.setData(b);
 		m_handler.sendMessage(msg);
 	}
+	public void SetLastActivity(Activity activity) {
+		m_lastActivity = activity;
+	}
+	
+	
     private final static int sg_nNewPush = 1212;
 
     
@@ -353,6 +377,7 @@ public class WangcaiApp implements
 	private boolean m_bForceGround = false;;
 	private int m_nPollTimerId = 0;
 
+	private Activity m_lastActivity = null;
 	
 	private ArrayList<WeakReference<WangcaiAppEvent>> m_listEventLinsteners = new ArrayList<WeakReference<WangcaiAppEvent>>();
 }

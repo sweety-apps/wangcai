@@ -222,6 +222,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 		return mScrollingWhileRefreshingEnabled;
 	}
 
+
 	@Override
 	public final boolean onInterceptTouchEvent(MotionEvent event) {
 

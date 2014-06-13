@@ -23,14 +23,16 @@ import com.coolstore.wangcai.base.ManagedDialog;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
 import com.coolstore.wangcai.ctrls.ItemBase;
 import com.coolstore.wangcai.ctrls.MainItem;
-import com.coolstore.wangcai.ctrls.SlidingLayout;
 import com.coolstore.wangcai.dialog.HintBindPhoneDialog;
 import com.coolstore.wangcai.dialog.HintTaskLevelDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.CanvasTransformer;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -59,7 +61,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private final static int sg_Options = sg_ItemIdBase + 5;
     private final static int sg_Help = sg_ItemIdBase +  6;
     
-	SlidingLayout m_slidingLayout;
+	
 
 	
     @Override
@@ -112,11 +114,30 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
         	findViewById(R.id.lottery_dot_image).setVisibility(View.VISIBLE);
         }
     }
+    CanvasTransformer mTransformer = new CanvasTransformer() {
+    	@Override
+    	public void transformCanvas(Canvas canvas, float percentOpen) {
+    	float scale = (float) (percentOpen*0.25 + 0.75);
+    	canvas.scale(scale, scale, canvas.getWidth()/2, canvas.getHeight()/2);
+    	}
+    };
     private void InitView() {
-    	m_slidingLayout = (SlidingLayout)this.findViewById(R.id.main_wnd);
-
-        ViewGroup mainClient = (ViewGroup)this.findViewById(R.id.main_client);
-        m_slidingLayout.setScrollEvent(mainClient); 
+    	//m_slidingLayout = (SlidingLayout)this.findViewById(R.id.main_wnd);
+    	m_slidingMenu = new SlidingMenu(this);//直接new，而不是getSlidingMenu
+    	m_slidingMenu.setMode(SlidingMenu.LEFT);
+    	m_slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+    	//menu.setShadowDrawable(R.drawable.shadow);
+    	//menu.setShadowWidthRes(400);
+    	//menu.setBehindOffsetRes(200);
+    	m_slidingMenu.setBehindWidth(getResources().getDimensionPixelSize(R.dimen.main_menu_width));//设置SlidingMenu菜单的宽度
+    	m_slidingMenu.setFadeDegree(0.35f);
+    	m_slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);//必须调用
+    	m_slidingMenu.setMenu(R.layout.ctrl_main_menu);//就是普通的layout布局
+    	m_slidingMenu.setBehindCanvasTransformer(mTransformer);
+    	
+    	
+        //ViewGroup mainClient = (ViewGroup)this.findViewById(R.id.main_client);
+        //m_slidingLayout.setScrollEvent(mainClient); 
 
         InitMemuList();
         
@@ -196,10 +217,11 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     //显示菜单
     private void ShowMenu(boolean bShow) {
     	if (bShow) {
-    		m_slidingLayout.scrollToLeftView();
+    		m_slidingMenu.showMenu();
+    		//m_slidingLayout.scrollToLeftView();
     	}
     	else {
-    		m_slidingLayout.scrollToContentFromLeftView();
+    		m_slidingMenu.showContent();
     	}
     }
  
@@ -244,7 +266,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 		    		ConfigCenter.GetInstance().SetHasClickMenu(true);		    	
 		    	}
 		    	
-				ShowMenu(!m_slidingLayout.isLeftLayoutVisible());
+				ShowMenu(!m_slidingMenu.isMenuShowing());
 				return ;		//注意:直接返回
 			case R.id.exchange_gift_button:
 				//超值兑换
@@ -333,16 +355,19 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			Request_GetUserInfo request = (Request_GetUserInfo)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_GetUserInfo);
 			requestManager.SendRequest(request, true, this);			
 			break;
-		/*
-		case TaskListInfo.TaskTypeCommetWangcai:
-		case sg_MyWangcai:
-			//没有好评旺财
-			ActivityHelper.ShowCommentActivity(this);
-			break;
-		*/
 		case TaskListInfo.TaskTypeShare:
 			//分享
 			UserInfo userInfo = WangcaiApp.GetInstance().GetUserInfo();
+			if (!userInfo.HasBindPhone()) {
+				if (!WangcaiApp.GetInstance().GetUserInfo().HasBindPhone()) {
+					if (m_bindPhoneDialog == null) {
+						m_bindPhoneDialog = new HintBindPhoneDialog(this);
+						RegisterDialog(m_bindPhoneDialog);
+					}
+					m_bindPhoneDialog.Show();
+					return;
+				}
+			}
 			OnekeyShare oks = new OnekeyShare();
 			oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_description));
 			oks.setTitle(getString(R.string.wangcai_share));
@@ -354,6 +379,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			oks.show(this.getApplicationContext());
 			break;
 		case TaskListInfo.TaskTypeUpgrade:
+		case sg_MyWangcai:
 			//我的旺财
 			ActivityHelper.ShowMyWnagcaiActivity(this);
 			break;
@@ -369,6 +395,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			else {
 				ActivityHelper.ShowInviteActivity(this);
 			}
+
 			break;
 		case sg_CashExtract:
 			//提取现金
@@ -488,7 +515,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
    	 boolean bAdd = false;
    	switch (taskInfo.m_nTaskType) {
 	    	case TaskListInfo.TypeInstallWangcai:
-	    	case TaskListInfo.TaskTypeUserInfo:
+	    	//case TaskListInfo.TaskTypeUserInfo:  先不要问卷调查
 	    	case TaskListInfo.TaskTypeInviteFriends:
 	    	case TaskListInfo.TaskTypeOfferWall:
 	    	//case TaskListInfo.TaskTypeCommetWangcai:	没有好评旺财
@@ -586,6 +613,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	super.onDestroy();
     }
 
+    private SlidingMenu m_slidingMenu;
     private boolean m_bNeedCheckSignin = false;
     private HintTaskLevelDialog m_hintTaskLevelDialog;
     private HintBindPhoneDialog m_bindPhoneDialog;

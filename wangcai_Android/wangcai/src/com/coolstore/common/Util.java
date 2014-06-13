@@ -9,6 +9,11 @@ import java.util.Map.Entry;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
@@ -179,7 +184,36 @@ public class Util {
 			}
 		}*/
 	}
+	public static boolean SendNotification(Activity owner, int nIconId, String strTitle, String strText) {
+        NotificationManager manager = (NotificationManager) owner .getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notification = new Notification();
+        notification.icon = nIconId;
+        notification.tickerText = strTitle;
+        /***
+         * notification.contentIntent:一个PendingIntent对象，当用户点击了状态栏上的图标时，该Intent会被触发
+         * notification.contentView:我们可以不在状态栏放图标而是放一个view
+         * notification.deleteIntent 当当前notification被移除时执行的intent
+         * notification.vibrate 当手机震动时，震动周期设置
+         */
+        // 添加声音提示
+        notification.defaults = Notification.DEFAULT_SOUND;
+        // audioStreamType的值必须AudioManager中的值，代表着响铃的模式
+        notification.audioStreamType= android.media.AudioManager.ADJUST_LOWER;
+         
+        //下边的两个方式可以添加音乐
+        //notification.sound = Uri.parse("file:///sdcard/notification/ringer.mp3");
+        //notification.sound = Uri.withAppendedPath(Audio.Media.INTERNAL_CONTENT_URI, "6");
+        Intent intent = new Intent(owner, Activity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(owner, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        // 点击状态栏的图标出现的提示信息设置
+        notification.setLatestEventInfo(owner, strTitle, strText, pendingIntent);
+        manager.notify(1, notification);
+		return true;
+	}
 }
+
+
+
 
 
 

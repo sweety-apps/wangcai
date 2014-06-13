@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/menu_page" xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="190dp"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:layout_alignParentLeft="true"
+   >
+	 <ImageView
+		android:background="@drawable/main_menu_title_text"
+		android:layout_marginTop="18dp"
+		android:layout_marginBottom="18dp"
+		android:layout_marginLeft="@dimen/main_menu_margin_left"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		android:background="@drawable/menu_split_line"
+		android:layout_alignParentTop="true" />
+ </LinearLayout>

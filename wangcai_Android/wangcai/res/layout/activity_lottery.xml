@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
 	android:orientation="vertical"
 	android:background="#A01919">
 
     <LinearLayout
+		android:id="@+id/title_frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -24,9 +25,11 @@
 			android:layout_height="wrap_content" />
 	</LinearLayout>
 	<FrameLayout 
+		android:id="@+id/beilv_frame"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" 
 		android:layout_marginTop="30dp" 
+		android:layout_below="@id/title_frame"
 		android:layout_marginBottom="30dp" >
 		<LinearLayout
 			android:layout_width="wrap_content"
@@ -57,6 +60,8 @@
 		</LinearLayout>
 	</FrameLayout>
 	<FrameLayout 
+		android:id="@+id/grid_frame"
+		android:layout_below="@id/beilv_frame"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" >
 		 <RelativeLayout 
@@ -172,8 +177,18 @@
 		  </RelativeLayout>
 	</FrameLayout>
 	<ImageView
+	    android:background="@drawable/choujiang_bottom_cloud"
+		android:layout_alignParentBottom="true"
+		android:scaleType="center" 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"	/>
+	<ImageView
+		android:layout_below="@id/grid_frame"
 	    android:src="@drawable/choujiang_guize"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
 	    android:layout_marginTop="20dp"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" />
-</LinearLayout>
+		
+</RelativeLayout>

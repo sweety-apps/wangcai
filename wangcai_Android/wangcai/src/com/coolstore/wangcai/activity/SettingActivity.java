@@ -1,12 +1,18 @@
 package com.coolstore.wangcai.activity;
 
+import com.coolstore.common.BuildSetting;
+import com.coolstore.common.Config;
+import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
+import com.coolstore.wangcai.WangcaiApp;
+import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.ctrls.SettingItem;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 public class SettingActivity extends WangcaiActivity {
@@ -23,12 +29,24 @@ public class SettingActivity extends WangcaiActivity {
     {
     	ViewGroup viewParent = (ViewGroup)findViewById(R.id.main_client);
     	
-    	CreateItem(viewParent, R.drawable.setting_message, getString(R.string.setting_push_title), getString(R.string.setting_push_text), true);
+    	m_pushItem = CreateItem(viewParent, R.drawable.setting_message, getString(R.string.setting_push_title), getString(R.string.setting_push_text), true);
     	
-    	CreateItem(viewParent, R.drawable.setting_bell, getString(R.string.setting_sournd_title), getString(R.string.setting_sournd_text), true);
-  	
-    	SettingItem item = CreateItem(viewParent, R.drawable.about2, getString(R.string.setting_version_title), getString(R.string.setting_version_text), true);
+    	ConfigCenter config = ConfigCenter.GetInstance();
+    	m_pushItem.SetButtonCheck(config.ShouldReceivePush());
+    	
+    	m_soundItem = CreateItem(viewParent, R.drawable.setting_bell, getString(R.string.setting_sournd_title), getString(R.string.setting_sournd_text), true);
+    	m_soundItem.SetButtonCheck(config.ShouldPlaySound());
+    	
+    	String strText = String.format(getString(R.string.setting_version_title), BuildSetting.sg_strVersion);
+    	SettingItem item = CreateItem(viewParent, R.drawable.about2, strText, getString(R.string.setting_version_text), false);
     	item.SetSubTextColor(Color.rgb(28, 28, 255));
+    	item.GetTextView().setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ActivityHelper.ShowWebViewActivity(SettingActivity.this, getString(R.string.setting_version_text), Config.GetLicenseUrl());
+			} 
+    		
+    	});
     }
     
     private SettingItem CreateItem(ViewGroup viewParent, int nIconId, String strTitle, String strText, boolean bShowToggleButton) {
@@ -37,4 +55,16 @@ public class SettingActivity extends WangcaiActivity {
     	viewParent.addView(itemView);
     	return item;
     }
+
+    @Override
+    protected void onPause() {
+    	super.onPause();
+
+    	ConfigCenter config = ConfigCenter.GetInstance();
+    	config.SetShouldReceivePush(m_pushItem.GetButtonCheck());
+    	config.SetShouldPlaySound(m_soundItem.GetButtonCheck());
+    }
+    
+    SettingItem m_pushItem = null;
+    SettingItem m_soundItem = null;
 }

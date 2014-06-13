@@ -7,10 +7,6 @@
 	<dimen name="common_margin_bottom">15dp</dimen>
 	<dimen name="common_margin_left">15dp</dimen>
 	<dimen name="common_margin_right">20dp</dimen>
-	<dimen name="app_wall_width">601px</dimen>
-	<dimen name="app_wall_height">890px</dimen>
-	<dimen name="app_wall_top_padding">18px</dimen>
-	<dimen name="app_wall_left_margin">15dp</dimen>
 	<dimen name="new_award_tip_width">589px</dimen>
 	<dimen name="new_award_tip_height">456px</dimen>
 	<dimen name="new_award_tip_top_padding">28px</dimen>
@@ -19,4 +15,15 @@
 	<dimen name="new_award_tip_margin_left">10dp</dimen>
 	<dimen name="split_line_height">1px</dimen>
 	<dimen name="main_menu_margin_left">20dp</dimen>
+
+	<dimen name="main_menu_width">220dp</dimen>
+	
+	<dimen name="app_wall_width">300dp</dimen>
+	<dimen name="app_wall_height">480dp</dimen>
+	<dimen name="app_wall_text_width">250dp</dimen>
+	<dimen name="app_wall_top_padding">18px</dimen>
+	<dimen name="app_wall_left_margin">15dp</dimen>
+	<dimen name="app_wall_button_width">270dp</dimen>
+	<dimen name="app_wall_button_height">55dp</dimen>
+	<dimen name="app_wall_button_text_size">16sp</dimen>
 </resources>

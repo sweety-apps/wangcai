@@ -24,8 +24,11 @@ import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.text.Html;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,6 +39,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 public class PopupWinAppWall extends PopupWindow implements OnClickListener{
 	
@@ -69,6 +73,12 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     	ViewGroup defaultPanel = (ViewGroup)m_appWin.findViewById(R.id.app_wall_button_container);
     	ViewGroup morePanel = (ViewGroup)m_appWin.findViewById(R.id.more_appwall_page);
 
+    	String strText = m_ownerActivity.getString(R.string.app_wall_win_text);
+    	CharSequence charSequence = Html.fromHtml(strText);
+    	TextView textView = (TextView)m_appWin.findViewById(R.id.text);
+    	textView.setText(charSequence);
+    	
+    	
     	//点击应用墙
     	OnClickListener linstener = new OnClickListener() {
             public void onClick(View v) {
@@ -84,8 +94,11 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
                 dismiss();
             }
         };
-        
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+        //创建按钮
+        Resources res = m_ownerActivity.getResources();
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+        		res.getDimensionPixelSize(R.dimen.app_wall_button_width), res.getDimensionPixelSize(R.dimen.app_wall_button_height));
         int nMargin = m_ownerActivity.getResources().getDimensionPixelSize(R.dimen.offer_wall_button_margin);
         layoutParams.setMargins(0, nMargin, 0, 0);
  
@@ -101,17 +114,18 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
 			boolean bIsRecommand = info.IsRecommand();
 			wallInfo.SetReommand(bIsRecommand);
 			
-			ImageButton button = CreateButton(wallInfo);
+			Button button = CreateButton(wallInfo);
 			bIsRecommand = true;
 			if (bIsRecommand) {
-				button.setImageResource(R.drawable.app_tip_recommand);
+				//button.setImageResource(R.drawable.app_tip_recommand);
 			}
-    		if (!info.IsInMorePanel()) {
-    			defaultPanel.addView(button,  layoutParams);
-    		}
-    		else {
+    		if (info.IsInMorePanel()) {
     			morePanel.addView(button,  layoutParams);
     		}
+    		else {
+    			defaultPanel.addView(button,  layoutParams);
+    		}
+			
     		button.setOnClickListener(this);
 			m_listViisibleWalls.add(wallInfo);
     	}      
@@ -119,21 +133,29 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     		m_appWin.findViewById(R.id.more_button).setVisibility(View.GONE);
     	}
     }
-    private ImageButton CreateButton(WallInfo wallInfo) {
-    	ImageButton button = new ImageButton(m_ownerActivity);
+    private Button CreateButton(WallInfo wallInfo) {
+    	Button button = new Button(m_ownerActivity);
     	button.setId(wallInfo.m_nId);
     	button.setBackgroundResource(wallInfo.m_nId);
+    	button.setText(wallInfo.m_strText);
+    	button.setTextColor(Color.rgb(255, 255, 255));
+    	button.setTextSize(m_ownerActivity.getResources().getDimensionPixelOffset(R.dimen.app_wall_button_text_size));
+    	button.setGravity(Gravity.CENTER);
     	return button;
     }
+  
     private WallInfo GetWallInfo(String strName) {
     	AppWallHelper.AppWall wall = null;
     	int nResId = 0;
+    	int nStringId = 0;
     	if (strName.equals(AppWallConfig.sg_strPunchbox)) {		//触控
-    		nResId = R.drawable.app_tip_punchbox;
+    		nResId = R.drawable.app_wall_puncbox;
+    		nStringId = R.string.app_wall_puncbox_text;
     		wall = new AppWallHelper.ChukongAppWall(m_ownerActivity);
     	}
     	else if (strName.equals(AppWallConfig.sg_strYoumi)) {			//有米
-    		nResId = R.drawable.app_tip_youmi;
+    		nResId = R.drawable.app_wall_youmi;
+    		nStringId = R.string.app_wall_youmi_text;
     		wall = new AppWallHelper.YoumiAppWall(m_ownerActivity);
     	}
     	/*
@@ -163,7 +185,7 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     	else {
     		return null;	
     	}
-    	return new WallInfo(strName, nResId, wall);
+    	return new WallInfo(strName, nResId, m_ownerActivity.getString(nStringId), wall);
     }	
 
     public void onClick(View v) {
@@ -211,22 +233,23 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
 
     	//返回按钮
     	m_appWin.findViewById(R.id.return_button).setOnClickListener(this);
-
     }
 
     
     private Activity m_ownerActivity;		
     
     private class WallInfo {
-    	public WallInfo(String strName, int nId, AppWallHelper.AppWall wall) {
+    	public WallInfo(String strName, int nId, String strText, AppWallHelper.AppWall wall) {
     		m_strName = strName;
     		m_nId = nId;
+    		m_strText = strText;
     		m_appWall = wall;
     	}
     	public void SetReommand(boolean bRecommand) {
     		m_bRecommand = bRecommand;
     	}
     	String m_strName; 
+		String m_strText;
       	int m_nId;
       	boolean m_bRecommand = false;
     	AppWallHelper.AppWall m_appWall;

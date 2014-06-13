@@ -32,8 +32,10 @@
 			android:layout_alignParentRight="true"
 			android:text=""
 			android:textOn=""
+			android:background="#00000000" 
 			android:textOff=""
-			android:background="@drawable/toggle_button"
+			style="@style/Wangcai_ToggleButton"
+			android:paddingRight="3dp"
 			android:layout_centerVertical="true" />
 	</RelativeLayout> 	
 	<TextView 

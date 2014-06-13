@@ -36,6 +36,7 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 	}
 	protected void onResume() {
 		WangcaiApp.GetInstance().SetForceGround(true);
+		WangcaiApp.GetInstance().SetLastActivity(this);
 		m_bVisible = true;
     	JPushInterface.onResume(this);
 		super.onResume();

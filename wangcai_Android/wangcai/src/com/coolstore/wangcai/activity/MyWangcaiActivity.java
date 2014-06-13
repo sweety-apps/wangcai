@@ -83,8 +83,7 @@ public class MyWangcaiActivity extends WangcaiActivity {
 					ActivityHelper.ShowRegisterActivity(MyWangcaiActivity.this);
 				}    		
     		});
-    	}
-    	
+    	}    	
     	
     	ImageView image = (ImageView) findViewById(R.id.dog_image);
     	image.setBackgroundResource(R.anim.ani_dog);
