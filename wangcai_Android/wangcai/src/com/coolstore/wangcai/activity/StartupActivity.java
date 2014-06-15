@@ -26,11 +26,11 @@ public class StartupActivity extends ManagedDialogActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		
-        if (BuildSetting.sg_bIsDebug) {
-        	Config.Initlialize(Config.EnvType.EnvType_Dev);
+        if (BuildSetting.sg_bUseFormatServer) {
+        	Config.Initlialize(Config.EnvType.EnvType_Formal);
         }
         else {
-        	Config.Initlialize(Config.EnvType.EnvType_Formal);
+        	Config.Initlialize(Config.EnvType.EnvType_Dev);
         }
     	//Config.Initlialize(Config.EnvType.EnvType_Formal);
         setContentView(R.layout.activity_startup);

@@ -65,16 +65,24 @@ public class WangcaiApp implements
 		return m_sWangcaiApp;
 	}
 
+	
 	public void Initialize(Context context) {
+		//日志
+		SLog.setPath("/mnt/sdcard/wangcai/log","log","log");
 		SLog.setPolicy(SLog.LOG_ALL_TO_FILE);
 		
 		m_AppContext =  context;
 		
+		//系统信息
 		SystemInfo.Initialize(context);
 		
+		//设置中心
 		ConfigCenter.GetInstance().Initialize(context);
+		
+		//请求管理器
 		RequestManager.GetInstance().Initialize(context.getResources().openRawResource(R.raw.cert));
 		
+		//推送
 		PushReceiver.AddListener(this);
 		
 		LogUtil.LogWangcai("Imei(%s) Serial(%s)  androidId(%s)  Mac(%s)", SystemInfo.GetImei(), SystemInfo.GetSerial(), SystemInfo.GetAndroidId(), SystemInfo.GetMacAddress());

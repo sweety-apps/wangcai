@@ -23,3 +23,31 @@
 #   public *;
 #}
 \
+
+
+
+#有米(DOC)
+-dontwarn net.youmi.android.**
+-keep class net.youmi.android.** {*;}
+
+
+#触控
+-dontwarn com.punchbox.**
+-libraryjars libs/Cocounion_AD_SDK_Android_v4.2.2.jar
+-keep class class com.punchbox.**{*;}
+
+
+#shareSdk(DOC)
+-keep class cn.sharesdk.**{*;}
+-keep class com.sina.**{*;}
+-keep class m.framework.**{*;}
+
+
+
+#jpush(DOC)
+-dontwarn cn.jpush.**
+-keep class cn.jpush.** { *; }
+
+
+
+

@@ -25,7 +25,8 @@ public class AppWallHelper {
 		protected Activity m_activity;
 	}
 	
-	
+	//==========================================	
+	//					多盟
 	public static class DuomengAppWall extends AppWall{
 		public DuomengAppWall(Activity activity) {
 			super(activity);
@@ -55,6 +56,8 @@ public class AppWallHelper {
 	    private OManager m_manager;
 	}
 
+	//==========================================	
+	//					有米
 	public static class YoumiAppWall extends AppWall{
 		public YoumiAppWall(Activity activity) {
 			super(activity);
@@ -67,6 +70,8 @@ public class AppWallHelper {
 	}
 	
 
+	//==========================================	
+	//					巨鹏
 	public static class JupengAppWall extends AppWall{
 		public JupengAppWall(Activity activity) {
 			super(activity);
@@ -114,6 +119,8 @@ public class AppWallHelper {
 	}
 	
 
+	//==========================================	
+	//					米迪
 	public static class MidiAppWall extends AppWall{
 		public MidiAppWall(Activity activity) {
 			super(activity);
@@ -136,6 +143,8 @@ public class AppWallHelper {
 	}
 	
 
+	//==========================================	
+	//					触控
 	public static class ChukongAppWall extends AppWall{
 		public ChukongAppWall(Activity activity) {
 			super(activity);

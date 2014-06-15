@@ -53,9 +53,13 @@ public class TaskListInfo {
 		int nMoney = 0;
 		for(TaskInfo info : m_listTaskInfos) {
 			if (!IsComplete(info)) {
-				nMoney = info.m_nMoney;
+				nMoney += info.m_nMoney;
 			}
 		}		
+
+        if (nMoney < 1000) {
+        	nMoney = 1000;
+        }
 		return nMoney;
 	}
 	public boolean IsComplete(int nTaskId) {
