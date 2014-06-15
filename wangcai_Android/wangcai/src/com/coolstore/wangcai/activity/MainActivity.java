@@ -16,6 +16,7 @@ import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.common.BuildSetting;
+import com.coolstore.common.LogUtil;
 import com.coolstore.common.TimerManager;
 import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
@@ -62,7 +63,6 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private final static int sg_Help = sg_ItemIdBase +  6;
     
 	
-
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -609,6 +609,8 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     @Override 
     protected void onDestroy() {
     	ShareSDK.stopSDK(this);
+    	
+    	LogUtil.LogWangcai("###############   MainActivity OnDestroy    ###############");
   
     	super.onDestroy();
     }

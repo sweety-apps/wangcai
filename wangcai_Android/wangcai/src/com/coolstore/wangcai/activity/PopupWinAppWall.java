@@ -28,6 +28,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.Html;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -139,7 +140,7 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     	button.setBackgroundResource(wallInfo.m_nId);
     	button.setText(wallInfo.m_strText);
     	button.setTextColor(Color.rgb(255, 255, 255));
-    	button.setTextSize(m_ownerActivity.getResources().getDimensionPixelOffset(R.dimen.app_wall_button_text_size));
+    	button.setTextSize(TypedValue.COMPLEX_UNIT_PX , m_ownerActivity.getResources().getDimensionPixelSize(R.dimen.app_wall_button_text_size));
     	button.setGravity(Gravity.CENTER);
     	return button;
     }

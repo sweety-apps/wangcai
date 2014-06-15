@@ -6,7 +6,6 @@
 	</style>
 	 <style name="WangcaiTheme">
 		 <item name="android:windowNoTitle">true</item>
-		 <item name="android:windowFullscreen">true</item>
 		 <item name="android:textViewStyle">@style/DefaultFontStyle</item>
 	 </style>
 	<style name="Wangcai_ToggleButton" parent="@android:style/Widget.CompoundButton">  

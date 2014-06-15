@@ -71,7 +71,9 @@ public class Log2File {
                     } catch (IOException e) {
                         e.printStackTrace();
                     } finally {
-                        out.close();
+                    	if (out != null) {
+                    		out.close();
+                    	}
                     }
                 }
             });

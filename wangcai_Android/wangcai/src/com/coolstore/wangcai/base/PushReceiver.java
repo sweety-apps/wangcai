@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.coolstore.common.LogUtil;
 import com.coolstore.common.SLog;
 import com.coolstore.common.Util;
 
@@ -18,8 +19,6 @@ import android.os.Bundle;
 
 
 public class PushReceiver extends BroadcastReceiver {
-	private static final String TAG = "JPush";
-
 	public final static int nPushType_Normal = 1;
 	public final static int nPushType_Custom = 2;
 	
@@ -64,20 +63,21 @@ public class PushReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
-		//SLog.d(TAG, "[MyReceiver] onReceive - " + intent.getAction() + ", extras: " + printBundle(bundle));
+		//LogUtil.LogPush("[PushReceiver] onReceive - " + intent.getAction() + ", extras: " + printBundle(bundle));
 
-	   if (m_listEventListener == null) {
-		   return;
-	   }
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
            // String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
-            //SLog.d(TAG, "[MyReceiver] 接收Registration Id : " + regId);
+            //LogUtil.LogPush("[PushReceiver] 接收Registration Id : " + regId);
             //send the Registration Id to your server...
                         
         }
         else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
         	String strRawText = bundle.getString(JPushInterface.EXTRA_MESSAGE);   
-        	SLog.d("PUSH", "[MyReceiver] 接收到推送下来的自定义消息: " + strRawText);     	
+        	LogUtil.LogPush("[PushReceiver] New Custom Push Message: " + strRawText);     	
+     	   if (m_listEventListener == null) {
+     		  LogUtil.LogPush("has no listener Skip");
+    		   return;
+    	   }
 
 			String strMsgType = null;;
 			String strTitle = null;
@@ -88,18 +88,16 @@ public class PushReceiver extends BroadcastReceiver {
 				strTitle = Util.ReadJsonString(rootObject, "title");
 				strMsg = Util.ReadJsonString(rootObject, "text");
 			} catch (JSONException e) {
-				SLog.d("PUSH", "解析失败");
+				LogUtil.LogPush("Parse Json fail: " + e.toString());
 				// TODO Auto-generated catch block
 				return ;
-			}
-			if (Util.IsEmptyString(strTitle)) {
-				strTitle = "旺财";
 			}
 			int nMsgType = 0;
 			if (Util.IsEmptyString(strMsgType) || strMsgType.equals("NewAward")) {
 				nMsgType = nMessageType_NewAward;
 			}
 			else {
+				LogUtil.LogPush("Unknwon msg type");
 				return;
 			}
 			PushInfo pushInfo = new PushInfo(nPushType_Custom, nMsgType, strTitle, strMsg);
@@ -111,13 +109,13 @@ public class PushReceiver extends BroadcastReceiver {
 			}
         } 
         else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
-            //SLog.d(TAG, "[MyReceiver] 接收到推送下来的通知");
+            //LogUtil.LogPush("[PushReceiver] 接收到推送下来的通知");
             int notifactionId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
-            SLog.d(TAG, "[MyReceiver] 接收到推送下来的通知的ID: " + notifactionId);
+            LogUtil.LogPush("[PushReceiver] 接收到推送下来的通知的ID: " + notifactionId);
         	
         }
         else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
-           SLog.d(TAG, "[MyReceiver] 用户点击打开了通知");
+           LogUtil.LogPush("[PushReceiver] 用户点击打开了通知");
             
             JPushInterface.reportNotificationOpened(context, bundle.getString(JPushInterface.EXTRA_MSG_ID));
             
@@ -130,11 +128,11 @@ public class PushReceiver extends BroadcastReceiver {
         	*/
         }
         else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
-            SLog.d(TAG, "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
+            LogUtil.LogPush("[PushReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
             //在这里根据 JPushInterface.EXTRA_EXTRA 的内容处理代码，比如打开新的Activity， 打开一个网页等..           
         } 
         else {
-        	SLog.d(TAG, "[MyReceiver] Unhandled intent - " + intent.getAction());
+        	LogUtil.LogPush("[PushReceiver] Unhandled intent - " + intent.getAction());
         }
 	}
 

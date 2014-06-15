@@ -2,6 +2,8 @@ package com.coolstore.wangcai.base;
 
 import cn.jpush.android.api.JPushInterface;
 
+import com.coolstore.common.LogUtil;
+import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 
@@ -35,10 +37,17 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 		super.onPause();
 	}
 	protected void onResume() {
-		WangcaiApp.GetInstance().SetForceGround(true);
-		WangcaiApp.GetInstance().SetLastActivity(this);
+		WangcaiApp app = WangcaiApp.GetInstance();
+		app.SetForceGround(true);
+		app.SetLastActivity(this);
 		m_bVisible = true;
     	JPushInterface.onResume(this);
+    	int nPendingPurse = app.GetPendingPurse();
+		LogUtil.LogNewPurse("onResume PendindPurse(%d)", nPendingPurse);
+    	if (nPendingPurse > 0) {
+			ShowPurseTip(nPendingPurse); 
+			app.ResetPendingPurse();
+    	}
 		super.onResume();
 	}
 	
@@ -51,7 +60,17 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 	}
 	public void OnBalanceUpdate(int nCurrentBalance, int nNewBalance) {
 	}
-	public void OnGetAppAward(int nAward) {
+	public boolean OnGetAppAward(int nAward) {
+		LogUtil.LogNewPurse("OnGetAppAward (%d)  m_bVisible(%b)", nAward, m_bVisible);
+		if (m_bVisible) {
+			ShowPurseTip(nAward);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	private void ShowPurseTip(int nAward) {
 		m_winNewAward = ActivityHelper.ShowNewArawdWin(this, getWindow().getDecorView(), getString(R.string.new_app_award_tip_title), nAward);
 		m_winNewAward.setOnDismissListener(new OnDismissListener() {
 			@Override
@@ -63,6 +82,10 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 				}
 			}
 		});
+
+    	if (ConfigCenter.GetInstance().ShouldPlaySound()) {
+    		WangcaiApp.GetInstance().PlaySound();
+    	}
 	}
 	private int GetCurrentLevel() {
 		return WangcaiApp.GetInstance().GetUserInfo().GetCurrentLevel();

@@ -120,7 +120,7 @@ public class SLog {
     /**
      * The TAG of the Application
      */
-    public static String TAG = "SNOWDREAM";
+    public static String TAG = "Wangcai";
     /**
      * Whether to enable the log
      */
@@ -165,7 +165,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 d(msg);
             } else {
-                android.util.Log.d(TAG, buildMessage(TYPE.DEBUG, TAG, msg, null));
+                android.util.Log.d(tag, buildMessage(TYPE.DEBUG, tag, msg, null));
             }
         }
     }
@@ -270,7 +270,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 d(msg, thr);
             } else {
-                android.util.Log.d(TAG, buildMessage(TYPE.DEBUG, TAG, msg, thr), thr);
+                android.util.Log.d(tag, buildMessage(TYPE.DEBUG, tag, msg, thr), thr);
             }
         }
     }
@@ -303,7 +303,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 e(msg);
             } else {
-                android.util.Log.e(TAG, buildMessage(TYPE.ERROR, TAG, msg, null));
+                android.util.Log.e(tag, buildMessage(TYPE.ERROR, tag, msg, null));
             }
         }
     }
@@ -336,7 +336,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 e(msg, thr);
             } else {
-                android.util.Log.e(TAG, buildMessage(TYPE.ERROR, TAG, msg, thr), thr);
+                android.util.Log.e(tag, buildMessage(TYPE.ERROR, tag, msg, thr), thr);
             }
         }
     }
@@ -478,7 +478,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 i(msg);
             } else {
-                android.util.Log.i(TAG, buildMessage(TYPE.INFO, TAG, msg, null));
+                android.util.Log.i(tag, buildMessage(TYPE.INFO, tag, msg, null));
             }
         }
     }
@@ -511,7 +511,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 i(msg, thr);
             } else {
-                android.util.Log.i(TAG, buildMessage(TYPE.INFO, TAG, msg, thr), thr);
+                android.util.Log.i(tag, buildMessage(TYPE.INFO, tag, msg, thr), thr);
             }
         }
     }
@@ -630,7 +630,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 v(msg);
             } else {
-                android.util.Log.v(TAG, buildMessage(TYPE.VERBOSE, TAG, msg, null));
+                android.util.Log.v(tag, buildMessage(TYPE.VERBOSE, tag, msg, null));
             }
         }
     }
@@ -663,7 +663,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 v(msg, thr);
             } else {
-                android.util.Log.v(TAG, buildMessage(TYPE.VERBOSE, TAG, msg, thr), thr);
+                android.util.Log.v(tag, buildMessage(TYPE.VERBOSE, tag, msg, thr), thr);
             }
         }
     }
@@ -707,7 +707,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 w(msg);
             } else {
-                android.util.Log.w(TAG, buildMessage(TYPE.WARN, TAG, msg, null));
+                android.util.Log.w(tag, buildMessage(TYPE.WARN, tag, msg, null));
             }
         }
     }
@@ -740,7 +740,7 @@ public class SLog {
             if (tag == null || tag == "") {
                 w(msg, thr);
             } else {
-                android.util.Log.w(TAG, buildMessage(TYPE.WARN, TAG, msg, thr), thr);
+                android.util.Log.w(tag, buildMessage(TYPE.WARN, tag, msg, thr), thr);
             }
         }
     }

@@ -48,6 +48,7 @@
        <activity
            android:name="com.coolstore.wangcai.activity.StartupActivity"
            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+           android:screenOrientation="portrait" 
            android:label="@string/app_name" >
            <intent-filter>
                <action android:name="android.intent.action.MAIN" />
@@ -56,22 +57,22 @@
            </intent-filter>
        </activity>
       
-       <activity android:name="com.coolstore.wangcai.activity.MainActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.MyWangcaiActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.InviteActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.LotteryActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.SettingActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.WebviewActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.ExchageGiftActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.ExtractListActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.RegisterActivity" android:windowSoftInputMode="adjustResize|stateHidden" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.RegisterSucceedActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.SurveyActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.ExtractAliPayActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.ExtractPhoneBillActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.ExtractQBiActivity" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.WriteInviteCodeAcitivty" android:theme="@style/WangcaiTheme" />
-       <activity android:name="com.coolstore.wangcai.activity.ExtractSucceedActivity" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.MainActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.MyWangcaiActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.InviteActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.LotteryActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.SettingActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.WebviewActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.ExchageGiftActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.ExtractListActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.RegisterActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.RegisterSucceedActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.SurveyActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.ExtractAliPayActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.ExtractPhoneBillActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.ExtractQBiActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.WriteInviteCodeAcitivty" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.ExtractSucceedActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        
        
        <activity
