@@ -191,20 +191,39 @@ static LoginAndRegister* _sharedInstance = nil;
     [self sendEvent:status HttpCode:code ErrCode:errCode Msg:msg];
 }
 
--(void) adjustOrder:(NSString*) response order:(NSMutableArray*) order {
-    NSMutableDictionary* mutTmp = [[[NSMutableDictionary alloc] init] autorelease];
+-(int) getIndexFromArray:(NSArray*) array name:(NSString*) name {
+    int n = 999;
+    for ( int i = 0; i < [array count]; i ++ ) {
+        NSString* tmp = [array objectAtIndex:i];
+        if ( [tmp isEqualToString:name] ) {
+            n = i;
+            break;
+        }
+    }
+    return n;
+}
+
+-(void) adjustOrder:(NSDictionary*) response order:(NSMutableArray*) order {
+    NSMutableArray* orderArray = [[[NSMutableArray alloc] init] autorelease];
+    NSArray* sort = nil;
+    
+    if ( [[response allKeys] containsObject:@"__sort"] ) {
+        sort = (NSArray*)[response objectForKey:@"__sort"];
+    }
     
     for ( int i = 0; i < [_offwallArray count]; i ++ ) {
         NSString* name = [_offwallArray objectAtIndex:i];
-        NSRange range = [response rangeOfString:name];
-        if ( range.length != 0 ) {
-            [mutTmp setObject:name forKey:[NSNumber numberWithInteger:range.location]];
+        
+        if ( [[response allKeys] containsObject:name] ) {
+            [orderArray addObject:name];
         }
     }
     
-    NSArray* keys = [mutTmp allKeys];
-    NSArray* sortedArray = [keys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        if ( [obj1 intValue] < [obj2 intValue] ) {
+    NSArray* sortedArray = [orderArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        int nIndex1 = [self getIndexFromArray:sort name:obj1];
+        int nIndex2 = [self getIndexFromArray:sort name:obj2];
+        
+        if ( nIndex1 < nIndex2 ) {
             return -1;
         } else {
             return 1;
@@ -212,7 +231,7 @@ static LoginAndRegister* _sharedInstance = nil;
     }];
     
     for ( int i = 0; i < [sortedArray count]; i ++ ) {
-        NSString* value = [mutTmp objectForKey:[sortedArray objectAtIndex:i] ];
+        NSString* value = [sortedArray objectAtIndex:i];
         
         [order addObject:value];
     }
@@ -299,9 +318,9 @@ static LoginAndRegister* _sharedInstance = nil;
                 _offwallShow = [[NSMutableDictionary alloc] init];
                 _offwallOrder = [[NSMutableArray alloc] init];
                 
-                [self adjustOrder:req.responseString order:_offwallOrder];
-                
                 NSDictionary* offerwall = [dict valueForKey:@"offerwall"];
+                [self adjustOrder:offerwall order:_offwallOrder];
+                
                 for ( int i = 0; i < [_offwallOrder count]; i ++ ) {
                     NSString* name = [_offwallOrder objectAtIndex:i];
                     int nValue = [[offerwall valueForKey:name] intValue];
@@ -364,9 +383,8 @@ static LoginAndRegister* _sharedInstance = nil;
 
 -(void) test {
     //[_offwallOrder pushHead:@"adwo"];
-    //[_offwallShow setObject:[NSNumber numberWithInt:3] forKey:@"adwo"];
+    //[_offwallShow setObject:[NSNumber numberWithInt:1] forKey:@"adwo"];
     
-    //[_offwallOrder pushHead:@"waps"];
     //[_offwallShow setObject:[NSNumber numberWithInt:3] forKey:@"waps"];
     
     //[_offwallShow setObject:[NSNumber numberWithInt:0] forKey:@"youmi"];
