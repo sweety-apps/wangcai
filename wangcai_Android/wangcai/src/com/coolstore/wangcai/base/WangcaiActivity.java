@@ -45,7 +45,7 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
     	int nPendingPurse = app.GetPendingPurse();
 		LogUtil.LogNewPurse("onResume PendindPurse(%d)", nPendingPurse);
     	if (nPendingPurse > 0) {
-			ShowPurseTip(nPendingPurse); 
+			ShowPurseTip(nPendingPurse, getString(R.string.new_app_award_tip_title)); 
 			app.ResetPendingPurse();
     	}
 		super.onResume();
@@ -63,15 +63,15 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 	public boolean OnGetAppAward(int nAward) {
 		LogUtil.LogNewPurse("OnGetAppAward (%d)  m_bVisible(%b)", nAward, m_bVisible);
 		if (m_bVisible) {
-			ShowPurseTip(nAward);
+			ShowPurseTip(nAward, getString(R.string.new_app_award_tip_title));
 			return true;
 		}
 		else {
 			return false;
 		}
 	}
-	private void ShowPurseTip(int nAward) {
-		m_winNewAward = ActivityHelper.ShowNewArawdWin(this, getWindow().getDecorView(), getString(R.string.new_app_award_tip_title), nAward);
+	protected void ShowPurseTip(int nAward, String strTitle) {
+		m_winNewAward = ActivityHelper.ShowNewArawdWin(this, getWindow().getDecorView(), strTitle, nAward);
 		m_winNewAward.setOnDismissListener(new OnDismissListener() {
 			@Override
 			public void onDismiss() {				
@@ -87,7 +87,7 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
     		WangcaiApp.GetInstance().PlaySound();
     	}
 	}
-	private int GetCurrentLevel() {
+	protected int GetCurrentLevel() {
 		return WangcaiApp.GetInstance().GetUserInfo().GetCurrentLevel();
 	}
 	public void OnLevelChanged(int nLevel, int nLevelChange) {
@@ -102,6 +102,6 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 	}
 	
 	protected boolean m_bVisible = false;
-	private PopupWindow m_winNewAward = null;
-	private int m_nLevelChange = sg_nInvlidLevelChanged;
+	protected PopupWindow m_winNewAward = null;
+	protected int m_nLevelChange = sg_nInvlidLevelChanged;
 }

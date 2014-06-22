@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:wangcai = "http://schemas.android.com/apk/res/com.coolstore.wangcai"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+	android:orientation="vertical"
+	android:background="#FFFFFF" >
+	<com.coolstore.wangcai.ctrls.TitleCtrl xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/title"
+		wangcai:titleText="@string/write_invite_code_title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+	
+	<ImageView
+	    android:id="@+id/line1"
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		android:background="@drawable/line"
+		android:layout_marginTop="50dp"
+		android:layout_below="@id/title"
+		/>
+	<LinearLayout
+	    android:id="@+id/edit_frame"
+		android:layout_width="match_parent"
+		android:layout_height="80dp"
+		android:layout_below="@id/line1" >
+	    
+		<TextView
+			android:id="@+id/label"
+			android:textSize="14sp"
+			android:textColor="#E0E0E0"
+			android:paddingLeft="20dp"
+			android:paddingRight="20dp"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_gravity="center_vertical"
+	    	android:text="@string/input_invite_code_lable" />
+		<View
+			android:layout_width="1dp"
+			android:layout_height="match_parent"
+			android:layout_marginTop="8dp"
+			android:layout_marginBottom="8dp"
+			android:background="@color/main_split_line_color" />
+		<EditText 
+			android:textSize="19sp"
+			android:id="@+id/invite_code_edit"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+	    	android:layout_gravity="center_vertical"
+	    	android:layout_marginLeft="15dp"
+			android:hint="@string/hint_input_invite_code"
+			android:background="@null"
+			/>
+	</LinearLayout>
+	<ImageView
+	    android:id="@+id/line2"
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		android:background="@drawable/line"
+		android:layout_below="@id/edit_frame" />
+	<Button
+		android:id="@+id/commit_invite_code"
+		android:text="@string/write_invaite_code_get_award"
+		android:background="@drawable/invite_share_button"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/edit_frame"
+    	android:layout_marginTop="100dp"
+    	android:layout_centerHorizontal="true"
+		/>
+</RelativeLayout>

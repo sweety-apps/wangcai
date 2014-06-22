@@ -1,10 +1,24 @@
 package com.coolstore.wangcai.activity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.Platform.ShareParams;
+import cn.sharesdk.onekeyshare.OnekeyShare;
+import cn.sharesdk.onekeyshare.ShareContentCustomizeCallback;
+
 import com.coolstore.common.Config;
 import com.coolstore.common.Util;
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.UserInfo;
+import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
@@ -16,6 +30,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -71,24 +86,76 @@ public class InviteActivity extends WangcaiActivity implements RequestManager.IR
     		ActivityHelper.ShowToast(this, R.string.copy_succeed);
     	}
     	else if (nId == R.id.share_button) {
-    		
+    		/*
+    	    id<ISSContent> publishContent = [ShareSDK content: [NSString stringWithFormat:
+    	    	@"妈妈再也不用担心我的话费了，旺财下载地址:%@", url]  
+    	    defaultContent:[NSString stringWithFormat:@"妈妈再也不用担心我的话费了。"] 
+    	    		image:[ShareSDK imageWithPath:imagePath] 
+    	    	title: @"玩应用领红包" 
+    	    	url:url description: @"旺财分享" 
+    	    	mediaType: SSPublishContentMediaTypeNews];
+    	  
+    	    [publishContent addQQUnitWithType: [NSNumber numberWithInt:SSPublishContentMediaTypeNews]
+    	            content:@"妈妈再也不用担心我的话费了。"
+    	            title:@"玩应用领红包"
+    	            url:url
+    	            image:[ShareSDK imageWithPath:imagePath]];
+    	    
+    	    */
+    		UserInfo userInfo = WangcaiApp.GetInstance().GetUserInfo();
+			//String strInviteCode = userInfo.GetInviteCode();
+			String strInviteUrl = userInfo.GetInviteTaskUrl();
+    
+			OnekeyShare oks = new OnekeyShare();
+			oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_description));
+			oks.setTitle(getString(R.string.share_title));
+			oks.setUrl(strInviteUrl);
+			oks.setSite(getString(R.string.app_name));
+			oks.setSiteUrl(strInviteUrl);
+			oks.setTitleUrl(strInviteUrl);
+			String strImagePath = Util.GetMainLogoPath(this);
+			if (!Util.IsEmptyString(strImagePath)) {
+				oks.setImagePath(strImagePath);
+				oks.setFilePath(strImagePath);
+			}
+			String strMsg = String.format(getString(R.string.invite_share_content), strInviteUrl);
+			oks.setText(strMsg);
+			oks.setShareContentCustomizeCallback(new ShareContentCustomizeCallback() {
+				public void onShare(Platform platform, ShareParams paramsToShare) {
+					if ("QZone".equals(platform.getName())) {
+						//String text = platform.getContext().getString(R.string.share_content_short);
+						String strQZoneNewText = platform.getContext().getString(R.string.qzone_invite_share_content);
+						paramsToShare.setText(strQZoneNewText);
+					}
+				}
+			});
+			oks.setCallback(new PlatformActionListener(){
+				@Override
+				public void onComplete(Platform palt, int nAction, HashMap<String, Object> res) {
+					Log.d(getClass().getSimpleName(), res.toString());		
+				}			
+				@Override
+				public void onError(Platform plat, int action, Throwable t) {
+					t.printStackTrace();
+				}			
+				@Override
+				public void onCancel(Platform plat, int action) {
+				}
+			});
+			oks.show(this.getApplicationContext());
     	}
     	else if (nId == R.id.view_detail) {
     		ActivityHelper.ShowWebViewActivity(this, getString(R.string.invite_rull_detail_title), Config.GetInviteRuleUrl());
-    	    //NSString* url = [[[NSString alloc] initWithFormat:@"%@123", WEB_SERVICE_VIEW] autorelease];
-    	    
-    	   // WebPageController* controller = [[[WebPageController alloc] init:@""
-    	   //                                                              Url:url Stack:stack] autorelease];
     	}
-    }
+    } 
     private void AttachEvents() { 
-
-    	//复制到剪贴板按钮如何成为推广员
+    	//复制到剪贴板按钮
     	this.findViewById(R.id.copy_url_button).setOnClickListener(this);
     	
     	//分享赚红包按钮
     	this.findViewById(R.id.share_button).setOnClickListener(this);
 
+    	//如何成为推广员
     	this.findViewById(R.id.view_detail).setOnClickListener(this);
     }
     

@@ -32,6 +32,7 @@ public class Request_Login extends Requester{
 			mapRequestInfo.put("phone", SystemInfo.GetPhoneNumber());
 			mapRequestInfo.put("android_id", SystemInfo.GetAndroidId());
 			mapRequestInfo.put("mac", SystemInfo.GetMacAddress());		
+			mapRequestInfo.put("sign", m_strSign);		
 			mapRequestInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
 			m_requestInfo = Requester.NewPostRequestInfo(Config.GetLoginUrl(), "", mapRequestInfo);
 		}
@@ -77,6 +78,8 @@ public class Request_Login extends Requester{
 
 			Log.i("PollIncome", String.format("Login----OfferWallInfo(%d)", userInfo.GetOfferWallIncome()));
 
+			userInfo.SetSessionId(Util.ReadJsonString(rootObject, "session_id"));
+			userInfo.SetDeviceId(Util.ReadJsonString(rootObject, "device_id"));
 			userInfo.SetUserId(Util.ReadJsonInt(rootObject, "userid"));
 			userInfo.SetBalance(Util.ReadJsonInt(rootObject, "balance"));
 			userInfo.SetCurrentLevel(Util.ReadJsonInt(rootObject, "level"));
@@ -182,7 +185,10 @@ public class Request_Login extends Requester{
 		return appwallConfig;
     }
     
-    
+
+    public void SetSign(String strSign) {
+    	m_strSign = strSign;
+    }
     public UserInfo GetUserInfo() {
     	return m_userInfo;
     }
@@ -202,6 +208,7 @@ public class Request_Login extends Requester{
     	return m_nPollElapse;
     }
 
+    private String m_strSign;
     private int m_nPollElapse = 0;
     private boolean m_bNeedForceUpdate = false; 
 	private UserInfo m_userInfo = null;

@@ -41,7 +41,7 @@ public class ExchageGiftItem extends ItemBase implements OnClickListener, Reques
 	public ViewGroup Create(Context context, String strIconUrl, String strName, int nPrice, int nRemainCount) {
 		m_context = context;
 		m_strIconUrl = strIconUrl;
-		m_strSaveName = Util.GetStringMd5(strIconUrl) + ".png";
+		m_strSaveName = Util.GetMd5(strIconUrl) + ".png";
 		super.CreateView(context, R.layout.ctrl_exchage_gift_item);
 		InitView(context, strName, nPrice, nRemainCount);
 		

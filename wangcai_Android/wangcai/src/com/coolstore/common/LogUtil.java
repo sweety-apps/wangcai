@@ -2,43 +2,54 @@ package com.coolstore.common;
 
 
 public class LogUtil {
+	private final static boolean sg_bEnableLog = true; 
 
 	public static void LogMainListDrag(String format, Object... args) {
-		SLog.i("MainListDrag", String.format(format, args));
+		if (sg_bEnableLog)
+			SLog.i("MainListDrag", String.format(format, args));
 	}
 	public static void LogMainListDrag(String strMsg) {
-		SLog.i("MainListDrag", strMsg);
+		if (sg_bEnableLog)
+			SLog.i("MainListDrag", strMsg);
 	}
 	
 
 	public static void LogPush(String format, Object... args) {
-		SLog.i("JPush", String.format(format, args));
+		if (sg_bEnableLog)
+			SLog.i("JPush", String.format(format, args));
 	}
 	public static void LogPush(String strMsg) {
-		SLog.i("JPush", strMsg);
+		if (sg_bEnableLog)
+			SLog.i("JPush", strMsg);
 	} 
 	
 
 	public static void LogUserInfo(String format, Object... args) {
-		SLog.i("UserInfo", String.format(format, args));
+		if (sg_bEnableLog)
+			SLog.i("UserInfo", String.format(format, args));
 	}
 	public static void LogUserInfo(String strMsg) {
-		SLog.i("UserInfo", strMsg);
+		if (sg_bEnableLog)
+			SLog.i("UserInfo", strMsg);
 	} 
 	
 	
 	public static void LogWangcai(String format, Object... args) {
-		SLog.i("Wangcai", String.format(format, args));
+		if (sg_bEnableLog)
+			SLog.i("Wangcai", String.format(format, args));
 	}
 	public static void LogWangcai(String strMsg) {
-		SLog.i("Wangcai", strMsg);
+		if (sg_bEnableLog)
+			SLog.i("Wangcai", strMsg);
 	} 
 	
 	
 	public static void LogNewPurse(String format, Object... args) {
-		SLog.i("NewPurse", String.format(format, args));
+		if (sg_bEnableLog)
+			SLog.i("NewPurse", String.format(format, args));
 	}
 	public static void LogNewPurse(String strMsg) {
-		SLog.i("NewPurse", strMsg);
+		if (sg_bEnableLog)
+			SLog.i("NewPurse", strMsg);
 	} 
 }

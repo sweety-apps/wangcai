@@ -51,14 +51,14 @@
 				android:layout_alignLeft="@id/title_text"
 				android:layout_marginTop="15dp"
 			/>
-			<LinearLayout
+			<RelativeLayout
 				android:id="@+id/app_wall_button_container"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_below="@id/important_tip"
 				android:layout_marginTop="15dp"
 				android:orientation="vertical" >
-			</LinearLayout>
+			</RelativeLayout>
 			<ImageView 
 				android:id="@+id/more_button"
 				android:src="@drawable/app_tip_more"
@@ -86,6 +86,11 @@
 				android:layout_marginTop="20dp" 
 				android:layout_marginBottom="40dp"
 				/> 
+				
+			<RelativeLayout
+				android:id="@+id/more_panel_button_container"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
 		</LinearLayout>
 	</RelativeLayout>
 	<ImageView 

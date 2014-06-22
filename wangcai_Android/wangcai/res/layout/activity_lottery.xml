@@ -4,33 +4,32 @@
     android:layout_height="match_parent" 
 	android:orientation="vertical"
 	android:background="#A01919">
-
-    <LinearLayout
+     <LinearLayout
 		android:id="@+id/title_frame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+	        android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
 		<ImageButton 
-		    android:id="@+id/return_button"
+			android:id="@+id/return_button"
 			android:src="@drawable/head_back"
 			android:background="@android:color/transparent"
 			android:gravity="center"
-		    android:layout_width="50dp"
-		    android:layout_height="50dp"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
 			android:layout_centerInParent="true"
-		/> 
+			/> 
 		<ImageView
 			android:src="@drawable/choujiang_title"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
-	</LinearLayout>
+	</LinearLayout>    
 	<FrameLayout 
 		android:id="@+id/beilv_frame"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" 
-		android:layout_marginTop="30dp" 
+		android:layout_marginTop="0dp" 
 		android:layout_below="@id/title_frame"
-		android:layout_marginBottom="30dp" >
+		android:layout_marginBottom="20dp" >
 		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -43,18 +42,20 @@
 				android:layout_height="wrap_content" />
 			<ImageView
 				android:src="@drawable/choujiang_x1selected"
-				android:layout_marginLeft="4dp"
+				android:layout_marginLeft="8dp"
 				android:layout_gravity="center_vertical"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 			<ImageView
 				android:src="@drawable/choujiang_x2selected"
 				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="4dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 			<ImageView
 				android:src="@drawable/choujiang_x3selected"
 				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="4dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 		</LinearLayout>

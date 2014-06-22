@@ -2,13 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
-	android:layout_marginTop="10dp">
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    >
     
    <ImageView
 		android:id="@+id/type_icon"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_centerVertical="true"
+		android:layout_marginBottom="10dp"
 		android:layout_marginLeft="@dimen/common_margin_left"
 		 />
 	<TextView 
@@ -19,29 +22,29 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="@dimen/common_margin_left"
-		android:layout_toRightOf="@id/type_icon"
 		android:layout_alignTop="@id/type_icon"
+		android:layout_toRightOf="@id/type_icon"
 	/> 
 	<TextView 
 		android:id="@+id/extract_price"
 		android:text="@string/balance"
-		android:textSize="14sp"
+		android:textSize="12sp"
 		android:textColor="#4E9ED5"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/type_name"
-		android:layout_marginTop="9dp"
+		android:layout_marginTop="5dp"
 		android:layout_alignLeft="@id/type_name"
 	/> 
 	<TextView 
 		android:id="@+id/recharge_button"
 		android:text="@string/exchage_button_text" 
 		android:textColor="#B0B0B0"
-		android:textSize="20sp"
+		android:textSize="18sp"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_alignBottom="@id/type_icon"
-		android:layout_marginBottom="12dp"
+		android:layout_below="@id/extract_price"
+		android:layout_marginTop="9dp"
 		android:layout_alignLeft="@id/type_name" /> 
 	<ImageView
 		android:layout_width="match_parent"

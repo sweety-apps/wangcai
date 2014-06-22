@@ -1,9 +1,14 @@
 package com.coolstore.wangcai.activity;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import cn.jpush.android.api.JPushInterface;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.framework.Platform.ShareParams;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import cn.sharesdk.onekeyshare.ShareContentCustomizeCallback;
 
 import com.coolstore.request.Requester;
 import com.coolstore.request.RequesterFactory;
@@ -11,6 +16,7 @@ import com.coolstore.request.TaskListInfo;
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.UserInfo;
 import com.coolstore.request.Requesters.Request_GetUserInfo;
+import com.coolstore.request.Requesters.Request_Share;
 import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
@@ -22,6 +28,7 @@ import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
 import com.coolstore.wangcai.base.ManagedDialog;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
+import com.coolstore.wangcai.base.PushReceiver;
 import com.coolstore.wangcai.ctrls.ItemBase;
 import com.coolstore.wangcai.ctrls.MainItem;
 import com.coolstore.wangcai.dialog.HintBindPhoneDialog;
@@ -31,11 +38,15 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.CanvasTransformer;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,7 +73,10 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private final static int sg_Options = sg_ItemIdBase + 5;
     private final static int sg_Help = sg_ItemIdBase +  6;
     
-	
+    public final static String sg_nIntentType = "nIntentType";
+    public final static int sg_nIntentType_NewPurseNotification = 1;
+    
+
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +86,12 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	
         InitView();
 
-		 JPushInterface.init(getApplicationContext());
+        registerMessageReceiver();
+        
+		JPushInterface.init(getApplicationContext());
      }
     
-    private void InitTaskList(TaskListInfo taskListInfo, boolean bShowCompleteTask) {
+    private void InitTaskList(TaskListInfo taskListInfo) {
         ViewGroup taskListContainer = (ViewGroup)this.findViewById(R.id.tasks_list_container);
 
         m_listCompleteTasks.clear();
@@ -92,7 +108,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
         	
         	InsertTaskItem(taskListContainer, taskInfo);
         } 
-        if (bShowCompleteTask) {
+        if (m_bShowCompleteTask) {
 	        for (TaskListInfo.TaskInfo taskInfo : m_listCompleteTasks) {
 	        	InsertTaskItem(taskListContainer, taskInfo);
 	        }
@@ -197,7 +213,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
         remainMoneyTextView.setText(String.valueOf((float)nRemainMoney / 100.0f));
         
         //任务列表
-        InitTaskList(taskListInfo, false);
+        InitTaskList(taskListInfo);
     }
 
     private final static int sg_listNumberResId[] = {R.drawable.yue_0, R.drawable.yue_1, R.drawable.yue_2, R.drawable.yue_3, 
@@ -245,6 +261,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			//请求以前的调查问卷
 			Request_GetUserInfo getUserReq = (Request_GetUserInfo)req;
 			int nResult = getUserReq.GetResult();
+			LogUtil.LogUserInfo("Request_GetUserInfo Complete Result(%d)", nResult);
 
 			int nAge = 0;
 			int nSex = 0;
@@ -255,6 +272,27 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 				strInterest = getUserReq.GetInterest();
 			}
 			ActivityHelper.ShowSurveyActivity(this, nAge, nSex, strInterest);
+		}
+		else if (req instanceof Request_Share) {
+			int nResult = req.GetResult();
+			LogUtil.LogUserInfo("Request_Share Complete Result(%d)", nResult);
+			if (nResult == 0) {
+				Request_Share detailReq = (Request_Share)req;
+				int nIncome = detailReq.GetIncome();
+				
+				WangcaiApp app = WangcaiApp.GetInstance();
+				app.Login();
+				
+				//显示红包提示
+				super.ShowPurseTip(nIncome, getString(R.string.new_invite_award_tip_title));
+				
+				//更改余额
+				app.ChangeBalance(nIncome);
+			}
+			else {
+				String strMsg = req.GetMsg();
+				Util.ShowRequestErrorMsg(this, strMsg);
+			}
 		}
 	}
 	public void onClick(View v) {
@@ -296,6 +334,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			        ViewGroup taskListContainer = (ViewGroup)this.findViewById(R.id.tasks_list_container);
 		        	InsertTaskItem(taskListContainer, taskInfo);
 				}
+				m_bShowCompleteTask = true;
 				break;
 		}
 
@@ -318,9 +357,9 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 						m_hintTaskLevelDialog = new HintTaskLevelDialog(this, nCurrentLevel);
 						RegisterDialog(m_hintTaskLevelDialog);
 					}
-					m_bindPhoneDialog.Show();
+					m_hintTaskLevelDialog.Show();
 			
-					ActivityHelper.ShowToast(this, String.format(getString(R.string.task_level_limit_hint), taskInfo.m_nLevel));
+					//ActivityHelper.ShowToast(this, String.format(getString(R.string.task_level_limit_hint), taskInfo.m_nLevel));
 					return ;
 				}
 			}
@@ -344,8 +383,8 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			//积分墙
 			//ActivityHelper.ShowExtractSucceed(this, "xxsdf", "234324U234LKJLSDF23423423423fsgfsSFS234234");
 			//ActivityHelper.ShowRegisterActivity(this);
-			ActivityHelper.ShowAppWall(this, findViewById(R.id.main_wnd));
 			
+			ActivityHelper.ShowAppWall(this, findViewById(R.id.main_wnd));
 			//PopupWinLevelUpgrate appWall = new PopupWinLevelUpgrate(this, 4, 200);
 	    	//appWall.showAtLocation(findViewById(R.id.main_wnd), Gravity.CENTER, 0, 0);
 			break;
@@ -368,15 +407,59 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 					return;
 				}
 			}
+			final String strInviteCode = userInfo.GetInviteCode();
+			final String strInviteUrl = userInfo.GetInviteTaskUrl();
+			
 			OnekeyShare oks = new OnekeyShare();
 			oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_description));
-			oks.setTitle(getString(R.string.wangcai_share));
-			
-			String strInviteCode = userInfo.GetInviteCode();
-			String strInviteUrl = userInfo.GetInviteTaskUrl();
-			String strMsg = String.format(getString(R.string.share_content), Util.FormatMoney(userInfo.GetTotalIncome()) , strInviteCode, strInviteUrl);
-			oks.setText(strMsg);
-			oks.show(this.getApplicationContext());
+			oks.setTitle(getString(R.string.share_title));
+			oks.setUrl(strInviteUrl);
+			oks.setSilent(false);
+			oks.setSite(getString(R.string.app_name));
+			oks.setSiteUrl(strInviteUrl);
+			oks.setTitleUrl(strInviteUrl);
+
+			String strImagePath = Util.GetMainLogoPath(this);
+			if (!Util.IsEmptyString(strImagePath)) {
+				oks.setImagePath(strImagePath);
+				oks.setFilePath(strImagePath);
+			}
+			final String strShareIncome = Util.FormatMoney(userInfo.GetTotalIncome());
+			String strText = String.format(getString(R.string.share_content),  strShareIncome, strInviteCode, strInviteUrl);
+			oks.setText(strText);
+
+			oks.setShareContentCustomizeCallback(new ShareContentCustomizeCallback() {
+				public void onShare(Platform platform, ShareParams paramsToShare) {
+					if ("QZone".equals(platform.getName())) {
+						//String text = platform.getContext().getString(R.string.share_content_short);
+						//String strQZoneNewText = platform.getContext().getString(R.string.qzone_share_content);
+						String strNewText = String.format(getString(R.string.qzone_share_content),  
+																		strShareIncome, strInviteCode);
+						paramsToShare.setText(strNewText);
+					}
+				}
+			});
+			oks.setCallback(new PlatformActionListener(){
+				@Override
+				public void onComplete(Platform palt, int nAction, HashMap<String, Object> res) {
+					LogUtil.LogUserInfo("ShareComplete, reuqest purse");
+
+					RequestManager requestManager = RequestManager.GetInstance();
+					Request_Share request = (Request_Share)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_Share);
+					requestManager.SendRequest(request, true, MainActivity.this);			
+				}			
+				@Override
+				public void onError(Platform plat, int action, Throwable t) {
+					LogUtil.LogUserInfo("Share Fail");
+				}			
+				@Override
+				public void onCancel(Platform plat, int action) {
+					LogUtil.LogUserInfo("Share Cancel");
+				}
+			});
+
+			oks.show(this.getApplicationContext());			
+		
 			break;
 		case TaskListInfo.TaskTypeUpgrade:
 		case sg_MyWangcai:
@@ -458,9 +541,8 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			AnimaUpdateBalance();
 		}
 
-        if (!ConfigCenter.GetInstance().HasSignInToday()) {
-        	findViewById(R.id.lottery_dot_image).setVisibility(View.GONE);
-        }
+		this.CheckHasSignin();
+	
         if (m_bNeedCheckSignin) {
         	m_bNeedCheckSignin = false;
         	CheckHasSignin();
@@ -612,9 +694,48 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	
     	LogUtil.LogWangcai("###############   MainActivity OnDestroy    ###############");
   
+		unregisterReceiver(m_messageReceiver);
+
     	super.onDestroy();
     }
 
+
+	public void registerMessageReceiver() {
+		m_messageReceiver = new MessageReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+		filter.addAction(PushReceiver.PushMessageReceiveAction);
+		registerReceiver(m_messageReceiver, filter);
+	}
+
+	public class MessageReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+            LogUtil.LogPush("MainActivity  receive broadcast(%s)", intent.getAction());
+			if (PushReceiver.PushMessageReceiveAction.equals(intent.getAction())) {
+              int nPushType = intent.getIntExtra(PushReceiver.sg_nPushType, PushReceiver.nPushType_Custom);
+              int nMessageType =  intent.getIntExtra(PushReceiver.sg_nPushMessageType, PushReceiver.nMessageType_NewAward);
+              String strTitle = intent.getStringExtra(PushReceiver.sg_strPushTitle);
+              String strText = intent.getStringExtra(PushReceiver.sg_strPushText);  
+              LogUtil.LogPush("MainActivity  receive push message broadcast(%d)(%s)(%s)", nMessageType, strTitle, strText);
+              if (PushReceiver.nMessageType_NewAward == nMessageType) {
+            	  WangcaiApp.GetInstance().QueryChanges();
+              }
+			}
+		}
+	}	
+	@Override
+    protected void onNewIntent(Intent intent) {
+    	CheckHasSignin();
+ 
+		int nIntentType =  intent.getIntExtra(sg_nIntentType, 0);
+		LogUtil.LogPush("MainActivity  onNewIntent Type(%d)", nIntentType);
+		if (nIntentType == sg_nIntentType_NewPurseNotification) {
+			WangcaiApp.GetInstance().QueryChanges();
+		}
+    }
+	
+	private MessageReceiver m_messageReceiver = null;
     private SlidingMenu m_slidingMenu;
     private boolean m_bNeedCheckSignin = false;
     private HintTaskLevelDialog m_hintTaskLevelDialog;
@@ -622,4 +743,5 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private ArrayList<TaskListInfo.TaskInfo> m_listCompleteTasks = new ArrayList<TaskListInfo.TaskInfo>();
     private int m_nUpdateBalanceTimerId = 0;
     private PullToRefreshScrollView m_pullRefreshScrollView = null;
+    private boolean m_bShowCompleteTask = false;
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import com.coolstore.common.Config;
+import com.coolstore.common.Util;
 import com.coolstore.request.Requester;
 
 public class Request_Share extends Requester{
@@ -14,7 +15,6 @@ public class Request_Share extends Requester{
 	public Requester.RequestInfo GetRequestInfo() {
 		if (m_requestInfo == null) {
 			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("appid", m_strAppId);
 			m_requestInfo = Requester.NewPostRequestInfo(Config.GetShareTaskUrl(), "", mapRequestInfo);
 		}
 		return m_requestInfo;
@@ -22,12 +22,16 @@ public class Request_Share extends Requester{
 
     @Override
 	public boolean ParseResponse(JSONObject rootObject) {
-		
+		m_nIncome = Util.ReadJsonInt(rootObject, "income");
     	return true;
     }
     
+    public int GetIncome() {
+    	return m_nIncome;
+    }
     
-    private String m_strAppId;
+    
+    private int m_nIncome = 0;
 }
 
 

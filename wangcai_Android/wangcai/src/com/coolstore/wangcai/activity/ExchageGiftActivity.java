@@ -17,6 +17,7 @@ import com.coolstore.wangcai.base.ManagedDialog;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
 import com.coolstore.wangcai.ctrls.ExchageGiftItem;
 import com.coolstore.wangcai.dialog.CommonDialog;
+import com.coolstore.wangcai.dialog.ExtractHintDialog;
 import com.coolstore.wangcai.dialog.HintBindPhoneDialog;
 
 import android.app.ProgressDialog;
@@ -135,6 +136,15 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
 				ActivityHelper.ShowRegisterActivity(this);
 			}
 		}
+		else if (m_hintExtractDialog != null && nDialogId == m_hintExtractDialog.GetDialogId()) {
+			if (inClickedViewId == DialogInterface.BUTTON_POSITIVE) {
+				Request_GetExchangeCode req = (Request_GetExchangeCode)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_GetExchangeCode);
+		    	req.SetExchangeType(m_selectedExchangeItem.m_nType);
+		    	
+				RequestManager.GetInstance().SendRequest(req, false, this);
+		        m_progressDialog = ActivityHelper.ShowLoadingDialog(this);
+			}
+		}
 	}
 	public void OnDoExchage(String strItemName) {
 		WangcaiApp app = WangcaiApp.GetInstance();
@@ -167,14 +177,19 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
 			ActivityHelper.ShowToast(this, R.string.hint_no_enough_balance);
 			return;
 		}
-		
-		
-		Request_GetExchangeCode req = (Request_GetExchangeCode)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_GetExchangeCode);
-    	req.SetExchangeType(m_selectedExchangeItem.m_nType);
-    	
-		RequestManager.GetInstance().SendRequest(req, false, this);
-        m_progressDialog = ActivityHelper.ShowLoadingDialog(this);
+
+		String strAccount = String.format(getString(R.string.echange_dialog_name), m_selectedExchangeItem.m_strName);
+		String strMoney = String.format(getString(R.string.echange_dialog_price), Util.FormatMoney(m_selectedExchangeItem.m_nPrice));
+
+		m_hintExtractDialog = new ExtractHintDialog(this);
+		RegisterDialog(m_hintExtractDialog);
+
+		m_hintExtractDialog.SetInfo(strAccount, strMoney);
+		m_hintExtractDialog.SetHintText(getString(R.string.exchagne_hint_text));
+		m_hintExtractDialog.SetButtonText(getString(R.string.confirm_exchange_text), null);
+		m_hintExtractDialog.Show();
 	}
+	
     private void AddItem(ViewGroup parentView, String strItemName, String strIconUrl, String strName, int nPrice, int nRemainCount) {
     	ExchageGiftItem item = new ExchageGiftItem(strItemName);
     	item.SetItemEventLinstener(this);
@@ -187,6 +202,7 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
     private ExchangeInfo.ExchangeItem m_selectedExchangeItem = null;
     private CommonDialog m_hintExchangeSucceedDialog = null;
     private HintBindPhoneDialog m_hintBindPhoneDialog = null;
+    private ExtractHintDialog m_hintExtractDialog = null;
 }
 
 

@@ -9,6 +9,10 @@ import org.json.JSONObject;
 import com.coolstore.common.LogUtil;
 import com.coolstore.common.SLog;
 import com.coolstore.common.Util;
+import com.coolstore.wangcai.R;
+import com.coolstore.wangcai.WangcaiApp;
+import com.coolstore.wangcai.activity.MainActivity;
+import com.coolstore.wangcai.activity.StartupActivity;
 
 import cn.jpush.android.api.JPushInterface;
 import android.content.BroadcastReceiver;
@@ -21,48 +25,24 @@ import android.os.Bundle;
 public class PushReceiver extends BroadcastReceiver {
 	public final static int nPushType_Normal = 1;
 	public final static int nPushType_Custom = 2;
+
+	public static final String PushMessageReceiveAction = "com.coolstore.wangcai.PUSH_MESSAGE_RECEIVE";
 	
+    public final static String sg_nPushType = "nPushType";
+    public final static String sg_nPushMessageType = "nMessageType";
+    public final static String sg_strPushTitle = "strPushTitle";
+    public final static String sg_strPushText = "strPushText";
+	
+	public PushReceiver() {
+		LogUtil.LogPush("###############			NewPushReceiver %x", this.hashCode());
+	}
 	
 	public final static int nMessageType_NewAward = 1;
 	
-	public class PushInfo {
-		public PushInfo(int nPushType, int nTextType, String strTitle, String strText) {
-			m_nPushType = nPushType;
-			m_nTextType = nTextType;
-			m_strTitle = strTitle;
-			m_strText = strText;
-		}
-		public int m_nPushType;
-		public int m_nTextType;
-		public String m_strTitle;
-		public String m_strText;
-	}
-	public interface PushEvent {
-		void OnNewPushMsg(PushInfo pushInfo);
-	}
-	private static ArrayList<WeakReference<PushEvent>> m_listEventListener = null;
-
-	public static void AddListener(PushEvent eventListener) {
-		if (m_listEventListener == null) {
-			m_listEventListener = new ArrayList<WeakReference<PushEvent>>();
-		}
-
-		if (m_listEventListener.contains(eventListener)) {
-			return ;
-		}
-		m_listEventListener.add(new WeakReference<PushEvent>(eventListener));
-	}
-	public static void RemoveListener(PushEvent eventListener) {
-		if (m_listEventListener == null) {
-			return;
-		}
-		
-		m_listEventListener.remove(eventListener);
-	}
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-        Bundle bundle = intent.getExtras();
+		Bundle bundle = intent.getExtras();
 		//LogUtil.LogPush("[PushReceiver] onReceive - " + intent.getAction() + ", extras: " + printBundle(bundle));
 
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
@@ -71,22 +51,23 @@ public class PushReceiver extends BroadcastReceiver {
             //send the Registration Id to your server...
                         
         }
-        else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
-        	String strRawText = bundle.getString(JPushInterface.EXTRA_MESSAGE);   
-        	LogUtil.LogPush("[PushReceiver] New Custom Push Message: " + strRawText);     	
-     	   if (m_listEventListener == null) {
-     		  LogUtil.LogPush("has no listener Skip");
-    		   return;
-    	   }
+        else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {	
+	       	String strRawText = bundle.getString(JPushInterface.EXTRA_MESSAGE);   
+	       	LogUtil.LogPush("[PushReceiver]this(%x) New Custom Push Message:(%s)", this.hashCode(), strRawText);     
+			//Util.SendNotification(this, R.drawable.ic_launcher, "旺财", "旺财");
+			//if (m_listEventListener == null) {
+			//	  LogUtil.LogPush("has no listener Skip");
+			//  return;
+			//}
 
 			String strMsgType = null;;
 			String strTitle = null;
-			String strMsg = null;
+			String strText = null;
 			try {
 				JSONObject rootObject = new JSONObject(strRawText);
 				strMsgType = Util.ReadJsonString(rootObject, "type");
 				strTitle = Util.ReadJsonString(rootObject, "title");
-				strMsg = Util.ReadJsonString(rootObject, "text");
+				strText = Util.ReadJsonString(rootObject, "text");
 			} catch (JSONException e) {
 				LogUtil.LogPush("Parse Json fail: " + e.toString());
 				// TODO Auto-generated catch block
@@ -100,13 +81,35 @@ public class PushReceiver extends BroadcastReceiver {
 				LogUtil.LogPush("Unknwon msg type");
 				return;
 			}
-			PushInfo pushInfo = new PushInfo(nPushType_Custom, nMsgType, strTitle, strMsg);
-			for (WeakReference<PushEvent> eventListener:m_listEventListener) {
-				PushEvent listener = eventListener.get();
-				if (listener != null) {
-					listener.OnNewPushMsg(pushInfo);
-				}
+    		if (PushReceiver.nMessageType_NewAward == nMsgType) {
+    			if (Util.IsEmptyString(strTitle)) {
+    				strTitle = "旺财收到新红包";
+    			}
+            	if (Util.IsEmptyString(strText)) {
+            		strText = "点击查看详情";
+            	}
+    		}
+			if (Util.IsEmptyString(strTitle)) {
+				strTitle = "旺财";
 			}
+    		
+    		//发广播
+			Intent msgIntent = new Intent(PushMessageReceiveAction);
+			msgIntent.putExtra(sg_nPushType, nPushType_Custom);
+			msgIntent.putExtra(sg_nPushMessageType, nMsgType);
+			msgIntent.putExtra(sg_strPushTitle, strTitle);
+			msgIntent.putExtra(sg_strPushText, strText);
+			context.sendBroadcast(msgIntent);
+			LogUtil.LogPush("sendBroadcast");
+
+    		if (PushReceiver.nMessageType_NewAward == nMsgType) {
+    			//通知栏
+	            Intent activtiyIntent = new Intent(context, MainActivity.class);
+	            //activtiyIntent.setAction(Intent.ACTION_MAIN);
+	            //activtiyIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+	            activtiyIntent.putExtra(MainActivity.sg_nIntentType, MainActivity.sg_nIntentType_NewPurseNotification);
+				Util.SendNotification(context, activtiyIntent, R.drawable.ic_launcher, strTitle, strText);
+    		}
         } 
         else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             //LogUtil.LogPush("[PushReceiver] 接收到推送下来的通知");
@@ -135,7 +138,9 @@ public class PushReceiver extends BroadcastReceiver {
         	LogUtil.LogPush("[PushReceiver] Unhandled intent - " + intent.getAction());
         }
 	}
+	
 
+	/*
 	// 打印所有的 intent extra 数据
 	private static String printBundle(Bundle bundle) {
 		StringBuilder sb = new StringBuilder();
@@ -148,10 +153,11 @@ public class PushReceiver extends BroadcastReceiver {
 		}
 		return sb.toString();
 	}
-	
+	*/
+
+	/*
 	//send msg to MainActivity
 	private void processCustomMessage(Context context, Bundle bundle) {
-		/*
 		if (MainActivity.isForeground) {
 			String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
 			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
@@ -170,6 +176,6 @@ public class PushReceiver extends BroadcastReceiver {
 			}
 			context.sendBroadcast(msgIntent);
 		}
-		*/
 	}
+		*/
 }

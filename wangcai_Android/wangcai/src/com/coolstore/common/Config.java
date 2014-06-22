@@ -130,7 +130,9 @@ public class Config {
 			return "https://ssl.getwangcai.com/0/task/download_app";
 		}		
 	}
-	
+	public static String GetLiveUpdateUrl() {
+		return "http://wangcai.meme-da.com/web/android_update.php?app=wangcai";
+	}
 	public static String GetPollUrl() {
 		if (m_enumEvnType == EnvType.EnvType_Dev) {
 			return "https://dev.getwangcai.com/0/task/poll";
@@ -180,6 +182,10 @@ public class Config {
 		return "http://service.meme-da.com/index.php/mobile/shouce/list/hc_id/76";
 	}
 	
+	public static String GetOrderDetailUrl() {
+		return "http://wangcai.meme-da.com/web/order_info.php";
+	}
+	
 	// 交易明细
 	public static String GetTransactionDetailUrl() {
 		if (m_enumEvnType == EnvType.EnvType_Dev) {
@@ -190,7 +196,9 @@ public class Config {
 		}
 	}
 
-	
+	public static String GetServiceCenterUrl() {
+		return "http://service.meme-da.com/index.php/mobile/consulting";
+	}
 	//============================================================================================
 	//====================================				积分墙				====================================
 	//有米

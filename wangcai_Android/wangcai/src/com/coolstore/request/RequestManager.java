@@ -1,6 +1,7 @@
 package com.coolstore.request;
 
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -24,8 +25,11 @@ import javax.net.ssl.TrustManager;
 
 
 
+
+
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.IdGenerator;
+import com.coolstore.common.LogUtil;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.common.Util;
 
@@ -146,13 +150,13 @@ public class RequestManager {
 		}
 		//background
 		private RequestRecord DoRequest(RequestRecord reqRecord) {
+            HttpURLConnection connection = null;
 			try {
 				Requester req = reqRecord.m_requester;
 				Requester.RequestInfo requestInfo = req.GetRequestInfo();
                 String strUrl = requestInfo.m_strUrl;
 				URL url = new URL(strUrl);
 
-                HttpURLConnection connection = null;
 				if (strUrl.toLowerCase().contains("https://")) {
 	                SSLContext sc = SSLContext.getInstance("TLS"); 
 	                sc.init(null, new TrustManager[]{new HttpsHelper.MyTrustManager()}, new SecureRandom());
@@ -216,6 +220,17 @@ public class RequestManager {
 				reqRecord.m_requester.Parse(strRespData);
 			}
 			catch(Exception ex){
+				if (connection != null) {
+					try {
+						int nRespCode = connection.getResponseCode();
+						String strClassName = reqRecord.m_requester.getClass().toString();
+						LogUtil.LogWangcai("Request  getResponseCode(%d), Name(%s)", nRespCode, strClassName);
+						int i = 0;
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 				reqRecord.m_requester.Parse(null);
 			}
 			return reqRecord;

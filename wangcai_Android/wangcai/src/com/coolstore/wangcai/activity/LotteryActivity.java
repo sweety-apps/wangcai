@@ -8,6 +8,7 @@ import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.RequesterFactory;
 import com.coolstore.request.Requesters.Request_Lottery;
+import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
@@ -91,15 +92,20 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
 			}
 			Request_Lottery lotteryRequester = (Request_Lottery)req;
 
+			ConfigCenter.GetInstance().SetHasSignInToday();
+
 			m_nBonus = lotteryRequester.GetBouns();
+
 			if (BuildSetting.sg_bIsRelease) {
-				if (nResult != 0 || m_nBonus <= 0)
+				if (nResult != 0)
 				{
+					//已经签到过
 					ActivityHelper.ShowToast(this, R.string.hint_duplicate_signin);
 					return;
 				}
 			}
 			
+			//余额
 			WangcaiApp.GetInstance().ChangeBalance(m_nBonus);
 
 	        int nLoopCount = new Random().nextInt(sg_nMaxLoops - sg_nMinLoops) + sg_nMinLoops;
@@ -207,9 +213,17 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
         }  
         @Override  
         protected void onPostExecute(Integer nItemIndex) {
+        	//动画完成
         	m_animationTask = null;
 	        m_imageCover.setVisibility(View.GONE);
 	        m_imageBorder.setVisibility(View.GONE);
+	        if (m_nBonus > 0) {
+	        	ShowPurseTip(m_nBonus, getString(R.string.new_lottery_award_tip_title));
+	        	WangcaiApp.GetInstance().PlaySound();
+	        }
+	        else {
+	        	ActivityHelper.ShowToast(LotteryActivity.this, R.string.lotter_no_award_tip);
+	        }
         }
     }
 

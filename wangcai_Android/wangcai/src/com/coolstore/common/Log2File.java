@@ -63,6 +63,9 @@ public class Log2File {
                     PrintWriter out = null;
 
                     File file = GetFileFromPath(path);
+                    if (file == null) {
+                    	return;
+                    }
 
                     try {
                         out = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
@@ -126,6 +129,8 @@ public class Log2File {
             } catch (IOException e) {
                 Log.e("Error", "Failed to create The Log file.");
                 e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();            	
             }
         }
 

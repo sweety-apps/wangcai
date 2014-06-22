@@ -17,11 +17,12 @@
 		android:layout_height="match_parent" >
 		<ImageView
 		    android:src="@drawable/register_succeed"
+			android:scaleType="center" 
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content" />
 		<ImageButton 
 		    android:id="@+id/go_mainpage_button"
-		    android:src="@drawable/register_succeed_goback"
+		    android:background="@drawable/register_succeed_goback"
 		    android:layout_centerInParent="true"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content" />

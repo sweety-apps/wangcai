@@ -1,6 +1,7 @@
 package com.coolstore.wangcai.base;
 
 import com.coolstore.common.Config;
+import com.coolstore.common.Util;
 import com.coolstore.request.RequestManager;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.activity.ExchageGiftActivity;
@@ -134,6 +135,13 @@ public class ActivityHelper {
     	it.putExtra(sg_strTitle, strTitle);
     	owner.startActivity(it);
     }
+    public static void ShowSessionWebViewActivity(Activity owner, String strTitle, String strUrl) {
+    	strUrl = RequestManager.GetInstance().BuildSessoinUrl(strUrl);
+    	Intent it = new Intent(owner, WebviewActivity.class);
+    	it.putExtra(sg_strUrl, strUrl);
+    	it.putExtra(sg_strTitle, strTitle);
+    	owner.startActivity(it);
+    }
 
     public static void ShowExtractSucceed(Activity owner, String strTitle, String strOrderNumber) {
     	Intent it = new Intent(owner, ExtractSucceedActivity.class);
@@ -141,18 +149,25 @@ public class ActivityHelper {
     	it.putExtra(sg_strOrderId, strOrderNumber);
     	owner.startActivity(it);    	
     }
-    
+
+    public static void ShowOrderDetailActivity(Activity owner, String strOrderId) {
+    	String strUrl = String.format("%s?ordernum=%s", Config.GetOrderDetailUrl(), strOrderId);
+    	ActivityHelper.ShowWebViewActivity(owner, "订单详情", strUrl);
+    }
+
     //显示积分墙
     public static PopupWindow ShowAppWall(Activity owner, View viewParent) {
     	PopupWinAppWall appWall = new PopupWinAppWall(owner);
     	appWall.showAtLocation(viewParent, Gravity.CENTER, 0, 0);
     	return appWall;
     }
+ 
     public static PopupWindow ShowNewArawdWin(Activity owner, View viewParent, String strAwardName, int nNewAward) {
     	PopupWinNewAward win = new PopupWinNewAward(owner, strAwardName, nNewAward);
     	win.showAtLocation(viewParent, Gravity.CENTER, 0, 0); 
     	return win;
     }
+ 
     public static PopupWindow ShowLevelUpgrateWin(Activity owner, View viewParent, int nLevel, int nLevelChange) {
     	PopupWinLevelUpgrate win = new PopupWinLevelUpgrate(owner, nLevel, nLevelChange);
     	win.showAtLocation(viewParent, Gravity.CENTER, 0, 0);    	
@@ -174,6 +189,9 @@ public class ActivityHelper {
 		return ProgressDialog.show(context, context.getString(R.string.app_description), context.getString(R.string.loading_text)); 
 	}
 	public static ProgressDialog ShowLoadingDialog(Context context, String strHintText) {
+		if (Util.IsEmptyString(strHintText)) {
+			strHintText = context.getString(R.string.loading_text);
+		}
 		return ProgressDialog.show(context, context.getString(R.string.app_description), strHintText); 
 	}
 }

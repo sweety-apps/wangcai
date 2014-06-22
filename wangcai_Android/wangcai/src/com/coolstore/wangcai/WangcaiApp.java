@@ -25,22 +25,22 @@ import com.coolstore.request.TaskListInfo;
 import com.coolstore.request.UserInfo;
 import com.coolstore.request.Requesters.Request_Login;
 import com.coolstore.request.Requesters.Request_Poll;
+import com.coolstore.wangcai.activity.MainActivity;
 import com.coolstore.wangcai.base.PushReceiver;
-import com.coolstore.wangcai.base.PushReceiver.PushInfo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 
 public class WangcaiApp implements 
 									RequestManager.IRequestManagerCallback, 
-									PushReceiver.PushEvent,
 									TimerManager.TimerManagerCallback{
 	public interface WangcaiAppEvent {
 		void OnLoginComplete(int nResult, String strMsg);
@@ -68,7 +68,7 @@ public class WangcaiApp implements
 	
 	public void Initialize(Context context) {
 		//日志
-		SLog.setPath("/mnt/sdcard/wangcai/log","log","log");
+		SLog.setPath(ConfigCenter.GetInstance().GetCachePath() +  "/log","log","log");
 		SLog.setPolicy(SLog.LOG_ALL_TO_FILE);
 		
 		m_AppContext =  context;
@@ -82,8 +82,11 @@ public class WangcaiApp implements
 		//请求管理器
 		RequestManager.GetInstance().Initialize(context.getResources().openRawResource(R.raw.cert));
 		
-		//推送
-		PushReceiver.AddListener(this);
+		//byte[] byteSign = Util.GetSignKey(context);
+		//String strMd51 = Util.GetMd5(byteSign);
+		//String strMd52 = Util.GetMd5(byteSign.toString());
+		//String strMd53 = Util.GetMd5(byteSign.toString().getBytes());
+		//LogUtil.LogWangcai("Md51  (%s)  (%s)  (%s)", strMd51, strMd52, strMd53);
 		
 		LogUtil.LogWangcai("Imei(%s) Serial(%s)  androidId(%s)  Mac(%s)", SystemInfo.GetImei(), SystemInfo.GetSerial(), SystemInfo.GetAndroidId(), SystemInfo.GetMacAddress());
 	}
@@ -136,7 +139,7 @@ public class WangcaiApp implements
 	public void OnRequestComplete(int nRequestId, Requester req) {
 		if (req instanceof Request_Login) {
 			int nResult = req.GetResult();
-			LogUtil.LogUserInfo(String.format("Request_Login  .GetResult() (%d)", req.GetResult()));
+			LogUtil.LogUserInfo("Request_Login  .GetResult() (%d)", req.GetResult());
 			if (nResult == 0){
 				Request_Login loginRequester = (Request_Login)req;
 				m_bNeedForceUpdate = loginRequester.GetNeedForceUpdate();
@@ -271,6 +274,7 @@ public class WangcaiApp implements
 		}
 	}
 	public void QueryChanges() {
+		LogUtil.LogUserInfo("QueryChanges");
 		Request_Poll req = (Request_Poll)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_Poll);
 		RequestManager.GetInstance().SendRequest(req, false, this);		
 	}
@@ -279,6 +283,7 @@ public class WangcaiApp implements
 	public boolean Login() {
 		RequestManager requestManager = RequestManager.GetInstance();
 		Request_Login request = (Request_Login)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_Login);
+		request.SetSign(Util.GetSignMd5(m_AppContext));
 		requestManager.SendRequest(request, true, this);
 		return true;
 	}
@@ -358,6 +363,7 @@ public class WangcaiApp implements
     	}
     	return listEventLinsteners;
     }
+    /*
     private static class MsgHandler extends Handler {
     	public MsgHandler(WangcaiApp owner) {
     		m_owner = new WeakReference<WangcaiApp>(owner);
@@ -398,7 +404,8 @@ public class WangcaiApp implements
                 			(Util.IsEmptyString(strTitle) || strTitle.equals(sg_strDefaultNotificationTitle))) {
                 		return;
                 	}
-                	Util.SendNotification(owner.m_lastActivity, R.drawable.ic_launcher, strTitle, strText);
+                    Intent intent = new Intent(owner.m_lastActivity, MainActivity.class);
+                	Util.SendNotification(owner.m_lastActivity, intent, R.drawable.ic_launcher, strTitle, strText);
                 }
                 if (PushReceiver.nMessageType_NewAward == nMsgType) {
                 	LogUtil.LogPush("WangcaiApp   NewAwardMessage  QueryChanges");
@@ -413,7 +420,8 @@ public class WangcaiApp implements
 		private WeakReference<WangcaiApp> m_owner;
     }
     private Handler m_handler = new MsgHandler(this);
-   
+   */
+    /*
 	public void OnNewPushMsg(PushInfo pushInfo) {
 		Message msg = new Message();
 		msg.what = sg_nNewPush;
@@ -425,12 +433,13 @@ public class WangcaiApp implements
 		msg.setData(b);
 		m_handler.sendMessage(msg);
 	}
+	*/
 	public void SetLastActivity(Activity activity) {
 		m_lastActivity = activity;
 	}
 	
 	
-    private final static int sg_nNewPush = 1212;
+    //private final static int sg_nNewPush = 1212;
 
     private int m_nPendingPurseTip = 0;
     

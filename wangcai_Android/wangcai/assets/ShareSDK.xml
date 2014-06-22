@@ -25,10 +25,10 @@
     	各个平台注册应用信息的地址如下：
 			新浪微博                 http://open.weibo.com
 			腾讯微博                 http://dev.t.qq.com
-			QQ空间                      http://connect.qq.com/intro/login/
+			QQ空间                   http://connect.qq.com/intro/login/
 			微信好友                 http://open.weixin.qq.com
-			Facebook      https://developers.facebook.com
-			Twitter       https://dev.twitter.com
+			Facebook  https://developers.facebook.com
+			Twitter   https://dev.twitter.com
 			人人网                      http://dev.renren.com
 			开心网                      http://open.kaixin001.com
 			搜狐微博                 http://open.t.sohu.com
@@ -48,40 +48,41 @@
     -->
     
     <ShareSDK 
-        AppKey = "ebe1cada416"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
+        AppKey = "214616a069e7"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
     
     
-    <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
+    <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false  <done>-->
     <SinaWeibo
         Id="1"
         SortId="1"
-        AppKey="338240125"
-        AppSecret="32ccbf2004d7f8d19e29978aacdc2904"
+        AppKey="1248763648"
+        AppSecret="7fdf8a8ca90616532519c8542d71c983"
         RedirectUrl="https://api.weibo.com/oauth2/default.html"
         ShareByAppClient="true"
         Enable="true" />
 
+    <!-- 	<done> -->
     <TencentWeibo
         Id="2" 
         SortId="2"
-        AppKey="801457140"
-        AppSecret="08c6c07a58f40d2a9b06eabeaf86f6ba"
-        RedirectUri="http://www.meme-da.com/"
+        AppKey="801516425"
+        AppSecret="8f7111444c015c9bce999f6d1fcd78b3"
+        RedirectUri="http://www.meme-da.com"
         Enable="true" />
 
-    <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
+    <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false  <done> -->
     <QZone
         Id="3"
         SortId="3"
-        AppId="100577453"
-        AppKey="9454dd071c0dc94008caed4045ce5e39"
+        AppId="101128418"
+        AppKey="dfe6000841b8f554da0b646a4da7ea77"
         ShareByAppClient="true"
         Enable="true" />
-    
+
     <!-- 
     	Wechat微信和WechatMoments微信朋友圈的appid是一样的；
     
-                       注意：开发者不能用我们这两个平台的appid,否则分享不了
+                         注意：开发者不能用我们这两个平台的appid,否则分享不了
     
        	  微信测试的时候，微信测试需要先签名打包出apk,
 		sample测试微信，要先签名打包，keystore在sample项目中，密码123456
@@ -93,28 +94,29 @@
     <Wechat
         Id="4"
         SortId="4"
-        AppId="wxf3b81b618060b1fc"
+        AppId="wx5e9875c97f5fca9e"
         BypassApproval="false"
         Enable="true" />
     
     <WechatMoments
         Id="5"
         SortId="5"
-        AppId="wxf3b81b618060b1fc"
+        AppId="wx5e9875c97f5fca9e"
         BypassApproval="false"
         Enable="true" />
         
 	<WechatFavorite
         Id="6"
         SortId="6"
-        AppId="wxf3b81b618060b1fc"
+        AppId="wx5e9875c97f5fca9e"
         Enable="true" />
     
+	<!-- <done> -->
 	<QQ
         Id="7"
         SortId="7"
-        AppId="100371282"
-        AppKey="aed9b0303e3ed1e27bae87c33761161d"
+        AppId="1101581154"
+        AppKey="Ct6ffI4dZYESRQmW"
         Enable="true" />
     
     <Facebook
@@ -138,7 +140,7 @@
         AppId="245528"
         ApiKey="a4825d92031b4a8495d7ef803b480373"
         SecretKey="aa95c7e0575e4d8d8fd59cd31b32c76e"
-        Enable="true" />
+        Enable="false" />
     
     <KaiXin
         Id="11"
@@ -173,7 +175,7 @@
         ConsumerKey="la0pHcb8OZU5N2Xg"
         ConsumerSecret="UrTuNU32cSEfz789pUd0iSGQBJIBaVzh"
         RedirectUri="http://www.meme-da.com/"
-        Enable="true" />
+        Enable="false" />
     
     <Douban
         Id="16"
@@ -181,7 +183,7 @@
         ApiKey="0f4b3d0120adb5472de1b70362091fd5"
         Secret="54b911f9863bdbd7"
         RedirectUri="http://www.meme-da.com/"
-        Enable="true" />
+        Enable="false" />
     
     <YouDao
         Id="17"

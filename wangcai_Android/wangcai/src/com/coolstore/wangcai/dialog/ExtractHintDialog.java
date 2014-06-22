@@ -32,10 +32,23 @@ public class ExtractHintDialog extends ManagedDialog {
 		View viewLayout = inflater.inflate(R.layout.dialog_extract, null);
 		ViewHelper.SetTextStr(viewLayout, R.id.account, m_strAccountText);
 		ViewHelper.SetTextStr(viewLayout, R.id.money, m_strMoneyText);
+		if (!Util.IsEmptyString(m_strHintText)) {
+			ViewHelper.SetTextStr(viewLayout, R.id.hint, m_strHintText);
+		}
 		builder.setView(viewLayout);
 
-		builder.setPositiveButton(m_ownerActivity.getString(R.string.confirm_extract), null);
-	    builder.setNegativeButton(m_ownerActivity.getString(R.string.cancel_text), null);
+		if (Util.IsEmptyString(m_strPositive)) {
+			builder.setPositiveButton(m_ownerActivity.getString(R.string.confirm_extract), this);
+		}
+		else {
+			builder.setPositiveButton(m_strPositive, this);			
+		}
+		if (Util.IsEmptyString(m_strNevative)) {
+			builder.setNegativeButton(m_ownerActivity.getString(R.string.cancel_text), this);
+		}
+		else {
+			builder.setNegativeButton(m_strNevative, this);
+		}
 		AlertDialog dlg = builder.create();
 		return dlg;
 	}
@@ -44,14 +57,24 @@ public class ExtractHintDialog extends ManagedDialog {
 		m_strAccountText = strAccoutText;
 		m_strMoneyText = strMoneyText;
 	}
-
+	public void SetHintText(String strHintText) {
+		m_strHintText = strHintText;
+	}
+	public void SetButtonText(String strPositive, String strNevative) {
+		m_strPositive = strPositive;
+		m_strNevative = strNevative;
+	}
 	@Override
 	public void Prepare(Dialog dlg) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	private String m_strTitle;
 	private String m_strAccountText;
 	private String m_strMoneyText;
+	private String m_strHintText;
+	private String m_strPositive;
+	private String m_strNevative;
 }
+
+
+

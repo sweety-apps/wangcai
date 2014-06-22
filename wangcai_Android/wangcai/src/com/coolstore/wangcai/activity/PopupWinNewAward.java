@@ -36,7 +36,7 @@ public class PopupWinNewAward extends PopupWindow implements OnClickListener{
         ((TextView)m_win.findViewById(R.id.award_value)).setText(Util.FormatMoney(nAward));
         ((TextView)m_win.findViewById(R.id.level)).setText(String.format("LV%d", userInfo.GetCurrentLevel()));
         ((TextView)m_win.findViewById(R.id.level_benefit)).setText(
-        		String.format(holderActivity.getString(R.string.new_award_tip_level_benefit), userInfo.GetBenefit()));
+        		String.format(holderActivity.getString(R.string.new_award_tip_level_benefit), userInfo.GetCurrentLevel()));
 
         ((TextView)m_win.findViewById(R.id.title)).setText(strAwardName);
  

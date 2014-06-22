@@ -95,6 +95,12 @@ public class UserInfo {
 	public String GetDeviceId() {
 		return m_strDeviceId;
 	}
+	public void SetSessionId(String strSessionId) {
+		m_strSessionId = strSessionId;
+	}
+	public String GetSessionId() {
+		return m_strSessionId;
+	}
 	public boolean HasBindPhone() {
 		return !Util.IsEmptyString(m_strPhoneNumber);
 	}
@@ -125,13 +131,15 @@ public class UserInfo {
 		return m_nBenefit;
 	}
 	//data member
-	private String m_strPhoneNumber;
+	private String m_strPhoneNumber = "";
+	private String m_strSessionId = "";
+	private int m_nUserId = 0;
+	private String m_strDeviceId = "";
 
 	private int m_nNextLevel = 0;
 	private String m_strInviter = "";
 	private String m_strInviteCode = "";
 	
-	private int m_nUserId = 0;
 	private int m_nBalance = 0;
 	private int m_nTotalIncome = 0;
 	private int m_nTotalOutgo = 0;
@@ -142,6 +150,5 @@ public class UserInfo {
 	private boolean m_bCanWithdrawal = true;
 	private int m_nCurrentExperience = 0;
 	private int m_nNextLevelExperience = 0;
-	private String m_strDeviceId;
 	private int m_nBenefit = 0;
 }

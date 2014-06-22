@@ -46,7 +46,7 @@ public class SurveyActivity extends WangcaiActivity implements RequestManager.IR
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wriate_invite_code);        
+        setContentView(R.layout.activity_write_invite_code);        
 
         InitView();
         

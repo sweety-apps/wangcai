@@ -15,16 +15,22 @@ import com.coolstore.request.Requesters.Request_ResendCaptcha;
 import com.coolstore.request.Requesters.Request_VerifyCaptcha;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
+import com.coolstore.wangcai.activity.MainActivity.MessageReceiver;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Config;
+import com.coolstore.common.LogUtil;
 import com.coolstore.common.TimerManager;
 import com.coolstore.common.ViewHelper;
+import com.coolstore.wangcai.base.PushReceiver;
 import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.base.SmsReader;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -40,9 +46,9 @@ import android.widget.TextView;
 
 public class RegisterActivity extends WangcaiActivity implements OnClickListener, 
 														RequestManager.IRequestManagerCallback,
-														TimerManager.TimerManagerCallback,
-														SmsReader.SmsEvent{
+														TimerManager.TimerManagerCallback{
 
+	
 	private final static int sg_nTimerElapse = 1000;
 	private final static int sg_nTotalCountDownSeconds = 60;
 	
@@ -51,7 +57,7 @@ public class RegisterActivity extends WangcaiActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);        
 
-        SmsReader.AddListener(this);
+        registerMessageReceiver();
         
         InitView();
     }
@@ -109,8 +115,6 @@ public class RegisterActivity extends WangcaiActivity implements OnClickListener
         });
     }
 
- 
-    
 	@Override
 	public void onClick(View v) {
 		int nId = v.getId();
@@ -253,9 +257,10 @@ public class RegisterActivity extends WangcaiActivity implements OnClickListener
 
     @Override 
     protected void onDestroy() {
-    	SmsReader.RemoveListener(this);
     	StopTimer();
     	//m_viewerDrawer.DetachAll();
+
+		unregisterReceiver(m_messageReceiver);
     	super.onDestroy();
     }
 
@@ -312,6 +317,39 @@ public class RegisterActivity extends WangcaiActivity implements OnClickListener
     
     private final static int sg_nNewSms = 1212;
 
+
+	public class MessageReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			String strAction = intent.getAction();
+			if (strAction.equals("android.provider.Telephony.SMS_RECEIVED")) {
+				
+			}
+			else if (strAction.equals(SmsReader.SmsMessageReceiveAction)) {
+	            LogUtil.LogPush("MainActivity  receive broadcast(%s)", intent.getAction());
+				if (SmsReader.SmsMessageReceiveAction.equals(intent.getAction())) {
+	              String strSmsContent = intent.getStringExtra(SmsReader.sg_strSmsContent);
+	              LogUtil.LogPush("RegisterActivity  receive sms  broadcast(%s)", strSmsContent);
+	              OnNewSms(strSmsContent);
+				}
+			}
+		}
+	}	
+
+	public void registerMessageReceiver() {
+		m_messageReceiver = new MessageReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+		filter.addAction(SmsReader.SmsMessageReceiveAction);
+		registerReceiver(m_messageReceiver, filter);
+		
+		//IntentFilter filter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");  
+		//filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+		//filter.addAction("android.provider.Telephony.SMS_RECEIVED");
+		//registerReceiver(m_messageReceiver, filter);
+	}
+	
+	
     
     //您的验证码是：【22425】。请不要把验证码泄露给其他人。如非本人操作，可不用理会！【旺财】
   	public void OnNewSms(String strMsg){
@@ -344,6 +382,7 @@ public class RegisterActivity extends WangcaiActivity implements OnClickListener
   	
   
     //data member
+	private MessageReceiver m_messageReceiver = null;
     private int m_nRemainSeconds = sg_nTotalCountDownSeconds;
     private String m_strPhoneNumber;
     private ProgressDialog m_progressDialog;

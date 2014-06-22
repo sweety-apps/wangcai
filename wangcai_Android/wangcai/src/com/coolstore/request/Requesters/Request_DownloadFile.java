@@ -39,7 +39,7 @@ public class Request_DownloadFile extends Requester{
     		m_inputStream = inputStream;
 			FileOutputStream fstream = m_context.openFileOutput(m_strSaveName, Context.MODE_PRIVATE);
 
-    		final int nBufferSize = 1024;
+    		final int nBufferSize = 4096;
     		byte[] bufData = new byte[nBufferSize];
 			while (true) {
 				int nReadCount = inputStream.read(bufData, 0, nBufferSize);

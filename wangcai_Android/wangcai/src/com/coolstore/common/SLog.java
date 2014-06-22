@@ -15,14 +15,14 @@
  */
 
 package com.coolstore.common;
-
 import android.text.TextUtils;
 
 import org.apache.commons.lang3.time.FastDateFormat;
 
+import com.coolstore.wangcai.ConfigCenter;
+
 import java.io.File;
 import java.util.Date;
-import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -128,7 +128,7 @@ public class SLog {
     /**
      * The log dir path
      */
-    protected static String logDirPath = "/mnt/sdcard/snowdream/android/log";
+    protected static String logDirPath = ConfigCenter.GetInstance().GetCachePath() + "/log";
     /**
      * The log file base name
      */

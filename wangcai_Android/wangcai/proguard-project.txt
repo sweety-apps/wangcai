@@ -1,7 +1,5 @@
 
-'?#
-
-?' To enable ProGuard in your project, edit project.properties
+# To enable ProGuard in your project, edit project.properties
 
 # to define the proguard.config property as described in that file.
 #
@@ -22,7 +20,7 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-\
+#\
 
 
 
@@ -34,7 +32,7 @@
 #触控
 -dontwarn com.punchbox.**
 -libraryjars libs/Cocounion_AD_SDK_Android_v4.2.2.jar
--keep class class com.punchbox.**{*;}
+-keep class com.punchbox.** {*;}
 
 
 #shareSdk(DOC)
@@ -51,3 +49,5 @@
 
 
 
+-dontwarn com.handmark.pulltorefresh.**
+-keep class com.handmark.pulltorefresh.** { *; }

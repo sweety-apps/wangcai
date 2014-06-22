@@ -3,9 +3,12 @@ package com.coolstore.wangcai;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
+import com.coolstore.common.Util;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Environment;
 import android.text.format.Time;
 
 public class ConfigCenter {
@@ -35,7 +38,10 @@ public class ConfigCenter {
 		editor.commit();
 	}
 	public boolean HasSignInToday() {
-		String strTime =  m_sharedPreference.getString(sg_strHasSignInKey, "0");
+		String strTime =  m_sharedPreference.getString(sg_strHasSignInKey, "");
+		if (Util.IsEmptyString(strTime)) {
+			return false;
+		}
 		
 		//上次抽奖时间
 		long nLastTime  = Long.parseLong(strTime);	
@@ -72,6 +78,15 @@ public class ConfigCenter {
 		Editor editor = m_sharedPreference.edit();
 		editor.putBoolean(sg_strShouldPlaySound, bPlay);
 		editor.commit();
+	}
+	public void SetLastBalance(int nBalance) {
+		
+	}
+	public int GetLastBalance() {
+		return 0;
+	}
+	public String GetCachePath() {
+		return Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.coolstore.wangcai";
 	}
 	
 	private SharedPreferences m_sharedPreference;

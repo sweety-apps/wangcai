@@ -38,8 +38,10 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class PopupWinAppWall extends PopupWindow implements OnClickListener{
@@ -72,7 +74,7 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     private void InitView(AppWallConfig appWallConfig) {
     	int nCount = appWallConfig.GetWallCount();
     	ViewGroup defaultPanel = (ViewGroup)m_appWin.findViewById(R.id.app_wall_button_container);
-    	ViewGroup morePanel = (ViewGroup)m_appWin.findViewById(R.id.more_appwall_page);
+    	ViewGroup morePanel = (ViewGroup)m_appWin.findViewById(R.id.more_panel_button_container);
 
     	String strText = m_ownerActivity.getString(R.string.app_wall_win_text);
     	CharSequence charSequence = Html.fromHtml(strText);
@@ -98,11 +100,9 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
 
         //创建按钮
         Resources res = m_ownerActivity.getResources();
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-        		res.getDimensionPixelSize(R.dimen.app_wall_button_width), res.getDimensionPixelSize(R.dimen.app_wall_button_height));
-        int nMargin = m_ownerActivity.getResources().getDimensionPixelSize(R.dimen.offer_wall_button_margin);
-        layoutParams.setMargins(0, nMargin, 0, 0);
+        int nTopMargin = res.getDimensionPixelSize(R.dimen.offer_wall_button_margin);
  
+        int nLastId1 = 0, nLastId2 = 0;
     	for (int i = 0; i < nCount; ++i) {
     		AppWallConfig.AppWallInfo info = appWallConfig.GetAppWallInfo(i);
     		if (!info.IsVisible()) {
@@ -114,18 +114,32 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
 			}
 			boolean bIsRecommand = info.IsRecommand();
 			wallInfo.SetReommand(bIsRecommand);
-			
+
+	        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+	        		res.getDimensionPixelSize(R.dimen.app_wall_button_width), res.getDimensionPixelSize(R.dimen.app_wall_button_height));
+	        layoutParams.setMargins(0, nTopMargin, 0, 0);
+	        
 			Button button = CreateButton(wallInfo);
-			bIsRecommand = true;
-			if (bIsRecommand) {
-				//button.setImageResource(R.drawable.app_tip_recommand);
-			}
     		if (info.IsInMorePanel()) {
+    			if (nLastId2 != 0) {
+    				layoutParams.addRule(RelativeLayout.BELOW, nLastId2);
+    			}
+    			nLastId2 = wallInfo.m_nId;
     			morePanel.addView(button,  layoutParams);
+    			if (bIsRecommand) {
+    				SetRecommand(morePanel, button);		//推荐
+    			}
     		}
     		else {
+    			if (nLastId1 != 0) {
+    				layoutParams.addRule(RelativeLayout.BELOW, nLastId1);
+    			}
+    			nLastId1 = wallInfo.m_nId;
     			defaultPanel.addView(button,  layoutParams);
-    		}
+    			if (bIsRecommand) {
+    				SetRecommand(defaultPanel, button);		//推荐
+    			}
+    		}    		
 			
     		button.setOnClickListener(this);
 			m_listViisibleWalls.add(wallInfo);
@@ -133,6 +147,23 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     	if (m_listViisibleWalls.size() <= 2) {
     		m_appWin.findViewById(R.id.more_button).setVisibility(View.GONE);
     	}
+    }
+    private void SetRecommand(ViewGroup parentView, Button button) {
+    	int nButtonId = button.getId();
+    	ImageView imageView = new ImageView(m_ownerActivity);
+    	imageView.setBackgroundResource(R.drawable.app_wall_recommand);
+
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+        		ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.addRule(RelativeLayout.ALIGN_TOP, nButtonId);
+        //layoutParams.addRule3(RelativeLayout.ALIGN_BOTTOM, nButtonId);
+        layoutParams.addRule(RelativeLayout.ALIGN_RIGHT, nButtonId);
+
+        //Resources res = m_ownerActivity.getResources();
+        //int nButtonHeight = res.getDimensionPixelSize(R.dimen.app_wall_button_height);
+        //int nMargin = res.getDimensionPixelSize(R.dimen.app_wall_recommand_right_margin);
+        layoutParams.setMargins(0, -4, -4, 0);
+    	parentView.addView(imageView, layoutParams);
     }
     private Button CreateButton(WallInfo wallInfo) {
     	Button button = new Button(m_ownerActivity);

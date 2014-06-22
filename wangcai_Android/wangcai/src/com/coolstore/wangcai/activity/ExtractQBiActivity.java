@@ -66,7 +66,7 @@ public class ExtractQBiActivity extends ManagedDialogActivity
     	for (int i = 0; i < nItemCount && i < nIdList.length; ++i) {
     		ExtractInfo.ExtractSubItem subItem = m_extractItem.m_subItems.get(i);
     		ExtractPrieceCtrl ctrl = (ExtractPrieceCtrl)findViewById(nIdList[i]);
-    		ctrl.SetPriece(subItem.m_nRealPrice);
+    		ctrl.SetPriece(subItem.m_nAmount);
     		ctrl.SetDiscountMoney(subItem.m_nAmount - subItem.m_nRealPrice);
     		ctrl.SetIsHot(subItem.m_bHot);
     		ctrl.SetEventListener(this);
@@ -82,14 +82,16 @@ public class ExtractQBiActivity extends ManagedDialogActivity
 			}
 		}
 		else if (m_hintExtractDialog != null && nDialogId == m_hintExtractDialog.GetDialogId()) {
-			Request_ExtractQBi request = (Request_ExtractQBi)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_ExtractQBi);
-			request.SetAmount(m_selectedSubItem.m_nAmount);
-			request.SetDiscount(m_selectedSubItem.m_nRealPrice);
-
-			String strQQNumber = ((ExtractLineCtrl)findViewById(R.id.line1)).GetEditText();
-			request.SetQQNumber(strQQNumber);
-			RequestManager.GetInstance().SendRequest(request, false, this);
-	        m_progressDialog = ActivityHelper.ShowLoadingDialog(this);
+			if (inClickedViewId == DialogInterface.BUTTON_POSITIVE) {
+				Request_ExtractQBi request = (Request_ExtractQBi)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_ExtractQBi);
+				request.SetAmount(m_selectedSubItem.m_nAmount);
+				request.SetDiscount(m_selectedSubItem.m_nRealPrice);
+	
+				String strQQNumber = ((ExtractLineCtrl)findViewById(R.id.line1)).GetEditText();
+				request.SetQQNumber(strQQNumber);
+				RequestManager.GetInstance().SendRequest(request, false, this);
+		        m_progressDialog = ActivityHelper.ShowLoadingDialog(this);
+			}
 		}
 	}
 
@@ -141,14 +143,14 @@ public class ExtractQBiActivity extends ManagedDialogActivity
 			strMoney = String.format(getString(R.string.extract_dialog_qq_money), Util.FormatMoney(m_selectedSubItem.m_nRealPrice));
 		}
 		else {
-			strMoney = String.format(getString(R.string.extract_dialog_qq_money_with_discount), 
-					Util.FormatMoney(m_selectedSubItem.m_nRealPrice), Util.FormatMoney(m_selectedSubItem.m_nRealPrice));
+			String strAmout = Util.FormatMoney(m_selectedSubItem.m_nAmount);
+			String strDiscount = Util.FormatMoney(m_selectedSubItem.m_nAmount - m_selectedSubItem.m_nRealPrice);
+			strMoney = String.format(getString(R.string.extract_dialog_phone_money_with_discount), strAmout, strDiscount);
 		}
 
-		if (m_hintExtractDialog == null) {
-			m_hintExtractDialog = new ExtractHintDialog(this);
-			RegisterDialog(m_hintExtractDialog);
-		}
+
+		m_hintExtractDialog = new ExtractHintDialog(this);
+		RegisterDialog(m_hintExtractDialog);
 		m_hintExtractDialog.SetInfo(strAccount, strMoney);
 		m_hintExtractDialog.Show();
 

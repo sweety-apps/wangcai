@@ -1,9 +1,16 @@
 package com.coolstore.common;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -14,12 +21,16 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.google.zxing.BarcodeFormat;
@@ -57,7 +68,47 @@ public class Util {
 		return strVal == null || strVal.isEmpty() || strVal.equals("");
 	}
 
-
+	public static boolean IsSdCardFileExists(String strFilePath) {         
+		try{
+        File f=new File(strFilePath);
+        if(!f.exists()){
+                return false;
+        }
+        }catch (Exception e) {
+		        // TODO: handle exception
+		        return false;
+		}
+		return true;
+	}
+	public static boolean IsPrivateFileExists(Context context, String strFileName) {         
+		try{
+			FileInputStream fstream = context.openFileInput(strFileName);
+			fstream.close();
+        }catch (Exception e) {
+		        // TODO: handle exception
+		        return false;
+		}
+		return true;
+	}
+	
+	public static byte[] GetSign(Context context) {
+		PackageManager pm = context.getPackageManager();
+		PackageInfo info = null;
+		try {
+			info = pm.getPackageInfo(BuildSetting.sg_strPackageName, PackageManager.GET_SIGNATURES);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			return null;
+		}
+		if (info == null) {
+			return null;
+		}
+        return info.signatures[0].toByteArray();
+	}
+	public static String GetSignMd5(Context context) {
+		return GetMd5(GetSign(context));
+	}
+	
 	public static Bitmap CreateQRCodeBitmap(String strContent, int nSize) {
 		Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();  
         hints.put(EncodeHintType.CHARACTER_SET, "utf-8"); 
@@ -126,8 +177,21 @@ public class Util {
 			strUrl = CombineNetworkData(strUrl, strData);				
 		}
 		return strUrl;
-	}
-	public static String GetStringMd5(String strVal) {
+	}  
+	public static String GetMd5(byte[] paramArrayOfByte)
+    {
+		try {
+			 MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+			 localMessageDigest.update(paramArrayOfByte);
+			 return toHexString(localMessageDigest.digest());
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		}
+    }
+
+	public static String GetMd5(String strVal) {
 		MessageDigest md5 = null;
 		try {
 			md5 = MessageDigest.getInstance("MD5");
@@ -138,12 +202,14 @@ public class Util {
         byte[] m = md5.digest();
         return toHexString(m);    
 	}
-	private static final char HEX_DIGITS[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+	
 	public static String toHexString(byte[] b) {  //String to  byte
 		 StringBuilder sb = new StringBuilder(b.length * 2);  
-		 for (int i = 0; i < b.length; i++) {  
-		     sb.append(HEX_DIGITS[(b[i] & 0xf0) >>> 4]);  
-		     sb.append(HEX_DIGITS[b[i] & 0x0f]);  
+		 for (int i = 0; i < b.length; i++) {
+			 String strTemp = Integer.toString((0xFF & b[i]), 16);
+		      if (strTemp.length() == 1)
+		    	  strTemp = "0" + strTemp;
+		     sb.append(strTemp);  
 		 }  
 		 return sb.toString();  
 	}
@@ -184,8 +250,8 @@ public class Util {
 			}
 		}*/
 	}
-	public static boolean SendNotification(Activity owner, int nIconId, String strTitle, String strText) {
-        NotificationManager manager = (NotificationManager) owner .getSystemService(Context.NOTIFICATION_SERVICE);
+	public static boolean SendNotification(Context context, Intent intent, int nIconId, String strTitle, String strText) {
+        NotificationManager manager = (NotificationManager)context .getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = new Notification();
         notification.icon = nIconId;
         notification.tickerText = strTitle;
@@ -199,17 +265,47 @@ public class Util {
         notification.defaults = Notification.DEFAULT_SOUND;
         // audioStreamType的值必须AudioManager中的值，代表着响铃的模式
         notification.audioStreamType= android.media.AudioManager.ADJUST_LOWER;
-         
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
         //下边的两个方式可以添加音乐
         //notification.sound = Uri.parse("file:///sdcard/notification/ringer.mp3");
         //notification.sound = Uri.withAppendedPath(Audio.Media.INTERNAL_CONTENT_URI, "6");
-        Intent intent = new Intent(owner, Activity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(owner, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         // 点击状态栏的图标出现的提示信息设置
-        notification.setLatestEventInfo(owner, strTitle, strText, pendingIntent);
+        notification.setLatestEventInfo(context, strTitle, strText, pendingIntent);
         manager.notify(1, notification);
 		return true;
 	}
+    public static String GetMainLogoPath(Context context) {
+    	String strFileName = "main_icon.png";
+		String strFilePath = ConfigCenter.GetInstance().GetCachePath() + "/" + strFileName;
+
+		if (!Util.IsSdCardFileExists(strFilePath)) {
+			try {
+				InputStream inputStream;
+				inputStream = context.getResources().getAssets().open(strFileName);
+				
+				File file = new File(strFilePath);
+				FileOutputStream fstream = new FileOutputStream(file);				
+				
+				final int nBufferSize = 4096;
+				byte[] bufData = new byte[nBufferSize];
+				while (true) {
+					int nReadCount = inputStream.read(bufData, 0, nBufferSize);
+					if (nReadCount <= 0) {
+						break;
+					}
+					fstream.write(bufData, 0, nReadCount);
+				}
+				fstream.close();
+				inputStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return "";
+			}
+		}
+		return strFilePath;
+    }
 }
 
 

@@ -40,15 +40,15 @@
 
 	<string name="extract_dialog_phone_account">充值账号：%1$s</string>
 	<string name="extract_dialog_phone_money">充值金额：%1$s元</string>
-	<string name="extract_dialog_phone_money_with_discount">充值金额：%1$s元，返现%1$s元</string>
+	<string name="extract_dialog_phone_money_with_discount">充值金额：%1$s元，返现%2$s元</string>
 
 	<string name="extract_dialog_alipay_account">提现账号：%1$s</string>
 	<string name="extract_dialog_alipay_money">提现金额：%1$s元</string>
-	<string name="extract_dialog_alipay_money_with_discount">提现金额：%1$s元，返现%1$s元</string>
+	<string name="extract_dialog_alipay_money_with_discount">提现金额：%1$s元，返现%2$s元</string>
 	
 	<string name="extract_dialog_qq_account">充值QQ号：%1$s</string>
 	<string name="extract_dialog_qq_money">充值金额：%1$s元</string>
-	<string name="extract_dialog_qq_money_with_discount">充值金额：%1$s元，返现%1$s元</string>
+	<string name="extract_dialog_qq_money_with_discount">充值金额：%1$s元，返现%2$s元</string>
 
 	<string name="level_label">等级：</string>
 	<string name="level_unit">级</string>	
@@ -92,8 +92,12 @@
 	<string name="write_invite_code_title">填写邀请人</string>
 
 	<string name="invite_award_tip_title">邀请码红包</string>
+	<string name="new_invite_award_tip_title">分享送红包</string>
+	<string name="new_lottery_award_tip_title">获得签到红包</string>
+	<string name="new_invite_award_tip_titpe">获得邀请码红包</string>
 	<string name="new_app_award_tip_title">获得应用体验红包</string>
 	<string name="new_award_tip_level_benefit">等级加成+%1$d%%</string>
+	<string name="lotter_no_award_tip">两手空空，明天再来吧</string>
 
 	<string name="resend">重新发送</string>
 	<string name="invite_activity_title">邀请送红包</string>
@@ -121,6 +125,8 @@
 	<string name="lv5_benefit">好友奖励提升至15%</string>
 	<string name="lv10_benefit">有机会获得双倍任务奖励</string>
 	
+	<string name="app_update_hint_title">更新</string>
+	    
 	<string name="hint_over_5_yuan_bind_phone">您已积累了超过5元红包，为了红包的安全建议立即绑定手机号。</string>
 	<string name="hint_sward_share">恭喜您中奖，快来分享给朋友们吧！</string>
 	<string name="hint_update_wangcai">发现新版旺财！更安全更好赚，请立即升级。</string>
@@ -167,8 +173,15 @@
 	<string name="write_invaite_code_get_award">领取2元</string>
 	<string name="task_level_limit_hint">该任务需要等级达到%1$d级才能进行</string>
 
+	<string name="share_title">玩应用领红包</string>
+	<string name="share_url_description">旺财分享</string>
+	<string name="invite_share_content">妈妈再也不用担心我的话费了，旺财下载地址:%1$s</string>
+	<!-- 	qzone会批量掉内容里面的url -->
+	<string name="qzone_invite_share_content">妈妈再也不用担心我的话费了</string>
+	
 	<string name="wangcai_share">旺财分享</string>
 	<string name="share_content">我用旺财赚了%1$s元，你也可以的，填我的邀请码%2$s可领取2元红包。旺财下载地址:%3$s</string>
+	<string name="qzone_share_content">我用旺财赚了%1$s元，你也可以的，填我的邀请码%2$s可领取2元红包</string>
 
 	<string name="phone_bill">手机话费</string>
 	<string name="paypal">支付宝</string>
@@ -191,6 +204,11 @@
 	<string name="exchage_button_text">兑换  ></string>
 	<string name="gift_price_count">价格：%1$s元，剩余：%2$d</string>
 	<string name="jidong_card_50">50元京东商品卡</string>
+	
+	<string name="echange_dialog_name">产品：%1$s</string>
+	<string name="echange_dialog_price">价格：%1$s元</string>
+	<string name="exchagne_hint_text">兑换需要1-3个工作日，请耐心等待</string>
+	<string name="confirm_exchange_text">确认兑换</string>
 
 	<string name="alipay_number_label">支付宝账号：</string>
 	<string name="alipay_number_hint">请输入支付宝账号</string>
@@ -223,9 +241,11 @@
 	<string name="setting_version_title">版本号：%1$s</string>
 	<string name="setting_version_text">使用条款和隐私政策</string>
 
-	<string name="load_error">加载失败</string>
-	
+	<string name="load_error">加载失败</string>	
 
 	<string name="app_wall_puncbox_text">触控体验中心</string>
 	<string name="app_wall_youmi_text">有米体验中心</string>
+	<string name="app_wall_youmi_mopan">磨盘体验中心</string>
+	<string name="app_wall_youmi_jupeng">巨鹏体验中心</string>
+	<string name="app_wall_youmi_midi">米迪体验中心</string>
 </resources>
