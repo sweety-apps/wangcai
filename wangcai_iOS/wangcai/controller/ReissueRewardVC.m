@@ -110,6 +110,7 @@
     if(indexPath.section == 1 && indexPath.row == 1) return 80;
     if(indexPath.section == 1 && indexPath.row == 0) return 30;
     if(indexPath.section == 0 && indexPath.row == 0) return 30;
+    if(indexPath.section == 1 && indexPath.row == 0) return 60;
     return 44;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -289,7 +290,7 @@
         }
         [submit addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
         UIImage *image = [UIImage imageNamed:@"提交问题-normal.png"];
-        CGRect frame = CGRectMake(40, 2, 320-40*2, 40);
+        CGRect frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - image.size.width/2)/2, (cell.frame.size.height-image.size.height/2)/2, image.size.width/2, image.size.height/2);
         submit.frame = frame;
         [submit setImage:image forState:UIControlStateNormal];
         cell.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.5];
