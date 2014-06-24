@@ -42,7 +42,8 @@
 
 + (BOOL)isFirstRun;
 
-
++ (BOOL) isOfferwallSelected:(NSString*) name;
++ (void) selectOfferwall:(NSString*) name;
 
 + (void)setClickMaxID:(int) mid;
 + (int) getClickMaxID;

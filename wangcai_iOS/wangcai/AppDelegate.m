@@ -180,23 +180,28 @@
 
 -(void) onShowPageFromRootNotification:(NSDictionary*) remoteNotifications {
     NSString* type = [remoteNotifications objectForKey:@"type"];
-    if ( ![type isEqualToString:@"1"] ) {
-        return ;
-    }
+    if ( [type isEqualToString:@"1"] ) {
+        NSString* title = [remoteNotifications objectForKey:@"title"];
+        NSString* url = [remoteNotifications objectForKey:@"url"];
     
-    NSString* title = [remoteNotifications objectForKey:@"title"];
-    NSString* url = [remoteNotifications objectForKey:@"url"];
-    
-    if ( [self.window.rootViewController isEqual:[AppBoard_iPhone sharedInstance]] ) {
-        // 取当前stack
-        BeeUIStack* stack = [BeeUIRouter sharedInstance].currentStack;
+        if ( [self.window.rootViewController isEqual:[AppBoard_iPhone sharedInstance]] ) {
+            // 取当前stack
+            BeeUIStack* stack = [BeeUIRouter sharedInstance].currentStack;
 
-        WebPageController* controller = [[[WebPageController alloc] init:title
+            WebPageController* controller = [[[WebPageController alloc] init:title
                                                                      Url:url Stack:stack] autorelease];
-        [stack pushViewController:controller animated:YES];
-    } else {
-        // 界面还没有创建
-        [[AppBoard_iPhone sharedInstance] openUrlFromRomoteNotification:title Url:url];
+            [stack pushViewController:controller animated:YES];
+        } else {
+            // 界面还没有创建
+            [[AppBoard_iPhone sharedInstance] openUrlFromRomoteNotification:title Url:url];
+        }
+    } else if ( [type isEqualToString:@"2"] ) {
+        if ( [self.window.rootViewController isEqual:[AppBoard_iPhone sharedInstance]] ) {
+            [[AppBoard_iPhone sharedInstance] installAppFromRomoteNotification:remoteNotifications];
+        } else {
+            // 界面还没有创建
+            [[AppBoard_iPhone sharedInstance] notificationInstallApp:remoteNotifications];
+        }
     }
 }
 @end

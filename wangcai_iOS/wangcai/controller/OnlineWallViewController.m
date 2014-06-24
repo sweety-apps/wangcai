@@ -30,6 +30,7 @@
 #import "DianRuAdWall.h"
 #import "AdwoOfferWall.h"
 #import "WapsOffer/AppConnect.h"
+#import "ComplainViewController.h"
 
 @interface OnlineWallViewController ()
 
@@ -477,8 +478,18 @@ static OnlineWallViewController* _sharedInstance;
     
     NSString* url = [[[NSString alloc] initWithFormat:@"%@132", WEB_SERVICE_VIEW] autorelease];
     
-    WebPageController* controller = [[[WebPageController alloc] init:@"重要提示"
+    WebPageController* controller = [[[WebPageController alloc] init:@"新手帮助"
                                                                  Url:url Stack:stack] autorelease];
+    [stack pushViewController:controller animated:YES];
+}
+
+- (IBAction)clickComplain:(id)sender {
+    if ( _alertView != nil ) {
+        [_alertView hideAlertView];
+    }
+    
+    BeeUIStack* stack = [BeeUIRouter sharedInstance].currentStack;
+    ComplainViewController* controller = [[[ComplainViewController alloc] init] autorelease];
     [stack pushViewController:controller animated:YES];
 }
 

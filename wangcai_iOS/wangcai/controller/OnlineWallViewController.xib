@@ -15,6 +15,10 @@
                     <rect key="frame" x="17" y="23" width="285" height="430"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_install_desc.png" id="qWg-Ex-MQ2">
+                    <rect key="frame" x="46" y="106" width="257" height="85"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <button opaque="NO" tag="33" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Tfk-zh-Oiw">
                     <rect key="frame" x="272" y="9" width="42" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -148,14 +152,27 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yu5-5y-M1l">
-                    <rect key="frame" x="47" y="237" width="94" height="19"/>
+                    <rect key="frame" x="32" y="210" width="124" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="app_install_tip.png">
+                    <state key="normal" image="app_install_helper_normal.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="selected" image="app_install_helper_down.png"/>
                     <connections>
                         <action selector="clickHelper:" destination="-1" eventType="touchUpInside" id="Ggf-7G-evO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hd1-Uo-xV9">
+                    <rect key="frame" x="164" y="210" width="124" height="43"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="complain_normal.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="complain_down.png"/>
+                    <connections>
+                        <action selector="clickComplain:" destination="-1" eventType="touchUpInside" id="wyV-5j-WxB"/>
                     </connections>
                 </button>
                 <button opaque="NO" tag="91" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hVx-Pl-DzU">
@@ -297,7 +314,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eNw-n8-ymK">
-                            <rect key="frame" x="-13" y="6" width="92" height="25"/>
+                            <rect key="frame" x="0.0" y="6" width="92" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="app_tip_back.png"/>
                             <connections>
@@ -311,7 +328,9 @@
         </view>
     </objects>
     <resources>
-        <image name="app_install_tip.png" width="94" height="19"/>
+        <image name="app_install_desc.png" width="257" height="85"/>
+        <image name="app_install_helper_down.png" width="123" height="43"/>
+        <image name="app_install_helper_normal.png" width="123" height="43"/>
         <image name="app_tip_anwo.png" width="254" height="49"/>
         <image name="app_tip_back.png" width="62" height="19"/>
         <image name="app_tip_bkg.png" width="285" height="430"/>
@@ -324,6 +343,8 @@
         <image name="app_tip_recommand.png" width="254" height="49"/>
         <image name="app_tip_waps.png" width="254" height="49"/>
         <image name="app_tip_youmi.png" width="254" height="49"/>
+        <image name="complain_down.png" width="123" height="43"/>
+        <image name="complain_normal.png" width="123" height="43"/>
         <image name="jupeng.png" width="254" height="49"/>
         <image name="limei.png" width="254" height="49"/>
         <image name="punchbox.png" width="254" height="49"/>

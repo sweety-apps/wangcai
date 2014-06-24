@@ -13,6 +13,9 @@
 #import "OnlineWallViewController.h"
 #import "MobClick.h"
 #import "WebPageController.h"
+#import "MBHUDView.h"
+#import "YouMiConfig.h"
+#import "YouMiWall.h"
 
 #define SHOW_MASK (0)
 
@@ -49,8 +52,13 @@ DEF_SINGLETON( AppBoard_iPhone )
     _alertView = nil;
     _remoteNotificationTitle = nil;
     _remoteNotificationUrl = nil;
+    _notification = nil;
+    _appId = nil;
+    _points = nil;
+    _pointsLimit = nil;
     
-    float fl = [UIScreen mainScreen].scale;
+    _wapCustom = [[WapsOfferCustom alloc] init];//在viewDidLoad⽅方法中!
+    _wapCustom.delegate = self;//设置当前对象为wapCumtom的代理!
     
     if ( [[LoginAndRegister sharedInstance] isInReview] ) {
         _adView = [[YouMiView alloc] initWithContentSizeIdentifier:YouMiBannerContentSizeIdentifier320x50 delegate:nil];
@@ -156,6 +164,10 @@ ON_SIGNAL2( BeeUIBoard, signal )
             _remoteNotificationTitle = nil;
             [_remoteNotificationUrl release];
             _remoteNotificationUrl = nil;
+        } else if ( _notification != nil ) {
+            [self installAppFromRomoteNotification:_notification];
+            [_notification release];
+            _notification = nil;
         }
 	}
 	else if ( [signal is:BeeUIBoard.WILL_DISAPPEAR] )
@@ -532,6 +544,133 @@ ON_MESSAGE( message )
 - (void) openUrlFromRomoteNotification : (NSString*) title Url:(NSString*) url {
     _remoteNotificationTitle = [title copy];
     _remoteNotificationUrl = [url copy];
+}
+
+- (void) showLoading {
+    [MBHUDView hudWithBody:@"加载任务中..." type:MBAlertViewHUDTypeActivityIndicator hidesAfter:-1 show:YES];
+}
+
+- (void) hideLoading {
+    [MBHUDView dismissCurrentHUD];
+}
+
+- (void) notificationInstallApp:(NSDictionary*) remoteNotifications {
+    _notification = [remoteNotifications copy];
+}
+
+- (void) buildPointsArray:(NSString*) appid points:(NSString*) points {
+    _appId = [[[NSMutableArray alloc] init] autorelease];
+    while ( YES ) {
+        NSRange range = [appid rangeOfString:@","];
+        if ( range.length == 0 ) {
+            [_appId addObject:appid];
+            break;
+        } else {
+            // 左边
+            NSString* left = [appid substringToIndex:range.location];
+            NSString* right = [appid substringFromIndex:range.location + range.length];
+            
+            appid = right;
+            [_appId addObject:left];
+        }
+    }
+    
+    _points = [[[NSMutableArray alloc] init] autorelease];
+    _pointsLimit = [[[NSMutableArray alloc] init] autorelease];
+
+    while ( YES ) {
+        NSRange range = [points rangeOfString:@","];
+        if ( range.length == 0 ) {
+            NSRange tmp = [points rangeOfString:@"-"];
+            if ( tmp.length == 0 ) {
+                [_points addObject:points];
+                [_pointsLimit addObject:@"0"];
+            } else {
+                NSString* point = [points substringToIndex:tmp.location];
+                NSString* limit = [points substringFromIndex:tmp.location + tmp.length];
+                [_points addObject:point];
+                [_pointsLimit addObject:limit];
+            }
+
+            break;
+        } else {
+            // 左边
+            NSString* left = [points substringToIndex:range.location];
+            NSString* right = [points substringFromIndex:range.location + range.length];
+            
+            points = right;
+            
+            NSRange tmp = [left rangeOfString:@"-"];
+            if ( tmp.length == 0 ) {
+                [_points addObject:left];
+                [_pointsLimit addObject:@"0"];
+            } else {
+                NSString* point = [left substringToIndex:tmp.location];
+                NSString* limit = [left substringFromIndex:tmp.location + tmp.length];
+                [_points addObject:point];
+                [_pointsLimit addObject:limit];
+            }
+        }
+    }
+}
+
+- (void) installAppFromRomoteNotification:(NSDictionary*) remoteNotifications {
+    //
+    if ( [[remoteNotifications allKeys] containsObject:@"youmi"] ) {
+        NSString* appid = [remoteNotifications valueForKey:@"youmi"];
+        NSString* points = [remoteNotifications valueForKey:@"points"];
+        [self showLoading];
+        
+        [self buildPointsArray:appid points:points];
+        
+        [YouMiWall requestOffersOpenData:YES revievedBlock:^(NSArray *theApps, NSError *error) {
+            [self hideLoading];
+            if (!error) {
+                for ( int i = 0; i < [theApps count]; i ++ ) {
+                    YouMiWallAppModel *model = theApps[i];
+                    NSInteger storeID = [model appStoreID];
+                    NSString* sid = [NSString stringWithFormat:@"%d", storeID];
+                    if ( [sid isEqualToString:appid] ) {
+                        [YouMiWall userInstallApp:model];
+                        break;
+                    }
+                }
+            }
+        }];
+    } else if ( [[remoteNotifications allKeys] containsObject:@"waps"] ) {
+        NSString* appid = [remoteNotifications valueForKey:@"waps"];
+        NSString* points = [remoteNotifications valueForKey:@"points"];
+        
+        [self showLoading];
+
+        [self buildPointsArray:appid points:points];
+        
+        [_wapCustom loadCustomData]; //调⽤用WapsCustom的loadCustomData⽅方法,请求广告墙数据
+    }
+}
+
+//参数:flg为真时,表明正在请求数据;flg为假时,数据请求完成.
+- (void)isLoading:(BOOL)flg {
+    
+}
+
+//参数:offersJson为下载完成后的字符串数据.
+- (void)getCustomDataWithJson:(NSString *)offersJson {
+    
+}
+
+//参数:offersArray为下载完成后的数组数据,数组中的内容为字典格式.
+- (void)getCustomDataWithArray:(NSArray *)offersArray {
+    NSDictionary* dict = offersArray[0];
+    
+    int n;
+    n = 3;
+}
+
+//参数:errorInfo为下载失败后的信息.
+- (void)getCustomDataFaile:(NSString *)errorInfo {
+    int n;
+    n = 3;
 }
 
 @end

@@ -92,6 +92,7 @@
 - (IBAction)clickAdwo:(id)sender;
 
 - (IBAction)clickHelper:(id)sender;
+- (IBAction)clickComplain:(id)sender;
 
 - (IBAction)clickClose:(id)sender;
 

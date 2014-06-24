@@ -381,4 +381,29 @@
     return ret;
 }
 
++ (BOOL) isOfferwallSelected:(NSString*) name {
+    NSDateFormatter* formatter = [[[NSDateFormatter alloc]init] autorelease];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSString* date = [formatter stringFromDate:[NSDate date]];
+    
+    NSString* key = [NSString stringWithFormat:@"offwall_%@", name];
+    
+    NSString* tmpDate = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    if ( [tmpDate isEqualToString:date] ) {
+        return YES;
+    }
+    return NO;
+}
+
++ (void) selectOfferwall:(NSString*) name {
+    NSDateFormatter* formatter = [[[NSDateFormatter alloc]init] autorelease];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSString* date = [formatter stringFromDate:[NSDate date]];
+
+    NSString* key = [NSString stringWithFormat:@"offwall_%@", name];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 @end

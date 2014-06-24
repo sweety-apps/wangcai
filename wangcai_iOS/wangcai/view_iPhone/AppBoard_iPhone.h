@@ -17,13 +17,22 @@
 
 #import "Bee.h"
 #import "YouMiView.h"
+#import "WapsOffer/WapsOfferCustom.h"
 
-@interface AppBoard_iPhone : BeeUIBoard <UIAlertViewDelegate> {
+@interface AppBoard_iPhone : BeeUIBoard <UIAlertViewDelegate, WapsOfferCustomDelegate> {
     UIAlertView* _alertView;
     YouMiView*   _adView;
     
     NSString*    _remoteNotificationTitle;
     NSString*    _remoteNotificationUrl;
+    
+    NSDictionary* _notification;
+    
+    WapsOfferCustom* _wapCustom;
+    
+    NSMutableArray*      _appId;
+    NSMutableArray*      _points;
+    NSMutableArray*      _pointsLimit;
 }
 
 AS_SINGLETON( AppBoard_iPhone )
@@ -31,4 +40,8 @@ AS_SINGLETON( AppBoard_iPhone )
 - (void)setPanable:(BOOL)panable;
 - (void)onTouchedInvite:(BOOL)switchToFillInvitedCodeView;
 - (void) openUrlFromRomoteNotification : (NSString*) title Url:(NSString*) url;
+
+- (void) installAppFromRomoteNotification:(NSDictionary*) remoteNotifications;
+- (void) notificationInstallApp:(NSDictionary*) remoteNotifications;
+
 @end
