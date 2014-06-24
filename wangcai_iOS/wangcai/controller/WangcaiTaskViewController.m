@@ -12,6 +12,7 @@
 #import "Config.h"
 #import "CommonTaskList.h"
 #import "CommonTaskTableViewCell.h"
+#import "ReissueRewardVC.h"
 
 @interface WangcaiTaskViewController ()
 
@@ -54,7 +55,7 @@ static WangcaiTaskViewController* _sharedInstance = nil;
     
     CGRect rect = [[UIScreen mainScreen]bounds];
     rect.origin.y = 54;
-    rect.size.height -= 54;
+    rect.size.height -= 98;
     
     [tbView setFrame:rect];
     tbView.delegate = self;
@@ -75,8 +76,37 @@ static WangcaiTaskViewController* _sharedInstance = nil;
     [view1 release];
     
     [self requestList];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0,[[UIScreen mainScreen] bounds].size.height-44, [[UIScreen mainScreen] bounds].size.width, 44)];
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 200, 24)];
+    label.text = @"官方任务：100% 红包发放";
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont systemFontOfSize:15.f];
+    view.backgroundColor = [UIColor colorWithRed:126/255.f green:127/255.f blue:126/255.f alpha:1.f];
+    [view addSubview:label];
+    
+    
+    
+    UIButton *feedback = [UIButton buttonWithType:UIButtonTypeCustom];
+    [feedback addTarget:self action:@selector(feedback) forControlEvents:UIControlEventTouchUpInside];
+    UIImage *image = [UIImage imageNamed:@"漏发-normal.png"];
+    [feedback setBackgroundImage:image forState:UIControlStateNormal];
+    feedback.frame = CGRectMake(240, 10, image.size.width/2.f, image.size.height/2.f);
+    [view addSubview:feedback];
+    [self.view addSubview:view];
+    
+    [label release];
+    [view release];
+    
+    
 }
-
+- (void)feedback
+{
+    ReissueRewardVC *vc = [[ReissueRewardVC alloc]initWithItems:_list];
+    [vc setUIStack:_beeUIStack];
+    [_beeUIStack pushViewController:vc animated:YES];
+    [vc release];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
