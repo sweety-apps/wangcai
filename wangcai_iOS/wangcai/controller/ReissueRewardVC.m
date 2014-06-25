@@ -51,6 +51,16 @@
     return 20;
     return 0;
 }
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if(section == 0)
+    {
+        UIView *header = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20)] autorelease];
+        header.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
+        return header;
+    }
+    return nil;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -60,6 +70,7 @@
     title.textAlignment = UITextAlignmentCenter;
     
     title.text = @"补发红包";
+    title.backgroundColor = [UIColor clearColor];
     title.font = [UIFont systemFontOfSize:20.f];
     [header addSubview:title];
     [title release];
@@ -142,6 +153,7 @@
     UIView *bg = [[UIView alloc]init];
     bg.frame = bgframe;
     UILabel *text = [[UILabel alloc]initWithFrame:textfrmale];
+    text.backgroundColor = [UIColor clearColor];
     text.text = title;
     text.textColor = [UIColor lightGrayColor];
     [bg addSubview:text];
@@ -296,6 +308,7 @@
             label.text = @"我已阅读说明";
             label.font = [UIFont boldSystemFontOfSize:15.f];
             [cell.contentView addSubview:label];
+            label.backgroundColor = [UIColor clearColor];
             [label release];
         }
     

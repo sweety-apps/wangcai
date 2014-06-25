@@ -82,6 +82,7 @@ static WangcaiTaskViewController* _sharedInstance = nil;
     label.text = @"官方任务：100% 红包发放";
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont systemFontOfSize:15.f];
+    label.backgroundColor = [UIColor clearColor];
     view.backgroundColor = [UIColor colorWithRed:126/255.f green:127/255.f blue:126/255.f alpha:1.f];
     [view addSubview:label];
     
