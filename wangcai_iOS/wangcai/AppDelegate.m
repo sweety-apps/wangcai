@@ -123,14 +123,9 @@
                                                    UIRemoteNotificationTypeAlert)];
     [APService setupWithOption:launchOptions];
     
-    [APService setAlias:@"wangcaizhao" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
-    
     return YES;
 }
 
-- (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
-    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
-}
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [APService registerDeviceToken:deviceToken];
 }
@@ -181,6 +176,8 @@
             _nsRemoteNotifications = nil;
         }
     }
+//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"53c3e2fdf22b1df9e2c2126025be18ce,859123573,651952567",@"youmi",@"42-111,44-111,40-1",@"points", nil];
+//      [self onShowPageFromRootNotification:dic];
 }
 
 -(void) onShowPageFromRootNotification:(NSDictionary*) remoteNotifications {

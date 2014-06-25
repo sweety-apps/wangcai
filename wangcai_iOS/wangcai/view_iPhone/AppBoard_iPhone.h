@@ -30,7 +30,7 @@
     
     WapsOfferCustom* _wapCustom;
     
-    NSMutableArray*      _appId;
+    NSArray*      _appId;
     NSMutableArray*      _points;
     NSMutableArray*      _pointsLimit;
 }
