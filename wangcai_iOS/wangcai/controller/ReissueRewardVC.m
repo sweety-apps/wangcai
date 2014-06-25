@@ -64,8 +64,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64)];
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(110, 0, 100, 64)];
+    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 54)];
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(110, 0, 100, 54)];
     title.textColor = [UIColor whiteColor];
     title.textAlignment = UITextAlignmentCenter;
     
@@ -77,9 +77,9 @@
     
     UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
     [back addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *image = [UIImage imageNamed:@"back@2x.png"];
+    UIImage *image = [UIImage imageNamed:@"back.png"];
     [back setBackgroundImage:image forState:UIControlStateNormal];
-    CGRect frame = CGRectMake(20, 22, image.size.width/2.f, image.size.height/2.f);
+    CGRect frame = CGRectMake(20, (54-image.size.height)/2.f, image.size.width, image.size.height);
     back.frame = frame;
     [header addSubview:back];
     header.backgroundColor = [UIColor colorWithRed:12/255.f green:90/255.f blue:189/255.f alpha:1.f];
