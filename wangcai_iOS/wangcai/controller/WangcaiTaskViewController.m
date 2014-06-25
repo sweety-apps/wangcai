@@ -89,7 +89,7 @@ static WangcaiTaskViewController* _sharedInstance = nil;
     
     UIButton *feedback = [UIButton buttonWithType:UIButtonTypeCustom];
     [feedback addTarget:self action:@selector(feedback) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *image = [UIImage imageNamed:@"漏发-normal.png"];
+    UIImage *image = [UIImage imageNamed:@"omissionnormal.png"];
     [feedback setBackgroundImage:image forState:UIControlStateNormal];
     feedback.frame = CGRectMake(240, 10, image.size.width/2.f, image.size.height/2.f);
     [view addSubview:feedback];
