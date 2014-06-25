@@ -123,9 +123,14 @@
                                                    UIRemoteNotificationTypeAlert)];
     [APService setupWithOption:launchOptions];
     
+    [APService setAlias:@"wangcaizhao" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
+    
     return YES;
 }
 
+- (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
+}
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [APService registerDeviceToken:deviceToken];
 }

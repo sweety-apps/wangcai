@@ -244,12 +244,20 @@
         gray1.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
         [cell.contentView addSubview:gray1];
         [gray1 release];
+        
         if(indexPath.row == 0)
         {
             cell.textLabel.text = @"请选择未发放红包的任务";
             cell.textLabel.font = [UIFont boldSystemFontOfSize:15.f];
         }else
         {
+            if([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+            {
+                UIView *bg =  [[UIView alloc]initWithFrame:CGRectMake(10, 0, 300, 30)];
+                bg.backgroundColor = [UIColor whiteColor];
+                [cell.contentView addSubview:bg];
+                [bg release];
+            }
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
             tap.cancelsTouchesInView = NO;
             [cell addGestureRecognizer:tap];
