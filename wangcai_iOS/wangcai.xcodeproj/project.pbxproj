@@ -422,8 +422,6 @@
 		71BB079919597984001C9856 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB079819597984001C9856 /* ShareSDK.framework */; };
 		71BB079B1959798D001C9856 /* immobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB079A1959798D001C9856 /* immobSDK.framework */; };
 		71BB079D195979AC001C9856 /* ShareSDKCoreService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB079C195979AC001C9856 /* ShareSDKCoreService.framework */; };
-		71BB079F195979CA001C9856 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB079E195979CA001C9856 /* TencentOpenAPI.framework */; };
-		71BB07A1195979EE001C9856 /* RennSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07A0195979EE001C9856 /* RennSDK.framework */; };
 		71BB07A319597B05001C9856 /* libDianRuAdWall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07A219597B05001C9856 /* libDianRuAdWall.a */; };
 		71BB07A519597C53001C9856 /* libminizip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07A419597C53001C9856 /* libminizip.a */; };
 		71BB07A719597C75001C9856 /* libAdwoOfferWall2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07A619597C75001C9856 /* libAdwoOfferWall2.0.a */; };
@@ -434,38 +432,13 @@
 		71BB07B119597F9C001C9856 /* libDomobOfferWallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07B019597F9C001C9856 /* libDomobOfferWallSDK.a */; };
 		71BB07B319597FB9001C9856 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07B219597FB9001C9856 /* libMobClickLibrary.a */; };
 		71BB07B519598095001C9856 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07B419598095001C9856 /* libWeChatSDK.a */; };
-		71BB07B9195980E3001C9856 /* DropboxConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07B8195980E3001C9856 /* DropboxConnection.framework */; };
 		71BB07BB1959814C001C9856 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07BA1959814C001C9856 /* ShareSDKiPhoneDefaultShareViewUI.framework */; };
-		71BB07FE195981A1001C9856 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07BE195981A0001C9856 /* CopyConnection.framework */; };
-		71BB07FF195981A1001C9856 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07BF195981A0001C9856 /* DouBanConnection.framework */; };
-		71BB0800195981A1001C9856 /* DropboxConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07C0195981A0001C9856 /* DropboxConnection.framework */; };
-		71BB0801195981A1001C9856 /* EverNoteConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07C1195981A0001C9856 /* EverNoteConnection.framework */; };
-		71BB0802195981A1001C9856 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07C2195981A0001C9856 /* FacebookConnection.framework */; };
-		71BB0803195981A1001C9856 /* FlickrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07C3195981A0001C9856 /* FlickrConnection.framework */; };
-		71BB0804195981A1001C9856 /* GooglePlusConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07C4195981A0001C9856 /* GooglePlusConnection.framework */; };
-		71BB0805195981A1001C9856 /* InstagramConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07C5195981A0001C9856 /* InstagramConnection.framework */; };
-		71BB0806195981A1001C9856 /* InstapaperConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07C6195981A0001C9856 /* InstapaperConnection.framework */; };
-		71BB0807195981A1001C9856 /* InstapaperResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71BB07C7195981A0001C9856 /* InstapaperResource.bundle */; };
-		71BB0808195981A1001C9856 /* KaiXinConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07C8195981A0001C9856 /* KaiXinConnection.framework */; };
-		71BB0809195981A1001C9856 /* LinkedInConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07C9195981A1001C9856 /* LinkedInConnection.framework */; };
-		71BB080A195981A1001C9856 /* MailConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07CA195981A1001C9856 /* MailConnection.framework */; };
-		71BB080B195981A1001C9856 /* PinterestConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07CB195981A1001C9856 /* PinterestConnection.framework */; };
-		71BB080C195981A1001C9856 /* PocketConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07CC195981A1001C9856 /* PocketConnection.framework */; };
-		71BB080D195981A1001C9856 /* PrintConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07CD195981A1001C9856 /* PrintConnection.framework */; };
 		71BB080E195981A1001C9856 /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07CE195981A1001C9856 /* QQConnection.framework */; };
 		71BB080F195981A1001C9856 /* QZoneConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07CF195981A1001C9856 /* QZoneConnection.framework */; };
 		71BB0810195981A1001C9856 /* RenRenConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D0195981A1001C9856 /* RenRenConnection.framework */; };
 		71BB0811195981A1001C9856 /* SinaWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D1195981A1001C9856 /* SinaWeiboConnection.framework */; };
-		71BB0812195981A1001C9856 /* SMSConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D2195981A1001C9856 /* SMSConnection.framework */; };
-		71BB0813195981A1001C9856 /* SohuConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D3195981A1001C9856 /* SohuConnection.framework */; };
-		71BB0814195981A1001C9856 /* SohuWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D4195981A1001C9856 /* SohuWeiboConnection.framework */; };
-		71BB0815195981A1001C9856 /* T163WeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D5195981A1001C9856 /* T163WeiboConnection.framework */; };
 		71BB0816195981A1001C9856 /* TencentWeiboConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D6195981A1001C9856 /* TencentWeiboConnection.framework */; };
-		71BB0817195981A1001C9856 /* TumblrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D7195981A1001C9856 /* TumblrConnection.framework */; };
-		71BB0818195981A1001C9856 /* TwitterConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D8195981A1001C9856 /* TwitterConnection.framework */; };
-		71BB0819195981A1001C9856 /* VKontakteConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07D9195981A1001C9856 /* VKontakteConnection.framework */; };
 		71BB081A195981A1001C9856 /* WeChatConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07DA195981A1001C9856 /* WeChatConnection.framework */; };
-		71BB081B195981A1001C9856 /* YouDaoNoteConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07DB195981A1001C9856 /* YouDaoNoteConnection.framework */; };
 		71BB081C195981A1001C9856 /* AGCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71BB07DD195981A1001C9856 /* AGCommon.framework */; };
 		71BB081D195981A1001C9856 /* ShareSDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71BB07DE195981A1001C9856 /* ShareSDKLocalizable.strings */; };
 		71BB081E195981A1001C9856 /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71BB07E0195981A1001C9856 /* Resource.bundle */; };
@@ -1981,8 +1954,6 @@
 		71BB079819597984001C9856 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareSDK.framework; path = wangcai/ShareSDK_v2.6.1/ShareSDK.framework; sourceTree = "<group>"; };
 		71BB079A1959798D001C9856 /* immobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = immobSDK.framework; path = wangcai/immobSDK.framework; sourceTree = "<group>"; };
 		71BB079C195979AC001C9856 /* ShareSDKCoreService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareSDKCoreService.framework; path = wangcai/ShareSDK_v2.6.1/Core/ShareSDKCoreService.framework; sourceTree = "<group>"; };
-		71BB079E195979CA001C9856 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = wangcai/ShareSDK_v2.6.1/Extend/QQConnectSDK/TencentOpenAPI.framework; sourceTree = "<group>"; };
-		71BB07A0195979EE001C9856 /* RennSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RennSDK.framework; path = wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK/RennSDK.framework; sourceTree = "<group>"; };
 		71BB07A219597B05001C9856 /* libDianRuAdWall.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDianRuAdWall.a; path = Dianrulib/libDianRuAdWall.a; sourceTree = "<group>"; };
 		71BB07A419597C53001C9856 /* libminizip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libminizip.a; path = Adwolib/res/libminizip.a; sourceTree = "<group>"; };
 		71BB07A619597C75001C9856 /* libAdwoOfferWall2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAdwoOfferWall2.0.a; path = Adwolib/libAdwoOfferWall2.0.a; sourceTree = "<group>"; };
@@ -1993,38 +1964,13 @@
 		71BB07B019597F9C001C9856 /* libDomobOfferWallSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDomobOfferWallSDK.a; path = wangcai/DMOfferWallSDK/libDomobOfferWallSDK.a; sourceTree = "<group>"; };
 		71BB07B219597FB9001C9856 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = wangcai/libMobClickLibrary.a; sourceTree = "<group>"; };
 		71BB07B419598095001C9856 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK/libWeChatSDK.a; sourceTree = "<group>"; };
-		71BB07B8195980E3001C9856 /* DropboxConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropboxConnection.framework; path = wangcai/ShareSDK_v2.6.1/Connection/DropboxConnection.framework; sourceTree = "<group>"; };
 		71BB07BA1959814C001C9856 /* ShareSDKiPhoneDefaultShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareSDKiPhoneDefaultShareViewUI.framework; path = wangcai/ShareSDK_v2.6.1/UI/ShareSDKiPhoneDefaultShareViewUI.framework; sourceTree = "<group>"; };
-		71BB07BE195981A0001C9856 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
-		71BB07BF195981A0001C9856 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
-		71BB07C0195981A0001C9856 /* DropboxConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxConnection.framework; sourceTree = "<group>"; };
-		71BB07C1195981A0001C9856 /* EverNoteConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EverNoteConnection.framework; sourceTree = "<group>"; };
-		71BB07C2195981A0001C9856 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
-		71BB07C3195981A0001C9856 /* FlickrConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FlickrConnection.framework; sourceTree = "<group>"; };
-		71BB07C4195981A0001C9856 /* GooglePlusConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlusConnection.framework; sourceTree = "<group>"; };
-		71BB07C5195981A0001C9856 /* InstagramConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InstagramConnection.framework; sourceTree = "<group>"; };
-		71BB07C6195981A0001C9856 /* InstapaperConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InstapaperConnection.framework; sourceTree = "<group>"; };
-		71BB07C7195981A0001C9856 /* InstapaperResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InstapaperResource.bundle; sourceTree = "<group>"; };
-		71BB07C8195981A0001C9856 /* KaiXinConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KaiXinConnection.framework; sourceTree = "<group>"; };
-		71BB07C9195981A1001C9856 /* LinkedInConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkedInConnection.framework; sourceTree = "<group>"; };
-		71BB07CA195981A1001C9856 /* MailConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnection.framework; sourceTree = "<group>"; };
-		71BB07CB195981A1001C9856 /* PinterestConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PinterestConnection.framework; sourceTree = "<group>"; };
-		71BB07CC195981A1001C9856 /* PocketConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PocketConnection.framework; sourceTree = "<group>"; };
-		71BB07CD195981A1001C9856 /* PrintConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PrintConnection.framework; sourceTree = "<group>"; };
 		71BB07CE195981A1001C9856 /* QQConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnection.framework; sourceTree = "<group>"; };
 		71BB07CF195981A1001C9856 /* QZoneConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QZoneConnection.framework; sourceTree = "<group>"; };
 		71BB07D0195981A1001C9856 /* RenRenConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RenRenConnection.framework; sourceTree = "<group>"; };
 		71BB07D1195981A1001C9856 /* SinaWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SinaWeiboConnection.framework; sourceTree = "<group>"; };
-		71BB07D2195981A1001C9856 /* SMSConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMSConnection.framework; sourceTree = "<group>"; };
-		71BB07D3195981A1001C9856 /* SohuConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SohuConnection.framework; sourceTree = "<group>"; };
-		71BB07D4195981A1001C9856 /* SohuWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SohuWeiboConnection.framework; sourceTree = "<group>"; };
-		71BB07D5195981A1001C9856 /* T163WeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = T163WeiboConnection.framework; sourceTree = "<group>"; };
 		71BB07D6195981A1001C9856 /* TencentWeiboConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentWeiboConnection.framework; sourceTree = "<group>"; };
-		71BB07D7195981A1001C9856 /* TumblrConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TumblrConnection.framework; sourceTree = "<group>"; };
-		71BB07D8195981A1001C9856 /* TwitterConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterConnection.framework; sourceTree = "<group>"; };
-		71BB07D9195981A1001C9856 /* VKontakteConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VKontakteConnection.framework; sourceTree = "<group>"; };
 		71BB07DA195981A1001C9856 /* WeChatConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WeChatConnection.framework; sourceTree = "<group>"; };
-		71BB07DB195981A1001C9856 /* YouDaoNoteConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YouDaoNoteConnection.framework; sourceTree = "<group>"; };
 		71BB07DD195981A1001C9856 /* AGCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AGCommon.framework; sourceTree = "<group>"; };
 		71BB07DF195981A1001C9856 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareSDKLocalizable.strings; sourceTree = "<group>"; };
 		71BB07E0195981A1001C9856 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
@@ -3028,31 +2974,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				712D9BAB191B416F0035D29C /* libDianRuAdWall.a in Frameworks */,
-				71BB0814195981A1001C9856 /* SohuWeiboConnection.framework in Frameworks */,
-				71BB0805195981A1001C9856 /* InstagramConnection.framework in Frameworks */,
 				71BB080F195981A1001C9856 /* QZoneConnection.framework in Frameworks */,
 				71BB0830195981C3001C9856 /* libPushSDK.a in Frameworks */,
 				71420E8C191E0B9700376AA9 /* libminizip.a in Frameworks */,
 				71420E8A191E0B9700376AA9 /* libAdwoOfferWall2.0.a in Frameworks */,
 				71007DBE18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
 				712B4ED61944543600C6DE13 /* libPunchBoxAd.a in Frameworks */,
-				71BB0819195981A1001C9856 /* VKontakteConnection.framework in Frameworks */,
 				710A3F71192C75B9002420C8 /* WapsOffer.framework in Frameworks */,
-				71BB0803195981A1001C9856 /* FlickrConnection.framework in Frameworks */,
 				7194FE3E18EA8FEE004A303B /* libOpenIDFA.a in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
-				71BB080D195981A1001C9856 /* PrintConnection.framework in Frameworks */,
 				F3F186D618543A410098C852 /* SystemConfiguration.framework in Frameworks */,
 				71BB081A195981A1001C9856 /* WeChatConnection.framework in Frameworks */,
 				71BB07A319597B05001C9856 /* libDianRuAdWall.a in Frameworks */,
-				71BB0815195981A1001C9856 /* T163WeiboConnection.framework in Frameworks */,
 				F3F186D218543A410098C852 /* QuartzCore.framework in Frameworks */,
 				71BB0825195981A1001C9856 /* ShareSDK.framework in Frameworks */,
 				71BB0820195981A1001C9856 /* TencentOpenAPI.framework in Frameworks */,
-				71BB080C195981A1001C9856 /* PocketConnection.framework in Frameworks */,
-				71BB07FF195981A1001C9856 /* DouBanConnection.framework in Frameworks */,
 				71BB07AB19597CB9001C9856 /* libPunchBoxAd.a in Frameworks */,
-				71BB0817195981A1001C9856 /* TumblrConnection.framework in Frameworks */,
 				F3F186C418543A410098C852 /* CoreGraphics.framework in Frameworks */,
 				F3F186C018543A410098C852 /* UIKit.framework in Frameworks */,
 				71BB082C195981A1001C9856 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
@@ -3062,10 +2999,7 @@
 				719F187E18AA17EB00C29765 /* AudioToolbox.framework in Frameworks */,
 				71D1976118BE0CCE00D3D48D /* immobSDK.framework in Frameworks */,
 				71BB082E195981A1001C9856 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
-				71BB07A1195979EE001C9856 /* RennSDK.framework in Frameworks */,
-				71BB0818195981A1001C9856 /* TwitterConnection.framework in Frameworks */,
 				719F188018AA188900C29765 /* libDomobOfferWallSDK.a in Frameworks */,
-				71BB07B9195980E3001C9856 /* DropboxConnection.framework in Frameworks */,
 				71BB082A195981A1001C9856 /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				719F187C18AA17E300C29765 /* PassKit.framework in Frameworks */,
 				A60A43921872A1E400B5C319 /* CoreLocation.framework in Frameworks */,
@@ -3073,15 +3007,12 @@
 				719F187618AA15B800C29765 /* MediaPlayer.framework in Frameworks */,
 				F3F186D018543A410098C852 /* MobileCoreServices.framework in Frameworks */,
 				F3F186C818543A410098C852 /* CFNetwork.framework in Frameworks */,
-				71BB0801195981A1001C9856 /* EverNoteConnection.framework in Frameworks */,
 				F31F895C18962B4500F34F20 /* libALSystemUtilities_Lib.a in Frameworks */,
 				A62C5F54187697E300172334 /* libMobClickLibrary.a in Frameworks */,
 				A60C589318703AD80068425C /* libqrencode.a in Frameworks */,
 				7153FCFA18CDC2C50026B4B5 /* MopanAdLib.a in Frameworks */,
-				71BB0809195981A1001C9856 /* LinkedInConnection.framework in Frameworks */,
 				71BB0816195981A1001C9856 /* TencentWeiboConnection.framework in Frameworks */,
 				71BB0811195981A1001C9856 /* SinaWeiboConnection.framework in Frameworks */,
-				71BB0802195981A1001C9856 /* FacebookConnection.framework in Frameworks */,
 				F3D9D5F5185D892600392C40 /* CoreTelephony.framework in Frameworks */,
 				71BB0829195981A1001C9856 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
 				71BB079D195979AC001C9856 /* ShareSDKCoreService.framework in Frameworks */,
@@ -3090,25 +3021,20 @@
 				A6AA8FFD18646D08006DB7D2 /* StoreKit.framework in Frameworks */,
 				A60A438E1872A1BB00B5C319 /* libsqlite3.dylib in Frameworks */,
 				71BB0810195981A1001C9856 /* RenRenConnection.framework in Frameworks */,
-				71BB0812195981A1001C9856 /* SMSConnection.framework in Frameworks */,
 				71BB07AD19597DFA001C9856 /* MopanAdLib.a in Frameworks */,
 				7126B88318E544370060ECB7 /* MiidiAdLib.a in Frameworks */,
 				71BB07A919597C93001C9856 /* libEcom.a in Frameworks */,
 				71BB07A719597C75001C9856 /* libAdwoOfferWall2.0.a in Frameworks */,
 				59D8E0C1189230DE003D5F3F /* libPushSDK.a in Frameworks */,
-				71BB079F195979CA001C9856 /* TencentOpenAPI.framework in Frameworks */,
 				71BB079519597977001C9856 /* WapsOffer.framework in Frameworks */,
 				71BB07B319597FB9001C9856 /* libMobClickLibrary.a in Frameworks */,
 				71BB07AF19597F6D001C9856 /* libOpenIDFA.a in Frameworks */,
 				A60A43901872A1CF00B5C319 /* AdSupport.framework in Frameworks */,
 				71BB0822195981A1001C9856 /* libSinaWeiboSDK.a in Frameworks */,
-				71BB0804195981A1001C9856 /* GooglePlusConnection.framework in Frameworks */,
-				71BB0806195981A1001C9856 /* InstapaperConnection.framework in Frameworks */,
 				71BB07A519597C53001C9856 /* libminizip.a in Frameworks */,
 				71BB079B1959798D001C9856 /* immobSDK.framework in Frameworks */,
 				F3F186C618543A410098C852 /* AVFoundation.framework in Frameworks */,
 				71BB0823195981A1001C9856 /* libWeiboSDK.a in Frameworks */,
-				71BB0800195981A1001C9856 /* DropboxConnection.framework in Frameworks */,
 				71355508188D14110007784A /* libYouMi.a in Frameworks */,
 				F3F186CA18543A410098C852 /* CoreMedia.framework in Frameworks */,
 				F3F186D418543A410098C852 /* Security.framework in Frameworks */,
@@ -3120,20 +3046,14 @@
 				71BB07B119597F9C001C9856 /* libDomobOfferWallSDK.a in Frameworks */,
 				F3D9D5F7185D893D00392C40 /* MessageUI.framework in Frameworks */,
 				F3F186F918543A410098C852 /* libsqlite3.dylib in Frameworks */,
-				71BB081B195981A1001C9856 /* YouDaoNoteConnection.framework in Frameworks */,
 				A66E3A6A1887FD2100EB19DE /* libPushSDK.a in Frameworks */,
 				71BB07BB1959814C001C9856 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
 				F3F186F718543A410098C852 /* libz.dylib in Frameworks */,
-				71BB080B195981A1001C9856 /* PinterestConnection.framework in Frameworks */,
 				71BB080E195981A1001C9856 /* QQConnection.framework in Frameworks */,
 				71BB0824195981A1001C9856 /* libWeChatSDK.a in Frameworks */,
 				71BB079919597984001C9856 /* ShareSDK.framework in Frameworks */,
 				71BB081C195981A1001C9856 /* AGCommon.framework in Frameworks */,
-				71BB07FE195981A1001C9856 /* CopyConnection.framework in Frameworks */,
 				F3F186CC18543A410098C852 /* CoreText.framework in Frameworks */,
-				71BB0808195981A1001C9856 /* KaiXinConnection.framework in Frameworks */,
-				71BB0813195981A1001C9856 /* SohuConnection.framework in Frameworks */,
-				71BB080A195981A1001C9856 /* MailConnection.framework in Frameworks */,
 				7194FE4518EA95D4004A303B /* JupengSdkLib.a in Frameworks */,
 				F3F186CE18543A410098C852 /* CoreVideo.framework in Frameworks */,
 				F3F186FB18543A410098C852 /* libxml2.dylib in Frameworks */,
@@ -3482,36 +3402,12 @@
 		71BB07BD195981A0001C9856 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				71BB07BE195981A0001C9856 /* CopyConnection.framework */,
-				71BB07BF195981A0001C9856 /* DouBanConnection.framework */,
-				71BB07C0195981A0001C9856 /* DropboxConnection.framework */,
-				71BB07C1195981A0001C9856 /* EverNoteConnection.framework */,
-				71BB07C2195981A0001C9856 /* FacebookConnection.framework */,
-				71BB07C3195981A0001C9856 /* FlickrConnection.framework */,
-				71BB07C4195981A0001C9856 /* GooglePlusConnection.framework */,
-				71BB07C5195981A0001C9856 /* InstagramConnection.framework */,
-				71BB07C6195981A0001C9856 /* InstapaperConnection.framework */,
-				71BB07C7195981A0001C9856 /* InstapaperResource.bundle */,
-				71BB07C8195981A0001C9856 /* KaiXinConnection.framework */,
-				71BB07C9195981A1001C9856 /* LinkedInConnection.framework */,
-				71BB07CA195981A1001C9856 /* MailConnection.framework */,
-				71BB07CB195981A1001C9856 /* PinterestConnection.framework */,
-				71BB07CC195981A1001C9856 /* PocketConnection.framework */,
-				71BB07CD195981A1001C9856 /* PrintConnection.framework */,
 				71BB07CE195981A1001C9856 /* QQConnection.framework */,
 				71BB07CF195981A1001C9856 /* QZoneConnection.framework */,
 				71BB07D0195981A1001C9856 /* RenRenConnection.framework */,
 				71BB07D1195981A1001C9856 /* SinaWeiboConnection.framework */,
-				71BB07D2195981A1001C9856 /* SMSConnection.framework */,
-				71BB07D3195981A1001C9856 /* SohuConnection.framework */,
-				71BB07D4195981A1001C9856 /* SohuWeiboConnection.framework */,
-				71BB07D5195981A1001C9856 /* T163WeiboConnection.framework */,
 				71BB07D6195981A1001C9856 /* TencentWeiboConnection.framework */,
-				71BB07D7195981A1001C9856 /* TumblrConnection.framework */,
-				71BB07D8195981A1001C9856 /* TwitterConnection.framework */,
-				71BB07D9195981A1001C9856 /* VKontakteConnection.framework */,
 				71BB07DA195981A1001C9856 /* WeChatConnection.framework */,
-				71BB07DB195981A1001C9856 /* YouDaoNoteConnection.framework */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -4227,7 +4123,6 @@
 			children = (
 				71BB082F195981C3001C9856 /* libPushSDK.a */,
 				71BB07BA1959814C001C9856 /* ShareSDKiPhoneDefaultShareViewUI.framework */,
-				71BB07B8195980E3001C9856 /* DropboxConnection.framework */,
 				71BB07B419598095001C9856 /* libWeChatSDK.a */,
 				71BB07B219597FB9001C9856 /* libMobClickLibrary.a */,
 				71BB07B019597F9C001C9856 /* libDomobOfferWallSDK.a */,
@@ -4238,8 +4133,6 @@
 				71BB07A619597C75001C9856 /* libAdwoOfferWall2.0.a */,
 				71BB07A419597C53001C9856 /* libminizip.a */,
 				71BB07A219597B05001C9856 /* libDianRuAdWall.a */,
-				71BB07A0195979EE001C9856 /* RennSDK.framework */,
-				71BB079E195979CA001C9856 /* TencentOpenAPI.framework */,
 				71BB079C195979AC001C9856 /* ShareSDKCoreService.framework */,
 				71BB079A1959798D001C9856 /* immobSDK.framework */,
 				71BB079819597984001C9856 /* ShareSDK.framework */,
@@ -6240,7 +6133,6 @@
 				A60C587B186FF8A30068425C /* yue_9@2x.png in Resources */,
 				A60C5860186FF8A30068425C /* setting_bell@2x.png in Resources */,
 				71455F38192DD9E700AA69FD /* QuestCaptionViewController.xib in Resources */,
-				71BB0807195981A1001C9856 /* InstapaperResource.bundle in Resources */,
 				A60C5848186FF8A30068425C /* body_bkg@2x.png in Resources */,
 				71420E9D191E1CCC00376AA9 /* main_menu1@2x.png in Resources */,
 				A6F6DE681860287900D089C7 /* WebPageController.xib in Resources */,
