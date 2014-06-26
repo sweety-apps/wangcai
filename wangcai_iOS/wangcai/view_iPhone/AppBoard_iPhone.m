@@ -16,6 +16,11 @@
 #import "MBHUDView.h"
 #import "YouMiConfig.h"
 #import "YouMiWall.h"
+#import "HttpRequest.h"
+#import "Common.h"
+#import "Config.h"
+#import "CommonTaskList.h"
+#import "CommonTaskTableViewCell.h"
 
 #define SHOW_MASK (0)
 
@@ -40,6 +45,10 @@
     BOOL            _hasPanOpened;
     YouMiWallAppModel *destYouMi;
     NSString *wapsurl;
+    HttpRequest *_request;
+    BOOL _bRequest;
+    BOOL _firstRequest;
+    NSArray *_list;//旺财自营任务
 }
 
 DEF_SINGLETON( AppBoard_iPhone )
@@ -675,7 +684,8 @@ ON_MESSAGE( message )
 }
 - (void) installAppFromRomoteNotification:(NSDictionary*) remoteNotifications {
     //return;
-    if ( [[remoteNotifications allKeys] containsObject:@"youmi"] ) {
+    if ( [[remoteNotifications allKeys] containsObject:@"youmi"] )
+    {
         NSString* appid = [remoteNotifications valueForKey:@"youmi"];
         NSString* points = [remoteNotifications valueForKey:@"points"];
         [self showLoading];
@@ -745,7 +755,8 @@ ON_MESSAGE( message )
                 }
             }
         }];
-    } else if ( [[remoteNotifications allKeys] containsObject:@"waps"] ) {
+    } else if ( [[remoteNotifications allKeys] containsObject:@"waps"] )
+    {
         NSString* appid = [remoteNotifications valueForKey:@"waps"];
         NSString* points = [remoteNotifications valueForKey:@"points"];
         
@@ -754,6 +765,9 @@ ON_MESSAGE( message )
         [self buildPointsArray:appid points:points];
         
         [_wapCustom loadCustomData]; //调⽤用WapsCustom的loadCustomData⽅方法,请求广告墙数据
+    }else if( [[remoteNotifications allKeys] containsObject:@"wangcai"])
+    {
+        [self requestList];
     }
 }
 
@@ -812,4 +826,97 @@ ON_MESSAGE( message )
     
 }
 
+- (void) showLoading:(NSString*) tip {
+    [MBHUDView hudWithBody:tip type:MBAlertViewHUDTypeActivityIndicator hidesAfter:-1 show:YES];
+}
+- (void) requestList {
+    if ( _bRequest ) {
+        return ;
+    }
+    
+    _bRequest = YES;
+    
+    if ( _firstRequest ) {
+        [self showLoading:@"请等待..."];
+    }
+    
+    if ( _request != nil ) {
+        [_request release];
+    }
+    
+    _request = [[HttpRequest alloc] init:self];
+    
+    NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
+    NSString* timestamp = [Common getTimestamp];
+    [dictionary setObject:timestamp forKey:@"stamp"];
+    NSDictionary* dic = [[NSBundle mainBundle] infoDictionary];
+    NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
+    [dictionary setObject:appVersion forKey:@"ver"];
+    [dictionary setObject:APP_NAME forKey:@"app"];
+    
+    [_request request:HTTP_TASK_APP_LIST Param:dictionary method:@"get"];
+}
+
+- (NSArray*) copyList:(NSArray*) list {
+    NSMutableArray* unfinished = [[NSMutableArray alloc] init];
+    NSMutableArray* finished = [[NSMutableArray alloc] init];
+    
+    for ( int i = 0; i < [list count]; i ++ ) {
+        NSDictionary* taskDict = [list objectAtIndex:i];
+        
+        CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
+        
+        task.taskId = [taskDict objectForKey:@"id"];
+        task.taskType = [taskDict objectForKey:@"type"];
+        task.taskTitle = [taskDict objectForKey:@"title"];
+        task.taskStatus = [taskDict objectForKey:@"status"];
+        task.taskMoney = [taskDict objectForKey:@"money"];
+        task.taskIconUrl = [taskDict objectForKey:@"icon"];
+        task.taskIntro = [taskDict objectForKey:@"intro"];
+        task.taskDesc = [taskDict objectForKey:@"desc"];
+        task.taskStepStrings = [taskDict objectForKey:@"steps"];
+        task.taskLevel = [taskDict objectForKey:@"level"];
+        task.taskRediectUrl = [taskDict objectForKey:@"rediect_url"];
+        task.taskAppId = [taskDict objectForKey:@"appid"];
+        
+        if ( [task.taskStatus intValue] == CommonTaskTableViewCellStateFinished ) {
+            [finished addObject:task];
+        } else {
+            [unfinished addObject:task];
+        }
+    }
+    
+    [unfinished addObjectsFromArray:finished];
+    
+    [finished release];
+    
+    return unfinished;
+}
+
+-(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
+    if ( _request != nil && [request isEqual:_request] ) {
+        if ( _firstRequest ) {
+            [self hideLoading];
+            _firstRequest = NO;
+        }
+        
+        if ( httpCode == 200 ) {
+            // 获取到返回的列表
+            NSNumber* res = [body valueForKey: @"res"];
+            int nRes = [res intValue];
+            if (nRes == 0) {
+                NSArray* list = [body valueForKey: @"task_list"];
+                if ( _list != nil ) {
+                    [_list release];
+                }
+                
+                _list = [self copyList:list];
+            }
+        }
+        
+    }
+    [_request release];
+    _request = nil;
+    _bRequest = NO;
+}
 @end

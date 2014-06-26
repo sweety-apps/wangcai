@@ -438,6 +438,7 @@
     if ( _request != nil && [request isEqual:_request] )
     {
         [_request release];
+        _request = nil;
         
         if ( httpCode == 200 )
         {
