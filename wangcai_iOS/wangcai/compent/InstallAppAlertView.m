@@ -91,7 +91,10 @@
         }
         
         game.frame = CGRectMake(10, 70, 80, 80);
+        game.contentMode = UIViewContentModeScaleAspectFit;
+        
         [alertBg addSubview:game];
+        [game release];
         
         UILabel *gamename = [[UILabel alloc]initWithFrame:CGRectMake(0, 70, alertBg.frame.size.width, 20)];
         gamename.backgroundColor = [UIColor clearColor];
