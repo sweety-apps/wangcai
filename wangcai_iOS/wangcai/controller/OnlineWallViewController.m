@@ -20,8 +20,6 @@
 #import "WebPageController.h"
 #import "MessageMgr.h"
 
-#import "JupengConfig.h"
-#import "JupengWall.h"
 #import "CommonTaskList.h"
 #import "PunchBoxAd.h"
 #import "PBOfferWall.h"
@@ -37,7 +35,6 @@
 @end
 
 @implementation OnlineWallViewController
-@synthesize adView_adWall;
 @synthesize delegate = _delegate;
 
 static OnlineWallViewController* _sharedInstance;
@@ -87,18 +84,12 @@ static OnlineWallViewController* _sharedInstance;
         // 米迪
         [MiidiManager setAppPublisher:APP_MIIDI_ID withAppSecret:APP_MIIDI_SECRET];
         
-        // 巨朋
-        [JupengConfig launchWithAppID:APP_JUPENG_ID withAppSecret:APP_JUPENG_SECRET];
-        
         // 点入
         [DianRuAdWall initAdWallWithDianRuAdWallDelegate:self];
         
         // 有米积分墙
 #if TEST == 1
         NSString* did = [[NSString alloc] initWithFormat:@"dev_%@", deviceId];
-        
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:did];
-        _offerWallController.delegate = self;
         
         [YouMiConfig setUserID:did];
 
@@ -113,10 +104,7 @@ static OnlineWallViewController* _sharedInstance;
         
         // 万普
         [AppConnect getConnect:WAPS_ID pid:@"appstore" userID:did];
-#else 
-        _offerWallController = [[DMOfferWallViewController alloc] initWithPublisherID:DOMOB_PUBLISHER_ID andUserID:deviceId];
-        _offerWallController.delegate = self;
-
+#else
         [YouMiConfig setUserID:deviceId];
         
         _mopanAdWallControl = [[MopanAdWall alloc] initWithMopan:MOPAN_APP_ID withAppSecret:MOPAN_APP_SECRET];
@@ -125,9 +113,7 @@ static OnlineWallViewController* _sharedInstance;
         [PunchBoxAd setUserInfo:deviceId];
         
         [MiidiAdWall setUserParam:deviceId];
-        
-        [JupengWall setServerUserID:deviceId];
-        
+
         // 万普
         [AppConnect getConnect:WAPS_ID pid:@"appstore" userID:deviceId];
 #endif
@@ -403,66 +389,6 @@ static OnlineWallViewController* _sharedInstance;
 }
 
 
-- (IBAction)clickLimei:(id)sender {
-    if ( _alertView != nil ) {
-        [_alertView hideAlertView];
-    }
-    
-    [MobClick event:@"task_list_click_limei" attributes:@{@"currentpage":@"任务列表"}];
-    [self enterAdWall];
-}
-
-// 进入积分墙
--(void)enterAdWall{
-    // 实例化 immobView 对象,在此处替换在力美广告平台申请到的广告位 ID;
-    self.adView_adWall=[[immobView alloc] initWithAdUnitID:LIMEI_ID];
-    //添加 immobView 的 Delegate;
-    self.adView_adWall.delegate=self;
-
-    //添加 userAccount 属性,此属性针对多账户应用所使用,用于区分不同账户下的积分(可选)。
-    NSString* deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
-#if TEST == 1
-    NSString* did = [[NSString alloc] initWithFormat:@"dev_%@", deviceId];
-    [self.adView_adWall.UserAttribute setObject:did forKey:@"accountname"];
-#else
-    [self.adView_adWall.UserAttribute setObject:deviceId forKey:@"accountname"];
-#endif
-    
-    [deviceId release];
-    
-    //开始加载广告。
-    [self.adView_adWall immobViewRequest];
-    
-    UIView* view = _viewController.view;
-    
-    //将 immobView 添加到界面上。
-    [view addSubview:adView_adWall];
-    
-    //将 immobView 添加到界面后,调用 immobViewDisplay。
-    [self.adView_adWall immobViewDisplay];
-}
-
-// 设置必需的 UIViewController, 此方法的返回值如果为空,会导致广告展示不正常。
-- (UIViewController *)immobViewController{
-    return _viewController;
-}
-
-- (void) immobView: (immobView*) immobView didFailReceiveimmobViewWithError: (NSInteger) errorCode {
-    
-}
-
-- (void) immobViewDidReceiveAd:(immobView*)immobView {
-}
-
-- (IBAction)clickDomob:(id)sender {
-    if ( _alertView != nil ) {
-        [_alertView hideAlertView];
-    }
-    
-    [MobClick event:@"task_list_click_duomeng" attributes:@{@"currentpage":@"任务列表"}];
-    [_offerWallController presentOfferWall];
-}
-
 - (IBAction)clickClose:(id)sender {
     if ( _alertView != nil ) {
         [_alertView hideAlertView];
@@ -500,10 +426,6 @@ static OnlineWallViewController* _sharedInstance;
 }
 
 - (void) dealloc {
-    _offerWallController.delegate = nil;
-    [_offerWallController release];
-    _offerWallController = nil;
-    
     if ( self->_alertView != nil ) {
         [self->_alertView release];
         self->_alertView = nil;
@@ -685,15 +607,6 @@ static OnlineWallViewController* _sharedInstance;
     [MobClick event:@"task_list_click_miidi" attributes:@{@"currentpage":@"任务列表"}];
     
     [MiidiAdWall showAppOffers:_viewController withDelegate:self];
-}
-
-- (IBAction)clickJupeng:(id)sender {
-    if ( _alertView != nil ) {
-        [_alertView hideAlertView];
-    }
-    
-    [MobClick event:@"task_list_click_jupeng" attributes:@{@"currentpage":@"任务列表"}];
-    [JupengWall showOffers:_viewController didShowBlock:nil didDismissBlock:nil];
 }
 
 - (IBAction)clickDianru:(id)sender {

@@ -71,14 +71,6 @@
         UIButton* btn = (UIButton*)[_contentView viewWithTag:i];
         [btn setHidden:YES];
     }
-    
-    if ( nCount <= 0 ) {
-        nCount = 0;
-        for ( int i = 11; i <= 18; i ++ ) {
-            UIButton* btn = (UIButton*)[_contentView viewWithTag:i];
-            [btn setEnabled:NO];
-        }
-    }
 
     _nCount = nCount;
     
@@ -142,7 +134,9 @@
 }
 
 - (IBAction) clickComplain:(id)sender {
-    if ( _nCount == 0 ) {
+    if ( _nCount <= 0 ) {
+        UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"您今天的投诉次数已用完" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] autorelease];
+        [alert show];
         return ;
     }
     UIButton* btn = (UIButton*) sender;
@@ -157,13 +151,6 @@
         _nCount = 0;
     }
     [_labelNum setText:[NSString stringWithFormat:@"%d", _nCount]];
-    
-    if ( _nCount == 0 ) {
-        for ( int i = 11; i <= 18; i ++ ) {
-            UIButton* btn = (UIButton*)[_contentView viewWithTag:i];
-            [btn setEnabled:NO];
-        }
-    }
 }
 
 - (void)dealloc {

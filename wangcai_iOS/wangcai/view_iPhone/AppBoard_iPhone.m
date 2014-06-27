@@ -16,6 +16,8 @@
 #import "MBHUDView.h"
 #import "YouMiConfig.h"
 #import "YouMiWall.h"
+#import "Config.h"
+#import "ScreenShots.h"
 
 #define SHOW_MASK (0)
 
@@ -130,6 +132,8 @@ ON_SIGNAL2( BeeUIBoard, signal )
             [self.view addSubview:view];
         }
         //[self _preOpenBoards:router];
+        
+        
 	}
 	else if ( [signal is:BeeUIBoard.DELETE_VIEWS] )
 	{
@@ -432,6 +436,7 @@ ON_SIGNAL3( MenuBoard_iPhone, busioness, signal )
     }
     [self syncPanPositionWithOffsetX:panOffsetX];
 }
+
 
 - (void)syncPanPositionWithOffsetX:(CGFloat)panOffsetX
 {

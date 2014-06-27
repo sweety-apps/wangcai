@@ -21,9 +21,9 @@
 #define YOUMI_APP_ID    @"4a2807f06fd8d2df"
 #define YOUMI_APP_SECRET    @"83b758c99c63593d"
 
-#define DOMOB_PUBLISHER_ID @"96ZJ2I4gzeykPwTACk"
+//#define DOMOB_PUBLISHER_ID @"96ZJ2I4gzeykPwTACk"
 
-#define LIMEI_ID           @"6ec9f39b6b38ac4d8b6c1764d68b91e4"
+//#define LIMEI_ID           @"6ec9f39b6b38ac4d8b6c1764d68b91e4"
 
 #define MOBSMAR_APP_ID     @"dbfff8bedfbb85673317fdaeeb7776ba"
 
@@ -60,9 +60,9 @@
 
 #define YOUMI_APP_SECRET    @"14706b7214e01b2b"
 
-#define DOMOB_PUBLISHER_ID @"96ZJ0Q7gzeykPwTAVP"
+//#define DOMOB_PUBLISHER_ID @"96ZJ0Q7gzeykPwTAVP"
 
-#define LIMEI_ID           @"a0b29d7891bffc58f7618f6788d3aaaa"
+//#define LIMEI_ID           @"a0b29d7891bffc58f7618f6788d3aaaa"
 
 #define MOBSMAR_APP_ID     @"4c90ded6f4a8d81c23e804ba169dc629"
 
@@ -77,8 +77,8 @@
 #define APP_MIIDI_ID       @"17250"
 #define APP_MIIDI_SECRET   @"zujvxsva5xt3v9nr"
 
-#define APP_JUPENG_ID      @"10072"
-#define APP_JUPENG_SECRET  @"8s92a9febf2faxdr"
+//#define APP_JUPENG_ID      @"10072"
+//#define APP_JUPENG_SECRET  @"8s92a9febf2faxdr"
 
 #define APP_DIANRU_ID      @"00003315130000F0"
 
@@ -192,4 +192,7 @@
 #define WEB_SERVICE_VIEW @"http://service.meme-da.com/index.php/mobile/shouce/view/h_id/"
 
 #define WEB_SURVEY       @"http://wangcai.meme-da.com/survey/%@.php"
+
+#define WEB_FULLSUCCESSSHOTS       @"http://wangcai.meme-da.com/shots/shots.php"
+
 #endif

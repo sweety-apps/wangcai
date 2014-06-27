@@ -21,6 +21,7 @@
 #import "EcomConfig.h"
 #import "QuestViewController.h"
 #import "WangcaiTaskViewController.h"
+#import "ScreenShots.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -156,6 +157,18 @@ static LoginAndRegister* _sharedInstance = nil;
     nsParam = [nsParam stringByAppendingFormat:@"&openudid=%@", openUdid];
 #endif
     
+    NSString* md5param = [NSString stringWithFormat:@"%@&c4c6ac66-3d86-4692-bf5c-78fc4c3df1a0", nsParam];
+    
+    const char* cStr = [md5param UTF8String];
+    unsigned char result[16];
+    CC_MD5(cStr, strlen(cStr), result);
+    NSMutableString* hash = [NSMutableString string];
+    for (int i = 0; i < 16; i ++ ) {
+        [hash appendFormat:@"%02x", result[i]];
+    }
+    
+    nsParam = [nsParam stringByAppendingFormat:@"&sign=%@", [hash lowercaseString]];
+    
     NSMutableData* data = [[NSMutableData alloc] init];
     
     
@@ -179,7 +192,7 @@ static LoginAndRegister* _sharedInstance = nil;
     [data release];
     
     
-    _offwallArray = [[NSArray alloc] initWithObjects:@"domob", @"jupeng", @"miidi", @"youmi", @"limei", @"mopan", @"punchbox", @"dianru", @"waps", @"adwo", nil];
+    _offwallArray = [[NSArray alloc] initWithObjects:@"miidi", @"youmi", @"mopan", @"punchbox", @"dianru", @"waps", @"adwo", nil];
     
     _offwallShow = [[NSMutableDictionary alloc] init];
     _offwallOrder = [[NSMutableArray alloc] init];
@@ -308,6 +321,8 @@ static LoginAndRegister* _sharedInstance = nil;
                     [ECManager ecWallPreload];
                 }
                 
+                [[ScreenShots sharedInstance] start];
+                
                 if ( _offwallOrder != nil ) {
                     [_offwallOrder release];
                 }
@@ -354,11 +369,11 @@ static LoginAndRegister* _sharedInstance = nil;
                 
                 [[CommonTaskList sharedInstance] resetTaskListWithJsonArray:taskList];
 
-                
-                [[QuestViewController sharedInstance] requestList];
-                [[WangcaiTaskViewController sharedInstance] requestList];
-                
-                [self RegisterDeviceIDToAPService];
+                if ( _inReview != 1 ) {
+                    [[QuestViewController sharedInstance] requestList];
+                    [[WangcaiTaskViewController sharedInstance] requestList];
+                    [self RegisterDeviceIDToAPService];
+                }
                 
                 [self setLoginStatus:Login_Success HttpCode:req.responseStatusCode ErrCode:[res intValue] Msg:nil];
                 

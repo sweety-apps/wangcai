@@ -15,6 +15,7 @@
 #import "MBHUDView.h"
 #import "MobClick.h"
 #import "EGORefreshTableHeaderView.h"
+#import "ComplainViewController.h"
 
 @interface WebViewController ()
 
@@ -292,11 +293,16 @@
         //统计
         [MobClick event:@"web_open_inside_url" attributes:@{@"url":value,@"title":title}];
         
-        title = [title stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        if ( [value isEqualToString:@"http://wangcai.meme-da.com/web/loufa_report.php"] ) {
+            ComplainViewController* controller = [[[ComplainViewController alloc] init] autorelease];
+            [_beeStack pushViewController:controller animated:YES];
+        } else {
+            title = [title stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
-        WebPageController* webController = [[[WebPageController alloc] init:title Url:value Stack:_beeStack]autorelease];
-        
-        [self->_beeStack pushViewController:webController animated:YES];
+            WebPageController* webController = [[[WebPageController alloc] init:title Url:value Stack:_beeStack]autorelease];
+            
+            [self->_beeStack pushViewController:webController animated:YES];
+        }
         
         return NO;
     } else if ( [request.mainDocumentURL.relativePath isEqualToString:@"/wangcai_js/exchange_info"] ) {
