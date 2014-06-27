@@ -154,7 +154,7 @@
         return 30;
     }
     
-    if(indexPath.section == 2 && indexPath.row == 0)
+    if(indexPath.section == 2)
         return 60;
     return 44;
 }
@@ -333,7 +333,8 @@
         if(indexPath.row == 0)
         {
             //UILabel *shuoming = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 320, cell.frame.size.height)];
-            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 12, 100, 15)];
+            float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, version<7.0?12:5, 100, 15)];
             label.backgroundColor = [UIColor clearColor];
             label.text = @"补发说明：";
             label.font = [UIFont boldSystemFontOfSize:12.f];
@@ -397,7 +398,7 @@
             cell.backgroundColor = [UIColor clearColor];
         }else
         {
-            cell.backgroundColor = kBGColor;
+            cell.backgroundColor = [UIColor clearColor];
         }
         
     }
