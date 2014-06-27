@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DMOfferWallViewController.h"
-#import "DMOfferWallManager.h"
 #import "HttpRequest.h"
 #import "UICustomAlertView.h"
 #import "YouMiConfig.h"
-#import <immobSDK/immobView.h>
 #import "MopanAdWall.h"
 #import "PBOfferWall.h"
 
@@ -32,8 +29,7 @@
 - (void) onRequestAndConsumePointCompleted : (BOOL) suc Consume:(NSInteger) consume Level:(int) change wangcaiIncome:(int) income;
 @end
 
-@interface OnlineWallViewController : UIViewController<DianRuAdWallDelegate, DMOfferWallDelegate, DMOfferWallManagerDelegate, immobViewDelegate, HttpRequestDelegate, PBOfferWallDelegate, MiidiAdWallShowAppOffersDelegate> {
-    DMOfferWallViewController* _offerWallController;
+@interface OnlineWallViewController : UIViewController<DianRuAdWallDelegate, HttpRequestDelegate, PBOfferWallDelegate, MiidiAdWallShowAppOffersDelegate> {
     NSInteger                  _nConsume;
     id<OnlineWallViewControllerDelegate>        _delegate;
     
@@ -61,8 +57,6 @@
 @property (nonatomic,assign) id<OnlineWallViewControllerDelegate>  delegate;
 
 + (OnlineWallViewController*) sharedInstance;
-
-@property (nonatomic, retain)immobView *adView_adWall;
 
 -(void)setViewController:(UIViewController*) viewController;
 
