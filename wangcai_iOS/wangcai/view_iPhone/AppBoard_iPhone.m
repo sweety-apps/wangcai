@@ -383,12 +383,20 @@ ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
     {
         if(buttonIndex == 0){
              [YouMiWall userInstallApp:destYouMi];
+             [MobClick event:@"remote_click_install" attributes:@{@"current_page":@"推送安装App"}];
+        }else
+        {
+            [MobClick event:@"remote_cancel_install" attributes:@{@"current_page":@"推送安装App"}];
         }
     }
     if(alertView.tag == 10086)//waps
     {
         if(buttonIndex == 0){
             [_wapCustom listOnClick:wapsurl];
+             [MobClick event:@"remote_click_install" attributes:@{@"current_page":@"推送安装App"}];
+        }else
+        {
+            [MobClick event:@"remote_cancel_install" attributes:@{@"current_page":@"推送安装App"}];
         }
     }
 }
@@ -684,6 +692,7 @@ ON_MESSAGE( message )
 }
 - (void) installAppFromRomoteNotification:(NSDictionary*) remoteNotifications {
     //return;
+    [MobClick event:@"remote_notify_install_app" attributes:@{@"current_page":@"推送安装App"}];
     if ( [[remoteNotifications allKeys] containsObject:@"youmi"] )
     {
         NSString* appid = [remoteNotifications valueForKey:@"youmi"];
