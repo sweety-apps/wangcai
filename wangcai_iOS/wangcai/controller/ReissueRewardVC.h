@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HttpRequest.h"
 
-@interface ReissueRewardVC : UIViewController<UITableViewDelegate,UITableViewDataSource,HttpRequestDelegate>
+@interface ReissueRewardVC : UIViewController<UITableViewDelegate,UITableViewDataSource,HttpRequestDelegate,UIAlertViewDelegate>
 {
      BeeUIStack* _beeUIStack;
      NSMutableArray *items;

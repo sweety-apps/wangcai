@@ -18,6 +18,11 @@
 #import "YouMiWall.h"
 #import "Config.h"
 #import "ScreenShots.h"
+#import "HttpRequest.h"
+#import "Common.h"
+#import "Config.h"
+#import "CommonTaskList.h"
+#import "CommonTaskTableViewCell.h"
 
 #define SHOW_MASK (0)
 
@@ -40,6 +45,12 @@
 	BeeUIButton *	_mask;
 	CGRect			_origFrame;
     BOOL            _hasPanOpened;
+    YouMiWallAppModel *destYouMi;
+    NSString *wapsurl;
+    HttpRequest *_request;
+    BOOL _bRequest;
+    BOOL _firstRequest;
+    NSArray *_list;//旺财自营任务
 }
 
 DEF_SINGLETON( AppBoard_iPhone )
@@ -372,6 +383,26 @@ ON_SIGNAL3( MenuBoard_iPhone, invite, signal )
             
         }
     }
+    if(alertView.tag == 10010)//有米
+    {
+        if(buttonIndex == 0){
+             [YouMiWall userInstallApp:destYouMi];
+             [MobClick event:@"remote_click_install" attributes:@{@"current_page":@"推送安装App"}];
+        }else
+        {
+            [MobClick event:@"remote_cancel_install" attributes:@{@"current_page":@"推送安装App"}];
+        }
+    }
+    if(alertView.tag == 10086)//waps
+    {
+        if(buttonIndex == 0){
+            [_wapCustom listOnClick:wapsurl];
+             [MobClick event:@"remote_click_install" attributes:@{@"current_page":@"推送安装App"}];
+        }else
+        {
+            [MobClick event:@"remote_cancel_install" attributes:@{@"current_page":@"推送安装App"}];
+        }
+    }
 }
 
 ON_SIGNAL3( MenuBoard_iPhone, service, signal)
@@ -564,7 +595,35 @@ ON_MESSAGE( message )
 }
 
 - (void) buildPointsArray:(NSString*) appid points:(NSString*) points {
-    _appId = [[[NSMutableArray alloc] init] autorelease];
+    if(_appId)
+    {
+        [_appId release];
+    }
+    _appId = [[appid componentsSeparatedByString:@","] retain];
+    if(_points)
+    {
+        [_points release];
+    }
+    _points = [[NSMutableArray alloc]init];
+    if(_pointsLimit)
+    {
+        [_pointsLimit release];
+    }
+    _pointsLimit = [[NSMutableArray alloc]init];
+    NSArray *origin = [points componentsSeparatedByString:@","];
+    for (NSString *p in origin)
+    {
+        NSArray *source = [p componentsSeparatedByString:@"-"];
+        [_points addObject:[source objectAtIndex:0]];
+        [_pointsLimit addObject:[source objectAtIndex:1]];
+    }
+    
+   /* if(_appId)
+    {
+        [_appId release];
+    }
+    _appId = [appid componentsSeparatedByString:@","];
+    _appId = [[NSMutableArray alloc] init];
     while ( YES ) {
         NSRange range = [appid rangeOfString:@","];
         if ( range.length == 0 ) {
@@ -580,8 +639,16 @@ ON_MESSAGE( message )
         }
     }
     
-    _points = [[[NSMutableArray alloc] init] autorelease];
-    _pointsLimit = [[[NSMutableArray alloc] init] autorelease];
+    if(_points)
+    {
+        [_points release];
+    }
+    _points = [[NSMutableArray alloc] init];
+    if(_pointsLimit)
+    {
+        [_pointsLimit release];
+    }
+    _pointsLimit = [[NSMutableArray alloc] init];
 
     while ( YES ) {
         NSRange range = [points rangeOfString:@","];
@@ -617,32 +684,93 @@ ON_MESSAGE( message )
             }
         }
     }
+    */
 }
-
+- (int)isAppInPush :(NSString*)appId :(NSArray*)source
+{
+    for (int i = 0; i < source.count; i++)
+    {
+        if([[source objectAtIndex:i] isEqualToString:appId])
+            return i;//返回当前appid的积分策略的索引
+    }
+    return -1;//表示未找到
+}
 - (void) installAppFromRomoteNotification:(NSDictionary*) remoteNotifications {
-    //
-    if ( [[remoteNotifications allKeys] containsObject:@"youmi"] ) {
+    //return;
+    [MobClick event:@"remote_notify_install_app" attributes:@{@"current_page":@"推送安装App"}];
+    if ( [[remoteNotifications allKeys] containsObject:@"youmi"] )
+    {
         NSString* appid = [remoteNotifications valueForKey:@"youmi"];
         NSString* points = [remoteNotifications valueForKey:@"points"];
         [self showLoading];
         
         [self buildPointsArray:appid points:points];
         
+//        [YouMiWall requestOffersOpenData:YES revievedBlock:^(NSArray *theApps, NSError *error) {
+//            [self hideLoading];
+//            if (!error) {
+//                for ( int i = 0; i < [theApps count]; i ++ ) {
+//                    YouMiWallAppModel *model = theApps[i];
+//                    NSInteger storeID = [model appStoreID];
+//                     NSLog(@"应用:%d",storeID);
+//                     NSLog(@"积分:%d",[model points]);
+//                    NSString* sid = [NSString stringWithFormat:@"%d", storeID];
+//                    if ( [sid isEqualToString:appid] ) {
+//                        [YouMiWall userInstallApp:model];
+//                        break;
+//                    }
+//                }
+//            }
+//        }];
+        //zgw change
         [YouMiWall requestOffersOpenData:YES revievedBlock:^(NSArray *theApps, NSError *error) {
             [self hideLoading];
-            if (!error) {
-                for ( int i = 0; i < [theApps count]; i ++ ) {
+            BOOL isfindOne = NO;
+            if (!error)
+            {
+                for ( int i = 0; i < [theApps count]; i ++ )
+                {
                     YouMiWallAppModel *model = theApps[i];
                     NSInteger storeID = [model appStoreID];
-                    NSString* sid = [NSString stringWithFormat:@"%d", storeID];
-                    if ( [sid isEqualToString:appid] ) {
-                        [YouMiWall userInstallApp:model];
+                    NSLog(@"%d",storeID);
+                    int index = [self isAppInPush:[NSString stringWithFormat:@"%d",storeID] :_appId];
+                    
+                    if(index == -1){
+                        continue;
+                    }
+                    NSInteger point = [model points];
+                    int limit = [[_pointsLimit objectAtIndex:index] integerValue];
+                    if(limit < point)
+                    {
+                        if(destYouMi)
+                        {
+                            [destYouMi release];
+                        }
+                        destYouMi = [model retain];
+                        isfindOne = YES;
+                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[model name] message:[model desc] delegate:self cancelButtonTitle:@"去下载" otherButtonTitles:@"取消", nil];
+                        [alert show];
+                        alert.tag = 10010;
+                        [alert release];
                         break;
                     }
+//                    NSString* sid = [NSString stringWithFormat:@"%d", storeID];
+//                    if ( [sid isEqualToString:appid] ) {
+//                        [YouMiWall userInstallApp:model];
+//                        break;
+//                    }
+                }
+                if(!isfindOne)
+                {
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"任务已经被抢光了!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+                    [alert show];
+                    
+                    [alert release];
                 }
             }
         }];
-    } else if ( [[remoteNotifications allKeys] containsObject:@"waps"] ) {
+    } else if ( [[remoteNotifications allKeys] containsObject:@"waps"] )
+    {
         NSString* appid = [remoteNotifications valueForKey:@"waps"];
         NSString* points = [remoteNotifications valueForKey:@"points"];
         
@@ -651,6 +779,9 @@ ON_MESSAGE( message )
         [self buildPointsArray:appid points:points];
         
         [_wapCustom loadCustomData]; //调⽤用WapsCustom的loadCustomData⽅方法,请求广告墙数据
+    }else if( [[remoteNotifications allKeys] containsObject:@"wangcai"])
+    {
+        [self requestList];
     }
 }
 
@@ -666,16 +797,140 @@ ON_MESSAGE( message )
 
 //参数:offersArray为下载完成后的数组数据,数组中的内容为字典格式.
 - (void)getCustomDataWithArray:(NSArray *)offersArray {
+    [self hideLoading];
     NSDictionary* dict = offersArray[0];
-    
-    int n;
-    n = 3;
+     BOOL isfindOne = NO;
+    for (NSDictionary *info in offersArray)
+    {
+        int point = [[dict objectForKey:@"points"] integerValue];
+        NSString *appId = [dict objectForKey:@"ad_id"];
+        int index = [self isAppInPush:appId :_appId];
+        if(index == -1)
+            continue;
+        int limit = [[_pointsLimit objectAtIndex:index] integerValue];
+        if(limit < point)
+        {
+            isfindOne = YES;
+            if(wapsurl)
+            {
+                [wapsurl release];
+            }
+            wapsurl = [[dict objectForKey:@"click_url"] retain];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[dict objectForKey:@"title"] message:[dict objectForKey:@"tip"] delegate:self cancelButtonTitle:@"去下载" otherButtonTitles:@"取消", nil];
+            alert.tag = 10086;
+            [alert show];
+            [alert release];
+            break;
+        }
+    }
+    if(!isfindOne)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"任务已经被抢光了!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 //参数:errorInfo为下载失败后的信息.
 - (void)getCustomDataFaile:(NSString *)errorInfo {
-    int n;
-    n = 3;
+    [self hideLoading];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"任务加载失败!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
+    
 }
 
+- (void) showLoading:(NSString*) tip {
+    [MBHUDView hudWithBody:tip type:MBAlertViewHUDTypeActivityIndicator hidesAfter:-1 show:YES];
+}
+- (void) requestList {
+    if ( _bRequest ) {
+        return ;
+    }
+    
+    _bRequest = YES;
+    
+    if ( _firstRequest ) {
+        [self showLoading:@"请等待..."];
+    }
+    
+    if ( _request != nil ) {
+        [_request release];
+    }
+    
+    _request = [[HttpRequest alloc] init:self];
+    
+    NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
+    NSString* timestamp = [Common getTimestamp];
+    [dictionary setObject:timestamp forKey:@"stamp"];
+    NSDictionary* dic = [[NSBundle mainBundle] infoDictionary];
+    NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
+    [dictionary setObject:appVersion forKey:@"ver"];
+    [dictionary setObject:APP_NAME forKey:@"app"];
+    
+    [_request request:HTTP_TASK_APP_LIST Param:dictionary method:@"get"];
+}
+
+- (NSArray*) copyList:(NSArray*) list {
+    NSMutableArray* unfinished = [[NSMutableArray alloc] init];
+    NSMutableArray* finished = [[NSMutableArray alloc] init];
+    
+    for ( int i = 0; i < [list count]; i ++ ) {
+        NSDictionary* taskDict = [list objectAtIndex:i];
+        
+        CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
+        
+        task.taskId = [taskDict objectForKey:@"id"];
+        task.taskType = [taskDict objectForKey:@"type"];
+        task.taskTitle = [taskDict objectForKey:@"title"];
+        task.taskStatus = [taskDict objectForKey:@"status"];
+        task.taskMoney = [taskDict objectForKey:@"money"];
+        task.taskIconUrl = [taskDict objectForKey:@"icon"];
+        task.taskIntro = [taskDict objectForKey:@"intro"];
+        task.taskDesc = [taskDict objectForKey:@"desc"];
+        task.taskStepStrings = [taskDict objectForKey:@"steps"];
+        task.taskLevel = [taskDict objectForKey:@"level"];
+        task.taskRediectUrl = [taskDict objectForKey:@"rediect_url"];
+        task.taskAppId = [taskDict objectForKey:@"appid"];
+        
+        if ( [task.taskStatus intValue] == CommonTaskTableViewCellStateFinished ) {
+            [finished addObject:task];
+        } else {
+            [unfinished addObject:task];
+        }
+    }
+    
+    [unfinished addObjectsFromArray:finished];
+    
+    [finished release];
+    
+    return unfinished;
+}
+
+-(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
+    if ( _request != nil && [request isEqual:_request] ) {
+        if ( _firstRequest ) {
+            [self hideLoading];
+            _firstRequest = NO;
+        }
+        
+        if ( httpCode == 200 ) {
+            // 获取到返回的列表
+            NSNumber* res = [body valueForKey: @"res"];
+            int nRes = [res intValue];
+            if (nRes == 0) {
+                NSArray* list = [body valueForKey: @"task_list"];
+                if ( _list != nil ) {
+                    [_list release];
+                }
+                
+                _list = [self copyList:list];
+            }
+        }
+        
+    }
+    [_request release];
+    _request = nil;
+    _bRequest = NO;
+}
 @end

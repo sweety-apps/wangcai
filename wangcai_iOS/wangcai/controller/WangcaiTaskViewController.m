@@ -82,6 +82,7 @@ static WangcaiTaskViewController* _sharedInstance = nil;
     label.text = @"官方任务：100% 红包发放";
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont systemFontOfSize:15.f];
+    label.backgroundColor = [UIColor clearColor];
     view.backgroundColor = [UIColor colorWithRed:126/255.f green:127/255.f blue:126/255.f alpha:1.f];
     [view addSubview:label];
     
@@ -89,7 +90,7 @@ static WangcaiTaskViewController* _sharedInstance = nil;
     
     UIButton *feedback = [UIButton buttonWithType:UIButtonTypeCustom];
     [feedback addTarget:self action:@selector(feedback) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *image = [UIImage imageNamed:@"漏发-normal.png"];
+    UIImage *image = [UIImage imageNamed:@"omissionnormal.png"];
     [feedback setBackgroundImage:image forState:UIControlStateNormal];
     feedback.frame = CGRectMake(240, 10, image.size.width/2.f, image.size.height/2.f);
     [view addSubview:feedback];

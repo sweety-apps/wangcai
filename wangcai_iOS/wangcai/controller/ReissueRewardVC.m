@@ -11,7 +11,7 @@
 #import "MBHUDView.h"
 #import "Common.h"
 #import "Config.h"
-
+#define kBGColor [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f]
 @interface ReissueRewardVC ()
 {
     UITableView *table;
@@ -45,32 +45,51 @@
     _beeUIStack = stack;
     [_beeUIStack retain];
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if(section == 0)
+    return 20;
+    return 0;
+}
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if(section == 0)
+    {
+        UIView *header = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20)] autorelease];
+        header.backgroundColor = kBGColor;
+        return header;
+    }
+    return nil;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 64)];
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(110, 0, 100, 64)];
+    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 54)];
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(110, 0, 100, 54)];
     title.textColor = [UIColor whiteColor];
     title.textAlignment = UITextAlignmentCenter;
     
     title.text = @"补发红包";
+    title.backgroundColor = [UIColor clearColor];
     title.font = [UIFont systemFontOfSize:20.f];
     [header addSubview:title];
     [title release];
     
     UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+    back.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [back addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
-    UIImage *image = [UIImage imageNamed:@"back@2x.png"];
-    [back setBackgroundImage:image forState:UIControlStateNormal];
-    CGRect frame = CGRectMake(20, 22, image.size.width/2.f, image.size.height/2.f);
+    UIImage *image = [UIImage imageNamed:@"back.png"];
+    //[back setBackgroundImage:image forState:UIControlStateNormal];
+    [back setImage:image forState:UIControlStateNormal];
+    //CGRect frame = CGRectMake(20, (54-image.size.height)/2.f, image.size.width, image.size.height);
+    CGRect frame = CGRectMake(0, 12, 46, 30);
     back.frame = frame;
     [header addSubview:back];
     header.backgroundColor = [UIColor colorWithRed:12/255.f green:90/255.f blue:189/255.f alpha:1.f];
     [self.view addSubview:header];
     [header release];
-    table = [[UITableView alloc]initWithFrame:CGRectMake(0, header.frame.size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-header.frame.size.height) style:UITableViewStyleGrouped];
-    table.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
+    table = [[UITableView alloc]initWithFrame:CGRectMake(0, header.frame.size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-header.frame.size.height) style:UITableViewStylePlain];
+    table.backgroundColor = kBGColor;
     table.delegate = self;
     table.dataSource = self;
     [self.view addSubview:table];
@@ -109,7 +128,8 @@
 {
     if(indexPath.section == 1 && indexPath.row == 1) return 80;
     if(indexPath.section == 1 && indexPath.row == 0) return 30;
-    if(indexPath.section == 0 && indexPath.row == 0) return 30;
+    if(indexPath.section == 0) return 30;
+    if(indexPath.section == 2 && indexPath.row == 0) return 60;
     return 44;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -136,6 +156,7 @@
     UIView *bg = [[UIView alloc]init];
     bg.frame = bgframe;
     UILabel *text = [[UILabel alloc]initWithFrame:textfrmale];
+    text.backgroundColor = [UIColor clearColor];
     text.text = title;
     text.textColor = [UIColor lightGrayColor];
     [bg addSubview:text];
@@ -176,7 +197,7 @@
             if([sub isKindOfClass:[UIImageView class]])
             {
                 UIImageView *imageVew = (UIImageView*)sub;
-                imageVew.image = [UIImage imageNamed:@"单选-normal.png"];
+                imageVew.image = [UIImage imageNamed:@"singleselectnormal.png"];
                 return;
             }
         }
@@ -189,7 +210,7 @@
             if([sub isKindOfClass:[UIImageView class]])
             {
                 UIImageView *imageVew = (UIImageView*)sub;
-                imageVew.image = [UIImage imageNamed:@"单选down.png"];
+                imageVew.image = [UIImage imageNamed:@"singleselectdown.png"];
                 return;
             }
         }
@@ -216,29 +237,47 @@
     }
     if(indexPath.section == 0)
     {
+        
+        UIView *gray = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, cell.frame.size.height)];
+        gray.backgroundColor = kBGColor;
+        [cell.contentView addSubview:gray];
+        [gray release];
+        
+        UIView *gray1 = [[UIView alloc]initWithFrame:CGRectMake(310, 0, 10, cell.frame.size.height)];
+        gray1.backgroundColor = kBGColor;
+        [cell.contentView addSubview:gray1];
+        [gray1 release];
+        
         if(indexPath.row == 0)
         {
             cell.textLabel.text = @"请选择未发放红包的任务";
             cell.textLabel.font = [UIFont boldSystemFontOfSize:15.f];
         }else
         {
+            if([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+            {
+                UIView *bg =  [[UIView alloc]initWithFrame:CGRectMake(10, 0, 300, 30)];
+                bg.backgroundColor = [UIColor whiteColor];
+                [cell.contentView addSubview:bg];
+                [bg release];
+            }
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
             tap.cancelsTouchesInView = NO;
             [cell addGestureRecognizer:tap];
             [tap release];
             
             CommonTaskInfo *info = [items objectAtIndex:(2*indexPath.row-2)];
-            UIImage *image = [self isRowSelect:info.taskAppId]?[UIImage imageNamed:@"单选down.png"]:[UIImage imageNamed:@"单选-normal.png"];
+            UIImage *image = [self isRowSelect:info.taskAppId]?[UIImage imageNamed:@"singleselectdown.png"]:[UIImage imageNamed:@"singleselectnormal.png"];
             
-            UIView *compent = [self compentWithImage:image title:info.taskTitle bgFrame:CGRectMake(20, 10, 135, 20) imageFrame: CGRectMake(0, 10, 20, 20) textFrame:CGRectMake(30, 10, 105, 20) target:self action:@selector(tapAction:)];
+            UIView *compent = [self compentWithImage:image title:info.taskTitle bgFrame:CGRectMake(20, 5, 135, 20) imageFrame: CGRectMake(0, 0, 20, 20) textFrame:CGRectMake(30, 0, 105, 20) target:self action:@selector(tapAction:)];
             compent.tag = [info.taskAppId integerValue]+10;
             [cell.contentView addSubview:compent];
             if(indexPath.row*2-1 < items.count)
             {
                 CommonTaskInfo *info_bro = [items objectAtIndex:(indexPath.row*2-1)];
-                UIImage *image_bro = [self isRowSelect:info_bro.taskAppId]?[UIImage imageNamed:@"单选down.png"]:[UIImage imageNamed:@"单选-normal.png"];
+                UIImage *image_bro = [self isRowSelect:info_bro.taskAppId]?[UIImage imageNamed:@"singleselectdown.png"]:[UIImage imageNamed:@"singleselectnormal.png"];
                 
-                UIView *compent_bro = [self compentWithImage:image_bro title:info_bro.taskTitle bgFrame:CGRectMake(165, 10, 135, 20) imageFrame: CGRectMake(0, 10, 20, 20) textFrame:CGRectMake(30, 10, 105, 20) target:self action:@selector(tapAction:)];
+                UIView *compent_bro = [self compentWithImage:image_bro title:info_bro.taskTitle bgFrame:CGRectMake(165, 5, 135, 20) imageFrame: CGRectMake(0, 0, 20, 20) textFrame:CGRectMake(30, 0, 105, 20) target:self action:@selector(tapAction:)];
                 compent_bro.tag = [info_bro.taskAppId integerValue]+10;
                 [cell.contentView addSubview:compent_bro];
                 [compent_bro release];
@@ -249,37 +288,42 @@
 
     }else if(indexPath.section == 1)
     {
-         cell.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
-        switch (indexPath.row) {
-            case 0:
-                cell.textLabel.text = @"补发说明：";
-                cell.textLabel.font = [UIFont boldSystemFontOfSize:16.f];
-                break;
-            case 1:
-               
-                cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-                cell.textLabel.numberOfLines = 0;
-                cell.textLabel.textColor = [UIColor colorWithRed:168/255.f green:167/255.f blue:172/255.f alpha:1.f];
-                cell.textLabel.font = [UIFont systemFontOfSize:15.f];
-                cell.textLabel.text = @"旺财官方任务保证100%返回，如您以按照正常流程完成任务但并未收到红包，提交申请后系统会核实，并在3日内完成红包补发。";
-                break;
-                
-            default:
-            {
-                cell.textLabel.font = [UIFont boldSystemFontOfSize:16.f];
-                UIImageView *view = [[UIImageView alloc]initWithImage:hasRedExplanation?[UIImage imageNamed:@"单选down.png"]:[UIImage imageNamed:@"单选-normal.png"]];
-                view.tag = 101;
-                view.frame = CGRectMake(17, 10, 20, 20);
-                [cell.contentView addSubview:view];
-                
-                UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(47, 10, 130, 20)];
-                label.text = @"我已阅读说明";
-                label.font = [UIFont boldSystemFontOfSize:15.f];
-                [cell.contentView addSubview:label];
-                [label release];
-            }
-            break;
+        if(indexPath.row == 0)
+        {
+            //UILabel *shuoming = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 320, cell.frame.size.height)];
+            cell.textLabel.backgroundColor = [UIColor clearColor];
+            cell.textLabel.text = @"补发说明：";
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:16.f];
+            //[cell.contentView addSubview:shuoming];
+        }else if(indexPath.row == 1)
+        {
+            //UILabel *remind = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 320, cell.frame.size.height)];
+            cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.textLabel.numberOfLines = 0;
+            cell.textLabel.font = [UIFont systemFontOfSize:15.f];
+            cell.textLabel.text = @"旺财官方任务保证100%返回，如您以按照正常流程完成任务但并未收到红包，提交申请后系统会核实，并在3日内完成红包补发。";
+            cell.textLabel.backgroundColor = [UIColor clearColor];
+            cell.textLabel.textColor = [UIColor lightGrayColor];
+            //[cell.contentView addSubview:remind];
+            //[remind release];
+            
+        }else
+        {
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:16.f];
+            UIImageView *view = [[UIImageView alloc]initWithImage:hasRedExplanation?[UIImage imageNamed:@"singleselectdown.png"]:[UIImage imageNamed:@"singleselectnormal"]];
+            view.tag = 101;
+            view.frame = CGRectMake(17, 10, 20, 20);
+            [cell.contentView addSubview:view];
+            
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(47, 10, 130, 20)];
+            label.text = @"我已阅读说明";
+            label.font = [UIFont boldSystemFontOfSize:15.f];
+            [cell.contentView addSubview:label];
+            label.backgroundColor = [UIColor clearColor];
+            [label release];
         }
+    
+        cell.backgroundColor =  kBGColor;
     }else if (indexPath.section == 2)
     {
         if(!submit)
@@ -288,11 +332,11 @@
             [submit retain];
         }
         [submit addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
-        UIImage *image = [UIImage imageNamed:@"提交问题-normal.png"];
-        CGRect frame = CGRectMake(40, 2, 320-40*2, 40);
+        UIImage *image = [UIImage imageNamed:@"submitnormal.png"];
+        CGRect frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - image.size.width/2)/2, (60-image.size.height/2)/2, image.size.width/2, image.size.height/2);
         submit.frame = frame;
         [submit setImage:image forState:UIControlStateNormal];
-        cell.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.5];
+        cell.backgroundColor = kBGColor;
         [cell.contentView addSubview:submit];
     }
     
@@ -329,7 +373,7 @@
             {
                 hasRedExplanation = YES;
                 [[cell.contentView viewWithTag:101] removeFromSuperview];
-                UIImageView *view = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"单选down.png"]];
+                UIImageView *view = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"singleselectdown.png"]];
                 view.tag = 102;
                 view.frame = CGRectMake(17, 10, 20, 20);
                 [cell.contentView addSubview:view];
@@ -337,7 +381,7 @@
             {
                 hasRedExplanation = NO;
                 [[cell.contentView viewWithTag:102] removeFromSuperview];
-                UIImageView *view = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"单选-normal.png"]];
+                UIImageView *view = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"singleselectnormal.png"]];
                 view.tag = 101;
                 view.frame = CGRectMake(17, 10, 20, 20);
                 [cell.contentView addSubview:view];
@@ -378,7 +422,7 @@
     {
         [_request release];
     }
-    
+    //223 223 228 215
     _request = [[HttpRequest alloc] init:self];
     
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
@@ -397,16 +441,23 @@
     if ( _request != nil && [request isEqual:_request] )
     {
         [_request release];
+        _request = nil;
         
         if ( httpCode == 200 )
         {
-             [_beeUIStack popViewControllerAnimated:YES];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"提交成功!" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
             
         }
         
     }
     
     _bRequest = NO;
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+     [_beeUIStack popViewControllerAnimated:YES];
 }
 - (void)dealloc
 {
