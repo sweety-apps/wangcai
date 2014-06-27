@@ -48,7 +48,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if(section == 0)
-    return 20;
+        return 0;
     return 0;
 }
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -64,6 +64,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:229/255.f green:229/255.f blue:233/255.f alpha:1.f];
     UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 54)];
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(110, 0, 100, 54)];
     title.textColor = [UIColor whiteColor];
@@ -89,7 +91,7 @@
     [self.view addSubview:header];
     [header release];
     table = [[UITableView alloc]initWithFrame:CGRectMake(0, header.frame.size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-header.frame.size.height) style:UITableViewStylePlain];
-    table.backgroundColor = kBGColor;
+    table.backgroundColor = [UIColor colorWithRed:229/255.f green:229/255.f blue:233/255.f alpha:1.f];
     table.delegate = self;
     table.dataSource = self;
     [self.view addSubview:table];
@@ -126,10 +128,28 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 1 && indexPath.row == 1) return 80;
-    if(indexPath.section == 1 && indexPath.row == 0) return 30;
-    if(indexPath.section == 0) return 30;
-    if(indexPath.section == 2 && indexPath.row == 0) return 60;
+    if(indexPath.section == 1 && indexPath.row == 1)
+        return 80;
+    
+    if(indexPath.section == 1 && indexPath.row == 0)
+        return 30;
+    
+    if(indexPath.section == 0) {
+        int nLines = items.count/2+1;
+        if( items.count%2 != 0) {
+            nLines = items.count/2 + 2;
+        }
+        
+        if ( indexPath.row == 0 ) {
+            return 49;
+        } else if ( indexPath.row == (nLines-1) ) {
+            return 39;
+        }
+        return 30;
+    }
+    
+    if(indexPath.section == 2 && indexPath.row == 0)
+        return 60;
     return 44;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -141,7 +161,9 @@
             return count/2+1;
         return count/2 + 2;
     }
-    if(section == 1) return 3;
+    
+    if(section == 1)
+        return 3;
     return 1;
 }
 
@@ -237,30 +259,40 @@
     }
     if(indexPath.section == 0)
     {
-        
-        UIView *gray = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, cell.frame.size.height)];
-        gray.backgroundColor = kBGColor;
-        [cell.contentView addSubview:gray];
-        [gray release];
-        
-        UIView *gray1 = [[UIView alloc]initWithFrame:CGRectMake(310, 0, 10, cell.frame.size.height)];
-        gray1.backgroundColor = kBGColor;
-        [cell.contentView addSubview:gray1];
-        [gray1 release];
-        
         if(indexPath.row == 0)
         {
-            cell.textLabel.text = @"请选择未发放红包的任务";
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:15.f];
-        }else
-        {
-            if([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
-            {
-                UIView *bg =  [[UIView alloc]initWithFrame:CGRectMake(10, 0, 300, 30)];
-                bg.backgroundColor = [UIColor whiteColor];
-                [cell.contentView addSubview:bg];
-                [bg release];
+            cell.contentView.backgroundColor = [UIColor colorWithRed:229/255.f green:229/255.f blue:233/255.f alpha:1.f];
+            
+            UIImageView* imageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"center.png"]] autorelease];
+            [imageView setFrame:CGRectMake(0, 10, 320, 39)];
+            [cell.contentView addSubview:imageView];
+            
+            imageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top.png"]] autorelease];
+            [imageView setFrame:CGRectMake(0, 10, 320, 9)];
+            [cell.contentView addSubview:imageView];
+            
+            UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(24, 22, 200, 22)] autorelease];
+            label.font = [UIFont boldSystemFontOfSize:15.f];
+            label.text = @"请选择未发放红包的任务";
+            label.backgroundColor = [UIColor clearColor];
+            
+            [cell.contentView addSubview:label];
+        }else {
+            UIImageView* imageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"center.png"]] autorelease];
+            [imageView setFrame:CGRectMake(0, 0, 320, 30)];
+            [cell.contentView addSubview:imageView];
+            
+            int nLines = items.count/2+1;
+            if( items.count%2 != 0) {
+                nLines = items.count/2 + 2;
             }
+            
+            if ( nLines - 1 == indexPath.row ) {
+                imageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottom.png"]] autorelease];
+                [imageView setFrame:CGRectMake(0, 30, 320, 9)];
+                [cell.contentView addSubview:imageView];
+            }
+            
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
             tap.cancelsTouchesInView = NO;
             [cell addGestureRecognizer:tap];
@@ -323,7 +355,7 @@
             [label release];
         }
     
-        cell.backgroundColor =  kBGColor;
+        cell.backgroundColor = [UIColor clearColor];
     }else if (indexPath.section == 2)
     {
         if(!submit)
@@ -336,8 +368,9 @@
         CGRect frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - image.size.width/2)/2, (60-image.size.height/2)/2, image.size.width/2, image.size.height/2);
         submit.frame = frame;
         [submit setImage:image forState:UIControlStateNormal];
-        cell.backgroundColor = kBGColor;
         [cell.contentView addSubview:submit];
+        
+        cell.backgroundColor = [UIColor clearColor];
     }
     
     return cell;

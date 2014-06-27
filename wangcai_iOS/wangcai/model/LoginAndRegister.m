@@ -157,17 +157,24 @@ static LoginAndRegister* _sharedInstance = nil;
     nsParam = [nsParam stringByAppendingFormat:@"&openudid=%@", openUdid];
 #endif
     
-    NSString* md5param = [NSString stringWithFormat:@"%@&c4c6ac66-3d86-4692-bf5c-78fc4c3df1a0", nsParam];
+    NSString* md5param = [NSString stringWithFormat:@"%@c4c6ac66-3d86-4692-bf5c-78fc4c3df1a0", nsParam];
     
     const char* cStr = [md5param UTF8String];
-    unsigned char result[16];
-    CC_MD5(cStr, strlen(cStr), result);
-    NSMutableString* hash = [NSMutableString string];
-    for (int i = 0; i < 16; i ++ ) {
-        [hash appendFormat:@"%02x", result[i]];
+    
+    NSData *tmpData = [NSData dataWithBytes:cStr length:strlen(cStr)];
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(tmpData.bytes, tmpData.length, digest);
+    
+    NSMutableString* hash = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH];
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
+        [hash appendFormat:@"%02x", digest[i]];
     }
     
-    nsParam = [nsParam stringByAppendingFormat:@"&sign=%@", [hash lowercaseString]];
+    NSRange range;
+    range.length = 32;
+    range.location = 2;
+    
+    nsParam = [nsParam stringByAppendingFormat:@"&sig=%@", [hash substringWithRange:range]];
     
     NSMutableData* data = [[NSMutableData alloc] init];
     
