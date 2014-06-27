@@ -11,7 +11,7 @@
 #import "MBHUDView.h"
 #import "Common.h"
 #import "Config.h"
-
+#define kBGColor [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f]
 @interface ReissueRewardVC ()
 {
     UITableView *table;
@@ -56,7 +56,7 @@
     if(section == 0)
     {
         UIView *header = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20)] autorelease];
-        header.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
+        header.backgroundColor = kBGColor;
         return header;
     }
     return nil;
@@ -76,17 +76,20 @@
     [title release];
     
     UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+    back.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [back addTarget:self action:@selector(goback) forControlEvents:UIControlEventTouchUpInside];
     UIImage *image = [UIImage imageNamed:@"back.png"];
-    [back setBackgroundImage:image forState:UIControlStateNormal];
-    CGRect frame = CGRectMake(20, (54-image.size.height)/2.f, image.size.width, image.size.height);
+    //[back setBackgroundImage:image forState:UIControlStateNormal];
+    [back setImage:image forState:UIControlStateNormal];
+    //CGRect frame = CGRectMake(20, (54-image.size.height)/2.f, image.size.width, image.size.height);
+    CGRect frame = CGRectMake(0, 12, 46, 30);
     back.frame = frame;
     [header addSubview:back];
     header.backgroundColor = [UIColor colorWithRed:12/255.f green:90/255.f blue:189/255.f alpha:1.f];
     [self.view addSubview:header];
     [header release];
     table = [[UITableView alloc]initWithFrame:CGRectMake(0, header.frame.size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-header.frame.size.height) style:UITableViewStylePlain];
-    table.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
+    table.backgroundColor = kBGColor;
     table.delegate = self;
     table.dataSource = self;
     [self.view addSubview:table];
@@ -236,12 +239,12 @@
     {
         
         UIView *gray = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 10, cell.frame.size.height)];
-        gray.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
+        gray.backgroundColor = kBGColor;
         [cell.contentView addSubview:gray];
         [gray release];
         
         UIView *gray1 = [[UIView alloc]initWithFrame:CGRectMake(310, 0, 10, cell.frame.size.height)];
-        gray1.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
+        gray1.backgroundColor = kBGColor;
         [cell.contentView addSubview:gray1];
         [gray1 release];
         
@@ -320,7 +323,7 @@
             [label release];
         }
     
-        cell.backgroundColor =  [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
+        cell.backgroundColor =  kBGColor;
     }else if (indexPath.section == 2)
     {
         if(!submit)
@@ -333,7 +336,7 @@
         CGRect frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width - image.size.width/2)/2, (60-image.size.height/2)/2, image.size.width/2, image.size.height/2);
         submit.frame = frame;
         [submit setImage:image forState:UIControlStateNormal];
-        cell.backgroundColor = [UIColor colorWithRed:223/255.f green:223/255.f blue:228/255.f alpha:1.f];
+        cell.backgroundColor = kBGColor;
         [cell.contentView addSubview:submit];
     }
     
@@ -419,7 +422,7 @@
     {
         [_request release];
     }
-    
+    //223 223 228 215
     _request = [[HttpRequest alloc] init:self];
     
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
