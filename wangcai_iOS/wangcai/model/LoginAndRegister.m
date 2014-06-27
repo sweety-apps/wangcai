@@ -356,7 +356,7 @@ static LoginAndRegister* _sharedInstance = nil;
 
                 
                 [[QuestViewController sharedInstance] requestList];
-                [[WangcaiTaskViewController sharedInstance] requestList];
+               // [[WangcaiTaskViewController sharedInstance] requestList];
                 
                 [self RegisterDeviceIDToAPService];
                 

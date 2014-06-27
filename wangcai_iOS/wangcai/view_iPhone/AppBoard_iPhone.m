@@ -21,7 +21,8 @@
 #import "Config.h"
 #import "CommonTaskList.h"
 #import "CommonTaskTableViewCell.h"
-
+#import "InstallAppAlertView.h"
+#import "AppDelegate.h"
 #define SHOW_MASK (0)
 
 #pragma mark -
@@ -49,6 +50,9 @@
     BOOL _bRequest;
     BOOL _firstRequest;
     NSArray *_list;//旺财自营任务
+    InstallAppAlertView *install;
+    CommonTaskInfo *wangcaiTask;
+    UICustomAlertView *custAlert;
 }
 
 DEF_SINGLETON( AppBoard_iPhone )
@@ -737,23 +741,19 @@ ON_MESSAGE( message )
                     int limit = [[_pointsLimit objectAtIndex:index] integerValue];
                     if(limit < point)
                     {
-                        if(destYouMi)
-                        {
-                            [destYouMi release];
-                        }
                         destYouMi = [model retain];
                         isfindOne = YES;
-                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[model name] message:[model desc] delegate:self cancelButtonTitle:@"去下载" otherButtonTitles:@"取消", nil];
-                        [alert show];
-                        alert.tag = 10010;
-                        [alert release];
+                        NSString *money = [NSString stringWithFormat:@"%f",limit/10.f];
+                        money = [money substringToIndex:3];
+                        install = [[InstallAppAlertView alloc]initWithIcon:[model smallIconURL] title:[model name] desc:[model desc] target:self install:@selector(install) cancel:@selector(cancel) money:money];
+                        if(custAlert){
+                            [custAlert release];
+                        }
+                        custAlert = [[UICustomAlertView alloc]init:install];
+                        [custAlert show];
+                        install.tag = 10010;
                         break;
                     }
-//                    NSString* sid = [NSString stringWithFormat:@"%d", storeID];
-//                    if ( [sid isEqualToString:appid] ) {
-//                        [YouMiWall userInstallApp:model];
-//                        break;
-//                    }
                 }
                 if(!isfindOne)
                 {
@@ -776,10 +776,40 @@ ON_MESSAGE( message )
         [_wapCustom loadCustomData]; //调⽤用WapsCustom的loadCustomData⽅方法,请求广告墙数据
     }else if( [[remoteNotifications allKeys] containsObject:@"wangcai"])
     {
-        [self requestList];
+        NSString* appid = [remoteNotifications valueForKey:@"wangcai"];
+        NSString* points = [remoteNotifications valueForKey:@"points"];
+         [self buildPointsArray:appid points:points];
+        [self performSelector:@selector(requestList) withObject:nil afterDelay:1.f];
+        //[self requestList];
     }
 }
 
+- (void)cancel
+{
+    [MobClick event:@"remote_cancel_install" attributes:@{@"current_page":@"推送安装App"}];
+    [custAlert hideAlertView];
+    install = nil;
+}
+- (void)install
+{
+    if(install.tag == 10010)//有米
+    {
+        [YouMiWall userInstallApp:destYouMi];
+        [MobClick event:@"remote_click_install" attributes:@{@"current_page":@"推送安装App"}];
+
+    }
+    if(install.tag == 10086)//waps
+    {
+        [_wapCustom listOnClick:wapsurl];
+        [MobClick event:@"remote_click_install" attributes:@{@"current_page":@"推送安装App"}];
+    }
+    
+    if(install.tag == 10011)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:wangcaiTask.taskRediectUrl]];
+    }
+    [custAlert hideAlertView];
+}
 //参数:flg为真时,表明正在请求数据;flg为假时,数据请求完成.
 - (void)isLoading:(BOOL)flg {
     
@@ -799,6 +829,7 @@ ON_MESSAGE( message )
     {
         int point = [[dict objectForKey:@"points"] integerValue];
         NSString *appId = [dict objectForKey:@"ad_id"];
+        NSLog(@"%@",appId);
         int index = [self isAppInPush:appId :_appId];
         if(index == -1)
             continue;
@@ -811,10 +842,16 @@ ON_MESSAGE( message )
                 [wapsurl release];
             }
             wapsurl = [[dict objectForKey:@"click_url"] retain];
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[dict objectForKey:@"title"] message:[dict objectForKey:@"tip"] delegate:self cancelButtonTitle:@"去下载" otherButtonTitles:@"取消", nil];
-            alert.tag = 10086;
-            [alert show];
-            [alert release];
+            NSString *money = [NSString stringWithFormat:@"%f",limit/10.f];
+            money = [money substringToIndex:3];
+            install = [[InstallAppAlertView alloc]initWithIcon:[dict objectForKey:@"icon"] title:[dict objectForKey:@"title"] desc:[dict objectForKey:@"info"] target:self install:@selector(install) cancel:@selector(cancel) money:money];
+            install.tag = 10086;
+           // [self.view addSubview:install];
+            if(custAlert){
+                [custAlert release];
+            }
+            custAlert = [[UICustomAlertView alloc]init:install];
+            [custAlert show];
             break;
         }
     }
@@ -840,7 +877,7 @@ ON_MESSAGE( message )
 }
 - (void) requestList {
     if ( _bRequest ) {
-        return ;
+        return;
     }
     
     _bRequest = YES;
@@ -862,7 +899,6 @@ ON_MESSAGE( message )
     NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
     [dictionary setObject:appVersion forKey:@"ver"];
     [dictionary setObject:APP_NAME forKey:@"app"];
-    
     [_request request:HTTP_TASK_APP_LIST Param:dictionary method:@"get"];
 }
 
@@ -874,7 +910,7 @@ ON_MESSAGE( message )
         NSDictionary* taskDict = [list objectAtIndex:i];
         
         CommonTaskInfo* task = [[[CommonTaskInfo alloc] init] autorelease];
-        
+        task.taskIconUrl = [taskDict objectForKey:@"icon"];
         task.taskId = [taskDict objectForKey:@"id"];
         task.taskType = [taskDict objectForKey:@"type"];
         task.taskTitle = [taskDict objectForKey:@"title"];
@@ -903,29 +939,57 @@ ON_MESSAGE( message )
 }
 
 -(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
-    if ( _request != nil && [request isEqual:_request] ) {
-        if ( _firstRequest ) {
-            [self hideLoading];
-            _firstRequest = NO;
-        }
-        
-        if ( httpCode == 200 ) {
-            // 获取到返回的列表
-            NSNumber* res = [body valueForKey: @"res"];
-            int nRes = [res intValue];
-            if (nRes == 0) {
-                NSArray* list = [body valueForKey: @"task_list"];
-                if ( _list != nil ) {
-                    [_list release];
-                }
-                
-                _list = [self copyList:list];
-            }
-        }
-        
-    }
-    [_request release];
-    _request = nil;
-    _bRequest = NO;
+//    if ( _request != nil && [request isEqual:_request] ) {
+//        if ( _firstRequest ) {
+//            [self hideLoading];
+//            _firstRequest = NO;
+//        }
+//        
+//        if ( httpCode == 200 ) {
+//            // 获取到返回的列表
+//            NSNumber* res = [body valueForKey: @"res"];
+//            int nRes = [res intValue];
+//            if (nRes == 0) {
+//                NSArray* list = [body valueForKey: @"task_list"];
+//                if ( _list != nil ) {
+//                    [_list release];
+//                }
+//                
+//                _list = [self copyList:list];
+//            }
+//        }
+//        
+//    }
+//    [_request release];
+//    _request = nil;
+//    _bRequest = NO;
+//    BOOL isfindOne;
+//    for (CommonTaskInfo *info in _list)
+//    {
+//        NSString *storeID = info.taskAppId;
+//        NSLog(@"%d",storeID);
+//        int index = [self isAppInPush:storeID :_appId];
+//        
+//        if(index == -1){
+//            continue;
+//        }
+//        NSNumber *point = info.taskMoney;
+//        int limit = [[_pointsLimit objectAtIndex:index] integerValue];
+//        if(limit < [point integerValue])
+//        {
+//            wangcaiTask = info;
+//            isfindOne = YES;
+//            install = [[InstallAppAlertView alloc]initWithIcon:info.taskIconUrl title:info.taskTitle desc:info.taskDesc target:self install:@selector(install) cancel:@selector(cancel)];
+//            [self.view addSubview:install];
+//            install.tag = 10011;
+//            break;
+//        }
+//    }
+//    if(!isfindOne)
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"任务已经被抢光了!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+//        [alert show];
+//        [alert release];
+//    }
 }
 @end

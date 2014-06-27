@@ -126,7 +126,13 @@
     return YES;
 }
 
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+//    NSString * token = [deviceToken description];
+//	token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+//	token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+//	token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    NSLog(@"token=%@",token);
     [APService registerDeviceToken:deviceToken];
 }
 
@@ -176,7 +182,7 @@
             _nsRemoteNotifications = nil;
         }
     }
-//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"53c3e2fdf22b1df9e2c2126025be18ce,859123573,651952567",@"wangcai",@"42-111,44-111,40-1",@"points", nil];
+//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"580765736,242475584,34a0f5715d53f14476f0f0c9e50546f2",@"waps",@"42-1,44-1,40-1",@"points", nil];
 //      [self onShowPageFromRootNotification:dic];
 }
 

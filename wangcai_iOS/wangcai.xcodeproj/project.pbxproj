@@ -412,6 +412,9 @@
 		71A9C7D718B8D563006119F6 /* exchange_bkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */; };
 		71A9C7D918B8D884006119F6 /* exchange_btn2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */; };
 		71A9C7DA18B8D884006119F6 /* exchange_btn2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */; };
+		71AD30FD195D4958009D9337 /* alertbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AD30FB195D4958009D9337 /* alertbg.png */; };
+		71AD3102195D49DE009D9337 /* InstallAppAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AD3101195D49DE009D9337 /* InstallAppAlertView.m */; };
+		71AD3131195D9ACB009D9337 /* alertButtonnormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AD3130195D9ACB009D9337 /* alertButtonnormal.png */; };
 		71AE4C9D18B488D200B820EC /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AE4C9C18B488D200B820EC /* back2@2x.png */; };
 		71AE4C9E18B488D200B820EC /* back2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AE4C9C18B488D200B820EC /* back2@2x.png */; };
 		71B7C1A61932EB3600FC0766 /* package_icon_1_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71B7C1A41932EB3600FC0766 /* package_icon_1_5@2x.png */; };
@@ -1947,6 +1950,10 @@
 		71A19DAE1921ECE200692465 /* invite_error_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite_error_bkg@2x.png"; sourceTree = "<group>"; };
 		71A9C7D518B8D563006119F6 /* exchange_bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_bkg@2x.png"; sourceTree = "<group>"; };
 		71A9C7D818B8D884006119F6 /* exchange_btn2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exchange_btn2@2x.png"; sourceTree = "<group>"; };
+		71AD30FB195D4958009D9337 /* alertbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alertbg.png; sourceTree = "<group>"; };
+		71AD3100195D49DE009D9337 /* InstallAppAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallAppAlertView.h; sourceTree = "<group>"; };
+		71AD3101195D49DE009D9337 /* InstallAppAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallAppAlertView.m; sourceTree = "<group>"; };
+		71AD3130195D9ACB009D9337 /* alertButtonnormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alertButtonnormal.png; sourceTree = "<group>"; };
 		71AE4C9C18B488D200B820EC /* back2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back2@2x.png"; sourceTree = "<group>"; };
 		71B7C1A41932EB3600FC0766 /* package_icon_1_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_1_5@2x.png"; sourceTree = "<group>"; };
 		71B7C1A51932EB3600FC0766 /* package_icon_2_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package_icon_2_5@2x.png"; sourceTree = "<group>"; };
@@ -3386,6 +3393,24 @@
 			path = JuPenglib;
 			sourceTree = "<group>";
 		};
+		71AD30FA195D48B6009D9337 /* PushInstallAppAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				71AD3130195D9ACB009D9337 /* alertButtonnormal.png */,
+				71AD30FB195D4958009D9337 /* alertbg.png */,
+			);
+			path = PushInstallAppAlertView;
+			sourceTree = "<group>";
+		};
+		71AD30FF195D49B1009D9337 /* compent */ = {
+			isa = PBXGroup;
+			children = (
+				71AD3100195D49DE009D9337 /* InstallAppAlertView.h */,
+				71AD3101195D49DE009D9337 /* InstallAppAlertView.m */,
+			);
+			path = compent;
+			sourceTree = "<group>";
+		};
 		71BB07BC195981A0001C9856 /* ShareSDK_v2.6.1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4175,6 +4200,7 @@
 		F3F186D718543A410098C852 /* wangcai */ = {
 			isa = PBXGroup;
 			children = (
+				71AD30FF195D49B1009D9337 /* compent */,
 				59FE833118C77BCF00E4205A /* immobSDK.framework */,
 				F358E9F3186D2AA200DC3ADA /* utilities */,
 				F3F18A41185762BD0098C852 /* Resources */,
@@ -5319,6 +5345,7 @@
 		F3F18A41185762BD0098C852 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				71AD30FA195D48B6009D9337 /* PushInstallAppAlertView */,
 				71BB08441959844F001C9856 /* ReissueReward */,
 				F394DBEE18B8EB9B003311CD /* LevelUpAlertView */,
 				F31F94DF18AF623B0035792B /* MyWangcai */,
@@ -5993,6 +6020,7 @@
 				F36049B31871A9AE00FAD1F3 /* menu_icon_tuhaobang@2x.png in Resources */,
 				A60C58AA18703AE60068425C /* invite_seg_normal@2x.png in Resources */,
 				71BB084A1959844F001C9856 /* singleselectnormal.png in Resources */,
+				71AD3131195D9ACB009D9337 /* alertButtonnormal.png in Resources */,
 				A60C5858186FF8A30068425C /* navigation-bar@2x.png in Resources */,
 				A60C585B186FF8A30068425C /* phone_num_border@2x.png in Resources */,
 				F3359E571886D2A800C1E636 /* package_icon_1mao@2x.png in Resources */,
@@ -6109,6 +6137,7 @@
 				71BB081E195981A1001C9856 /* Resource.bundle in Resources */,
 				F31F897C18962B8600F34F20 /* iPhone3Gs.plist in Resources */,
 				A60C585E186FF8A30068425C /* resend_normal@2x.png in Resources */,
+				71AD30FD195D4958009D9337 /* alertbg.png in Resources */,
 				F394DBC618B89841003311CD /* mywangcai_dog_13@2x.png in Resources */,
 				F394DBD818B89841003311CD /* mywangcai_dog_8@2x.png in Resources */,
 				71A19DA91921D9C800692465 /* invite_top@2x.png in Resources */,
@@ -6703,6 +6732,7 @@
 				A6F96CDD187A5F290067D785 /* XMLReader.m in Sources */,
 				F3F1889218543A430098C852 /* UIView+Metrics.m in Sources */,
 				F3D9D565185D876D00392C40 /* WebViewController.m in Sources */,
+				71AD3102195D49DE009D9337 /* InstallAppAlertView.m in Sources */,
 				F3604927187016C200FAD1F3 /* NSString+DataParser.m in Sources */,
 				F3359E4C1886C0F000C1E636 /* RateAppLogic.m in Sources */,
 				F3D9D55C185D876D00392C40 /* MBAlertViewButton.m in Sources */,
