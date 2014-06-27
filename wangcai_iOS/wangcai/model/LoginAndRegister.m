@@ -157,7 +157,7 @@ static LoginAndRegister* _sharedInstance = nil;
     nsParam = [nsParam stringByAppendingFormat:@"&openudid=%@", openUdid];
 #endif
     
-    NSString* md5param = [NSString stringWithFormat:@"%@c4c6ac66-3d86-4692-bf5c-78fc4c3df1a0", nsParam];
+    NSString* md5param = [NSString stringWithFormat:@"%@a576ccd7-29dc-ccaa-c0db-168ea82ca7fb", nsParam];
     
     const char* cStr = [md5param UTF8String];
     
