@@ -509,7 +509,7 @@
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
 
     NSString *taskIds = [self getTaskId];
-    [dictionary setObject:taskIds forKey:@"Task_ids"];
+    [dictionary setObject:taskIds forKey:@"task_ids"];
     
     
     [_request request:HTTP_REISSUE_REWARD Param:dictionary method:@"POST"];
@@ -528,6 +528,11 @@
             [alert show];
             [alert release];
             
+        }else
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"发生错误，请重试!" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+            [alert show];
+            [alert release];
         }
         
     }
