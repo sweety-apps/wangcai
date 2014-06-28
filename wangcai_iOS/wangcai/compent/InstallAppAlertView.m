@@ -43,7 +43,7 @@
         UIButton *go = [UIButton buttonWithType:UIButtonTypeCustom];
         UIImage *image = [UIImage imageNamed:@"alertButtonnormal.png"];
         [go setBackgroundImage:image forState:UIControlStateNormal];
-        go.frame = CGRectMake((self.frame.size.width-image.size.width/2)/2.f,/*version>=7.0?360:*/320, image.size.width/2, image.size.height/2);
+        go.frame = CGRectMake((self.frame.size.width-image.size.width/2)/2.f,320, image.size.width/2, image.size.height/2);
         [self addSubview:go];
         [go addTarget:target action:install forControlEvents:UIControlEventTouchUpInside];
         
@@ -66,46 +66,44 @@
         [title release];
         
         
-        BeeUIImageView *game = [[BeeUIImageView alloc]init];
+        BeeUIImageView *appIcon = [[BeeUIImageView alloc]init];
         UIImage* cachedImage = [[BeeImageCache sharedInstance] imageForURL:iconurl];
-         game.contentMode = UIViewContentModeScaleAspectFit;
+         appIcon.contentMode = UIViewContentModeScaleAspectFit;
         if (cachedImage != nil)
         {
-            [game setBackgroundImage:cachedImage];
+            [appIcon setBackgroundImage:cachedImage];
         }
         else
         {
-            [game GET:iconurl useCache:YES placeHolder:[UIImage imageNamed:@"Icon.png"]];
+            [appIcon GET:iconurl useCache:YES placeHolder:[UIImage imageNamed:@"Icon.png"]];
         }
         
-        game.frame = CGRectMake(10, 70, 80, 80);
-       
+        appIcon.frame = CGRectMake(10, 70, 80, 80);
+        [alertBg addSubview:appIcon];
+        [appIcon release];
         
-        [alertBg addSubview:game];
-        [game release];
-        
-        UILabel *gamename = [[UILabel alloc]initWithFrame:CGRectMake(100, 70, alertBg.frame.size.width, 20)];
-        gamename.backgroundColor = [UIColor clearColor];
-        gamename.font = [UIFont boldSystemFontOfSize:20.f];
-        [alertBg addSubview:gamename];
-        gamename.text = atitle;
-        [gamename release];
+        UILabel *appName = [[UILabel alloc]initWithFrame:CGRectMake(100, 70, alertBg.frame.size.width, 20)];
+        appName.backgroundColor = [UIColor clearColor];
+        appName.font = [UIFont boldSystemFontOfSize:20.f];
+        [alertBg addSubview:appName];
+        appName.text = atitle;
+        [appName release];
         
         
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 170, 40)];
-        label.numberOfLines = 6;
-        label.text = desc;
+        UILabel *appDesc = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 170, 40)];
+        appDesc.numberOfLines = 6;
+        appDesc.text = desc;
         CGSize size = CGSizeMake(170, 120);
-        CGSize labelSize = [label.text sizeWithFont:label.font
+        CGSize labelSize = [appDesc.text sizeWithFont:appDesc.font
                                   constrainedToSize:size
                                       lineBreakMode:UILineBreakModeClip];
-        label.frame = CGRectMake(label.frame.origin.x, label.frame.origin.y,
-                                 label.frame.size.width, labelSize.height);
-        [alertBg addSubview:label];
-        label.textColor = [UIColor blueColor];
-        label.backgroundColor = [UIColor clearColor];
-        [label release];
+        appDesc.frame = CGRectMake(appDesc.frame.origin.x, appDesc.frame.origin.y,
+                                 appDesc.frame.size.width, labelSize.height);
+        [alertBg addSubview:appDesc];
+        appDesc.textColor = [UIColor blueColor];
+        appDesc.backgroundColor = [UIColor clearColor];
+        [appDesc release];
     }
     return self;
 }
