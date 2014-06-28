@@ -39,12 +39,9 @@
         [closebtn addTarget:target action:cancel forControlEvents:UIControlEventTouchUpInside];
         if([[UIScreen mainScreen] bounds].size.height > 480)
         {
-            if(version < 7.0)
-            {
-                CGRect frame = closebtn.frame;
-                frame.origin.x = 110;
-                closebtn.frame = frame;
-            }
+            CGRect frame = closebtn.frame;
+            frame.origin.y = 110;
+            closebtn.frame = frame;
         }
         [self addSubview:closebtn];
        
@@ -58,12 +55,9 @@
         
         if([[UIScreen mainScreen] bounds].size.height > 480)
         {
-            if(version < 7.0)
-            {
-                CGRect frame = go.frame;
-                frame.origin.x = 360;
-                go.frame = frame;
-            }
+            CGRect frame = go.frame;
+            frame.origin.y = 360;
+            go.frame = frame;
         }
         [self addSubview:go];
         [go addTarget:target action:install forControlEvents:UIControlEventTouchUpInside];
