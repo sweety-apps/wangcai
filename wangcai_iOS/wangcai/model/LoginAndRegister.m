@@ -21,7 +21,6 @@
 #import "EcomConfig.h"
 #import "QuestViewController.h"
 #import "WangcaiTaskViewController.h"
-#import "ScreenShots.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -189,6 +188,7 @@ static LoginAndRegister* _sharedInstance = nil;
     
     // 设置https访问证书
     [req setValidatesSecureCertificate:NO];
+    //[req setClientCertificates:[NSArray arrayWithObject:(id)cert]];
     //[req setClientCertificateIdentity: [Common getSecIdentityRef]];
     //
     
@@ -314,6 +314,18 @@ static LoginAndRegister* _sharedInstance = nil;
                 _offerwallIncome = [[dict valueForKey:@"offerwall_income"] intValue];
                 
                 _pollingInterval = [[dict valueForKey:@"polling_interval"] intValue];
+                
+                if ( [[dict allKeys] containsObject:@"umeng_key"] ) {
+                    NSString* umengKey = (NSString*)[dict valueForKey:@"umeng_key"];
+                    if ( [umengKey length] == 0 ) {
+                        [MobClick startWithAppkey:UMENG_KEY];
+                    } else {
+                        [MobClick startWithAppkey:umengKey];
+                    }
+                } else {
+                    [MobClick startWithAppkey:UMENG_KEY];
+                }
+                
                 if ( _pollingInterval < 5 ) {
                     _pollingInterval = 5;
                 }
@@ -327,8 +339,6 @@ static LoginAndRegister* _sharedInstance = nil;
                     
                     [ECManager ecWallPreload];
                 }
-                
-                [[ScreenShots sharedInstance] start];
                 
                 if ( _offwallOrder != nil ) {
                     [_offwallOrder release];

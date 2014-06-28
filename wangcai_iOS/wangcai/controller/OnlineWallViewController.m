@@ -549,6 +549,8 @@ static OnlineWallViewController* _sharedInstance;
     } else {
         _request = NO;
     }
+    
+    [request release];
 }
 
 - (BOOL) isUnfinished:(int) taskId {

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginAndRegister.h"
+#import "HttpRequest.h"
 
-@interface ComplainViewController : UIViewController {
+@interface ComplainViewController : UIViewController <HttpRequestDelegate> {
     UIScrollView* _scrollView;
     int _nCount;
 }

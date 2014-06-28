@@ -93,7 +93,7 @@
 
 
 
-#define TEST 0
+#define TEST 1
 
 #if TEST == 0
 
@@ -134,6 +134,7 @@
 
 #define HTTP_TASK_SURVEY            @"https://ssl.getwangcai.com/0/task/survey"
 
+#define HTTP_BAD_RATING            @"https://ssl.getwangcai.com/0/task/bad_rating"
 
 
 #define WEB_EXTRACT_MONEY @"http://wangcai.meme-da.com/web/extract_money.php"
@@ -179,6 +180,9 @@
 #define HTTP_MSG_LIST         @"https://dev.getwangcai.com/0/account/msg_list"
 
 #define HTTP_TASK_SURVEY            @"https://dev.getwangcai.com/0/task/survey"
+
+
+#define HTTP_BAD_RATING            @"https://dev.getwangcai.com/0/task/bad_rating"
 
 #define WEB_EXTRACT_MONEY         @"http://dev.meme-da.com/web/extract_money.php"
 #define WEB_TASK                  @"http://dev.meme-da.com/web/task/app_task.php"

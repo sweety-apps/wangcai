@@ -8,6 +8,7 @@
 
 #import "ComplainViewController.h"
 #import "SettingLocalRecords.h"
+#import "Config.h"
 
 @interface ComplainViewController ()
 
@@ -133,6 +134,20 @@
     return [[value copy] autorelease];
 }
 
+-(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
+    [request release];
+}
+
+- (void) postMessage:(NSString*) name {
+    HttpRequest* request = [[HttpRequest alloc] init:self];
+    
+    NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] init];
+    [dictionary setObject:name forKey:@"offerwall"];
+    [request request:HTTP_BAD_RATING Param:dictionary];
+
+    [dictionary release];
+}
+
 - (IBAction) clickComplain:(id)sender {
     if ( _nCount <= 0 ) {
         UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:@"提示" message:@"您今天的投诉次数已用完" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] autorelease];
@@ -145,6 +160,10 @@
     [SettingLocalRecords selectOfferwall:name];
     [btn setBackgroundImage:[UIImage imageNamed:@"complain_btn_down.png"] forState:UIControlStateDisabled];
     [btn setEnabled:NO];
+    
+    // 上报给服务器
+    [self postMessage:name];
+    //
     
     _nCount --;
     if ( _nCount < 0 ) {

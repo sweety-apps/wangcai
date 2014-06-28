@@ -175,7 +175,7 @@ NSString * macaddress()
     SecTrustRef trust = NULL;
     
     //绑定证书，证书放在Resources文件夹中
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"client" ofType:@"p12"];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"server" ofType:@"crt"];
     
     NSData *PKCS12Data = [NSData dataWithContentsOfFile:path];
     [self extractIdentity:&identity andTrust:&trust fromPKCS12Data:PKCS12Data];
@@ -187,7 +187,7 @@ NSString * macaddress()
 + (BOOL)extractIdentity:(SecIdentityRef *)outIdentity andTrust:(SecTrustRef*)outTrust fromPKCS12Data:(NSData *)inPKCS12Data {
     OSStatus securityError = errSecSuccess;
     
-    CFStringRef password = CFSTR("WangCai@1528"); //证书密码
+    CFStringRef password = CFSTR(""); //证书密码
     const void *keys[] =   { kSecImportExportPassphrase };
     const void *values[] = { password };
     
