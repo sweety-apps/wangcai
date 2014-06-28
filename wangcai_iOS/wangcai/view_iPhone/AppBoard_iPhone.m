@@ -699,7 +699,6 @@ ON_MESSAGE( message )
     return -1;//表示未找到
 }
 - (void) installAppFromRomoteNotification:(NSDictionary*) remoteNotifications {
-    //return;
     [MobClick event:@"remote_notify_install_app" attributes:@{@"current_page":@"推送安装App"}];
     if ( [[remoteNotifications allKeys] containsObject:@"youmi"] )
     {

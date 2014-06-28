@@ -24,6 +24,7 @@
     {
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
+
         _bgView = [[UIView alloc] initWithFrame:self.frame];
         [_bgView setBackgroundColor:[UIColor blackColor]];
         
@@ -58,18 +59,7 @@
 -(void) show
 {
     UIWindow* window = [[UIApplication sharedApplication] keyWindow];
-    NSArray* windowViews = [window subviews];
-    if(windowViews && [windowViews count]>0){
-        UIView* subView = [windowViews objectAtIndex:[windowViews count]-1];
-        for(UIView* aSubView in subView.subviews)
-        {
-            [aSubView.layer removeAllAnimations];
-            
-            
-        }
-        [subView addSubview:self];
-    }
-    
+    [window addSubview:self];
 }
 
 
