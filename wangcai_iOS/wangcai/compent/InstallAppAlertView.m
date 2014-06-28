@@ -25,33 +25,21 @@
         float version = [[[UIDevice currentDevice] systemVersion] floatValue];
         self.backgroundColor = [UIColor clearColor];
         UIImage *bg = [UIImage imageNamed:@"alertbg.png"];
-        //UIImageView *alertBg = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width-bg.size.width/2)/2.f, (self.frame.size.height-bg.size.height/2)/2.f,bg.size.width/2.f, bg.size.height/2.f)];
         UIImageView *alertBg = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width-bg.size.width/2)/2.f, (self.frame.size.height-bg.size.height/2)/2.f,bg.size.width/2.f, bg.size.height/2.f)];
         alertBg.image = bg;
         [self addSubview:alertBg];
-//        UIView *vi = [[UIView alloc]initWithFrame:CGRectMake((self.frame.size.width-bg.size.width/2)/2.f, (self.frame.size.height-bg.size.height/2)/2.f,bg.size.width/2.f, bg.size.height/2.f)];
-//        vi.layer.masksToBounds = YES;
-//        vi.layer.borderWidth  =1;
-//        vi.layer.cornerRadius = 21;
-//        vi.backgroundColor = [UIColor whiteColor];
-//        [vi addSubview:alertBg];
-        [self addSubview:alertBg];
-   //     [vi release];
-        alertBg.alpha = 1.f;
+         [alertBg release];
+
         
-        UIImage *closeimage = [UIImage imageNamed:@"app_tip_close@2x.png"];
+        UIImage *closeimage = [UIImage imageNamed:@"app_tip_close.png"];
         
         UIButton *closebtn = [UIButton buttonWithType:UIButtonTypeCustom];
-       // closebtn.backgroundColor = [UIColor redColor];
-        [closebtn setImage:closeimage forState:UIControlStateNormal];
-        closebtn.frame = CGRectMake(270, version>7.0?110:70, closeimage.size.width/2, closeimage.size.height/2);
+        [closebtn setBackgroundImage:closeimage forState:UIControlStateNormal];
+        closebtn.frame = CGRectMake(270, version>7.0?110:70, closeimage.size.width, closeimage.size.height);
         [closebtn addTarget:target action:cancel forControlEvents:UIControlEventTouchUpInside];
-        
         [self addSubview:closebtn];
        
-        [alertBg release];
-        
-        
+       
         
         UIButton *go = [UIButton buttonWithType:UIButtonTypeCustom];
         UIImage *image = [UIImage imageNamed:@"alertButtonnormal.png"];
@@ -59,6 +47,7 @@
         go.frame = CGRectMake((self.frame.size.width-image.size.width/2)/2.f,version>7.0?360:320, image.size.width/2, image.size.height/2);
         [self addSubview:go];
         [go addTarget:target action:install forControlEvents:UIControlEventTouchUpInside];
+        
         
         UILabel *mo = [[UILabel alloc]initWithFrame:CGRectMake(0, 7, go.frame.size.width, go.frame.size.height-7)];
         mo.text = [NSString stringWithFormat:@"      新装体验            %@元",money];
@@ -82,7 +71,6 @@
         UIImage* cachedImage = [[BeeImageCache sharedInstance] imageForURL:iconurl];
         if (cachedImage != nil)
         {
-            //[game setImage:cachedImage];
             [game setBackgroundImage:cachedImage];
         }
         else
@@ -96,7 +84,7 @@
         [alertBg addSubview:game];
         [game release];
         
-        UILabel *gamename = [[UILabel alloc]initWithFrame:CGRectMake(0, 70, alertBg.frame.size.width, 20)];
+        UILabel *gamename = [[UILabel alloc]initWithFrame:CGRectMake(-3, 70, alertBg.frame.size.width, 20)];
         gamename.backgroundColor = [UIColor clearColor];
         gamename.font = [UIFont boldSystemFontOfSize:20.f];
         [alertBg addSubview:gamename];
@@ -119,39 +107,8 @@
         label.textColor = [UIColor blueColor];
         label.backgroundColor = [UIColor clearColor];
         [label release];
-        //self.alpha = 0.8;
-        [self showAlertAnmation:self];
-       // [self showBackground];
-        //self.alpha = 0.8f;
     }
     return self;
-}
-- (void)hide
-{
-    [self removeFromSuperview];
-}
-- (void)showBackground
-{
-    self.alpha = 0;
-    [UIView beginAnimations:@"fadeIn" context:nil];
-    [UIView setAnimationDuration:0.35];
-    self.alpha = 0.6;
-    [UIView commitAnimations];
-}
--(void) showAlertAnmation :(UIView*)alertView
-{
-    CAKeyframeAnimation * animation;
-    animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    animation.duration = 0.20;
-    animation.removedOnCompletion = YES;
-    animation.fillMode = kCAFillModeForwards;
-    NSMutableArray *values = [NSMutableArray array];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.9, 0.9, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.1, 1.1, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-    animation.values = values;
-    [alertView.layer addAnimation:animation forKey:nil];
-    
 }
 
 @end
