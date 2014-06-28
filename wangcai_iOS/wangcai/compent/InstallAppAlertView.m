@@ -22,6 +22,7 @@
     self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
     if(self)
     {
+        float version = [[[UIDevice currentDevice] systemVersion] floatValue];
         self.backgroundColor = [UIColor clearColor];
         UIImage *bg = [UIImage imageNamed:@"alertbg.png"];
         UIImageView *alertBg = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width-bg.size.width/2)/2.f, (self.frame.size.height-bg.size.height/2)/2.f,bg.size.width/2.f, bg.size.height/2.f)];
@@ -36,6 +37,15 @@
         [closebtn setBackgroundImage:closeimage forState:UIControlStateNormal];
         closebtn.frame = CGRectMake(270, 70, closeimage.size.width, closeimage.size.height);
         [closebtn addTarget:target action:cancel forControlEvents:UIControlEventTouchUpInside];
+        if([[UIScreen mainScreen] bounds].size.height > 480)
+        {
+            if(version < 7.0)
+            {
+                CGRect frame = closebtn.frame;
+                frame.origin.x = 110;
+                closebtn.frame = frame;
+            }
+        }
         [self addSubview:closebtn];
        
        
@@ -44,6 +54,17 @@
         UIImage *image = [UIImage imageNamed:@"alertButtonnormal.png"];
         [go setBackgroundImage:image forState:UIControlStateNormal];
         go.frame = CGRectMake((self.frame.size.width-image.size.width/2)/2.f,320, image.size.width/2, image.size.height/2);
+        
+        
+        if([[UIScreen mainScreen] bounds].size.height > 480)
+        {
+            if(version < 7.0)
+            {
+                CGRect frame = go.frame;
+                frame.origin.x = 360;
+                go.frame = frame;
+            }
+        }
         [self addSubview:go];
         [go addTarget:target action:install forControlEvents:UIControlEventTouchUpInside];
         

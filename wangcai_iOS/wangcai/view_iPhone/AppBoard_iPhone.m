@@ -748,7 +748,8 @@ ON_MESSAGE( message )
                     {
                         destYouMi = [model retain];
                         isfindOne = YES;
-                        NSString *money = [NSString stringWithFormat:@"%f",limit/10.f];
+                         int pay = [[_points objectAtIndex:index] integerValue];
+                        NSString *money = [NSString stringWithFormat:@"%f",pay/10.f];
                         money = [money substringToIndex:3];
                         install = [[InstallAppAlertView alloc]initWithIcon:[model smallIconURL] title:[model name] desc:[model desc] target:self install:@selector(install) cancel:@selector(cancel) money:money];
                         if(custAlert){
@@ -846,8 +847,9 @@ ON_MESSAGE( message )
             {
                 [wapsurl release];
             }
+            int pay = [[_points objectAtIndex:index] integerValue];
             wapsurl = [[dict objectForKey:@"click_url"] retain];
-            NSString *money = [NSString stringWithFormat:@"%f",limit/10.f];
+            NSString *money = [NSString stringWithFormat:@"%f",pay/10.f];
             money = [money substringToIndex:3];
             install = [[InstallAppAlertView alloc]initWithIcon:[dict objectForKey:@"icon"] title:[dict objectForKey:@"title"] desc:[dict objectForKey:@"info"] target:self install:@selector(install) cancel:@selector(cancel) money:money];
             install.tag = 10086;

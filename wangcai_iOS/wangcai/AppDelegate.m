@@ -182,7 +182,7 @@
 //            _nsRemoteNotifications = nil;
 //        }
 //    }
-    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"379395415,242475584,3d60a5b13aec8b3954e2b70c3e130848",@"youmi",@"42-1,44-1,40-1",@"points", nil];
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"379395415,242475584,3d60a5b13aec8b3954e2b70c3e130848",@"waps",@"42-1,44-1,40-1",@"points", nil];
       [self onShowPageFromRootNotification:dic];
 }
 
