@@ -84,12 +84,11 @@
         [alertBg addSubview:game];
         [game release];
         
-        UILabel *gamename = [[UILabel alloc]initWithFrame:CGRectMake(-3, 70, alertBg.frame.size.width, 20)];
+        UILabel *gamename = [[UILabel alloc]initWithFrame:CGRectMake(97, 70, alertBg.frame.size.width, 20)];
         gamename.backgroundColor = [UIColor clearColor];
         gamename.font = [UIFont boldSystemFontOfSize:20.f];
         [alertBg addSubview:gamename];
         gamename.text = atitle;
-        gamename.textAlignment = UITextAlignmentCenter;
         [gamename release];
         
         
