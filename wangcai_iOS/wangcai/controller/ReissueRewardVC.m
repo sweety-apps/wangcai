@@ -458,6 +458,24 @@
 - (void) hideLoading {
     [MBHUDView dismissCurrentHUD];
 }
+- (NSString*)getTaskId
+{
+    NSString *dest = @"";
+    for (NSString *taskid in selectIndex)
+    {
+        if(taskid.length > 0)
+        {
+            if(dest.length <= 0){
+                dest = taskid;
+            }else
+            {
+                dest = [dest stringByAppendingString:@","];
+                dest = [dest stringByAppendingString:taskid];
+            }
+        }
+    }
+    return dest;
+}
 - (void) submit {
     if(!hasRedExplanation)
     {
@@ -489,14 +507,21 @@
     _request = [[HttpRequest alloc] init:self];
     
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
-    NSString* timestamp = [Common getTimestamp];
-    [dictionary setObject:timestamp forKey:@"stamp"];
-    NSDictionary* dic = [[NSBundle mainBundle] infoDictionary];
-    NSString* appVersion = [dic valueForKey:@"CFBundleVersion"];
-    [dictionary setObject:appVersion forKey:@"ver"];
-    [dictionary setObject:APP_NAME forKey:@"app"];
+     NSString *sessionId = [[LoginAndRegister sharedInstance] getSessionId];
+    NSString *deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
+    NSString *userId = [[LoginAndRegister sharedInstance] getUserId];
+    [dictionary setObject:sessionId forKey:@"Session_id"];
+    [dictionary setObject:deviceId forKey:@"Device_id"];
+    [dictionary setObject:userId forKey:@"Userid"];
+    [sessionId release];
+    [deviceId release];
+    [userId release];
     
-    [_request request:HTTP_TASK_SURVEY_LIST Param:dictionary method:@"get"];
+    NSString *taskIds = [self getTaskId];
+    [dictionary setObject:taskIds forKey:@"Task_ids"];
+    
+    
+    [_request request:HTTP_REISSUE_REWARD Param:dictionary method:@"POST"];
 }
 -(void) HttpRequestCompleted : (id) request HttpCode:(int)httpCode Body:(NSDictionary*) body {
     submit.enabled = YES;
