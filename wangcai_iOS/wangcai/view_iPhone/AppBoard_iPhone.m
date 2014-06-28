@@ -17,7 +17,6 @@
 #import "YouMiConfig.h"
 #import "YouMiWall.h"
 #import "Config.h"
-#import "ScreenShots.h"
 #import "HttpRequest.h"
 #import "Common.h"
 #import "Config.h"

@@ -73,8 +73,6 @@
 		71197618192F2E6700059E48 /* InviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71197614192F2E6700059E48 /* InviteViewController.xib */; };
 		71197619192F2E9B00059E48 /* QuestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119760C192F017C00059E48 /* QuestWebViewController.m */; };
 		7119761A192F2EA100059E48 /* QuestWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7119760D192F017C00059E48 /* QuestWebViewController.xib */; };
-		711EFF9F195D5F97004EB4B3 /* ScreenShots.m in Sources */ = {isa = PBXBuildFile; fileRef = 711EFF9E195D5F97004EB4B3 /* ScreenShots.m */; };
-		711EFFA0195D5F97004EB4B3 /* ScreenShots.m in Sources */ = {isa = PBXBuildFile; fileRef = 711EFF9E195D5F97004EB4B3 /* ScreenShots.m */; };
 		711F437B18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */; };
 		711F437C18B4A03400AEE1D5 /* alipay_input@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */; };
 		711F437D18B4A03400AEE1D5 /* phone_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 711F437A18B4A03400AEE1D5 /* phone_input@2x.png */; };
@@ -1717,8 +1715,6 @@
 		71197612192F2E6700059E48 /* InviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteViewController.h; sourceTree = "<group>"; };
 		71197613192F2E6700059E48 /* InviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteViewController.m; sourceTree = "<group>"; };
 		71197614192F2E6700059E48 /* InviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteViewController.xib; sourceTree = "<group>"; };
-		711EFF9D195D5F97004EB4B3 /* ScreenShots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenShots.h; sourceTree = "<group>"; };
-		711EFF9E195D5F97004EB4B3 /* ScreenShots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenShots.m; sourceTree = "<group>"; };
 		711F437918B4A03400AEE1D5 /* alipay_input@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alipay_input@2x.PNG"; sourceTree = "<group>"; };
 		711F437A18B4A03400AEE1D5 /* phone_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_input@2x.png"; sourceTree = "<group>"; };
 		711F438118B4A85B00AEE1D5 /* 10yuan@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10yuan@2x.PNG"; sourceTree = "<group>"; };
@@ -4201,8 +4197,6 @@
 				A66E3A6C1888183E00EB19DE /* Encryption.m */,
 				71420EBF191E327B00376AA9 /* MessageMgr.h */,
 				71420EC0191E327B00376AA9 /* MessageMgr.m */,
-				711EFF9D195D5F97004EB4B3 /* ScreenShots.h */,
-				711EFF9E195D5F97004EB4B3 /* ScreenShots.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -6648,7 +6642,6 @@
 				F3359F7C18882F8000C1E636 /* UserInfoAPI.m in Sources */,
 				F3359F7D18882F8000C1E636 /* Bee_UnitTest.m in Sources */,
 				F3359F7E18882F8000C1E636 /* NSDictionary+BeeExtension.mm in Sources */,
-				711EFFA0195D5F97004EB4B3 /* ScreenShots.m in Sources */,
 				F3359F7F18882F8000C1E636 /* UIView+SwipeGesture.m in Sources */,
 				F3359F8018882F8000C1E636 /* BeeUIQuery+Effects.m in Sources */,
 				F3359F8118882F8000C1E636 /* NSTimer+BeeExtension.mm in Sources */,
@@ -6769,7 +6762,6 @@
 				F3F1879E18543A420098C852 /* Bee_UIRouter.m in Sources */,
 				F3F1873018543A420098C852 /* JSONKit.m in Sources */,
 				F3F189F418543A450098C852 /* AppBoard_iPhone.m in Sources */,
-				711EFF9F195D5F97004EB4B3 /* ScreenShots.m in Sources */,
 				F3F1882018543A430098C852 /* UITextView+UIDataBinding.m in Sources */,
 				F3F189B118543A440098C852 /* NSBundle+BeeExtension.m in Sources */,
 				F3F1883D18543A430098C852 /* Bee_UIDatePicker.m in Sources */,

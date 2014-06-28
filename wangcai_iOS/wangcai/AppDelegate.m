@@ -85,8 +85,6 @@
     [CATransaction commit];
 
     [UIApplication sharedApplication].statusBarHidden = YES;
-    
-    [MobClick startWithAppkey:UMENG_KEY];
 }
 
 - (void)unload
