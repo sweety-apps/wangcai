@@ -68,17 +68,18 @@
         
         BeeUIImageView *game = [[BeeUIImageView alloc]init];
         UIImage* cachedImage = [[BeeImageCache sharedInstance] imageForURL:iconurl];
+         game.contentMode = UIViewContentModeScaleAspectFit;
         if (cachedImage != nil)
         {
             [game setBackgroundImage:cachedImage];
         }
         else
         {
-            [game GET:iconurl useCache:YES];
+            [game GET:iconurl useCache:YES placeHolder:[UIImage imageNamed:@"Icon.png"]];
         }
         
         game.frame = CGRectMake(10, 70, 80, 80);
-        game.contentMode = UIViewContentModeScaleAspectFit;
+       
         
         [alertBg addSubview:game];
         [game release];
