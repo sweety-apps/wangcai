@@ -92,7 +92,7 @@ static WangcaiTaskViewController* _sharedInstance = nil;
     [feedback addTarget:self action:@selector(feedback) forControlEvents:UIControlEventTouchUpInside];
     UIImage *image = [UIImage imageNamed:@"omissionnormal.png"];
     [feedback setBackgroundImage:image forState:UIControlStateNormal];
-    feedback.frame = CGRectMake(240, 10, image.size.width/2.f, image.size.height/2.f);
+    feedback.frame = CGRectMake(230, 10, image.size.width/2.f, image.size.height/2.f);
     [view addSubview:feedback];
     [self.view addSubview:view];
     

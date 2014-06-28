@@ -22,7 +22,6 @@
     self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
     if(self)
     {
-        float version = [[[UIDevice currentDevice] systemVersion] floatValue];
         self.backgroundColor = [UIColor clearColor];
         UIImage *bg = [UIImage imageNamed:@"alertbg.png"];
         UIImageView *alertBg = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width-bg.size.width/2)/2.f, (self.frame.size.height-bg.size.height/2)/2.f,bg.size.width/2.f, bg.size.height/2.f)];
@@ -40,7 +39,7 @@
         if([[UIScreen mainScreen] bounds].size.height > 480)
         {
             CGRect frame = closebtn.frame;
-            frame.origin.y = 110;
+            frame.origin.y = 70+([[UIScreen mainScreen] bounds].size.height-480)/2.f;
             closebtn.frame = frame;
         }
         [self addSubview:closebtn];
@@ -56,7 +55,7 @@
         if([[UIScreen mainScreen] bounds].size.height > 480)
         {
             CGRect frame = go.frame;
-            frame.origin.y = 360;
+            frame.origin.y = 320+([[UIScreen mainScreen] bounds].size.height-480)/2.f;
             go.frame = frame;
         }
         [self addSubview:go];
