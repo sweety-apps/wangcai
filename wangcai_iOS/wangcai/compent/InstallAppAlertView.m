@@ -22,7 +22,6 @@
     self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
     if(self)
     {
-        float version = [[[UIDevice currentDevice] systemVersion] floatValue];
         self.backgroundColor = [UIColor clearColor];
         UIImage *bg = [UIImage imageNamed:@"alertbg.png"];
         UIImageView *alertBg = [[UIImageView alloc] initWithFrame:CGRectMake((self.frame.size.width-bg.size.width/2)/2.f, (self.frame.size.height-bg.size.height/2)/2.f,bg.size.width/2.f, bg.size.height/2.f)];
@@ -35,7 +34,7 @@
         
         UIButton *closebtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [closebtn setBackgroundImage:closeimage forState:UIControlStateNormal];
-        closebtn.frame = CGRectMake(270, version>7.0?110:70, closeimage.size.width, closeimage.size.height);
+        closebtn.frame = CGRectMake(270, 70, closeimage.size.width, closeimage.size.height);
         [closebtn addTarget:target action:cancel forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:closebtn];
        
@@ -44,7 +43,7 @@
         UIButton *go = [UIButton buttonWithType:UIButtonTypeCustom];
         UIImage *image = [UIImage imageNamed:@"alertButtonnormal.png"];
         [go setBackgroundImage:image forState:UIControlStateNormal];
-        go.frame = CGRectMake((self.frame.size.width-image.size.width/2)/2.f,version>7.0?360:320, image.size.width/2, image.size.height/2);
+        go.frame = CGRectMake((self.frame.size.width-image.size.width/2)/2.f,/*version>=7.0?360:*/320, image.size.width/2, image.size.height/2);
         [self addSubview:go];
         [go addTarget:target action:install forControlEvents:UIControlEventTouchUpInside];
         
@@ -84,7 +83,7 @@
         [alertBg addSubview:game];
         [game release];
         
-        UILabel *gamename = [[UILabel alloc]initWithFrame:CGRectMake(97, 70, alertBg.frame.size.width, 20)];
+        UILabel *gamename = [[UILabel alloc]initWithFrame:CGRectMake(100, 70, alertBg.frame.size.width, 20)];
         gamename.backgroundColor = [UIColor clearColor];
         gamename.font = [UIFont boldSystemFontOfSize:20.f];
         [alertBg addSubview:gamename];

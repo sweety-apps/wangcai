@@ -18,5 +18,4 @@
             install:(SEL)install
              cancel:(SEL)cancel
               money:(NSString*)money;
-- (void)hide;
 @end

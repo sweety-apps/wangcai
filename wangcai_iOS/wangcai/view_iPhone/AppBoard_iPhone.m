@@ -762,7 +762,7 @@ ON_MESSAGE( message )
                 }
                 if(!isfindOne)
                 {
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"任务已经被抢光了!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您来晚了,任务已经被抢光了!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
                     [alert show];
                     
                     [alert release];
@@ -862,7 +862,7 @@ ON_MESSAGE( message )
     }
     if(!isfindOne)
     {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"任务已经被抢光了!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您来晚了,任务已经被抢光了!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
     }
