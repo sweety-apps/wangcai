@@ -549,10 +549,12 @@ static LoginAndRegister* _sharedInstance = nil;
 }
 
 - (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
+    /*
     if (DEBUG_PUSH)
     {
         [UtilityFunctions debugAlertView:@"推送测试（正式版不出现）" content:[NSString stringWithFormat:@"[Push] 收到通知, tags:\[{\n%@\n}]\",\n alias:\[{\n%@\n}]\"",tags,alias]];
     }
+     */
 }
 
 -(int) getForceUpdate {

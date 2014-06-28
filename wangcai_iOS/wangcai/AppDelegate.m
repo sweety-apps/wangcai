@@ -151,11 +151,12 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"[Regist Push] Failed, err = %@",error);
-    
+    /*
     if (DEBUG_PUSH)
     {
         [UtilityFunctions debugAlertView:@"推送测试（正式版不出现）" content:[NSString stringWithFormat:@"[Regist Push] Failed, err = %@",error]];
     }
+     */
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
