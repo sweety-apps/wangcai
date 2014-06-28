@@ -100,8 +100,6 @@ static OnlineWallViewController* _sharedInstance;
         
         [MiidiAdWall setUserParam:did];
         
-        [JupengWall setServerUserID:did];
-        
         // 万普
         [AppConnect getConnect:WAPS_ID pid:@"appstore" userID:did];
 #else
