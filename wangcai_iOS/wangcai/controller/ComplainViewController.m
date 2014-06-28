@@ -90,10 +90,10 @@
         for (int i = 0; i < [yesterday count] && i < 3; i ++ ) {
             NSDictionary* tmp = [yesterday objectAtIndex:i];
             NSString* offerwall = [tmp objectForKey:@"offerwall"];
-            NSString* badRate = [tmp objectForKey:@"bad_rate"];
+            int badRate = [[tmp objectForKey:@"bad_rate"] intValue];
             
             NSString* name = [self getTextFromName:offerwall];
-            NSString* text = [NSString stringWithFormat:@"%@ 差评率%@", name, badRate];
+            NSString* text = [NSString stringWithFormat:@"%@ 差评率%.1f%%", name, badRate*1.0 / 100];
             
             UILabel* label = (UILabel*)[self.view viewWithTag:(51+i)];
             [label setText:text];
@@ -104,10 +104,10 @@
         for (int i = 0; i < [lastWeek count] && i < 3; i ++ ) {
             NSDictionary* tmp = [lastWeek objectAtIndex:i];
             NSString* offerwall = [tmp objectForKey:@"offerwall"];
-            NSString* badRate = [tmp objectForKey:@"bad_rate"];
+            int badRate = [[tmp objectForKey:@"bad_rate"] intValue];
             
             NSString* name = [self getTextFromName:offerwall];
-            NSString* text = [NSString stringWithFormat:@"%@ 差评率%@", name, badRate];
+            NSString* text = [NSString stringWithFormat:@"%@ 差评率%.1f%%", name, badRate*1.0 / 100];
             
             UILabel* label = (UILabel*)[self.view viewWithTag:(61+i)];
             [label setText:text];

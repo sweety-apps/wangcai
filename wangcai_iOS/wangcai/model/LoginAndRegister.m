@@ -327,8 +327,8 @@ static LoginAndRegister* _sharedInstance = nil;
                 
                 NSDictionary* _badRatingList = [dict valueForKey:@"bad_rating_list"];
                 if ( _badRatingList != nil ) {
-                    _badRateYesterday = [_badRatingList valueForKey:@"yesterday"];
-                    _badRateLastWeek = [_badRatingList valueForKey:@"last_week"];
+                    _badRateYesterday = [[_badRatingList valueForKey:@"yesterday"] copy];
+                    _badRateLastWeek = [[_badRatingList valueForKey:@"week"] copy];
                 }
                 
                 if ( [[dict allKeys] containsObject:@"umeng_key"] ) {
@@ -337,6 +337,9 @@ static LoginAndRegister* _sharedInstance = nil;
                         [MobClick startWithAppkey:UMENG_KEY];
                     } else {
                         [MobClick startWithAppkey:umengKey];
+                        
+                        NSString* param = [NSString stringWithFormat:@"%d", _inReview];
+                        [MobClick event:@"login" attributes:@{@"param":param}];
                     }
                 } else {
                     [MobClick startWithAppkey:UMENG_KEY];
