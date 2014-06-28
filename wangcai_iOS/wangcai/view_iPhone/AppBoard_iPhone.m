@@ -753,6 +753,7 @@ ON_MESSAGE( message )
                         custAlert = [[UICustomAlertView alloc]init:install];
                         [custAlert show];
                         install.tag = 10010;
+                        [install release];
                         break;
                     }
                 }
@@ -851,12 +852,9 @@ ON_MESSAGE( message )
             money = [money substringToIndex:3];
             install = [[InstallAppAlertView alloc]initWithIcon:[dict objectForKey:@"icon"] title:[dict objectForKey:@"title"] desc:[dict objectForKey:@"info"] target:self install:@selector(install) cancel:@selector(cancel) money:money];
             install.tag = 10086;
-           // [self.view addSubview:install];
-            NSLog(@"%d",[install retainCount]);
             custAlert = [[UICustomAlertView alloc]init:install];
-             NSLog(@"%d",[install retainCount]);
             [custAlert show];
-             NSLog(@"%d",[install retainCount]);
+            [install release];
             break;
         }
     }
