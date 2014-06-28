@@ -167,23 +167,23 @@
             
     [self postNotification:@"applicationDidBecomeActive"];
     
-    if ( _nsRemoteNotifications != nil ) {
-        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-        NSTimeInterval curTime = [dat timeIntervalSince1970]*1000;
-        if ( curTime - _timeRemoteNotifications < 500 ) {
-            // 如果小于1s，认为是通过通知来启动的
-            //
-            [self onShowPageFromRootNotification:_nsRemoteNotifications];
-            
-            [_nsRemoteNotifications release];
-            _nsRemoteNotifications = nil;
-        } else {
-            [_nsRemoteNotifications release];
-            _nsRemoteNotifications = nil;
-        }
-    }
-//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"580765736,242475584,34a0f5715d53f14476f0f0c9e50546f2",@"waps",@"42-1,44-1,40-1",@"points", nil];
-//      [self onShowPageFromRootNotification:dic];
+//    if ( _nsRemoteNotifications != nil ) {
+//        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+//        NSTimeInterval curTime = [dat timeIntervalSince1970]*1000;
+//        if ( curTime - _timeRemoteNotifications < 500 ) {
+//            // 如果小于1s，认为是通过通知来启动的
+//            //
+//            [self onShowPageFromRootNotification:_nsRemoteNotifications];
+//            
+//            [_nsRemoteNotifications release];
+//            _nsRemoteNotifications = nil;
+//        } else {
+//            [_nsRemoteNotifications release];
+//            _nsRemoteNotifications = nil;
+//        }
+//    }
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"type",@"379395415,242475584,3d60a5b13aec8b3954e2b70c3e130848",@"youmi",@"42-1,44-1,40-1",@"points", nil];
+      [self onShowPageFromRootNotification:dic];
 }
 
 -(void) onShowPageFromRootNotification:(NSDictionary*) remoteNotifications {
