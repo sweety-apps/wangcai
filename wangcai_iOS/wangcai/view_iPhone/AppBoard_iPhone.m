@@ -750,9 +750,6 @@ ON_MESSAGE( message )
                         NSString *money = [NSString stringWithFormat:@"%f",pay/10.f];
                         money = [money substringToIndex:3];
                         install = [[InstallAppAlertView alloc]initWithIcon:[model smallIconURL] title:[model name] desc:[model desc] target:self install:@selector(install) cancel:@selector(cancel) money:money];
-                        if(custAlert){
-                            [custAlert release];
-                        }
                         custAlert = [[UICustomAlertView alloc]init:install];
                         [custAlert show];
                         install.tag = 10010;
@@ -792,6 +789,8 @@ ON_MESSAGE( message )
 {
     [MobClick event:@"remote_cancel_install" attributes:@{@"current_page":@"推送安装App"}];
     [custAlert hideAlertView];
+   
+     [custAlert release];
     install = nil;
 }
 - (void)install
@@ -799,20 +798,21 @@ ON_MESSAGE( message )
     if(install.tag == 10010)//有米
     {
         [YouMiWall userInstallApp:destYouMi];
-        [MobClick event:@"remote_click_install" attributes:@{@"current_page":@"推送安装App"}];
 
     }
     if(install.tag == 10086)//waps
     {
         [_wapCustom listOnClick:wapsurl];
-        [MobClick event:@"remote_click_install" attributes:@{@"current_page":@"推送安装App"}];
     }
     
     if(install.tag == 10011)
     {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:wangcaiTask.taskRediectUrl]];
     }
+    [MobClick event:@"remote_click_install" attributes:@{@"current_page":@"推送安装App"}];
     [custAlert hideAlertView];
+    [custAlert release];
+    install = nil;
 }
 //参数:flg为真时,表明正在请求数据;flg为假时,数据请求完成.
 - (void)isLoading:(BOOL)flg {
@@ -852,11 +852,11 @@ ON_MESSAGE( message )
             install = [[InstallAppAlertView alloc]initWithIcon:[dict objectForKey:@"icon"] title:[dict objectForKey:@"title"] desc:[dict objectForKey:@"info"] target:self install:@selector(install) cancel:@selector(cancel) money:money];
             install.tag = 10086;
            // [self.view addSubview:install];
-            if(custAlert){
-                [custAlert release];
-            }
+            NSLog(@"%d",[install retainCount]);
             custAlert = [[UICustomAlertView alloc]init:install];
+             NSLog(@"%d",[install retainCount]);
             [custAlert show];
+             NSLog(@"%d",[install retainCount]);
             break;
         }
     }

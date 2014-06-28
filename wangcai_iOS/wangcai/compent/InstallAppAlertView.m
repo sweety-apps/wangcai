@@ -121,5 +121,9 @@
     }
     return self;
 }
-
+- (void)dealloc
+{
+    [self removeAllSubviews];
+    [super dealloc];
+}
 @end

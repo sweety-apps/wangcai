@@ -38,9 +38,11 @@
         UIImageView *alertBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, alertRect.size.width, alertRect.size.height)];
         alertBg.image = [UIImage imageNamed:@"AlertView_background.png"];
         [_alertView addSubview:alertBg];
+       
         [alertBg release];
         
         [self addSubview:_alertView];
+         [alertView release];
 
         UITapGestureRecognizer* TapGesturRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer)];
         [self addGestureRecognizer:TapGesturRecognizer];
@@ -118,9 +120,16 @@
 
 -(void) removeFromSuperview
 {
+   
     [super removeFromSuperview];
+    
 }
-
+- (void)dealloc
+{
+     [_alertView removeFromSuperview];
+    [_alertView release];
+    [super dealloc];
+}
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self endEditing:YES];
