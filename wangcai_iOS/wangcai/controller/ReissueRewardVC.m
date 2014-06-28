@@ -213,10 +213,10 @@
     if(point.x > 160 ){
         if(path.row*2-1 >= items.count) return;
         CommonTaskInfo *info = [items objectAtIndex:path.row*2-1];
-        taskAppId = info.taskAppId;
+        taskAppId = [NSString stringWithFormat:@"%d",[info.taskId integerValue]];
     }else{
         CommonTaskInfo *info = [items objectAtIndex:path.row*2-2];
-        taskAppId = info.taskAppId;
+        taskAppId = [NSString stringWithFormat:@"%d",[info.taskId integerValue]];
     }
     UITableViewCell *cell = [table cellForRowAtIndexPath:path];
     UIView *view = [cell.contentView viewWithTag:[taskAppId integerValue]+10];
@@ -309,18 +309,18 @@
             [tap release];
             
             CommonTaskInfo *info = [items objectAtIndex:(2*indexPath.row-2)];
-            UIImage *image = [self isRowSelect:info.taskAppId]?[UIImage imageNamed:@"singleselectdown.png"]:[UIImage imageNamed:@"singleselectnormal.png"];
+            UIImage *image = [self isRowSelect:[NSString stringWithFormat:@"%d",[info.taskId integerValue]]]?[UIImage imageNamed:@"singleselectdown.png"]:[UIImage imageNamed:@"singleselectnormal.png"];
             
             UIView *compent = [self compentWithImage:image title:info.taskTitle bgFrame:CGRectMake(20, 5, 135, 20) imageFrame: CGRectMake(0, 0, 20, 20) textFrame:CGRectMake(30, 0, 105, 20) target:self action:@selector(tapAction:)];
-            compent.tag = [info.taskAppId integerValue]+10;
+            compent.tag = [info.taskId integerValue]+10;
             [cell.contentView addSubview:compent];
             if(indexPath.row*2-1 < items.count)
             {
                 CommonTaskInfo *info_bro = [items objectAtIndex:(indexPath.row*2-1)];
-                UIImage *image_bro = [self isRowSelect:info_bro.taskAppId]?[UIImage imageNamed:@"singleselectdown.png"]:[UIImage imageNamed:@"singleselectnormal.png"];
+                UIImage *image_bro = [self isRowSelect:[NSString stringWithFormat:@"%d",[info_bro.taskId integerValue]]]?[UIImage imageNamed:@"singleselectdown.png"]:[UIImage imageNamed:@"singleselectnormal.png"];
                 
                 UIView *compent_bro = [self compentWithImage:image_bro title:info_bro.taskTitle bgFrame:CGRectMake(165, 5, 135, 20) imageFrame: CGRectMake(0, 0, 20, 20) textFrame:CGRectMake(30, 0, 105, 20) target:self action:@selector(tapAction:)];
-                compent_bro.tag = [info_bro.taskAppId integerValue]+10;
+                compent_bro.tag = [info_bro.taskId integerValue]+10;
                 [cell.contentView addSubview:compent_bro];
                 [compent_bro release];
             }
@@ -507,16 +507,7 @@
     _request = [[HttpRequest alloc] init:self];
     
     NSMutableDictionary* dictionary = [[[NSMutableDictionary alloc] init] autorelease];
-     NSString *sessionId = [[LoginAndRegister sharedInstance] getSessionId];
-    NSString *deviceId = [[LoginAndRegister sharedInstance] getDeviceId];
-    NSString *userId = [[LoginAndRegister sharedInstance] getUserId];
-    [dictionary setObject:sessionId forKey:@"Session_id"];
-    [dictionary setObject:deviceId forKey:@"Device_id"];
-    [dictionary setObject:userId forKey:@"Userid"];
-    [sessionId release];
-    [deviceId release];
-    [userId release];
-    
+
     NSString *taskIds = [self getTaskId];
     [dictionary setObject:taskIds forKey:@"Task_ids"];
     
