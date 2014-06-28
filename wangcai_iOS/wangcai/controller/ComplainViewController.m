@@ -9,6 +9,7 @@
 #import "ComplainViewController.h"
 #import "SettingLocalRecords.h"
 #import "Config.h"
+#import "LoginAndRegister.h"
 
 @interface ComplainViewController ()
 
@@ -46,6 +47,9 @@
     
     [_scrollView addSubview:_contentView];
     
+    // 初始化差评榜
+    [self initBadRate];
+    
     int nCount = 3;
     int nTag = 11;
     NSArray* list = [[LoginAndRegister sharedInstance] getOfferwallList];
@@ -78,6 +82,38 @@
     [_labelNum setText:[NSString stringWithFormat:@"%d", nCount]];
 }
 
+- (void) initBadRate {
+    NSArray* yesterday = [[LoginAndRegister sharedInstance] getBadRateYesterday];
+    NSArray* lastWeek = [[LoginAndRegister sharedInstance] getBadRateLastWeek];
+    
+    if ( yesterday != nil ) {
+        for (int i = 0; i < [yesterday count] && i < 3; i ++ ) {
+            NSDictionary* tmp = [yesterday objectAtIndex:i];
+            NSString* offerwall = [tmp objectForKey:@"offerwall"];
+            NSString* badRate = [tmp objectForKey:@"bad_rate"];
+            
+            NSString* name = [self getTextFromName:offerwall];
+            NSString* text = [NSString stringWithFormat:@"%@ 差评率%@", name, badRate];
+            
+            UILabel* label = (UILabel*)[self.view viewWithTag:(51+i)];
+            [label setText:text];
+        }
+    }
+    
+    if ( lastWeek != nil ) {
+        for (int i = 0; i < [lastWeek count] && i < 3; i ++ ) {
+            NSDictionary* tmp = [lastWeek objectAtIndex:i];
+            NSString* offerwall = [tmp objectForKey:@"offerwall"];
+            NSString* badRate = [tmp objectForKey:@"bad_rate"];
+            
+            NSString* name = [self getTextFromName:offerwall];
+            NSString* text = [NSString stringWithFormat:@"%@ 差评率%@", name, badRate];
+            
+            UILabel* label = (UILabel*)[self.view viewWithTag:(61+i)];
+            [label setText:text];
+        }
+    }
+}
 - (NSString*) getTextFromName:(NSString*) name {
     NSString* value = @"";
     

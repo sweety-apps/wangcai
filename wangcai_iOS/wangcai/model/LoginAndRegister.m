@@ -51,6 +51,9 @@ static LoginAndRegister* _sharedInstance = nil;
     self->_aliPay = nil;
     self->_qbiPay = nil;
     
+    self->_badRateYesterday = nil;
+    self->_badRateLastWeek = nil;
+    
     _tipsString = @"";
     
     return self;
@@ -315,6 +318,19 @@ static LoginAndRegister* _sharedInstance = nil;
                 
                 _pollingInterval = [[dict valueForKey:@"polling_interval"] intValue];
                 
+                if ( _badRateLastWeek != nil ) {
+                    [_badRateLastWeek release];
+                }
+                if ( _badRateYesterday != nil ) {
+                    [_badRateYesterday release];
+                }
+                
+                NSDictionary* _badRatingList = [dict valueForKey:@"bad_rating_list"];
+                if ( _badRatingList != nil ) {
+                    _badRateYesterday = [_badRatingList valueForKey:@"yesterday"];
+                    _badRateLastWeek = [_badRatingList valueForKey:@"last_week"];
+                }
+                
                 if ( [[dict allKeys] containsObject:@"umeng_key"] ) {
                     NSString* umengKey = (NSString*)[dict valueForKey:@"umeng_key"];
                     if ( [umengKey length] == 0 ) {
@@ -464,6 +480,14 @@ static LoginAndRegister* _sharedInstance = nil;
             _qbiPay = [(NSArray*)[item objectForKey:@"info"] copy];
         }
     }
+}
+
+-(NSArray*) getBadRateYesterday {
+    return _badRateYesterday;
+}
+
+-(NSArray*) getBadRateLastWeek {
+    return _badRateLastWeek;
 }
 
 -(int) getPollingInterval {

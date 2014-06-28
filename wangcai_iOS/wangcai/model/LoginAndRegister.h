@@ -82,6 +82,9 @@ typedef enum LoginStatus {
     
     NSMutableDictionary* _offwallShow;
     NSMutableArray*      _offwallOrder;
+    
+    NSArray*   _badRateYesterday;
+    NSArray*   _badRateLastWeek;
 }
 
 +(id) sharedInstance;
@@ -160,4 +163,6 @@ typedef enum LoginStatus {
 -(NSArray*) getAlipay;
 -(NSArray*) getQbiPay;
 
+-(NSArray*) getBadRateYesterday;
+-(NSArray*) getBadRateLastWeek;
 @end
