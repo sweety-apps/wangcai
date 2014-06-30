@@ -42,7 +42,7 @@
         [alertBg release];
         
         [self addSubview:_alertView];
-         [_alertView release];
+        // [_alertView release];
 
         UITapGestureRecognizer* TapGesturRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizer)];
         [self addGestureRecognizer:TapGesturRecognizer];
@@ -63,6 +63,7 @@
     UIWindow* window = [[UIApplication sharedApplication] keyWindow];
     [window addSubview:self];
    // [_alertView release];
+
 }
 
 
@@ -127,6 +128,7 @@
 - (void)dealloc
 {
     //[self removeAllSubviews];
+    [_alertView release];
     _alertView = nil;
     [super dealloc];
 }
