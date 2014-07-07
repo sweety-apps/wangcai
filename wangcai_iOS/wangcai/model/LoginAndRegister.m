@@ -21,6 +21,7 @@
 #import "EcomConfig.h"
 #import "QuestViewController.h"
 #import "WangcaiTaskViewController.h"
+#import "AppDelegate.h"
 
 @implementation BalanceInfo
 @synthesize _newBalance;
@@ -344,7 +345,11 @@ static LoginAndRegister* _sharedInstance = nil;
                 } else {
                     [MobClick startWithAppkey:UMENG_KEY];
                 }
-                
+                AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+                if(delegate.isLaunchFromLocalNotification)
+                {
+                    [MobClick event:@"launch_from_notification"];
+                }
                 if ( _pollingInterval < 5 ) {
                     _pollingInterval = 5;
                 }

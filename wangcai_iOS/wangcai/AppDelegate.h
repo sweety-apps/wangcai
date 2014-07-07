@@ -39,5 +39,5 @@
     NSDictionary* _nsRemoteNotifications;
     NSTimeInterval _timeRemoteNotifications;
 }
-
+@property (nonatomic,assign) BOOL isLaunchFromLocalNotification;
 @end

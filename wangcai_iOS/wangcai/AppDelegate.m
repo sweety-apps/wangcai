@@ -55,6 +55,7 @@
 @interface AppDelegate ()
 {
     StartupController* _startupController;
+    
 }
 @property (nonatomic,assign) StartupController* startupController;
 
@@ -104,15 +105,74 @@
                         annotation:annotation wxDelegate:self];
 }
 
+- (void)setLocalNoti
+{
+    UILocalNotification *notification=[[UILocalNotification alloc] init];
+    if (notification!=nil) {
+        NSDate *now=[NSDate new];
+        notification.fireDate=[now dateByAddingTimeInterval:60*60*24*7];//10秒后通知
+        notification.repeatInterval= 0;//循环次数，kCFCalendarUnitWeekday一周一次
+        notification.timeZone=[NSTimeZone defaultTimeZone];
+        notification.soundName= UILocalNotificationDefaultSoundName;//声音，可以换成alarm.soundName = @"myMusic.caf"
+        //去掉下面2行就不会弹出提示框
+        notification.alertBody=@"您已经超过一周没有登录了";//提示信息 弹出提示框
+        notification.alertAction = @"打开";  //提示框按钮
+        notification.hasAction = NO; //是否显示额外的按钮，为no时alertAction消失
+        
+         NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"remindNotLogin" forKey:@"remindNotLogin"];
+        notification.userInfo = infoDict; //添加额外的信息
+         notification.applicationIconBadgeNumber += 1;
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+       
+
+        UILocalNotification *next = [notification copy];
+        next.fireDate = [now dateByAddingTimeInterval:60*60*24];
+        next.repeatInterval = kCFCalendarUnitMinute;
+        [[UIApplication sharedApplication] scheduleLocalNotification:next];
+        [next release];
+    }
+    [notification release];
+}
+-(void)removeLocalPushNotification
+{
+    UIApplication* app=[UIApplication sharedApplication];
+    NSArray* localNotifications=[app scheduledLocalNotifications];
+    
+    if (localNotifications.count > 0) {
+        
+        for (UILocalNotification* notification in localNotifications) {
+            
+            NSDictionary* dic=notification.userInfo;
+            if (dic) {
+                NSString* value=[dic objectForKey:@"remindNotLogin"];
+                if(!value){
+                    value = [dic objectForKey:@"remind"];
+                }
+                if ([value isEqualToString:@"remindNotLogin"]||[value isEqualToString:@"someValue"]) {
+                    [app cancelLocalNotification:notification];
+                    
+                }
+            }
+            
+        }
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [super application:application didFinishLaunchingWithOptions:launchOptions];
-    
+    [self removeLocalPushNotification];
     if ( launchOptions != nil ) {
         NSDictionary* pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         if ( pushNotificationKey ) {
             _nsRemoteNotifications = [pushNotificationKey copy];
             NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
             _timeRemoteNotifications = [dat timeIntervalSince1970]*1000;
+        }
+        UILocalNotification *noti = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+        NSDictionary *info = [noti userInfo];
+        if([[info objectForKey:@"remindNotLogin"] isEqualToString:@"remindNotLogin"])
+        {
+            self.isLaunchFromLocalNotification = YES;
         }
     }
     
@@ -148,6 +208,12 @@
         _timeRemoteNotifications = [dat timeIntervalSince1970]*1000;
     }
 }
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [super applicationDidEnterBackground:application];
+    [self setLocalNoti];
+    
+}
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"[Regist Push] Failed, err = %@",error);
@@ -161,7 +227,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [super applicationDidBecomeActive:application];
-    
+    [self removeLocalPushNotification];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
             
     [self postNotification:@"applicationDidBecomeActive"];
