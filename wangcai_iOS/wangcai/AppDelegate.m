@@ -110,7 +110,7 @@
     UILocalNotification *notification=[[UILocalNotification alloc] init];
     if (notification!=nil) {
         NSDate *now=[NSDate new];
-        notification.fireDate=[now dateByAddingTimeInterval:60*60*24*7];//10秒后通知
+        notification.fireDate=[now dateByAddingTimeInterval:60*60*24*7];
         notification.repeatInterval= 0;//循环次数，kCFCalendarUnitWeekday一周一次
         notification.timeZone=[NSTimeZone defaultTimeZone];
         notification.soundName= UILocalNotificationDefaultSoundName;//声音，可以换成alarm.soundName = @"myMusic.caf"
@@ -129,9 +129,11 @@
         next.fireDate = [now dateByAddingTimeInterval:60*60*24];
         next.repeatInterval = kCFCalendarUnitMinute;
         [[UIApplication sharedApplication] scheduleLocalNotification:next];
+        
         [next release];
+        [notification release];
     }
-    [notification release];
+   
 }
 -(void)removeLocalPushNotification
 {
