@@ -126,7 +126,7 @@
        
 
         UILocalNotification *next = [notification copy];
-        next.fireDate = [now dateByAddingTimeInterval:60*60*24];
+        next.fireDate = [now dateByAddingTimeInterval:60*60*24*8];
         next.repeatInterval = kCFCalendarUnitDay;
         [[UIApplication sharedApplication] scheduleLocalNotification:next];
         
