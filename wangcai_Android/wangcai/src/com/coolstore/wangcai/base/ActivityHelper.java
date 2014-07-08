@@ -20,6 +20,8 @@ import com.coolstore.wangcai.activity.RegisterActivity;
 import com.coolstore.wangcai.activity.RegisterSucceedActivity;
 import com.coolstore.wangcai.activity.SettingActivity;
 import com.coolstore.wangcai.activity.SurveyActivity;
+import com.coolstore.wangcai.activity.SurveyListActivity;
+import com.coolstore.wangcai.activity.SurveyRuleActivity;
 import com.coolstore.wangcai.activity.WebviewActivity;
 import com.coolstore.wangcai.activity.WriteInviteCodeAcitivty;
 
@@ -40,6 +42,7 @@ public class ActivityHelper {
 	public final static String sg_strTitle = "Title";
 	public final static String sg_strInterest = "Interest";
 	public final static String sg_strOrderId = "OrderId";
+	public final static String sg_strTaskId = "TaskID";
 	
     //显示要邀请页面
     public static void ShowInviteActivity(Activity owner) {  
@@ -99,12 +102,20 @@ public class ActivityHelper {
     //好评旺财
     public static void ShowCommentActivity(Activity owner) {
     }
-    //填写个人信息
-    public static void ShowSurveyActivity(Activity owner, int nAge, int nSex, String strInterest) {
+    //问卷调查列表
+    public static void ShowSurveyListActivity(Activity owner) {
+    	Intent it = new Intent(owner, SurveyListActivity.class);
+    	owner.startActivity(it);
+    }
+    public static void ShowSurveyRuleActivity(Activity owner, int nTaskId) {
+    	Intent it = new Intent(owner, SurveyRuleActivity.class);
+    	it.putExtra(sg_strTaskId, nTaskId);
+    	owner.startActivity(it);    	
+    }
+    //问卷调查页面
+    public static void ShowSurveyActivity(Activity owner, int nTaskId) {
     	Intent it = new Intent(owner, SurveyActivity.class);
-    	it.putExtra(sg_strAge, nAge);
-    	it.putExtra(sg_strSex, nSex);
-    	it.putExtra(sg_strInterest, strInterest);
+    	it.putExtra(sg_strTaskId, nTaskId);
     	owner.startActivity(it);
     }
     //
@@ -152,25 +163,25 @@ public class ActivityHelper {
 
     public static void ShowOrderDetailActivity(Activity owner, String strOrderId) {
     	String strUrl = String.format("%s?ordernum=%s", Config.GetOrderDetailUrl(), strOrderId);
-    	ActivityHelper.ShowWebViewActivity(owner, "订单详情", strUrl);
+    	ActivityHelper.ShowSessionWebViewActivity(owner, "订单详情", strUrl);
     }
 
     //显示积分墙
     public static PopupWindow ShowAppWall(Activity owner, View viewParent) {
     	PopupWinAppWall appWall = new PopupWinAppWall(owner);
-    	appWall.showAtLocation(viewParent, Gravity.CENTER, 0, 0);
+    	appWall.showAtLocation(viewParent, Gravity.FILL, 0, 0);
     	return appWall;
     }
  
     public static PopupWindow ShowNewArawdWin(Activity owner, View viewParent, String strAwardName, int nNewAward) {
     	PopupWinNewAward win = new PopupWinNewAward(owner, strAwardName, nNewAward);
-    	win.showAtLocation(viewParent, Gravity.CENTER, 0, 0); 
+    	win.showAtLocation(viewParent, Gravity.FILL, 0, 0); 
     	return win;
     }
  
     public static PopupWindow ShowLevelUpgrateWin(Activity owner, View viewParent, int nLevel, int nLevelChange) {
     	PopupWinLevelUpgrate win = new PopupWinLevelUpgrate(owner, nLevel, nLevelChange);
-    	win.showAtLocation(viewParent, Gravity.CENTER, 0, 0);    	
+    	win.showAtLocation(viewParent, Gravity.FILL, 0, 0);    	
     	return win;
     }
     

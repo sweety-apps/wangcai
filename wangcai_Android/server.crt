@@ -1,0 +1,50 @@
+Certificate:
+    Data:
+        Version: 1 (0x0)
+        Serial Number: 64206 (0xface)
+    Signature Algorithm: md5WithRSAEncryption
+        Issuer: C=CN, ST=guangdong, L=shenzhen, O=CoolStore, OU=WangCai, CN=ssl.getwangcai.com/emailAddress=1528.studio@gmail.com
+        Validity
+            Not Before: Jun 28 02:33:20 2014 GMT
+            Not After : Jun 27 02:33:20 2019 GMT
+        Subject: C=CN, ST=guangdong, O=CoolStore, OU=WangCai, L=shenzhen, CN=ssl.getwangcai.com/emailAddress=1528.studio@gmail.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:dd:ab:08:c7:03:ea:4a:48:c9:88:28:a8:9e:fd:
+                    f4:ba:0d:d0:df:0e:7d:f2:ae:e4:a7:23:fe:83:ad:
+                    07:0e:50:00:4d:20:9a:b6:50:50:24:b0:f7:8f:32:
+                    05:c7:5b:2d:a0:4d:eb:67:6e:c3:03:fd:17:3d:f2:
+                    37:13:95:33:e2:db:0a:22:55:8c:aa:d9:d5:65:cd:
+                    53:ef:1c:42:04:be:a5:b7:8f:1a:0e:09:a5:85:78:
+                    22:d0:56:5e:cd:2a:35:20:47:12:56:64:8b:f8:a3:
+                    22:27:9c:7f:5f:21:49:e8:a6:b4:66:db:8a:a2:84:
+                    ee:4c:ad:a7:9a:90:28:15:69
+                Exponent: 65537 (0x10001)
+    Signature Algorithm: md5WithRSAEncryption
+         63:44:18:f3:ca:78:f6:58:f0:e7:24:3d:4c:e9:b9:52:d6:a2:
+         84:04:4e:a0:a0:68:66:e9:8d:59:65:b6:c7:b7:69:bc:1f:87:
+         2d:81:ff:dd:63:85:19:c7:49:f3:03:25:4d:59:84:76:6d:a1:
+         3d:bf:b4:9a:c0:cb:83:f6:61:c8:47:a7:e0:18:57:7e:cb:c3:
+         a4:63:19:d5:ee:3a:d5:bc:13:e6:cb:c6:68:18:8f:18:a3:a9:
+         47:15:4c:3c:6d:e1:c4:48:fa:3c:6e:40:b5:a0:f9:ad:95:49:
+         61:14:1f:28:93:56:80:aa:e6:3b:60:47:58:16:3a:25:43:7b:
+         17:df
+-----BEGIN CERTIFICATE-----
+MIICrTCCAhYCAwD6zjANBgkqhkiG9w0BAQQFADCBnTELMAkGA1UEBhMCQ04xEjAQ
+BgNVBAgMCWd1YW5nZG9uZzERMA8GA1UEBwwIc2hlbnpoZW4xEjAQBgNVBAoMCUNv
+b2xTdG9yZTEQMA4GA1UECwwHV2FuZ0NhaTEbMBkGA1UEAwwSc3NsLmdldHdhbmdj
+YWkuY29tMSQwIgYJKoZIhvcNAQkBFhUxNTI4LnN0dWRpb0BnbWFpbC5jb20wHhcN
+MTQwNjI4MDIzMzIwWhcNMTkwNjI3MDIzMzIwWjCBnTELMAkGA1UEBhMCQ04xEjAQ
+BgNVBAgMCWd1YW5nZG9uZzESMBAGA1UECgwJQ29vbFN0b3JlMRAwDgYDVQQLDAdX
+YW5nQ2FpMREwDwYDVQQHDAhzaGVuemhlbjEbMBkGA1UEAwwSc3NsLmdldHdhbmdj
+YWkuY29tMSQwIgYJKoZIhvcNAQkBFhUxNTI4LnN0dWRpb0BnbWFpbC5jb20wgZ8w
+DQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAN2rCMcD6kpIyYgoqJ799LoN0N8OffKu
+5Kcj/oOtBw5QAE0gmrZQUCSw948yBcdbLaBN62duwwP9Fz3yNxOVM+LbCiJVjKrZ
+1WXNU+8cQgS+pbePGg4JpYV4ItBWXs0qNSBHElZki/ijIiecf18hSeimtGbbiqKE
+7kytp5qQKBVpAgMBAAEwDQYJKoZIhvcNAQEEBQADgYEAY0QY88p49ljw5yQ9TOm5
+UtaihAROoKBoZumNWWW2x7dpvB+HLYH/3WOFGcdJ8wMlTVmEdm2hPb+0msDLg/Zh
+yEen4BhXfsvDpGMZ1e461bwT5svGaBiPGKOpRxVMPG3hxEj6PG5AtaD5rZVJYRQf
+KJNWgKrmO2BHWBY6JUN7F98=
+-----END CERTIFICATE-----

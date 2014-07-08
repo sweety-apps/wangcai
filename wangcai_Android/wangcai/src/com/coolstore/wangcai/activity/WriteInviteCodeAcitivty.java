@@ -69,7 +69,6 @@ public class WriteInviteCodeAcitivty extends WangcaiActivity implements RequestM
 
 				PopupWindow win = ActivityHelper.ShowNewArawdWin(this, getWindow().getDecorView(), getString(R.string.invite_award_tip_title), 200);
 				win.setOnDismissListener(new PopupWindow.OnDismissListener () {
-
 					@Override
 					public void onDismiss() {
 						WriteInviteCodeAcitivty.this.HideProgressDialog();
@@ -77,6 +76,7 @@ public class WriteInviteCodeAcitivty extends WangcaiActivity implements RequestM
 					}
 				
 				});
+				WangcaiApp.GetInstance().Login();
         		WangcaiApp.GetInstance().ChangeBalance(200);
 
 			}

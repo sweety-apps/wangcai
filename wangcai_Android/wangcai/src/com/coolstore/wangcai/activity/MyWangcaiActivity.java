@@ -28,6 +28,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MyWangcaiActivity extends WangcaiActivity {
@@ -43,19 +44,24 @@ public class MyWangcaiActivity extends WangcaiActivity {
 
 
     @SuppressLint("NewApi") private void InitView() {
-    	UserInfo userInfo = WangcaiApp.GetInstance().GetUserInfo();
+    	final UserInfo userInfo = WangcaiApp.GetInstance().GetUserInfo();
 
         int nCurrentLevel = userInfo.GetCurrentLevel();
- 
+
     	float fPercent = 0.0f;
     	if (userInfo.GetNextLevelExperience() > 0) {
     		fPercent = (float)userInfo.GetCurrentExperience() / (float)userInfo.GetNextLevelExperience();
     	}
-    	int nWidth = findViewById(R.id.progress).getWidth();
-    	nWidth = (int)((float)nWidth * fPercent);
-    	View view = findViewById(R.id.progress_front);
-    	view.setRight(view.getLeft() + nWidth);
+
+    	int nWidth = findViewById(R.id.progress).getLayoutParams().width;
+    	int nFrontWidth = (int)((float)nWidth * fPercent);
     	
+    	View view = findViewById(R.id.progress_front);
+
+    	RelativeLayout.LayoutParams layoutParam = (RelativeLayout.LayoutParams) view.getLayoutParams();  
+    	layoutParam.width = nFrontWidth;
+    	view.setLayoutParams(layoutParam);
+     	
     	String strText;
     	TextView textView; 
     	textView = (TextView)this.findViewById(R.id.level_value);

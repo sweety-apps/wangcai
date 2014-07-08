@@ -2,9 +2,11 @@ package com.coolstore.wangcai.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -25,8 +27,10 @@ public class PopupWinNewAward extends PopupWindow implements OnClickListener{
         m_win = inflater.inflate(R.layout.win_new_award, null);  
 
         this.setContentView(m_win);
-        this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);  
-        this.setHeight(ViewGroup.LayoutParams.MATCH_PARENT); 
+        WindowManager wm = (WindowManager) holderActivity.getSystemService(Context.WINDOW_SERVICE);  
+        Display display = wm.getDefaultDisplay();
+        this.setWidth(display.getWidth());  
+        this.setHeight(display.getHeight()); 
         this.setFocusable(true);  
         //ColorDrawable dw = new ColorDrawable(0x00ffffff);  
         //this.setBackgroundDrawable(dw); 

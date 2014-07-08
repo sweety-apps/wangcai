@@ -1,165 +1,170 @@
 package com.coolstore.wangcai.activity;
 
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+
+import com.coolstore.common.BuildSetting;
+import com.coolstore.common.Util;
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.RequesterFactory;
-import com.coolstore.request.Requesters.Request_UpdateUserInfo;
-import com.coolstore.common.Util;
+import com.coolstore.request.SurveyInfo;
+import com.coolstore.request.Requesters.Request_Survey;
+import com.coolstore.request.Requesters.Request_SurveyList;
 import com.coolstore.wangcai.R;
+import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
-import com.coolstore.common.BuildSetting;
-import com.coolstore.wangcai.base.WangcaiActivity;
+import com.coolstore.wangcai.base.ManagedDialog;
+import com.coolstore.wangcai.dialog.CommonDialog;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RadioGroup;
+public class SurveyActivity extends WebviewActivity implements RequestManager.IRequestManagerCallback{
 
-public class SurveyActivity extends WangcaiActivity implements RequestManager.IRequestManagerCallback, OnClickListener{
-	private final int sg_nMale = 1;
-	private final int sg_nFemale = 2;
-	
-	class InterestInfo {
-		InterestInfo(int nViewId, String strName) {
-			m_nViewId = nViewId;
-			m_strName = strName;
-		}
-		int m_nViewId;
-		String m_strName;
-	}
-
-    //@"leisure_game",@"level_up",@"discount",@"friends",@"trevel",@"compete_game",@"physic_ex",@"beauty", nil] retain];
-	InterestInfo listInterestInfo[] = {
-			new InterestInfo(R.id.userinfo_relaxation_game, "leisure_game"),
-			new InterestInfo(R.id.userinfo_rpg_game, "level_up"),
-			new InterestInfo(R.id.userinfo_ebuy, "discount"),
-			new InterestInfo(R.id.userinfo_social_contact, "friends"),
-			new InterestInfo(R.id.userinfo_travel	, "trevel"),
-			new InterestInfo(R.id.userinfo_competitive_game, "compete_game"),
-			new InterestInfo(R.id.userinfo_sport, "physic_ex"),
-			new InterestInfo(R.id.userinfo_beautify, "beauty"),
-		};
-	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_write_invite_code);        
-
-        InitView();
         
-        
-     }
-    
-    private InterestInfo GetInterestInfoByName(String strName) {
-    	for (InterestInfo info: listInterestInfo) {
-    		if (info.m_strName.equals(strName)) {
-    			return info;
-    		}
-    	}
-    	return null;
+        m_nTaskId = this.getIntent().getIntExtra(ActivityHelper.sg_strTaskId, 0);
+                
+        SurveyInfo info = WangcaiApp.GetInstance().GetSurveyInfo(m_nTaskId);
+        if (info == null) {
+        	return;
+        }
+        SetTitle(getString(R.string.survey_title));
+        SetUrl(info.m_strUrl);
     }
-    private void InitView() {
-    	//this.findViewById(R.id.confirm_button).setOnClickListener(this);
-    	
-    	Intent it = getIntent();
-    	int nAge = it.getIntExtra(ActivityHelper.sg_strAge, 0);
-    	if (nAge > 0 && nAge <= 99) {
-			EditText ageEdit = (EditText)this.findViewById(R.id.age_edit);
-			ageEdit.setText(String.valueOf(nAge));
-    	}
-    	int nSex = it.getIntExtra(ActivityHelper.sg_strSex, 0);
-		RadioGroup group =  (RadioGroup)this.findViewById(R.id.sex_group);
-    	if (nSex == sg_nMale) {
-    		group.check(R.id.male_button);
-       	}
-    	else if (nAge == sg_nFemale) {
-    		group.check(R.id.female_button);    		
-    	}
-    	String strInterest = it.getStringExtra(ActivityHelper.sg_strInterest);
-    	if (BuildSetting.sg_bIsDebug) {
-    		strInterest = "leisure_game|compete_game|beauty";
-    	}
-    	if (!Util.IsEmptyString(strInterest)) {
-    		String[] listInterest = strInterest.split("\\|");
-    		
-    		for (String strName: listInterest) {
-    			InterestInfo info = GetInterestInfoByName(strName);
-    			if (info != null) {
-    				CheckBox checkBox = (CheckBox)this.findViewById(info.m_nViewId);
-    				checkBox.setChecked(true);
-    			}
-    		}
-    	}
-    	
-    }
-    
 
-	public void OnRequestComplete(int nRequestId, Requester req) {
-		if (req instanceof Request_UpdateUserInfo) {
-		}
-	}
-
-	@Override
-	public void onClick(View v) {
-		int nId = v.getId();
-		if (nId == R.id.confirm_button) {
-			//提交
-			RadioGroup group =  (RadioGroup)this.findViewById(R.id.sex_group);
-			//性别
-			int nCheckViewId = group.getCheckedRadioButtonId();
-			int nSex = sg_nMale;
-			if (nCheckViewId == R.id.male_button) {
-				nSex = sg_nMale;
-			}
-			else if (nCheckViewId == R.id.female_button) {
-				nSex = sg_nFemale;
-			}
-			else {
-	    		ActivityHelper.ShowToast(this, R.string.hint_select_sex);
-	    		return;				
-			}
-			
-			//年龄
-			EditText ageEdit = (EditText)this.findViewById(R.id.age_edit);
-			String strAge = ageEdit.getText().toString();
-			int nAge = 0;
-			try {
-				nAge = Integer.valueOf(strAge);
-				if (Util.IsEmptyString(strAge) || nAge <= 0 || nAge > 99) {
-		    		ActivityHelper.ShowToast(this, R.string.hint_select_age);
-		    		return;					
-				}
-			}catch (Exception e) {
-	    		ActivityHelper.ShowToast(this, R.string.hint_select_age);
-	    		return;				
-			}
-
-			//兴趣爱好
-			StringBuffer stringBuffer = new StringBuffer();
-	    	for (InterestInfo info: listInterestInfo) {
-	    		CheckBox button = (CheckBox)this.findViewById(info.m_nViewId);
-	    		if (button.isChecked()) {
-	    			if (stringBuffer.length() > 0) {
-	    				stringBuffer.append("|");
-	    			}
-	    			stringBuffer.append(info.m_strName);
+    @Override
+    protected boolean OnNavigate(String strUrl)  {
+    	if (super.OnNavigate(strUrl)) {
+    		return true;
+    	}
+	    if (strUrl.contains("/wangcai_js/alert_loading")) {
+	    	String strShow = GetUrlKeyValue(strUrl, "show");
+	    	if (strShow.equals("1")) {
+		    	String strInfo = GetUrlKeyValue(strUrl, "info");
+		        m_progressDialog = ActivityHelper.ShowLoadingDialog(this, strInfo);	    		
+	    	}
+	    	else {
+	    		if (m_progressDialog != null) {
+	    			m_progressDialog.dismiss();
+	    			m_progressDialog = null;
 	    		}
 	    	}
-	    	if (stringBuffer.length() <= 0) {
-	    		ActivityHelper.ShowToast(this, R.string.hint_select_interest);
-	    		return;
+	    }
+	    else if (strUrl.contains("/wangcai_js/commit")) {
+	    	ArrayList<Util.StringPair> listParams = ParseUrlParams(strUrl);
+	    	if (listParams == null || listParams.isEmpty()) {
+	    		return true;
 	    	}
-	    	
+	    	JSONObject jsonObject = new JSONObject(); 
+	    	for (Util.StringPair res : listParams) {
+	    		try {
+					jsonObject.put(res.m_strName, res.m_strValue);
+				} catch (JSONException e) {
+				}
+	    	} 
+	    	String strSurveyText = jsonObject.toString();
+
 			RequestManager requestManager = RequestManager.GetInstance();
-			Request_UpdateUserInfo updateInfoReq = (Request_UpdateUserInfo)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_UpdateUserInfo);
-			updateInfoReq.SetAge(nAge);
-			updateInfoReq.SetSex(nSex);
-			updateInfoReq.SetInterest(stringBuffer.toString());
-			requestManager.SendRequest(updateInfoReq, true, this);
+			Request_Survey request = (Request_Survey)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_Survey);
+			request.SetSurveyId(m_nTaskId);
+			request.SetSurveyData(strSurveyText);
+			requestManager.SendRequest(request, true, this);
+
+			m_progressDialog = ActivityHelper.ShowLoadingDialog(this);
+			m_progressDialog.show();
+	    }
+	    else {
+	    	return false;
+	    }
+    	return true;
+    }
+
+	@Override
+	public void OnRequestComplete(int nRequestId, Requester req) {
+		if (m_progressDialog != null) {
+			m_progressDialog.dismiss();
+			m_progressDialog = null;
+		}
+		if (req instanceof Request_Survey) {
+			if (req.GetResult() != 0) {
+				Util.ShowRequestErrorMsg(this, req.GetMsg());
+			}
+			else {
+				WangcaiApp.GetInstance().RequestSurveyInfo();
+    			if (m_commitSucceedDialog == null) {
+    				m_commitSucceedDialog = new CommonDialog(this);
+    				RegisterDialog(m_commitSucceedDialog);
+    			}
+    			m_commitSucceedDialog.SetInfo(getString(R.string.survey_commit_succeed_title), getString(R.string.survey_commit_succeed_text), 
+    					getString(R.string.survey_commit_succeed_button_text), null);
+    			m_commitSucceedDialog.Show();	
+			}
 		}
 	}
 
+	public void OnDialogFinish(ManagedDialog dlg, int inClickedViewId) {
+		int nDialogId = dlg.GetDialogId();
+		if (m_commitSucceedDialog != null && nDialogId == m_commitSucceedDialog.GetDialogId()) {
+			if (inClickedViewId == DialogInterface.BUTTON_POSITIVE) {
+				finish();
+			}	
+		}
+	}
+    private Util.StringPair ParseKeyValue(String strText) {
+    	int nPos = strText.indexOf("=");
+    	if (nPos < 0) {
+    		return null;
+    	}
+    	
+    	String strName = strText.substring(0, nPos);
+    	String strValue = strText.substring(nPos + 1, strText.length());
+    	return new Util.StringPair(strName, strValue);
+    }
+    private ArrayList<Util.StringPair> ParseUrlParams(String strUrl) {
+    	ArrayList<Util.StringPair> listParams = new ArrayList<Util.StringPair>();
+    	
+    	int nBeginPos = strUrl.indexOf("?");
+    	if (nBeginPos < 0) {
+        	return listParams;
+    	}
+    	
+    	nBeginPos++;
+    	while (true) {
+    		int nPos = strUrl.indexOf("&", nBeginPos);
+    		if (nPos < 0) {
+    			String strText = strUrl.substring(nBeginPos, strUrl.length());
+    			Util.StringPair res = ParseKeyValue(strText);
+    			if (res != null) {
+    				listParams.add(res);
+    			}
+    			break;
+    		}
+    		
+			String strText = strUrl.substring(nBeginPos, nPos);
+			Util.StringPair res = ParseKeyValue(strText);
+			if (res != null) {
+				listParams.add(res);
+			}
+			nBeginPos = nPos + 1;
+    	}
+ 
+    	
+    	return listParams;
+    }
+    
+    
+    private ProgressDialog m_progressDialog;
+    private CommonDialog m_commitSucceedDialog = null;
+    private int m_nTaskId = 0;
 }

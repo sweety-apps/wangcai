@@ -4,22 +4,19 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONObject;
 
 import android.content.Context;
 
-import com.coolstore.common.Config;
 import com.coolstore.request.Requester;
 
 public class Request_DownloadFile extends Requester{
 
 	public Request_DownloadFile() {
 		m_bRaw = true;
+		m_nMaxRetryTimes = 2;
 	}
 	
     @Override

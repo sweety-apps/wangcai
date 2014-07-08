@@ -9,9 +9,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.PopupWindow;
 
@@ -27,8 +29,11 @@ public class PopupWinLevelUpgrate extends PopupWindow implements OnClickListener
 
         this.setContentView(m_appWin);
         //Resources r = m_ownerActivity.getResources(); 
-        this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);  
-        this.setHeight(ViewGroup.LayoutParams.MATCH_PARENT); 
+
+        WindowManager wm = (WindowManager) holderActivity.getSystemService(Context.WINDOW_SERVICE);  
+        Display display = wm.getDefaultDisplay();
+        this.setWidth(display.getWidth() + 20);  
+        this.setHeight(display.getHeight() + 20); 
         this.setFocusable(true);  
   
         String strText = String.format(holderActivity.getString(R.string.level_value_label), nLevel);

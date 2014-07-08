@@ -1,15 +1,13 @@
 package com.coolstore.wangcai.activity;
 
-import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
-import com.coolstore.request.ExchangeInfo;
+import com.coolstore.request.ExchangeListInfo;
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.RequesterFactory;
 import com.coolstore.request.UserInfo;
 import com.coolstore.request.Requesters.Request_GetExchangeCode;
-import com.coolstore.request.Requesters.Request_GetExchangeList;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
@@ -34,7 +32,7 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exchage_gift);        
-
+       
         InitView();
      }
     
@@ -54,14 +52,16 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
    
     	ViewHelper.SetStateViewBkg(findViewById(R.id.task_detail), this, R.drawable.jiaoyi, R.drawable.jiaoyi_sel);
     	
-    	Request_GetExchangeList req = (Request_GetExchangeList)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_GetExchangeList);
-    	req.SetAppName(BuildSetting.sg_strAppName);
-    	req.SetVersion(BuildSetting.sg_strVersion);
-    	req.SetTimeStamp(String.valueOf(System.currentTimeMillis()));
-    	RequestManager.GetInstance().SendRequest(req, false, this);
 
-        m_progressDialog = ActivityHelper.ShowLoadingDialog(this);
-        
+    	WangcaiApp app = WangcaiApp.GetInstance();
+    	m_exchangeListInfo = app.GetExchangeListInfo();
+    	if (m_exchangeListInfo == null) {
+    		app.RequestExchangeListInfo();
+    		m_progressDialog = ActivityHelper.ShowLoadingDialog(this);
+    	}
+    	else {
+    		UpdateItemList();
+    	}
       	
     	if (!WangcaiApp.GetInstance().GetUserInfo().HasBindPhone()) {
     		ViewStub stub = (ViewStub) findViewById(R.id.bind_phone_tip);  
@@ -78,6 +78,33 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
     	}
     }
 
+    private void UpdateItemList() {
+    	ViewGroup parentView = (ViewGroup)this.findViewById(R.id.item_list);
+    	parentView.removeAllViews();
+
+		int nCount = m_exchangeListInfo.GetExchangeItemCount();
+		for (int i = 0; i < nCount; i++) {
+			ExchangeListInfo.ExchangeItem item = m_exchangeListInfo.GetExchangeItem(i);
+			AddItem(parentView, item.m_strName, item.m_strIconUrl, item.m_strName, item.m_nPrice, item.m_nRemainCount);
+		}    	
+    }
+
+	@Override
+	public void OnExchangeListRequestComplete(int nVersion, int nResult, String strMsg){	
+		if (m_progressDialog != null) {
+			m_progressDialog.dismiss();
+			m_progressDialog = null;
+		}
+		if (nResult == 0) {
+	    	WangcaiApp app = WangcaiApp.GetInstance();
+	    	m_exchangeListInfo = app.GetExchangeListInfo();
+    		UpdateItemList();
+		} 
+		else {
+			Util.ShowRequestErrorMsg(this, strMsg);
+		}
+	}
+	
 	public void OnRequestComplete(int nRequestId, Requester req) {
 		if (m_progressDialog != null) {
 			m_progressDialog.dismiss();
@@ -85,23 +112,7 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
 		}
 
 		int nResult = req.GetResult();
-		if (req instanceof Request_GetExchangeList) {
-			if (nResult == 0) {
-		    	ViewGroup parentView = (ViewGroup)this.findViewById(R.id.item_list);
-
-		    	Request_GetExchangeList detailReq = (Request_GetExchangeList)req;
-		    	m_exchangeInfo = detailReq.GetExchangeInfo();
-				int nCount = m_exchangeInfo.GetExchangeItemCount();
-				for (int i = 0; i < nCount; i++) {
-					ExchangeInfo.ExchangeItem item = m_exchangeInfo.GetExchangeItem(i);
-					AddItem(parentView, item.m_strName, item.m_strIconUrl, item.m_strName, item.m_nPrice, item.m_nRemainCount);
-				}
-			} 
-			else {
-				Util.ShowRequestErrorMsg(this, req.GetMsg());
-			}
-		}
-		else if (req instanceof Request_GetExchangeCode) {
+		if (req instanceof Request_GetExchangeCode) {
 			//Request_GetExchangeCode detailReq = (Request_GetExchangeCode)req;
 			if (nResult == 0) {				
 				//¼õÓà¶î
@@ -160,9 +171,9 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
 //		int nBalance = userInfo.GetBalance();
 		
 		m_selectedExchangeItem= null;
-		int nCount = m_exchangeInfo.GetExchangeItemCount();
+		int nCount = m_exchangeListInfo.GetExchangeItemCount();
 		for (int i = 0; i < nCount; i++) {
-			ExchangeInfo.ExchangeItem item = m_exchangeInfo.GetExchangeItem(i);
+			ExchangeListInfo.ExchangeItem item = m_exchangeListInfo.GetExchangeItem(i);
 			if (item.m_strName.equals(strItemName)) {
 				m_selectedExchangeItem = item;
 				break;
@@ -198,8 +209,8 @@ public class ExchageGiftActivity extends ManagedDialogActivity implements Exchag
     }
 
     private ProgressDialog m_progressDialog = null;
-    private ExchangeInfo m_exchangeInfo = null;
-    private ExchangeInfo.ExchangeItem m_selectedExchangeItem = null;
+    private ExchangeListInfo m_exchangeListInfo = null;
+    private ExchangeListInfo.ExchangeItem m_selectedExchangeItem = null;
     private CommonDialog m_hintExchangeSucceedDialog = null;
     private HintBindPhoneDialog m_hintBindPhoneDialog = null;
     private ExtractHintDialog m_hintExtractDialog = null;

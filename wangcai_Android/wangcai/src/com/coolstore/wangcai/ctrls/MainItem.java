@@ -1,5 +1,6 @@
 package com.coolstore.wangcai.ctrls;
 
+import com.coolstore.request.TaskListInfo;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.R.id;
 import com.coolstore.wangcai.R.layout;
@@ -14,12 +15,12 @@ public class MainItem extends ItemBase
 		super(strItemName);
 	}
 
-	public View Create(Context context, int nItemIconId, String strTitle, String strTip, int nMoneyIconId, Boolean bComplete) {
+	public View Create(Context context, int nItemIconId, String strTitle, String strTip, int nMoney, Boolean bComplete) {
 		super.CreateView(context, R.layout.ctrl_main_item);
-		InitView(nItemIconId, strTitle, strTip, nMoneyIconId, bComplete);
+		InitView(nItemIconId, strTitle, strTip, GetMoneyIconId(nMoney), bComplete);
 		return m_viewRoot;
 	}
-	
+
 	private void InitView(int nItemIconId, String strTitle, String strTip, int nMoneyIconId, Boolean bComplete) {
 		ViewHelper.SetIconId(m_viewRoot, R.id.main_item_icon, nItemIconId);
 		ViewHelper.SetTextStr(m_viewRoot, R.id.main_item_title, strTitle);
@@ -36,7 +37,31 @@ public class MainItem extends ItemBase
 			ViewHelper.SetIconId(m_viewRoot, R.id.main_item_money_icon, nMoneyIconId);
 		}
 	}
-	
+
+	   private int GetMoneyIconId(int nMoney) {
+		   	int nIconId = R.drawable.package_icon_many;
+		   	switch (nMoney) {
+		   	case 10:
+		   		nIconId = R.drawable.package_icon_1mao;
+		   		break;
+		   	case 50:
+		   		nIconId = R.drawable.package_icon_1mao;
+		   		break;
+		   	case 100:
+		   		nIconId = R.drawable.package_icon_1;
+		   		break;
+		   	case 200:
+		   		nIconId = R.drawable.package_icon_2;
+		   		break;
+		   	case 300:
+		   		nIconId = R.drawable.package_icon_3;
+		   		break;
+		   	case 800:
+		   		nIconId = R.drawable.package_icon_8;
+		   		break;
+		   	}
+		   	return nIconId;
+	   }
 	
 }
 

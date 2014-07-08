@@ -3,15 +3,16 @@ package com.coolstore.request;
 import java.util.ArrayList;
 
 public class AppWallConfig {
-	public final static String sg_strMopan =  "mopan";
-	public final static String sg_strJupeng = "jupeng";
-	public final static String sg_strMiidi = "miidi"; 
-	public final static String sg_strDomob = "domob"; 
-	public final static String sg_strPunchbox = "punchbox"; 
-	public final static String sg_strMobsmar = "mobsmar"; 
-	public final static String sg_strLimei = "limei";
-	public final static String sg_strYoumi =  "youmi";
-    
+	public final static String sg_strMopan =  "mopan";			//磨盘	<不允许安卓网赚类>
+	public final static String sg_strJupeng = "jupeng";			//巨鹏	<量小,停止合作>
+	public final static String sg_strMiidi = "miidi"; 					//米迪
+	public final static String sg_strDomob = "domob";			//多盟 	<停止合作>
+	public final static String sg_strPunchbox = "punchbox"; 	//触控
+	public final static String sg_strMobsmar = "mobsmar";	 	//指盟
+	public final static String sg_strLimei = "limei";					//力美
+	public final static String sg_strYoumi =  "youmi";				//有米	
+	public final static String sg_strAnwo =  "anwo";				//安沃
+	public final static String sg_strWanpu =  "wanpu";			//万普
 	
 	private final static int sg_nHide = 0;
 	//private final static int sg_nVisible = 1;

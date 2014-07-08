@@ -6,33 +6,22 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.SecureRandom;
+import java.security.KeyStore;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
-
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+import javax.net.ssl.TrustManagerFactory;
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.IdGenerator;
 import com.coolstore.common.LogUtil;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.common.Util;
-
+import com.coolstore.wangcai.WangcaiApp;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.AsyncTask;
 
 public class RequestManager {
@@ -60,45 +49,34 @@ public class RequestManager {
 		void OnRequestComplete(int nRequestId, Requester req);
 	}
 	
-	
-	public void Initialize(InputStream caInput) {
+	void InitSSLContext(Context context) {
+
 		// Load CAs from an InputStream
 		// (could be from a resource or ByteArrayInputStream or ...)
-		/*
-		try {
-			CertificateFactory cf = CertificateFactory.getInstance("X.509");
-			// From https://www.washington.edu/itconnect/security/ca/load-der.crt
-			java.security.cert.Certificate ca = null;
-			try {
-			    ca = cf.generateCertificate(caInput);
-			} catch(Exception ex) {
-				String strMsg = ex.toString();
-				String strTemp  = strMsg + "xxxx";
-			    return ;
-			}
-			finally {
-			    caInput.close();
-			}
-	
-			// Create a KeyStore containing our trusted CAs
-			String keyStoreType = KeyStore.getDefaultType();
-			KeyStore keyStore = KeyStore.getInstance(keyStoreType);
-			keyStore.load(null, null);
-			keyStore.setCertificateEntry("ca", ca);
-	
-			// Create a TrustManager that trusts the CAs in our KeyStore
+		InputStream inputStream = null;
+        try {
+        	inputStream = context.getAssets().open("wangcai.bks"); 
+        	KeyStore  keyStore = KeyStore.getInstance("BKS", "BC"); 
+			keyStore.load(inputStream, "pw12306".toCharArray());
 			String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
 			TrustManagerFactory tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
 			tmf.init(keyStore);
-	
-			// Create an SSLContext that uses our TrustManager
 			m_sslContext = SSLContext.getInstance("TLS");
 			m_sslContext.init(null, tmf.getTrustManagers(), null);
 		}catch(Exception ex) {
-			String strMsg = ex.toString();
-			String strTemp  = strMsg + "xxxx";
 		}
-		*/
+		if (inputStream != null) {
+			try {
+				inputStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void Initialize(InputStream caInput) {
+		InitSSLContext(WangcaiApp.GetInstance().GetContext());
 	}
 	private Map<String, String> GetSessionData() {
 		Map<String, String> mapData = new HashMap<String, String>();
@@ -120,8 +98,9 @@ public class RequestManager {
 		req.SetId(nRequestId);
 		RequestRecord pRecord = new RequestRecord(nRequestId, req, pCallback);
 		Map<String, String> mapData = GetSessionData();
+		Requester.RequestInfo reqInfo = pRecord.m_requester.GetRequestInfo();
 		if (!pRecord.m_requester.IsRaw() &&  mapData.size() > 0) {
-			pRecord.m_requester.GetRequestInfo().AddData(mapData);
+			reqInfo.AddData(mapData);
 		}
         new RequestTask().execute(pRecord); 
 		return nRequestId;
@@ -133,7 +112,7 @@ public class RequestManager {
 				SystemInfo.GetPhoneModel(), 
 				SystemInfo.GetNetworkType(), 
 				BuildSetting.sg_strAppName, 
-				BuildSetting.sg_strVersion, 
+				SystemInfo.GetVersion(), 
 				SystemInfo.GetIp());
 
 		//strCookie = "iPhone 5s_7.0.4; os=android; net=wifi; app=wangcai; ver=2.2; local_ip=10.66.149.88";
@@ -145,22 +124,31 @@ public class RequestManager {
 		@Override
 		protected RequestRecord doInBackground(RequestRecord... params) {
 			//todo 会不会有多个?
-			RequestRecord reqRecord = DoRequest(params[0]);
+			RequestRecord reqRecord = params[0];
+			DoRequest(reqRecord);
 			return reqRecord;
 		}
 		//background
-		private RequestRecord DoRequest(RequestRecord reqRecord) {
+		private void DoRequest(RequestRecord reqRecord) {
+			int nMaxRetryTimes = reqRecord.m_requester.GetMaxRetryTimes();
+			while (!SendRequest(reqRecord) && --nMaxRetryTimes > 0) {
+			}
+		}
+		
+		@SuppressLint("DefaultLocale") private boolean SendRequest(RequestRecord reqRecord) {
             HttpURLConnection connection = null;
+			Requester req = reqRecord.m_requester;
 			try {
-				Requester req = reqRecord.m_requester;
+				req.OnPreSend();
+				
 				Requester.RequestInfo requestInfo = req.GetRequestInfo();
                 String strUrl = requestInfo.m_strUrl;
 				URL url = new URL(strUrl);
 
-				if (strUrl.toLowerCase().contains("https://")) {
-	                SSLContext sc = SSLContext.getInstance("TLS"); 
-	                sc.init(null, new TrustManager[]{new HttpsHelper.MyTrustManager()}, new SecureRandom());
-	                HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory()); 
+				if (strUrl.toLowerCase(Locale.US).contains("https://")) {
+	                //SSLContext sc = SSLContext.getInstance("TLS"); 
+	                //sc.init(null, new TrustManager[]{new HttpsHelper.MyTrustManager()}, new SecureRandom());
+	                HttpsURLConnection.setDefaultSSLSocketFactory(m_sslContext.getSocketFactory()); 
 	                HttpsURLConnection.setDefaultHostnameVerifier(new HttpsHelper.MyHostnameVerifier());
 					connection = (HttpsURLConnection)url.openConnection(); 
 				}
@@ -168,10 +156,10 @@ public class RequestManager {
 					connection = (HttpURLConnection)url.openConnection(); 
 				}
 
-				connection.setConnectTimeout(10 * 1000);
+				connection.setConnectTimeout(16 * 1000);
 				if (!Util.IsEmptyString(requestInfo.m_strCookie)) {
                 	connection.addRequestProperty("Cookie", requestInfo.m_strCookie);
-                }else if (!req.IsRaw()){//todo
+                }else if (!req.IsRaw()){
                 	connection.addRequestProperty("Cookie", GetCookie());
                 }
  
@@ -189,7 +177,7 @@ public class RequestManager {
 				InputStream inputStream = connection.getInputStream();
 				//hook了, 返回
 				if (reqRecord.m_requester.HookRequestComplete(inputStream)) {
-					return reqRecord;
+					return true;
 				}
 				
 				//读数据
@@ -225,15 +213,15 @@ public class RequestManager {
 						int nRespCode = connection.getResponseCode();
 						String strClassName = reqRecord.m_requester.getClass().toString();
 						LogUtil.LogWangcai("Request  getResponseCode(%d), Name(%s)", nRespCode, strClassName);
-						int i = 0;
-					} catch (IOException e) {
+					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
 				reqRecord.m_requester.Parse(null);
+				return false;
 			}
-			return reqRecord;
+			return true;
 		}
 
         @Override  

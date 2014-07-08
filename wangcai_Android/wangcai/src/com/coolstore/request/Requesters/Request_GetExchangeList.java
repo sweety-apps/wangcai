@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 import com.coolstore.common.Config;
 import com.coolstore.common.Util;
-import com.coolstore.request.ExchangeInfo;
+import com.coolstore.request.ExchangeListInfo;
 import com.coolstore.request.Requester;
 
 public class Request_GetExchangeList extends Requester{
@@ -29,7 +29,7 @@ public class Request_GetExchangeList extends Requester{
     @Override
 	public boolean ParseResponse(JSONObject rootObject) {
     	try {
-    		m_exchangeInfo = new ExchangeInfo();
+    		m_exchangeInfo = new ExchangeListInfo();
 			JSONArray jsonArray = rootObject.getJSONArray("exchange_list");
 			int nListSize = jsonArray.length();
 			for (int i = 0; i < nListSize; ++i) {
@@ -48,7 +48,7 @@ public class Request_GetExchangeList extends Requester{
 		}
     	return true;
     }
-    public ExchangeInfo GetExchangeInfo() {
+    public ExchangeListInfo GetExchangeInfo() {
     	return m_exchangeInfo;
     }
     public void SetTimeStamp(String strTimeStamp) {
@@ -64,5 +64,5 @@ public class Request_GetExchangeList extends Requester{
     private String m_strTimestamp;
     private String m_strVersion;
     private String m_strAppName;
-    private ExchangeInfo m_exchangeInfo;
+    private ExchangeListInfo m_exchangeInfo;
 }

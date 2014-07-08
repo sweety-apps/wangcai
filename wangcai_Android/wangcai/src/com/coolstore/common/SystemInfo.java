@@ -3,9 +3,13 @@ package com.coolstore.common;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
+
 import org.apache.http.conn.util.InetAddressUtils;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
@@ -136,9 +140,21 @@ public class SystemInfo {
 			return "";
 		}	
 	}
-	private static String ms_strDeviceId;
+	public static String GetVersion() {
+		if (ms_strVersionName == null){
+			try {
+				PackageManager pm = m_AppContext.getPackageManager();
+				 
+				PackageInfo pinfo = pm.getPackageInfo(m_AppContext.getPackageName(), PackageManager.GET_CONFIGURATIONS);
+				ms_strVersionName = pinfo.versionName;
+			} catch (Exception e) {
+				return "0.0.5";
+			}
+		}
+		return ms_strVersionName;
+	}
+	private static String ms_strVersionName;
 	private static String ms_strMacAddress;
 	private static String ms_strPhoneNumber;
-	private static String ms_strPhoneModel;
 	private static Context m_AppContext;
 }

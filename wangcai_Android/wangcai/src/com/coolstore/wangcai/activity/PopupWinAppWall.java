@@ -5,16 +5,12 @@ import java.util.ArrayList;
 import net.miidiwall.SDK.AdWall;
 import net.miidiwall.SDK.IAdWallShowAppsNotifier;
 import net.youmi.android.offers.OffersManager;
-import cn.domob.data.OErrorInfo;
-import cn.domob.data.OManager;
 
 import com.coolstore.request.AppWallConfig;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.AppWallHelper;
-import com.jpmob.sdk.wall.JupengWallConnector;
-import com.jpmob.sdk.wall.JupengWallListener;
 import com.punchbox.ads.AdRequest;
 import com.punchbox.ads.OfferWallAd;
 import com.punchbox.exception.PBException;
@@ -29,10 +25,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
@@ -52,17 +50,13 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
         LayoutInflater inflater = (LayoutInflater) holderActivity  
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
         m_appWin = inflater.inflate(R.layout.win_app_wall, null);  
-        
-        //DisplayMetrics metric = new DisplayMetrics();
-        //holderActivity.getWindowManager().getDefaultDisplay().getMetrics(metric);
-        
+
         this.setContentView(m_appWin);
-        this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);  
-        this.setHeight(ViewGroup.LayoutParams.MATCH_PARENT); 
-        this.setFocusable(true);  
-        //ColorDrawable dw = new ColorDrawable(0x00ffffff);  
-        //this.setBackgroundDrawable(dw);  
-  
+        WindowManager wm = (WindowManager) holderActivity.getSystemService(Context.WINDOW_SERVICE);  
+        Display display = wm.getDefaultDisplay();
+        this.setWidth(display.getWidth() + 0);  
+        this.setHeight(display.getHeight() + 0); 
+        this.setFocusable(true); 
         AppWallConfig appWallConfig = WangcaiApp.GetInstance().GetAppWallConfig();
         if (appWallConfig != null) {
         	InitView(appWallConfig);
@@ -72,7 +66,6 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     }  
     
     private void InitView(AppWallConfig appWallConfig) {
-    	int nCount = appWallConfig.GetWallCount();
     	ViewGroup defaultPanel = (ViewGroup)m_appWin.findViewById(R.id.app_wall_button_container);
     	ViewGroup morePanel = (ViewGroup)m_appWin.findViewById(R.id.more_panel_button_container);
 
@@ -81,30 +74,21 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     	TextView textView = (TextView)m_appWin.findViewById(R.id.text);
     	textView.setText(charSequence);
     	
-    	
-    	//点击应用墙
-    	OnClickListener linstener = new OnClickListener() {
-            public void onClick(View v) {
-            	int nId = v.getId();
-            	for (WallInfo wallInfo:m_listViisibleWalls) {
-            		if (wallInfo.m_nId == nId) {
-            			if (wallInfo.m_appWall != null) {
-            				wallInfo.m_appWall.Show();
-            				break;
-            			}
-            		}
-            	}
-                dismiss();
-            }
-        };
-
         //创建按钮
         Resources res = m_ownerActivity.getResources();
         int nTopMargin = res.getDimensionPixelSize(R.dimen.offer_wall_button_margin);
  
+        ArrayList<AppWallConfig.AppWallInfo> listAppWallInfo = new ArrayList<AppWallConfig.AppWallInfo>();
+        listAppWallInfo.add(new AppWallConfig.AppWallInfo(AppWallConfig.sg_strWanpu, 1));
+        listAppWallInfo.add(new AppWallConfig.AppWallInfo(AppWallConfig.sg_strYoumi, 1));
+        listAppWallInfo.add(new AppWallConfig.AppWallInfo(AppWallConfig.sg_strMiidi, 3));
+        listAppWallInfo.add(new AppWallConfig.AppWallInfo(AppWallConfig.sg_strAnwo, 3));
+        
         int nLastId1 = 0, nLastId2 = 0;
+    	int nCount = appWallConfig.GetWallCount();
+    	nCount = listAppWallInfo.size();
     	for (int i = 0; i < nCount; ++i) {
-    		AppWallConfig.AppWallInfo info = appWallConfig.GetAppWallInfo(i);
+    		AppWallConfig.AppWallInfo info = listAppWallInfo.get(i);
     		if (!info.IsVisible()) {
     			continue;
     		}
@@ -148,6 +132,7 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     		m_appWin.findViewById(R.id.more_button).setVisibility(View.GONE);
     	}
     }
+ 
     private void SetRecommand(ViewGroup parentView, Button button) {
     	int nButtonId = button.getId();
     	ImageView imageView = new ImageView(m_ownerActivity);
@@ -156,15 +141,12 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
         		ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.ALIGN_TOP, nButtonId);
-        //layoutParams.addRule3(RelativeLayout.ALIGN_BOTTOM, nButtonId);
         layoutParams.addRule(RelativeLayout.ALIGN_RIGHT, nButtonId);
 
-        //Resources res = m_ownerActivity.getResources();
-        //int nButtonHeight = res.getDimensionPixelSize(R.dimen.app_wall_button_height);
-        //int nMargin = res.getDimensionPixelSize(R.dimen.app_wall_recommand_right_margin);
         layoutParams.setMargins(0, -4, -4, 0);
     	parentView.addView(imageView, layoutParams);
     }
+ 
     private Button CreateButton(WallInfo wallInfo) {
     	Button button = new Button(m_ownerActivity);
     	button.setId(wallInfo.m_nId);
@@ -175,7 +157,8 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     	button.setGravity(Gravity.CENTER);
     	return button;
     }
-  
+
+    //触控. 有米  万普  米迪  安沃 (点入没有积分墙)
     private WallInfo GetWallInfo(String strName) {
     	AppWallHelper.AppWall wall = null;
     	int nResId = 0;
@@ -190,28 +173,36 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     		nStringId = R.string.app_wall_youmi_text;
     		wall = new AppWallHelper.YoumiAppWall(m_ownerActivity);
     	}
-    	/*
-    	else if (strName.equals(AppWallConfig.sg_strMopan)) {					//磨盘
-    		nResId = R.drawable.app_tip_domob;
-    		//wall = new AppWallHelper.				//磨盘todo
-    	}
-    	else if (strName.equals(AppWallConfig.sg_strJupeng)) {			//巨鹏
-    		nResId = R.drawable.app_tip_jupeng;
-    		wall = new AppWallHelper.JupengAppWall(m_ownerActivity);
-    	}
     	else if (strName.equals(AppWallConfig.sg_strMiidi)) {				//米迪
-    		nResId = R.drawable.app_tip_miidi;
+    		nResId = R.drawable.app_wall_midi;
+    		nStringId = R.string.app_wall_midi_text;
     		wall = new AppWallHelper.MidiAppWall(m_ownerActivity);
     	}
+    	else if (strName.equals(AppWallConfig.sg_strWanpu)) {			//万普
+    		nResId = R.drawable.app_wall_wanpu;
+    		nStringId = R.string.app_wall_wanpu_text;
+    		wall = new AppWallHelper.WanpuAppWall(m_ownerActivity);
+    	}
+    	/*
+    	else if (strName.equals(AppWallConfig.sg_strMopan)) {					//磨盘		<不允许安卓网赚类>
+    		nResId = R.drawable.app_wall_mopan;
+    		nStringId = R.string.app_wall_mopan_text;
+    		wall = new AppWallHelper.MopanAppWall(m_ownerActivity);
+    	}
+    	else if (strName.equals(AppWallConfig.sg_strJupeng)) {			//巨鹏		<量小,停止合作>
+    		nResId = R.drawable.app_wall_jupeng;
+    		nStringId = R.string.app_wall_jupeng_text;
+    		wall = new AppWallHelper.JupengAppWall(m_ownerActivity);
+    	}
     	else if (strName.equals(AppWallConfig.sg_strDomob)) {			//多盟
-    		nResId = R.drawable.app_tip_domob;
+    		nResId = R.drawable.app_wall_domob;
+    		nStringId = R.string.app_wall_domob_text;
     		wall = new AppWallHelper.DuomengAppWall(m_ownerActivity);
     	}
-    	else if (strName.equals(AppWallConfig.sg_strMobsmar)) {		//指盟
-    		nResId = R.drawable.app_tip_mobsmar;
-    	}
-    	else if (strName.equals(AppWallConfig.sg_strLimei)) {			//力美
-    		nResId = R.drawable.app_tip_limei;
+    	else if (strName.equals(AppWallConfig.sg_strAnwo)) {			//安沃
+    		nResId = R.drawable.app_wall_anwo;
+    		nStringId = R.string.app_wall_anwo_text;
+    		wall = new AppWallHelper.AnwoAppWall(m_ownerActivity);
     	}
     	*/
     	else {

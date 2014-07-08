@@ -1,7 +1,5 @@
 package com.coolstore.wangcai;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 
 import com.coolstore.common.Util;
 
@@ -13,7 +11,7 @@ import android.text.format.Time;
 
 public class ConfigCenter {
 	private final static String sg_strConfigName = "WangcaiConfig";
-	private final static String sg_strHasSignInKey = "HasSignIn";
+	private final static String sg_strLastSignInDate = "LastSignInDate";
 	private final static String sg_strHasClickMenu = "HasClickMenu";
 	private final static String sg_strShouldReceiveMsg = "ShouldReceiveMsg";
 	private final static String sg_strShouldPlaySound = "ShouldPlaySound";
@@ -32,27 +30,26 @@ public class ConfigCenter {
 	public void Initialize(Context context) {
 		m_sharedPreference = context.getSharedPreferences(sg_strConfigName, Context.MODE_PRIVATE);
 	}
+	private String GetCurrentDateString() {
+		Time time = new Time();
+		time.setToNow(); 
+		return String.format("%d%d", time.year, time.yearDay);
+	}
 	public void SetHasSignInToday() {
 		Editor editor = m_sharedPreference.edit();
-		editor.putString(sg_strHasSignInKey, String.valueOf(System.currentTimeMillis()));
+		String strCurrentDate = GetCurrentDateString();
+		editor.putString(sg_strLastSignInDate, strCurrentDate);
 		editor.commit();
 	}
 	public boolean HasSignInToday() {
-		String strTime =  m_sharedPreference.getString(sg_strHasSignInKey, "");
-		if (Util.IsEmptyString(strTime)) {
+		String strLastDate =  m_sharedPreference.getString(sg_strLastSignInDate, "");
+		if (Util.IsEmptyString(strLastDate)) {
 			return false;
 		}
 		
 		//上次抽奖时间
-		long nLastTime  = Long.parseLong(strTime);	
-
-		Time time = new Time();
-
-		long nCurrentTime = time.toMillis(false);
-
-		long nDif = (time.hour * 3600 + time.minute * 60 + time.second) * 1000;
-		long nTodayBeginTime = nCurrentTime - nDif;		//今天0点0分的时间
-		return nLastTime < nTodayBeginTime || nLastTime > nCurrentTime;
+		String strCurrentDate = GetCurrentDateString();	
+		return strCurrentDate.equals(strLastDate);
 	}
 	public boolean HasClickMenu() {
 		return m_sharedPreference.getBoolean(sg_strHasClickMenu, false);
@@ -89,6 +86,5 @@ public class ConfigCenter {
 		return Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.coolstore.wangcai";
 	}
 	
-	private SharedPreferences m_sharedPreference;
-	private ArrayList<WeakReference<ConfigCenterEvent>> m_listEventListener = new ArrayList<WeakReference<ConfigCenterEvent>>(); 
+	private SharedPreferences m_sharedPreference = null; 
 }

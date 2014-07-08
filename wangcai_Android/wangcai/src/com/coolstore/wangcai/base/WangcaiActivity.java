@@ -6,6 +6,7 @@ import com.coolstore.common.LogUtil;
 import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -33,21 +34,22 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
     	WangcaiApp.GetInstance().SetForceGround(false);
     	m_bVisible = false;
 
-    	JPushInterface.onPause(this);
+    	//JPushInterface.onPause(this);
+    	MobclickAgent.onPause(this);
 		super.onPause();
 	}
 	protected void onResume() {
 		WangcaiApp app = WangcaiApp.GetInstance();
 		app.SetForceGround(true);
-		app.SetLastActivity(this);
 		m_bVisible = true;
-    	JPushInterface.onResume(this);
+    	//JPushInterface.onResume(this);
     	int nPendingPurse = app.GetPendingPurse();
 		LogUtil.LogNewPurse("onResume PendindPurse(%d)", nPendingPurse);
     	if (nPendingPurse > 0) {
 			ShowPurseTip(nPendingPurse, getString(R.string.new_app_award_tip_title)); 
 			app.ResetPendingPurse();
     	}
+    	MobclickAgent.onResume(this);
 		super.onResume();
 	}
 	
@@ -99,6 +101,14 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 		}
 	}
 	public void OnLevelUpgrate(int nLevelChanged) {
+	}
+
+	@Override
+	public void OnSurveyRequestComplete(int nVersion, int nResult, String strMsg) {		
+	}
+	
+	@Override
+	public void OnExchangeListRequestComplete(int nVersion, int nResult, String strMsg){		
 	}
 	
 	protected boolean m_bVisible = false;

@@ -31,6 +31,7 @@ import com.coolstore.wangcai.base.ManagedDialogActivity;
 import com.coolstore.wangcai.base.PushReceiver;
 import com.coolstore.wangcai.ctrls.ItemBase;
 import com.coolstore.wangcai.ctrls.MainItem;
+import com.coolstore.wangcai.dialog.CommonDialog;
 import com.coolstore.wangcai.dialog.HintBindPhoneDialog;
 import com.coolstore.wangcai.dialog.HintTaskLevelDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -46,7 +47,6 @@ import android.content.IntentFilter;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,6 +63,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 																				TimerManager.TimerManagerCallback{
 
 	private final static int sg_nUpdateBalanceElapse = 60; 
+	private final static int sg_nMaxAnimationTime = 1400;
 	
     private final static int sg_ItemIdBase = 1818;
     private final static int sg_MyWangcai = sg_ItemIdBase + 0;
@@ -129,6 +130,9 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
         if (!ConfigCenter.GetInstance().HasSignInToday()) {
         	findViewById(R.id.lottery_dot_image).setVisibility(View.VISIBLE);
         }
+        else {
+        	findViewById(R.id.lottery_dot_image).setVisibility(View.GONE);        	
+        }
     }
     CanvasTransformer mTransformer = new CanvasTransformer() {
     	@Override
@@ -181,6 +185,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
             	m_pullRefreshScrollView.scrollTo(0, 0);
             } 
         }, 10);
+    	
     	
     	//提取现金按钮
     	this.findViewById(R.id.extract_cash).setOnClickListener(this);
@@ -258,6 +263,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 	}
 	public void OnRequestComplete(int nRequestId, Requester req) {
 		if (req instanceof Request_GetUserInfo) {
+			/*
 			//请求以前的调查问卷
 			Request_GetUserInfo getUserReq = (Request_GetUserInfo)req;
 			int nResult = getUserReq.GetResult();
@@ -272,6 +278,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 				strInterest = getUserReq.GetInterest();
 			}
 			ActivityHelper.ShowSurveyActivity(this, nAge, nSex, strInterest);
+			*/
 		}
 		else if (req instanceof Request_Share) {
 			int nResult = req.GetResult();
@@ -348,13 +355,16 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 		if (BuildSetting.sg_bIsRelease) {
 			WangcaiApp app = WangcaiApp.GetInstance();
 			TaskListInfo.TaskInfo taskInfo = app.GetTaskListInfo().GetTaskInfoByType(nTaskType);
+			if (taskInfo != null && TaskListInfo.IsComplete(taskInfo)) {
+				return;
+			}
 			if (taskInfo != null) {
 				//判断等级是否达到任务要求
 				int nCurrentLevel = app.GetUserInfo().GetCurrentLevel();
 				if (nCurrentLevel < taskInfo.m_nLevel) {
 
 					if (m_hintTaskLevelDialog == null) {
-						m_hintTaskLevelDialog = new HintTaskLevelDialog(this, nCurrentLevel);
+						m_hintTaskLevelDialog = new HintTaskLevelDialog(this, taskInfo.m_nLevel);
 						RegisterDialog(m_hintTaskLevelDialog);
 					}
 					m_hintTaskLevelDialog.Show();
@@ -381,12 +391,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			break;
 		case TaskListInfo.TaskTypeOfferWall:
 			//积分墙
-			//ActivityHelper.ShowExtractSucceed(this, "xxsdf", "234324U234LKJLSDF23423423423fsgfsSFS234234");
-			//ActivityHelper.ShowRegisterActivity(this);
-			
-			ActivityHelper.ShowAppWall(this, findViewById(R.id.main_wnd));
-			//PopupWinLevelUpgrate appWall = new PopupWinLevelUpgrate(this, 4, 200);
-	    	//appWall.showAtLocation(findViewById(R.id.main_wnd), Gravity.CENTER, 0, 0);
+			ActivityHelper.ShowAppWall(this, this.getWindow().getDecorView());
 			break;
 		case TaskListInfo.TaskTypeUserInfo:
 			//填写个人信息
@@ -461,6 +466,9 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			oks.show(this.getApplicationContext());			
 		
 			break;
+		case TaskListInfo.TaskTypeQuestion:
+			ActivityHelper.ShowSurveyListActivity(this);
+			break;
 		case TaskListInfo.TaskTypeUpgrade:
 		case sg_MyWangcai:
 			//我的旺财
@@ -526,12 +534,23 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 		if (m_nUpdateBalanceTimerId != 0) {
 			return;
 		}
-		m_nUpdateBalanceTimerId = TimerManager.GetInstance().StartTimer(sg_nUpdateBalanceElapse, this);
+		int nAnimationTimes = Math.abs(m_nNewBalance - m_nCurrentBalance);
+		int nTimeElapse = sg_nUpdateBalanceElapse;
+		if (sg_nUpdateBalanceElapse * nAnimationTimes > sg_nMaxAnimationTime) {
+			nTimeElapse = sg_nMaxAnimationTime / nAnimationTimes;
+			if (nTimeElapse == 0) {
+				nTimeElapse = 1;
+			}
+		}
+		m_nUpdateBalanceTimerId = TimerManager.GetInstance().StartTimer(nTimeElapse, this);
 	}
 	private void StopBalanceUpdateTimer() {
 		if (m_nUpdateBalanceTimerId != 0) {
 			TimerManager.GetInstance().StopTimer(m_nUpdateBalanceTimerId);
 			m_nUpdateBalanceTimerId = 0;
+
+			m_nCurrentBalance = 0;
+			m_nNewBalance = 0;
 		}
 	}
 	
@@ -553,20 +572,17 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 		if (nCurrentBalance == nNewBalance) {
 			return;
 		}
-		if (m_nNewBalance >= nCurrentBalance) {
-			m_nNewBalance = nNewBalance;
-		}
-		else {
+		if (m_nCurrentBalance == 0) {
 			m_nCurrentBalance = nCurrentBalance;
-			m_nNewBalance = nNewBalance;
 		}
+		m_nNewBalance = nNewBalance;
 		if (IsVisible()) {
 			AnimaUpdateBalance();
 		}
 		super.OnBalanceUpdate(nCurrentBalance, nNewBalance);
 	}
-	private int m_nCurrentBalance = 0;
-	private int m_nNewBalance = 0;
+	private int m_nCurrentBalance = 0;		//只用在余额动画
+	private int m_nNewBalance = 0;			//只用在余额动画
 	
 	private void RefreshTaskList() {
     	ViewGroup viewTaskList = (ViewGroup)findViewById(R.id.tasks_list_container);
@@ -603,6 +619,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 	    	//case TaskListInfo.TaskTypeCommetWangcai:	没有好评旺财
 	    	case TaskListInfo.TaskTypeUpgrade:
 	    	case TaskListInfo.TaskTypeShare:
+	    	case TaskListInfo.TaskTypeQuestion:
 	    		bAdd = true;
 	    		break;
    	}
@@ -632,42 +649,21 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
    	case TaskListInfo.TaskTypeCommetWangcai:
    		nIconId = R.drawable.main_rate_app_cell_icon;
    		break;
-   	}
-   	return nIconId;
-   }
-   private int GetMoneyIconId(TaskListInfo.TaskInfo taskInfo) {
-   	int nIconId = R.drawable.package_icon_many;
-   	switch (taskInfo.m_nMoney) {
-   	case 10:
-   		nIconId = R.drawable.package_icon_1mao;
-   		break;
-   	case 50:
-   		nIconId = R.drawable.package_icon_1mao;
-   		break;
-   	case 100:
-   		nIconId = R.drawable.package_icon_1;
-   		break;
-   	case 200:
-   		nIconId = R.drawable.package_icon_2;
-   		break;
-   	case 300:
-   		nIconId = R.drawable.package_icon_3;
-   		break;
-   	case 800:
-   		nIconId = R.drawable.package_icon_8;
+   	case TaskListInfo.TaskTypeQuestion:
+   		nIconId = R.drawable.quest_icon;
    		break;
    	}
    	return nIconId;
    }
-   private void InsertTaskItem(ViewGroup parentView, String strItemName, int nIconId, String strTitle, String strTip, int nMoneyIconId, Boolean bComplete) {
+   private void InsertTaskItem(ViewGroup parentView, String strItemName, int nIconId, String strTitle, String strTip, int nMoney, Boolean bComplete) {
 		MainItem mainItem = new MainItem(strItemName);
-		View itemView = mainItem.Create(getApplicationContext(), nIconId, strTitle, strTip, nMoneyIconId, bComplete);
+		View itemView = mainItem.Create(getApplicationContext(), nIconId, strTitle, strTip, nMoney, bComplete);
 		mainItem.SetClickEventLinstener(this);
 		parentView.addView(itemView);
    }
    private void InsertTaskItem(ViewGroup mainClient, TaskListInfo.TaskInfo taskInfo) {
    		InsertTaskItem(mainClient, String.valueOf(taskInfo.m_nTaskType), GetItemIcon(taskInfo), 
-   		taskInfo.m_strTitle, taskInfo.m_strDescription, GetMoneyIconId(taskInfo), TaskListInfo.IsComplete(taskInfo));
+   		taskInfo.m_strTitle, taskInfo.m_strDescription, taskInfo.m_nMoney, TaskListInfo.IsComplete(taskInfo));
    }
 
     @Override
@@ -713,7 +709,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 		public void onReceive(Context context, Intent intent) {
             LogUtil.LogPush("MainActivity  receive broadcast(%s)", intent.getAction());
 			if (PushReceiver.PushMessageReceiveAction.equals(intent.getAction())) {
-              int nPushType = intent.getIntExtra(PushReceiver.sg_nPushType, PushReceiver.nPushType_Custom);
+              //int nPushType = intent.getIntExtra(PushReceiver.sg_nPushType, PushReceiver.nPushType_Custom);
               int nMessageType =  intent.getIntExtra(PushReceiver.sg_nPushMessageType, PushReceiver.nMessageType_NewAward);
               String strTitle = intent.getStringExtra(PushReceiver.sg_strPushTitle);
               String strText = intent.getStringExtra(PushReceiver.sg_strPushText);  
@@ -744,4 +740,5 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private int m_nUpdateBalanceTimerId = 0;
     private PullToRefreshScrollView m_pullRefreshScrollView = null;
     private boolean m_bShowCompleteTask = false;
+    private CommonDialog m_hintMsgDialog = null;
 }

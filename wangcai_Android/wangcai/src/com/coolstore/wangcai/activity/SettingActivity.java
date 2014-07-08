@@ -2,6 +2,7 @@ package com.coolstore.wangcai.activity;
 
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Config;
+import com.coolstore.common.SystemInfo;
 import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
@@ -37,7 +38,7 @@ public class SettingActivity extends WangcaiActivity {
     	m_soundItem = CreateItem(viewParent, R.drawable.setting_bell, getString(R.string.setting_sournd_title), getString(R.string.setting_sournd_text), true);
     	m_soundItem.SetButtonCheck(config.ShouldPlaySound());
     	
-    	String strText = String.format(getString(R.string.setting_version_title), BuildSetting.sg_strVersion);
+    	String strText = String.format(getString(R.string.setting_version_title), SystemInfo.GetVersion());
     	SettingItem item = CreateItem(viewParent, R.drawable.about2, strText, getString(R.string.setting_version_text), false);
     	item.SetSubTextColor(Color.rgb(28, 28, 255));
     	item.GetTextView().setOnClickListener(new OnClickListener() {

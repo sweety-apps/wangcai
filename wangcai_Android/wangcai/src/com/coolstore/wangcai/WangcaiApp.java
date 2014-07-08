@@ -3,11 +3,13 @@ package com.coolstore.wangcai;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 
 import net.youmi.android.AdManager;
 import net.youmi.android.offers.OffersManager;
 import cn.jpush.android.api.JPushInterface;
 import cn.sharesdk.framework.ShareSDK;
+import cn.waps.AppConnect;
 
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Config;
@@ -17,26 +19,22 @@ import com.coolstore.common.SystemInfo;
 import com.coolstore.common.TimerManager;
 import com.coolstore.common.Util;
 import com.coolstore.request.AppWallConfig;
+import com.coolstore.request.ExchangeListInfo;
 import com.coolstore.request.ExtractInfo;
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.RequesterFactory;
+import com.coolstore.request.SurveyInfo;
 import com.coolstore.request.TaskListInfo;
 import com.coolstore.request.UserInfo;
+import com.coolstore.request.Requesters.Request_GetExchangeList;
 import com.coolstore.request.Requesters.Request_Login;
 import com.coolstore.request.Requesters.Request_Poll;
-import com.coolstore.wangcai.activity.MainActivity;
-import com.coolstore.wangcai.base.PushReceiver;
+import com.coolstore.request.Requesters.Request_SurveyList;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.telephony.TelephonyManager;
 
 public class WangcaiApp implements 
@@ -49,6 +47,8 @@ public class WangcaiApp implements
 		void OnLevelChanged(int nLevel, int nLevelChange);
 		boolean OnGetAppAward(int nAward);
 		void OnLevelUpgrate(int nLevelChanged);
+		void OnSurveyRequestComplete(int nVersion, int nResult, String strMsg);
+		void OnExchangeListRequestComplete(int nVersion, int nResult, String strMsg);
 	}
 	public class TaskInfo {
 		public int m_nId;
@@ -65,11 +65,15 @@ public class WangcaiApp implements
 		return m_sWangcaiApp;
 	}
 
-	
 	public void Initialize(Context context) {
 		//日志
 		SLog.setPath(ConfigCenter.GetInstance().GetCachePath() +  "/log","log","log");
-		SLog.setPolicy(SLog.LOG_ALL_TO_FILE);
+		if (LogUtil.sg_bLogToFile) {
+			SLog.setPolicy(SLog.LOG_ALL_TO_FILE);
+		}
+		else {
+			SLog.setPolicy(SLog.LOG_ERROR_TO_FILE);
+		}
 		
 		m_AppContext =  context;
 		
@@ -81,13 +85,7 @@ public class WangcaiApp implements
 		
 		//请求管理器
 		RequestManager.GetInstance().Initialize(context.getResources().openRawResource(R.raw.cert));
-		
-		//byte[] byteSign = Util.GetSignKey(context);
-		//String strMd51 = Util.GetMd5(byteSign);
-		//String strMd52 = Util.GetMd5(byteSign.toString());
-		//String strMd53 = Util.GetMd5(byteSign.toString().getBytes());
-		//LogUtil.LogWangcai("Md51  (%s)  (%s)  (%s)", strMd51, strMd52, strMd53);
-		
+				
 		LogUtil.LogWangcai("Imei(%s) Serial(%s)  androidId(%s)  Mac(%s)", SystemInfo.GetImei(), SystemInfo.GetSerial(), SystemInfo.GetAndroidId(), SystemInfo.GetMacAddress());
 	}
 
@@ -95,6 +93,9 @@ public class WangcaiApp implements
     	ShareSDK.initSDK(m_AppContext);
 
 		String strDeviceId = m_userInfo.GetDeviceId();
+	
+		//万普
+		AppConnect.getInstance("a506304b84012e95edada70ccfcc7044", "default", m_AppContext);
 		
 		//有米
         AdManager.getInstance(m_AppContext).init(Config.sg_strYoumiAppId, Config.sg_strYoumiAppSecret, false);
@@ -136,6 +137,16 @@ public class WangcaiApp implements
 			eventLinstener.OnBalanceUpdate(nCurrentBalance, nNewBalance);
 		}
 	}
+	public void RequestExchangeListInfo() {
+    	Request_GetExchangeList req = (Request_GetExchangeList)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_GetExchangeList);
+    	req.SetAppName(BuildSetting.sg_strAppName);
+    	req.SetVersion(SystemInfo.GetVersion());
+    	req.SetTimeStamp(String.valueOf(System.currentTimeMillis()));
+    	RequestManager.GetInstance().SendRequest(req, false, this);		
+	}
+	public ExchangeListInfo GetExchangeListInfo() {
+		return m_exchangeListInfo;
+	}
 	public void OnRequestComplete(int nRequestId, Requester req) {
 		if (req instanceof Request_Login) {
 			int nResult = req.GetResult();
@@ -143,7 +154,7 @@ public class WangcaiApp implements
 			if (nResult == 0){
 				Request_Login loginRequester = (Request_Login)req;
 				m_bNeedForceUpdate = loginRequester.GetNeedForceUpdate();
-				m_strHintMsg = loginRequester.GetMsg();
+				m_strHintMsg = loginRequester.GetTipString();
 				m_userInfo = loginRequester.GetUserInfo();
 				LogUtil.LogUserInfo("CurrentLevel(%d)  Balance(%d)  TotalIncome(%d)   HasBindPhone(%b)  OfferWallIncome(%d)", 
 						m_userInfo.GetCurrentLevel(), 
@@ -158,20 +169,48 @@ public class WangcaiApp implements
 				m_nPollElapse = loginRequester.GetPollElapse();
 
 				if (m_nPollTimerId == 0) {
-					m_nPollTimerId = TimerManager.GetInstance().StartTimer(GetPollElapse() * 1000, this);
+					m_nPollTimerId = TimerManager.GetInstance().StartTimer(60 * 3 * 1000, this);
 				}
 			}
 			ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners = GetEventListClone();
 			for (WeakReference<WangcaiAppEvent> weakPtr: listEventLinsteners) {
 				WangcaiAppEvent eventLinstener = weakPtr.get();
 				eventLinstener.OnLoginComplete(nResult, req.GetMsg());
+			}		
+		}
+		else if (req instanceof Request_GetExchangeList) {
+			Request_GetExchangeList detailReq = (Request_GetExchangeList)req;
+			int nRes = req.GetResult();
+			String strMsg = req.GetMsg();
+			if (nRes == 0) {
+				this.m_exchangeListInfo = detailReq.GetExchangeInfo();
+				m_nExchangeListVersion ++;
 			}
-			//send();			
+			ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners = GetEventListClone();
+			for (WeakReference<WangcaiAppEvent> weakPtr: listEventLinsteners) {
+				WangcaiAppEvent eventLinstener = weakPtr.get();
+				eventLinstener.OnExchangeListRequestComplete(m_nExchangeListVersion, nRes, strMsg);
+			}
+		}
+		else if (req instanceof Request_SurveyList) {
+			Request_SurveyList surveyReq = (Request_SurveyList)req;
+			int nRes = req.GetResult();
+			String strMsg = req.GetMsg();
+			if (nRes == 0) {
+				m_listSurveyInfo = surveyReq.GetSurveyInfoList();
+				m_nSurveyListVersion ++;
+			}
+
+			ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners = GetEventListClone();
+			for (WeakReference<WangcaiAppEvent> weakPtr: listEventLinsteners) {
+				WangcaiAppEvent eventLinstener = weakPtr.get();
+				eventLinstener.OnSurveyRequestComplete(m_nSurveyListVersion, nRes, strMsg);
+			}
 		}
 		else if (req instanceof Request_Poll) {
 			Request_Poll detailReq = (Request_Poll)req;
 
-			LogUtil.LogUserInfo(String.format("Request_Poll  .GetResult() (%d)", req.GetResult()));
+			LogUtil.LogUserInfo(String.format(Locale.CHINA, "Request_Poll  .GetResult() (%d)", req.GetResult()));
 			if (req.GetResult() == 0) {
 				boolean bIsNewMsg = detailReq.IsNewMsg();
 				if (bIsNewMsg) {
@@ -255,22 +294,28 @@ public class WangcaiApp implements
 	public void PlaySound() {
 		if (m_soundPool == null) {
 			m_soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 100);
+			m_soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {  
+	            @Override  
+	            public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+	            	DoPlaySound();
+	            }  
+	        });  
+			
 			m_nGetIconSoundId = m_soundPool.load(m_AppContext, R.raw.gotcoins, 1);
 		}	
-		AudioManager mgr = (AudioManager)m_AppContext.getSystemService(Context.AUDIO_SERVICE);   
-		
-		float streamVolumeCurrent = mgr.getStreamVolume(AudioManager.STREAM_MUSIC);   
-		
-		float streamVolumeMax = mgr.getStreamMaxVolume(AudioManager.STREAM_MUSIC);       
-		float volume = streamVolumeCurrent/streamVolumeMax;   
-		
-		m_soundPool.play(m_nGetIconSoundId, volume, volume, 1, 1, 1f);
+		else {
+			DoPlaySound();
+		}
 	}   
+	private void DoPlaySound() {		
+		m_soundPool.play(m_nGetIconSoundId, 07f, 0.7f, 1, 0, 1f);		
+	}
 
 	public void OnTimer(int nId, int nHitTimes) {
 		if (nId == m_nPollTimerId) {
-			//if (IsForceGround()) {
-			//}
+			if (IsForceGround()) {
+				this.QueryChanges();
+			}
 		}
 	}
 	public void QueryChanges() {
@@ -348,7 +393,30 @@ public class WangcaiApp implements
     public void SetForceGround(boolean bForceGround) {
     	m_bForceGround = bForceGround;
     }
-    
+    public void RequestSurveyInfo() {
+		RequestManager requestManager = RequestManager.GetInstance();
+		Request_SurveyList request = (Request_SurveyList)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_SurveyList);
+		request.SetAppName(BuildSetting.sg_strAppName);
+		request.SetVersion(SystemInfo.GetVersion());
+		requestManager.SendRequest(request, true, this);    	
+    }
+    public ArrayList<SurveyInfo> GetSurveyInfo() {
+    	return m_listSurveyInfo;
+    }
+    public int GetSurveyListVersion() {
+    	return m_nSurveyListVersion;
+    }
+    public SurveyInfo GetSurveyInfo(int nId) {
+    	if (m_listSurveyInfo == null) {
+    		return null;
+    	}
+    	for (SurveyInfo info : m_listSurveyInfo) {
+    		if (info.m_nId == nId) {
+    			return info;
+    		}
+    	}
+    	return null;
+    }
     private ArrayList<WeakReference<WangcaiAppEvent>>  GetEventListClone() {
     	ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners = new ArrayList<WeakReference<WangcaiAppEvent>>(); 
     	Iterator<WeakReference<WangcaiAppEvent>> sListIterator = m_listEventLinsteners.iterator();  
@@ -363,84 +431,8 @@ public class WangcaiApp implements
     	}
     	return listEventLinsteners;
     }
-    /*
-    private static class MsgHandler extends Handler {
-    	public MsgHandler(WangcaiApp owner) {
-    		m_owner = new WeakReference<WangcaiApp>(owner);
-    	}
-    	
-    	private final static String sg_strDefaultNotificationTitle = "旺财";
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == sg_nNewPush) {
-            	WangcaiApp owner = m_owner.get();
-            	if (owner == null) {
-            		LogUtil.LogPush("WangcaiApp owner == null. Skip");
-            		return;
-            	}
-
-            	Bundle b = msg.getData();
-                
-        		int nPushType = b.getInt("PushType");
-        		int nMsgType = b.getInt("MsgType");
-                String strTitle = b.getString("Title");
-                String strText = b.getString("Text");
-            	LogUtil.LogPush("WangcaiApp   NewPush  PushType(%d)  MsgType(%d)   Title(%s)  Msg(%s)", nPushType, nMsgType, strTitle, strText);
-                if (nPushType != PushReceiver.nPushType_Custom) {
-                	LogUtil.LogPush("WangcaiApp  no PushReceiver.nPushType_Custom. skip");
-                	return;
-                }
-
-    			if (Util.IsEmptyString(strTitle)) {
-    				strTitle = sg_strDefaultNotificationTitle;
-    			}
-                if (ConfigCenter.GetInstance().ShouldReceivePush()) {
-            		if (PushReceiver.nMessageType_NewAward == nMsgType) {
-                    	if (Util.IsEmptyString(strText)) {
-                    		strText = "旺财收到新红包";
-                    	}
-            		}
-                	if (Util.IsEmptyString(strText) && 
-                			(Util.IsEmptyString(strTitle) || strTitle.equals(sg_strDefaultNotificationTitle))) {
-                		return;
-                	}
-                    Intent intent = new Intent(owner.m_lastActivity, MainActivity.class);
-                	Util.SendNotification(owner.m_lastActivity, intent, R.drawable.ic_launcher, strTitle, strText);
-                }
-                if (PushReceiver.nMessageType_NewAward == nMsgType) {
-                	LogUtil.LogPush("WangcaiApp   NewAwardMessage  QueryChanges");
-                	owner.QueryChanges();
-                }
-                else {
-                	LogUtil.LogPush("WangcaiApp   NewAwardMessage  Do Not QueryChanges");                	
-                }
-            }
-            super.handleMessage(msg);
-        }
-		private WeakReference<WangcaiApp> m_owner;
-    }
-    private Handler m_handler = new MsgHandler(this);
-   */
-    /*
-	public void OnNewPushMsg(PushInfo pushInfo) {
-		Message msg = new Message();
-		msg.what = sg_nNewPush;
-		Bundle b = new Bundle();
-		b.putInt("PushType", pushInfo.m_nPushType);
-		b.putInt("MsgType", pushInfo.m_nTextType);
-		b.putString("Title", pushInfo.m_strTitle);
-		b.putString("Text", pushInfo.m_strText);
-		msg.setData(b);
-		m_handler.sendMessage(msg);
-	}
-	*/
-	public void SetLastActivity(Activity activity) {
-		m_lastActivity = activity;
-	}
-	
-	
-    //private final static int sg_nNewPush = 1212;
-
+  
+    private ExchangeListInfo m_exchangeListInfo = null;
     private int m_nPendingPurseTip = 0;
     
 	private UserInfo m_userInfo = null;
@@ -461,8 +453,10 @@ public class WangcaiApp implements
 	private boolean m_bForceGround = false;;
 	private int m_nPollTimerId = 0;
 
-	private Activity m_lastActivity = null;
+	private ArrayList<SurveyInfo> m_listSurveyInfo = null;
 	
 	private SoundPool m_soundPool = null;
 	private ArrayList<WeakReference<WangcaiAppEvent>> m_listEventLinsteners = new ArrayList<WeakReference<WangcaiAppEvent>>();
+	private int m_nSurveyListVersion = 1;
+	private int m_nExchangeListVersion = 1;
 }

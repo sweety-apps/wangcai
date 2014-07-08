@@ -16,18 +16,23 @@ import com.coolstore.wangcai.base.WangcaiActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public class LotteryActivity extends WangcaiActivity implements RequestManager.IRequestManagerCallback{
-	final static int sg_nBaseTimerElapse = 100;
-	final static int sg_nSlowdownItems = 10;	//剩下多少个item开始减速
-	final static int sg_nSlowSpeed = 80;
+	final static int sg_nBaseTimerElapse = 70;
+	final static int sg_nSlowdownItems = 8;	//剩下多少个item开始减速
+	final static int sg_nSlowSpeed = 50;
 	
-	final static int sg_nFlashTimerElapse = 100;
+	final static int sg_nFlashTimerElapse = 120;
 	final static int sg_nTotalFlashTimes = 8;
 	
 	final static int sg_nUpdateMsg = 1;
@@ -48,7 +53,7 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
 			new BonusInfo(10, R.id.icon13),
 			new BonusInfo(0, R.id.icon14),
 			new BonusInfo(800, R.id.icon24),
-			new BonusInfo(0, R.id.icon34),
+			new BonusInfo(50, R.id.icon34),
 			new BonusInfo(10, R.id.icon44),
 			new BonusInfo(300, R.id.icon43),
 			new BonusInfo(0, R.id.icon42),
@@ -66,6 +71,9 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
 				listItems.add(i);
 			}
 		}
+		if (listItems.isEmpty()) {
+			return -1;
+		}
 		int nRand = new Random().nextInt(listItems.size());
 		return listItems.get(nRand);
 	}
@@ -77,7 +85,33 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
         
         AttachEvents();
      }
-
+    
+    private static final 	int BounsType_None = 0;
+    private static final 	int BounsType_10 = 1;
+    private static final 	int BounsType_50 = 2;
+    private static final 	int BounsType_300 = 3;
+    private static final 	int BounsType_800 = 4;
+    public int GetBounsFromType(int nType) {
+    	int nBouns = 0;
+    	switch (nType) {
+    	case BounsType_None:
+    		nBouns = 0;
+    		break;
+    	case BounsType_10:
+    		nBouns = 10;
+    		break;
+    	case BounsType_50:
+    		nBouns = 50;
+    		break;
+    	case BounsType_300:
+    		nBouns = 300;
+    		break;
+    	case BounsType_800:
+    		nBouns = 800;
+    		break;
+    	}
+    	return nBouns;
+    }
 	public void OnRequestComplete(int nRequestId, Requester req) {
 		if (req instanceof Request_Lottery) {
 			if (m_progressDialog != null) {
@@ -94,38 +128,62 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
 
 			ConfigCenter.GetInstance().SetHasSignInToday();
 
-			m_nBonus = lotteryRequester.GetBouns();
+			m_nBonus = GetBounsFromType(lotteryRequester.GetBouns());
 
 			if (BuildSetting.sg_bIsRelease) {
-				if (nResult != 0)
-				{
+				if (nResult != 0) {
 					//已经签到过
 					ActivityHelper.ShowToast(this, R.string.hint_duplicate_signin);
 					return;
 				}
 			}
-			
+
 			//余额
 			WangcaiApp.GetInstance().ChangeBalance(m_nBonus);
 
 	        int nLoopCount = new Random().nextInt(sg_nMaxLoops - sg_nMinLoops) + sg_nMinLoops;
-	        m_nTotalAnimationTimes = nLoopCount * sg_bonusArray.length + GetItemIndex(m_nBonus);
+	       
+	        int nIndex = GetItemIndex(m_nBonus);
+	        if (nIndex < 0) {
+				ActivityHelper.ShowToast(this, "错误");
+				return;	        	
+	        }
+	        m_nTotalAnimationTimes = nLoopCount * sg_bonusArray.length + nIndex;
 
 	        m_imageCover =  (ImageView)findViewById(R.id.select_cover);
 	        m_imageBorder = (ImageView)findViewById(R.id.select_border);
 
+	        AdjustInnerFrameLayout();
+        	
         	if (m_animationTask != null) {
         		return;
         	}
         	m_animationTask = new AnimationTask();
         	m_animationTask.execute(m_nTotalAnimationTimes); 
+        	
 		}
+	}
+	private void AdjustInnerFrameLayout() {
+    	RelativeLayout layout = (RelativeLayout)findViewById(R.id.grid_inner_frame);
+    	int nWidth = layout.getWidth();
+
+        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);  
+        int nScreenWidth = wm.getDefaultDisplay().getWidth();  
+        
+    	RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    	layoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
+    	layoutParams.setMargins((nScreenWidth - nWidth) / 2, 0, 0, 0);
+    	layout.setLayoutParams(layoutParams);
 	}
     private void AttachEvents()
     {
     	//抽奖按钮
     	this.findViewById(R.id.lottery_button).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
+    			if (ConfigCenter.GetInstance().HasSignInToday()) {
+    					ActivityHelper.ShowToast(LotteryActivity.this, R.string.hint_duplicate_signin);
+    					return;
+    			}    					
 				RequestManager requestManager = RequestManager.GetInstance();
 				Request_Lottery request = (Request_Lottery)RequesterFactory.NewRequest(RequesterFactory.RequestType.RequestType_Lottery);
 				requestManager.SendRequest(request, true, LotteryActivity.this);
@@ -183,21 +241,24 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
   			int nCurrentIndex= nCurrentIndexs[0];
   			if (m_bLoopComplete) {
   				//转完了, 闪烁下
-  	  	       	m_imageCover.setVisibility(View.GONE);
-  	  	        	
-  		       	BonusInfo bonusInfo = sg_bonusArray[m_nTotalAnimationTimes % sg_bonusArray.length];	        	
-  		       	ImageView targetImage = (ImageView)findViewById(bonusInfo.m_nViewId);
-  
-  		       	m_imageBorder.setTop(targetImage.getTop());
-  		       	m_imageBorder.setLeft(targetImage.getLeft());
-  		        m_imageBorder.setRight(targetImage.getRight());
-  		        m_imageBorder.setBottom(targetImage.getBottom());
+
+  	        	if (nCurrentIndex == 0) {
+  	  	  	       	m_imageCover.setVisibility(View.GONE);
+
+	  	  	       	BonusInfo bonusInfo = sg_bonusArray[m_nTotalAnimationTimes % sg_bonusArray.length];	 
+	  	  	       	ImageView targetImage = (ImageView)findViewById(bonusInfo.m_nViewId);
+	
+	  	  	        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)m_imageBorder.getLayoutParams();
+	  	  	        layoutParams.setMargins(targetImage.getLeft() - 12, targetImage.getTop() - 12, 0, 0);
+	  	  	        m_imageBorder.setLayoutParams(layoutParams);
+  	        		m_imageBorder.setVisibility(View.VISIBLE);
+  	        	}
+  		       	
   	        	int nImgId = R.drawable.choujiang_border_selected1;
   	        	if (nCurrentIndex % 2 == 0) {
   	        		nImgId = R.drawable.choujiang_border_selected2;
   	        	}
   	        	m_imageBorder.setBackgroundResource(nImgId);
-  	  	       	m_imageBorder.setVisibility(View.VISIBLE);
   			}
   			else {
   				//正在转

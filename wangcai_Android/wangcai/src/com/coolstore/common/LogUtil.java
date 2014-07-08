@@ -2,7 +2,8 @@ package com.coolstore.common;
 
 
 public class LogUtil {
-	private final static boolean sg_bEnableLog = true; 
+	private final static boolean sg_bEnableLog = false; 
+	public final static boolean sg_bLogToFile = false;
 
 	public static void LogMainListDrag(String format, Object... args) {
 		if (sg_bEnableLog)

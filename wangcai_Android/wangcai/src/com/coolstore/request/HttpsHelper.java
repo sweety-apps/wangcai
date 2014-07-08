@@ -1,6 +1,7 @@
 package com.coolstore.request;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -10,6 +11,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.HostnameVerifier;
@@ -19,6 +21,9 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+
+import com.coolstore.wangcai.WangcaiApp;
+
 
 
 
@@ -57,8 +62,7 @@ public class HttpsHelper {
         try {  
             SSLContext sc = SSLContext.getInstance("TLS");  
             sc.init(null, xtmArray, new java.security.SecureRandom());  
-            HttpsURLConnection  
-                    .setDefaultSSLSocketFactory(sc.getSocketFactory());  
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());  
             // HttpsURLConnection.setDefaultHostnameVerifier(DO_NOT_VERIFY);//  
             // 不进行主机名确认  
         } catch (Exception e) {  
@@ -157,13 +161,14 @@ public class HttpsHelper {
     }
 
     public static class MyTrustManager implements X509TrustManager{
-                @Override
+                
+    			@Override
                 public void checkClientTrusted(X509Certificate[] chain, String authType)
                                 throws CertificateException {
                 }
                 @Override
                 public void checkServerTrusted(X509Certificate[] chain, String authType)
-                                throws CertificateException {                        
+                                throws CertificateException {
                 }
                 @Override
                 public X509Certificate[] getAcceptedIssuers() {

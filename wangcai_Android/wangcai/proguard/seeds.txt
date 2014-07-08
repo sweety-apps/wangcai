@@ -1,3 +1,5 @@
+a.a
+a.a: int init(java.lang.String,java.lang.String,java.lang.String)
 android.support.v4.app.BackStackState
 android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
 android.support.v4.app.Fragment: android.support.v4.util.SimpleArrayMap sClassMap
@@ -1109,10 +1111,6 @@ android.support.v7.widget.SearchView$SearchAutoComplete: SearchView$SearchAutoCo
 android.support.v7.widget.SearchView$SearchAutoComplete: SearchView$SearchAutoComplete(android.content.Context,android.util.AttributeSet,int)
 android.support.v7.widget.SearchView$SearchAutoComplete: void setSearchView(android.support.v7.widget.SearchView)
 android.support.v7.widget.SearchView$SearchAutoComplete: void setThreshold(int)
-cn.domob.data.OManager$ConsumeStatus: cn.domob.data.OManager$ConsumeStatus[] values()
-cn.domob.data.OManager$ConsumeStatus: cn.domob.data.OManager$ConsumeStatus valueOf(java.lang.String)
-cn.domob.download.OActivity
-cn.domob.download.OActivity: OActivity()
 cn.jpush.android.a
 cn.jpush.android.a: java.util.concurrent.atomic.AtomicBoolean j
 cn.jpush.android.a: int a
@@ -5841,6 +5839,814 @@ cn.sharesdk.sina.weibo.f: f(cn.sharesdk.sina.weibo.e,cn.sharesdk.framework.autho
 cn.sharesdk.sina.weibo.f: void onFailed(java.lang.Throwable)
 cn.sharesdk.sina.weibo.f: void onComplete(android.os.Bundle)
 cn.sharesdk.sina.weibo.f: void onCancel()
+cn.sharesdk.socialization.Comment
+cn.sharesdk.socialization.Comment: long serialVersionUID
+cn.sharesdk.socialization.Comment: int STATUS_REJECT
+cn.sharesdk.socialization.Comment: int STATUS_SPAM
+cn.sharesdk.socialization.Comment: int STATUS_REVIEWING
+cn.sharesdk.socialization.Comment: int STATUS_PASS
+cn.sharesdk.socialization.Comment: java.lang.String id
+cn.sharesdk.socialization.Comment: java.lang.String content
+cn.sharesdk.socialization.Comment: long publishTime
+cn.sharesdk.socialization.Comment: int likeCount
+cn.sharesdk.socialization.Comment: int platformId
+cn.sharesdk.socialization.Comment: java.lang.String nickName
+cn.sharesdk.socialization.Comment: java.lang.String icon
+cn.sharesdk.socialization.Comment: int verifyType
+cn.sharesdk.socialization.Comment: java.lang.String region
+cn.sharesdk.socialization.Comment: int gender
+cn.sharesdk.socialization.Comment: java.util.ArrayList floors
+cn.sharesdk.socialization.Comment: boolean myLike
+cn.sharesdk.socialization.Comment: int status
+cn.sharesdk.socialization.Comment: Comment()
+cn.sharesdk.socialization.Comment: java.lang.String getId()
+cn.sharesdk.socialization.Comment: void setId(java.lang.String)
+cn.sharesdk.socialization.Comment: java.lang.String getContent(android.content.Context)
+cn.sharesdk.socialization.Comment: boolean isDeficient()
+cn.sharesdk.socialization.Comment: void setContent(java.lang.String)
+cn.sharesdk.socialization.Comment: long getPublishTime()
+cn.sharesdk.socialization.Comment: void setPublishTime(long)
+cn.sharesdk.socialization.Comment: int getLikeCount()
+cn.sharesdk.socialization.Comment: void setLikeCount(int)
+cn.sharesdk.socialization.Comment: int getPlatformId()
+cn.sharesdk.socialization.Comment: void setPlatformId(int)
+cn.sharesdk.socialization.Comment: java.lang.String getNickName()
+cn.sharesdk.socialization.Comment: void setNickName(java.lang.String)
+cn.sharesdk.socialization.Comment: java.lang.String getIcon()
+cn.sharesdk.socialization.Comment: void setIcon(java.lang.String)
+cn.sharesdk.socialization.Comment: int getVerifyType()
+cn.sharesdk.socialization.Comment: void setVerifyType(int)
+cn.sharesdk.socialization.Comment: java.lang.String getRegion()
+cn.sharesdk.socialization.Comment: void setRegion(java.lang.String)
+cn.sharesdk.socialization.Comment: int getGender()
+cn.sharesdk.socialization.Comment: void setGender(int)
+cn.sharesdk.socialization.Comment: java.util.ArrayList getFloors()
+cn.sharesdk.socialization.Comment: void setFloors(java.util.ArrayList)
+cn.sharesdk.socialization.Comment: void addFloors(java.util.ArrayList)
+cn.sharesdk.socialization.Comment: void addFloor(java.lang.String)
+cn.sharesdk.socialization.Comment: boolean isMyLike()
+cn.sharesdk.socialization.Comment: void setMyLike(boolean)
+cn.sharesdk.socialization.Comment: int getStatus()
+cn.sharesdk.socialization.Comment: void setStatus(int)
+cn.sharesdk.socialization.Comment: void update(cn.sharesdk.socialization.Comment)
+cn.sharesdk.socialization.Comment: java.lang.String toString()
+cn.sharesdk.socialization.CommentFilter
+cn.sharesdk.socialization.CommentFilter: cn.sharesdk.socialization.CommentFilter$FilterItem[] filters
+cn.sharesdk.socialization.CommentFilter: CommentFilter()
+cn.sharesdk.socialization.CommentFilter: boolean filter(java.lang.String)
+cn.sharesdk.socialization.CommentFilter: CommentFilter(cn.sharesdk.socialization.CommentFilter$1)
+cn.sharesdk.socialization.CommentFilter: cn.sharesdk.socialization.CommentFilter$FilterItem[] access$102(cn.sharesdk.socialization.CommentFilter,cn.sharesdk.socialization.CommentFilter$FilterItem[])
+cn.sharesdk.socialization.CommentFilter: cn.sharesdk.socialization.CommentFilter$FilterItem[] access$100(cn.sharesdk.socialization.CommentFilter)
+cn.sharesdk.socialization.CommentFilter$1
+cn.sharesdk.socialization.CommentFilter$Builder
+cn.sharesdk.socialization.CommentFilter$Builder: java.util.ArrayList items
+cn.sharesdk.socialization.CommentFilter$Builder: CommentFilter$Builder()
+cn.sharesdk.socialization.CommentFilter$Builder: cn.sharesdk.socialization.CommentFilter$Builder append(cn.sharesdk.socialization.CommentFilter$FilterItem)
+cn.sharesdk.socialization.CommentFilter$Builder: cn.sharesdk.socialization.CommentFilter build()
+cn.sharesdk.socialization.CommentFilter$FilterItem
+cn.sharesdk.socialization.CommentFilter$FilterItem: boolean onFilter(java.lang.String)
+cn.sharesdk.socialization.CommentListPage
+cn.sharesdk.socialization.CommentListPage: java.lang.String a
+cn.sharesdk.socialization.CommentListPage: java.lang.String b
+cn.sharesdk.socialization.CommentListPage: java.lang.String c
+cn.sharesdk.socialization.CommentListPage: java.lang.String d
+cn.sharesdk.socialization.CommentListPage: cn.sharesdk.onekeyshare.OnekeyShare e
+cn.sharesdk.socialization.CommentListPage: android.widget.ImageView f
+cn.sharesdk.socialization.CommentListPage: cn.sharesdk.socialization.CommentFilter g
+cn.sharesdk.socialization.CommentListPage: cn.sharesdk.socialization.component.CommentListView h
+cn.sharesdk.socialization.CommentListPage: boolean i
+cn.sharesdk.socialization.CommentListPage: CommentListPage()
+cn.sharesdk.socialization.CommentListPage: void setTopic(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+cn.sharesdk.socialization.CommentListPage: void setOnekeyShare(cn.sharesdk.onekeyshare.OnekeyShare)
+cn.sharesdk.socialization.CommentListPage: void setCommentFilter(cn.sharesdk.socialization.CommentFilter)
+cn.sharesdk.socialization.CommentListPage: void setAuthedAccountChangeable(boolean)
+cn.sharesdk.socialization.CommentListPage: void onCreate()
+cn.sharesdk.socialization.CommentListPage: void onClick(android.view.View)
+cn.sharesdk.socialization.CommentListPage: void onResult(java.util.HashMap)
+cn.sharesdk.socialization.CommentListPage: boolean onKeyEvent(int,android.view.KeyEvent)
+cn.sharesdk.socialization.QuickCommentBar
+cn.sharesdk.socialization.QuickCommentBar: android.widget.ImageView a
+cn.sharesdk.socialization.QuickCommentBar: android.widget.TextView b
+cn.sharesdk.socialization.QuickCommentBar: android.widget.ImageView c
+cn.sharesdk.socialization.QuickCommentBar: android.widget.TextView d
+cn.sharesdk.socialization.QuickCommentBar: android.widget.ImageView e
+cn.sharesdk.socialization.QuickCommentBar: android.widget.TextView f
+cn.sharesdk.socialization.QuickCommentBar: android.widget.ImageView g
+cn.sharesdk.socialization.QuickCommentBar: android.widget.TextView h
+cn.sharesdk.socialization.QuickCommentBar: cn.sharesdk.socialization.QuickCommentBar$b i
+cn.sharesdk.socialization.QuickCommentBar: cn.sharesdk.socialization.CommentFilter j
+cn.sharesdk.socialization.QuickCommentBar: java.lang.String k
+cn.sharesdk.socialization.QuickCommentBar: java.lang.String l
+cn.sharesdk.socialization.QuickCommentBar: java.lang.String m
+cn.sharesdk.socialization.QuickCommentBar: java.lang.String n
+cn.sharesdk.socialization.QuickCommentBar: cn.sharesdk.onekeyshare.OnekeyShare o
+cn.sharesdk.socialization.QuickCommentBar: int p
+cn.sharesdk.socialization.QuickCommentBar: int q
+cn.sharesdk.socialization.QuickCommentBar: int r
+cn.sharesdk.socialization.QuickCommentBar: boolean s
+cn.sharesdk.socialization.QuickCommentBar: cn.sharesdk.socialization.component.w t
+cn.sharesdk.socialization.QuickCommentBar: java.lang.String u
+cn.sharesdk.socialization.QuickCommentBar: boolean v
+cn.sharesdk.socialization.QuickCommentBar: QuickCommentBar(android.content.Context)
+cn.sharesdk.socialization.QuickCommentBar: QuickCommentBar(android.content.Context,android.util.AttributeSet)
+cn.sharesdk.socialization.QuickCommentBar: void a(android.content.Context)
+cn.sharesdk.socialization.QuickCommentBar: void setTopic(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+cn.sharesdk.socialization.QuickCommentBar: void setTextToShare(java.lang.String)
+cn.sharesdk.socialization.QuickCommentBar: void a()
+cn.sharesdk.socialization.QuickCommentBar: android.view.View getBackButton()
+cn.sharesdk.socialization.QuickCommentBar: void b()
+cn.sharesdk.socialization.QuickCommentBar: void c()
+cn.sharesdk.socialization.QuickCommentBar: void d()
+cn.sharesdk.socialization.QuickCommentBar: void setAuthedAccountChangeable(boolean)
+cn.sharesdk.socialization.QuickCommentBar: void a(java.util.HashMap)
+cn.sharesdk.socialization.QuickCommentBar: void setCommentFilter(cn.sharesdk.socialization.CommentFilter)
+cn.sharesdk.socialization.QuickCommentBar: void setOnekeyShare(cn.sharesdk.onekeyshare.OnekeyShare)
+cn.sharesdk.socialization.QuickCommentBar: java.lang.String a(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: cn.sharesdk.socialization.QuickCommentBar$b b(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: java.lang.String c(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: void a(cn.sharesdk.socialization.QuickCommentBar,java.util.HashMap)
+cn.sharesdk.socialization.QuickCommentBar: int a(cn.sharesdk.socialization.QuickCommentBar,int)
+cn.sharesdk.socialization.QuickCommentBar: int b(cn.sharesdk.socialization.QuickCommentBar,int)
+cn.sharesdk.socialization.QuickCommentBar: int c(cn.sharesdk.socialization.QuickCommentBar,int)
+cn.sharesdk.socialization.QuickCommentBar: int d(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: int e(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: int f(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: void g(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: int h(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: android.widget.ImageView i(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: void j(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: android.widget.ImageView k(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: void l(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: android.widget.TextView m(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: void n(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: android.widget.ImageView o(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: java.lang.String p(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: java.lang.String q(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: cn.sharesdk.socialization.CommentFilter r(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: cn.sharesdk.onekeyshare.OnekeyShare s(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar: boolean t(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar$a
+cn.sharesdk.socialization.QuickCommentBar$a: cn.sharesdk.socialization.QuickCommentBar a
+cn.sharesdk.socialization.QuickCommentBar$a: QuickCommentBar$a(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar$a: void onClick(android.view.View)
+cn.sharesdk.socialization.QuickCommentBar$b
+cn.sharesdk.socialization.QuickCommentBar$b: cn.sharesdk.socialization.QuickCommentBar a
+cn.sharesdk.socialization.QuickCommentBar$b: QuickCommentBar$b(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.QuickCommentBar$b: boolean handleMessage(android.os.Message)
+cn.sharesdk.socialization.R
+cn.sharesdk.socialization.R: R()
+cn.sharesdk.socialization.R$drawable
+cn.sharesdk.socialization.R$drawable: int list_item_first_normal
+cn.sharesdk.socialization.R$drawable: int list_item_last_normal
+cn.sharesdk.socialization.R$drawable: int list_item_middle_normal
+cn.sharesdk.socialization.R$drawable: int list_item_single_normal
+cn.sharesdk.socialization.R$drawable: int pointer
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_default_icon
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_empty
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_floor_1st
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_floor_end
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_floor_mid
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_floor_sgl
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_like
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_pop_copy
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_pop_reply
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_pop_share
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_popview
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_rp_back
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_rp_chacc
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_tabbg
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_tabbg_1
+cn.sharesdk.socialization.R$drawable: int ssdk_social_cl_unlike
+cn.sharesdk.socialization.R$drawable: int ssdk_social_rp_reply
+cn.sharesdk.socialization.R$drawable: int ssdk_social_rp_reply_nor
+cn.sharesdk.socialization.R$drawable: int ssdk_social_rp_reply_pre
+cn.sharesdk.socialization.R$drawable: int ssdk_social_toolbar_back
+cn.sharesdk.socialization.R$drawable: int ssdk_social_toolbar_comment
+cn.sharesdk.socialization.R$drawable: int ssdk_social_toolbar_dislike
+cn.sharesdk.socialization.R$drawable: int ssdk_social_toolbar_divier
+cn.sharesdk.socialization.R$drawable: int ssdk_social_toolbar_like
+cn.sharesdk.socialization.R$drawable: int ssdk_social_toolbar_reply
+cn.sharesdk.socialization.R$drawable: int ssdk_social_toolbar_share
+cn.sharesdk.socialization.R$drawable: int ssdk_social_vip
+cn.sharesdk.socialization.R$drawable: R$drawable()
+cn.sharesdk.socialization.R$string
+cn.sharesdk.socialization.R$string: int auth_failed
+cn.sharesdk.socialization.R$string: int bind_account
+cn.sharesdk.socialization.R$string: int change_account
+cn.sharesdk.socialization.R$string: int click_to_unfold
+cn.sharesdk.socialization.R$string: int comment_like_author_title
+cn.sharesdk.socialization.R$string: int comment_like_comment_list_title
+cn.sharesdk.socialization.R$string: int comment_list_is_empty
+cn.sharesdk.socialization.R$string: int comment_rejected
+cn.sharesdk.socialization.R$string: int copy
+cn.sharesdk.socialization.R$string: int failed_to_reply
+cn.sharesdk.socialization.R$string: int hot_list
+cn.sharesdk.socialization.R$string: int last_refresh_time
+cn.sharesdk.socialization.R$string: int let_me_say
+cn.sharesdk.socialization.R$string: int like_failed
+cn.sharesdk.socialization.R$string: int loading_next
+cn.sharesdk.socialization.R$string: int new_list
+cn.sharesdk.socialization.R$string: int not_yet_authorized
+cn.sharesdk.socialization.R$string: int replay_too_frequently
+cn.sharesdk.socialization.R$string: int reply
+cn.sharesdk.socialization.R$string: int reply_page_title
+cn.sharesdk.socialization.R$string: int reply_succeeded
+cn.sharesdk.socialization.R$string: int reply_to
+cn.sharesdk.socialization.R$string: int replying
+cn.sharesdk.socialization.R$string: int right_now
+cn.sharesdk.socialization.R$string: int select_account
+cn.sharesdk.socialization.R$string: int select_another
+cn.sharesdk.socialization.R$string: int selsect_account
+cn.sharesdk.socialization.R$string: int spam_reply
+cn.sharesdk.socialization.R$string: int text_copied
+cn.sharesdk.socialization.R$string: int xx_hour_before
+cn.sharesdk.socialization.R$string: int xx_min_before
+cn.sharesdk.socialization.R$string: int you_have_liked_the_topic
+cn.sharesdk.socialization.R$string: R$string()
+cn.sharesdk.socialization.Socialization
+cn.sharesdk.socialization.Socialization: cn.sharesdk.socialization.component.r a
+cn.sharesdk.socialization.Socialization: Socialization()
+cn.sharesdk.socialization.Socialization: int getServiceVersionInt()
+cn.sharesdk.socialization.Socialization: java.lang.String getServiceVersionName()
+cn.sharesdk.socialization.Socialization: void onBind()
+cn.sharesdk.socialization.Socialization: java.lang.String timeToStr(long)
+cn.sharesdk.socialization.Socialization: java.util.HashMap getTopicOutline(java.lang.String)
+cn.sharesdk.socialization.Socialization: cn.sharesdk.socialization.Comment replyTopic(int,java.lang.String,java.lang.String,java.lang.String)
+cn.sharesdk.socialization.Socialization: cn.sharesdk.socialization.Comment replyComment(int,java.lang.String,java.lang.String,java.lang.String,java.util.ArrayList,java.lang.String)
+cn.sharesdk.socialization.Socialization: java.lang.String likeTopic(java.lang.String,java.lang.String)
+cn.sharesdk.socialization.Socialization: java.lang.String likeComment(java.lang.String,java.lang.String,java.lang.String)
+cn.sharesdk.socialization.Socialization: java.lang.String shareTopic(int,java.lang.String,java.lang.String,cn.sharesdk.framework.Platform$ShareParams,java.util.HashMap)
+cn.sharesdk.socialization.Socialization: java.lang.String shareComment(int,java.lang.String,java.lang.String,java.lang.String,cn.sharesdk.framework.Platform$ShareParams,java.util.HashMap)
+cn.sharesdk.socialization.Socialization: java.util.ArrayList getCommentList(java.lang.String)
+cn.sharesdk.socialization.Socialization: boolean getCommentDetails(java.lang.String,java.util.ArrayList)
+cn.sharesdk.socialization.Socialization: void setCustomPlatform(cn.sharesdk.socialization.SocializationCustomPlatform)
+cn.sharesdk.socialization.Socialization: cn.sharesdk.socialization.component.r a(cn.sharesdk.socialization.Socialization)
+cn.sharesdk.socialization.SocializationCustomPlatform
+cn.sharesdk.socialization.SocializationCustomPlatform: android.content.Context context
+cn.sharesdk.socialization.SocializationCustomPlatform: SocializationCustomPlatform(android.content.Context)
+cn.sharesdk.socialization.SocializationCustomPlatform: android.content.Context getContext()
+cn.sharesdk.socialization.SocializationCustomPlatform: java.lang.String getName()
+cn.sharesdk.socialization.SocializationCustomPlatform: int getLogo()
+cn.sharesdk.socialization.SocializationCustomPlatform: boolean checkAuthorize(int)
+cn.sharesdk.socialization.SocializationCustomPlatform: cn.sharesdk.socialization.SocializationCustomPlatform$UserBrief doAuthorize()
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform: cn.sharesdk.socialization.SocializationCustomPlatform platform
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform: void setSocializationCustomPlatform(cn.sharesdk.socialization.SocializationCustomPlatform)
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform: SocializationCustomPlatform$SocializationPlatform(android.content.Context)
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform: java.lang.String getName()
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform: int getLogo()
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform: boolean checkAuthorize(int,java.lang.Object)
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform: void doAuthorize(java.lang.String[])
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform: boolean isValid()
+cn.sharesdk.socialization.SocializationCustomPlatform$SocializationPlatform: void access$000(cn.sharesdk.socialization.SocializationCustomPlatform)
+cn.sharesdk.socialization.SocializationCustomPlatform$UserBrief
+cn.sharesdk.socialization.SocializationCustomPlatform$UserBrief: java.lang.String userId
+cn.sharesdk.socialization.SocializationCustomPlatform$UserBrief: java.lang.String userNickname
+cn.sharesdk.socialization.SocializationCustomPlatform$UserBrief: java.lang.String userAvatar
+cn.sharesdk.socialization.SocializationCustomPlatform$UserBrief: cn.sharesdk.socialization.SocializationCustomPlatform$UserGender userGender
+cn.sharesdk.socialization.SocializationCustomPlatform$UserBrief: cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType userVerifyType
+cn.sharesdk.socialization.SocializationCustomPlatform$UserBrief: SocializationCustomPlatform$UserBrief()
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: cn.sharesdk.socialization.SocializationCustomPlatform$UserGender Male
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: cn.sharesdk.socialization.SocializationCustomPlatform$UserGender Female
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: cn.sharesdk.socialization.SocializationCustomPlatform$UserGender Unknown
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: int value
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: cn.sharesdk.socialization.SocializationCustomPlatform$UserGender[] $VALUES
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: cn.sharesdk.socialization.SocializationCustomPlatform$UserGender[] values()
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: cn.sharesdk.socialization.SocializationCustomPlatform$UserGender valueOf(java.lang.String)
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: SocializationCustomPlatform$UserGender(java.lang.String,int,int)
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: int getValue()
+cn.sharesdk.socialization.SocializationCustomPlatform$UserGender: void <clinit>()
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType Verified
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType Unverify
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType Unknown
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: int value
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType[] $VALUES
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType[] values()
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType valueOf(java.lang.String)
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: SocializationCustomPlatform$UserVerifyType(java.lang.String,int,int)
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: int getValue()
+cn.sharesdk.socialization.SocializationCustomPlatform$UserVerifyType: void <clinit>()
+cn.sharesdk.socialization.a
+cn.sharesdk.socialization.a: cn.sharesdk.socialization.QuickCommentBar a
+cn.sharesdk.socialization.a: a(cn.sharesdk.socialization.QuickCommentBar,android.graphics.drawable.shapes.Shape)
+cn.sharesdk.socialization.a: void onDraw(android.graphics.drawable.shapes.Shape,android.graphics.Canvas,android.graphics.Paint)
+cn.sharesdk.socialization.a.a
+cn.sharesdk.socialization.a.a: java.lang.String b
+cn.sharesdk.socialization.a.a: a(cn.sharesdk.framework.Service)
+cn.sharesdk.socialization.a.a: java.lang.String a()
+cn.sharesdk.socialization.a.b
+cn.sharesdk.socialization.a.b: int a
+cn.sharesdk.socialization.a.b: java.lang.Object b
+cn.sharesdk.socialization.a.b: java.lang.String c
+cn.sharesdk.socialization.a.b: java.lang.String d
+cn.sharesdk.socialization.a.b: java.lang.String e
+cn.sharesdk.socialization.a.b: boolean f
+cn.sharesdk.socialization.a.b: b(cn.sharesdk.framework.Service)
+cn.sharesdk.socialization.a.b: java.lang.String a()
+cn.sharesdk.socialization.a.b: void a(int)
+cn.sharesdk.socialization.a.b: void a(java.lang.String)
+cn.sharesdk.socialization.a.b: void b(java.lang.String)
+cn.sharesdk.socialization.a.b: void c(java.lang.String)
+cn.sharesdk.socialization.a.b: void a(java.lang.Object)
+cn.sharesdk.socialization.a.b: void a(boolean)
+cn.sharesdk.socialization.a.b: java.lang.String a(cn.sharesdk.framework.Platform)
+cn.sharesdk.socialization.a.b: java.lang.String a(cn.sharesdk.framework.PlatformDb,java.lang.String[])
+cn.sharesdk.socialization.a.b: java.util.HashMap toMap()
+cn.sharesdk.socialization.a.c
+cn.sharesdk.socialization.a.c: java.lang.String b
+cn.sharesdk.socialization.a.c: c(cn.sharesdk.framework.Service)
+cn.sharesdk.socialization.a.c: java.lang.String a()
+cn.sharesdk.socialization.a.c: java.util.HashMap toMap()
+cn.sharesdk.socialization.a.d
+cn.sharesdk.socialization.a.d: java.lang.String b
+cn.sharesdk.socialization.a.d: java.lang.String c
+cn.sharesdk.socialization.a.d: d(cn.sharesdk.framework.Service)
+cn.sharesdk.socialization.a.d: java.lang.String a()
+cn.sharesdk.socialization.a.d: void a(cn.sharesdk.framework.Platform$ShareParams,java.util.HashMap)
+cn.sharesdk.socialization.a.d: java.util.HashMap toMap()
+cn.sharesdk.socialization.b
+cn.sharesdk.socialization.b: cn.sharesdk.socialization.QuickCommentBar a
+cn.sharesdk.socialization.b: b(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.b: void run()
+cn.sharesdk.socialization.c
+cn.sharesdk.socialization.c: cn.sharesdk.socialization.QuickCommentBar a
+cn.sharesdk.socialization.c: c(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.c: void run()
+cn.sharesdk.socialization.component.CommentListView
+cn.sharesdk.socialization.component.CommentListView: cn.sharesdk.socialization.component.b a
+cn.sharesdk.socialization.component.CommentListView: CommentListView(android.content.Context)
+cn.sharesdk.socialization.component.CommentListView: CommentListView(android.content.Context,android.util.AttributeSet)
+cn.sharesdk.socialization.component.CommentListView: CommentListView(android.content.Context,android.util.AttributeSet,int)
+cn.sharesdk.socialization.component.CommentListView: void a(android.content.Context)
+cn.sharesdk.socialization.component.CommentListView: void a(boolean)
+cn.sharesdk.socialization.component.CommentListView: void a(cn.sharesdk.onekeyshare.OnekeyShare)
+cn.sharesdk.socialization.component.CommentListView: void a(cn.sharesdk.socialization.CommentFilter)
+cn.sharesdk.socialization.component.CommentListView: void a(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+cn.sharesdk.socialization.component.CommentListView: void a(cn.sharesdk.socialization.Comment)
+cn.sharesdk.socialization.component.CommentListView: void a()
+cn.sharesdk.socialization.component.CommentListView: boolean b()
+cn.sharesdk.socialization.component.CommentListView: void c()
+cn.sharesdk.socialization.component.ReplyTooFrequentlyException
+cn.sharesdk.socialization.component.ReplyTooFrequentlyException: long serialVersionUID
+cn.sharesdk.socialization.component.ReplyTooFrequentlyException: ReplyTooFrequentlyException()
+cn.sharesdk.socialization.component.ShareTooFrequentlyException
+cn.sharesdk.socialization.component.ShareTooFrequentlyException: long serialVersionUID
+cn.sharesdk.socialization.component.ShareTooFrequentlyException: ShareTooFrequentlyException()
+cn.sharesdk.socialization.component.TopicTitle
+cn.sharesdk.socialization.component.TopicTitle: android.widget.TextView a
+cn.sharesdk.socialization.component.TopicTitle: android.widget.TextView b
+cn.sharesdk.socialization.component.TopicTitle: android.widget.TextView c
+cn.sharesdk.socialization.component.TopicTitle: android.widget.TextView d
+cn.sharesdk.socialization.component.TopicTitle: TopicTitle(android.content.Context)
+cn.sharesdk.socialization.component.TopicTitle: TopicTitle(android.content.Context,android.util.AttributeSet)
+cn.sharesdk.socialization.component.TopicTitle: void a(android.content.Context)
+cn.sharesdk.socialization.component.TopicTitle: void setTitle(java.lang.String)
+cn.sharesdk.socialization.component.TopicTitle: void setPublishTime(java.lang.String)
+cn.sharesdk.socialization.component.TopicTitle: void setAuthor(java.lang.String)
+cn.sharesdk.socialization.component.a
+cn.sharesdk.socialization.component.a: cn.sharesdk.socialization.component.a$a a
+cn.sharesdk.socialization.component.a: android.widget.ImageView b
+cn.sharesdk.socialization.component.a: boolean c
+cn.sharesdk.socialization.component.a: a()
+cn.sharesdk.socialization.component.a: void a(boolean)
+cn.sharesdk.socialization.component.a: void onCreate()
+cn.sharesdk.socialization.component.a: int a(android.widget.RelativeLayout)
+cn.sharesdk.socialization.component.a: void onClick(android.view.View)
+cn.sharesdk.socialization.component.a: void onComplete(cn.sharesdk.framework.Platform,int,java.util.HashMap)
+cn.sharesdk.socialization.component.a: void onError(cn.sharesdk.framework.Platform,int,java.lang.Throwable)
+cn.sharesdk.socialization.component.a: void onCancel(cn.sharesdk.framework.Platform,int)
+cn.sharesdk.socialization.component.a: boolean handleMessage(android.os.Message)
+cn.sharesdk.socialization.component.a: android.app.Activity a(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity b(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity c(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity d(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity e(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity f(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity g(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity h(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity i(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity j(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity k(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity l(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity m(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity n(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity o(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity p(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity q(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity r(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: android.app.Activity s(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a: boolean t(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a$a
+cn.sharesdk.socialization.component.a$a: cn.sharesdk.socialization.component.a a
+cn.sharesdk.socialization.component.a$a: java.util.ArrayList b
+cn.sharesdk.socialization.component.a$a: a$a(cn.sharesdk.socialization.component.a)
+cn.sharesdk.socialization.component.a$a: int getCount()
+cn.sharesdk.socialization.component.a$a: cn.sharesdk.framework.Platform a(int)
+cn.sharesdk.socialization.component.a$a: long getItemId(int)
+cn.sharesdk.socialization.component.a$a: android.view.View getView(int,android.view.View,android.view.ViewGroup)
+cn.sharesdk.socialization.component.a$a: android.view.View a()
+cn.sharesdk.socialization.component.a$a: android.graphics.Bitmap a(cn.sharesdk.framework.Platform)
+cn.sharesdk.socialization.component.a$a: java.lang.String b(cn.sharesdk.framework.Platform)
+cn.sharesdk.socialization.component.a$a: void onItemClick(android.widget.AdapterView,android.view.View,int,long)
+cn.sharesdk.socialization.component.a$a: java.lang.Object getItem(int)
+cn.sharesdk.socialization.component.b
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.b$c a
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.o b
+cn.sharesdk.socialization.component.b: java.lang.String c
+cn.sharesdk.socialization.component.b: java.lang.String d
+cn.sharesdk.socialization.component.b: java.lang.String e
+cn.sharesdk.socialization.component.b: java.lang.String f
+cn.sharesdk.socialization.component.b: cn.sharesdk.onekeyshare.OnekeyShare g
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.b$d h
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.TopicTitle i
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.j j
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.j k
+cn.sharesdk.socialization.component.b: java.util.ArrayList l
+cn.sharesdk.socialization.component.b: int[] m
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.p n
+cn.sharesdk.socialization.component.b: android.widget.LinearLayout o
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.CommentFilter p
+cn.sharesdk.socialization.component.b: boolean q
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.g r
+cn.sharesdk.socialization.component.b: android.widget.TextView s
+cn.sharesdk.socialization.component.b: boolean t
+cn.sharesdk.socialization.component.b: b(m.framework.ui.widget.pulltorefresh.PullToRefreshView)
+cn.sharesdk.socialization.component.b: void a(boolean)
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.g a()
+cn.sharesdk.socialization.component.b: m.framework.ui.widget.pulltorefresh.Scrollable getBodyView()
+cn.sharesdk.socialization.component.b: void a(cn.sharesdk.onekeyshare.OnekeyShare)
+cn.sharesdk.socialization.component.b: void a(cn.sharesdk.socialization.CommentFilter)
+cn.sharesdk.socialization.component.b: void b()
+cn.sharesdk.socialization.component.b: void a(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+cn.sharesdk.socialization.component.b: android.view.View getView(int,android.view.View,android.view.ViewGroup)
+cn.sharesdk.socialization.component.b: long getItemId(int)
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.Comment a(int)
+cn.sharesdk.socialization.component.b: java.lang.Object c()
+cn.sharesdk.socialization.component.b: int getCount()
+cn.sharesdk.socialization.component.b: boolean f()
+cn.sharesdk.socialization.component.b: android.view.View getHeaderView()
+cn.sharesdk.socialization.component.b: void onPullDown(int)
+cn.sharesdk.socialization.component.b: void onRequest()
+cn.sharesdk.socialization.component.b: void onReversed()
+cn.sharesdk.socialization.component.b: void g()
+cn.sharesdk.socialization.component.b: boolean handleMessage(android.os.Message)
+cn.sharesdk.socialization.component.b: void onScroll(m.framework.ui.widget.pulltorefresh.Scrollable,int,int,int)
+cn.sharesdk.socialization.component.b: boolean d()
+cn.sharesdk.socialization.component.b: void e()
+cn.sharesdk.socialization.component.b: java.lang.Object getItem(int)
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.j a(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.j b(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.b$c c(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: java.lang.String d(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: java.lang.String e(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: boolean f(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: m.framework.ui.widget.pulltorefresh.PullToRefreshView g(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: int[] h(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.g i(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.component.p j(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: cn.sharesdk.onekeyshare.OnekeyShare k(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b: cn.sharesdk.socialization.CommentFilter l(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b$a
+cn.sharesdk.socialization.component.b$a: m.framework.ui.widget.asyncview.AsyncImageView a
+cn.sharesdk.socialization.component.b$a: android.widget.ImageView b
+cn.sharesdk.socialization.component.b$a: android.widget.TextView c
+cn.sharesdk.socialization.component.b$a: android.widget.TextView d
+cn.sharesdk.socialization.component.b$a: android.widget.TextView e
+cn.sharesdk.socialization.component.b$a: android.widget.TextView f
+cn.sharesdk.socialization.component.b$a: android.widget.LinearLayout g
+cn.sharesdk.socialization.component.b$a: android.widget.TextView h
+cn.sharesdk.socialization.component.b$a: cn.sharesdk.socialization.Comment i
+cn.sharesdk.socialization.component.b$a: cn.sharesdk.socialization.component.b j
+cn.sharesdk.socialization.component.b$a: b$a(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.b$a: void a(int)
+cn.sharesdk.socialization.component.b$a: boolean handleMessage(android.os.Message)
+cn.sharesdk.socialization.component.b$a: void onClick(android.view.View)
+cn.sharesdk.socialization.component.b$a: cn.sharesdk.socialization.component.b a(cn.sharesdk.socialization.component.b$a)
+cn.sharesdk.socialization.component.b$b
+cn.sharesdk.socialization.component.b$b: boolean a
+cn.sharesdk.socialization.component.b$b: android.widget.TextView b
+cn.sharesdk.socialization.component.b$b: android.widget.TextView c
+cn.sharesdk.socialization.component.b$b: android.widget.TextView d
+cn.sharesdk.socialization.component.b$b: cn.sharesdk.socialization.Comment e
+cn.sharesdk.socialization.component.b$b: cn.sharesdk.socialization.component.b$a f
+cn.sharesdk.socialization.component.b$b: int g
+cn.sharesdk.socialization.component.b$b: int[] h
+cn.sharesdk.socialization.component.b$b: b$b(cn.sharesdk.socialization.component.b$a)
+cn.sharesdk.socialization.component.b$b: void a(cn.sharesdk.socialization.Comment,int,int)
+cn.sharesdk.socialization.component.b$b: void a(cn.sharesdk.socialization.Comment,int,int,boolean,int,int[])
+cn.sharesdk.socialization.component.b$b: int a(int,int)
+cn.sharesdk.socialization.component.b$b: int a(int)
+cn.sharesdk.socialization.component.b$b: void onClick(android.view.View)
+cn.sharesdk.socialization.component.b$c
+cn.sharesdk.socialization.component.b$c: android.os.Handler a
+cn.sharesdk.socialization.component.b$c: b$c()
+cn.sharesdk.socialization.component.b$c: boolean handleMessage(android.os.Message)
+cn.sharesdk.socialization.component.b$c: android.os.Handler a(cn.sharesdk.socialization.component.b$c)
+cn.sharesdk.socialization.component.b$d
+cn.sharesdk.socialization.component.b$d: b$d(android.content.Context)
+cn.sharesdk.socialization.component.c
+cn.sharesdk.socialization.component.c: cn.sharesdk.socialization.component.b a
+cn.sharesdk.socialization.component.c: c(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.c: void onClick(android.view.View)
+cn.sharesdk.socialization.component.d
+cn.sharesdk.socialization.component.d: cn.sharesdk.socialization.component.b a
+cn.sharesdk.socialization.component.d: d(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.d: void onClick(android.view.View)
+cn.sharesdk.socialization.component.e
+cn.sharesdk.socialization.component.e: cn.sharesdk.socialization.component.d a
+cn.sharesdk.socialization.component.e: e(cn.sharesdk.socialization.component.d)
+cn.sharesdk.socialization.component.e: void onResult(java.util.HashMap)
+cn.sharesdk.socialization.component.f
+cn.sharesdk.socialization.component.f: cn.sharesdk.socialization.component.b a
+cn.sharesdk.socialization.component.f: f(cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.f: void onClick(android.view.View)
+cn.sharesdk.socialization.component.g
+cn.sharesdk.socialization.component.g: java.lang.String a
+cn.sharesdk.socialization.component.g: java.util.HashMap b
+cn.sharesdk.socialization.component.g: java.util.Comparator c
+cn.sharesdk.socialization.component.g: java.util.Comparator d
+cn.sharesdk.socialization.component.g: g(java.lang.String)
+cn.sharesdk.socialization.component.g: void a()
+cn.sharesdk.socialization.component.g: java.util.ArrayList a(java.util.Comparator,int,int)
+cn.sharesdk.socialization.component.g: cn.sharesdk.socialization.Comment[] a(java.util.Comparator)
+cn.sharesdk.socialization.component.g: void a(java.util.ArrayList)
+cn.sharesdk.socialization.component.g: java.util.ArrayList a(int,int)
+cn.sharesdk.socialization.component.g: java.util.ArrayList b(int,int)
+cn.sharesdk.socialization.component.g: cn.sharesdk.socialization.Comment a(java.lang.String)
+cn.sharesdk.socialization.component.g: boolean b(android.content.Context)
+cn.sharesdk.socialization.component.g: boolean a(android.content.Context)
+cn.sharesdk.socialization.component.g: int b()
+cn.sharesdk.socialization.component.g: void a(android.content.Context,cn.sharesdk.socialization.Comment)
+cn.sharesdk.socialization.component.h
+cn.sharesdk.socialization.component.h: cn.sharesdk.socialization.component.g a
+cn.sharesdk.socialization.component.h: h(cn.sharesdk.socialization.component.g)
+cn.sharesdk.socialization.component.h: int a(cn.sharesdk.socialization.Comment,cn.sharesdk.socialization.Comment)
+cn.sharesdk.socialization.component.h: int compare(java.lang.Object,java.lang.Object)
+cn.sharesdk.socialization.component.i
+cn.sharesdk.socialization.component.i: cn.sharesdk.socialization.component.g a
+cn.sharesdk.socialization.component.i: i(cn.sharesdk.socialization.component.g)
+cn.sharesdk.socialization.component.i: int a(cn.sharesdk.socialization.Comment,cn.sharesdk.socialization.Comment)
+cn.sharesdk.socialization.component.i: int compare(java.lang.Object,java.lang.Object)
+cn.sharesdk.socialization.component.j
+cn.sharesdk.socialization.component.j: java.lang.Object a
+cn.sharesdk.socialization.component.j: java.lang.Object b
+cn.sharesdk.socialization.component.j: android.view.View$OnClickListener c
+cn.sharesdk.socialization.component.j: android.widget.LinearLayout d
+cn.sharesdk.socialization.component.j: android.widget.TextView e
+cn.sharesdk.socialization.component.j: android.widget.LinearLayout f
+cn.sharesdk.socialization.component.j: android.widget.TextView g
+cn.sharesdk.socialization.component.j: java.lang.Object h
+cn.sharesdk.socialization.component.j: j(android.content.Context,android.view.View$OnClickListener)
+cn.sharesdk.socialization.component.j: void onClick(android.view.View)
+cn.sharesdk.socialization.component.j: void a(java.lang.Object)
+cn.sharesdk.socialization.component.j: java.lang.Object a()
+cn.sharesdk.socialization.component.j: void <clinit>()
+cn.sharesdk.socialization.component.k
+cn.sharesdk.socialization.component.k: k(android.content.Context)
+cn.sharesdk.socialization.component.k: void onCreate(android.database.sqlite.SQLiteDatabase)
+cn.sharesdk.socialization.component.k: void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int)
+cn.sharesdk.socialization.component.k: void onOpen(android.database.sqlite.SQLiteDatabase)
+cn.sharesdk.socialization.component.k: void close()
+cn.sharesdk.socialization.component.l
+cn.sharesdk.socialization.component.l: android.content.Context a
+cn.sharesdk.socialization.component.l: cn.sharesdk.socialization.component.k b
+cn.sharesdk.socialization.component.l: cn.sharesdk.socialization.component.l c
+cn.sharesdk.socialization.component.l: l(android.content.Context)
+cn.sharesdk.socialization.component.l: cn.sharesdk.socialization.component.l a(android.content.Context)
+cn.sharesdk.socialization.component.l: android.database.Cursor a(java.lang.String,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)
+cn.sharesdk.socialization.component.l: long a(java.lang.String,android.content.ContentValues)
+cn.sharesdk.socialization.component.l: void <clinit>()
+cn.sharesdk.socialization.component.m
+cn.sharesdk.socialization.component.m: long a(android.content.Context,java.lang.String)
+cn.sharesdk.socialization.component.m: boolean b(android.content.Context,java.lang.String)
+cn.sharesdk.socialization.component.n
+cn.sharesdk.socialization.component.n: java.util.HashMap a
+cn.sharesdk.socialization.component.n: n(java.util.HashMap)
+cn.sharesdk.socialization.component.n: void onResponse(java.io.InputStream)
+cn.sharesdk.socialization.component.o
+cn.sharesdk.socialization.component.o: java.lang.String a
+cn.sharesdk.socialization.component.o: android.widget.TextView b
+cn.sharesdk.socialization.component.o: cn.sharesdk.socialization.component.o$a c
+cn.sharesdk.socialization.component.o: android.widget.ProgressBar d
+cn.sharesdk.socialization.component.o: android.widget.TextView e
+cn.sharesdk.socialization.component.o: o(android.content.Context,java.lang.String)
+cn.sharesdk.socialization.component.o: void a(int)
+cn.sharesdk.socialization.component.o: void a()
+cn.sharesdk.socialization.component.o: void b()
+cn.sharesdk.socialization.component.o$a
+cn.sharesdk.socialization.component.o$a: int a
+cn.sharesdk.socialization.component.o$a: o$a(android.content.Context)
+cn.sharesdk.socialization.component.o$a: void a(int)
+cn.sharesdk.socialization.component.o$a: void onDraw(android.graphics.Canvas)
+cn.sharesdk.socialization.component.p
+cn.sharesdk.socialization.component.p: android.widget.LinearLayout a
+cn.sharesdk.socialization.component.p: android.widget.RelativeLayout$LayoutParams b
+cn.sharesdk.socialization.component.p: android.widget.TextView c
+cn.sharesdk.socialization.component.p: android.widget.TextView d
+cn.sharesdk.socialization.component.p: android.widget.TextView e
+cn.sharesdk.socialization.component.p: float f
+cn.sharesdk.socialization.component.p: int g
+cn.sharesdk.socialization.component.p: cn.sharesdk.socialization.Comment h
+cn.sharesdk.socialization.component.p: java.lang.String i
+cn.sharesdk.socialization.component.p: java.lang.String j
+cn.sharesdk.socialization.component.p: cn.sharesdk.socialization.component.b k
+cn.sharesdk.socialization.component.p: cn.sharesdk.onekeyshare.OnekeyShare l
+cn.sharesdk.socialization.component.p: cn.sharesdk.socialization.CommentFilter m
+cn.sharesdk.socialization.component.p: boolean n
+cn.sharesdk.socialization.component.p: p(android.content.Context)
+cn.sharesdk.socialization.component.p: void a(cn.sharesdk.onekeyshare.OnekeyShare)
+cn.sharesdk.socialization.component.p: void a(cn.sharesdk.socialization.CommentFilter)
+cn.sharesdk.socialization.component.p: void a(boolean)
+cn.sharesdk.socialization.component.p: boolean dispatchTouchEvent(android.view.MotionEvent)
+cn.sharesdk.socialization.component.p: void setVisibility(int)
+cn.sharesdk.socialization.component.p: void a(cn.sharesdk.socialization.Comment,java.lang.String,java.lang.String,cn.sharesdk.socialization.component.b)
+cn.sharesdk.socialization.component.p: void a()
+cn.sharesdk.socialization.component.p: boolean isShown()
+cn.sharesdk.socialization.component.p: void onClick(android.view.View)
+cn.sharesdk.socialization.component.p: cn.sharesdk.socialization.component.b a(cn.sharesdk.socialization.component.p)
+cn.sharesdk.socialization.component.q
+cn.sharesdk.socialization.component.q: cn.sharesdk.socialization.component.p a
+cn.sharesdk.socialization.component.q: q(cn.sharesdk.socialization.component.p)
+cn.sharesdk.socialization.component.q: void onResult(java.util.HashMap)
+cn.sharesdk.socialization.component.r
+cn.sharesdk.socialization.component.r: boolean a
+cn.sharesdk.socialization.component.r: java.lang.String b
+cn.sharesdk.socialization.component.r: cn.sharesdk.socialization.Socialization c
+cn.sharesdk.socialization.component.r: m.framework.network.NetworkHelper d
+cn.sharesdk.socialization.component.r: cn.sharesdk.socialization.component.y e
+cn.sharesdk.socialization.component.r: cn.sharesdk.socialization.CommentFilter f
+cn.sharesdk.socialization.component.r: r(cn.sharesdk.socialization.Socialization)
+cn.sharesdk.socialization.component.r: long a(int)
+cn.sharesdk.socialization.component.r: void b(int)
+cn.sharesdk.socialization.component.r: long a()
+cn.sharesdk.socialization.component.r: void b()
+cn.sharesdk.socialization.component.r: long c()
+cn.sharesdk.socialization.component.r: cn.sharesdk.socialization.CommentFilter d()
+cn.sharesdk.socialization.component.r: void a(int,boolean)
+cn.sharesdk.socialization.component.r: void a(java.util.HashMap)
+cn.sharesdk.socialization.component.r: void e()
+cn.sharesdk.socialization.component.r: java.lang.String f()
+cn.sharesdk.socialization.component.r: java.lang.String g()
+cn.sharesdk.socialization.component.r: java.lang.String h()
+cn.sharesdk.socialization.component.r: java.lang.String i()
+cn.sharesdk.socialization.component.r: java.lang.String j()
+cn.sharesdk.socialization.component.r: java.lang.String k()
+cn.sharesdk.socialization.component.r: java.lang.String a(java.lang.String,java.lang.String)
+cn.sharesdk.socialization.component.r: java.lang.String a(cn.sharesdk.framework.Service$ServiceEvent)
+cn.sharesdk.socialization.component.r: java.lang.String a(java.lang.String)
+cn.sharesdk.socialization.component.r: void a(java.lang.String,java.util.HashMap)
+cn.sharesdk.socialization.component.r: void a(java.lang.String,java.util.ArrayList,java.util.HashMap)
+cn.sharesdk.socialization.component.r: void a(cn.sharesdk.socialization.component.r)
+cn.sharesdk.socialization.component.r: void <clinit>()
+cn.sharesdk.socialization.component.s
+cn.sharesdk.socialization.component.s: cn.sharesdk.socialization.component.r a
+cn.sharesdk.socialization.component.s: s(cn.sharesdk.socialization.component.r)
+cn.sharesdk.socialization.component.s: void run()
+cn.sharesdk.socialization.component.t
+cn.sharesdk.socialization.component.t: java.util.ArrayList a
+cn.sharesdk.socialization.component.t: t()
+cn.sharesdk.socialization.component.t: void a(java.lang.String)
+cn.sharesdk.socialization.component.t: boolean onFilter(java.lang.String)
+cn.sharesdk.socialization.component.u
+cn.sharesdk.socialization.component.u: java.lang.String a
+cn.sharesdk.socialization.component.u: java.lang.String b
+cn.sharesdk.socialization.component.u: cn.sharesdk.socialization.Comment c
+cn.sharesdk.socialization.component.u: int d
+cn.sharesdk.socialization.component.u: android.widget.RelativeLayout e
+cn.sharesdk.socialization.component.u: int f
+cn.sharesdk.socialization.component.u: android.widget.ImageView g
+cn.sharesdk.socialization.component.u: android.widget.LinearLayout h
+cn.sharesdk.socialization.component.u: android.widget.EditText i
+cn.sharesdk.socialization.component.u: android.widget.Button j
+cn.sharesdk.socialization.component.u: boolean k
+cn.sharesdk.socialization.component.u: boolean l
+cn.sharesdk.socialization.component.u: cn.sharesdk.socialization.CommentFilter m
+cn.sharesdk.socialization.component.u: android.widget.ScrollView n
+cn.sharesdk.socialization.component.u: android.widget.LinearLayout o
+cn.sharesdk.socialization.component.u: cn.sharesdk.framework.Platform p
+cn.sharesdk.socialization.component.u: boolean q
+cn.sharesdk.socialization.component.u: u()
+cn.sharesdk.socialization.component.u: void a(java.lang.String,java.lang.String)
+cn.sharesdk.socialization.component.u: void a(cn.sharesdk.socialization.Comment)
+cn.sharesdk.socialization.component.u: void a(cn.sharesdk.socialization.CommentFilter)
+cn.sharesdk.socialization.component.u: void a(boolean)
+cn.sharesdk.socialization.component.u: void onCreate()
+cn.sharesdk.socialization.component.u: cn.sharesdk.framework.Platform a()
+cn.sharesdk.socialization.component.u: int b()
+cn.sharesdk.socialization.component.u: android.widget.LinearLayout a(cn.sharesdk.framework.Platform,boolean)
+cn.sharesdk.socialization.component.u: void a(int)
+cn.sharesdk.socialization.component.u: android.widget.RelativeLayout b(int)
+cn.sharesdk.socialization.component.u: int c()
+cn.sharesdk.socialization.component.u: void a(android.widget.LinearLayout,cn.sharesdk.framework.Platform)
+cn.sharesdk.socialization.component.u: void onClick(android.view.View)
+cn.sharesdk.socialization.component.u: void d()
+cn.sharesdk.socialization.component.u: void a(android.view.View)
+cn.sharesdk.socialization.component.u: android.view.View e()
+cn.sharesdk.socialization.component.u: void f()
+cn.sharesdk.socialization.component.u: void a(cn.sharesdk.framework.Platform)
+cn.sharesdk.socialization.component.u: void onResult(java.util.HashMap)
+cn.sharesdk.socialization.component.u: boolean handleMessage(android.os.Message)
+cn.sharesdk.socialization.component.u: void finish()
+cn.sharesdk.socialization.component.u: boolean onKeyEvent(int,android.view.KeyEvent)
+cn.sharesdk.socialization.component.u: android.widget.LinearLayout a(cn.sharesdk.socialization.component.u)
+cn.sharesdk.socialization.component.u: boolean b(cn.sharesdk.socialization.component.u)
+cn.sharesdk.socialization.component.u: android.app.Activity c(cn.sharesdk.socialization.component.u)
+cn.sharesdk.socialization.component.u: android.widget.EditText d(cn.sharesdk.socialization.component.u)
+cn.sharesdk.socialization.component.u: cn.sharesdk.socialization.Comment e(cn.sharesdk.socialization.component.u)
+cn.sharesdk.socialization.component.u: java.lang.String f(cn.sharesdk.socialization.component.u)
+cn.sharesdk.socialization.component.u: java.lang.String g(cn.sharesdk.socialization.component.u)
+cn.sharesdk.socialization.component.u$a
+cn.sharesdk.socialization.component.u$a: cn.sharesdk.socialization.component.u a
+cn.sharesdk.socialization.component.u$a: int b
+cn.sharesdk.socialization.component.u$a: u$a(cn.sharesdk.socialization.component.u)
+cn.sharesdk.socialization.component.u$a: void a(int)
+cn.sharesdk.socialization.component.u$a: void run()
+cn.sharesdk.socialization.component.v
+cn.sharesdk.socialization.component.v: cn.sharesdk.socialization.component.u a
+cn.sharesdk.socialization.component.v: v(cn.sharesdk.socialization.component.u)
+cn.sharesdk.socialization.component.v: void onClick(android.view.View)
+cn.sharesdk.socialization.component.w
+cn.sharesdk.socialization.component.w: cn.sharesdk.framework.PlatformActionListener a
+cn.sharesdk.socialization.component.w: cn.sharesdk.onekeyshare.ShareContentCustomizeCallback b
+cn.sharesdk.socialization.component.w: java.util.HashMap c
+cn.sharesdk.socialization.component.w: java.lang.String d
+cn.sharesdk.socialization.component.w: java.lang.String e
+cn.sharesdk.socialization.component.w: java.lang.String f
+cn.sharesdk.socialization.component.w: android.os.Handler$Callback g
+cn.sharesdk.socialization.component.w: int h
+cn.sharesdk.socialization.component.w: w()
+cn.sharesdk.socialization.component.w: void a(cn.sharesdk.framework.PlatformActionListener)
+cn.sharesdk.socialization.component.w: void a(cn.sharesdk.onekeyshare.ShareContentCustomizeCallback)
+cn.sharesdk.socialization.component.w: void a(java.lang.String,java.lang.String)
+cn.sharesdk.socialization.component.w: void a(java.lang.String)
+cn.sharesdk.socialization.component.w: void a(int,android.os.Handler$Callback)
+cn.sharesdk.socialization.component.w: void onShare(cn.sharesdk.framework.Platform,cn.sharesdk.framework.Platform$ShareParams)
+cn.sharesdk.socialization.component.w: void onComplete(cn.sharesdk.framework.Platform,int,java.util.HashMap)
+cn.sharesdk.socialization.component.w: void onError(cn.sharesdk.framework.Platform,int,java.lang.Throwable)
+cn.sharesdk.socialization.component.w: void onCancel(cn.sharesdk.framework.Platform,int)
+cn.sharesdk.socialization.component.w: android.os.Handler$Callback a(cn.sharesdk.socialization.component.w)
+cn.sharesdk.socialization.component.w: int b(cn.sharesdk.socialization.component.w)
+cn.sharesdk.socialization.component.w: android.os.Handler$Callback a(cn.sharesdk.socialization.component.w,android.os.Handler$Callback)
+cn.sharesdk.socialization.component.w: cn.sharesdk.framework.PlatformActionListener c(cn.sharesdk.socialization.component.w)
+cn.sharesdk.socialization.component.w: java.util.HashMap d(cn.sharesdk.socialization.component.w)
+cn.sharesdk.socialization.component.w: java.lang.String e(cn.sharesdk.socialization.component.w)
+cn.sharesdk.socialization.component.w: java.lang.String f(cn.sharesdk.socialization.component.w)
+cn.sharesdk.socialization.component.w: java.lang.String g(cn.sharesdk.socialization.component.w)
+cn.sharesdk.socialization.component.x
+cn.sharesdk.socialization.component.x: java.util.HashMap a
+cn.sharesdk.socialization.component.x: cn.sharesdk.framework.Platform b
+cn.sharesdk.socialization.component.x: int c
+cn.sharesdk.socialization.component.x: cn.sharesdk.socialization.component.w d
+cn.sharesdk.socialization.component.x: x(cn.sharesdk.socialization.component.w,java.util.HashMap,cn.sharesdk.framework.Platform,int)
+cn.sharesdk.socialization.component.x: void run()
+cn.sharesdk.socialization.component.y
+cn.sharesdk.socialization.component.y: cn.sharesdk.socialization.component.y j
+cn.sharesdk.socialization.component.y: android.content.Context k
+cn.sharesdk.socialization.component.y: android.content.SharedPreferences l
+cn.sharesdk.socialization.component.y: java.lang.String a
+cn.sharesdk.socialization.component.y: java.lang.String b
+cn.sharesdk.socialization.component.y: java.lang.String c
+cn.sharesdk.socialization.component.y: java.lang.String d
+cn.sharesdk.socialization.component.y: java.lang.String e
+cn.sharesdk.socialization.component.y: java.lang.String f
+cn.sharesdk.socialization.component.y: java.lang.String g
+cn.sharesdk.socialization.component.y: java.lang.String h
+cn.sharesdk.socialization.component.y: java.lang.String i
+cn.sharesdk.socialization.component.y: y(android.content.Context)
+cn.sharesdk.socialization.component.y: cn.sharesdk.socialization.component.y a(android.content.Context)
+cn.sharesdk.socialization.component.y: void a(java.lang.String,java.lang.String)
+cn.sharesdk.socialization.component.y: java.lang.String a(java.lang.String)
+cn.sharesdk.socialization.component.y: void a(java.lang.String,java.lang.Boolean)
+cn.sharesdk.socialization.component.y: boolean b(java.lang.String)
+cn.sharesdk.socialization.component.y: void a(java.lang.String,java.lang.Long)
+cn.sharesdk.socialization.component.y: long c(java.lang.String)
+cn.sharesdk.socialization.component.y: void a(java.lang.String,int)
+cn.sharesdk.socialization.component.y: int d(java.lang.String)
+cn.sharesdk.socialization.component.y: void a(int)
+cn.sharesdk.socialization.component.y: java.lang.Integer a()
+cn.sharesdk.socialization.d
+cn.sharesdk.socialization.d: cn.sharesdk.socialization.QuickCommentBar a
+cn.sharesdk.socialization.d: d(cn.sharesdk.socialization.QuickCommentBar)
+cn.sharesdk.socialization.d: void onResult(java.util.HashMap)
+cn.sharesdk.socialization.e
+cn.sharesdk.socialization.e: int a
+cn.sharesdk.socialization.e: boolean b
+cn.sharesdk.socialization.e: cn.sharesdk.socialization.Socialization c
+cn.sharesdk.socialization.e: e(cn.sharesdk.socialization.Socialization,int,boolean)
+cn.sharesdk.socialization.e: void run()
+cn.sharesdk.socialization.f
+cn.sharesdk.socialization.f: int a
+cn.sharesdk.socialization.f: boolean b
+cn.sharesdk.socialization.f: cn.sharesdk.socialization.Socialization c
+cn.sharesdk.socialization.f: f(cn.sharesdk.socialization.Socialization,int,boolean)
+cn.sharesdk.socialization.f: void run()
+cn.sharesdk.socialization.g
+cn.sharesdk.socialization.g: cn.sharesdk.socialization.Socialization a
+cn.sharesdk.socialization.g: g(cn.sharesdk.socialization.Socialization)
+cn.sharesdk.socialization.g: int a(cn.sharesdk.socialization.Comment,cn.sharesdk.socialization.Comment)
+cn.sharesdk.socialization.g: int compare(java.lang.Object,java.lang.Object)
 cn.sharesdk.sohu.microblog.SohuMicroBlog
 cn.sharesdk.sohu.microblog.SohuMicroBlog: java.lang.String NAME
 cn.sharesdk.sohu.microblog.SohuMicroBlog: java.lang.String a
@@ -7414,6 +8220,976 @@ cn.sharesdk.youdao.d: java.lang.String b
 cn.sharesdk.youdao.d: cn.sharesdk.youdao.c c
 cn.sharesdk.youdao.d: d(cn.sharesdk.youdao.c,java.lang.String,java.lang.String)
 cn.sharesdk.youdao.d: void run()
+cn.waps.AdInfo
+cn.waps.AdInfo: java.lang.String a
+cn.waps.AdInfo: java.lang.String b
+cn.waps.AdInfo: java.lang.String c
+cn.waps.AdInfo: int d
+cn.waps.AdInfo: java.lang.String e
+cn.waps.AdInfo: java.lang.String f
+cn.waps.AdInfo: java.lang.String g
+cn.waps.AdInfo: java.lang.String h
+cn.waps.AdInfo: java.lang.String[] i
+cn.waps.AdInfo: java.lang.String j
+cn.waps.AdInfo: java.lang.String k
+cn.waps.AdInfo: android.graphics.Bitmap l
+cn.waps.AdInfo: java.lang.String m
+cn.waps.AdInfo: java.lang.String n
+cn.waps.AdInfo: java.lang.String o
+cn.waps.AdInfo: java.lang.String p
+cn.waps.AdInfo: java.lang.String q
+cn.waps.AdInfo: java.lang.String r
+cn.waps.AdInfo: java.lang.String s
+cn.waps.AdInfo: java.lang.String t
+cn.waps.AdInfo: java.lang.String u
+cn.waps.AdInfo: java.lang.String v
+cn.waps.AdInfo: int w
+cn.waps.AdInfo: int x
+cn.waps.AdInfo: android.graphics.Bitmap y
+cn.waps.AdInfo: java.lang.String z
+cn.waps.AdInfo: java.lang.String A
+cn.waps.AdInfo: java.lang.String B
+cn.waps.AdInfo: java.lang.String C
+cn.waps.AdInfo: int D
+cn.waps.AdInfo: AdInfo()
+cn.waps.AdInfo: android.graphics.Bitmap getAdIcon()
+cn.waps.AdInfo: void a(android.graphics.Bitmap)
+cn.waps.AdInfo: java.lang.String getAdId()
+cn.waps.AdInfo: void a(java.lang.String)
+cn.waps.AdInfo: java.lang.String a()
+cn.waps.AdInfo: void b(java.lang.String)
+cn.waps.AdInfo: java.lang.String getAdText()
+cn.waps.AdInfo: void c(java.lang.String)
+cn.waps.AdInfo: java.lang.String b()
+cn.waps.AdInfo: void d(java.lang.String)
+cn.waps.AdInfo: java.lang.String c()
+cn.waps.AdInfo: void e(java.lang.String)
+cn.waps.AdInfo: java.lang.String getAdPackage()
+cn.waps.AdInfo: void f(java.lang.String)
+cn.waps.AdInfo: java.lang.String d()
+cn.waps.AdInfo: void g(java.lang.String)
+cn.waps.AdInfo: java.lang.String getAdName()
+cn.waps.AdInfo: void h(java.lang.String)
+cn.waps.AdInfo: int getAdPoints()
+cn.waps.AdInfo: void a(int)
+cn.waps.AdInfo: java.lang.String getDescription()
+cn.waps.AdInfo: void i(java.lang.String)
+cn.waps.AdInfo: java.lang.String getVersion()
+cn.waps.AdInfo: void j(java.lang.String)
+cn.waps.AdInfo: java.lang.String getFilesize()
+cn.waps.AdInfo: void k(java.lang.String)
+cn.waps.AdInfo: java.lang.String getProvider()
+cn.waps.AdInfo: void l(java.lang.String)
+cn.waps.AdInfo: java.lang.String[] getImageUrls()
+cn.waps.AdInfo: void a(java.lang.String[])
+cn.waps.AdInfo: java.lang.String e()
+cn.waps.AdInfo: void m(java.lang.String)
+cn.waps.AdInfo: java.lang.String getAction()
+cn.waps.AdInfo: void n(java.lang.String)
+cn.waps.AdInfo: void o(java.lang.String)
+cn.waps.AdInfo: java.lang.String f()
+cn.waps.AdInfo: void p(java.lang.String)
+cn.waps.AdInfo: int g()
+cn.waps.AdInfo: void b(int)
+cn.waps.AdInfo: int h()
+cn.waps.AdInfo: void c(int)
+cn.waps.AdInfo: android.graphics.Bitmap i()
+cn.waps.AdInfo: void b(android.graphics.Bitmap)
+cn.waps.AdInfo: java.lang.String j()
+cn.waps.AdInfo: void q(java.lang.String)
+cn.waps.AdInfo: java.lang.String k()
+cn.waps.AdInfo: void r(java.lang.String)
+cn.waps.AdInfo: void s(java.lang.String)
+cn.waps.AdInfo: java.lang.String l()
+cn.waps.AdInfo: void t(java.lang.String)
+cn.waps.AdInfo: int m()
+cn.waps.AdInfo: void d(int)
+cn.waps.AnimationType
+cn.waps.AnimationType: int MINI_RANDOM
+cn.waps.AnimationType: AnimationType()
+cn.waps.AnimationType: void startMiniAdAnimation(int,android.view.View)
+cn.waps.AnimationType: java.util.Map getAnimation(android.view.View)
+cn.waps.AppConnect
+cn.waps.AppConnect: java.lang.String LIBRARY_VERSION_NUMBER
+cn.waps.AppConnect: cn.waps.z o
+cn.waps.AppConnect: android.content.Context a
+cn.waps.AppConnect: cn.waps.AppConnect p
+cn.waps.AppConnect: cn.waps.ae q
+cn.waps.AppConnect: android.content.SharedPreferences r
+cn.waps.AppConnect: java.lang.String b
+cn.waps.AppConnect: java.lang.String s
+cn.waps.AppConnect: java.lang.String t
+cn.waps.AppConnect: java.lang.String u
+cn.waps.AppConnect: java.lang.String v
+cn.waps.AppConnect: java.lang.String w
+cn.waps.AppConnect: java.lang.String x
+cn.waps.AppConnect: java.lang.String y
+cn.waps.AppConnect: java.lang.String z
+cn.waps.AppConnect: java.lang.String A
+cn.waps.AppConnect: java.lang.String B
+cn.waps.AppConnect: java.lang.String C
+cn.waps.AppConnect: java.lang.String D
+cn.waps.AppConnect: java.lang.String E
+cn.waps.AppConnect: java.lang.String c
+cn.waps.AppConnect: java.lang.String F
+cn.waps.AppConnect: java.lang.String G
+cn.waps.AppConnect: int H
+cn.waps.AppConnect: int I
+cn.waps.AppConnect: java.lang.String J
+cn.waps.AppConnect: boolean K
+cn.waps.AppConnect: boolean L
+cn.waps.AppConnect: java.lang.String M
+cn.waps.AppConnect: java.lang.String N
+cn.waps.AppConnect: java.lang.String O
+cn.waps.AppConnect: java.lang.String P
+cn.waps.AppConnect: java.lang.String Q
+cn.waps.AppConnect: java.lang.String R
+cn.waps.AppConnect: java.lang.String S
+cn.waps.AppConnect: java.lang.String T
+cn.waps.AppConnect: java.lang.String U
+cn.waps.AppConnect: java.lang.String V
+cn.waps.AppConnect: java.lang.String W
+cn.waps.AppConnect: java.lang.String X
+cn.waps.AppConnect: java.lang.String Y
+cn.waps.AppConnect: java.lang.String Z
+cn.waps.AppConnect: java.lang.String aa
+cn.waps.AppConnect: java.lang.String ab
+cn.waps.AppConnect: java.lang.String ac
+cn.waps.AppConnect: java.lang.String ad
+cn.waps.AppConnect: java.lang.String ae
+cn.waps.AppConnect: java.lang.String af
+cn.waps.AppConnect: java.lang.String ag
+cn.waps.AppConnect: java.lang.String ah
+cn.waps.AppConnect: java.lang.String ai
+cn.waps.AppConnect: java.lang.String aj
+cn.waps.AppConnect: java.lang.String ak
+cn.waps.AppConnect: java.lang.String al
+cn.waps.AppConnect: java.lang.String am
+cn.waps.AppConnect: java.lang.String an
+cn.waps.AppConnect: java.lang.String ao
+cn.waps.AppConnect: java.lang.String ap
+cn.waps.AppConnect: java.lang.String aq
+cn.waps.AppConnect: java.lang.String ar
+cn.waps.AppConnect: java.lang.String as
+cn.waps.AppConnect: cn.waps.UpdatePointsNotifier at
+cn.waps.AppConnect: cn.waps.v au
+cn.waps.AppConnect: cn.waps.y av
+cn.waps.AppConnect: cn.waps.u aw
+cn.waps.AppConnect: cn.waps.x ax
+cn.waps.AppConnect: cn.waps.w ay
+cn.waps.AppConnect: java.lang.String az
+cn.waps.AppConnect: java.lang.String aA
+cn.waps.AppConnect: java.lang.String aB
+cn.waps.AppConnect: java.lang.String aC
+cn.waps.AppConnect: java.lang.String aD
+cn.waps.AppConnect: java.lang.String aE
+cn.waps.AppConnect: boolean aF
+cn.waps.AppConnect: boolean aG
+cn.waps.AppConnect: java.lang.String aH
+cn.waps.AppConnect: java.lang.String aI
+cn.waps.AppConnect: java.util.Map aJ
+cn.waps.AppConnect: java.util.Map d
+cn.waps.AppConnect: boolean aK
+cn.waps.AppConnect: boolean aL
+cn.waps.AppConnect: int e
+cn.waps.AppConnect: int f
+cn.waps.AppConnect: java.util.List g
+cn.waps.AppConnect: java.lang.String h
+cn.waps.AppConnect: cn.waps.q aM
+cn.waps.AppConnect: java.lang.String aN
+cn.waps.AppConnect: java.lang.String aO
+cn.waps.AppConnect: java.lang.String aP
+cn.waps.AppConnect: cn.waps.t aQ
+cn.waps.AppConnect: boolean i
+cn.waps.AppConnect: java.lang.String aR
+cn.waps.AppConnect: java.lang.String aS
+cn.waps.AppConnect: android.os.Handler aT
+cn.waps.AppConnect: java.lang.String connectResult
+cn.waps.AppConnect: cn.waps.AppListener aU
+cn.waps.AppConnect: boolean j
+cn.waps.AppConnect: boolean aV
+cn.waps.AppConnect: java.lang.String aW
+cn.waps.AppConnect: int aX
+cn.waps.AppConnect: java.lang.String aY
+cn.waps.AppConnect: boolean aZ
+cn.waps.AppConnect: boolean finalize_tag
+cn.waps.AppConnect: java.util.HashMap ba
+cn.waps.AppConnect: java.util.HashMap bb
+cn.waps.AppConnect: int bc
+cn.waps.AppConnect: android.app.Dialog k
+cn.waps.AppConnect: boolean l
+cn.waps.AppConnect: int bd
+cn.waps.AppConnect: cn.waps.bt m
+cn.waps.AppConnect: cn.waps.aw n
+cn.waps.AppConnect: java.lang.String TYPE_BROWSER
+cn.waps.AppConnect: java.lang.String TYPE_PLAYER
+cn.waps.AppConnect: java.lang.String be
+cn.waps.AppConnect: cn.waps.AppConnect getInstance(java.lang.String,java.lang.String,android.content.Context)
+cn.waps.AppConnect: cn.waps.AppConnect getInstance(java.lang.String,android.content.Context)
+cn.waps.AppConnect: cn.waps.AppConnect getInstance(android.content.Context)
+cn.waps.AppConnect: java.lang.String a(android.content.Context)
+cn.waps.AppConnect: java.lang.String e(android.content.Context)
+cn.waps.AppConnect: AppConnect()
+cn.waps.AppConnect: AppConnect(android.content.Context)
+cn.waps.AppConnect: void f(android.content.Context)
+cn.waps.AppConnect: java.lang.String b(android.content.Context)
+cn.waps.AppConnect: void a()
+cn.waps.AppConnect: void a(java.lang.String,boolean,java.lang.String,java.lang.String,boolean,boolean,boolean)
+cn.waps.AppConnect: boolean e(java.lang.String)
+cn.waps.AppConnect: void q()
+cn.waps.AppConnect: void a(cn.waps.AppListener)
+cn.waps.AppConnect: void package_receiver(java.lang.String,int)
+cn.waps.AppConnect: void r()
+cn.waps.AppConnect: boolean f(java.lang.String)
+cn.waps.AppConnect: void setPointsCache(boolean)
+cn.waps.AppConnect: boolean b()
+cn.waps.AppConnect: java.lang.String a(int,android.content.SharedPreferences)
+cn.waps.AppConnect: void a(java.lang.String,int)
+cn.waps.AppConnect: java.lang.Object[] getPointsData()
+cn.waps.AppConnect: void a(java.lang.String)
+cn.waps.AppConnect: java.lang.String getPointsFailedData()
+cn.waps.AppConnect: void clearPoints()
+cn.waps.AppConnect: void setUpdatePointsFlag(boolean)
+cn.waps.AppConnect: boolean c()
+cn.waps.AppConnect: void b(java.lang.String,int)
+cn.waps.AppConnect: boolean g(java.lang.String)
+cn.waps.AppConnect: int getHistoryPoints(android.content.Context)
+cn.waps.AppConnect: java.lang.String getHistoryPointsName(android.content.Context)
+cn.waps.AppConnect: void getPoints(cn.waps.UpdatePointsNotifier)
+cn.waps.AppConnect: void getPoints()
+cn.waps.AppConnect: void awardPoints(int,cn.waps.UpdatePointsNotifier)
+cn.waps.AppConnect: void awardPoints(int)
+cn.waps.AppConnect: void spendPoints(int,cn.waps.UpdatePointsNotifier)
+cn.waps.AppConnect: void spendPoints(int)
+cn.waps.AppConnect: void s()
+cn.waps.AppConnect: void t()
+cn.waps.AppConnect: void u()
+cn.waps.AppConnect: java.lang.String getConfig(java.lang.String,java.lang.String)
+cn.waps.AppConnect: java.lang.String getConfig(java.lang.String)
+cn.waps.AppConnect: void getConfig(java.lang.String,java.lang.String,cn.waps.AppListener)
+cn.waps.AppConnect: java.lang.String getConfig_Sync(java.lang.String)
+cn.waps.AppConnect: java.util.Map getConfigMap()
+cn.waps.AppConnect: java.util.Map b(java.lang.String)
+cn.waps.AppConnect: void checkUpdate(android.content.Context)
+cn.waps.AppConnect: boolean h(java.lang.String)
+cn.waps.AppConnect: void i(java.lang.String)
+cn.waps.AppConnect: org.w3c.dom.Document j(java.lang.String)
+cn.waps.AppConnect: java.lang.String a(org.w3c.dom.NodeList)
+cn.waps.AppConnect: void close()
+cn.waps.AppConnect: void showMore(android.content.Context)
+cn.waps.AppConnect: void showMore(android.content.Context,java.lang.String)
+cn.waps.AppConnect: void setOffersCloseListener(cn.waps.AppListener)
+cn.waps.AppConnect: void setMoreCloseListener(cn.waps.AppListener)
+cn.waps.AppConnect: void setTuanCloseListener(cn.waps.AppListener)
+cn.waps.AppConnect: void setFeedbackCloseListener(cn.waps.AppListener)
+cn.waps.AppConnect: void a(int,cn.waps.AppListener)
+cn.waps.AppConnect: void setRunnableMap(java.util.HashMap)
+cn.waps.AppConnect: void showOffers(android.content.Context)
+cn.waps.AppConnect: void showOffers(android.content.Context,java.lang.String)
+cn.waps.AppConnect: void showGameOffers(android.content.Context)
+cn.waps.AppConnect: void showGameOffers(android.content.Context,java.lang.String)
+cn.waps.AppConnect: void showAppOffers(android.content.Context)
+cn.waps.AppConnect: void showAppOffers(android.content.Context,java.lang.String)
+cn.waps.AppConnect: void showTuanOffers(android.content.Context)
+cn.waps.AppConnect: void showTuanOffers(android.content.Context,java.lang.String)
+cn.waps.AppConnect: void b(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.AppConnect: android.app.Dialog getOffersDialog()
+cn.waps.AppConnect: void a(java.lang.String,java.lang.String)
+cn.waps.AppConnect: cn.waps.bl c(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.AppConnect: void showFeedback()
+cn.waps.AppConnect: void showFeedback(android.content.Context)
+cn.waps.AppConnect: java.lang.String a(byte[])
+cn.waps.AppConnect: java.lang.String a(byte[],java.lang.String)
+cn.waps.AppConnect: void setCrashReport(boolean)
+cn.waps.AppConnect: void g(android.content.Context)
+cn.waps.AppConnect: java.lang.String d()
+cn.waps.AppConnect: void setAdBackColor(int)
+cn.waps.AppConnect: void setAdForeColor(int)
+cn.waps.AppConnect: java.util.Map c(android.content.Context)
+cn.waps.AppConnect: void initAdInfo()
+cn.waps.AppConnect: java.util.List getAdInfoList()
+cn.waps.AppConnect: cn.waps.AdInfo getAdInfo()
+cn.waps.AppConnect: cn.waps.AdInfo a(java.util.List)
+cn.waps.AppConnect: cn.waps.AdInfo a(java.util.List,java.lang.String)
+cn.waps.AppConnect: void downloadAd(android.content.Context,java.lang.String)
+cn.waps.AppConnect: void clickAd(android.content.Context,java.lang.String)
+cn.waps.AppConnect: void d(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.AppConnect: java.util.List a(java.io.InputStream)
+cn.waps.AppConnect: android.graphics.Bitmap a(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.AppConnect: void setWebViewTransparent(boolean)
+cn.waps.AppConnect: void h(android.content.Context)
+cn.waps.AppConnect: void initPopAd(android.content.Context)
+cn.waps.AppConnect: void showPopAd(android.content.Context)
+cn.waps.AppConnect: void showPopAd(android.content.Context,int)
+cn.waps.AppConnect: android.app.Dialog getPopAdDialog()
+cn.waps.AppConnect: boolean hasPopAd(android.content.Context)
+cn.waps.AppConnect: android.widget.LinearLayout getPopAdView(android.content.Context)
+cn.waps.AppConnect: android.widget.LinearLayout getPopAdView(android.content.Context,int,int)
+cn.waps.AppConnect: void showBannerAd(android.content.Context,android.widget.LinearLayout)
+cn.waps.AppConnect: void showMiniAd(android.content.Context,android.widget.LinearLayout,int)
+cn.waps.AppConnect: void initFunAd(android.content.Context)
+cn.waps.AppConnect: void showFunAd(android.content.Context,java.lang.String,java.lang.String)
+cn.waps.AppConnect: void showBrowser(android.content.Context,java.lang.String)
+cn.waps.AppConnect: void showBrowser(android.content.Context,java.lang.String,boolean)
+cn.waps.AppConnect: void showPlayer(android.content.Context,java.lang.String)
+cn.waps.AppConnect: void showPlayer(android.content.Context,java.lang.String,boolean)
+cn.waps.AppConnect: void initUninstallAd(android.content.Context)
+cn.waps.AppConnect: void d(android.content.Context)
+cn.waps.AppConnect: java.lang.String i(android.content.Context)
+cn.waps.AppConnect: java.lang.String j(android.content.Context)
+cn.waps.AppConnect: java.lang.String a(cn.waps.AppConnect)
+cn.waps.AppConnect: cn.waps.ae e()
+cn.waps.AppConnect: boolean a(cn.waps.AppConnect,java.lang.String)
+cn.waps.AppConnect: android.content.SharedPreferences f()
+cn.waps.AppConnect: java.lang.String b(cn.waps.AppConnect)
+cn.waps.AppConnect: boolean g()
+cn.waps.AppConnect: java.lang.String c(cn.waps.AppConnect)
+cn.waps.AppConnect: java.lang.String h()
+cn.waps.AppConnect: boolean i()
+cn.waps.AppConnect: boolean j()
+cn.waps.AppConnect: boolean k()
+cn.waps.AppConnect: void d(cn.waps.AppConnect)
+cn.waps.AppConnect: java.lang.String l()
+cn.waps.AppConnect: java.lang.String c(java.lang.String)
+cn.waps.AppConnect: java.lang.String m()
+cn.waps.AppConnect: java.lang.String n()
+cn.waps.AppConnect: java.lang.String e(cn.waps.AppConnect)
+cn.waps.AppConnect: boolean b(cn.waps.AppConnect,java.lang.String)
+cn.waps.AppConnect: java.lang.String f(cn.waps.AppConnect)
+cn.waps.AppConnect: java.lang.String g(cn.waps.AppConnect)
+cn.waps.AppConnect: java.lang.String c(cn.waps.AppConnect,java.lang.String)
+cn.waps.AppConnect: cn.waps.AppListener h(cn.waps.AppConnect)
+cn.waps.AppConnect: cn.waps.UpdatePointsNotifier o()
+cn.waps.AppConnect: java.lang.String a(cn.waps.AppConnect,int,android.content.SharedPreferences)
+cn.waps.AppConnect: boolean d(cn.waps.AppConnect,java.lang.String)
+cn.waps.AppConnect: java.lang.String i(cn.waps.AppConnect)
+cn.waps.AppConnect: void a(cn.waps.AppConnect,java.lang.String,int)
+cn.waps.AppConnect: java.lang.String j(cn.waps.AppConnect)
+cn.waps.AppConnect: java.lang.String p()
+cn.waps.AppConnect: java.lang.String d(java.lang.String)
+cn.waps.AppConnect: boolean e(cn.waps.AppConnect,java.lang.String)
+cn.waps.AppConnect: void f(cn.waps.AppConnect,java.lang.String)
+cn.waps.AppConnect: boolean a(boolean)
+cn.waps.AppConnect: void <clinit>()
+cn.waps.AppListener
+cn.waps.AppListener: AppListener()
+cn.waps.AppListener: void a()
+cn.waps.AppListener: void onOffersClose()
+cn.waps.AppListener: void onBannerClose()
+cn.waps.AppListener: void onGetConfig(java.lang.String)
+cn.waps.AppListener: void b()
+cn.waps.AppLog
+cn.waps.AppLog: boolean showLog
+cn.waps.AppLog: AppLog()
+cn.waps.AppLog: void enableLogging(boolean)
+cn.waps.AppLog: void i(java.lang.String,java.lang.String)
+cn.waps.AppLog: void e(java.lang.String,java.lang.String)
+cn.waps.AppLog: void e(java.lang.String,java.lang.String,java.lang.Throwable)
+cn.waps.AppLog: void w(java.lang.String,java.lang.String)
+cn.waps.AppLog: void w(java.lang.String,java.lang.String,java.lang.Throwable)
+cn.waps.AppLog: void d(java.lang.String,java.lang.String)
+cn.waps.AppLog: void v(java.lang.String,java.lang.String)
+cn.waps.AppLog: void <clinit>()
+cn.waps.SDKUtils
+cn.waps.SDKUtils: android.content.Context b
+cn.waps.SDKUtils: android.content.pm.PackageManager c
+cn.waps.SDKUtils: android.content.pm.PackageInfo d
+cn.waps.SDKUtils: android.os.Handler e
+cn.waps.SDKUtils: android.webkit.WebView f
+cn.waps.SDKUtils: android.widget.RelativeLayout g
+cn.waps.SDKUtils: android.widget.LinearLayout h
+cn.waps.SDKUtils: cn.waps.AppListener i
+cn.waps.SDKUtils: android.app.Dialog j
+cn.waps.SDKUtils: java.lang.String a
+cn.waps.SDKUtils: SDKUtils(android.content.Context)
+cn.waps.SDKUtils: SDKUtils(android.content.Context,android.app.Dialog)
+cn.waps.SDKUtils: SDKUtils(android.content.Context,android.os.Handler,android.webkit.WebView,android.widget.RelativeLayout,android.widget.LinearLayout,cn.waps.AppListener)
+cn.waps.SDKUtils: void close()
+cn.waps.SDKUtils: void closeSubmit(java.lang.String)
+cn.waps.SDKUtils: void closeOfDialog(java.lang.String)
+cn.waps.SDKUtils: void submit(java.lang.String,java.lang.String)
+cn.waps.SDKUtils: java.lang.String getUdid()
+cn.waps.SDKUtils: java.lang.String getImsi()
+cn.waps.SDKUtils: java.lang.String getNetType()
+cn.waps.SDKUtils: java.lang.String getMac_Address()
+cn.waps.SDKUtils: java.lang.String getAppVersion(java.lang.String)
+cn.waps.SDKUtils: java.lang.String getLanguageCode()
+cn.waps.SDKUtils: void load(java.lang.String)
+cn.waps.SDKUtils: java.lang.String getInstalled()
+cn.waps.SDKUtils: java.lang.String isInstalled(java.lang.String)
+cn.waps.SDKUtils: java.lang.String getBrowserPackageName(java.lang.String)
+cn.waps.SDKUtils: void goToTargetBrowser(java.lang.String,java.lang.String)
+cn.waps.SDKUtils: android.content.Intent goToTargetBrowser_Intent(java.lang.String,java.lang.String)
+cn.waps.SDKUtils: android.content.Intent goToTargetBrowser_Intent(java.lang.String,java.lang.String,java.lang.String)
+cn.waps.SDKUtils: void openUrlByBrowser(java.lang.String,java.lang.String)
+cn.waps.SDKUtils: android.content.Intent openUrlByBrowser_Intent(java.lang.String,java.lang.String)
+cn.waps.SDKUtils: void openAppByUri(java.lang.String,java.lang.String,java.lang.String)
+cn.waps.SDKUtils: java.util.Map getAppInfoMap(java.lang.String)
+cn.waps.SDKUtils: java.lang.String getRunningAppPackageNames()
+cn.waps.SDKUtils: boolean isCmwap()
+cn.waps.SDKUtils: boolean isWapNetwork()
+cn.waps.SDKUtils: boolean isConnect()
+cn.waps.SDKUtils: java.lang.String getResponseResult(org.apache.http.HttpResponse)
+cn.waps.SDKUtils: void closeAd()
+cn.waps.SDKUtils: void hideAd()
+cn.waps.SDKUtils: void openAd()
+cn.waps.SDKUtils: void openAd(java.lang.String)
+cn.waps.SDKUtils: void full_screen()
+cn.waps.SDKUtils: int initAdWidth()
+cn.waps.SDKUtils: java.lang.String getScreenStatus()
+cn.waps.SDKUtils: void saveDataToLocal(java.lang.String,java.lang.String,java.lang.String,boolean)
+cn.waps.SDKUtils: java.lang.String loadStringFromLocal(java.lang.String,java.lang.String)
+cn.waps.SDKUtils: void saveDataToLocal(java.io.InputStream,java.lang.String,java.lang.String,boolean)
+cn.waps.SDKUtils: java.io.InputStream loadStreamFromLocal(java.lang.String,java.lang.String)
+cn.waps.SDKUtils: void deleteLocalFiles(java.io.File)
+cn.waps.SDKUtils: java.io.InputStream getNetDataToStream(java.lang.String)
+cn.waps.SDKUtils: boolean isTimeLimited(java.lang.String,java.lang.String)
+cn.waps.SDKUtils: java.lang.String[] splitString(java.lang.String,java.lang.String,java.lang.String)
+cn.waps.SDKUtils: java.lang.String getNodeTrimValues(org.w3c.dom.NodeList)
+cn.waps.SDKUtils: java.util.List getList(java.lang.String)
+cn.waps.SDKUtils: java.lang.String replaceData(java.lang.String)
+cn.waps.SDKUtils: java.lang.String[] getAllPermissions()
+cn.waps.SDKUtils: boolean hasThePermission(java.lang.String)
+cn.waps.SDKUtils: void callTel(java.lang.String)
+cn.waps.SDKUtils: void sendSMS(java.lang.String,java.lang.String)
+cn.waps.SDKUtils: void showToast(java.lang.String)
+cn.waps.SDKUtils: java.lang.String getAppName()
+cn.waps.SDKUtils: java.lang.String isVisible()
+cn.waps.SDKUtils: boolean isWifi()
+cn.waps.SDKUtils: int getDisplaySize(android.content.Context)
+cn.waps.SDKUtils: void getHtml(java.lang.String)
+cn.waps.SDKUtils: android.content.Context access$000(cn.waps.SDKUtils)
+cn.waps.SDKUtils: android.widget.RelativeLayout access$100(cn.waps.SDKUtils)
+cn.waps.SDKUtils: android.widget.LinearLayout access$200(cn.waps.SDKUtils)
+cn.waps.SDKUtils: cn.waps.AppListener access$300(cn.waps.SDKUtils)
+cn.waps.SDKUtils: void <clinit>()
+cn.waps.UpdatePointsNotifier
+cn.waps.UpdatePointsNotifier: void getUpdatePoints(java.lang.String,int)
+cn.waps.UpdatePointsNotifier: void getUpdatePointsFailed(java.lang.String)
+cn.waps.a
+cn.waps.a: android.content.Context c
+cn.waps.a: android.widget.LinearLayout d
+cn.waps.a: long e
+cn.waps.a: android.widget.RelativeLayout f
+cn.waps.a: int g
+cn.waps.a: boolean h
+cn.waps.a: android.os.Handler i
+cn.waps.a: android.webkit.WebView j
+cn.waps.a: boolean a
+cn.waps.a: boolean k
+cn.waps.a: int l
+cn.waps.a: float m
+cn.waps.a: java.lang.String n
+cn.waps.a: java.lang.String o
+cn.waps.a: java.util.Map p
+cn.waps.a: cn.waps.AppListener q
+cn.waps.a: android.os.Handler r
+cn.waps.a: java.lang.Thread b
+cn.waps.a: a(android.content.Context,android.widget.LinearLayout)
+cn.waps.a: void a(android.content.Context,android.widget.LinearLayout,cn.waps.AppListener)
+cn.waps.a: void a()
+cn.waps.a: void a(int)
+cn.waps.a: android.webkit.WebView b()
+cn.waps.a: void a(android.webkit.WebView,java.lang.String)
+cn.waps.a: void a(java.lang.String)
+cn.waps.a: android.content.Context a(cn.waps.a)
+cn.waps.a: boolean b(cn.waps.a)
+cn.waps.a: java.lang.String c(cn.waps.a)
+cn.waps.a: void a(cn.waps.a,android.webkit.WebView,java.lang.String)
+cn.waps.a: boolean a(cn.waps.a,boolean)
+cn.waps.a: long d(cn.waps.a)
+cn.waps.a: int e(cn.waps.a)
+cn.waps.a: boolean f(cn.waps.a)
+cn.waps.a: boolean b(cn.waps.a,boolean)
+cn.waps.a: long a(cn.waps.a,long)
+cn.waps.a: android.widget.RelativeLayout g(cn.waps.a)
+cn.waps.a: android.os.Handler h(cn.waps.a)
+cn.waps.a: int a(cn.waps.a,int)
+cn.waps.a: int i(cn.waps.a)
+cn.waps.a: void a(cn.waps.a,java.lang.String)
+cn.waps.ab
+cn.waps.ab: android.app.Notification a
+cn.waps.ab: android.app.NotificationManager f
+cn.waps.ab: android.content.Context g
+cn.waps.ab: java.lang.String h
+cn.waps.ab: boolean b
+cn.waps.ab: boolean c
+cn.waps.ab: java.lang.String d
+cn.waps.ab: long e
+cn.waps.ab: java.util.Map i
+cn.waps.ab: java.util.concurrent.ScheduledExecutorService j
+cn.waps.ab: ab(android.content.Context)
+cn.waps.ab: void a(java.lang.String,int,java.lang.String)
+cn.waps.ab: void a(java.lang.String,int,java.lang.Object[],java.lang.String,boolean)
+cn.waps.ab: android.widget.ImageView a(android.view.View)
+cn.waps.ab: void b(java.lang.String,int,java.lang.String)
+cn.waps.ab: void a(int,java.lang.String)
+cn.waps.ab: void a(int)
+cn.waps.ab: void <clinit>()
+cn.waps.ad
+cn.waps.ad: java.lang.String e
+cn.waps.ad: int a
+cn.waps.ad: cn.waps.ab b
+cn.waps.ad: java.lang.String f
+cn.waps.ad: android.content.SharedPreferences g
+cn.waps.ad: android.content.SharedPreferences$Editor h
+cn.waps.ad: boolean c
+cn.waps.ad: boolean d
+cn.waps.ad: ad(cn.waps.ab,int,java.lang.String)
+cn.waps.ad: ad(java.lang.String)
+cn.waps.ad: ad()
+cn.waps.ad: void onReceive(android.content.Context,android.content.Intent)
+cn.waps.ad: void <clinit>()
+cn.waps.ae
+cn.waps.ae: cn.waps.SDKUtils b
+cn.waps.ae: android.content.Context c
+cn.waps.ae: java.lang.String a
+cn.waps.ae: ae(android.content.Context)
+cn.waps.ae: ae()
+cn.waps.ae: java.lang.String a(java.lang.String,java.lang.String)
+cn.waps.ae: java.lang.String b(java.lang.String,java.lang.String)
+cn.waps.ae: byte[] a(java.lang.String)
+cn.waps.ae: java.lang.String a(byte[],java.lang.String)
+cn.waps.ae: java.lang.String a()
+cn.waps.ae: void <clinit>()
+cn.waps.af
+cn.waps.af: boolean a
+cn.waps.af: byte[] a(java.lang.String,int)
+cn.waps.af: byte[] a(byte[],int)
+cn.waps.af: byte[] a(byte[],int,int,int)
+cn.waps.af: java.lang.String b(byte[],int)
+cn.waps.af: byte[] c(byte[],int)
+cn.waps.af: byte[] b(byte[],int,int,int)
+cn.waps.af: af()
+cn.waps.af: void <clinit>()
+cn.waps.aj
+cn.waps.aj: java.lang.String a
+cn.waps.aj: java.lang.String b
+cn.waps.aj: java.lang.String c
+cn.waps.aj: java.lang.String d
+cn.waps.aj: java.lang.String e
+cn.waps.aj: java.lang.String f
+cn.waps.aj: java.lang.String g
+cn.waps.aj: java.lang.String h
+cn.waps.aj: java.lang.String i
+cn.waps.aj: java.lang.String j
+cn.waps.aj: java.lang.String k
+cn.waps.aj: java.lang.String l
+cn.waps.aj: java.lang.String m
+cn.waps.aj: java.lang.String n
+cn.waps.aj: java.lang.String o
+cn.waps.aj: java.lang.String p
+cn.waps.aj: aj()
+cn.waps.aj: void a()
+cn.waps.aj: java.lang.String b()
+cn.waps.aj: java.lang.String c()
+cn.waps.aj: java.lang.String d()
+cn.waps.aj: java.lang.String e()
+cn.waps.aj: java.lang.String f()
+cn.waps.aj: java.lang.String g()
+cn.waps.aj: java.lang.String h()
+cn.waps.aj: java.lang.String i()
+cn.waps.aj: java.lang.String j()
+cn.waps.aj: java.lang.String k()
+cn.waps.aj: java.lang.String l()
+cn.waps.aj: java.lang.String m()
+cn.waps.aj: java.lang.String n()
+cn.waps.aj: java.lang.String o()
+cn.waps.aj: java.lang.String p()
+cn.waps.aj: java.lang.String q()
+cn.waps.aj: java.lang.String r()
+cn.waps.aj: java.lang.String s()
+cn.waps.aj: java.lang.String t()
+cn.waps.aj: java.lang.String u()
+cn.waps.aj: java.lang.String v()
+cn.waps.aj: java.lang.String w()
+cn.waps.aj: java.lang.String x()
+cn.waps.aj: java.lang.String y()
+cn.waps.aj: java.lang.String z()
+cn.waps.aj: java.lang.String A()
+cn.waps.aj: java.lang.String B()
+cn.waps.aj: java.lang.String C()
+cn.waps.aj: java.lang.String D()
+cn.waps.aj: java.lang.String E()
+cn.waps.aj: java.lang.String F()
+cn.waps.aj: java.lang.String G()
+cn.waps.aj: java.lang.String H()
+cn.waps.aj: java.lang.String I()
+cn.waps.aj: java.lang.String J()
+cn.waps.aj: java.lang.String K()
+cn.waps.aj: void <clinit>()
+cn.waps.ak
+cn.waps.ak: java.lang.Thread$UncaughtExceptionHandler a
+cn.waps.ak: cn.waps.ak b
+cn.waps.ak: android.content.Context c
+cn.waps.ak: cn.waps.am d
+cn.waps.ak: cn.waps.ae e
+cn.waps.ak: java.lang.String f
+cn.waps.ak: java.lang.String g
+cn.waps.ak: java.lang.String h
+cn.waps.ak: ak(android.content.Context,cn.waps.ae,java.lang.String)
+cn.waps.ak: cn.waps.ak a(android.content.Context,cn.waps.ae,java.lang.String)
+cn.waps.ak: void a()
+cn.waps.ak: void uncaughtException(java.lang.Thread,java.lang.Throwable)
+cn.waps.ak: boolean a(java.lang.Throwable)
+cn.waps.ak: void a(android.content.Context)
+cn.waps.ak: java.lang.String d()
+cn.waps.ak: void b(java.lang.Throwable)
+cn.waps.ak: java.lang.String a(cn.waps.ak)
+cn.waps.ak: java.lang.String b(cn.waps.ak)
+cn.waps.ak: cn.waps.ae b()
+cn.waps.ak: java.lang.String c(cn.waps.ak)
+cn.waps.ak: android.content.Context c()
+cn.waps.ak: void <clinit>()
+cn.waps.an
+cn.waps.an: java.security.Key a
+cn.waps.an: byte[] b
+cn.waps.an: an()
+cn.waps.an: an(java.lang.String)
+cn.waps.an: void a(java.lang.String)
+cn.waps.an: java.lang.String b(java.lang.String)
+cn.waps.an: byte[] a(byte[])
+cn.waps.an: void <clinit>()
+cn.waps.ao
+cn.waps.ao: java.lang.String a
+cn.waps.ao: java.lang.String r
+cn.waps.ao: cn.waps.ab s
+cn.waps.ao: cn.waps.ad t
+cn.waps.ao: android.content.Context u
+cn.waps.ao: java.lang.String v
+cn.waps.ao: int b
+cn.waps.ao: java.lang.String c
+cn.waps.ao: java.lang.String w
+cn.waps.ao: boolean d
+cn.waps.ao: boolean e
+cn.waps.ao: java.util.HashMap f
+cn.waps.ao: java.util.HashMap g
+cn.waps.ao: boolean x
+cn.waps.ao: android.os.Handler h
+cn.waps.ao: java.lang.Integer i
+cn.waps.ao: double j
+cn.waps.ao: double k
+cn.waps.ao: java.text.NumberFormat l
+cn.waps.ao: java.io.InputStream m
+cn.waps.ao: java.io.FileOutputStream n
+cn.waps.ao: java.lang.String o
+cn.waps.ao: java.lang.String p
+cn.waps.ao: boolean q
+cn.waps.ao: java.io.File y
+cn.waps.ao: ao()
+cn.waps.ao: ao(android.content.Context,java.lang.String,java.lang.String)
+cn.waps.ao: ao(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.ao: ao(android.content.Context,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.ao: void a(android.content.Context,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.ao: void run()
+cn.waps.ao: void a(java.lang.String)
+cn.waps.ao: void b(java.lang.String)
+cn.waps.ao: void a(java.net.HttpURLConnection,java.lang.String,double,double,java.lang.String,int,java.io.InputStream,cn.waps.ab,boolean)
+cn.waps.ao: void c(java.lang.String)
+cn.waps.ao: void a(android.os.Bundle)
+cn.waps.ao: void d(java.lang.String)
+cn.waps.ao: java.io.File a(android.content.Context,java.lang.String)
+cn.waps.ao: android.content.Context a(cn.waps.ao)
+cn.waps.ao: cn.waps.ab b(cn.waps.ao)
+cn.waps.ao: void <clinit>()
+cn.waps.ar
+cn.waps.ar: java.lang.String a
+cn.waps.ar: java.io.File b
+cn.waps.ar: android.app.AlertDialog c
+cn.waps.ar: java.util.Map d
+cn.waps.ar: java.lang.String e
+cn.waps.ar: java.lang.String f
+cn.waps.ar: cn.waps.ad g
+cn.waps.ar: boolean h
+cn.waps.ar: java.lang.Thread i
+cn.waps.ar: ar()
+cn.waps.ar: void a(android.content.Context,java.lang.String,java.lang.String)
+cn.waps.ar: cn.waps.ao a(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.ar: void b(android.content.Context,java.lang.String,java.lang.String)
+cn.waps.ar: void a(android.content.Context,cn.waps.ao,java.lang.String,java.lang.String,int,java.lang.String)
+cn.waps.ar: void a(android.content.Context,cn.waps.ad)
+cn.waps.ar: java.lang.String a(java.lang.String)
+cn.waps.ar: long a(android.content.Context,java.lang.String)
+cn.waps.ar: void a(android.content.Context)
+cn.waps.ar: void b(android.content.Context)
+cn.waps.ar: void b(android.content.Context,java.lang.String)
+cn.waps.ar: java.lang.String c(android.content.Context,java.lang.String)
+cn.waps.ar: java.lang.String a(cn.waps.ar,java.lang.String)
+cn.waps.ar: java.util.Map a()
+cn.waps.ar: java.util.Map a(java.util.Map)
+cn.waps.ar: boolean a(cn.waps.ar)
+cn.waps.ar: boolean a(cn.waps.ar,boolean)
+cn.waps.ar: java.lang.String b(cn.waps.ar)
+cn.waps.ar: java.io.File c(cn.waps.ar)
+cn.waps.ar: java.lang.String d(cn.waps.ar)
+cn.waps.ar: java.lang.String e(cn.waps.ar)
+cn.waps.ar: cn.waps.ad a(cn.waps.ar,cn.waps.ad)
+cn.waps.ar: cn.waps.ad f(cn.waps.ar)
+cn.waps.aw
+cn.waps.aw: android.content.Context a
+cn.waps.aw: cn.waps.ae b
+cn.waps.aw: java.lang.String c
+cn.waps.aw: java.util.List d
+cn.waps.aw: aw(android.content.Context,cn.waps.ae,java.lang.String)
+cn.waps.aw: void a()
+cn.waps.aw: void a(android.content.Context,java.lang.String,java.lang.String,boolean)
+cn.waps.aw: void a(android.content.Context,java.util.List,java.lang.String,boolean)
+cn.waps.aw: void a(android.content.Context,java.util.List,int,java.lang.String,boolean)
+cn.waps.aw: java.util.List a(java.io.InputStream)
+cn.waps.aw: void b()
+cn.waps.aw: void a(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.aw: android.widget.LinearLayout a(android.content.Context,android.app.Dialog,java.util.List,java.lang.String,java.lang.String,boolean)
+cn.waps.aw: java.lang.String a(cn.waps.aw)
+cn.waps.aw: cn.waps.ae b(cn.waps.aw)
+cn.waps.aw: java.util.List a(cn.waps.aw,java.util.List)
+cn.waps.aw: void a(cn.waps.aw,android.content.Context,java.util.List,int,java.lang.String,boolean)
+cn.waps.be
+cn.waps.be: be()
+cn.waps.be: java.util.Map a()
+cn.waps.be: java.util.Map b()
+cn.waps.bf
+cn.waps.bf: android.os.Handler a
+cn.waps.bf: android.widget.LinearLayout b
+cn.waps.bf: boolean c
+cn.waps.bf: android.view.View d
+cn.waps.bf: android.content.Context e
+cn.waps.bf: long f
+cn.waps.bf: int g
+cn.waps.bf: cn.waps.AnimationType j
+cn.waps.bf: int k
+cn.waps.bf: boolean l
+cn.waps.bf: int m
+cn.waps.bf: java.lang.String n
+cn.waps.bf: int o
+cn.waps.bf: int p
+cn.waps.bf: java.lang.String q
+cn.waps.bf: android.content.SharedPreferences r
+cn.waps.bf: android.content.SharedPreferences$Editor s
+cn.waps.bf: cn.waps.AdInfo t
+cn.waps.bf: java.lang.String u
+cn.waps.bf: java.lang.Runnable h
+cn.waps.bf: android.widget.TextView i
+cn.waps.bf: bf(android.content.Context,android.widget.LinearLayout)
+cn.waps.bf: bf()
+cn.waps.bf: void a(int)
+cn.waps.bf: void b()
+cn.waps.bf: void c()
+cn.waps.bf: void c(int)
+cn.waps.bf: android.view.View$OnClickListener a(android.content.Context,int)
+cn.waps.bf: android.widget.LinearLayout a(android.content.Context,android.graphics.Bitmap,java.lang.String,int)
+cn.waps.bf: void a(cn.waps.bf)
+cn.waps.bf: boolean b(cn.waps.bf)
+cn.waps.bf: int c(cn.waps.bf)
+cn.waps.bf: int d(cn.waps.bf)
+cn.waps.bf: int a()
+cn.waps.bf: int a(cn.waps.bf,int)
+cn.waps.bf: int b(int)
+cn.waps.bf: void b(cn.waps.bf,int)
+cn.waps.bf: boolean a(cn.waps.bf,boolean)
+cn.waps.bf: int e(cn.waps.bf)
+cn.waps.bf: void <clinit>()
+cn.waps.bk
+cn.waps.bk: int a
+cn.waps.bk: android.content.Context b
+cn.waps.bk: cn.waps.bf c
+cn.waps.bk: bk(cn.waps.bf,android.content.Context,int)
+cn.waps.bk: void onClick(android.view.View)
+cn.waps.bl
+cn.waps.bl: java.lang.String a
+cn.waps.bl: java.lang.String b
+cn.waps.bl: java.lang.String c
+cn.waps.bl: java.lang.String d
+cn.waps.bl: java.lang.String e
+cn.waps.bl: java.lang.String f
+cn.waps.bl: java.lang.String g
+cn.waps.bl: java.lang.String h
+cn.waps.bl: java.lang.String i
+cn.waps.bl: java.lang.String j
+cn.waps.bl: cn.waps.AppListener k
+cn.waps.bl: android.os.Handler l
+cn.waps.bl: java.util.HashMap m
+cn.waps.bl: java.util.HashMap n
+cn.waps.bl: int o
+cn.waps.bl: bl()
+cn.waps.bl: java.lang.String a()
+cn.waps.bl: void a(java.lang.String)
+cn.waps.bl: java.lang.String b()
+cn.waps.bl: void b(java.lang.String)
+cn.waps.bl: java.lang.String c()
+cn.waps.bl: void c(java.lang.String)
+cn.waps.bl: java.lang.String d()
+cn.waps.bl: void d(java.lang.String)
+cn.waps.bl: java.lang.String e()
+cn.waps.bl: void e(java.lang.String)
+cn.waps.bl: java.lang.String f()
+cn.waps.bl: void f(java.lang.String)
+cn.waps.bl: java.lang.String g()
+cn.waps.bl: void g(java.lang.String)
+cn.waps.bl: java.lang.String h()
+cn.waps.bl: void h(java.lang.String)
+cn.waps.bl: java.lang.String i()
+cn.waps.bl: void i(java.lang.String)
+cn.waps.bl: void j(java.lang.String)
+cn.waps.bl: android.os.Handler j()
+cn.waps.bl: void a(android.os.Handler)
+cn.waps.bl: java.util.HashMap k()
+cn.waps.bl: void a(java.util.HashMap)
+cn.waps.bl: java.util.HashMap l()
+cn.waps.bl: void b(java.util.HashMap)
+cn.waps.bl: int m()
+cn.waps.bl: void a(int)
+cn.waps.bm
+cn.waps.bm: android.app.Dialog a
+cn.waps.bm: bm()
+cn.waps.bm: android.app.Dialog a(android.content.Context,cn.waps.bl)
+cn.waps.bn
+cn.waps.bn: android.webkit.WebView m
+cn.waps.bn: java.lang.String n
+cn.waps.bn: android.widget.ProgressBar o
+cn.waps.bn: java.lang.String p
+cn.waps.bn: java.lang.String q
+cn.waps.bn: java.lang.String r
+cn.waps.bn: java.lang.String s
+cn.waps.bn: java.lang.String t
+cn.waps.bn: java.lang.String u
+cn.waps.bn: java.lang.String v
+cn.waps.bn: java.lang.String w
+cn.waps.bn: java.lang.String x
+cn.waps.bn: java.lang.String y
+cn.waps.bn: cn.waps.ao a
+cn.waps.bn: boolean z
+cn.waps.bn: java.lang.String A
+cn.waps.bn: java.util.Map B
+cn.waps.bn: java.lang.String b
+cn.waps.bn: java.lang.String c
+cn.waps.bn: android.widget.LinearLayout d
+cn.waps.bn: java.lang.String e
+cn.waps.bn: java.lang.String[] f
+cn.waps.bn: cn.waps.ab g
+cn.waps.bn: java.lang.String h
+cn.waps.bn: java.util.HashMap C
+cn.waps.bn: java.util.HashMap D
+cn.waps.bn: int E
+cn.waps.bn: android.content.SharedPreferences i
+cn.waps.bn: java.io.File j
+cn.waps.bn: android.app.AlertDialog k
+cn.waps.bn: android.os.Handler l
+cn.waps.bn: bn()
+cn.waps.bn: android.view.View a(android.content.Context,android.webkit.WebView,cn.waps.bl,android.app.Dialog)
+cn.waps.bn: void a(android.content.Context,cn.waps.ao,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.bn: void a(android.content.Context,android.webkit.WebView,android.app.Dialog)
+cn.waps.bn: boolean a(android.webkit.WebView,android.app.Dialog)
+cn.waps.bn: void a(android.content.Context,cn.waps.bl)
+cn.waps.bn: java.lang.String a(cn.waps.bn)
+cn.waps.bn: java.util.Map a()
+cn.waps.bn: java.lang.String b(cn.waps.bn)
+cn.waps.bn: java.lang.String c(cn.waps.bn)
+cn.waps.bn: android.webkit.WebView d(cn.waps.bn)
+cn.waps.bn: java.lang.String e(cn.waps.bn)
+cn.waps.bn: void a(cn.waps.bn,android.content.Context,cn.waps.ao,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.bn: java.lang.String a(cn.waps.bn,java.lang.String)
+cn.waps.bn: java.util.Map a(java.util.Map)
+cn.waps.bn: java.util.HashMap f(cn.waps.bn)
+cn.waps.bn: int g(cn.waps.bn)
+cn.waps.bn: java.util.HashMap h(cn.waps.bn)
+cn.waps.bn: boolean i(cn.waps.bn)
+cn.waps.bn: boolean a(cn.waps.bn,boolean)
+cn.waps.bn: android.widget.ProgressBar j(cn.waps.bn)
+cn.waps.bn: java.lang.String b(cn.waps.bn,java.lang.String)
+cn.waps.bn: java.lang.String c(cn.waps.bn,java.lang.String)
+cn.waps.bt
+cn.waps.bt: android.content.Context i
+cn.waps.bt: cn.waps.ae j
+cn.waps.bt: android.content.SharedPreferences k
+cn.waps.bt: java.lang.String l
+cn.waps.bt: java.lang.String m
+cn.waps.bt: java.lang.String n
+cn.waps.bt: java.lang.String o
+cn.waps.bt: java.lang.String p
+cn.waps.bt: android.app.Dialog q
+cn.waps.bt: java.util.List r
+cn.waps.bt: java.lang.String s
+cn.waps.bt: cn.waps.cg t
+cn.waps.bt: java.util.List a
+cn.waps.bt: android.os.Handler u
+cn.waps.bt: boolean v
+cn.waps.bt: java.util.List b
+cn.waps.bt: float c
+cn.waps.bt: float d
+cn.waps.bt: android.widget.ViewFlipper e
+cn.waps.bt: java.util.List f
+cn.waps.bt: boolean g
+cn.waps.bt: java.lang.String h
+cn.waps.bt: bt()
+cn.waps.bt: void a(android.content.Context,cn.waps.ae,android.content.SharedPreferences,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.bt: void a(android.content.Context)
+cn.waps.bt: void b(android.content.Context)
+cn.waps.bt: void a(android.content.Context,int)
+cn.waps.bt: android.app.Dialog a()
+cn.waps.bt: void a(android.content.Context,java.util.List,boolean,int)
+cn.waps.bt: java.util.List a(java.io.InputStream)
+cn.waps.bt: android.graphics.Bitmap a(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.bt: void a(java.util.List)
+cn.waps.bt: void a(cn.waps.AdInfo)
+cn.waps.bt: android.widget.LinearLayout a(cn.waps.AdInfo,android.content.Context,android.app.Dialog)
+cn.waps.bt: android.widget.LinearLayout a(cn.waps.AdInfo,android.content.Context,android.app.Dialog,int,int)
+cn.waps.bt: android.widget.LinearLayout b(cn.waps.AdInfo,android.content.Context,android.app.Dialog,int,int)
+cn.waps.bt: void a(cn.waps.AdInfo,android.widget.ViewFlipper,android.widget.LinearLayout)
+cn.waps.bt: void a(java.lang.String,android.app.Dialog)
+cn.waps.bt: boolean c(android.content.Context)
+cn.waps.bt: cn.waps.AdInfo a(android.content.Context,java.util.List)
+cn.waps.bt: android.widget.LinearLayout a(android.content.Context,int,int)
+cn.waps.bt: cn.waps.AdInfo a(cn.waps.bt,android.content.Context,java.util.List)
+cn.waps.bt: android.widget.LinearLayout a(cn.waps.bt,cn.waps.AdInfo,android.content.Context,android.app.Dialog,int,int)
+cn.waps.bt: void a(cn.waps.bt,cn.waps.AdInfo,android.widget.ViewFlipper,android.widget.LinearLayout)
+cn.waps.bt: android.content.SharedPreferences a(cn.waps.bt)
+cn.waps.bt: java.lang.String b(cn.waps.bt)
+cn.waps.bt: java.util.List c(cn.waps.bt)
+cn.waps.bt: boolean a(cn.waps.bt,boolean)
+cn.waps.bt: java.lang.String d(cn.waps.bt)
+cn.waps.bt: cn.waps.ae e(cn.waps.bt)
+cn.waps.bt: java.util.List a(cn.waps.bt,java.util.List)
+cn.waps.bt: java.util.List a(cn.waps.bt,java.io.InputStream)
+cn.waps.bt: void a(cn.waps.bt,android.content.Context,java.util.List,boolean,int)
+cn.waps.bt: java.lang.String f(cn.waps.bt)
+cn.waps.bt: java.lang.String g(cn.waps.bt)
+cn.waps.bt: java.lang.String h(cn.waps.bt)
+cn.waps.bt: void b(cn.waps.bt,java.util.List)
+cn.waps.bt: void a(cn.waps.bt,cn.waps.AdInfo)
+cn.waps.bt: void a(cn.waps.bt,java.lang.String,android.app.Dialog)
+cn.waps.bt: android.os.Handler b()
+cn.waps.bt: java.lang.String i(cn.waps.bt)
+cn.waps.bt: android.content.Context j(cn.waps.bt)
+cn.waps.bt: void <clinit>()
+cn.waps.cl
+cn.waps.cl: android.content.Context a
+cn.waps.cl: cn.waps.SDKUtils b
+cn.waps.cl: cl(android.content.Context)
+cn.waps.cl: java.net.HttpURLConnection a(java.lang.String,java.util.List,byte[])
+cn.waps.cl: java.net.HttpURLConnection a(java.lang.String)
+cn.waps.cl: boolean a(android.webkit.WebView,java.lang.String,android.app.Dialog,java.lang.String)
+cn.waps.cl: android.content.Intent a(android.content.Context,java.lang.String)
+cn.waps.cl: android.content.Intent a(android.content.Context,java.lang.String,java.lang.String,java.lang.String)
+cn.waps.cl: java.lang.String c(java.lang.String,java.lang.String)
+cn.waps.cl: java.lang.String a(java.lang.String,int)
+cn.waps.cl: boolean b(java.lang.String)
+cn.waps.cl: java.lang.String a(android.content.Context)
+cn.waps.cl: java.lang.String c(java.lang.String)
+cn.waps.cl: java.lang.String d(java.lang.String)
+cn.waps.cl: boolean a()
+cn.waps.cl: void a(android.content.SharedPreferences)
+cn.waps.cl: boolean a(int,int)
+cn.waps.cl: java.lang.Object[] e(java.lang.String)
+cn.waps.cl: void a(android.content.Context,java.lang.String,java.lang.String)
+cn.waps.cl: java.lang.String a(java.lang.String,java.lang.String)
+cn.waps.cl: void a(java.lang.String,java.lang.String,java.lang.String)
+cn.waps.cl: java.lang.String b(java.lang.String,java.lang.String)
+cn.waps.cl: java.lang.String b(android.content.Context)
+cn.waps.ct
+cn.waps.ct: ct()
+cn.waps.ct: android.graphics.drawable.ShapeDrawable a(float,java.lang.String)
+cn.waps.ct: android.graphics.drawable.ShapeDrawable b(float,java.lang.String)
+cn.waps.ct: android.graphics.drawable.ShapeDrawable c(float,java.lang.String)
 com.coolstore.common.Config$EnvType: com.coolstore.common.Config$EnvType[] values()
 com.coolstore.common.Config$EnvType: com.coolstore.common.Config$EnvType valueOf(java.lang.String)
 com.coolstore.common.SLog$TYPE: com.coolstore.common.SLog$TYPE[] values()
@@ -7627,6 +9403,7 @@ com.coolstore.wangcai.R$dimen: int app_wall_button_text_size
 com.coolstore.wangcai.R$dimen: int app_wall_button_width
 com.coolstore.wangcai.R$dimen: int app_wall_height
 com.coolstore.wangcai.R$dimen: int app_wall_left_margin
+com.coolstore.wangcai.R$dimen: int app_wall_recommand_right_margin
 com.coolstore.wangcai.R$dimen: int app_wall_text_width
 com.coolstore.wangcai.R$dimen: int app_wall_top_padding
 com.coolstore.wangcai.R$dimen: int app_wall_width
@@ -7643,6 +9420,7 @@ com.coolstore.wangcai.R$dimen: int header_footer_top_bottom_padding
 com.coolstore.wangcai.R$dimen: int indicator_corner_radius
 com.coolstore.wangcai.R$dimen: int indicator_internal_padding
 com.coolstore.wangcai.R$dimen: int indicator_right_padding
+com.coolstore.wangcai.R$dimen: int main_item_height
 com.coolstore.wangcai.R$dimen: int main_menu_margin_left
 com.coolstore.wangcai.R$dimen: int main_menu_width
 com.coolstore.wangcai.R$dimen: int new_award_tip_height
@@ -7747,9 +9525,15 @@ com.coolstore.wangcai.R$drawable: int app_tip_back
 com.coolstore.wangcai.R$drawable: int app_tip_close
 com.coolstore.wangcai.R$drawable: int app_tip_more
 com.coolstore.wangcai.R$drawable: int app_tip_recommand
-com.coolstore.wangcai.R$drawable: int app_tip_youmi
+com.coolstore.wangcai.R$drawable: int app_wall_anwo
+com.coolstore.wangcai.R$drawable: int app_wall_domob
+com.coolstore.wangcai.R$drawable: int app_wall_jupeng
+com.coolstore.wangcai.R$drawable: int app_wall_midi
+com.coolstore.wangcai.R$drawable: int app_wall_mopan
 com.coolstore.wangcai.R$drawable: int app_wall_puncbox
+com.coolstore.wangcai.R$drawable: int app_wall_recommand
 com.coolstore.wangcai.R$drawable: int app_wall_title
+com.coolstore.wangcai.R$drawable: int app_wall_wanpu
 com.coolstore.wangcai.R$drawable: int app_wall_youmi
 com.coolstore.wangcai.R$drawable: int app_win_bkg
 com.coolstore.wangcai.R$drawable: int auth_follow_cb_chd
@@ -7772,7 +9556,6 @@ com.coolstore.wangcai.R$drawable: int choujiang_border_moving
 com.coolstore.wangcai.R$drawable: int choujiang_border_selected1
 com.coolstore.wangcai.R$drawable: int choujiang_border_selected2
 com.coolstore.wangcai.R$drawable: int choujiang_bottom_cloud
-com.coolstore.wangcai.R$drawable: int choujiang_guize
 com.coolstore.wangcai.R$drawable: int choujiang_shaxuan
 com.coolstore.wangcai.R$drawable: int choujiang_start_btn
 com.coolstore.wangcai.R$drawable: int choujiang_start_btn_selected
@@ -7840,6 +9623,10 @@ com.coolstore.wangcai.R$drawable: int levelup_close_btn
 com.coolstore.wangcai.R$drawable: int levelup_close_btn_pressed
 com.coolstore.wangcai.R$drawable: int levelup_close_btn_up
 com.coolstore.wangcai.R$drawable: int line
+com.coolstore.wangcai.R$drawable: int list_item_first_normal
+com.coolstore.wangcai.R$drawable: int list_item_last_normal
+com.coolstore.wangcai.R$drawable: int list_item_middle_normal
+com.coolstore.wangcai.R$drawable: int list_item_single_normal
 com.coolstore.wangcai.R$drawable: int load_error
 com.coolstore.wangcai.R$drawable: int logo_douban
 com.coolstore.wangcai.R$drawable: int logo_dropbox
@@ -7935,7 +9722,9 @@ com.coolstore.wangcai.R$drawable: int package_icon_5mao
 com.coolstore.wangcai.R$drawable: int package_icon_8
 com.coolstore.wangcai.R$drawable: int package_icon_many
 com.coolstore.wangcai.R$drawable: int pin
+com.coolstore.wangcai.R$drawable: int pointer
 com.coolstore.wangcai.R$drawable: int qiandao_button_red_dot
+com.coolstore.wangcai.R$drawable: int quest_icon
 com.coolstore.wangcai.R$drawable: int recommand_task_icon
 com.coolstore.wangcai.R$drawable: int redbag_mb_bg
 com.coolstore.wangcai.R$drawable: int redbag_mb_btn_normal
@@ -7960,8 +9749,37 @@ com.coolstore.wangcai.R$drawable: int ssdk_auth_title_back
 com.coolstore.wangcai.R$drawable: int ssdk_back_arr
 com.coolstore.wangcai.R$drawable: int ssdk_logo
 com.coolstore.wangcai.R$drawable: int ssdk_oks_ptr_ptr
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_default_icon
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_empty
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_floor_1st
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_floor_end
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_floor_mid
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_floor_sgl
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_like
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_pop_copy
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_pop_reply
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_pop_share
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_popview
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_rp_back
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_rp_chacc
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_tabbg
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_tabbg_1
+com.coolstore.wangcai.R$drawable: int ssdk_social_cl_unlike
+com.coolstore.wangcai.R$drawable: int ssdk_social_rp_reply
+com.coolstore.wangcai.R$drawable: int ssdk_social_rp_reply_nor
+com.coolstore.wangcai.R$drawable: int ssdk_social_rp_reply_pre
+com.coolstore.wangcai.R$drawable: int ssdk_social_toolbar_back
+com.coolstore.wangcai.R$drawable: int ssdk_social_toolbar_comment
+com.coolstore.wangcai.R$drawable: int ssdk_social_toolbar_dislike
+com.coolstore.wangcai.R$drawable: int ssdk_social_toolbar_divier
+com.coolstore.wangcai.R$drawable: int ssdk_social_toolbar_like
+com.coolstore.wangcai.R$drawable: int ssdk_social_toolbar_reply
+com.coolstore.wangcai.R$drawable: int ssdk_social_toolbar_share
+com.coolstore.wangcai.R$drawable: int ssdk_social_vip
 com.coolstore.wangcai.R$drawable: int ssdk_title_div
 com.coolstore.wangcai.R$drawable: int startup
+com.coolstore.wangcai.R$drawable: int survey_rulle_agree_button
+com.coolstore.wangcai.R$drawable: int survey_rulle_disagree_button
 com.coolstore.wangcai.R$drawable: int title_back
 com.coolstore.wangcai.R$drawable: int title_shadow
 com.coolstore.wangcai.R$drawable: int toggle_button
@@ -7997,7 +9815,7 @@ com.coolstore.wangcai.R$id: int action_settings
 com.coolstore.wangcai.R$id: int activity_chooser_view_content
 com.coolstore.wangcai.R$id: int addition_percent_label
 com.coolstore.wangcai.R$id: int addition_percent_text
-com.coolstore.wangcai.R$id: int age_edit
+com.coolstore.wangcai.R$id: int agree_button
 com.coolstore.wangcai.R$id: int always
 com.coolstore.wangcai.R$id: int app_wall_button_container
 com.coolstore.wangcai.R$id: int app_wall_grid1
@@ -8018,13 +9836,13 @@ com.coolstore.wangcai.R$id: int beilv_frame
 com.coolstore.wangcai.R$id: int bind_phone_button
 com.coolstore.wangcai.R$id: int bind_phone_tip
 com.coolstore.wangcai.R$id: int both
+com.coolstore.wangcai.R$id: int button_frame
 com.coolstore.wangcai.R$id: int captcha_edit
 com.coolstore.wangcai.R$id: int captcha_frame
 com.coolstore.wangcai.R$id: int checkbox
 com.coolstore.wangcai.R$id: int close_button
 com.coolstore.wangcai.R$id: int collapseActionView
 com.coolstore.wangcai.R$id: int commit_invite_code
-com.coolstore.wangcai.R$id: int confirm_button
 com.coolstore.wangcai.R$id: int copy_url_button
 com.coolstore.wangcai.R$id: int count_down_text
 com.coolstore.wangcai.R$id: int default_activity_button
@@ -8032,6 +9850,7 @@ com.coolstore.wangcai.R$id: int default_page
 com.coolstore.wangcai.R$id: int dialog
 com.coolstore.wangcai.R$id: int disableHome
 com.coolstore.wangcai.R$id: int disabled
+com.coolstore.wangcai.R$id: int disagree_button
 com.coolstore.wangcai.R$id: int dog_image
 com.coolstore.wangcai.R$id: int dropdown
 com.coolstore.wangcai.R$id: int edit
@@ -8052,7 +9871,6 @@ com.coolstore.wangcai.R$id: int extract_item_sub_text
 com.coolstore.wangcai.R$id: int extract_item_text
 com.coolstore.wangcai.R$id: int extract_logo
 com.coolstore.wangcai.R$id: int extract_price
-com.coolstore.wangcai.R$id: int female_button
 com.coolstore.wangcai.R$id: int fl_inner
 com.coolstore.wangcai.R$id: int flip
 com.coolstore.wangcai.R$id: int friend_award
@@ -8065,6 +9883,7 @@ com.coolstore.wangcai.R$id: int grid2
 com.coolstore.wangcai.R$id: int grid3
 com.coolstore.wangcai.R$id: int grid_bkg
 com.coolstore.wangcai.R$id: int grid_frame
+com.coolstore.wangcai.R$id: int grid_inner_frame
 com.coolstore.wangcai.R$id: int gridview
 com.coolstore.wangcai.R$id: int hint
 com.coolstore.wangcai.R$id: int home
@@ -8090,6 +9909,7 @@ com.coolstore.wangcai.R$id: int invite_code
 com.coolstore.wangcai.R$id: int invite_code_edit
 com.coolstore.wangcai.R$id: int invite_panel
 com.coolstore.wangcai.R$id: int invite_url_text
+com.coolstore.wangcai.R$id: int item_frame
 com.coolstore.wangcai.R$id: int item_list
 com.coolstore.wangcai.R$id: int label
 com.coolstore.wangcai.R$id: int lebal
@@ -8119,7 +9939,6 @@ com.coolstore.wangcai.R$id: int main_item_task_status
 com.coolstore.wangcai.R$id: int main_item_tip
 com.coolstore.wangcai.R$id: int main_item_title
 com.coolstore.wangcai.R$id: int main_wnd
-com.coolstore.wangcai.R$id: int male_button
 com.coolstore.wangcai.R$id: int manualOnly
 com.coolstore.wangcai.R$id: int margin
 com.coolstore.wangcai.R$id: int menu_dot_image
@@ -8135,6 +9954,7 @@ com.coolstore.wangcai.R$id: int money_dot1
 com.coolstore.wangcai.R$id: int money_dot2
 com.coolstore.wangcai.R$id: int more_appwall_page
 com.coolstore.wangcai.R$id: int more_button
+com.coolstore.wangcai.R$id: int more_panel_button_container
 com.coolstore.wangcai.R$id: int my_invite_code_tip
 com.coolstore.wangcai.R$id: int never
 com.coolstore.wangcai.R$id: int new_skill_label
@@ -8188,7 +10008,6 @@ com.coolstore.wangcai.R$id: int search_voice_btn
 com.coolstore.wangcai.R$id: int select_border
 com.coolstore.wangcai.R$id: int select_cover
 com.coolstore.wangcai.R$id: int selected_view
-com.coolstore.wangcai.R$id: int sex_group
 com.coolstore.wangcai.R$id: int share_button
 com.coolstore.wangcai.R$id: int shortcut
 com.coolstore.wangcai.R$id: int showCustom
@@ -8223,14 +10042,6 @@ com.coolstore.wangcai.R$id: int unlock_level
 com.coolstore.wangcai.R$id: int up
 com.coolstore.wangcai.R$id: int usable_balance
 com.coolstore.wangcai.R$id: int useLogo
-com.coolstore.wangcai.R$id: int userinfo_beautify
-com.coolstore.wangcai.R$id: int userinfo_competitive_game
-com.coolstore.wangcai.R$id: int userinfo_ebuy
-com.coolstore.wangcai.R$id: int userinfo_relaxation_game
-com.coolstore.wangcai.R$id: int userinfo_rpg_game
-com.coolstore.wangcai.R$id: int userinfo_social_contact
-com.coolstore.wangcai.R$id: int userinfo_sport
-com.coolstore.wangcai.R$id: int userinfo_travel
 com.coolstore.wangcai.R$id: int view_detail
 com.coolstore.wangcai.R$id: int web_view
 com.coolstore.wangcai.R$id: int webview
@@ -8272,7 +10083,8 @@ com.coolstore.wangcai.R$layout: int activity_register
 com.coolstore.wangcai.R$layout: int activity_register_succeed
 com.coolstore.wangcai.R$layout: int activity_setting
 com.coolstore.wangcai.R$layout: int activity_startup
-com.coolstore.wangcai.R$layout: int activity_survey
+com.coolstore.wangcai.R$layout: int activity_suvery_list
+com.coolstore.wangcai.R$layout: int activity_suvery_rule
 com.coolstore.wangcai.R$layout: int activity_web
 com.coolstore.wangcai.R$layout: int activity_write_invite_code
 com.coolstore.wangcai.R$layout: int ctrl_bint_phone_tip
@@ -8313,6 +10125,7 @@ com.coolstore.wangcai.R$string: int abc_shareactionprovider_share_with_applicati
 com.coolstore.wangcai.R$string: int action_settings
 com.coolstore.wangcai.R$string: int additional_percent_label
 com.coolstore.wangcai.R$string: int age
+com.coolstore.wangcai.R$string: int agree
 com.coolstore.wangcai.R$string: int alipay_number_hint
 com.coolstore.wangcai.R$string: int alipay_number_label
 com.coolstore.wangcai.R$string: int alipay_realname_hint
@@ -8321,26 +10134,42 @@ com.coolstore.wangcai.R$string: int app_description
 com.coolstore.wangcai.R$string: int app_downloading
 com.coolstore.wangcai.R$string: int app_name
 com.coolstore.wangcai.R$string: int app_update_hint_title
+com.coolstore.wangcai.R$string: int app_wall_anwo_text
+com.coolstore.wangcai.R$string: int app_wall_domob_text
+com.coolstore.wangcai.R$string: int app_wall_jupeng_text
+com.coolstore.wangcai.R$string: int app_wall_midi_text
+com.coolstore.wangcai.R$string: int app_wall_mopan_text
 com.coolstore.wangcai.R$string: int app_wall_puncbox_text
+com.coolstore.wangcai.R$string: int app_wall_wanpu_text
 com.coolstore.wangcai.R$string: int app_wall_win_text
 com.coolstore.wangcai.R$string: int app_wall_win_title
 com.coolstore.wangcai.R$string: int app_wall_youmi_text
 com.coolstore.wangcai.R$string: int attention_text
+com.coolstore.wangcai.R$string: int auth_failed
 com.coolstore.wangcai.R$string: int balance
 com.coolstore.wangcai.R$string: int balance_not_enough
 com.coolstore.wangcai.R$string: int balance_unit
 com.coolstore.wangcai.R$string: int bind
+com.coolstore.wangcai.R$string: int bind_account
 com.coolstore.wangcai.R$string: int bind_phone
 com.coolstore.wangcai.R$string: int bind_phone_count_down
 com.coolstore.wangcai.R$string: int bind_phone_hint_text
 com.coolstore.wangcai.R$string: int cancel
 com.coolstore.wangcai.R$string: int cancel_text
 com.coolstore.wangcai.R$string: int cash_extract
+com.coolstore.wangcai.R$string: int change_account
 com.coolstore.wangcai.R$string: int china_area
+com.coolstore.wangcai.R$string: int click_to_unfold
 com.coolstore.wangcai.R$string: int close_button
+com.coolstore.wangcai.R$string: int comment_like_author_title
+com.coolstore.wangcai.R$string: int comment_like_comment_list_title
+com.coolstore.wangcai.R$string: int comment_list_is_empty
+com.coolstore.wangcai.R$string: int comment_rejected
 com.coolstore.wangcai.R$string: int confirm_exchange_text
 com.coolstore.wangcai.R$string: int confirm_extract
+com.coolstore.wangcai.R$string: int copy
 com.coolstore.wangcai.R$string: int copy_succeed
+com.coolstore.wangcai.R$string: int disagree
 com.coolstore.wangcai.R$string: int discount_text
 com.coolstore.wangcai.R$string: int douban
 com.coolstore.wangcai.R$string: int download_faield
@@ -8378,6 +10207,7 @@ com.coolstore.wangcai.R$string: int extract_qbi_lebal
 com.coolstore.wangcai.R$string: int extract_succeed
 com.coolstore.wangcai.R$string: int extract_succeed_tip
 com.coolstore.wangcai.R$string: int facebook
+com.coolstore.wangcai.R$string: int failed_to_reply
 com.coolstore.wangcai.R$string: int failed_to_start_incentive_page
 com.coolstore.wangcai.R$string: int female
 com.coolstore.wangcai.R$string: int finish
@@ -8421,6 +10251,7 @@ com.coolstore.wangcai.R$string: int hint_sward_share
 com.coolstore.wangcai.R$string: int hint_update_wangcai
 com.coolstore.wangcai.R$string: int hint_verify_captcha_fail
 com.coolstore.wangcai.R$string: int hint_verifying_captcha
+com.coolstore.wangcai.R$string: int hot_list
 com.coolstore.wangcai.R$string: int important_tip
 com.coolstore.wangcai.R$string: int incentive_title
 com.coolstore.wangcai.R$string: int input_agin_hint
@@ -8439,15 +10270,19 @@ com.coolstore.wangcai.R$string: int invite_rull_detail_title
 com.coolstore.wangcai.R$string: int invite_share_content
 com.coolstore.wangcai.R$string: int jidong_card_50
 com.coolstore.wangcai.R$string: int kaixin
+com.coolstore.wangcai.R$string: int last_refresh_time
+com.coolstore.wangcai.R$string: int let_me_say
 com.coolstore.wangcai.R$string: int leve_up_award_label
 com.coolstore.wangcai.R$string: int leve_up_titel
 com.coolstore.wangcai.R$string: int level_label
 com.coolstore.wangcai.R$string: int level_privilege_tip
 com.coolstore.wangcai.R$string: int level_unit
 com.coolstore.wangcai.R$string: int level_value_label
+com.coolstore.wangcai.R$string: int like_failed
 com.coolstore.wangcai.R$string: int linkedin
 com.coolstore.wangcai.R$string: int list_friends
 com.coolstore.wangcai.R$string: int load_error
+com.coolstore.wangcai.R$string: int loading_next
 com.coolstore.wangcai.R$string: int loading_text
 com.coolstore.wangcai.R$string: int lotter_no_award_tip
 com.coolstore.wangcai.R$string: int lv10_benefit
@@ -8468,9 +10303,12 @@ com.coolstore.wangcai.R$string: int my_wangcai
 com.coolstore.wangcai.R$string: int neteasemicroblog
 com.coolstore.wangcai.R$string: int new_app_award_tip_title
 com.coolstore.wangcai.R$string: int new_award_tip_level_benefit
+com.coolstore.wangcai.R$string: int new_invite_award_tip_title
 com.coolstore.wangcai.R$string: int new_invite_award_tip_titpe
+com.coolstore.wangcai.R$string: int new_list
 com.coolstore.wangcai.R$string: int new_lottery_award_tip_title
 com.coolstore.wangcai.R$string: int new_skill_lable
+com.coolstore.wangcai.R$string: int not_yet_authorized
 com.coolstore.wangcai.R$string: int ok_text
 com.coolstore.wangcai.R$string: int options
 com.coolstore.wangcai.R$string: int paypal
@@ -8492,19 +10330,30 @@ com.coolstore.wangcai.R$string: int qq_number_hint
 com.coolstore.wangcai.R$string: int qq_number_label
 com.coolstore.wangcai.R$string: int qzone
 com.coolstore.wangcai.R$string: int qzone_invite_share_content
+com.coolstore.wangcai.R$string: int qzone_share_content
 com.coolstore.wangcai.R$string: int recharge
 com.coolstore.wangcai.R$string: int recommand_task
 com.coolstore.wangcai.R$string: int refreshing
 com.coolstore.wangcai.R$string: int release_to_refresh
 com.coolstore.wangcai.R$string: int remain_task_money
 com.coolstore.wangcai.R$string: int renren
+com.coolstore.wangcai.R$string: int replay_too_frequently
+com.coolstore.wangcai.R$string: int reply
+com.coolstore.wangcai.R$string: int reply_page_title
+com.coolstore.wangcai.R$string: int reply_succeeded
+com.coolstore.wangcai.R$string: int reply_to
+com.coolstore.wangcai.R$string: int replying
 com.coolstore.wangcai.R$string: int resend
 com.coolstore.wangcai.R$string: int retry_text
 com.coolstore.wangcai.R$string: int return_text
+com.coolstore.wangcai.R$string: int right_now
 com.coolstore.wangcai.R$string: int rmb_symbol
+com.coolstore.wangcai.R$string: int select_account
+com.coolstore.wangcai.R$string: int select_another
 com.coolstore.wangcai.R$string: int select_gift_lebal
 com.coolstore.wangcai.R$string: int select_help_hint
 com.coolstore.wangcai.R$string: int select_one_plat_at_least
+com.coolstore.wangcai.R$string: int selsect_account
 com.coolstore.wangcai.R$string: int setting_push_text
 com.coolstore.wangcai.R$string: int setting_push_title
 com.coolstore.wangcai.R$string: int setting_sournd_text
@@ -8532,11 +10381,22 @@ com.coolstore.wangcai.R$string: int skill3
 com.coolstore.wangcai.R$string: int skill5
 com.coolstore.wangcai.R$string: int sohumicroblog
 com.coolstore.wangcai.R$string: int sohusuishenkan
+com.coolstore.wangcai.R$string: int spam_reply
+com.coolstore.wangcai.R$string: int survey_commit_succeed_button_text
+com.coolstore.wangcai.R$string: int survey_commit_succeed_text
+com.coolstore.wangcai.R$string: int survey_commit_succeed_title
+com.coolstore.wangcai.R$string: int survey_rule_sub_title
+com.coolstore.wangcai.R$string: int survey_rule_text1
+com.coolstore.wangcai.R$string: int survey_rule_text2
+com.coolstore.wangcai.R$string: int survey_rule_text3
+com.coolstore.wangcai.R$string: int survey_rule_title
+com.coolstore.wangcai.R$string: int survey_title
 com.coolstore.wangcai.R$string: int task_complete
 com.coolstore.wangcai.R$string: int task_detail
 com.coolstore.wangcai.R$string: int task_level_limit_hint
 com.coolstore.wangcai.R$string: int tecent_qbi
 com.coolstore.wangcai.R$string: int tencentweibo
+com.coolstore.wangcai.R$string: int text_copied
 com.coolstore.wangcai.R$string: int the_one_invite_me
 com.coolstore.wangcai.R$string: int tumblr
 com.coolstore.wangcai.R$string: int twitter
@@ -8566,9 +10426,12 @@ com.coolstore.wangcai.R$string: int write_invaite_code_get_award
 com.coolstore.wangcai.R$string: int write_invite_code_tip
 com.coolstore.wangcai.R$string: int write_invite_code_title
 com.coolstore.wangcai.R$string: int xunlei_white_gold_card
+com.coolstore.wangcai.R$string: int xx_hour_before
+com.coolstore.wangcai.R$string: int xx_min_before
 com.coolstore.wangcai.R$string: int yixin
 com.coolstore.wangcai.R$string: int yixin_client_inavailable
 com.coolstore.wangcai.R$string: int yixinmoments
+com.coolstore.wangcai.R$string: int you_have_liked_the_topic
 com.coolstore.wangcai.R$string: int youdao
 com.coolstore.wangcai.R$style: int AppBaseTheme
 com.coolstore.wangcai.R$style: int DefaultFontStyle
@@ -8890,6 +10753,8 @@ com.coolstore.wangcai.activity.LotteryActivity: LotteryActivity()
 com.coolstore.wangcai.activity.MainActivity
 com.coolstore.wangcai.activity.MainActivity: MainActivity()
 com.coolstore.wangcai.activity.MainActivity: void onClick(android.view.View)
+com.coolstore.wangcai.activity.MidiActivity
+com.coolstore.wangcai.activity.MidiActivity: MidiActivity()
 com.coolstore.wangcai.activity.MyWangcaiActivity
 com.coolstore.wangcai.activity.MyWangcaiActivity: MyWangcaiActivity()
 com.coolstore.wangcai.activity.RegisterActivity
@@ -8903,7 +10768,10 @@ com.coolstore.wangcai.activity.StartupActivity
 com.coolstore.wangcai.activity.StartupActivity: StartupActivity()
 com.coolstore.wangcai.activity.SurveyActivity
 com.coolstore.wangcai.activity.SurveyActivity: SurveyActivity()
-com.coolstore.wangcai.activity.SurveyActivity: void onClick(android.view.View)
+com.coolstore.wangcai.activity.SurveyListActivity
+com.coolstore.wangcai.activity.SurveyListActivity: SurveyListActivity()
+com.coolstore.wangcai.activity.SurveyRuleActivity
+com.coolstore.wangcai.activity.SurveyRuleActivity: SurveyRuleActivity()
 com.coolstore.wangcai.activity.WebviewActivity
 com.coolstore.wangcai.activity.WebviewActivity: WebviewActivity()
 com.coolstore.wangcai.activity.WebviewActivity$ViewState: com.coolstore.wangcai.activity.WebviewActivity$ViewState[] values()
@@ -9789,8 +11657,6 @@ com.jeremyfeinstein.slidingmenu.lib.app.SlidingListActivity: void setContentView
 com.jeremyfeinstein.slidingmenu.lib.app.SlidingListActivity: void setBehindContentView(android.view.View)
 com.jeremyfeinstein.slidingmenu.lib.app.SlidingPreferenceActivity: void setContentView(android.view.View)
 com.jeremyfeinstein.slidingmenu.lib.app.SlidingPreferenceActivity: void setBehindContentView(android.view.View)
-com.jpmob.sdk.wall.JupengWallActivity
-com.jpmob.sdk.wall.JupengWallActivity: JupengWallActivity()
 com.punchbox.ads.AdActivity
 com.punchbox.ads.AdActivity: java.lang.String a
 com.punchbox.ads.AdActivity: com.punchbox.ads.MoreGameAd b
@@ -15596,6 +17462,12 @@ com.sina.sso.RemoteSSO$Stub$Proxy: android.os.IBinder asBinder()
 com.sina.sso.RemoteSSO$Stub$Proxy: java.lang.String getInterfaceDescriptor()
 com.sina.sso.RemoteSSO$Stub$Proxy: java.lang.String getPackageName()
 com.sina.sso.RemoteSSO$Stub$Proxy: java.lang.String getActivityName()
+com.umeng.analytics.Gender: com.umeng.analytics.Gender[] values()
+com.umeng.analytics.Gender: com.umeng.analytics.Gender valueOf(java.lang.String)
+com.umeng.analytics.social.UMPlatformData$GENDER: com.umeng.analytics.social.UMPlatformData$GENDER[] values()
+com.umeng.analytics.social.UMPlatformData$GENDER: com.umeng.analytics.social.UMPlatformData$GENDER valueOf(java.lang.String)
+com.umeng.analytics.social.UMPlatformData$UMedia: com.umeng.analytics.social.UMPlatformData$UMedia[] values()
+com.umeng.analytics.social.UMPlatformData$UMedia: com.umeng.analytics.social.UMPlatformData$UMedia valueOf(java.lang.String)
 m.framework.network.ByteArrayPart
 m.framework.network.ByteArrayPart: byte[] buffer
 m.framework.network.ByteArrayPart: ByteArrayPart()
@@ -16312,6 +18184,349 @@ m.framework.utils.Utils: java.lang.String getFileMime(java.lang.String)
 m.framework.utils.Utils: java.lang.String getCachePath(android.content.Context,java.lang.String)
 m.framework.utils.Utils: int getScreenWidth(android.content.Context)
 m.framework.utils.Utils: int getScreenHeight(android.content.Context)
+net.miidiwall.SDK.AdDesc
+net.miidiwall.SDK.AdDesc: java.lang.String adId
+net.miidiwall.SDK.AdDesc: java.lang.String title
+net.miidiwall.SDK.AdDesc: java.lang.String text
+net.miidiwall.SDK.AdDesc: android.graphics.Bitmap icon
+net.miidiwall.SDK.AdDesc: java.lang.Integer points
+net.miidiwall.SDK.AdDesc: java.lang.String description
+net.miidiwall.SDK.AdDesc: java.lang.String appVersion
+net.miidiwall.SDK.AdDesc: java.lang.Integer appSize
+net.miidiwall.SDK.AdDesc: java.lang.String appProvider
+net.miidiwall.SDK.AdDesc: java.lang.String[] appImageUrls
+net.miidiwall.SDK.AdDesc: java.lang.String appPackageName
+net.miidiwall.SDK.AdDesc: java.lang.String appAction
+net.miidiwall.SDK.AdDesc: AdDesc()
+net.miidiwall.SDK.AdDesc: java.lang.String getAdId()
+net.miidiwall.SDK.AdWall
+net.miidiwall.SDK.AdWall: AdWall()
+net.miidiwall.SDK.AdWall: void init(android.content.Context,java.lang.String,java.lang.String)
+net.miidiwall.SDK.AdWall: java.lang.String getSdkVersion()
+net.miidiwall.SDK.AdWall: void setUserActivity(android.content.Context,java.lang.String)
+net.miidiwall.SDK.AdWall: boolean showAppOffers(net.miidiwall.SDK.IAdWallShowAppsNotifier)
+net.miidiwall.SDK.AdWall: boolean showAppOffersNoScore(net.miidiwall.SDK.IAdWallShowAppsNotifier)
+net.miidiwall.SDK.AdWall: boolean getPoints(net.miidiwall.SDK.IAdWallGetPointsNotifier)
+net.miidiwall.SDK.AdWall: boolean spendPoints(int,net.miidiwall.SDK.IAdWallSpendPointsNotifier)
+net.miidiwall.SDK.AdWall: boolean awardPoints(int,net.miidiwall.SDK.IAdWallAwardPointsNotifier)
+net.miidiwall.SDK.AdWall: boolean requestAdWallToggle()
+net.miidiwall.SDK.AdWall: java.lang.String requestCreditTitle()
+net.miidiwall.SDK.AdWall: void setUserParam(java.lang.String)
+net.miidiwall.SDK.AdWall: boolean requestAdSource(net.miidiwall.SDK.IAdWallRequestAdSourceNotifier)
+net.miidiwall.SDK.AdWall: boolean requestAdSourceList(net.miidiwall.SDK.IAdWallRequestAdSourceNotifier)
+net.miidiwall.SDK.AdWall: boolean requestAdEffect(java.lang.String)
+net.miidiwall.SDK.AdWall: void setEarnPointsListener(net.miidiwall.SDK.IAdWallEarnPointsNotifier)
+net.miidiwall.SDK.AdWall: java.util.List requestAppSignInList()
+net.miidiwall.SDK.AdWall: boolean requestAppSignInEffect(java.lang.String)
+net.miidiwall.SDK.AdWall: boolean enableSdkWork()
+net.miidiwall.SDK.AdWall: boolean putTask(java.lang.String,java.lang.Object,java.lang.Object)
+net.miidiwall.SDK.AppSignInCell
+net.miidiwall.SDK.AppSignInCell: java.lang.String adId
+net.miidiwall.SDK.AppSignInCell: java.lang.String title
+net.miidiwall.SDK.AppSignInCell: java.lang.String text
+net.miidiwall.SDK.AppSignInCell: android.graphics.Bitmap icon
+net.miidiwall.SDK.AppSignInCell: java.lang.Integer points
+net.miidiwall.SDK.AppSignInCell: AppSignInCell()
+net.miidiwall.SDK.AppSignInCell: java.lang.String getAdId()
+net.miidiwall.SDK.IAdEffectNotifier
+net.miidiwall.SDK.IAdEffectNotifier: void onSuccessAdEffect(java.lang.String,java.lang.Integer)
+net.miidiwall.SDK.IAdEffectNotifier: void onFailAdEffect(java.lang.String,java.lang.String)
+net.miidiwall.SDK.IAdWallAwardPointsNotifier
+net.miidiwall.SDK.IAdWallAwardPointsNotifier: void onAwardPoints(java.lang.String,java.lang.Integer)
+net.miidiwall.SDK.IAdWallAwardPointsNotifier: void onFailAwardPoints()
+net.miidiwall.SDK.IAdWallEarnPointsNotifier
+net.miidiwall.SDK.IAdWallEarnPointsNotifier: void onEarnPoints(java.lang.String,java.lang.String,java.lang.Integer)
+net.miidiwall.SDK.IAdWallGetPointsNotifier
+net.miidiwall.SDK.IAdWallGetPointsNotifier: void onReceivePoints(java.lang.String,java.lang.Integer)
+net.miidiwall.SDK.IAdWallGetPointsNotifier: void onFailReceivePoints()
+net.miidiwall.SDK.IAdWallRequestAdSourceNotifier
+net.miidiwall.SDK.IAdWallRequestAdSourceNotifier: void onGetAdSource(java.util.List)
+net.miidiwall.SDK.IAdWallRequestAdSourceNotifier: void onFailedGetAdSource(java.lang.String)
+net.miidiwall.SDK.IAdWallShowAppsNotifier
+net.miidiwall.SDK.IAdWallShowAppsNotifier: void onShowApps()
+net.miidiwall.SDK.IAdWallShowAppsNotifier: void onDismissApps()
+net.miidiwall.SDK.IAdWallSpendPointsNotifier
+net.miidiwall.SDK.IAdWallSpendPointsNotifier: void onSpendPoints(java.lang.String,java.lang.Integer)
+net.miidiwall.SDK.IAdWallSpendPointsNotifier: void onFailSpendPoints()
+net.miidiwall.SDK.InnerRequestAdSourceNotifier
+net.miidiwall.SDK.InnerRequestAdSourceNotifier: void onGetAdSource(org.json.JSONArray)
+net.miidiwall.SDK.InnerRequestAdSourceNotifier: void onFailedGetAdSource(java.lang.String)
+net.miidiwall.SDK.MyWallActivity
+net.miidiwall.SDK.MyWallActivity: MyWallActivity()
+net.miidiwall.SDK.MyWallActivity: void onCreate(android.os.Bundle)
+net.miidiwall.SDK.MyWallActivity: void onRestoreInstanceState(android.os.Bundle)
+net.miidiwall.SDK.MyWallActivity: void onSaveInstanceState(android.os.Bundle)
+net.miidiwall.SDK.MyWallActivity: boolean onKeyDown(int,android.view.KeyEvent)
+net.miidiwall.SDK.MyWallActivity: void onDestroy()
+net.miidiwall.SDK.a.a
+net.miidiwall.SDK.a.a: a()
+net.miidiwall.SDK.a.a: java.lang.String a(android.content.Context)
+net.miidiwall.SDK.a.a: void a(android.content.Context,org.apache.http.client.HttpClient)
+net.miidiwall.SDK.a.a: boolean b(android.content.Context)
+net.miidiwall.SDK.a.b
+net.miidiwall.SDK.a.b: net.miidiwall.SDK.b.e a
+net.miidiwall.SDK.a.b: net.miidiwall.SDK.a.c b
+net.miidiwall.SDK.a.b: b(net.miidiwall.SDK.b.e,net.miidiwall.SDK.a.c)
+net.miidiwall.SDK.a.c
+net.miidiwall.SDK.a.c: void a(java.lang.Boolean,net.miidiwall.SDK.b.e)
+net.miidiwall.SDK.a.d
+net.miidiwall.SDK.a.d: net.miidiwall.SDK.a.d b
+net.miidiwall.SDK.a.d: boolean c
+net.miidiwall.SDK.a.d: android.content.Context d
+net.miidiwall.SDK.a.d: java.util.ArrayList a
+net.miidiwall.SDK.a.d: org.apache.http.impl.client.DefaultHttpClient e
+net.miidiwall.SDK.a.d: net.miidiwall.SDK.a.b f
+net.miidiwall.SDK.a.d: void <clinit>()
+net.miidiwall.SDK.a.d: net.miidiwall.SDK.a.d a()
+net.miidiwall.SDK.a.d: d()
+net.miidiwall.SDK.a.d: boolean b()
+net.miidiwall.SDK.a.d: boolean a(net.miidiwall.SDK.b.e)
+net.miidiwall.SDK.a.d: boolean a(android.content.Context,net.miidiwall.SDK.b.e,net.miidiwall.SDK.a.c)
+net.miidiwall.SDK.a.d: void onPreExecute()
+net.miidiwall.SDK.a.d: java.lang.Boolean a(java.lang.Void[])
+net.miidiwall.SDK.a.d: void a(java.lang.Boolean)
+net.miidiwall.SDK.a.d: boolean a(java.io.InputStream,long,net.miidiwall.SDK.b.e)
+net.miidiwall.SDK.a.d: void onPostExecute(java.lang.Object)
+net.miidiwall.SDK.a.d: java.lang.Object doInBackground(java.lang.Object[])
+net.miidiwall.SDK.b.a
+net.miidiwall.SDK.b.a: a()
+net.miidiwall.SDK.b.a: java.util.List a(org.json.JSONArray)
+net.miidiwall.SDK.b.a: java.util.List b(org.json.JSONArray)
+net.miidiwall.SDK.b.a: net.miidiwall.SDK.AppSignInCell a(org.json.JSONObject)
+net.miidiwall.SDK.b.a: net.miidiwall.SDK.AdDesc b(org.json.JSONObject)
+net.miidiwall.SDK.b.b
+net.miidiwall.SDK.b.b: android.content.Context a
+net.miidiwall.SDK.b.b: net.miidiwall.SDK.b.b b
+net.miidiwall.SDK.b.b: void <clinit>()
+net.miidiwall.SDK.b.b: b()
+net.miidiwall.SDK.b.b: net.miidiwall.SDK.b.b a()
+net.miidiwall.SDK.b.b: void a(android.content.Context)
+net.miidiwall.SDK.b.b: android.content.Context b()
+net.miidiwall.SDK.b.c
+net.miidiwall.SDK.b.c: net.miidiwall.SDK.b.e a
+net.miidiwall.SDK.b.c: net.miidiwall.SDK.b.c b
+net.miidiwall.SDK.b.c: void <clinit>()
+net.miidiwall.SDK.b.c: net.miidiwall.SDK.b.c a()
+net.miidiwall.SDK.b.c: c()
+net.miidiwall.SDK.b.c: void b()
+net.miidiwall.SDK.b.c: void c()
+net.miidiwall.SDK.b.c: boolean d()
+net.miidiwall.SDK.b.c: boolean e()
+net.miidiwall.SDK.b.c: boolean f()
+net.miidiwall.SDK.b.c: void g()
+net.miidiwall.SDK.b.c: void i()
+net.miidiwall.SDK.b.c: boolean h()
+net.miidiwall.SDK.b.c: void a(java.lang.Boolean,net.miidiwall.SDK.b.e)
+net.miidiwall.SDK.b.d
+net.miidiwall.SDK.b.d: android.content.Context a
+net.miidiwall.SDK.b.d: net.miidiwall.SDK.b.d b
+net.miidiwall.SDK.b.d: void <clinit>()
+net.miidiwall.SDK.b.d: net.miidiwall.SDK.b.d a()
+net.miidiwall.SDK.b.d: d()
+net.miidiwall.SDK.b.d: boolean a(android.content.Context,net.miidiwall.SDK.b.f)
+net.miidiwall.SDK.b.d: boolean a(net.miidiwall.SDK.b.f)
+net.miidiwall.SDK.b.d: boolean b(net.miidiwall.SDK.b.f)
+net.miidiwall.SDK.b.d: void a(net.miidiwall.SDK.b.f,java.lang.Class)
+net.miidiwall.SDK.b.d: void b(net.miidiwall.SDK.b.f,java.lang.Class)
+net.miidiwall.SDK.b.d: void c(net.miidiwall.SDK.b.f,java.lang.Class)
+net.miidiwall.SDK.b.d: void d(net.miidiwall.SDK.b.f,java.lang.Class)
+net.miidiwall.SDK.b.d: void e(net.miidiwall.SDK.b.f,java.lang.Class)
+net.miidiwall.SDK.b.e
+net.miidiwall.SDK.b.e: long serialVersionUID
+net.miidiwall.SDK.b.e: int a
+net.miidiwall.SDK.b.e: int b
+net.miidiwall.SDK.b.e: java.lang.String c
+net.miidiwall.SDK.b.e: java.lang.String d
+net.miidiwall.SDK.b.e: e()
+net.miidiwall.SDK.b.e: void a()
+net.miidiwall.SDK.b.e: boolean a(net.miidiwall.SDK.b.e)
+net.miidiwall.SDK.b.e: java.lang.String b()
+net.miidiwall.SDK.b.e: java.lang.String c()
+net.miidiwall.SDK.b.e: java.io.File d()
+net.miidiwall.SDK.b.e: java.io.File e()
+net.miidiwall.SDK.b.e: java.io.File f()
+net.miidiwall.SDK.b.e: java.lang.String g()
+net.miidiwall.SDK.b.e: java.io.File h()
+net.miidiwall.SDK.b.f
+net.miidiwall.SDK.b.f: net.miidiwall.SDK.b.e a
+net.miidiwall.SDK.b.f: java.lang.Object b
+net.miidiwall.SDK.b.f: java.lang.reflect.Method c
+net.miidiwall.SDK.b.f: java.lang.reflect.Method d
+net.miidiwall.SDK.b.f: java.lang.reflect.Method e
+net.miidiwall.SDK.b.f: java.lang.reflect.Method f
+net.miidiwall.SDK.b.f: java.lang.reflect.Method g
+net.miidiwall.SDK.b.f: f(net.miidiwall.SDK.b.e)
+net.miidiwall.SDK.b.f: boolean a()
+net.miidiwall.SDK.b.f: void a(android.content.Context,java.lang.String,java.lang.String,java.lang.Boolean)
+net.miidiwall.SDK.b.f: java.lang.Object a(java.lang.String,java.lang.Object,java.lang.Object)
+net.miidiwall.SDK.b.f: void a(android.content.Context,java.lang.String)
+net.miidiwall.SDK.b.f: boolean b()
+net.miidiwall.SDK.b.f: net.miidiwall.SDK.b.e c()
+net.miidiwall.SDK.b.f: void a(java.lang.Object)
+net.miidiwall.SDK.b.f: void a(java.lang.reflect.Method)
+net.miidiwall.SDK.b.f: void b(java.lang.reflect.Method)
+net.miidiwall.SDK.b.f: void c(java.lang.reflect.Method)
+net.miidiwall.SDK.b.f: void d(java.lang.reflect.Method)
+net.miidiwall.SDK.b.f: void e(java.lang.reflect.Method)
+net.miidiwall.SDK.b.g
+net.miidiwall.SDK.b.g: net.miidiwall.SDK.b.f a
+net.miidiwall.SDK.b.g: net.miidiwall.SDK.IAdWallRequestAdSourceNotifier b
+net.miidiwall.SDK.b.g: net.miidiwall.SDK.b.g c
+net.miidiwall.SDK.b.g: void <clinit>()
+net.miidiwall.SDK.b.g: net.miidiwall.SDK.b.g a()
+net.miidiwall.SDK.b.g: g()
+net.miidiwall.SDK.b.g: java.lang.Boolean a(net.miidiwall.SDK.b.e)
+net.miidiwall.SDK.b.g: java.lang.Boolean b()
+net.miidiwall.SDK.b.g: void a(android.content.Context,java.lang.String,java.lang.String,java.lang.Boolean)
+net.miidiwall.SDK.b.g: void a(android.content.Context,java.lang.String)
+net.miidiwall.SDK.b.g: void a(android.app.Activity,android.os.Bundle)
+net.miidiwall.SDK.b.g: void a(android.os.Bundle)
+net.miidiwall.SDK.b.g: void b(android.os.Bundle)
+net.miidiwall.SDK.b.g: java.lang.Boolean a(java.lang.Integer,android.view.KeyEvent)
+net.miidiwall.SDK.b.g: void c()
+net.miidiwall.SDK.b.g: java.lang.Boolean a(net.miidiwall.SDK.IAdWallShowAppsNotifier)
+net.miidiwall.SDK.b.g: java.lang.Boolean b(net.miidiwall.SDK.IAdWallShowAppsNotifier)
+net.miidiwall.SDK.b.g: java.lang.Boolean a(net.miidiwall.SDK.IAdWallGetPointsNotifier)
+net.miidiwall.SDK.b.g: java.lang.Boolean a(java.lang.Integer,net.miidiwall.SDK.IAdWallSpendPointsNotifier)
+net.miidiwall.SDK.b.g: java.lang.Boolean a(java.lang.Integer,net.miidiwall.SDK.IAdWallAwardPointsNotifier)
+net.miidiwall.SDK.b.g: java.lang.Boolean d()
+net.miidiwall.SDK.b.g: java.lang.String e()
+net.miidiwall.SDK.b.g: void a(java.lang.String)
+net.miidiwall.SDK.b.g: java.lang.Boolean a(net.miidiwall.SDK.IAdWallRequestAdSourceNotifier)
+net.miidiwall.SDK.b.g: java.lang.Boolean b(net.miidiwall.SDK.IAdWallRequestAdSourceNotifier)
+net.miidiwall.SDK.b.g: java.lang.Boolean b(java.lang.String)
+net.miidiwall.SDK.b.g: void a(net.miidiwall.SDK.IAdWallEarnPointsNotifier)
+net.miidiwall.SDK.b.g: java.util.List f()
+net.miidiwall.SDK.b.g: java.lang.Boolean c(java.lang.String)
+net.miidiwall.SDK.b.g: void a(java.lang.Integer)
+net.miidiwall.SDK.b.g: void d(java.lang.String)
+net.miidiwall.SDK.b.g: void onGetAdSource(org.json.JSONArray)
+net.miidiwall.SDK.b.g: void onFailedGetAdSource(java.lang.String)
+net.miidiwall.SDK.c.a
+net.miidiwall.SDK.c.a: java.lang.String a
+net.miidiwall.SDK.c.a: java.lang.Object b
+net.miidiwall.SDK.c.a: java.lang.Object c
+net.miidiwall.SDK.c.a: java.lang.String a()
+net.miidiwall.SDK.c.a: a(java.lang.String,java.lang.Object,java.lang.Object)
+net.miidiwall.SDK.c.a: java.lang.Boolean a(net.miidiwall.SDK.c.a)
+net.miidiwall.SDK.c.a: java.lang.Boolean b()
+net.miidiwall.SDK.c.a: boolean c()
+net.miidiwall.SDK.c.a: boolean d()
+net.miidiwall.SDK.c.a: boolean e()
+net.miidiwall.SDK.c.a: boolean f()
+net.miidiwall.SDK.c.a: boolean g()
+net.miidiwall.SDK.c.a: boolean h()
+net.miidiwall.SDK.c.a: boolean i()
+net.miidiwall.SDK.c.a: boolean j()
+net.miidiwall.SDK.c.a: boolean k()
+net.miidiwall.SDK.c.a: boolean l()
+net.miidiwall.SDK.c.b
+net.miidiwall.SDK.c.b: net.miidiwall.SDK.c.b a
+net.miidiwall.SDK.c.b: java.lang.Object b
+net.miidiwall.SDK.c.b: java.util.ArrayList c
+net.miidiwall.SDK.c.b: void <clinit>()
+net.miidiwall.SDK.c.b: b()
+net.miidiwall.SDK.c.b: net.miidiwall.SDK.c.b a()
+net.miidiwall.SDK.c.b: void a(net.miidiwall.SDK.c.a)
+net.miidiwall.SDK.c.b: void b()
+net.miidiwall.SDK.c.b: int c()
+net.miidiwall.SDK.c.b: java.lang.Boolean b(net.miidiwall.SDK.c.a)
+net.miidiwall.SDK.d.a
+net.miidiwall.SDK.d.a: a()
+net.miidiwall.SDK.d.a: int a()
+net.miidiwall.SDK.d.a: int b()
+net.miidiwall.SDK.d.a: long c()
+net.miidiwall.SDK.d.a: boolean d()
+net.miidiwall.SDK.d.a: java.lang.Integer e()
+net.miidiwall.SDK.d.b
+net.miidiwall.SDK.d.b: b()
+net.miidiwall.SDK.d.b: java.lang.String a(java.lang.String)
+net.miidiwall.SDK.d.b: java.lang.String a(byte[])
+net.miidiwall.SDK.d.b: boolean b(java.lang.String)
+net.miidiwall.SDK.d.c
+net.miidiwall.SDK.d.c: c()
+net.miidiwall.SDK.d.c: java.lang.String a(java.lang.String[])
+net.miidiwall.SDK.d.c: android.graphics.Bitmap a(java.lang.String)
+net.miidiwall.SDK.d.c: java.lang.String b(java.lang.String)
+net.miidiwall.SDK.d.c: java.io.File a()
+net.miidiwall.SDK.d.c: java.io.File b()
+net.miidiwall.SDK.d.d
+net.miidiwall.SDK.d.d: d()
+net.miidiwall.SDK.d.d: java.lang.String a(android.content.Context)
+net.miidiwall.SDK.d.d: void a(android.content.Context,java.lang.String)
+net.miidiwall.SDK.d.d: java.lang.String b(android.content.Context)
+net.miidiwall.SDK.d.d: void b(android.content.Context,java.lang.String)
+net.miidiwall.SDK.d.d: void c(android.content.Context,java.lang.String)
+net.miidiwall.SDK.d.d: java.lang.String c(android.content.Context)
+net.miidiwall.SDK.d.d: java.util.Date d(android.content.Context)
+net.miidiwall.SDK.d.d: void a(android.content.Context,java.util.Date)
+net.miidiwall.SDK.d.e
+net.miidiwall.SDK.d.e: e()
+net.miidiwall.SDK.d.e: java.lang.String a()
+net.miidiwall.SDK.d.e: java.lang.String b()
+net.miidiwall.SDK.d.e: java.lang.String c()
+net.miidiwall.SDK.d.e: java.lang.String d()
+net.miidiwall.SDK.d.e: java.lang.String e()
+net.miidiwall.SDK.d.e: java.lang.String f()
+net.miidiwall.SDK.d.e: java.lang.String g()
+net.miidiwall.SDK.d.e: java.lang.String h()
+net.miidiwall.SDK.d.e: java.lang.String i()
+net.miidiwall.SDK.d.e: java.lang.String j()
+net.miidiwall.SDK.d.e: java.lang.String k()
+net.miidiwall.SDK.d.e: java.lang.String l()
+net.miidiwall.SDK.d.f
+net.miidiwall.SDK.d.f: long serialVersionUID
+net.miidiwall.SDK.d.f: java.lang.String a
+net.miidiwall.SDK.d.f: java.lang.String b
+net.miidiwall.SDK.d.f: java.lang.String c
+net.miidiwall.SDK.d.f: java.lang.String d
+net.miidiwall.SDK.d.f: java.lang.String e
+net.miidiwall.SDK.d.f: java.lang.String f
+net.miidiwall.SDK.d.f: java.lang.String g
+net.miidiwall.SDK.d.f: java.lang.String h
+net.miidiwall.SDK.d.f: java.lang.String i
+net.miidiwall.SDK.d.f: java.lang.String j
+net.miidiwall.SDK.d.f: java.lang.String k
+net.miidiwall.SDK.d.f: java.lang.String l
+net.miidiwall.SDK.d.f: java.lang.String m
+net.miidiwall.SDK.d.f: java.lang.String n
+net.miidiwall.SDK.d.f: java.lang.String o
+net.miidiwall.SDK.d.f: java.lang.String p
+net.miidiwall.SDK.d.f: java.lang.String q
+net.miidiwall.SDK.d.f: java.lang.String r
+net.miidiwall.SDK.d.f: java.lang.String s
+net.miidiwall.SDK.d.f: java.lang.String t
+net.miidiwall.SDK.d.f: java.lang.String u
+net.miidiwall.SDK.d.f: java.lang.String v
+net.miidiwall.SDK.d.f: java.lang.String w
+net.miidiwall.SDK.d.f: java.lang.String x
+net.miidiwall.SDK.d.f: java.lang.String y
+net.miidiwall.SDK.d.f: java.lang.String z
+net.miidiwall.SDK.d.f: net.miidiwall.SDK.d.f A
+net.miidiwall.SDK.d.f: void <clinit>()
+net.miidiwall.SDK.d.f: f()
+net.miidiwall.SDK.d.f: net.miidiwall.SDK.d.f a()
+net.miidiwall.SDK.d.f: java.lang.String b()
+net.miidiwall.SDK.d.f: java.lang.String c()
+net.miidiwall.SDK.d.f: java.lang.String d()
+net.miidiwall.SDK.d.f: java.lang.String e()
+net.miidiwall.SDK.d.f: java.lang.String f()
+net.miidiwall.SDK.d.f: java.lang.String g()
+net.miidiwall.SDK.d.f: java.lang.String h()
+net.miidiwall.SDK.d.f: java.lang.String i()
+net.miidiwall.SDK.d.f: java.lang.String j()
+net.miidiwall.SDK.d.f: java.lang.String k()
+net.miidiwall.SDK.d.f: java.lang.String l()
+net.miidiwall.SDK.d.f: java.lang.String m()
+net.miidiwall.SDK.d.f: java.lang.String n()
+net.miidiwall.SDK.d.f: java.lang.String o()
+net.miidiwall.SDK.d.f: java.lang.String p()
+net.miidiwall.SDK.d.f: java.lang.String q()
+net.miidiwall.SDK.d.f: java.lang.String r()
+net.miidiwall.SDK.d.f: java.lang.String s()
+net.miidiwall.SDK.d.f: java.lang.String t()
+net.miidiwall.SDK.d.f: java.lang.String u()
+net.miidiwall.SDK.d.f: java.lang.String v()
 net.youmi.android.AdBrowser
 net.youmi.android.AdBrowser: net.youmi.android.a.k.a.i a
 net.youmi.android.AdBrowser: net.youmi.android.a.h.l b
@@ -20363,3 +22578,64 @@ org.apache.commons.lang3.Range$ComparableComparator: org.apache.commons.lang3.Ra
 org.apache.commons.lang3.Range$ComparableComparator: org.apache.commons.lang3.Range$ComparableComparator valueOf(java.lang.String)
 org.apache.commons.lang3.text.translate.NumericEntityUnescaper$OPTION: org.apache.commons.lang3.text.translate.NumericEntityUnescaper$OPTION[] values()
 org.apache.commons.lang3.text.translate.NumericEntityUnescaper$OPTION: org.apache.commons.lang3.text.translate.NumericEntityUnescaper$OPTION valueOf(java.lang.String)
+u.aly.G: u.aly.G[] values()
+u.aly.G: u.aly.G valueOf(java.lang.String)
+u.aly.H$e: u.aly.H$e[] values()
+u.aly.H$e: u.aly.H$e valueOf(java.lang.String)
+u.aly.I$e: u.aly.I$e[] values()
+u.aly.I$e: u.aly.I$e valueOf(java.lang.String)
+u.aly.J$e: u.aly.J$e[] values()
+u.aly.J$e: u.aly.J$e valueOf(java.lang.String)
+u.aly.K$e: u.aly.K$e[] values()
+u.aly.K$e: u.aly.K$e valueOf(java.lang.String)
+u.aly.L$e: u.aly.L$e[] values()
+u.aly.L$e: u.aly.L$e valueOf(java.lang.String)
+u.aly.M$e: u.aly.M$e[] values()
+u.aly.M$e: u.aly.M$e valueOf(java.lang.String)
+u.aly.N: u.aly.N[] values()
+u.aly.N: u.aly.N valueOf(java.lang.String)
+u.aly.O$e: u.aly.O$e[] values()
+u.aly.O$e: u.aly.O$e valueOf(java.lang.String)
+u.aly.P: u.aly.P[] values()
+u.aly.P: u.aly.P valueOf(java.lang.String)
+u.aly.Q$e: u.aly.Q$e[] values()
+u.aly.Q$e: u.aly.Q$e valueOf(java.lang.String)
+u.aly.R$e: u.aly.R$e a
+u.aly.R$e: u.aly.R$e b
+u.aly.R$e: u.aly.R$e c
+u.aly.R$e: u.aly.R$e[] values()
+u.aly.R$e: u.aly.R$e valueOf(java.lang.String)
+u.aly.S$e: u.aly.S$e[] values()
+u.aly.S$e: u.aly.S$e valueOf(java.lang.String)
+u.aly.T$e: u.aly.T$e[] values()
+u.aly.T$e: u.aly.T$e valueOf(java.lang.String)
+u.aly.U$e: u.aly.U$e[] values()
+u.aly.U$e: u.aly.U$e valueOf(java.lang.String)
+u.aly.V$e: u.aly.V$e[] values()
+u.aly.V$e: u.aly.V$e valueOf(java.lang.String)
+u.aly.W$e: u.aly.W$e[] values()
+u.aly.W$e: u.aly.W$e valueOf(java.lang.String)
+u.aly.X$e: u.aly.X$e[] values()
+u.aly.X$e: u.aly.X$e valueOf(java.lang.String)
+u.aly.Y$e: u.aly.Y$e[] values()
+u.aly.Y$e: u.aly.Y$e valueOf(java.lang.String)
+u.aly.Z$a: u.aly.Z$a[] values()
+u.aly.Z$a: u.aly.Z$a valueOf(java.lang.String)
+u.aly.aa$e: u.aly.aa$e[] values()
+u.aly.aa$e: u.aly.aa$e valueOf(java.lang.String)
+u.aly.ab$e: u.aly.ab$e[] values()
+u.aly.ab$e: u.aly.ab$e valueOf(java.lang.String)
+u.aly.ac: u.aly.ac[] values()
+u.aly.ac: u.aly.ac valueOf(java.lang.String)
+u.aly.ad$e: u.aly.ad$e[] values()
+u.aly.ad$e: u.aly.ad$e valueOf(java.lang.String)
+u.aly.ae$e: u.aly.ae$e[] values()
+u.aly.ae$e: u.aly.ae$e valueOf(java.lang.String)
+u.aly.af$e: u.aly.af$e[] values()
+u.aly.af$e: u.aly.af$e valueOf(java.lang.String)
+u.aly.ag$e: u.aly.ag$e[] values()
+u.aly.ag$e: u.aly.ag$e valueOf(java.lang.String)
+u.aly.ah$e: u.aly.ah$e[] values()
+u.aly.ah$e: u.aly.ah$e valueOf(java.lang.String)
+u.aly.an$a: u.aly.an$a[] values()
+u.aly.an$a: u.aly.an$a valueOf(java.lang.String)

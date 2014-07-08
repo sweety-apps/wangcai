@@ -62,19 +62,23 @@
 
 	    <RelativeLayout
 			android:id="@+id/progress"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="279px"
+	        android:layout_height="24px"
 		    android:layout_alignLeft="@id/level_label"
 		    android:layout_marginTop="10dp"
 			android:layout_below="@id/level_label"
+			android:scaleType="fitXY"
 			android:background="@drawable/mywangcai_jiangyan_bg"
 			>
 			<ImageView
 				android:id="@+id/progress_front"
 				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_marginTop="1dp"
+				android:layout_marginBottom="1dp"
+				android:layout_marginLeft="1px"
+				android:layout_height="match_parent"
 				android:layout_centerVertical="true"
-				android:src="@drawable/mywangcai_jiangyan_bg"
+				android:src="@drawable/mywangcai_jingyan_red"
 				/>
 		</RelativeLayout>
 		<TextView

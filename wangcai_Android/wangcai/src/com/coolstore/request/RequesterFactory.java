@@ -22,6 +22,8 @@ public class RequesterFactory {
 		RequetsType_DownloadApp,		//
 		RequestType_Share,					//
 		RequestType_DownloadFile,
+		RequestType_SurveyList,
+		RequestType_Survey,
 	}
 	
 
@@ -77,6 +79,12 @@ public class RequesterFactory {
 			break;
 		case RequestType_DownloadFile:
 			req = new Request_DownloadFile();
+			break;
+		case RequestType_SurveyList:
+			req = new Request_SurveyList();
+			break;
+		case RequestType_Survey:
+			req = new Request_Survey();
 			break;
 		default:
 			return req;

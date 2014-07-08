@@ -11,6 +11,7 @@ public class TaskListInfo {
 	public final static int TaskTypeCommetWangcai = 6;	//好评旺财
 	public final static int TaskTypeUpgrade = 7;				//旺财升级到LV3
 	public final static int TaskTypeShare   = 8;					//晒单有奖
+	public final static int TaskTypeQuestion = 1000;
 	public final static int TaskTypeIntallApp = 10000;		//
 	public final static int TaskTypeCommon = 10001;		//
 	public final static int TaskTypeYoumiEc = 99999;		//

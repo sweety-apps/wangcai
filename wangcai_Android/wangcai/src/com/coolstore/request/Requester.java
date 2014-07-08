@@ -2,8 +2,6 @@ package com.coolstore.request;
 
 import java.io.InputStream;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,6 +39,18 @@ public class Requester {
 				m_strPostData = Util.CombineNetworkData(m_strPostData, strData);
 			}
 		}
+		public void AddData(String strName, String strValue) {
+			String strData = String.format("%s=%s", strName, strValue);
+			if (m_strRequestMethod.equals(RequestManager.g_strGet)) {
+				m_strUrl = Util.AddData2Url(m_strUrl, strData);
+			}
+			else {
+				m_strPostData = Util.CombineNetworkData(m_strPostData, strData);
+			}			
+		}
+		public String GetPostData() {
+			return m_strPostData;
+		}
 		//data menber
 		String m_strRequestMethod = "";
 		String m_strUrl = "";
@@ -57,7 +67,9 @@ public class Requester {
 		return new RequestInfo(strUrl, strCookie, null, false);		
 	}
 
-
+	public int GetMaxRetryTimes() {
+		return m_nMaxRetryTimes;
+	}
 	public boolean IsRaw() {
 		return m_bRaw;
 	}
@@ -66,6 +78,10 @@ public class Requester {
 	}
 	protected boolean ParseResponse(JSONObject rootObject) {
 		return true;
+	}
+	
+	public void OnPreSend() {
+		
 	}
 	
 	public boolean HookRequestComplete(InputStream inputStream) {
@@ -110,6 +126,8 @@ public class Requester {
 	public void SetId(int nReqId) {
 		m_nReqId = nReqId;
 	}
+	
+	protected int m_nMaxRetryTimes = 0;
 	protected boolean m_bRaw = false;
 	protected int m_nReqId = 0;
 	protected int m_nResult = 0;

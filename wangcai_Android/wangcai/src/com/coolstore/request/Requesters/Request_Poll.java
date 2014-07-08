@@ -8,8 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import com.coolstore.common.Config;
 import com.coolstore.common.SLog;
 import com.coolstore.common.Util;

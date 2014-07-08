@@ -3,14 +3,17 @@ package com.coolstore.wangcai.activity;
 
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Config;
+import com.coolstore.common.SystemInfo;
 import com.coolstore.common.Util;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
+import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.ManagedDialog;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
 import com.coolstore.wangcai.dialog.CommonDialog;
 import com.coolstore.wangcai.dialog.HintLoginErrorDialog;
 import com.coolstore.wangcai.dialog.HintNetwordErrorDialog;
+import com.umeng.analytics.MobclickAgent;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -74,12 +77,23 @@ public class StartupActivity extends ManagedDialogActivity {
     					getString(R.string.app_update_hint_title), null);
     			m_appUpdateDialog.Show();	
     		}else {
-    			app.Init3rdSdk();
-   
     			//正常启动
-    			Intent it = new Intent(StartupActivity.this, MainActivity.class);
-    			startActivity(it);
-    			finish();
+    			app.Init3rdSdk();
+    			
+    			MobclickAgent.updateOnlineConfig(this);
+
+            	String strHintMsg = WangcaiApp.GetInstance().GetHintMsg();
+            	if (!Util.IsEmptyString(strHintMsg)) {
+            		if (m_hintMsgDialog == null) {
+            			m_hintMsgDialog = new CommonDialog(StartupActivity.this);
+            			RegisterDialog(m_hintMsgDialog);
+            		}
+            		m_hintMsgDialog.SetInfo(getString(R.string.app_name), strHintMsg, getString(R.string.ok_text), null);
+            		m_hintMsgDialog.Show();
+            	}
+            	else {
+            		ShowMainActivity();
+            	}
     		}
 
             app.RemoveEventLinstener(this);
@@ -102,6 +116,14 @@ public class StartupActivity extends ManagedDialogActivity {
     	}
     	super.OnLoginComplete(nResult, strMsg);
     }
+    
+    private void ShowMainActivity() {
+		//正常启动
+		Intent it = new Intent(StartupActivity.this, MainActivity.class);
+		startActivity(it);
+		finish();    	
+    }
+    
     //对话框返回
 	public void OnDialogFinish(ManagedDialog dlg, int inClickedViewId) {
 		int nDlgId = dlg.GetDialogId();
@@ -119,9 +141,15 @@ public class StartupActivity extends ManagedDialogActivity {
 				finish();
 			}
 		}
-		else if (m_appUpdateDialog != null && nDlgId == m_appUpdateDialog.GetDialogId()) {
+		else if (m_hintMsgDialog != null && nDlgId == m_hintMsgDialog.GetDialogId()) {
 			if (inClickedViewId == DialogInterface.BUTTON_POSITIVE) {
-				String strUpdateUrl = String.format("%s&sysVer=%s", Config.GetLiveUpdateUrl(), BuildSetting.sg_strVersion);
+        		ShowMainActivity();				
+			}			
+		}
+		else if (m_appUpdateDialog != null && nDlgId == m_appUpdateDialog.GetDialogId()) {
+			//升级
+			if (inClickedViewId == DialogInterface.BUTTON_POSITIVE) {
+				String strUpdateUrl = String.format("%s&sysVer=%s", Config.GetLiveUpdateUrl(), SystemInfo.GetVersion());
 			
 				Intent intent = new Intent();        
 				intent.setAction("android.intent.action.VIEW");    
@@ -145,4 +173,5 @@ public class StartupActivity extends ManagedDialogActivity {
 	private AnimationDrawable m_loadingAnimationDrawable = null;
     private HintNetwordErrorDialog m_hintNetworkErrorDialog = null;
     private HintLoginErrorDialog m_hintLoginErrorDialog = null;
+    private CommonDialog m_hintMsgDialog = null;
 }

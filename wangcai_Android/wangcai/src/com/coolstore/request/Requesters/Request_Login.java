@@ -56,6 +56,15 @@ public class Request_Login extends Requester{
     	return true;
 	}
     
+    @Override
+	public void OnPreSend() {
+		RequestInfo reqInfo = GetRequestInfo();
+		String strPostData = reqInfo.GetPostData();
+		
+		String strSha1 = Util.GetSha1(strPostData + "c4c6ac66-3d86-4692-bf5c-78fc4c3df1a0");
+		reqInfo.AddData("sig", strSha1.substring(2, 2 + 32));
+	}
+
     //读用户信息
     private UserInfo ReadUserInfo(JSONObject rootObject) {
     	UserInfo userInfo = null;
@@ -92,6 +101,7 @@ public class Request_Login extends Requester{
 			
 			userInfo.SetDeviceId(Util.ReadJsonString(rootObject, "device_id"));
 			userInfo.SetPhoneNumber(Util.ReadJsonString(rootObject, "phone"));
+			m_strTipsString = Util.ReadJsonString(rootObject, "tips");
     	}catch(Exception e) {
     		userInfo = null;
     	}
@@ -207,6 +217,9 @@ public class Request_Login extends Requester{
     public int GetPollElapse() {
     	return m_nPollElapse;
     }
+    public String GetTipString() {
+    	return m_strTipsString;
+    }
 
     private String m_strSign;
     private int m_nPollElapse = 0;
@@ -215,6 +228,7 @@ public class Request_Login extends Requester{
 	private TaskListInfo m_taskListInfo = null;	
 	private ExtractInfo m_extractInfo = null;
 	private AppWallConfig m_appwalConfig = null;
+	private String m_strTipsString = null;
 }
 
 

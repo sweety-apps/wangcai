@@ -9,8 +9,7 @@ import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -41,6 +40,14 @@ import com.google.zxing.common.BitMatrix;
 
 
 public class Util {
+	public static class StringPair {
+		public StringPair(String strName, String strValue) {
+			m_strName = strName;
+			m_strValue = strValue;
+		}
+		public String m_strName;
+		public String m_strValue;
+	}
 	
 	public static int ReadJsonInt(JSONObject jsonObj, String strKey) {
 		try {
@@ -202,6 +209,18 @@ public class Util {
         byte[] m = md5.digest();
         return toHexString(m);    
 	}
+
+	public static String GetSha1(String strVal) {
+		MessageDigest sha1 = null;
+		try {
+			sha1 = MessageDigest.getInstance("SHA-1");
+		} catch (NoSuchAlgorithmException e) {
+			return "";
+		}    
+		sha1.update(strVal.getBytes());    
+        byte[] m = sha1.digest();
+        return toHexString(m);    
+	}
 	
 	public static String toHexString(byte[] b) {  //String to  byte
 		 StringBuilder sb = new StringBuilder(b.length * 2);  
@@ -214,8 +233,8 @@ public class Util {
 		 return sb.toString();  
 	}
 	
-	public static String FormatMoney(int nMoney) {
-		String strText = String.format("%.2f", (float)nMoney / 100.0f);
+	@SuppressLint("DefaultLocale") public static String FormatMoney(int nMoney) {
+		String strText = String.format(Locale.US, "%.2f", (float)nMoney / 100.0f);
 		int nDotPos = strText.indexOf(".");
 		if (nDotPos < 0) {
 			return strText;

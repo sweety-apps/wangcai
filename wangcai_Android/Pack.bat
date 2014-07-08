@@ -1,0 +1,1 @@
+D:\Program\android-sdks\build-tools\android-4.4.2\aapt package -f -m -J D:\wangcai\wangcai_Android\wangcai\gen -S D:\wangcai\wangcai_Android\wangcai\res -M D:\wangcai\wangcai_Android\wangcai\AndroidManifest.xml -I D:\Program\android-sdks\platforms\android-14\android.jar  

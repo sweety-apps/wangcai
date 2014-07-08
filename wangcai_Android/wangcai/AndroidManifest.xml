@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.coolstore.wangcai"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="1.1" >
   	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="14" />
    
 	<permission android:name="com.coolstore.wangcai.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
 	
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>  
 	<uses-permission android:name="com.coolstore.wangcai.permission.JPUSH_MESSAGE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
@@ -66,13 +67,16 @@
        <activity android:name="com.coolstore.wangcai.activity.ExtractListActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.RegisterActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateHidden" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.RegisterSucceedActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.SurveyListActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.SurveyActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.coolstore.wangcai.activity.SurveyRuleActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.ExtractAliPayActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.ExtractPhoneBillActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.ExtractQBiActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.WriteInviteCodeAcitivty" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.ExtractSucceedActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
-       
+       <activity android:name="com.coolstore.wangcai.activity.MidiActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
+       <activity android:name="com.imopan.mpwall.MpWallActivity" android:configChanges="keyboardHidden|orientation" />
        
        <activity
             android:name="com.coolstore.wangcai.Share.WXEntryActivity"
@@ -129,6 +133,30 @@
 		    android:exported="false" >
 		</receiver>
 		<meta-data android:name="chukong_publisherid" android:value="818634143-F1E6F8-9D9E-205F-0D3DD3B66"/>
+		
+		<!-- 友盟 -->
+		<meta-data android:value="5359d94e56240b7fa40a95c7" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="wangcai_official" android:name="UMENG_CHANNEL"/>
+		
+		<!-- 安沃 -->
+		<activity
+			android:name="com.zkmm.appoffer.AppOfferActivity"
+			android:configChanges="keyboard|keyboardHidden|orientation"
+			android:launchMode="singleTask" >
+		</activity>
+		<receiver
+			android:name="com.zkmm.appoffer.ZkmmBroadcastReceiver">
+			<intent-filter>
+				<action
+					android:name="android.intent.action.PACKAGE_REPLACED">
+				</action>
+				<action
+				android:name="android.intent.action.PACKAGE_ADDED">
+				</action>
+				<data android:scheme="package"></data>
+			</intent-filter>
+		</receiver>
+		
 		
 		<!-- 	极光推送 -->
 		<!-- Required -->

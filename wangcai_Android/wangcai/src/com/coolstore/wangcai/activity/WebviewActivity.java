@@ -1,6 +1,5 @@
 package com.coolstore.wangcai.activity;
 
-import java.net.URL;
 import java.net.URLDecoder;
 
 import com.coolstore.common.Config;
@@ -11,7 +10,6 @@ import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
-import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.ctrls.TitleCtrl;
 import com.coolstore.wangcai.dialog.CommonDialog;
 
@@ -52,10 +50,7 @@ import android.widget.ImageView;
     	Intent intent = getIntent();
     	
     	String strTitle = intent.getStringExtra(ActivityHelper.sg_strTitle);
-    	if (!Util.IsEmptyString(strTitle)) {
-    		TitleCtrl ctrl = (TitleCtrl)findViewById(R.id.title);
-    		ctrl.SetTitle(strTitle);
-    	}
+    	SetTitle(strTitle);
     	
     	ImageView image = (ImageView) findViewById(R.id.loading);
     	image.setBackgroundResource(R.anim.ani_loading);
@@ -73,12 +68,38 @@ import android.widget.ImageView;
 
     	InitWebView();
     }
-    
+    protected boolean SetTitle(String strTitle) {
+    	if (!Util.IsEmptyString(strTitle)) {
+    		TitleCtrl ctrl = (TitleCtrl)findViewById(R.id.title);
+    		ctrl.SetTitle(strTitle);
+    		return true;
+    	}    	
+    	else {
+    		return false;
+    	}
+    }
+    protected boolean SetUrl(String strUrl) {
+    	if (!Util.IsEmptyString(strUrl)) {
+    		m_strUrl = strUrl;
+    		m_webView.loadUrl(m_strUrl);
+    		
+    	  	Handler handler = new Handler();   
+        	handler.postDelayed(new Runnable() { 
+                public void run() { 
+                	ShowView(WebviewActivity.ViewState.ViewState_Loading);
+                } 
+            }, 50);
+    		return true;
+    	}    	
+    	else {
+    		return false;
+    	}
+    }
     private void InitWebView() {
     	m_webView = (WebView)this.findViewById(R.id.web_view);
     	m_webView.addJavascriptInterface(this, "ViewObject");
 
-    	m_webView.getSettings().setAppCacheEnabled(false);
+    	//m_webView.getSettings().setAppCacheEnabled(false);
     	m_webView.getSettings().setJavaScriptEnabled(true);
     	m_webView.addJavascriptInterface(this, "android");
     	
@@ -88,7 +109,7 @@ import android.widget.ImageView;
     	m_webView.setWebViewClient(new WebViewClient(){     
     		//called by the network thread
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            	if (!OnNavigate(url)) {
+            	if (OnNavigate(url)) {
             		return true;
             	}
             	m_strUrl = url;
@@ -118,19 +139,10 @@ import android.widget.ImageView;
 	   	});       	
 
     	Intent intent = getIntent();
-    	m_strUrl = intent.getStringExtra(ActivityHelper.sg_strUrl);
-    	if (!Util.IsEmptyString(m_strUrl)) {
-    		m_webView.loadUrl(m_strUrl);
-    		
-    	  	Handler handler = new Handler();   
-        	handler.postDelayed(new Runnable() { 
-                public void run() { 
-                	ShowView(WebviewActivity.ViewState.ViewState_Loading);
-                } 
-            }, 50);
-    	}
+    	String strUrl = intent.getStringExtra(ActivityHelper.sg_strUrl);
+    	SetUrl(strUrl);
     }
-    String GetUrlKeyValue(String strUrl, String strKeyName) {
+    protected String GetUrlKeyValue(String strUrl, String strKeyName) {
     	strKeyName += "=";
     	//final String strKeyName= "context=";
     	int nPos = strUrl.indexOf(strKeyName);
@@ -145,56 +157,56 @@ import android.widget.ImageView;
     	String strContent = strUrl.substring(nPos, nEndPos);;
     	return URLDecoder.decode(strContent);
     }
-    @SuppressLint("NewApi") private boolean OnNavigate(String strUrl) {
+    @SuppressLint("NewApi") protected boolean OnNavigate(String strUrl) {
     	WangcaiApp app = WangcaiApp.GetInstance();
     	UserInfo userInfo = app.GetUserInfo();
 	    if (strUrl.contains("/wangcai_js/query_attach_phone")) {
 	    	NotifyPhoneStatus();
-	        return false;
+	        return true;
 	    } 
 	    else if (strUrl.contains("/wangcai_js/query_balance")) {
 	        // 把钱的信息返回给页面
 	    	NotifyUserInfo();
-	        return false;
+	        return true;
 	    }
 	    else if (strUrl.contains("/wangcai_js/query_device_info")) {
 	        // 查询设备信息
 	    	NotifyDeviceInfo();	        
-	        return false;
+	        return true;
 	    }
 	    else if (strUrl.contains("/wangcai_js/attach_phone")) {
 	        // 点击了绑定手机
 	        ActivityHelper.ShowRegisterActivity(this);	
-	        return false;
+	        return true;
 	    } 
 	    else if (strUrl.contains("/wangcai_js/order_info")) {
 	    	String strOrderId = GetUrlKeyValue(strUrl, "num");
 	    	ActivityHelper.ShowOrderDetailActivity(this, strOrderId);
-	        return false;
+	        return true;
 	    } 
 	    else if (strUrl.contains("/wangcai_js/copy_to_clip")) {
 	    	String strContent = GetUrlKeyValue(strUrl, "context");
 	    	if (Util.IsEmptyString(strContent)) {
-	    		return false;
+	    		return true;
 	    	}
     		ClipboardManager clipboardManager = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);  
     		clipboardManager.setPrimaryClip(ClipData.newPlainText(null, strContent));  
     		ActivityHelper.ShowToast(this, R.string.copy_succeed);
-	        return false;
+	        return true;
 	    }
 	    else if (strUrl.contains("/wangcai_js/open_url_inside")) {
 	        String strNextUrl = GetUrlKeyValue(strUrl, "url");
 	        if (Util.IsEmptyString(strUrl)) {
-	        	return false;
+	        	return true;
 	        }
 	        String strTitle = GetUrlKeyValue(strUrl, "title");
 	        
 	        ActivityHelper.ShowWebViewActivity(this, strTitle, strNextUrl);	        
-	        return false;
+	        return true;
 	    } 
 	    else if (strUrl.contains("/wangcai_js/exchange_info")) {
 	    	ActivityHelper.ShowDetailActivity(this);	        
-	        return false;
+	        return true;
 	    } 
 	    else if (strUrl.contains("/wangcai_js/alert")) {
 	        String strTitle = GetUrlKeyValue(strUrl, "title");
@@ -202,13 +214,11 @@ import android.widget.ImageView;
 	        String strButton1Text = GetUrlKeyValue(strUrl, "btntext");
 	        String strButton2Text = GetUrlKeyValue(strUrl, "btn2");
 	        
-
-	        if (m_alertDialog == null) {
-	        	m_alertDialog = new CommonDialog(this);
-				RegisterDialog(m_alertDialog);
-	        }
-	        m_alertDialog.SetInfo(strTitle, strInfo, strButton1Text, strButton2Text);	        
-	        return false;
+	        m_alertDialog = new CommonDialog(this);
+			RegisterDialog(m_alertDialog);
+	        m_alertDialog.SetInfo(strTitle, strInfo, strButton1Text, strButton2Text);
+	        m_alertDialog.Show();
+	        return true;
 	    }
 	    else if (strUrl.contains("/wangcai_js/service_center")) {
 	        String strPhoneNumber = userInfo.GetPhoneNumber();
@@ -221,7 +231,7 @@ import android.widget.ImageView;
 	        //NSString* url = [[NSString alloc] initWithFormat:@"%@?mobile=%@&mobile_num=%@---%@",
 	        //                 HTTP_SERVICE_CENTER, num, [Common getMACAddress], [Common getIDFAAddress] ];
 	        ActivityHelper.ShowWebViewActivity(this, "客户服务", strNextUrl);
-	        return false;
+	        return true;
 	    }  
 	    else if (strUrl.contains("/wangcai_js/alert_loading")) {
 	        String strShow = GetUrlKeyValue(strUrl, "show");
@@ -235,10 +245,10 @@ import android.widget.ImageView;
 	        		m_loadingDialog.dismiss();
 	        	}
 	        }
-	        return false;
+	        return true;
 	    }
 	    
-	    return true;
+	    return false;
     }
     private void NotifyPhoneStatus() {
     	WangcaiApp app = WangcaiApp.GetInstance();

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
 	android:orientation="vertical"
+	android:clipChildren="false"
 	android:background="#A01919">
      <LinearLayout
 		android:id="@+id/title_frame"
@@ -41,13 +42,13 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 			<ImageView
-				android:src="@drawable/choujiang_x1selected"
+				android:src="@drawable/choujiang_x1"
 				android:layout_marginLeft="8dp"
 				android:layout_gravity="center_vertical"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 			<ImageView
-				android:src="@drawable/choujiang_x2selected"
+				android:src="@drawable/choujiang_x2"
 				android:layout_gravity="center_vertical"
 				android:layout_marginLeft="4dp"
 				android:layout_width="wrap_content"
@@ -60,15 +61,18 @@
 				android:layout_height="wrap_content" />
 		</LinearLayout>
 	</FrameLayout>
-	<FrameLayout 
+	<RelativeLayout 
 		android:id="@+id/grid_frame"
-		android:layout_below="@id/beilv_frame"
+		android:layout_centerInParent="true"
+		android:clipChildren="false"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" >
 		 <RelativeLayout 
+		    android:id="@+id/grid_inner_frame"
+		    android:clipChildren="false"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_gravity="center"   >
+			android:layout_centerInParent="true"   >
 				<ImageView
 					android:id="@+id/icon11"
 					android:src="@drawable/choujiang_5mao"
@@ -176,20 +180,11 @@
 					android:layout_height="wrap_content" 
 					android:visibility="gone"   />
 		  </RelativeLayout>
-	</FrameLayout>
+	</RelativeLayout>
 	<ImageView
 	    android:background="@drawable/choujiang_bottom_cloud"
 		android:layout_alignParentBottom="true"
 		android:scaleType="center" 
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"	/>
-	<ImageView
-		android:layout_below="@id/grid_frame"
-	    android:src="@drawable/choujiang_guize"
-		android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true"
-	    android:layout_marginTop="20dp"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" />
-		
+		android:layout_height="wrap_content"	/>		
 </RelativeLayout>

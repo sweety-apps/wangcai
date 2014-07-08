@@ -10,7 +10,10 @@
 		android:id="@+id/title"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" 
-		wangcai:titleText ="@string/bind_phone" />
+		wangcai:titleText ="@string/bind_phone" 
+		wangcai:titleTextColor="#000000"
+		wangcai:returnImg="@drawable/back2"
+		wangcai:bkgImg="@drawable/nav_title2" />
 
 	<RelativeLayout 
 		android:layout_width="match_parent"

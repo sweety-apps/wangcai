@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:wangcai = "http://schemas.android.com/apk/res/com.coolstore.wangcai"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:id="@+id/main_client"
+    android:orientation="vertical" >    
+	<com.coolstore.wangcai.ctrls.TitleCtrl xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/title"
+		wangcai:titleText="@string/survey_title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+
+	<LinearLayout
+	    android:id="@+id/item_frame"
+   		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" 
+	    >
+	    
+	</LinearLayout>
+</LinearLayout>

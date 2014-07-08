@@ -19,10 +19,10 @@ public class Config {
 	}
 	public static String GetLotteryUrl() {
 		if (m_enumEvnType == EnvType.EnvType_Dev) {
-			return "https://ssl.getwangcai.com/0/task/check-in";
+			return "https://dev.getwangcai.com/0/task/check-in";
 		}
 		else {
-			return "https://dev.getwangcai.com/0/task/check-in";
+			return "https://ssl.getwangcai.com/0/task/check-in";
 		}		
 	}
 	public static String GetSendCaptchaUrl() {
@@ -131,7 +131,7 @@ public class Config {
 		}		
 	}
 	public static String GetLiveUpdateUrl() {
-		return "http://wangcai.meme-da.com/web/android_update.php?app=wangcai";
+		return "http://wangcai.meme-da.com/android_web/update.php?app=WangcaiAndroid";
 	}
 	public static String GetPollUrl() {
 		if (m_enumEvnType == EnvType.EnvType_Dev) {
@@ -183,7 +183,7 @@ public class Config {
 	}
 	
 	public static String GetOrderDetailUrl() {
-		return "http://wangcai.meme-da.com/web/order_info.php";
+		return "http://wangcai.meme-da.com/android_web/order_info.php";
 	}
 	
 	// ½»Ò×Ã÷Ï¸
@@ -194,6 +194,22 @@ public class Config {
 		else {
 			return "http://wangcai.meme-da.com/android_web/exchange_info2.php";
 		}
+	}
+	public static String GetSurveyListUrl() {
+		if (m_enumEvnType == EnvType.EnvType_Dev) {
+			return "https://dev.getwangcai.com/0/task/survey_list";
+		}
+		else {
+			return "https://ssl.getwangcai.com/0/task/survey_list";
+		}		
+	}
+	public static String GetSurveyUrl() {
+		if (m_enumEvnType == EnvType.EnvType_Dev) {
+			return "https://dev.getwangcai.com/0/task/survey";
+		}
+		else {
+			return "https://ssl.getwangcai.com/0/task/survey";
+		}		
 	}
 
 	public static String GetServiceCenterUrl() {

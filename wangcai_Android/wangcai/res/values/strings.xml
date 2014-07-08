@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+	<string name="cancel">取消</string>
     <string name="app_name">旺财</string>
     <string name="hello_world">123123</string>
     <string name="action_settings">Settings</string>
@@ -17,6 +18,8 @@
 
 	<string name="select_gift_lebal">请选择要兑换的商品：</string>
 	
+	<string name="agree">同意</string>
+	<string name="disagree">拒绝</string>
 	<string name="menu">菜单</string>
 	<string name="my_wangcai">我的旺财</string>
 	<string name="cash_extract">现金提取</string>
@@ -242,10 +245,23 @@
 	<string name="setting_version_text">使用条款和隐私政策</string>
 
 	<string name="load_error">加载失败</string>	
-
+	
+	<string name="survey_commit_succeed_title">问卷已提交</string>
+	<string name="survey_commit_succeed_text">提交后6小时，人工审核后方可获得红包</string>
+	<string name="survey_commit_succeed_button_text">返回问卷中心</string>
+	<string name="survey_title">问卷调查</string>
+	<string name="survey_rule_title">任务说明</string>
+	<string name="survey_rule_sub_title">重要说明</string>
+	<string name="survey_rule_text1">● 请仔细阅读并填写问卷内容，填写完成后6小时内会由人工审核有效性并发放红包。</string>
+	<string name="survey_rule_text2">● 旺财问卷中心为企业和开发者与用户间实现有效的沟通，有准确的捕捉用户需求。</string>
+	<string name="survey_rule_text3">● 任何媒体或互联网站不得擅自转载本网站由其他单位提供的信息和服务内容，如需转载，必须与相应提供单位直接联系获得合法授权。</string>
+	
 	<string name="app_wall_puncbox_text">触控体验中心</string>
 	<string name="app_wall_youmi_text">有米体验中心</string>
-	<string name="app_wall_youmi_mopan">磨盘体验中心</string>
-	<string name="app_wall_youmi_jupeng">巨鹏体验中心</string>
-	<string name="app_wall_youmi_midi">米迪体验中心</string>
+	<string name="app_wall_mopan_text">磨盘体验中心</string>
+	<string name="app_wall_jupeng_text">巨鹏体验中心</string>
+	<string name="app_wall_midi_text">米迪体验中心</string>
+	<string name="app_wall_anwo_text">安沃体验中心</string>
+	<string name="app_wall_domob_text">多盟体验中心</string>
+	<string name="app_wall_wanpu_text">万普体验中心</string>
 </resources>
