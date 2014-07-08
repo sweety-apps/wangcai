@@ -27,13 +27,10 @@ public class PopupWinNewAward extends PopupWindow implements OnClickListener{
         m_win = inflater.inflate(R.layout.win_new_award, null);  
 
         this.setContentView(m_win);
-        WindowManager wm = (WindowManager) holderActivity.getSystemService(Context.WINDOW_SERVICE);  
-        Display display = wm.getDefaultDisplay();
-        this.setWidth(display.getWidth());  
-        this.setHeight(display.getHeight()); 
-        this.setFocusable(true);  
-        //ColorDrawable dw = new ColorDrawable(0x00ffffff);  
-        //this.setBackgroundDrawable(dw); 
+        this.setWidth(ViewGroup.LayoutParams.FILL_PARENT);  
+        this.setHeight(ViewGroup.LayoutParams.FILL_PARENT); 
+        this.setFocusable(true); 
+        this.setBackgroundDrawable(holderActivity.getResources().getDrawable(R.drawable.popup_bkg));
         
         UserInfo userInfo = WangcaiApp.GetInstance().GetUserInfo();
         

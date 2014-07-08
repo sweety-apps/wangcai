@@ -32,10 +32,12 @@ public class PopupWinLevelUpgrate extends PopupWindow implements OnClickListener
 
         WindowManager wm = (WindowManager) holderActivity.getSystemService(Context.WINDOW_SERVICE);  
         Display display = wm.getDefaultDisplay();
-        this.setWidth(display.getWidth() + 20);  
-        this.setHeight(display.getHeight() + 20); 
-        this.setFocusable(true);  
-  
+
+        this.setWidth(ViewGroup.LayoutParams.FILL_PARENT);  
+        this.setHeight(ViewGroup.LayoutParams.FILL_PARENT); 
+        this.setFocusable(true); 
+        this.setBackgroundDrawable(holderActivity.getResources().getDrawable(R.drawable.popup_bkg));
+        
         String strText = String.format(holderActivity.getString(R.string.level_value_label), nLevel);
         ViewHelper.SetTextStr(m_appWin, R.id.level, strText);
         

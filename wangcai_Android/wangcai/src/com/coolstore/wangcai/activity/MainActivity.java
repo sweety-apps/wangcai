@@ -31,7 +31,6 @@ import com.coolstore.wangcai.base.ManagedDialogActivity;
 import com.coolstore.wangcai.base.PushReceiver;
 import com.coolstore.wangcai.ctrls.ItemBase;
 import com.coolstore.wangcai.ctrls.MainItem;
-import com.coolstore.wangcai.dialog.CommonDialog;
 import com.coolstore.wangcai.dialog.HintBindPhoneDialog;
 import com.coolstore.wangcai.dialog.HintTaskLevelDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -740,5 +739,4 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private int m_nUpdateBalanceTimerId = 0;
     private PullToRefreshScrollView m_pullRefreshScrollView = null;
     private boolean m_bShowCompleteTask = false;
-    private CommonDialog m_hintMsgDialog = null;
 }

@@ -302,8 +302,8 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
     private int m_nTotalAnimationTimes = 0;
     private AnimationTask m_animationTask = null;
     private boolean m_bLoopComplete = false;
-    private ImageView m_imageCover;
-    private ImageView m_imageBorder;
+    private ImageView m_imageCover = null;
+    private ImageView m_imageBorder = null;
     private ProgressDialog m_progressDialog = null;
 }
 

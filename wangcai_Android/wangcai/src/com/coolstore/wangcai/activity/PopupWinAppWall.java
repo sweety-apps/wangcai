@@ -52,11 +52,10 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
         m_appWin = inflater.inflate(R.layout.win_app_wall, null);  
 
         this.setContentView(m_appWin);
-        WindowManager wm = (WindowManager) holderActivity.getSystemService(Context.WINDOW_SERVICE);  
-        Display display = wm.getDefaultDisplay();
-        this.setWidth(display.getWidth() + 0);  
-        this.setHeight(display.getHeight() + 0); 
+        this.setWidth(ViewGroup.LayoutParams.FILL_PARENT);  
+        this.setHeight(ViewGroup.LayoutParams.FILL_PARENT); 
         this.setFocusable(true); 
+        this.setBackgroundDrawable(holderActivity.getResources().getDrawable(R.drawable.popup_bkg));
         AppWallConfig appWallConfig = WangcaiApp.GetInstance().GetAppWallConfig();
         if (appWallConfig != null) {
         	InitView(appWallConfig);

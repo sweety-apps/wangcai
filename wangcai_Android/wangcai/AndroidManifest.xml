@@ -56,7 +56,8 @@
                <category android:name="android.intent.category.LAUNCHER" />
            </intent-filter>
        </activity>
-      
+ 
+       <activity android:name="com.coolstore.wangcai.activity.OfferWallActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.MainActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.MyWangcaiActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.coolstore.wangcai.activity.InviteActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />

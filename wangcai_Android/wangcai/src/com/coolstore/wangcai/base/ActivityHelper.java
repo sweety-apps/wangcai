@@ -29,8 +29,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -168,9 +170,9 @@ public class ActivityHelper {
 
     //ÏÔÊ¾»ý·ÖÇ½
     public static PopupWindow ShowAppWall(Activity owner, View viewParent) {
-    	PopupWinAppWall appWall = new PopupWinAppWall(owner);
-    	appWall.showAtLocation(viewParent, Gravity.FILL, 0, 0);
-    	return appWall;
+    	PopupWinAppWall win = new PopupWinAppWall(owner);
+    	win.showAtLocation(viewParent, Gravity.FILL, 0, 0); 
+    	return win;
     }
  
     public static PopupWindow ShowNewArawdWin(Activity owner, View viewParent, String strAwardName, int nNewAward) {
