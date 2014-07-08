@@ -115,7 +115,7 @@
         notification.timeZone=[NSTimeZone defaultTimeZone];
         notification.soundName= UILocalNotificationDefaultSoundName;//声音，可以换成alarm.soundName = @"myMusic.caf"
         //去掉下面2行就不会弹出提示框
-        notification.alertBody=@"您已经超过一周没有登录了";//提示信息 弹出提示框
+        notification.alertBody=@"您已经超过7天没来了，赶紧回来签个到吧。";//提示信息 弹出提示框
         notification.alertAction = @"打开";  //提示框按钮
         notification.hasAction = NO; //是否显示额外的按钮，为no时alertAction消失
         
