@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -46,8 +45,6 @@ public class ExtractLineCtrl extends FrameLayout {
     	return (EditText)this.findViewById(R.id.edit);
     }
     private void DoInit(Context context) {
-    	View view = findViewById(R.id.edit);
-    	View view2 = findViewById(R.id.lebal);
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);  
         inflater.inflate(R.layout.ctrl_extract_item_line, this);
     }

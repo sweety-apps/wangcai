@@ -1,26 +1,20 @@
 package com.coolstore.wangcai.activity;
 
-import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Util;
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.RequesterFactory;
 import com.coolstore.request.SurveyInfo;
 import com.coolstore.request.Requesters.Request_Survey;
-import com.coolstore.request.Requesters.Request_SurveyList;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;

@@ -1,11 +1,7 @@
 package com.coolstore.wangcai.activity;
 
 
-import java.lang.ref.WeakReference;
-
-import com.coolstore.common.TimerManager;
 import com.coolstore.common.ViewHelper;
-import com.coolstore.common.TimerManager.TimerManagerCallback;
 import com.coolstore.request.UserInfo;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
@@ -14,26 +10,19 @@ import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.ctrls.MyWangcaiItem;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class MyWangcaiActivity extends WangcaiActivity {
-	private final static int ms_nRunAnimationTaskId = 1818;
-	
+public class MyWangcaiActivity extends WangcaiActivity {	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +94,6 @@ public class MyWangcaiActivity extends WangcaiActivity {
     }
     
     private void AddItem(ViewGroup parentView, boolean bLock, int nLevel, int nIconId, String strLevelName, String strLevelBenefit) {
-        Context context = getApplicationContext();
     	MyWangcaiItem item = new MyWangcaiItem();
     	View view = item.Create(this, bLock, nLevel, nIconId, strLevelName, strLevelBenefit);
     	LayoutParams param = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);;

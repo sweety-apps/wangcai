@@ -7,7 +7,6 @@ import com.coolstore.wangcai.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,8 +45,7 @@ public class TitleCtrl extends FrameLayout {
 	            	break;
 	            case R.styleable.TitleCtrl_titleTextColor:
 	            	int nColor = typeArray.getColor(attr, context.getResources().getColor(R.color.default_text_color));
-	            	TextView text = (TextView)this.findViewById(R.id.titile_text);
-	            	text.setTextColor(nColor);
+	            	((TextView)this.findViewById(R.id.titile_text)).setTextColor(nColor);
 	            	break;
 	            case R.styleable.TitleCtrl_returnImg:
 	            	int nResId = typeArray.getResourceId(attr, R.drawable.head_back);

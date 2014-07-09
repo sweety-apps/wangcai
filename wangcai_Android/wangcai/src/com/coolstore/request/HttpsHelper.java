@@ -1,7 +1,7 @@
 package com.coolstore.request;
 
+import android.annotation.SuppressLint;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -11,9 +11,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
-
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -21,8 +19,6 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-
-import com.coolstore.wangcai.WangcaiApp;
 
 
 
@@ -55,7 +51,7 @@ public class HttpsHelper {
     /** 
      * 信任所有主机-对于任何证书都不做检查 
      */  
-    public static void trustAllHosts() {  
+    @SuppressLint("TrulyRandom") public static void trustAllHosts() {  
         // Create a trust manager that does not validate certificate chains  
         // Android 采用X509的证书信息机制  
         // Install the all-trusting trust manager  

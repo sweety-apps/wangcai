@@ -1,10 +1,5 @@
 package com.coolstore.wangcai.activity;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 
 import cn.sharesdk.framework.Platform;
@@ -18,7 +13,6 @@ import com.coolstore.common.Util;
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.UserInfo;
-import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;

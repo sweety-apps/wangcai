@@ -2,11 +2,9 @@ package com.coolstore.wangcai.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.PopupWindow;
 import android.widget.TextView;

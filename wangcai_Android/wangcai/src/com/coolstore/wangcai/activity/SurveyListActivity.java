@@ -2,13 +2,7 @@ package com.coolstore.wangcai.activity;
 
 import java.util.ArrayList;
 
-import com.coolstore.request.RequestManager;
-import com.coolstore.request.Requester;
-import com.coolstore.request.RequesterFactory;
 import com.coolstore.request.SurveyInfo;
-import com.coolstore.request.Requesters.Request_GetUserInfo;
-import com.coolstore.request.Requesters.Request_SurveyList;
-import com.coolstore.request.Requesters.Request_UpdateUserInfo;
 import com.coolstore.common.Util;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
@@ -25,7 +19,6 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
@@ -45,7 +38,7 @@ public class SurveyListActivity extends ManagedDialogActivity implements ItemBas
     	WangcaiApp app = WangcaiApp.GetInstance();
     	m_listSurveyInfo = app.GetSurveyInfo();
     	if (m_listSurveyInfo != null) {
-    		m_nCurrentDataVersion = app.GetSurveyListVersion();
+    		//m_nCurrentDataVersion = app.GetSurveyListVersion();
 			UpdateItemList();
     	}
     	else {
@@ -67,7 +60,7 @@ public class SurveyListActivity extends ManagedDialogActivity implements ItemBas
 		}
 		else {
 			m_listSurveyInfo = WangcaiApp.GetInstance().GetSurveyInfo();
-			m_nCurrentDataVersion = nVersion;
+			//m_nCurrentDataVersion = nVersion;
 
 			UpdateItemList();
 		}	
@@ -148,5 +141,5 @@ public class SurveyListActivity extends ManagedDialogActivity implements ItemBas
     private HintTaskLevelDialog m_hintTaskLevelDialog = null;
 	private ArrayList<SurveyInfo> m_listSurveyInfo = null;
     private ProgressDialog m_progressDialog = null;
-    private int m_nCurrentDataVersion = 0;
+    //private int m_nCurrentDataVersion = 0;
 }

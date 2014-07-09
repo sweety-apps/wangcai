@@ -7,7 +7,6 @@ import com.coolstore.common.SystemInfo;
 import com.coolstore.common.Util;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
-import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.ManagedDialog;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
 import com.coolstore.wangcai.dialog.CommonDialog;
@@ -30,21 +29,15 @@ public class StartupActivity extends ManagedDialogActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		
-        if (BuildSetting.sg_bUseFormatServer) {
-        	Config.Initlialize(Config.EnvType.EnvType_Formal);
-        }
-        else {
-        	Config.Initlialize(Config.EnvType.EnvType_Dev);
-        }
-    	//Config.Initlialize(Config.EnvType.EnvType_Formal);
         setContentView(R.layout.activity_startup);
+	
 
         WangcaiApp app = WangcaiApp.GetInstance();
         app.Initialize(this.getApplicationContext());
 
         app.Login();
 
+        //==========================
     	ImageView image = (ImageView) findViewById(R.id.loading);
     	image.setBackgroundResource(R.anim.ani_loading);
     	m_loadingAnimationDrawable = (AnimationDrawable)  image.getBackground(); 
@@ -59,7 +52,7 @@ public class StartupActivity extends ManagedDialogActivity {
      }
     
     
-    public void OnLoginComplete(int nResult, String strMsg) {
+    public void OnLoginComplete(boolean bFirstLogin, int nResult, String strMsg) {
     	ShowLoading(false);
 
     	findViewById(R.id.loading).setVisibility(View.GONE);
@@ -78,7 +71,6 @@ public class StartupActivity extends ManagedDialogActivity {
     			m_appUpdateDialog.Show();	
     		}else {
     			//Õý³£Æô¶¯
-    			app.Init3rdSdk();
     			
     			MobclickAgent.updateOnlineConfig(this);
 
@@ -114,7 +106,7 @@ public class StartupActivity extends ManagedDialogActivity {
     			m_hintLoginErrorDialog.Show();	
     		}
     	}
-    	super.OnLoginComplete(nResult, strMsg);
+    	super.OnLoginComplete(bFirstLogin, nResult, strMsg);
     }
     
     private void ShowMainActivity() {

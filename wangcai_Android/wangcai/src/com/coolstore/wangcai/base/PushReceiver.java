@@ -1,19 +1,13 @@
 package com.coolstore.wangcai.base;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.coolstore.common.LogUtil;
-import com.coolstore.common.SLog;
 import com.coolstore.common.Util;
 import com.coolstore.wangcai.R;
-import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.activity.MainActivity;
-import com.coolstore.wangcai.activity.StartupActivity;
-
 import cn.jpush.android.api.JPushInterface;
 import android.content.BroadcastReceiver;
 import android.content.Context;

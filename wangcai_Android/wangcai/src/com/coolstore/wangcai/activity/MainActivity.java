@@ -38,6 +38,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.CanvasTransformer;
 
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -46,6 +47,7 @@ import android.content.IntentFilter;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,10 +82,11 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
- 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    	
+        WangcaiApp.GetInstance().Initialize(this);
+        WangcaiApp.GetInstance().Init3rdSdk(this);
+		
         InitView();
 
         registerMessageReceiver();
@@ -141,25 +144,17 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	}
     };
     private void InitView() {
-    	//m_slidingLayout = (SlidingLayout)this.findViewById(R.id.main_wnd);
-    	m_slidingMenu = new SlidingMenu(this);//直接new，而不是getSlidingMenu
+    	m_slidingMenu = new SlidingMenu(this);
     	m_slidingMenu.setMode(SlidingMenu.LEFT);
     	m_slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-    	//menu.setShadowDrawable(R.drawable.shadow);
-    	//menu.setShadowWidthRes(400);
-    	//menu.setBehindOffsetRes(200);
     	m_slidingMenu.setBehindWidth(getResources().getDimensionPixelSize(R.dimen.main_menu_width));//设置SlidingMenu菜单的宽度
     	m_slidingMenu.setFadeDegree(0.35f);
     	m_slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);//必须调用
     	m_slidingMenu.setMenu(R.layout.ctrl_main_menu);//就是普通的layout布局
     	m_slidingMenu.setBehindCanvasTransformer(mTransformer);
-    	
-    	
-        //ViewGroup mainClient = (ViewGroup)this.findViewById(R.id.main_client);
-        //m_slidingLayout.setScrollEvent(mainClient); 
 
         InitMemuList();
-        
+
         CheckHasSignin();
         
     	//左上角的菜单按钮
@@ -198,33 +193,47 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	if (ConfigCenter.GetInstance().HasClickMenu()) {
     		this.findViewById(R.id.menu_dot_image).setVisibility(View.GONE);
     	}
-    	
-    	UpdateUI();
+
+        WangcaiApp app = WangcaiApp.GetInstance();
+        if (!app.HasLogin()) { 
+	        m_progressDialog = ActivityHelper.ShowLoadingDialog(this);
+        	app.Login();
+        }
+        UpdateUI();
     }
     
     private void UpdateUI() {
         WangcaiApp app = WangcaiApp.GetInstance();
-        
         UserInfo userInfo = app.GetUserInfo();
 
         //余额
-        SetBalance(userInfo.GetBalance());
+        int nBalance = 0;
+        if (userInfo != null) {
+        	nBalance = userInfo.GetBalance();
+        }
+        SetBalance2View(nBalance);
         
         //今天还能赚
         TaskListInfo taskListInfo = app.GetTaskListInfo();
-        int nRemainMoney = taskListInfo.GetRemainMoneyToday();
+
+        int nRemainMoney = 0;
+        if (taskListInfo != null) {
+        	nRemainMoney = taskListInfo.GetRemainMoneyToday();
+        }
         TextView remainMoneyTextView = (TextView)this.findViewById(R.id.remain_taks_balance);
         remainMoneyTextView.setText(String.valueOf((float)nRemainMoney / 100.0f));
         
         //任务列表
-        InitTaskList(taskListInfo);
+        if (taskListInfo != null) {
+        	InitTaskList(taskListInfo);
+        }
     }
 
     private final static int sg_listNumberResId[] = {R.drawable.yue_0, R.drawable.yue_1, R.drawable.yue_2, R.drawable.yue_3, 
         	R.drawable.yue_4, R.drawable.yue_5, R.drawable.yue_6, R.drawable.yue_7, R.drawable.yue_8, R.drawable.yue_9};
     private final static int sg_viewIdResId[] = {R.id.money_dot2, R.id.money_dot1, R.id.money_4, R.id.money_3, R.id.money_2, R.id.money_1};
     private final static int nViewCount = sg_viewIdResId.length;
-    private void SetBalance(int nBalance) {
+    private void SetBalance2View(int nBalance) {
  
         for (int i = 0; i < nViewCount && nBalance > 0; i++, nBalance /= 10) {
         	int nValue = nBalance % 10;
@@ -522,7 +531,7 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			else {
 				nCurrentShowBalance = m_nCurrentBalance - nHitTimes;				
 			}
-			SetBalance(nCurrentShowBalance);
+			SetBalance2View(nCurrentShowBalance);
 			if (nCurrentShowBalance == m_nNewBalance) {
 				StopBalanceUpdateTimer();
 			}
@@ -590,13 +599,34 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     	UpdateUI();
 	}
 	
-    public void OnLoginComplete(int nResult, String strMsg) {
+    public void OnLoginComplete(boolean bFirstLogin, int nResult, String strMsg) {
+		if (m_progressDialog != null) {
+			m_progressDialog.dismiss();
+			m_progressDialog = null;
+		}
+		if (nResult == 0) {
+			int nCurrentBalance = WangcaiApp.GetInstance().GetUserInfo().GetBalance();
+			
+			ConfigCenter config = ConfigCenter.GetInstance();
+			int nLastBalance = config.GetLastBalance();
+			if (bFirstLogin && 
+					nLastBalance != -1 && 
+					nCurrentBalance != nLastBalance) {
+				ShowAppAwardTip(nCurrentBalance - nLastBalance);
+			}
+
+			//保存余额
+			config.SetLastBalance(nCurrentBalance);
+		}
+
     	m_pullRefreshScrollView.onRefreshComplete();
     	RefreshTaskList();
-    	super.OnLoginComplete(nResult, strMsg);		
+    	super.OnLoginComplete(bFirstLogin, nResult, strMsg);		
     }
     
     public void OnUserInfoUpdate() {
+    	ConfigCenter.GetInstance().SetLastBalance(WangcaiApp.GetInstance().GetUserInfo().GetBalance());
+
     	RefreshTaskList();
     	super.OnUserInfoUpdate();		
     }
@@ -739,4 +769,5 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private int m_nUpdateBalanceTimerId = 0;
     private PullToRefreshScrollView m_pullRefreshScrollView = null;
     private boolean m_bShowCompleteTask = false;
+    private ProgressDialog m_progressDialog = null;
 }

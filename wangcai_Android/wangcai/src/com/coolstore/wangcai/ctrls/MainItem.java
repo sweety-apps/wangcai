@@ -1,9 +1,6 @@
 package com.coolstore.wangcai.ctrls;
 
-import com.coolstore.request.TaskListInfo;
 import com.coolstore.wangcai.R;
-import com.coolstore.wangcai.R.id;
-import com.coolstore.wangcai.R.layout;
 import com.coolstore.common.ViewHelper;
 
 import android.content.Context;

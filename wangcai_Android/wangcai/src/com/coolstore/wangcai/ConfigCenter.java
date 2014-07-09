@@ -2,7 +2,7 @@ package com.coolstore.wangcai;
 
 
 import com.coolstore.common.Util;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -15,6 +15,7 @@ public class ConfigCenter {
 	private final static String sg_strHasClickMenu = "HasClickMenu";
 	private final static String sg_strShouldReceiveMsg = "ShouldReceiveMsg";
 	private final static String sg_strShouldPlaySound = "ShouldPlaySound";
+	private final static String sg_strLastBalance = "LastBalance";
 	
 	interface ConfigCenterEvent {
 		
@@ -30,11 +31,13 @@ public class ConfigCenter {
 	public void Initialize(Context context) {
 		m_sharedPreference = context.getSharedPreferences(sg_strConfigName, Context.MODE_PRIVATE);
 	}
-	private String GetCurrentDateString() {
+	
+	@SuppressLint("DefaultLocale") private String GetCurrentDateString() {
 		Time time = new Time();
 		time.setToNow(); 
 		return String.format("%d%d", time.year, time.yearDay);
 	}
+	
 	public void SetHasSignInToday() {
 		Editor editor = m_sharedPreference.edit();
 		String strCurrentDate = GetCurrentDateString();
@@ -51,6 +54,8 @@ public class ConfigCenter {
 		String strCurrentDate = GetCurrentDateString();	
 		return strCurrentDate.equals(strLastDate);
 	}
+	
+	
 	public boolean HasClickMenu() {
 		return m_sharedPreference.getBoolean(sg_strHasClickMenu, false);
 	}
@@ -68,6 +73,7 @@ public class ConfigCenter {
 		editor.putBoolean(sg_strShouldReceiveMsg, bReceive);
 		editor.commit();
 	}
+	
 	public boolean ShouldPlaySound() {
 		return m_sharedPreference.getBoolean(sg_strShouldPlaySound, true);		
 	}
@@ -76,12 +82,16 @@ public class ConfigCenter {
 		editor.putBoolean(sg_strShouldPlaySound, bPlay);
 		editor.commit();
 	}
+	
 	public void SetLastBalance(int nBalance) {
-		
+		Editor editor = m_sharedPreference.edit();
+		editor.putInt(sg_strLastBalance, nBalance);
+		editor.commit();		
 	}
 	public int GetLastBalance() {
-		return 0;
+		return m_sharedPreference.getInt(sg_strLastBalance, -1);	
 	}
+	
 	public String GetCachePath() {
 		return Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.coolstore.wangcai";
 	}

@@ -1,15 +1,12 @@
 package com.coolstore.wangcai.activity;
 
-import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Config;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
-import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.ctrls.SettingItem;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;

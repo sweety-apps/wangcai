@@ -1,6 +1,5 @@
 package com.coolstore.wangcai.base;
 
-import cn.jpush.android.api.JPushInterface;
 
 import com.coolstore.common.LogUtil;
 import com.coolstore.wangcai.ConfigCenter;
@@ -56,7 +55,7 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 	public boolean IsVisible() {
 		return m_bVisible;
 	}
-	public void OnLoginComplete(int nResult, String strMsg) {
+	public void OnLoginComplete(boolean bFirstLogin, int nResult, String strMsg) {
 	}
 	public void OnUserInfoUpdate() {
 	}
@@ -65,12 +64,15 @@ public class WangcaiActivity extends Activity implements WangcaiApp.WangcaiAppEv
 	public boolean OnGetAppAward(int nAward) {
 		LogUtil.LogNewPurse("OnGetAppAward (%d)  m_bVisible(%b)", nAward, m_bVisible);
 		if (m_bVisible) {
-			ShowPurseTip(nAward, getString(R.string.new_app_award_tip_title));
+			ShowAppAwardTip(nAward);
 			return true;
 		}
 		else {
 			return false;
 		}
+	}
+	protected void ShowAppAwardTip(int nAward) {
+		ShowPurseTip(nAward, getString(R.string.new_app_award_tip_title));		
 	}
 	protected void ShowPurseTip(int nAward, String strTitle) {
 		m_winNewAward = ActivityHelper.ShowNewArawdWin(this, getWindow().getDecorView(), strTitle, nAward);

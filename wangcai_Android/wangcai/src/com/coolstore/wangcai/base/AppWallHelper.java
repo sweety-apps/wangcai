@@ -2,11 +2,13 @@ package com.coolstore.wangcai.base;
 
 import net.miidiwall.SDK.AdWall;
 import net.miidiwall.SDK.IAdWallShowAppsNotifier;
+import net.youmi.android.AdManager;
 import net.youmi.android.offers.OffersManager;
 import android.app.Activity;
 import cn.waps.AppConnect;
 
 import com.coolstore.common.Config;
+import com.coolstore.wangcai.WangcaiApp;
 import com.punchbox.ads.AdRequest;
 import com.punchbox.ads.OfferWallAd;
 import com.punchbox.exception.PBException;
@@ -33,9 +35,12 @@ public class AppWallHelper {
 		}
 		
 		public boolean Show() {
+			if (!m_bInit) {
+			}
 	    	OffersManager.getInstance(m_activity).showOffersWall();
 			return true;
 		}
+		private static boolean m_bInit = false;
 	}
 
 
@@ -48,7 +53,8 @@ public class AppWallHelper {
 		}
 
 		public boolean Show() {
-			AppConnect.getInstance(m_activity).showOffers(m_activity);			
+			AppConnect.getInstance(m_activity).showAppOffers(m_activity, WangcaiApp.GetInstance().GetUserInfo().GetDeviceId());
+			//AppConnect.getInstance(m_activity).showOffers(m_activity);			
 			return true;
 		}
 	}
@@ -63,7 +69,8 @@ public class AppWallHelper {
 		public boolean Show() {
 	    	if (!ms_bInited) {
 	    		AdWall.init(m_activity, "18194", "l83il64am89r9y6b");
-	    		AdWall.setUserActivity(m_activity, "com.coolstore.wangcai.activity.MidiActivity");	    		
+	    		AdWall.setUserActivity(m_activity, "com.coolstore.wangcai.activity.MidiActivity");
+	    		AdWall.setUserParam(WangcaiApp.GetInstance().GetUserInfo().GetDeviceId());
 	    	}
 	    	AdWall.showAppOffers(new IAdWallShowAppsNotifier() {
 				@Override

@@ -2,8 +2,6 @@ package com.coolstore.wangcai.activity;
 
 
 import java.lang.ref.WeakReference;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import com.coolstore.common.Util;
 import com.coolstore.request.RequestManager;
@@ -15,14 +13,11 @@ import com.coolstore.request.Requesters.Request_ResendCaptcha;
 import com.coolstore.request.Requesters.Request_VerifyCaptcha;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
-import com.coolstore.wangcai.activity.MainActivity.MessageReceiver;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.common.BuildSetting;
-import com.coolstore.common.Config;
 import com.coolstore.common.LogUtil;
 import com.coolstore.common.TimerManager;
 import com.coolstore.common.ViewHelper;
-import com.coolstore.wangcai.base.PushReceiver;
 import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.base.SmsReader;
 

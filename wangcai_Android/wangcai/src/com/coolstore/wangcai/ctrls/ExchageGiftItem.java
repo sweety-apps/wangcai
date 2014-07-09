@@ -2,18 +2,13 @@ package com.coolstore.wangcai.ctrls;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.RequesterFactory;
 import com.coolstore.request.Requesters.Request_DownloadFile;
-import com.coolstore.request.Requesters.Request_GetExchangeList;
 import com.coolstore.wangcai.R;
-import com.coolstore.wangcai.ctrls.ExtractPrieceCtrl.ExtractPrieceCtrlEvent;
 import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
 
@@ -23,7 +18,6 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 
 public class ExchageGiftItem extends ItemBase implements OnClickListener, RequestManager.IRequestManagerCallback{
@@ -80,9 +74,7 @@ public class ExchageGiftItem extends ItemBase implements OnClickListener, Reques
 	public void OnRequestComplete(int nRequestId, Requester req) {
 		if (req instanceof Request_DownloadFile) {
 			int nResult = req.GetResult();
-			if (nResult == 0) {
-				Request_DownloadFile downloadReq = (Request_DownloadFile) req;
-				
+			if (nResult == 0) {				
 				//InputStream stream = downloadReq.GetInputStream();
 				SetExchangeLogo();
 			}
@@ -100,8 +92,6 @@ public class ExchageGiftItem extends ItemBase implements OnClickListener, Reques
 		}
 		Bitmap bitmap = BitmapFactory.decodeStream(fstream);
 		if (bitmap != null) {
-			int w = bitmap.getWidth();
-			int h = bitmap.getHeight();
 			ImageView imageView = (ImageView)m_viewRoot.findViewById(R.id.type_icon);
 			imageView.setImageBitmap(bitmap);
 		}

@@ -2,42 +2,26 @@ package com.coolstore.wangcai.activity;
 
 import java.util.ArrayList;
 
-import net.miidiwall.SDK.AdWall;
-import net.miidiwall.SDK.IAdWallShowAppsNotifier;
-import net.youmi.android.offers.OffersManager;
 
 import com.coolstore.request.AppWallConfig;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.AppWallHelper;
-import com.punchbox.ads.AdRequest;
-import com.punchbox.ads.OfferWallAd;
-import com.punchbox.exception.PBException;
-import com.punchbox.listener.AdListener;
 
-import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.text.Html;
-import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -76,18 +60,11 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
         //创建按钮
         Resources res = m_ownerActivity.getResources();
         int nTopMargin = res.getDimensionPixelSize(R.dimen.offer_wall_button_margin);
- 
-        ArrayList<AppWallConfig.AppWallInfo> listAppWallInfo = new ArrayList<AppWallConfig.AppWallInfo>();
-        listAppWallInfo.add(new AppWallConfig.AppWallInfo(AppWallConfig.sg_strWanpu, 1));
-        listAppWallInfo.add(new AppWallConfig.AppWallInfo(AppWallConfig.sg_strYoumi, 1));
-        listAppWallInfo.add(new AppWallConfig.AppWallInfo(AppWallConfig.sg_strMiidi, 3));
-        listAppWallInfo.add(new AppWallConfig.AppWallInfo(AppWallConfig.sg_strAnwo, 3));
         
         int nLastId1 = 0, nLastId2 = 0;
     	int nCount = appWallConfig.GetWallCount();
-    	nCount = listAppWallInfo.size();
     	for (int i = 0; i < nCount; ++i) {
-    		AppWallConfig.AppWallInfo info = listAppWallInfo.get(i);
+    		AppWallConfig.AppWallInfo info = appWallConfig.GetAppWallInfo(i);
     		if (!info.IsVisible()) {
     			continue;
     		}
@@ -96,7 +73,6 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
 				continue;
 			}
 			boolean bIsRecommand = info.IsRecommand();
-			wallInfo.SetReommand(bIsRecommand);
 
 	        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
 	        		res.getDimensionPixelSize(R.dimen.app_wall_button_width), res.getDimensionPixelSize(R.dimen.app_wall_button_height));
@@ -177,12 +153,12 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     		nStringId = R.string.app_wall_midi_text;
     		wall = new AppWallHelper.MidiAppWall(m_ownerActivity);
     	}
+    	/*
     	else if (strName.equals(AppWallConfig.sg_strWanpu)) {			//万普
     		nResId = R.drawable.app_wall_wanpu;
     		nStringId = R.string.app_wall_wanpu_text;
     		wall = new AppWallHelper.WanpuAppWall(m_ownerActivity);
     	}
-    	/*
     	else if (strName.equals(AppWallConfig.sg_strMopan)) {					//磨盘		<不允许安卓网赚类>
     		nResId = R.drawable.app_wall_mopan;
     		nStringId = R.string.app_wall_mopan_text;
@@ -207,7 +183,7 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     	else {
     		return null;	
     	}
-    	return new WallInfo(strName, nResId, m_ownerActivity.getString(nStringId), wall);
+    	return new WallInfo(nResId, m_ownerActivity.getString(nStringId), wall);
     }	
 
     public void onClick(View v) {
@@ -261,19 +237,15 @@ public class PopupWinAppWall extends PopupWindow implements OnClickListener{
     private Activity m_ownerActivity;		
     
     private class WallInfo {
-    	public WallInfo(String strName, int nId, String strText, AppWallHelper.AppWall wall) {
-    		m_strName = strName;
+    	public WallInfo(/*String strName, */int nId, String strText, AppWallHelper.AppWall wall) {
+    		//m_strName = strName;
     		m_nId = nId;
     		m_strText = strText;
     		m_appWall = wall;
     	}
-    	public void SetReommand(boolean bRecommand) {
-    		m_bRecommand = bRecommand;
-    	}
-    	String m_strName; 
+    	//String m_strName; 
 		String m_strText;
       	int m_nId;
-      	boolean m_bRecommand = false;
     	AppWallHelper.AppWall m_appWall;
     }
     private ArrayList<WallInfo> m_listViisibleWalls = new ArrayList<WallInfo>();

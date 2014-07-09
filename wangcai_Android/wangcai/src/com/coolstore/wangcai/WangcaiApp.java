@@ -41,7 +41,7 @@ public class WangcaiApp implements
 									RequestManager.IRequestManagerCallback, 
 									TimerManager.TimerManagerCallback{
 	public interface WangcaiAppEvent {
-		void OnLoginComplete(int nResult, String strMsg);
+		void OnLoginComplete(boolean bFirstComplete, int nResult, String strMsg);
 		void OnUserInfoUpdate();
 		void OnBalanceUpdate(int nCurrentBalance, int nNewBalance);
 		void OnLevelChanged(int nLevel, int nLevelChange);
@@ -64,8 +64,22 @@ public class WangcaiApp implements
 	public static WangcaiApp GetInstance() {
 		return m_sWangcaiApp;
 	}
+	public boolean HasInit() {
+		return m_bInited;
+	}
 
 	public void Initialize(Context context) {
+		if (m_bInited) {
+			return;
+		}
+		m_bInited  = true;
+        if (BuildSetting.sg_bUseFormatServer) {
+        	Config.Initlialize(Config.EnvType.EnvType_Formal);
+        }
+        else {
+        	Config.Initlialize(Config.EnvType.EnvType_Dev);
+        }
+        
 		//日志
 		SLog.setPath(ConfigCenter.GetInstance().GetCachePath() +  "/log","log","log");
 		if (LogUtil.sg_bLogToFile) {
@@ -87,23 +101,26 @@ public class WangcaiApp implements
 		RequestManager.GetInstance().Initialize(context.getResources().openRawResource(R.raw.cert));
 				
 		LogUtil.LogWangcai("Imei(%s) Serial(%s)  androidId(%s)  Mac(%s)", SystemInfo.GetImei(), SystemInfo.GetSerial(), SystemInfo.GetAndroidId(), SystemInfo.GetMacAddress());
+	
+		
 	}
 
-	public void Init3rdSdk() {
+	public void Init3rdSdk(Context context) {
+		m_AppContext = context;
     	ShareSDK.initSDK(m_AppContext);
 
-		String strDeviceId = m_userInfo.GetDeviceId();
-	
 		//万普
 		AppConnect.getInstance("a506304b84012e95edada70ccfcc7044", "default", m_AppContext);
-		
+	}
+	private void OnFirstLogin() {
+		String strDeviceId = m_userInfo.GetDeviceId();
 		//有米
         AdManager.getInstance(m_AppContext).init(Config.sg_strYoumiAppId, Config.sg_strYoumiAppSecret, false);
         AdManager.getInstance(m_AppContext).setEnableDebugLog(false);
         
         OffersManager.getInstance(m_AppContext).setCustomUserId(strDeviceId);
 		OffersManager.getInstance(m_AppContext).onAppLaunch();
-	
+
 		//极光推送
 		JPushInterface.setAlias(m_AppContext, strDeviceId, null);
         JPushInterface.setDebugMode(BuildSetting.sg_bIsDebug);
@@ -112,7 +129,6 @@ public class WangcaiApp implements
 	public boolean NeedForceUpdate() {
 		return m_bNeedForceUpdate;
 	}
-	
 	public int GetTaskCount() {
 		return m_listTaskInfos.size();
 	}
@@ -130,6 +146,9 @@ public class WangcaiApp implements
 		int nCurrentBalance = m_userInfo.GetBalance();
 		int nNewBalance = nCurrentBalance + nDiff;
 		m_userInfo.SetBalance(nNewBalance);
+
+		//保存余额
+		ConfigCenter.GetInstance().SetLastBalance(nNewBalance);
 
 		ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners = GetEventListClone();
 		for (WeakReference<WangcaiAppEvent> weakPtr: listEventLinsteners) {
@@ -151,7 +170,15 @@ public class WangcaiApp implements
 		if (req instanceof Request_Login) {
 			int nResult = req.GetResult();
 			LogUtil.LogUserInfo("Request_Login  .GetResult() (%d)", req.GetResult());
+			
+			boolean bFirstLogin = false;
+			if (!m_bHasLogin) {
+				bFirstLogin = true;
+			}
+			
 			if (nResult == 0){
+				m_bHasLogin = true;
+				
 				Request_Login loginRequester = (Request_Login)req;
 				m_bNeedForceUpdate = loginRequester.GetNeedForceUpdate();
 				m_strHintMsg = loginRequester.GetTipString();
@@ -168,6 +195,9 @@ public class WangcaiApp implements
 				m_appWallConfig = loginRequester.GetWallConfig();
 				m_nPollElapse = loginRequester.GetPollElapse();
 
+				if (bFirstLogin) {
+					OnFirstLogin();
+				}
 				if (m_nPollTimerId == 0) {
 					m_nPollTimerId = TimerManager.GetInstance().StartTimer(60 * 3 * 1000, this);
 				}
@@ -175,7 +205,7 @@ public class WangcaiApp implements
 			ArrayList<WeakReference<WangcaiAppEvent>> listEventLinsteners = GetEventListClone();
 			for (WeakReference<WangcaiAppEvent> weakPtr: listEventLinsteners) {
 				WangcaiAppEvent eventLinstener = weakPtr.get();
-				eventLinstener.OnLoginComplete(nResult, req.GetMsg());
+				eventLinstener.OnLoginComplete(bFirstLogin, nResult, req.GetMsg());
 			}		
 		}
 		else if (req instanceof Request_GetExchangeList) {
@@ -310,7 +340,6 @@ public class WangcaiApp implements
 	private void DoPlaySound() {		
 		m_soundPool.play(m_nGetIconSoundId, 07f, 0.7f, 1, 0, 1f);		
 	}
-
 	public void OnTimer(int nId, int nHitTimes) {
 		if (nId == m_nPollTimerId) {
 			if (IsForceGround()) {
@@ -459,4 +488,5 @@ public class WangcaiApp implements
 	private ArrayList<WeakReference<WangcaiAppEvent>> m_listEventLinsteners = new ArrayList<WeakReference<WangcaiAppEvent>>();
 	private int m_nSurveyListVersion = 1;
 	private int m_nExchangeListVersion = 1;
+	private boolean m_bInited = false;
 }
