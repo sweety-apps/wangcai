@@ -1898,6 +1898,7 @@
 		71355504188D14110007784A /* YouMiWallSpotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouMiWallSpotView.h; sourceTree = "<group>"; };
 		71355505188D14110007784A /* libYouMi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYouMi.a; sourceTree = "<group>"; };
 		71355516188D169D0007784A /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PushConfig.plist; path = firend/PushConfig.plist; sourceTree = "<group>"; };
+		713E29481977681A00F16C14 /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		71420E85191E0B9700376AA9 /* AdwoOfferWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdwoOfferWall.h; sourceTree = "<group>"; };
 		71420E86191E0B9700376AA9 /* libAdwoOfferWall2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdwoOfferWall2.0.a; sourceTree = "<group>"; };
 		71420E88191E0B9700376AA9 /* libminizip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libminizip.a; sourceTree = "<group>"; };
@@ -4191,6 +4192,7 @@
 		F3F186ED18543A410098C852 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				713E29481977681A00F16C14 /* MobClickSocialAnalytics.h */,
 				A6F96CDB187A5F290067D785 /* XMLReader.h */,
 				A6F96CDC187A5F290067D785 /* XMLReader.m */,
 				A62C5F55187697F600172334 /* MobClick.h */,
