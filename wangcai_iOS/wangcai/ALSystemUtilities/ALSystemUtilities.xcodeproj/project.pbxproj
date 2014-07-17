@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		59FBA2741935064D002A18DF /* libAdwoOfferWall2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FBA2731935064D002A18DF /* libAdwoOfferWall2.0.a */; };
 		8710CCA218227461009590EE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8710CC9C18227461009590EE /* AudioToolbox.framework */; };
 		8710CCA318227461009590EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8710CC9D18227461009590EE /* CFNetwork.framework */; };
 		8710CCA418227461009590EE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8710CC9E18227461009590EE /* CoreTelephony.framework */; };
@@ -171,7 +170,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		59FBA2731935064D002A18DF /* libAdwoOfferWall2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAdwoOfferWall2.0.a; path = ../../Adwolib/libAdwoOfferWall2.0.a; sourceTree = "<group>"; };
 		8710CC9C18227461009590EE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8710CC9D18227461009590EE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8710CC9E18227461009590EE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -252,7 +250,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59FBA2741935064D002A18DF /* libAdwoOfferWall2.0.a in Frameworks */,
 				8710CCA218227461009590EE /* AudioToolbox.framework in Frameworks */,
 				8710CCA318227461009590EE /* CFNetwork.framework in Frameworks */,
 				8710CCA418227461009590EE /* CoreTelephony.framework in Frameworks */,
@@ -525,7 +522,6 @@
 		87D8E526182157EC00546E6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				59FBA2731935064D002A18DF /* libAdwoOfferWall2.0.a */,
 				8710CC9C18227461009590EE /* AudioToolbox.framework */,
 				8710CC9D18227461009590EE /* CFNetwork.framework */,
 				8710CC9E18227461009590EE /* CoreTelephony.framework */,
@@ -918,6 +914,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/zc/Desktop/wangcai/wangcai_iOS/Adwolib,
+					"$(PROJECT_DIR)",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
@@ -948,6 +945,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/zc/Desktop/wangcai/wangcai_iOS/Adwolib,
+					"$(PROJECT_DIR)",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
