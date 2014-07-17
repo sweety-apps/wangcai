@@ -2913,12 +2913,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				717ADDE6196BC54C00618F8F /* ShareSDKCoreService.framework in Frameworks */,
-				7145209B195EDB770095AB62 /* libOpenIDFA.a in Frameworks */,
 				71007DBF18D9B9B000FCF2D9 /* libEcom.a in Frameworks */,
+				7145209B195EDB770095AB62 /* libOpenIDFA.a in Frameworks */,
+				71355509188D14110007784A /* libYouMi.a in Frameworks */,
+				F3359F9718882F8000C1E636 /* libMobClickLibrary.a in Frameworks */,
+				59D8E0C2189230DE003D5F3F /* libPushSDK.a in Frameworks */,
+				712B4ED71944543600C6DE13 /* libPunchBoxAd.a in Frameworks */,
+				712D9BAC191B416F0035D29C /* libDianRuAdWall.a in Frameworks */,
+				71420E8D191E0B9700376AA9 /* libminizip.a in Frameworks */,
+				71420E8B191E0B9700376AA9 /* libAdwoOfferWall2.0.a in Frameworks */,
+				710A3F72192C75B9002420C8 /* WapsOffer.framework in Frameworks */,
+				717ADDE6196BC54C00618F8F /* ShareSDKCoreService.framework in Frameworks */,
 				717ADDDE196BC54C00618F8F /* WeChatConnection.framework in Frameworks */,
 				F3359F8E18882F8000C1E636 /* UIKit.framework in Frameworks */,
-				712D9BAC191B416F0035D29C /* libDianRuAdWall.a in Frameworks */,
 				F3359F9018882F8000C1E636 /* CoreGraphics.framework in Frameworks */,
 				717ADDE8196BC54C00618F8F /* TencentOpenAPI.framework in Frameworks */,
 				F3359F8F18882F8000C1E636 /* Foundation.framework in Frameworks */,
@@ -2940,26 +2947,20 @@
 				F3359F9418882F8000C1E636 /* CFNetwork.framework in Frameworks */,
 				71D1975618BE00D300D3D48D /* AudioToolbox.framework in Frameworks */,
 				F31F895B18962B3100F34F20 /* libALSystemUtilities_Lib.a in Frameworks */,
-				F3359F9718882F8000C1E636 /* libMobClickLibrary.a in Frameworks */,
 				F3359FCF18882F8000C1E636 /* libqrencode.a in Frameworks */,
 				717ADDD4196BC54C00618F8F /* QQConnection.framework in Frameworks */,
-				710A3F72192C75B9002420C8 /* WapsOffer.framework in Frameworks */,
 				F3359F9318882F8000C1E636 /* CoreFoundation.framework in Frameworks */,
 				717ADDFC196BC54D00618F8F /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
-				712B4ED71944543600C6DE13 /* libPunchBoxAd.a in Frameworks */,
 				717ADDDC196BC54C00618F8F /* TencentWeiboConnection.framework in Frameworks */,
 				717ADDFA196BC54D00618F8F /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
-				71420E8D191E0B9700376AA9 /* libminizip.a in Frameworks */,
 				717ADDF6196BC54D00618F8F /* ShareSDKiPadDefaultShareViewUI.framework in Frameworks */,
 				F3359F9918882F8000C1E636 /* libsqlite3.dylib in Frameworks */,
-				71355509188D14110007784A /* libYouMi.a in Frameworks */,
 				F3359F9D18882F8000C1E636 /* AVFoundation.framework in Frameworks */,
 				F3359F9E18882F8000C1E636 /* CoreMedia.framework in Frameworks */,
 				717ADDD8196BC54C00618F8F /* RenRenConnection.framework in Frameworks */,
 				F3359FA118882F8000C1E636 /* libicucore.dylib in Frameworks */,
 				F3359FA318882F8000C1E636 /* MessageUI.framework in Frameworks */,
 				F3359FBF18882F8000C1E636 /* libsqlite3.dylib in Frameworks */,
-				71420E8B191E0B9700376AA9 /* libAdwoOfferWall2.0.a in Frameworks */,
 				F3359FC718882F8000C1E636 /* libz.dylib in Frameworks */,
 				F3359FC918882F8000C1E636 /* CoreText.framework in Frameworks */,
 				7153FCFB18CDC2C50026B4B5 /* MopanAdLib.a in Frameworks */,
@@ -2970,7 +2971,6 @@
 				717ADDF0196BC54D00618F8F /* libWeChatSDK.a in Frameworks */,
 				717ADDDA196BC54C00618F8F /* SinaWeiboConnection.framework in Frameworks */,
 				717ADDF2196BC54D00618F8F /* ShareSDK.framework in Frameworks */,
-				59D8E0C2189230DE003D5F3F /* libPushSDK.a in Frameworks */,
 				F3359FCD18882F8000C1E636 /* libxml2.dylib in Frameworks */,
 				717ADDEA196BC54D00618F8F /* RennSDK.framework in Frameworks */,
 				7126B88418E544370060ECB7 /* MiidiAdLib.a in Frameworks */,
@@ -7115,6 +7115,7 @@
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/NPHD/wangcai/wangcai_iOS,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
@@ -7180,6 +7181,14 @@
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					/Users/NPHD/wangcai/wangcai_iOS/Adwolib,
+					/Users/NPHD/wangcai/wangcai_iOS/Adwolib/res,
+					/Users/NPHD/wangcai/wangcai_iOS/Dianrulib,
+					/Users/NPHD/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/NPHD/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/NPHD/wangcai/wangcai_iOS/wangcai,
+					/Users/NPHD/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/NPHD/wangcai/wangcai_iOS/Ecomlib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "";
@@ -7242,6 +7251,7 @@
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/RenRenSDK,
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1,
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/UI,
+					/Users/NPHD/wangcai/wangcai_iOS,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wangcai/wangcai-Prefix.pch";
@@ -7303,6 +7313,14 @@
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					/Users/NPHD/wangcai/wangcai_iOS/Adwolib,
+					/Users/NPHD/wangcai/wangcai_iOS/Adwolib/res,
+					/Users/NPHD/wangcai/wangcai_iOS/Dianrulib,
+					/Users/NPHD/wangcai/wangcai_iOS/libPunchBoxAd,
+					/Users/NPHD/wangcai/wangcai_iOS/wangcai/JPushlib,
+					/Users/NPHD/wangcai/wangcai_iOS/wangcai,
+					/Users/NPHD/wangcai/wangcai_iOS/wangcai/libYouMi,
+					/Users/NPHD/wangcai/wangcai_iOS/Ecomlib,
 				);
 				PRODUCT_NAME = "wangcai copy";
 				PROVISIONING_PROFILE = "3A918729-AA33-47D2-B165-BF05ED5BBCB2";
