@@ -41,6 +41,7 @@
 		7112B1B518B3203F0067F3E8 /* PhoneValidationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */; };
 		7112B1B618B3203F0067F3E8 /* PhoneValidationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */; };
 		7112B1B818B321720067F3E8 /* phone_validation_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */; };
+		71163A981977BDB90061DAF4 /* libmmone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71163A971977BDB90061DAF4 /* libmmone.a */; };
 		71184A6B19459F8600C70EC1 /* default_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71184A6A19459F8600C70EC1 /* default_icon@2x.png */; };
 		71184A6C19459F8600C70EC1 /* default_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71184A6A19459F8600C70EC1 /* default_icon@2x.png */; };
 		7119760E192F017C00059E48 /* QuestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119760C192F017C00059E48 /* QuestWebViewController.m */; };
@@ -519,7 +520,6 @@
 		71B022E9195E63E200F3C373 /* WapsOffer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B022E8195E63E200F3C373 /* WapsOffer.framework */; };
 		71B02333195E659300F3C373 /* libDianRuAdWall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B02332195E659300F3C373 /* libDianRuAdWall.a */; };
 		71B02335195E65C900F3C373 /* libPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B02334195E65C900F3C373 /* libPushSDK.a */; };
-		71B02339195E66CE00F3C373 /* libminizip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B02338195E66CE00F3C373 /* libminizip.a */; };
 		71B0233D195E671E00F3C373 /* libEcom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B0233C195E671E00F3C373 /* libEcom.a */; };
 		71B0233F195E674100F3C373 /* libPunchBoxAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B0233E195E674100F3C373 /* libPunchBoxAd.a */; };
 		71B02341195E676300F3C373 /* libOpenIDFA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B02340195E676300F3C373 /* libOpenIDFA.a */; };
@@ -1720,6 +1720,7 @@
 		7112722318B33A1A0068C33E /* phone_validation_sendcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_sendcode@2x.png"; sourceTree = "<group>"; };
 		7112B1B418B3203F0067F3E8 /* PhoneValidationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneValidationController.xib; sourceTree = "<group>"; };
 		7112B1B718B321720067F3E8 /* phone_validation_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone_validation_input@2x.png"; sourceTree = "<group>"; };
+		71163A971977BDB90061DAF4 /* libmmone.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmmone.a; path = mmoneSDK/mmone/libmmone.a; sourceTree = "<group>"; };
 		71184A6A19459F8600C70EC1 /* default_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_icon@2x.png"; sourceTree = "<group>"; };
 		7119760B192F017C00059E48 /* QuestWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestWebViewController.h; sourceTree = "<group>"; };
 		7119760C192F017C00059E48 /* QuestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestWebViewController.m; sourceTree = "<group>"; };
@@ -1981,7 +1982,6 @@
 		71B022E8195E63E200F3C373 /* WapsOffer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WapsOffer.framework; sourceTree = "<group>"; };
 		71B02332195E659300F3C373 /* libDianRuAdWall.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDianRuAdWall.a; path = Dianrulib/libDianRuAdWall.a; sourceTree = "<group>"; };
 		71B02334195E65C900F3C373 /* libPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPushSDK.a; path = wangcai/JPushlib/libPushSDK.a; sourceTree = "<group>"; };
-		71B02338195E66CE00F3C373 /* libminizip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libminizip.a; path = Adwolib/res/libminizip.a; sourceTree = "<group>"; };
 		71B0233C195E671E00F3C373 /* libEcom.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libEcom.a; path = Ecomlib/libEcom.a; sourceTree = "<group>"; };
 		71B0233E195E674100F3C373 /* libPunchBoxAd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPunchBoxAd.a; path = libPunchBoxAd/libPunchBoxAd.a; sourceTree = "<group>"; };
 		71B02340195E676300F3C373 /* libOpenIDFA.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOpenIDFA.a; path = wangcai/libYouMi/libOpenIDFA.a; sourceTree = "<group>"; };
@@ -2989,7 +2989,6 @@
 				717ADE03196BC54D00618F8F /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
 				717ADDF9196BC54D00618F8F /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
 				717ADDE7196BC54C00618F8F /* TencentOpenAPI.framework in Frameworks */,
-				71B02339195E66CE00F3C373 /* libminizip.a in Frameworks */,
 				71B0233F195E674100F3C373 /* libPunchBoxAd.a in Frameworks */,
 				F3F186C218543A410098C852 /* Foundation.framework in Frameworks */,
 				F3F186D618543A410098C852 /* SystemConfiguration.framework in Frameworks */,
@@ -3046,8 +3045,8 @@
 				71BB079919597984001C9856 /* ShareSDK.framework in Frameworks */,
 				71B02347195E679A00F3C373 /* MopanAdLib.a in Frameworks */,
 				71B02335195E65C900F3C373 /* libPushSDK.a in Frameworks */,
+				71163A981977BDB90061DAF4 /* libmmone.a in Frameworks */,
 				F3F186CC18543A410098C852 /* CoreText.framework in Frameworks */,
-				71B02339195E66CE00F3C373 /* libminizip.a in Frameworks */,
 				F3F186CE18543A410098C852 /* CoreVideo.framework in Frameworks */,
 				717ADDDF196BC54C00618F8F /* AGCommon.framework in Frameworks */,
 				F3F186FB18543A410098C852 /* libxml2.dylib in Frameworks */,
@@ -4103,13 +4102,13 @@
 		F3F186BE18543A410098C852 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71163A971977BDB90061DAF4 /* libmmone.a */,
 				71B02346195E679A00F3C373 /* MopanAdLib.a */,
 				71B02344195E678600F3C373 /* libMobClickLibrary.a */,
 				71B02342195E677500F3C373 /* libWeChatSDK.a */,
 				71B02340195E676300F3C373 /* libOpenIDFA.a */,
 				71B0233E195E674100F3C373 /* libPunchBoxAd.a */,
 				71B0233C195E671E00F3C373 /* libEcom.a */,
-				71B02338195E66CE00F3C373 /* libminizip.a */,
 				71B02334195E65C900F3C373 /* libPushSDK.a */,
 				71B02332195E659300F3C373 /* libDianRuAdWall.a */,
 				71B022E8195E63E200F3C373 /* WapsOffer.framework */,
@@ -7488,7 +7487,7 @@
 					"$(SRCROOT)/wangcai/ALSystemUtilities/ALSystemUtilities/ALSystemUtilities/**",
 				);
 				INFOPLIST_FILE = "wangcai/wangcai-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
@@ -7574,9 +7573,10 @@
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/JPushlib,
 					/Users/NPHD/Documents/new/wangcai/wangcai_iOS/mmoneSDK/mmone,
 					/Users/NPHD/Documents/new/wangcai/wangcai_iOS/mmoneSDK/res,
+					"$(PROJECT_DIR)/mmoneSDK/res",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2F32B448-A5C3-4B7E-8FBD-E86B9762958D";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -7590,8 +7590,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: BIN Li (B4BR4E2M87)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BIN Li (B4BR4E2M87)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Connection,
@@ -7660,7 +7660,7 @@
 					"$(SRCROOT)/wangcai/ALSystemUtilities/ALSystemUtilities/ALSystemUtilities/**",
 				);
 				INFOPLIST_FILE = "wangcai/wangcai-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/leejustin/Documents/SourceCode/GitHub/wangcai/wangcai_iOS/wangcai/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
@@ -7746,9 +7746,11 @@
 					/Users/NPHD/wangcai/wangcai_iOS/wangcai/JPushlib,
 					/Users/NPHD/Documents/new/wangcai/wangcai_iOS/mmoneSDK/mmone,
 					/Users/NPHD/Documents/new/wangcai/wangcai_iOS/mmoneSDK/res,
+					"$(PROJECT_DIR)/mmoneSDK/res",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "594D6C65-DB25-4AAA-8A31-CBF232EEFA04";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/JPushlib";
 				VALIDATE_PRODUCT = NO;
