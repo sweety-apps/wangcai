@@ -61,7 +61,7 @@
     uname(&systemInfo);
     NSString *result = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
     NSString *type;
-    if ([result isEqualToString:@"i386"])           type = @"Simulator";
+    if ([result isEqualToString:@"i386"] || [result isEqualToString:@"x86_64"])           type = @"Simulator";
     if ([result isEqualToString:@"iPod3,1"])        type = @"iPod Touch 3";
     if ([result isEqualToString:@"iPod4,1"])        type = @"iPod Touch 4";
     if ([result isEqualToString:@"iPod5,1"])        type = @"iPod Touch 5";

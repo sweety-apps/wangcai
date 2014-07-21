@@ -634,11 +634,13 @@ static OnlineWallViewController* _sharedInstance;
     
     NSArray *arr = [NSArray arrayWithObjects:userid, nil];
     MmoneOWSetKeywords(arr);
+    //AdwoOWSetKeywords(arr);
     
     [deviceId release];
     
     [MobClick event:@"task_list_click_adwo" attributes:@{@"currentpage":@"任务列表"}];
     MmoneOWPresentMmtwo(ADWO_OFFERWALL_BASIC_PID, _viewController);
+    //AdwoOWPresentOfferWall(ADWO_OFFERWALL_BASIC_PID, _viewController);
 }
 
 - (NSString *)applicationKey {
