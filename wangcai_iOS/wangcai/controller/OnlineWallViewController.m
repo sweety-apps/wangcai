@@ -26,7 +26,8 @@
 #import "BaseTaskTableViewController.h"
 
 #import "DianRuAdWall.h"
-#import "AdwoOfferWall.h"
+//#import "AdwoOfferWall.h"
+#import "MmoneMmtwo.h"
 #import "WapsOffer/AppConnect.h"
 #import "ComplainViewController.h"
 
@@ -353,7 +354,8 @@ static OnlineWallViewController* _sharedInstance;
     }
     
     [MobClick event:@"task_list_click_punchbox" attributes:@{@"currentpage":@"任务列表"}];
-    [[PBOfferWall sharedOfferWall] showOfferWallWithScale:1.0f];
+    [[PBOfferWall sharedOfferWall] showOfferWallWithScale:0.9f];
+   
 }
 
 - (void)pbOfferWall:(PBOfferWall *)pbOfferWall finishTaskRewardCoin:(NSArray *)taskCoins {
@@ -632,12 +634,14 @@ static OnlineWallViewController* _sharedInstance;
 #endif
     
     NSArray *arr = [NSArray arrayWithObjects:userid, nil];
-    AdwoOWSetKeywords(arr);
+    MmoneOWSetKeywords(arr);
+    //AdwoOWSetKeywords(arr);
     
     [deviceId release];
     
     [MobClick event:@"task_list_click_adwo" attributes:@{@"currentpage":@"任务列表"}];
-    AdwoOWPresentOfferWall(ADWO_OFFERWALL_BASIC_PID, _viewController);
+    MmoneOWPresentMmtwo(ADWO_OFFERWALL_BASIC_PID, _viewController);
+    //AdwoOWPresentOfferWall(ADWO_OFFERWALL_BASIC_PID, _viewController);
 }
 
 - (NSString *)applicationKey {

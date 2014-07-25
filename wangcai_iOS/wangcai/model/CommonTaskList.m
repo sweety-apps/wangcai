@@ -130,6 +130,26 @@ static CommonTaskList* gInstance = nil;
 
 - (NSArray*)getAllTaskList
 {
+    if(0)
+    {
+        CommonTaskInfo *info = [[CommonTaskInfo alloc]init];
+        info.taskIsLocalIcon = YES;
+        info.taskId = [NSNumber numberWithInt:10010];
+        info.taskType = [NSNumber numberWithInt:kTaskTypeNewShare];
+        info.taskTitle = @"分享任务";
+        info.taskIconUrl = @"fenxiangrenwu_cell_icon";
+        info.taskStatus = [NSNumber numberWithInt:0];
+        info.taskMoney = [NSNumber numberWithInt:0];
+        info.taskLevel = 0;
+        info.taskDesc = @"与好友分享有趣的内容获得奖励";
+        NSMutableArray *arr = [NSMutableArray arrayWithObject:info];
+        info.taskMoney = [NSNumber numberWithInt:50];
+        [info release];
+        [arr addObjectsFromArray:self.taskList];
+        return arr;
+        
+        
+    }
     return self.taskList;
 }
 

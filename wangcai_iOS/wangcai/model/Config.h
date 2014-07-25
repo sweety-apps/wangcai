@@ -193,9 +193,9 @@
 #endif
 
 
-#define HTTP_SERVICE_QUESTION   @"http://service.meme-da.com/index.php/mobile/shouce/list/hc_id/76"
-#define HTTP_SERVICE_CENTER     @"http://service.meme-da.com/index.php/mobile/consulting"
-#define WEB_SERVICE_VIEW @"http://service.meme-da.com/index.php/mobile/shouce/view/h_id/"
+#define HTTP_SERVICE_QUESTION   @"http://dev_service.meme-da.com/index.php/mobile/shouce/list/hc_id/76"
+#define HTTP_SERVICE_CENTER     @"http://dev_service.meme-da.com/index.php/mobile/consulting"
+#define WEB_SERVICE_VIEW @"http://dev_service.meme-da.com/index.php/mobile/shouce/view/h_id/"
 
 #define WEB_SURVEY       @"http://wangcai.meme-da.com/survey/%@.php"
 

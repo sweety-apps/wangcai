@@ -30,4 +30,5 @@
 - (IBAction)clickAlipay:(id)sender;
 - (IBAction)clickPhone:(id)sender;
 - (IBAction)clickQBi:(id)sender;
+- (IBAction)moreExtractTap:(id)sender;
 @end

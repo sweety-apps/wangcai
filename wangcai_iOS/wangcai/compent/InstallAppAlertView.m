@@ -34,7 +34,7 @@
         
         UIButton *closebtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [closebtn setBackgroundImage:closeimage forState:UIControlStateNormal];
-        closebtn.frame = CGRectMake(270, 70, closeimage.size.width, closeimage.size.height);
+        closebtn.frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width-alertBg.frame.size.width)/2.f+alertBg.frame.size.width-closeimage.size.width/2.f-5, 70, closeimage.size.width, closeimage.size.height);
         [closebtn addTarget:target action:cancel forControlEvents:UIControlEventTouchUpInside];
         if([[UIScreen mainScreen] bounds].size.height > 480)
         {

@@ -228,7 +228,7 @@
 // Get the cell IP address
 + (NSString *)cellIPAddress {
     // Set a string for the address
-    NSString *IPAddress;
+    NSString *IPAddress = nil;
     // Set up structs to hold the interfaces and the temporary address
     struct ifaddrs *Interfaces;
     struct ifaddrs *Temp;
@@ -269,7 +269,6 @@
     
     // Free the memory of the interfaces
     freeifaddrs(Interfaces);
-    
     // Check to make sure it's not empty
     if (IPAddress == nil || IPAddress.length <= 0) {
         // Empty, return not found
