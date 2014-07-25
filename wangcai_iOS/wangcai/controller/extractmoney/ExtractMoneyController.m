@@ -41,6 +41,7 @@
         [self performSelector:@selector(onViewInit) withObject:nil afterDelay:0.1];
         
         [self updateBalance];
+       
     }
     return self;
 }
@@ -49,8 +50,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+   
 }
-
+- (void)moreExtractTap :(id)sender
+{
+    NSLog(@"moreExtractTap click");
+}
 - (IBAction)bindPhone:(id)sender {
     PhoneValidationController* phoneVal = [PhoneValidationController shareInstance];
     [self->_beeStack pushViewController:phoneVal animated:YES];

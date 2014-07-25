@@ -24,6 +24,7 @@
 #import "CommonTaskTableViewCell.h"
 #import "InstallAppAlertView.h"
 #import "AppDelegate.h"
+
 #define SHOW_MASK (0)
 
 #pragma mark -

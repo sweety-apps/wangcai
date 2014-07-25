@@ -354,7 +354,8 @@ static OnlineWallViewController* _sharedInstance;
     }
     
     [MobClick event:@"task_list_click_punchbox" attributes:@{@"currentpage":@"任务列表"}];
-    [[PBOfferWall sharedOfferWall] showOfferWallWithScale:1.0f];
+    [[PBOfferWall sharedOfferWall] showOfferWallWithScale:0.9f];
+   
 }
 
 - (void)pbOfferWall:(PBOfferWall *)pbOfferWall finishTaskRewardCoin:(NSArray *)taskCoins {

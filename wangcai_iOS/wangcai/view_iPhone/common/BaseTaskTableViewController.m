@@ -36,6 +36,9 @@
 #import "InviteViewController.h"
 #import "QuestViewController.h"
 #import "WangcaiTaskViewController.h"
+#import "ShareTaskAlertView.h"
+#import "UICustomAlertView.h"
+#import "WCShare.h"
 
 static BOOL gNeedReloadTaskList = NO;
 static BOOL gNeedShowChoujiangShare = NO;
@@ -45,6 +48,8 @@ static int  gChoujiang = 0;
 {
     NSTimer* _checkOfferWallTimer;
     BOOL _justOnePage;
+    ShareTaskAlertView *shareAlert;
+    UICustomAlertView *custAlert;
 }
 
 @end
@@ -683,7 +688,7 @@ static int  gChoujiang = 0;
     else
     {
         int taskIndex = row - [_staticCells count];
-        CommonTaskInfo* task = [[[CommonTaskList sharedInstance] taskList] objectAtIndex:taskIndex];
+        CommonTaskInfo* task = [[[CommonTaskList sharedInstance] getAllTaskList] objectAtIndex:taskIndex];
         
         int nLevel = [[LoginAndRegister sharedInstance] getUserLevel];
         int nNeedLevel = [task.taskLevel intValue];
@@ -828,13 +833,58 @@ static int  gChoujiang = 0;
                 [controller setUIStack:self.beeStack];
                 [_beeStack pushViewController:controller animated:YES];
             }
+            case kTaskTypeNewShare:
+            {
+                shareAlert = [[ShareTaskAlertView alloc]initWithCheckCount:1 totalCount:5 shareTarget:self shareAction:@selector(shareAction) previewTarget:nil previewAction:nil closeTarget:self closeAction:@selector(close)];
+                custAlert = [[UICustomAlertView alloc]init:shareAlert];
+                [custAlert show];
+            }
                 break;
             default:
                 break;
         }
     }
 }
+- (void)shareAction
+{
 
+    [self close];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"yellow_circle"  ofType:@"png"];
+    [[WCShare sharedInstance] makeShareContent:@"印度民众痛打强奸杀人犯将其扒光扔街头"
+                                 defaultConent:nil
+                                         title:@"新闻咨询"
+                                       jumpUrl:@"http://news.ifeng.com/coop/20140725/41307563_0.shtml#p=1"
+                                   description:nil
+                                     imagePath:imagePath];
+    [[WCShare sharedInstance] addWXChatWithShareHandler:^{
+    } shareFailed:^(id<ICMErrorInfo> error) {
+
+    }];
+    [[WCShare sharedInstance] addQQWithShareHandler:^{
+        
+    } shareFailed:^(id<ICMErrorInfo> error) {
+        
+    }];
+    [[WCShare sharedInstance] addSinaWBShareHandler:^{
+        
+    } shareFailed:^(id<ICMErrorInfo> error) {
+        
+    }];
+    [[WCShare sharedInstance] addWXTimelineWithShareHandler:^{
+        
+    } shareFailed:^(id<ICMErrorInfo> error) {
+        
+    }];
+    [[WCShare sharedInstance] showShareItems];
+}
+- (void)close
+{
+    [custAlert hideAlertView];
+    
+    [custAlert release];
+    [shareAlert release];
+    shareAlert = nil;
+}
 #pragma mark - <UIScrollViewDelegate>
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

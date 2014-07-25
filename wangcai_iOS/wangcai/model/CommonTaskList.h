@@ -21,6 +21,7 @@
 #define kTaskTypeCommon (10001)
 
 #define kTaskTypeYoumiEc (99999)
+#define kTaskTypeNewShare (10002)
 
 
 @class CommonTaskList;
