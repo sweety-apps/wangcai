@@ -833,6 +833,7 @@ static int  gChoujiang = 0;
                 [controller setUIStack:self.beeStack];
                 [_beeStack pushViewController:controller animated:YES];
             }
+                break;
             case kTaskTypeNewShare:
             {
                 shareAlert = [[ShareTaskAlertView alloc]initWithCheckCount:1 totalCount:5 shareTarget:self shareAction:@selector(shareAction) previewTarget:nil previewAction:nil closeTarget:self closeAction:@selector(close)];
@@ -849,13 +850,14 @@ static int  gChoujiang = 0;
 {
 
     [self close];
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"yellow_circle"  ofType:@"png"];
+    //NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"yellow_circle"  ofType:@"png"];
     [[WCShare sharedInstance] makeShareContent:@"印度民众痛打强奸杀人犯将其扒光扔街头"
                                  defaultConent:nil
                                          title:@"新闻咨询"
-                                       jumpUrl:@"http://news.ifeng.com/coop/20140725/41307563_0.shtml#p=1"
+                                       jumpUrl:@"http://news.ifeng.com/a/20140725/41299684_0.shtml"
                                    description:nil
-                                     imagePath:imagePath];
+                                     imagePath:@"http://pic.qiushibaike.com/system/pictures/8058/80586507/medium/app80586507.jpg"];
+    [WCShare sharedInstance].imageURL = @"http://pic.qiushibaike.com/system/pictures/8058/80586507/medium/app80586507.jpg";
     [[WCShare sharedInstance] addWXChatWithShareHandler:^{
     } shareFailed:^(id<ICMErrorInfo> error) {
 

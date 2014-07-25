@@ -16,7 +16,7 @@
     id<ISSContent> publishContent;
 }
 
-
+@property(nonatomic,retain) NSString *imageURL;
 
 + (instancetype)sharedInstance;
 

@@ -14,12 +14,22 @@
 #import <RennSDK/RennClient.h>
 
 
-
 @implementation WCShare
+@synthesize imageURL = _imageURL;
 
 SHARED_INSTANCE_GCD_USING_BLOCK(^{
     return [[self alloc]init];
 })
+- (void)setImageURL:(NSString *)imageURL
+{
+    if (![_imageURL isEqualToString:imageURL])
+    {
+        [_imageURL release];
+        [imageURL retain];
+        _imageURL = imageURL;
+    }
+    
+}
 - (id)init
 {
     self = [super init];
@@ -49,7 +59,10 @@ SHARED_INSTANCE_GCD_USING_BLOCK(^{
      
     
 }
-- (id<ISSShareActionSheetItem>)makeItem :(ShareType)atype :(void (^)(void))success shareFailed:(void (^)(id<ICMErrorInfo>))fail
+- (id<ISSShareActionSheetItem>)makeItem :(ShareType)atype
+                                    icon:(UIImage*)icon
+                            shareSuccess:(void (^)(void))success
+                             shareFailed:(void (^)(id<ICMErrorInfo>))fail
 {
     id<ISSShareActionSheetItem> wxsItem = [ShareSDK shareActionSheetItemWithTitle:[ShareSDK getClientNameWithType:atype] icon:[ShareSDK getClientIconWithType:atype] clickHandler:^{
         if(atype == ShareTypeRenren)
@@ -75,7 +88,7 @@ SHARED_INSTANCE_GCD_USING_BLOCK(^{
         }else if(atype == ShareTypeSinaWeibo)
         {
             [ShareSDK showShareViewWithType:ShareTypeSinaWeibo
-                                  container:[ShareSDK container]
+                                  container:nil
                                     content:publishContent
                               statusBarTips:YES
                                 authOptions:nil
@@ -89,6 +102,7 @@ SHARED_INSTANCE_GCD_USING_BLOCK(^{
                 {
                     fail(error);
                 }
+                                         
                 
             }];
 
@@ -120,28 +134,33 @@ SHARED_INSTANCE_GCD_USING_BLOCK(^{
 - (void)addRenrenWithShareHandler:(void (^)(void))success shareFailed:(void (^)(id<ICMErrorInfo>))fail
 {
     
-    [shareItems addObject:[self makeItem :ShareTypeRenren :success shareFailed:fail]];
+    [shareItems addObject:[self makeItem :ShareTypeRenren icon:nil shareSuccess:success shareFailed:fail]];
 }
 - (void)addQQWithShareHandler:(void (^)(void))success shareFailed:(void (^)(id<ICMErrorInfo>))fail
 {
-    
-    [shareItems addObject:[self makeItem :ShareTypeQQ :success shareFailed:fail]];
+    [publishContent addQQUnitWithType:[NSNumber numberWithInt:SSPublishContentMediaTypeNews] content:INHERIT_VALUE title:INHERIT_VALUE url:INHERIT_VALUE image:[ShareSDK imageWithUrl:_imageURL]];
+    [shareItems addObject:[self makeItem :ShareTypeQQ icon:nil shareSuccess:success shareFailed:fail]];
 }
 - (void)addSinaWBShareHandler:(void (^)(void))success shareFailed:(void (^)(id<ICMErrorInfo>))fail
 {
-    [shareItems addObject:[self makeItem:ShareTypeSinaWeibo :success shareFailed:fail]];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Icon@2x" ofType:@"png"];
+    [publishContent addSinaWeiboUnitWithContent:INHERIT_VALUE image:[ShareSDK imageWithPath:path]];
+    [shareItems addObject:[self makeItem:ShareTypeSinaWeibo icon:nil shareSuccess:success shareFailed:fail]];
 }
 - (void)addQQSpaceWithShareHandler:(void (^)(void))success shareFailed:(void (^)(id<ICMErrorInfo>))fail
 {
-     [shareItems addObject:[self makeItem :ShareTypeQQSpace :success shareFailed:fail]];
+    [publishContent addQQSpaceUnitWithTitle:INHERIT_VALUE url:INHERIT_VALUE site:INHERIT_VALUE fromUrl:INHERIT_VALUE comment:INHERIT_VALUE summary:INHERIT_VALUE image:[ShareSDK imageWithUrl:_imageURL] type:[NSNumber numberWithInt:SSPublishContentMediaTypeNews] playUrl:INHERIT_VALUE nswb:INHERIT_VALUE];
+     [shareItems addObject:[self makeItem :ShareTypeQQSpace icon:nil shareSuccess:success shareFailed:fail]];
 }
-- (void)addWXTimelineWithShareHandler:(void (^)(void))success shareFailed:(void (^)(id<ICMErrorInfo>))fail
+- (void)addWXTimelineWithShareHandler:(void (^)(void))success  shareFailed:(void (^)(id<ICMErrorInfo>))fail
 {
-    [shareItems addObject:[self makeItem :ShareTypeWeixiTimeline :success shareFailed:fail]];
+    [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInt:SSPublishContentMediaTypeNews] content:INHERIT_VALUE title:INHERIT_VALUE url:INHERIT_VALUE image:[ShareSDK imageWithUrl:_imageURL] musicFileUrl:nil extInfo:nil fileData:nil emoticonData:nil];
+    [shareItems addObject:[self makeItem :ShareTypeWeixiTimeline icon:nil shareSuccess:success shareFailed:fail]];
 }
 - (void)addWXChatWithShareHandler :(void (^)(void))success shareFailed:(void (^)(id<ICMErrorInfo> error))fail
 {
-    [shareItems addObject:[self makeItem :ShareTypeWeixiSession :success shareFailed:fail]];
+    [publishContent addWeixinSessionUnitWithType:[NSNumber numberWithInt:SSPublishContentMediaTypeNews] content:INHERIT_VALUE title:INHERIT_VALUE url:INHERIT_VALUE image:[ShareSDK imageWithUrl:_imageURL] musicFileUrl:nil extInfo:nil fileData:nil emoticonData:nil];
+    [shareItems addObject:[self makeItem :ShareTypeWeixiSession icon:nil shareSuccess:success shareFailed:fail]];
 }
 
 - (NSArray*)createShareList
