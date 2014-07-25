@@ -130,7 +130,7 @@ static CommonTaskList* gInstance = nil;
 
 - (NSArray*)getAllTaskList
 {
-    if(1)
+    if(0)
     {
         CommonTaskInfo *info = [[CommonTaskInfo alloc]init];
         info.taskIsLocalIcon = YES;
