@@ -12,15 +12,12 @@ import com.coolstore.request.Requester;
 public class Request_ResendCaptcha extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("token", m_strOldToken);
-			mapRequestInfo.put("code_length", "5");	//todo 意义?
-			
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetResendCaptchaUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("token", m_strOldToken);
+		mapRequestInfo.put("code_length", "5");	//todo 意义?
+		
+		super.InitPostRequestInfo(Config.GetResendCaptchaUrl(), "", mapRequestInfo);
 	}
 
     @Override

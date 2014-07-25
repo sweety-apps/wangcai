@@ -11809,6 +11809,7 @@ com.coolstore.request.AppWallConfig -> com.coolstore.b.a:
     java.util.ArrayList m_listWallInfos -> a
     void AddWall(java.lang.String,int) -> a
     int GetWallCount() -> a
+    com.coolstore.request.AppWallConfig$AppWallInfo GetAppWallInfo(int) -> a
 com.coolstore.request.AppWallConfig$AppWallInfo -> com.coolstore.b.b:
     java.lang.String m_strName -> a
     int m_nStatus -> b
@@ -12225,10 +12226,9 @@ com.coolstore.request.UserInfo -> com.coolstore.b.x:
 com.coolstore.wangcai.ConfigCenter -> com.coolstore.wangcai.a:
     com.coolstore.wangcai.ConfigCenter sg_Object -> a
     android.content.SharedPreferences m_sharedPreference -> b
-    java.util.ArrayList m_listEventListener -> c
     com.coolstore.wangcai.ConfigCenter GetInstance() -> a
     void Initialize(android.content.Context) -> a
-    java.lang.String GetCurrentDateString() -> h
+    java.lang.String GetCurrentDateString() -> i
     void SetHasSignInToday() -> b
     boolean HasSignInToday() -> c
     boolean HasClickMenu() -> d
@@ -12237,7 +12237,9 @@ com.coolstore.wangcai.ConfigCenter -> com.coolstore.wangcai.a:
     void SetShouldReceivePush(boolean) -> b
     boolean ShouldPlaySound() -> f
     void SetShouldPlaySound(boolean) -> c
-    java.lang.String GetCachePath() -> g
+    void SetLastBalance(int) -> a
+    int GetLastBalance() -> g
+    java.lang.String GetCachePath() -> h
 com.coolstore.wangcai.R -> com.coolstore.wangcai.b:
 com.coolstore.wangcai.R$styleable -> com.coolstore.wangcai.c:
     int[] ActionBar -> ActionBar
@@ -12420,11 +12422,13 @@ com.coolstore.wangcai.WangcaiApp -> com.coolstore.wangcai.d:
     java.util.ArrayList m_listEventLinsteners -> t
     int m_nSurveyListVersion -> u
     int m_nExchangeListVersion -> v
-    boolean m_bSoundLoad -> w
+    boolean m_bInited -> w
     com.coolstore.wangcai.WangcaiApp GetInstance() -> a
     void Initialize(android.content.Context) -> a
-    void Init3rdSdk() -> b
-    boolean NeedForceUpdate() -> c
+    void Init3rdSdk(android.content.Context) -> b
+    void OnFirstLogin() -> t
+    boolean NeedForceUpdate() -> b
+    boolean HasLogin() -> c
     void ChangeBalance(int) -> a
     void RequestExchangeListInfo() -> d
     com.coolstore.request.ExchangeListInfo GetExchangeListInfo() -> e
@@ -12449,16 +12453,14 @@ com.coolstore.wangcai.WangcaiApp -> com.coolstore.wangcai.d:
     void SetForceGround(boolean) -> a
     void RequestSurveyInfo() -> r
     java.util.ArrayList GetSurveyInfo() -> s
-    int GetSurveyListVersion() -> t
     com.coolstore.request.SurveyInfo GetSurveyInfo(int) -> b
     java.util.ArrayList GetEventListClone() -> v
-    void access$0(com.coolstore.wangcai.WangcaiApp,boolean) -> a
-    void access$1(com.coolstore.wangcai.WangcaiApp) -> a
+    void access$0(com.coolstore.wangcai.WangcaiApp) -> a
 com.coolstore.wangcai.WangcaiApp$1 -> com.coolstore.wangcai.e:
     com.coolstore.wangcai.WangcaiApp this$0 -> a
     void onLoadComplete(android.media.SoundPool,int,int) -> onLoadComplete
 com.coolstore.wangcai.WangcaiApp$WangcaiAppEvent -> com.coolstore.wangcai.f:
-    void OnLoginComplete(int,java.lang.String) -> a
+    void OnLoginComplete(boolean,int,java.lang.String) -> a
     void OnUserInfoUpdate() -> a
     void OnBalanceUpdate(int,int) -> b
     void OnLevelChanged(int,int) -> c
@@ -12564,7 +12566,7 @@ com.coolstore.wangcai.activity.LotteryActivity -> com.coolstore.wangcai.activity
     android.widget.ImageView m_imageCover -> i
     android.widget.ImageView m_imageBorder -> j
     android.app.ProgressDialog m_progressDialog -> k
-    int GetItemIndex(int) -> c
+    int GetItemIndex(int) -> d
     void onCreate(android.os.Bundle) -> onCreate
     int GetBounsFromType(int) -> b
     void OnRequestComplete(int,com.coolstore.request.Requester) -> a
@@ -12615,14 +12617,14 @@ com.coolstore.wangcai.activity.MainActivity -> com.coolstore.wangcai.activity.Ma
     int m_nUpdateBalanceTimerId -> q
     com.handmark.pulltorefresh.library.PullToRefreshScrollView m_pullRefreshScrollView -> r
     boolean m_bShowCompleteTask -> s
-    com.coolstore.wangcai.dialog.CommonDialog m_hintMsgDialog -> t
+    android.app.ProgressDialog m_progressDialog -> t
     void onCreate(android.os.Bundle) -> onCreate
     void InitTaskList(com.coolstore.request.TaskListInfo) -> a
     void InitMemuList() -> c
     void CheckHasSignin() -> f
     void InitView() -> g
     void UpdateUI() -> h
-    void SetBalance(int) -> b
+    void SetBalance2View(int) -> b
     void ShowMenu(boolean) -> a
     void OnDialogFinish(com.coolstore.wangcai.base.ManagedDialog,int) -> a
     void OnRequestComplete(int,com.coolstore.request.Requester) -> a
@@ -12634,7 +12636,7 @@ com.coolstore.wangcai.activity.MainActivity -> com.coolstore.wangcai.activity.Ma
     void onResume() -> onResume
     void OnBalanceUpdate(int,int) -> b
     void RefreshTaskList() -> k
-    void OnLoginComplete(int,java.lang.String) -> a
+    void OnLoginComplete(boolean,int,java.lang.String) -> a
     void OnUserInfoUpdate() -> a
     void InsertMenuItem(android.view.ViewGroup,java.lang.String,int,java.lang.String) -> a
     boolean ShouldAddTask(com.coolstore.request.TaskListInfo$TaskInfo) -> a
@@ -12682,6 +12684,8 @@ com.coolstore.wangcai.activity.MyWangcaiActivity$1 -> com.coolstore.wangcai.acti
 com.coolstore.wangcai.activity.MyWangcaiActivity$2 -> com.coolstore.wangcai.activity.t:
     com.coolstore.wangcai.activity.MyWangcaiActivity this$0 -> a
     void run() -> run
+com.coolstore.wangcai.activity.OfferWallActivity -> com.coolstore.wangcai.activity.OfferWallActivity:
+    void onCreate(android.os.Bundle) -> onCreate
 com.coolstore.wangcai.activity.PopupWinAppWall -> com.coolstore.wangcai.activity.u:
     android.app.Activity m_ownerActivity -> a
     java.util.ArrayList m_listViisibleWalls -> b
@@ -12693,13 +12697,10 @@ com.coolstore.wangcai.activity.PopupWinAppWall -> com.coolstore.wangcai.activity
     void onClick(android.view.View) -> onClick
     void AttachEvents() -> a
 com.coolstore.wangcai.activity.PopupWinAppWall$WallInfo -> com.coolstore.wangcai.activity.v:
-    java.lang.String m_strName -> a
-    java.lang.String m_strText -> b
-    int m_nId -> c
-    boolean m_bRecommand -> d
-    com.coolstore.wangcai.base.AppWallHelper$AppWall m_appWall -> e
-    com.coolstore.wangcai.activity.PopupWinAppWall this$0 -> f
-    void SetReommand(boolean) -> a
+    java.lang.String m_strText -> a
+    int m_nId -> b
+    com.coolstore.wangcai.base.AppWallHelper$AppWall m_appWall -> c
+    com.coolstore.wangcai.activity.PopupWinAppWall this$0 -> d
 com.coolstore.wangcai.activity.PopupWinLevelUpgrate -> com.coolstore.wangcai.activity.w:
     android.app.Activity m_ownerActivity -> a
     android.view.View m_appWin -> b
@@ -12768,7 +12769,7 @@ com.coolstore.wangcai.activity.StartupActivity -> com.coolstore.wangcai.activity
     com.coolstore.wangcai.dialog.HintLoginErrorDialog m_hintLoginErrorDialog -> h
     com.coolstore.wangcai.dialog.CommonDialog m_hintMsgDialog -> i
     void onCreate(android.os.Bundle) -> onCreate
-    void OnLoginComplete(int,java.lang.String) -> a
+    void OnLoginComplete(boolean,int,java.lang.String) -> a
     void ShowMainActivity() -> b
     void OnDialogFinish(com.coolstore.wangcai.base.ManagedDialog,int) -> a
     void ShowLoading(boolean) -> a
@@ -12790,7 +12791,6 @@ com.coolstore.wangcai.activity.SurveyListActivity -> com.coolstore.wangcai.activ
     com.coolstore.wangcai.dialog.HintTaskLevelDialog m_hintTaskLevelDialog -> a
     java.util.ArrayList m_listSurveyInfo -> f
     android.app.ProgressDialog m_progressDialog -> g
-    int m_nCurrentDataVersion -> h
     void onCreate(android.os.Bundle) -> onCreate
     void RequestList() -> b
     void OnSurveyRequestComplete(int,int,java.lang.String) -> a
@@ -12929,11 +12929,10 @@ com.coolstore.wangcai.base.AppWallHelper$MidiAppWall$1 -> com.coolstore.wangcai.
     com.coolstore.wangcai.base.AppWallHelper$MidiAppWall this$1 -> a
     void onDismissApps() -> onDismissApps
     void onShowApps() -> onShowApps
-com.coolstore.wangcai.base.AppWallHelper$WanpuAppWall -> com.coolstore.wangcai.base.i:
+com.coolstore.wangcai.base.AppWallHelper$YoumiAppWall -> com.coolstore.wangcai.base.i:
+    boolean m_bInit -> b
     boolean Show() -> a
-com.coolstore.wangcai.base.AppWallHelper$YoumiAppWall -> com.coolstore.wangcai.base.j:
-    boolean Show() -> a
-com.coolstore.wangcai.base.ManagedDialog -> com.coolstore.wangcai.base.k:
+com.coolstore.wangcai.base.ManagedDialog -> com.coolstore.wangcai.base.j:
     int m_nDialogId -> b
     com.coolstore.wangcai.base.ManagedDialogActivity m_ownerActivity -> a
     void SetId(int) -> a
@@ -12943,7 +12942,7 @@ com.coolstore.wangcai.base.ManagedDialog -> com.coolstore.wangcai.base.k:
     void Show() -> b
     int GetDialogId() -> c
     void onClick(android.content.DialogInterface,int) -> onClick
-com.coolstore.wangcai.base.ManagedDialogActivity -> com.coolstore.wangcai.base.l:
+com.coolstore.wangcai.base.ManagedDialogActivity -> com.coolstore.wangcai.base.k:
     android.util.SparseArray m_listDialogs -> b
     android.app.Dialog onCreateDialog(int) -> onCreateDialog
     void onPrepareDialog(int,android.app.Dialog) -> onPrepareDialog
@@ -12954,7 +12953,7 @@ com.coolstore.wangcai.base.PushReceiver -> com.coolstore.wangcai.base.PushReceiv
 com.coolstore.wangcai.base.SmsReader -> com.coolstore.wangcai.base.SmsReader:
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
     android.telephony.SmsMessage[] GetMessagesFromIntent(android.content.Intent) -> a
-com.coolstore.wangcai.base.WangcaiActivity -> com.coolstore.wangcai.base.m:
+com.coolstore.wangcai.base.WangcaiActivity -> com.coolstore.wangcai.base.l:
     boolean m_bVisible -> c
     android.widget.PopupWindow m_winNewAward -> d
     int m_nLevelChange -> e
@@ -12963,16 +12962,17 @@ com.coolstore.wangcai.base.WangcaiActivity -> com.coolstore.wangcai.base.m:
     void onPause() -> onPause
     void onResume() -> onResume
     boolean IsVisible() -> d
-    void OnLoginComplete(int,java.lang.String) -> a
+    void OnLoginComplete(boolean,int,java.lang.String) -> a
     void OnUserInfoUpdate() -> a
     void OnBalanceUpdate(int,int) -> b
     boolean OnGetAppAward(int) -> a
-    void ShowPurseTip(int,java.lang.String) -> b
+    void ShowAppAwardTip(int) -> c
+    void ShowPurseTip(int,java.lang.String) -> a
     int GetCurrentLevel() -> e
     void OnLevelChanged(int,int) -> c
     void OnSurveyRequestComplete(int,int,java.lang.String) -> a
     void OnExchangeListRequestComplete(int,int,java.lang.String) -> b
-com.coolstore.wangcai.base.WangcaiActivity$1 -> com.coolstore.wangcai.base.n:
+com.coolstore.wangcai.base.WangcaiActivity$1 -> com.coolstore.wangcai.base.m:
     com.coolstore.wangcai.base.WangcaiActivity this$0 -> a
     void onDismiss() -> onDismiss
 com.coolstore.wangcai.ctrls.ExchageGiftItem -> com.coolstore.wangcai.ctrls.a:

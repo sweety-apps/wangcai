@@ -253,6 +253,9 @@ import android.widget.ImageView;
     private void NotifyPhoneStatus() {
     	WangcaiApp app = WangcaiApp.GetInstance();
     	UserInfo userInfo = app.GetUserInfo();
+		if (userInfo == null) {
+			return ;
+		}
         // 查询手机是否已经绑定
     	boolean bHasBindPhone = userInfo.HasBindPhone();
     	String strPhoneNumber = userInfo.GetPhoneNumber();

@@ -237,6 +237,9 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
   		}
   		@SuppressLint("NewApi") @Override  
         protected void onProgressUpdate(Integer... nCurrentIndexs) {
+			if (m_animationTask == null || m_imageCover == null || m_imageBorder == null) {
+				return;
+			}
   			int nCurrentIndex= nCurrentIndexs[0];
   			if (m_bLoopComplete) {
   				//转完了, 闪烁下
@@ -293,6 +296,8 @@ public class LotteryActivity extends WangcaiActivity implements RequestManager.I
     		m_animationTask.cancel(true);
     		m_animationTask = null;
     	}
+		m_imageCover = null;
+		m_imageBorder = null;
     	super.onDestroy();
      }
     

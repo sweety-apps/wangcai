@@ -9526,10 +9526,7 @@ com.coolstore.wangcai.R$drawable: int app_tip_close
 com.coolstore.wangcai.R$drawable: int app_tip_more
 com.coolstore.wangcai.R$drawable: int app_tip_recommand
 com.coolstore.wangcai.R$drawable: int app_wall_anwo
-com.coolstore.wangcai.R$drawable: int app_wall_domob
-com.coolstore.wangcai.R$drawable: int app_wall_jupeng
 com.coolstore.wangcai.R$drawable: int app_wall_midi
-com.coolstore.wangcai.R$drawable: int app_wall_mopan
 com.coolstore.wangcai.R$drawable: int app_wall_puncbox
 com.coolstore.wangcai.R$drawable: int app_wall_recommand
 com.coolstore.wangcai.R$drawable: int app_wall_title
@@ -9723,6 +9720,7 @@ com.coolstore.wangcai.R$drawable: int package_icon_8
 com.coolstore.wangcai.R$drawable: int package_icon_many
 com.coolstore.wangcai.R$drawable: int pin
 com.coolstore.wangcai.R$drawable: int pointer
+com.coolstore.wangcai.R$drawable: int popup_bkg
 com.coolstore.wangcai.R$drawable: int qiandao_button_red_dot
 com.coolstore.wangcai.R$drawable: int quest_icon
 com.coolstore.wangcai.R$drawable: int recommand_task_icon
@@ -10757,6 +10755,8 @@ com.coolstore.wangcai.activity.MidiActivity
 com.coolstore.wangcai.activity.MidiActivity: MidiActivity()
 com.coolstore.wangcai.activity.MyWangcaiActivity
 com.coolstore.wangcai.activity.MyWangcaiActivity: MyWangcaiActivity()
+com.coolstore.wangcai.activity.OfferWallActivity
+com.coolstore.wangcai.activity.OfferWallActivity: OfferWallActivity()
 com.coolstore.wangcai.activity.RegisterActivity
 com.coolstore.wangcai.activity.RegisterActivity: RegisterActivity()
 com.coolstore.wangcai.activity.RegisterActivity: void onClick(android.view.View)
@@ -10792,8 +10792,6 @@ com.coolstore.wangcai.ctrls.ExtractPrieceCtrl
 com.coolstore.wangcai.ctrls.ExtractPrieceCtrl: ExtractPrieceCtrl(android.content.Context)
 com.coolstore.wangcai.ctrls.ExtractPrieceCtrl: ExtractPrieceCtrl(android.content.Context,android.util.AttributeSet)
 com.coolstore.wangcai.ctrls.ExtractPrieceCtrl: ExtractPrieceCtrl(android.content.Context,android.util.AttributeSet,int)
-com.coolstore.wangcai.ctrls.SlidingLayout: void setScrollEvent(android.view.View)
-com.coolstore.wangcai.ctrls.SlidingLayout: int getScrollVelocity()
 com.coolstore.wangcai.ctrls.TitleCtrl
 com.coolstore.wangcai.ctrls.TitleCtrl: TitleCtrl(android.content.Context)
 com.coolstore.wangcai.ctrls.TitleCtrl: TitleCtrl(android.content.Context,android.util.AttributeSet)

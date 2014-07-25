@@ -4,8 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-
 import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
 import com.coolstore.wangcai.R;

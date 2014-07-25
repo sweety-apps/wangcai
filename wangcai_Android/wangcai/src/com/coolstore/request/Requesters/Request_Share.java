@@ -12,12 +12,9 @@ import com.coolstore.request.Requester;
 public class Request_Share extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetShareTaskUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		super.InitPostRequestInfo(Config.GetShareTaskUrl(), "", mapRequestInfo);
 	}
 
     @Override

@@ -1,7 +1,6 @@
 package com.coolstore.wangcai.dialog;
 
 import com.coolstore.wangcai.R;
-import com.coolstore.wangcai.R.string;
 import com.coolstore.wangcai.base.ManagedDialog;
 import com.coolstore.wangcai.base.ManagedDialogActivity;
 

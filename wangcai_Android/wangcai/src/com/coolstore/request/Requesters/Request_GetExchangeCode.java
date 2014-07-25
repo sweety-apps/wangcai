@@ -12,14 +12,11 @@ import com.coolstore.request.Requester;
 public class Request_GetExchangeCode extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("exchange_type", String.valueOf(m_nExchangeType));
-			
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetExchangeCodeUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("exchange_type", String.valueOf(m_nExchangeType));
+		
+		super.InitPostRequestInfo(Config.GetExchangeCodeUrl(), "", mapRequestInfo);
 	}
 
     @Override

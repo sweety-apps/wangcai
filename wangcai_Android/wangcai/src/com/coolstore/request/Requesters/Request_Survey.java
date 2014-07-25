@@ -10,14 +10,11 @@ import com.coolstore.request.Requester;
 
 public class Request_Survey extends Requester{
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("id", String.valueOf(m_nSurveyId));
-			mapRequestInfo.put("survey", m_strSurveyData);
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetSurveyUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("id", String.valueOf(m_nSurveyId));
+		mapRequestInfo.put("survey", m_strSurveyData);
+		super.InitPostRequestInfo(Config.GetSurveyUrl(), "", mapRequestInfo);
 	}
 
     @Override

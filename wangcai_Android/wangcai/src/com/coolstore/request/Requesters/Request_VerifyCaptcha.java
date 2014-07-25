@@ -12,14 +12,11 @@ import com.coolstore.request.Requester;
 public class Request_VerifyCaptcha  extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("token", m_strToken);
-			mapRequestInfo.put("sms_code", m_strCaptcha);
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetVerifyCaptchaUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("token", m_strToken);
+		mapRequestInfo.put("sms_code", m_strCaptcha);
+		super.InitPostRequestInfo(Config.GetVerifyCaptchaUrl(), "", mapRequestInfo);
 	}
 
     @Override

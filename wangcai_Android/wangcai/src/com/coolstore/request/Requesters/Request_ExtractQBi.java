@@ -12,17 +12,14 @@ import com.coolstore.request.Requester;
 public class Request_ExtractQBi extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("qq", m_strQQNumber);
-			mapRequestInfo.put("amount", String.valueOf(m_nAmount));
-			mapRequestInfo.put("discount", String.valueOf(m_nDiscount));
-			mapRequestInfo.put("price", String.valueOf(m_nDiscount));
-			
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetExtractQbiUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("qq", m_strQQNumber);
+		mapRequestInfo.put("amount", String.valueOf(m_nAmount));
+		mapRequestInfo.put("discount", String.valueOf(m_nDiscount));
+		mapRequestInfo.put("price", String.valueOf(m_nDiscount));
+		
+		super.InitPostRequestInfo(Config.GetExtractQbiUrl(), "", mapRequestInfo);
 	}
 
     @Override

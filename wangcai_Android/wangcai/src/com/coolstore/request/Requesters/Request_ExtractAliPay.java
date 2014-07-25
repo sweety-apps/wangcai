@@ -13,15 +13,12 @@ public class Request_ExtractAliPay extends Requester{
 
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("alipay_account", m_strAliPayAccount);
-			mapRequestInfo.put("amount", String.valueOf(m_nAmount));
-			mapRequestInfo.put("discount", String.valueOf(m_nDiscount));
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetExtractAlipayUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("alipay_account", m_strAliPayAccount);
+		mapRequestInfo.put("amount", String.valueOf(m_nAmount));
+		mapRequestInfo.put("discount", String.valueOf(m_nDiscount));
+		super.InitPostRequestInfo(Config.GetExtractAlipayUrl(), "", mapRequestInfo);
 	}
 
     @Override

@@ -16,13 +16,10 @@ import com.coolstore.request.Requester;
 public class Request_Poll extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("msgid", String.valueOf(m_nMsgId));
-			m_requestInfo = Requester.NewGetRequestInfo(Config.GetPollUrl(), "");
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("msgid", String.valueOf(m_nMsgId));
+		super.InitGetRequestInfo(Config.GetPollUrl(), "");
 	}
 
     @Override

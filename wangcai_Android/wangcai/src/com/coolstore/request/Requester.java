@@ -1,23 +1,28 @@
 package com.coolstore.request;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.coolstore.common.Util;
 
 
-public class Requester {
+public abstract class Requester {
 
-	public static class RequestInfo {
+	private static class RequestInfo {
 		RequestInfo(String strUrl, String strCookie) {
 			m_strUrl = strUrl;
+			m_strBuildedUrl = strUrl;
 			m_strCookie = strCookie;
 			m_strRequestMethod = RequestManager.g_strGet;
 		}
 		RequestInfo(String strUrl, String strCookie, Map<String, String> mapData, boolean bPost) {
 			m_strUrl = strUrl;
+			m_strBuildedUrl = strUrl;
 			m_strCookie = strCookie;
 			if (bPost) {
 				m_strRequestMethod = RequestManager.g_strPost;
@@ -31,40 +36,91 @@ public class Requester {
 			if (mapData == null || mapData.size() <= 0) {
 				return ;
 			}
-			String strData = Util.FormatNetworkData(mapData);
-			if (m_strRequestMethod.equals(RequestManager.g_strGet)) {
-				m_strUrl = Util.AddData2Url(m_strUrl, strData);
+			
+			if (m_mapExtractData == null) {
+				m_mapExtractData = mapData;
 			}
 			else {
-				m_strPostData = Util.CombineNetworkData(m_strPostData, strData);
+				Iterator iter = mapData.entrySet().iterator(); 
+				while (iter.hasNext()) { 
+					Map.Entry entry = (Map.Entry) iter.next(); 
+					String strKey = (String)entry.getKey(); 
+					String strValue = (String)entry.getValue();
+					m_mapExtractData.put(strKey, strValue);
+				}  
+			}
+			if (m_bBuilded) {
+				BuildData();
 			}
 		}
 		public void AddData(String strName, String strValue) {
-			String strData = String.format("%s=%s", strName, strValue);
-			if (m_strRequestMethod.equals(RequestManager.g_strGet)) {
-				m_strUrl = Util.AddData2Url(m_strUrl, strData);
+			if (m_mapExtractData == null) {
+				m_mapExtractData = new HashMap<String, String>();
 			}
-			else {
-				m_strPostData = Util.CombineNetworkData(m_strPostData, strData);
-			}			
+		    m_mapExtractData.put(strName, strValue);
+		    
+			if (m_bBuilded) {
+				BuildData();
+			}	
+		}
+		public String GetUrl() {
+			if (!m_bBuilded) {
+				BuildData();				
+			}
+			return m_strBuildedUrl;
+		}
+		public String GetRequestMethod() {
+			return m_strRequestMethod;
 		}
 		public String GetPostData() {
+			if (!m_bBuilded) {
+				BuildData();				
+			}
 			return m_strPostData;
 		}
+		public String GetCookie() {
+			return m_strCookie;
+		}
+		protected boolean IsPost() {
+			return !IsGet();
+		}
+		private boolean IsGet() {
+			return RequestManager.g_strGet.equals(m_strRequestMethod);
+		}
+		public void ResetBuildedData() {
+			m_bBuilded = false;
+			m_strBuildedUrl = m_strUrl;
+			m_strPostData = "";
+		}
+		private void BuildData() {
+			if (m_mapExtractData == null) {
+				return;
+			}
+			String strData = Util.FormatNetworkData(m_mapExtractData);
+			if (IsGet()) {
+				m_strBuildedUrl = Util.AddData2Url(m_strUrl, strData);
+			}
+			else {
+				m_strPostData = strData;
+			}
+		}
 		//data menber
-		String m_strRequestMethod = "";
-		String m_strUrl = "";
-		String m_strCookie = "";
-		String m_strPostData = "";
+		private String m_strRequestMethod = "";
+		private String m_strUrl = "";
+		private String m_strBuildedUrl = "";
+		private String m_strCookie = "";
+		private String m_strPostData = "";
+		private Map<String, String> m_mapExtractData;
+		private boolean m_bBuilded = false;
 	}
-	public static RequestInfo NewPostRequestInfo(String strUrl, String strCookie, Map<String, String> mapData) {
-		return new RequestInfo(strUrl, strCookie, mapData, true);
+	public void InitPostRequestInfo(String strUrl, String strCookie, Map<String, String> mapData) {
+		m_requestInfo = new RequestInfo(strUrl, strCookie, mapData, true);
 	}
-	public static RequestInfo NewGetRequestInfo(String strUrl, String strCookie, Map<String, String> mapData) {
-		return new RequestInfo(strUrl, strCookie, mapData, false);		
+	public void InitGetRequestInfo(String strUrl, String strCookie, Map<String, String> mapData) {
+		m_requestInfo = new RequestInfo(strUrl, strCookie, mapData, false);		
 	}
-	public static RequestInfo NewGetRequestInfo(String strUrl, String strCookie) {
-		return new RequestInfo(strUrl, strCookie, null, false);		
+	public void InitGetRequestInfo(String strUrl, String strCookie) {
+		m_requestInfo = new RequestInfo(strUrl, strCookie, null, false);		
 	}
 
 	public int GetMaxRetryTimes() {
@@ -73,17 +129,46 @@ public class Requester {
 	public boolean IsRaw() {
 		return m_bRaw;
 	}
-	public RequestInfo GetRequestInfo() {
-		return m_requestInfo;
-	}
+	abstract protected void InitRequestInfo();
+	
+	
 	protected boolean ParseResponse(JSONObject rootObject) {
 		return true;
 	}
 	
-	public void OnPreSend() {
-		
+	public Requester() {
+		InitRequestInfo();
 	}
-	
+	public void Initialize() {
+	}
+
+	public boolean IsPost() {
+		return m_requestInfo.IsPost();
+	}
+	private boolean IsGet() {
+		return m_requestInfo.IsGet();
+	}
+	public void AddData(Map<String, String> mapData) {
+		m_requestInfo.AddData(mapData);
+	}
+	public void AddData(String strName, String strValue) {
+		m_requestInfo.AddData(strName, strValue);
+	}
+	public String GetUrl() {
+		return m_requestInfo.GetUrl();
+	}
+	public String GetRequestMethod() {
+		return m_requestInfo.GetRequestMethod();
+	}
+	public String GetPostData() {
+		return m_requestInfo.GetPostData();
+	}
+	public void ResetBuildedData() {
+		m_requestInfo.ResetBuildedData();
+	}
+	public String GetCookie(){
+		return m_requestInfo.GetCookie();
+	}
 	public boolean HookRequestComplete(InputStream inputStream) {
 		return false;
 	}

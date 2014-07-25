@@ -8,12 +8,17 @@ import com.coolstore.common.LogUtil;
 import com.coolstore.common.Util;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.activity.MainActivity;
+import com.coolstore.wangcai.activity.WebviewActivity;
+
 import cn.jpush.android.api.JPushInterface;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+//		 自定义消息
+//{"type":"NewPurse", "title":"xxx", "text":"xxx"}
 
 
 public class PushReceiver extends BroadcastReceiver {
@@ -26,6 +31,9 @@ public class PushReceiver extends BroadcastReceiver {
     public final static String sg_nPushMessageType = "nMessageType";
     public final static String sg_strPushTitle = "strPushTitle";
     public final static String sg_strPushText = "strPushText";
+    
+    public final static String sg_strOpeType = "strOpeType";
+    public final static String sg_strOpeParam = "strOpeParam";
 	
 	public PushReceiver() {
 		LogUtil.LogPush("###############			NewPushReceiver %x", this.hashCode());
@@ -39,20 +47,11 @@ public class PushReceiver extends BroadcastReceiver {
 		Bundle bundle = intent.getExtras();
 		//LogUtil.LogPush("[PushReceiver] onReceive - " + intent.getAction() + ", extras: " + printBundle(bundle));
 
-        if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
-           // String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
-            //LogUtil.LogPush("[PushReceiver] 接收Registration Id : " + regId);
-            //send the Registration Id to your server...
-                        
+        if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {                        
         }
         else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {	
 	       	String strRawText = bundle.getString(JPushInterface.EXTRA_MESSAGE);   
-	       	LogUtil.LogPush("[PushReceiver]this(%x) New Custom Push Message:(%s)", this.hashCode(), strRawText);     
-			//Util.SendNotification(this, R.drawable.ic_launcher, "旺财", "旺财");
-			//if (m_listEventListener == null) {
-			//	  LogUtil.LogPush("has no listener Skip");
-			//  return;
-			//}
+	       	LogUtil.LogPush("[PushReceiver]this(%x) New Custom Push Message:(%s)", this.hashCode(), strRawText);   
 
 			String strMsgType = null;;
 			String strTitle = null;
@@ -105,24 +104,58 @@ public class PushReceiver extends BroadcastReceiver {
 				Util.SendNotification(context, activtiyIntent, R.drawable.ic_launcher, strTitle, strText);
     		}
         } 
-        else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
-            //LogUtil.LogPush("[PushReceiver] 接收到推送下来的通知");
-            int notifactionId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
-            LogUtil.LogPush("[PushReceiver] 接收到推送下来的通知的ID: " + notifactionId);
-        	
+        else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {        	
         }
         else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
-           LogUtil.LogPush("[PushReceiver] 用户点击打开了通知");
-            
-            JPushInterface.reportNotificationOpened(context, bundle.getString(JPushInterface.EXTRA_MSG_ID));
-            
-            /*
-	        	//打开自定义的Activity
-	        	Intent i = new Intent(context, TestActivity.class);
-	        	i.putExtras(bundle);
-	        	i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	        	context.startActivity(i);
-        	*/
+            LogUtil.LogPush("[PushReceiver] 用户点击打开了通知");
+   			Bundle bundle2 = intent.getExtras();
+
+	       	String strTitle = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);    
+	       	String strMsg = bundle.getString(JPushInterface.EXTRA_ALERT); 
+
+            int notifactionId = bundle.getInt(JPushInterface.EXTRA_NOTIFICATION_ID);
+            LogUtil.LogPush("[PushReceiver] 接收到推送下来的通知的ID: " + notifactionId);
+    
+	       	String strExtractData = bundle.getString(JPushInterface.EXTRA_EXTRA);    
+	       	if (Util.IsEmptyString(strExtractData)) {
+				ShowMainActivity(context);
+	       	}
+	       	else {
+				try {
+					JSONObject rootObject = new JSONObject(strExtractData);
+					
+					String strActivityTitle = Util.ReadJsonString(rootObject, "Title");
+					if (!Util.IsEmptyString(strActivityTitle)) {
+						strActivityTitle = "旺财";
+					}
+					
+					String strInUrl = Util.ReadJsonString(rootObject, "InUrl");
+					if (!Util.IsEmptyString(strInUrl)) {
+				    	Intent it = new Intent(context, WebviewActivity.class);
+				    	it.putExtra(ActivityHelper.sg_strUrl, strInUrl);
+				    	it.putExtra(ActivityHelper.sg_strTitle, strActivityTitle);
+				    	it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
+				    	context.startActivity(it);
+						return;
+					}
+					String strOutUrl = Util.ReadJsonString(rootObject, "OutUrl");
+					if (!Util.IsEmptyString(strOutUrl)) {
+						Intent newIntent = new Intent();        
+						newIntent.setAction("android.intent.action.VIEW");    
+						Uri contentUrl = Uri.parse(strOutUrl);   
+						newIntent.setData(contentUrl);  
+						newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
+						context.startActivity(newIntent);
+						return;
+					}
+
+					ShowMainActivity(context);
+				} catch (JSONException e) {
+					ShowMainActivity(context);
+					return ;
+				}
+
+	       	}
         }
         else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
             LogUtil.LogPush("[PushReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
@@ -132,44 +165,10 @@ public class PushReceiver extends BroadcastReceiver {
         	LogUtil.LogPush("[PushReceiver] Unhandled intent - " + intent.getAction());
         }
 	}
+	private void ShowMainActivity(Context context) {
+   		Intent intent = new Intent(context, MainActivity.class);
+   		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
+   		context.startActivity(intent);	
+	}
 	
-
-	/*
-	// 打印所有的 intent extra 数据
-	private static String printBundle(Bundle bundle) {
-		StringBuilder sb = new StringBuilder();
-		for (String key : bundle.keySet()) {
-			if (key.equals(JPushInterface.EXTRA_NOTIFICATION_ID)) {
-				sb.append("\nkey:" + key + ", value:" + bundle.getInt(key));
-			} else {
-				sb.append("\nkey:" + key + ", value:" + bundle.getString(key));
-			}
-		}
-		return sb.toString();
-	}
-	*/
-
-	/*
-	//send msg to MainActivity
-	private void processCustomMessage(Context context, Bundle bundle) {
-		if (MainActivity.isForeground) {
-			String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
-			String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-			Intent msgIntent = new Intent(MainActivity.MESSAGE_RECEIVED_ACTION);
-			msgIntent.putExtra(MainActivity.KEY_MESSAGE, message);
-			if (!ExampleUtil.isEmpty(extras)) {
-				try {
-					JSONObject extraJson = new JSONObject(extras);
-					if (null != extraJson && extraJson.length() > 0) {
-						msgIntent.putExtra(MainActivity.KEY_EXTRAS, extras);
-					}
-				} catch (JSONException e) {
-
-				}
-
-			}
-			context.sendBroadcast(msgIntent);
-		}
-	}
-		*/
 }

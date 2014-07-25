@@ -16,6 +16,7 @@ public class ConfigCenter {
 	private final static String sg_strShouldReceiveMsg = "ShouldReceiveMsg";
 	private final static String sg_strShouldPlaySound = "ShouldPlaySound";
 	private final static String sg_strLastBalance = "LastBalance";
+	private final static String sg_strHasShowRiskHint = "HasShowRiskHint";
 	
 	interface ConfigCenterEvent {
 		
@@ -95,6 +96,16 @@ public class ConfigCenter {
 	public String GetCachePath() {
 		return Environment.getExternalStorageDirectory().getAbsolutePath() + "/com.coolstore.wangcai";
 	}
+
+	public boolean HasShowRiskHint() {
+		return m_sharedPreference.getBoolean(sg_strHasShowRiskHint, false);		
+	}
+	public void SetHasShowRiskHint() {
+		Editor editor = m_sharedPreference.edit();
+		editor.putBoolean(sg_strHasShowRiskHint, true);
+		editor.commit();
+	}
+	
 	
 	private SharedPreferences m_sharedPreference = null; 
 }

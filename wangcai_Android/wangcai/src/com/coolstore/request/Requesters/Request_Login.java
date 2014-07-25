@@ -1,5 +1,7 @@
 package com.coolstore.request.Requesters;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -11,8 +13,9 @@ import android.util.Log;
 import com.coolstore.common.Config;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.common.Util;
-import com.coolstore.request.AppWallConfig;
+import com.coolstore.request.OfferWallManager;
 import com.coolstore.request.ExtractInfo;
+import com.coolstore.request.OfferWalls;
 import com.coolstore.request.RequestManager;
 import com.coolstore.request.Requester;
 import com.coolstore.request.TaskListInfo;
@@ -24,19 +27,16 @@ public class Request_Login extends Requester{
 	}
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("imei", SystemInfo.GetImei());
-			mapRequestInfo.put("serial", SystemInfo.GetSerial());
-			mapRequestInfo.put("phone", SystemInfo.GetPhoneNumber());
-			mapRequestInfo.put("android_id", SystemInfo.GetAndroidId());
-			mapRequestInfo.put("mac", SystemInfo.GetMacAddress());		
-			mapRequestInfo.put("sign", m_strSign);		
-			mapRequestInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetLoginUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new LinkedHashMap<String, String>();
+		mapRequestInfo.put("imei", SystemInfo.GetImei());
+		mapRequestInfo.put("serial", SystemInfo.GetSerial());
+		mapRequestInfo.put("phone", SystemInfo.GetPhoneNumber());
+		mapRequestInfo.put("android_id", SystemInfo.GetAndroidId());
+		mapRequestInfo.put("mac", SystemInfo.GetMacAddress());		
+		mapRequestInfo.put("sign", m_strSign);		
+		mapRequestInfo.put("timestamp", String.valueOf(System.currentTimeMillis()));
+		super.InitPostRequestInfo(Config.GetLoginUrl(), "", mapRequestInfo);
 	}
 
     @Override
@@ -51,18 +51,19 @@ public class Request_Login extends Requester{
 		m_userInfo = ReadUserInfo(rootObject);
 		m_extractInfo = ReadExtractInfo(rootObject);
 		m_taskListInfo = ReadTaskListInfo(rootObject);
-		m_appwalConfig = ParseAppwallConfig(rootObject);
+		m_appwalConfig = ParseOfferwallConfig(rootObject);
 
     	return true;
 	}
     
     @Override
-	public void OnPreSend() {
-		RequestInfo reqInfo = GetRequestInfo();
-		String strPostData = reqInfo.GetPostData();
+	public void Initialize() {
+    	super.Initialize();
+    	
+		String strPostData = GetPostData();
 		
 		String strSha1 = Util.GetSha1(strPostData + "c4c6ac66-3d86-4692-bf5c-78fc4c3df1a0");
-		reqInfo.AddData("sig", strSha1.substring(2, 2 + 32));
+		AddData("sig", strSha1.substring(2, 2 + 32));
 	}
 
     //读用户信息
@@ -177,22 +178,75 @@ public class Request_Login extends Requester{
 		}
 		return taskListInfo;
     }
-    private AppWallConfig ParseAppwallConfig(JSONObject rootObject) {
-    	AppWallConfig appwallConfig = new AppWallConfig();
+    private static class WallInfo {
+    	public WallInfo(String strName, int nStatus) {
+    		m_strName = strName;
+    		m_nStatus = nStatus;
+    	}
+    	public String m_strName;
+    	public int m_nStatus;
+    }
+    private OfferWallManager ParseOfferwallConfig(JSONObject rootObject) {
+    	OfferWallManager offerWallConfig = new OfferWallManager();
 		try {
+			ArrayList<WallInfo> listWallInfo = new ArrayList<WallInfo>();
 			JSONObject jsonObject = rootObject.getJSONObject("offerwall");
-			appwallConfig.AddWall("mopan", Util.ReadJsonInt(jsonObject, "mopan"));
-			appwallConfig.AddWall("jupeng", Util.ReadJsonInt(jsonObject, "jupeng"));
-			appwallConfig.AddWall("miidi", Util.ReadJsonInt(jsonObject, "miidi"));
-			appwallConfig.AddWall("domob", Util.ReadJsonInt(jsonObject, "domob"));
-			appwallConfig.AddWall("punchbox", Util.ReadJsonInt(jsonObject, "punchbox"));
-			appwallConfig.AddWall("mobsmar", Util.ReadJsonInt(jsonObject, "mobsmar"));
-			appwallConfig.AddWall("limei", Util.ReadJsonInt(jsonObject, "limei"));
-			appwallConfig.AddWall("youmi", Util.ReadJsonInt(jsonObject, "youmi"));
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strMopan);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strJupeng);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strMiidi);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strDomob);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strPunchbox);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strMobsmar);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strLimei);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strMopan);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strYoumi);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strAnwo);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strWanpu);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strWinAds);
+			ReadOfferWall(listWallInfo, jsonObject, OfferWalls.sg_strDianLe);
+
+			try {
+				//读顺序, 并按顺序加进去
+				JSONArray jsonArray = jsonObject.getJSONArray("__sort");
+				int nCount = 0;
+				if (jsonArray != null) {
+					nCount = jsonArray.length();
+				}
+				for (int i = 0;  i < nCount; ++i) {
+					String strName = jsonArray.getString(i);
+					WallInfo wallInfo = FindAndRemove(listWallInfo, strName);	//查找并删除
+					if (wallInfo != null) {
+						offerWallConfig.AddWall(wallInfo.m_strName, wallInfo.m_nStatus);
+					}
+				}
+			} catch (JSONException e) {	}	
+			//把剩下的加进去
+			for (WallInfo wallInfo : listWallInfo) {
+				offerWallConfig.AddWall(wallInfo.m_strName, wallInfo.m_nStatus);				
+			}
 		} catch (JSONException e) {
-			appwallConfig = null;
+			offerWallConfig = null;
 		}	
-		return appwallConfig;
+		return offerWallConfig;
+    }
+    private WallInfo FindAndRemove(ArrayList<WallInfo> listWallInfo, final String strName) {
+    	int nCount = listWallInfo.size();
+    	for (int i = 0; i < nCount; i++) {
+    		WallInfo wallInfo = listWallInfo.get(i);
+    		if (strName.equals(wallInfo.m_strName)) {
+    			listWallInfo.remove(i);
+    			return wallInfo;
+    		}
+    	}
+    	return null;
+    }
+
+    private void ReadOfferWall(ArrayList<WallInfo> listWallInfo, JSONObject obj, String strName) {
+    	int nStatus = Util.ReadJsonInt(obj, strName, -1);
+    	if (nStatus < 0) {
+    		return;
+    	}
+    	listWallInfo.add(new WallInfo(strName, nStatus));
     }
     
 
@@ -211,7 +265,7 @@ public class Request_Login extends Requester{
     public boolean GetNeedForceUpdate() {
     	return m_bNeedForceUpdate;
     }
-    public AppWallConfig GetWallConfig() {
+    public OfferWallManager GetWallConfig() {
     	return m_appwalConfig;
     }
     public int GetPollElapse() {
@@ -227,7 +281,7 @@ public class Request_Login extends Requester{
 	private UserInfo m_userInfo = null;
 	private TaskListInfo m_taskListInfo = null;	
 	private ExtractInfo m_extractInfo = null;
-	private AppWallConfig m_appwalConfig = null;
+	private OfferWallManager m_appwalConfig = null;
 	private String m_strTipsString = null;
 }
 

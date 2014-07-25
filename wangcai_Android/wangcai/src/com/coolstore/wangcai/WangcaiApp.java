@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
 
-import net.youmi.android.AdManager;
-import net.youmi.android.offers.OffersManager;
 import cn.jpush.android.api.JPushInterface;
 import cn.sharesdk.framework.ShareSDK;
 import cn.waps.AppConnect;
@@ -18,10 +16,11 @@ import com.coolstore.common.SLog;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.common.TimerManager;
 import com.coolstore.common.Util;
-import com.coolstore.request.AppWallConfig;
+import com.coolstore.request.OfferWallManager;
 import com.coolstore.request.ExchangeListInfo;
 import com.coolstore.request.ExtractInfo;
 import com.coolstore.request.RequestManager;
+import com.coolstore.request.RequestManager.IRequestManagerCallback;
 import com.coolstore.request.Requester;
 import com.coolstore.request.RequesterFactory;
 import com.coolstore.request.SurveyInfo;
@@ -39,6 +38,7 @@ import android.telephony.TelephonyManager;
 
 public class WangcaiApp implements 
 									RequestManager.IRequestManagerCallback, 
+									RequestManager.IRequestManagerEvent,
 									TimerManager.TimerManagerCallback{
 	public interface WangcaiAppEvent {
 		void OnLoginComplete(boolean bFirstComplete, int nResult, String strMsg);
@@ -114,17 +114,14 @@ public class WangcaiApp implements
 	}
 	private void OnFirstLogin() {
 		String strDeviceId = m_userInfo.GetDeviceId();
-		//有米
-        AdManager.getInstance(m_AppContext).init(Config.sg_strYoumiAppId, Config.sg_strYoumiAppSecret, false);
-        AdManager.getInstance(m_AppContext).setEnableDebugLog(false);
-        
-        OffersManager.getInstance(m_AppContext).setCustomUserId(strDeviceId);
-		OffersManager.getInstance(m_AppContext).onAppLaunch();
 
 		//极光推送
 		JPushInterface.setAlias(m_AppContext, strDeviceId, null);
         JPushInterface.setDebugMode(BuildSetting.sg_bIsDebug);
 		JPushInterface.init(m_AppContext);
+		if (!ConfigCenter.GetInstance().ShouldReceivePush()) {
+			JPushInterface.stopPush(m_AppContext);
+		}
 	}
 	public boolean NeedForceUpdate() {
 		return m_bNeedForceUpdate;
@@ -166,6 +163,13 @@ public class WangcaiApp implements
 	public ExchangeListInfo GetExchangeListInfo() {
 		return m_exchangeListInfo;
 	}
+	@Override
+	public boolean RequestManagerOnComplete(Requester req, boolean bOverwrite,
+			IRequestManagerCallback pCallback) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
 	public void OnRequestComplete(int nRequestId, Requester req) {
 		if (req instanceof Request_Login) {
 			int nResult = req.GetResult();
@@ -192,7 +196,7 @@ public class WangcaiApp implements
 				
 				m_extractInfo = loginRequester.GetExtractInfo();
 				m_taskListInfo = loginRequester.GetTaskListInfo();
-				m_appWallConfig = loginRequester.GetWallConfig();
+				m_offerWallConfig = loginRequester.GetWallConfig();
 				m_nPollElapse = loginRequester.GetPollElapse();
 
 				if (bFirstLogin) {
@@ -410,8 +414,8 @@ public class WangcaiApp implements
     public TaskListInfo GetTaskListInfo() {
     	return m_taskListInfo;
     }
-    public AppWallConfig GetAppWallConfig() {
-    	return m_appWallConfig; 
+    public OfferWallManager GetOfferWallConfig() {
+    	return m_offerWallConfig; 
     }
     public int GetPollElapse() {
     	return m_nPollElapse;
@@ -475,7 +479,7 @@ public class WangcaiApp implements
 	private boolean m_bNeedForceUpdate = false;
 	private boolean m_bHasLogin = false;
 	private ArrayList<TaskInfo> m_listTaskInfos = null;
-	private AppWallConfig m_appWallConfig = null;
+	private OfferWallManager m_offerWallConfig = null;
 	
 	private int m_nPollElapse = 0;
 	private Context m_AppContext = null;

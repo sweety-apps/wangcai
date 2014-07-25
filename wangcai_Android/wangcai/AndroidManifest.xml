@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.coolstore.wangcai"
     android:versionCode="2"
-    android:versionName="1.1" >
+    android:versionName="1.2" >
   	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="14" />
 
 	<permission android:name="com.coolstore.wangcai.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
@@ -38,9 +38,14 @@
 	<uses-permission android:name="android.permission.GET_TASKS" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-		
-		
-    
+	
+	<!-- winads -->
+	<!--  
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	-->
+	
     <application
        android:allowBackup="true"
        android:icon="@drawable/ic_launcher"
@@ -79,13 +84,33 @@
        <activity android:name="com.coolstore.wangcai.activity.MidiActivity" android:screenOrientation="portrait" android:theme="@style/WangcaiTheme" />
        <activity android:name="com.imopan.mpwall.MpWallActivity" android:configChanges="keyboardHidden|orientation" />
        
-       <activity
+       <!-- winads -->
+       <!-- 
+		<activity android:name="ztxi.fxmi.plhr.offers.OffersActivity" android:screenOrientation="portrait"/>
+		<activity android:name="ztxi.fxmi.plhr.offers.FeedBackInfo" android:screenOrientation="portrait" android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+		<service android:name="ztxi.fxmi.plhr.offers.parameter.SyService"/>
+		<receiver android:name="ztxi.fxmi.plhr.offers.AutoOpenReceiver" >
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.offers.REDOWNLOAD" />
+			</intent-filter>
+		</receiver> 
+        -->
+
+		<!-- 点乐 -->
+        <activity android:name="com.dlnetwork.DianleGoogleActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:configChanges="keyboardHidden|orientation"/>
+		<service android:name="com.dlnetwork.DianleGoogleService" />
+       
+       
+		<activity
             android:name="com.coolstore.wangcai.Share.WXEntryActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
        
-       <activity
+		<activity
 			android:name="cn.sharesdk.framework.ShareSDKUIShell"
 			android:theme="@android:style/Theme.Translucent.NoTitleBar"
 			android:configChanges="keyboardHidden|orientation|screenSize"
@@ -101,7 +126,16 @@
 			    <action android:name="android.provider.Telephony.SMS_RECEIVED" />	
 			</intent-filter>	
 		</receiver>
-		
+		<receiver android:name="com.winad.android.wall.BootReceiver" >
+			<intent-filter >
+				<action android:name="android.intent.action.PACKAGE_ADDED" />
+				<data android:scheme="package" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.adwall.REDOWNLOAD" />
+			</intent-filter>
+		</receiver>
+
 		<service android:name="com.punchbox.engine.PunchBoxService"
 				android:process="com.punchbox.punchboxservice"
 				android:exported="true">
@@ -140,6 +174,7 @@
 		<meta-data android:value="wangcai_official" android:name="UMENG_CHANNEL"/>
 		
 		<!-- 安沃 -->
+		<!-- 
 		<activity
 			android:name="com.zkmm.appoffer.AppOfferActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation"
@@ -157,7 +192,7 @@
 				<data android:scheme="package"></data>
 			</intent-filter>
 		</receiver>
-		
+		 -->
 		
 		<!-- 	极光推送 -->
 		<!-- Required -->
@@ -213,6 +248,15 @@
 		        <category android:name="com.coolstore.wangcai" />
 		    </intent-filter>
 		</receiver>
+		
+			
+		<!-- 	winads -->
+		<!-- 
+		<meta-data android:value="1F4962C41354D7934F99474B7DAE1E1B0526C5C8" android:name="PUBLISHER_ID_OFFERS" />
+		<meta-data  android:value="false"  android:name="TESTMODE_OFFERS"  />
+		<meta-data android:name="INTEGRAL_PROXY_ID" android:value="1" /> 
+		-->
    </application>
    
 </manifest>
+

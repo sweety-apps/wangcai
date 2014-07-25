@@ -12,15 +12,12 @@ import com.coolstore.request.Requester;
 public class Request_ExtractPhoneBill extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("phone_num", m_strPhoneNumber);
-			mapRequestInfo.put("amount", String.valueOf(m_nAmount));
-			mapRequestInfo.put("discount", String.valueOf(m_nDiscount));
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetExtractPhoneBillUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("phone_num", m_strPhoneNumber);
+		mapRequestInfo.put("amount", String.valueOf(m_nAmount));
+		mapRequestInfo.put("discount", String.valueOf(m_nDiscount));
+		super.InitPostRequestInfo(Config.GetExtractPhoneBillUrl(), "", mapRequestInfo);
 	}
 
     @Override

@@ -2,6 +2,7 @@ package com.coolstore.wangcai.activity;
 
 import com.coolstore.common.Util;
 import com.coolstore.common.ViewHelper;
+import com.coolstore.request.UserInfo;
 import com.coolstore.wangcai.R;
 import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
@@ -50,7 +51,11 @@ public class ExtractListActivity extends WangcaiActivity implements ExtraItem.Ex
 
     	ViewHelper.SetStateViewBkg(detail, this, R.drawable.jiaoyi, R.drawable.jiaoyi_sel);
     	
-    	int nBalance = WangcaiApp.GetInstance().GetUserInfo().GetBalance();
+    	UserInfo userInfo = WangcaiApp.GetInstance().GetUserInfo();
+    	int nBalance = 0;
+    	if (userInfo != null) {
+    		userInfo.GetBalance();
+    	}
     	String strText = String.format(getString(R.string.usable_balance), Util.FormatMoney(nBalance));
     	ViewHelper.SetTextStr(this, R.id.balance, strText);
    
@@ -59,7 +64,7 @@ public class ExtractListActivity extends WangcaiActivity implements ExtraItem.Ex
     	AddItem(parentView, sg_strAliPay, R.drawable.extract_alipay, "Ö§¸¶±¦");
     	AddItem(parentView, sg_strQbi, R.drawable.extract_qbi, "ÌÚÑ¶Q±Ò");
 
-    	if (!WangcaiApp.GetInstance().GetUserInfo().HasBindPhone()) {
+    	if (userInfo != null && !userInfo.HasBindPhone()) {
     		ViewStub stub = (ViewStub) findViewById(R.id.bind_phone_tip);  
     		stub.inflate(); 
 

@@ -168,7 +168,7 @@ public class Config {
 	}
 	
 	//积分墙规则
-	public static String GetAppWallRuleUrl() {
+	public static String GetOfferWallRuleUrl() {
 		return sg_strWebServiceUrl + "132";
 	}
 
@@ -221,6 +221,15 @@ public class Config {
 	public static String sg_strYoumiAppId = "bc15bcaee2f5d263";
 	public static String sg_strYoumiAppSecret = "6306937f74dd8f5f";
 																//2ca43fa93e8cae3e
+	
+	//米迪
+	public static String sg_strMidiPublishId = "18194";
+	public static String sg_strMidiAppSecret = "l83il64am89r9y6b";
+	
+	
+	//点乐
+	public static String sg_strDianleAppId = "a903aa22facdfe9af70d7259791bbe92";
+	
 	//触控
 	//1DA13AE6B85966B4172AB369B21610D3
 	public static String sg_strPunchboxPlacementId = "818634143n6msqe";

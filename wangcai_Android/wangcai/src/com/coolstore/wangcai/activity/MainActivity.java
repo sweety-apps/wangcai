@@ -31,6 +31,7 @@ import com.coolstore.wangcai.base.ManagedDialogActivity;
 import com.coolstore.wangcai.base.PushReceiver;
 import com.coolstore.wangcai.ctrls.ItemBase;
 import com.coolstore.wangcai.ctrls.MainItem;
+import com.coolstore.wangcai.dialog.CommonDialog;
 import com.coolstore.wangcai.dialog.HintBindPhoneDialog;
 import com.coolstore.wangcai.dialog.HintTaskLevelDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -47,7 +48,6 @@ import android.content.IntentFilter;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,8 +84,9 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WangcaiApp.GetInstance().Initialize(this);
-        WangcaiApp.GetInstance().Init3rdSdk(this);
+		WangcaiApp app = WangcaiApp.GetInstance();
+        app.Initialize(this);
+        app.Init3rdSdk(this);
 		
         InitView();
 
@@ -268,6 +269,11 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 				ActivityHelper.ShowMyWnagcaiActivity(this);
 			}			
 		}
+		else if (m_hintTaskRiskDialog != null && nDialogId == m_hintTaskRiskDialog.GetDialogId()) {
+			//任务风险提示
+			ConfigCenter.GetInstance().SetHasShowRiskHint();
+			ActivityHelper.ShowOfferWall(this, this.getWindow().getDecorView());
+		}
 	}
 	public void OnRequestComplete(int nRequestId, Requester req) {
 		if (req instanceof Request_GetUserInfo) {
@@ -399,7 +405,17 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
 			break;
 		case TaskListInfo.TaskTypeOfferWall:
 			//积分墙
-			ActivityHelper.ShowAppWall(this, this.getWindow().getDecorView());
+			if (!ConfigCenter.GetInstance().HasShowRiskHint()) {
+				if (m_hintTaskRiskDialog == null) {
+					m_hintTaskRiskDialog = new CommonDialog(this);
+					this.RegisterDialog(m_hintTaskRiskDialog);
+					m_hintTaskRiskDialog.SetInfo(null, getString(R.string.risk_hint), getString(R.string.ok_text), null);
+				}
+				m_hintTaskRiskDialog.Show();
+			}
+			else {
+				ActivityHelper.ShowOfferWall(this, this.getWindow().getDecorView());				
+			}
 			break;
 		case TaskListInfo.TaskTypeUserInfo:
 			//填写个人信息
@@ -770,4 +786,5 @@ public class MainActivity extends ManagedDialogActivity implements ItemBase.Item
     private PullToRefreshScrollView m_pullRefreshScrollView = null;
     private boolean m_bShowCompleteTask = false;
     private ProgressDialog m_progressDialog = null;
+    private CommonDialog m_hintTaskRiskDialog = null;
 }

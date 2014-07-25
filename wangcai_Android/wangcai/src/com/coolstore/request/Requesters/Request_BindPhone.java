@@ -16,13 +16,10 @@ public class Request_BindPhone extends Requester{
 		m_strPhoneNumber = strPhoneNumber; 
 	}
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("phone", m_strPhoneNumber);
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetSendCaptchaUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("phone", m_strPhoneNumber);
+		super.InitPostRequestInfo(Config.GetSendCaptchaUrl(), "", mapRequestInfo);
 	}
 
     @Override

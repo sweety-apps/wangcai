@@ -1,12 +1,16 @@
 package com.coolstore.wangcai.activity;
 
+import cn.jpush.android.api.JPushInterface;
+
 import com.coolstore.common.Config;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.wangcai.ConfigCenter;
 import com.coolstore.wangcai.R;
+import com.coolstore.wangcai.WangcaiApp;
 import com.coolstore.wangcai.base.ActivityHelper;
 import com.coolstore.wangcai.base.WangcaiActivity;
 import com.coolstore.wangcai.ctrls.SettingItem;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -59,7 +63,15 @@ public class SettingActivity extends WangcaiActivity {
     	super.onPause();
 
     	ConfigCenter config = ConfigCenter.GetInstance();
-    	config.SetShouldReceivePush(m_pushItem.GetButtonCheck());
+    	
+    	boolean bReceivePush = m_pushItem.GetButtonCheck();
+    	config.SetShouldReceivePush(bReceivePush);
+    	if (bReceivePush) {
+			JPushInterface.resumePush(WangcaiApp.GetInstance().GetContext());    		
+    	}
+    	else {
+			JPushInterface.stopPush(WangcaiApp.GetInstance().GetContext());    		
+    	}
     	config.SetShouldPlaySound(m_soundItem.GetButtonCheck());
     }
     

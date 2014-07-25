@@ -15,15 +15,12 @@ import com.coolstore.request.Requester;
 public class Request_GetExchangeList extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("stamp", m_strTimestamp);
-			mapRequestInfo.put("ver", m_strVersion);
-			mapRequestInfo.put("app", m_strAppName);
-			m_requestInfo = Requester.NewGetRequestInfo(Config.GetExchageListUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("stamp", m_strTimestamp);
+		mapRequestInfo.put("ver", m_strVersion);
+		mapRequestInfo.put("app", m_strAppName);
+		super.InitGetRequestInfo(Config.GetExchageListUrl(), "", mapRequestInfo);
 	}
 
     @Override

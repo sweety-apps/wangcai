@@ -11,13 +11,10 @@ import com.coolstore.request.Requester;
 public class Request_DownloadApp extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("appid", m_strAppId);
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetDownloadAppUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("appid", m_strAppId);
+		super.InitPostRequestInfo(Config.GetDownloadAppUrl(), "", mapRequestInfo);
 	}
 
     @Override

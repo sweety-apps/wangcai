@@ -16,15 +16,12 @@ import com.coolstore.request.SurveyInfo;
 public class Request_SurveyList extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("stamp", String.valueOf(System.currentTimeMillis()));
-			mapRequestInfo.put("ver", m_strVersion);
-			mapRequestInfo.put("app", m_strAppName);
-			m_requestInfo = Requester.NewGetRequestInfo(Config.GetSurveyListUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("stamp", String.valueOf(System.currentTimeMillis()));
+		mapRequestInfo.put("ver", m_strVersion);
+		mapRequestInfo.put("app", m_strAppName);
+		super.InitGetRequestInfo(Config.GetSurveyListUrl(), "", mapRequestInfo);
 	}
 
     @Override

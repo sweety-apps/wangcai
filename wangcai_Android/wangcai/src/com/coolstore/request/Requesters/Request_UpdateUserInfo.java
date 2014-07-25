@@ -11,15 +11,12 @@ import com.coolstore.request.Requester;
 public class Request_UpdateUserInfo extends Requester{
 
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			mapRequestInfo.put("age", String.valueOf(m_nAge));
-			mapRequestInfo.put("sex", String.valueOf(m_nSex));
-			mapRequestInfo.put("interest", m_strInterest);
-			m_requestInfo = Requester.NewPostRequestInfo(Config.GetUpdateUserInfoUrl(), "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+		mapRequestInfo.put("age", String.valueOf(m_nAge));
+		mapRequestInfo.put("sex", String.valueOf(m_nSex));
+		mapRequestInfo.put("interest", m_strInterest);
+		super.InitPostRequestInfo(Config.GetUpdateUserInfoUrl(), "", mapRequestInfo);
 	}
 
     @Override

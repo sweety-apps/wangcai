@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+
 import android.content.Context;
 
 import com.coolstore.request.Requester;
@@ -20,13 +21,9 @@ public class Request_DownloadFile extends Requester{
 	}
 	
     @Override
-	public Requester.RequestInfo GetRequestInfo() {
-		if (m_requestInfo == null) {
-			Map<String, String> mapRequestInfo = new HashMap<String, String>();
-			
-			m_requestInfo = Requester.NewGetRequestInfo(m_strUrl, "", mapRequestInfo);
-		}
-		return m_requestInfo;
+	protected void InitRequestInfo() {	
+		Map<String, String> mapRequestInfo = new HashMap<String, String>();
+    	super.InitGetRequestInfo(m_strUrl, "", mapRequestInfo);
 	}
 
     @Override

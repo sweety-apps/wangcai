@@ -18,6 +18,9 @@
 
 	<string name="select_gift_lebal">请选择要兑换的商品：</string>
 	
+	
+	<string name="risk_hint">近日有投诉个别厂商的任务存在恶意行为，目前问题应用已下架，建议用户体验应用前，安装一款安全软件如“腾讯手机管家”等</string>
+	
 	<string name="agree">同意</string>
 	<string name="disagree">拒绝</string>
 	<string name="menu">菜单</string>
@@ -264,4 +267,6 @@
 	<string name="app_wall_anwo_text">安沃体验中心</string>
 	<string name="app_wall_domob_text">多盟体验中心</string>
 	<string name="app_wall_wanpu_text">万普体验中心</string>
+	<string name="app_wall_dianle_text">点乐体验中心</string>
+	<string name="app_wall_winads_text">赢告无限体验中心</string>
 </resources>

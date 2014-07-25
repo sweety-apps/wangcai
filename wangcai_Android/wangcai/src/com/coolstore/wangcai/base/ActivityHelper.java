@@ -13,7 +13,7 @@ import com.coolstore.wangcai.activity.ExtractSucceedActivity;
 import com.coolstore.wangcai.activity.InviteActivity;
 import com.coolstore.wangcai.activity.LotteryActivity;
 import com.coolstore.wangcai.activity.MyWangcaiActivity;
-import com.coolstore.wangcai.activity.PopupWinAppWall;
+import com.coolstore.wangcai.activity.PopupWinOfferWall;
 import com.coolstore.wangcai.activity.PopupWinLevelUpgrate;
 import com.coolstore.wangcai.activity.PopupWinNewAward;
 import com.coolstore.wangcai.activity.RegisterActivity;
@@ -55,7 +55,7 @@ public class ActivityHelper {
     }
 
     public static void ShowAppInstallActivity(Activity owner) {
-    	String strUrl = RequestManager.GetInstance().BuildSessoinUrl(Config.GetAppWallRuleUrl());
+    	String strUrl = RequestManager.GetInstance().BuildSessoinUrl(Config.GetOfferWallRuleUrl());
     	ShowWebViewActivity(owner, "重要提示", strUrl);
     }
 
@@ -140,11 +140,11 @@ public class ActivityHelper {
     	it.putExtra(sg_strBindDeviceCount, nBindDeviceCount);
     	owner.startActivity(it);
     }
-    public static void ShowWebViewActivity(Activity owner, String strTitle, String strUrl) {
-    	Intent it = new Intent(owner, WebviewActivity.class);
+    public static void ShowWebViewActivity(Context context, String strTitle, String strUrl) {
+    	Intent it = new Intent(context, WebviewActivity.class);
     	it.putExtra(sg_strUrl, strUrl);
     	it.putExtra(sg_strTitle, strTitle);
-    	owner.startActivity(it);
+    	context.startActivity(it);
     }
     public static void ShowSessionWebViewActivity(Activity owner, String strTitle, String strUrl) {
     	strUrl = RequestManager.GetInstance().BuildSessoinUrl(strUrl);
@@ -167,8 +167,8 @@ public class ActivityHelper {
     }
 
     //显示积分墙
-    public static PopupWindow ShowAppWall(Activity owner, View viewParent) {
-    	PopupWinAppWall win = new PopupWinAppWall(owner);
+    public static PopupWindow ShowOfferWall(Activity owner, View viewParent) {
+    	PopupWinOfferWall win = new PopupWinOfferWall(owner);
     	win.showAtLocation(viewParent, Gravity.FILL, 0, 0); 
     	return win;
     }

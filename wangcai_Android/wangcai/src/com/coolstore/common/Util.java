@@ -56,6 +56,13 @@ public class Util {
 			return 0;
 		}
 	}
+	public static int ReadJsonInt(JSONObject jsonObj, String strKey, int nDefault) {
+		try {
+			return jsonObj.getInt(strKey);
+		} catch (JSONException e) {
+			return nDefault;
+		}
+	}
 	public static boolean ReadJsonBool(JSONObject jsonObj, String strKey) {
 		try {
 			return jsonObj.getInt(strKey) != 0;
@@ -269,7 +276,8 @@ public class Util {
 			}
 		}*/
 	}
-	public static boolean SendNotification(Context context, Intent intent, int nIconId, String strTitle, String strText) {
+	private static int m_nNotifycationId = 1;
+	public static int SendNotification(Context context, Intent intent, int nIconId, String strTitle, String strText) {
         NotificationManager manager = (NotificationManager)context .getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = new Notification();
         notification.icon = nIconId;
@@ -291,8 +299,8 @@ public class Util {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         // 点击状态栏的图标出现的提示信息设置
         notification.setLatestEventInfo(context, strTitle, strText, pendingIntent);
-        manager.notify(1, notification);
-		return true;
+        manager.notify(++m_nNotifycationId, notification);
+		return m_nNotifycationId;
 	}
     public static String GetMainLogoPath(Context context) {
     	String strFileName = "main_icon.png";

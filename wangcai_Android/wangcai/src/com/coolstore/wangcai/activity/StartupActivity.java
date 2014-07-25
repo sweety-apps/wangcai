@@ -1,7 +1,6 @@
 package com.coolstore.wangcai.activity;
 
 
-import com.coolstore.common.BuildSetting;
 import com.coolstore.common.Config;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.common.Util;
@@ -142,7 +141,7 @@ public class StartupActivity extends ManagedDialogActivity {
 			//Éý¼¶
 			if (inClickedViewId == DialogInterface.BUTTON_POSITIVE) {
 				String strUpdateUrl = String.format("%s&sysVer=%s", Config.GetLiveUpdateUrl(), SystemInfo.GetVersion());
-			
+
 				Intent intent = new Intent();        
 				intent.setAction("android.intent.action.VIEW");    
 				Uri contentUrl = Uri.parse(strUpdateUrl);   

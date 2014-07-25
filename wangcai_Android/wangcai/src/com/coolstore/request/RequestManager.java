@@ -4,22 +4,27 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.KeyStore;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-
 import javax.net.ssl.TrustManagerFactory;
+
 import com.coolstore.common.BuildSetting;
 import com.coolstore.common.IdGenerator;
 import com.coolstore.common.LogUtil;
 import com.coolstore.common.SystemInfo;
 import com.coolstore.common.Util;
 import com.coolstore.wangcai.WangcaiApp;
+import com.coolstore.wangcai.WangcaiApp.WangcaiAppEvent;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -35,18 +40,24 @@ public class RequestManager {
 		return sg_requestManager;
 	}
 	private class RequestRecord {
-		RequestRecord(int nRequestId, Requester requester, IRequestManagerCallback pCallback) {
+		RequestRecord(int nRequestId, boolean bOverwrite, Requester requester, IRequestManagerCallback pCallback) {
 			m_nRequestId = nRequestId;
-			m_pCallback = pCallback;
+			m_pCallback = new WeakReference<IRequestManagerCallback>(pCallback);
 			m_requester = requester;
+			m_bOverwrite = bOverwrite;
 		}
 		Requester m_requester;
 		int m_nRequestId = 0;
-		IRequestManagerCallback m_pCallback;
+		boolean m_bOverwrite = false;
+		WeakReference<IRequestManagerCallback> m_pCallback;
 	}
 	
 	public interface IRequestManagerCallback {
 		void OnRequestComplete(int nRequestId, Requester req);
+	}
+	
+	public interface IRequestManagerEvent {
+		boolean RequestManagerOnComplete(Requester req, boolean bOverwrite, IRequestManagerCallback pCallback); 
 	}
 	
 	void InitSSLContext(Context context) {
@@ -96,11 +107,10 @@ public class RequestManager {
 		//todo   ШЅжи
 		int nRequestId = IdGenerator.NewId();
 		req.SetId(nRequestId);
-		RequestRecord pRecord = new RequestRecord(nRequestId, req, pCallback);
+		RequestRecord pRecord = new RequestRecord(nRequestId, bOverwrite, req, pCallback);
 		Map<String, String> mapData = GetSessionData();
-		Requester.RequestInfo reqInfo = pRecord.m_requester.GetRequestInfo();
 		if (!pRecord.m_requester.IsRaw() &&  mapData.size() > 0) {
-			reqInfo.AddData(mapData);
+			req.AddData(mapData);
 		}
         new RequestTask().execute(pRecord); 
 		return nRequestId;
@@ -139,10 +149,9 @@ public class RequestManager {
             HttpURLConnection connection = null;
 			Requester req = reqRecord.m_requester;
 			try {
-				req.OnPreSend();
+				req.Initialize();
 				
-				Requester.RequestInfo requestInfo = req.GetRequestInfo();
-                String strUrl = requestInfo.m_strUrl;
+                String strUrl = req.GetUrl();
 				URL url = new URL(strUrl);
 
 				if (strUrl.toLowerCase(Locale.US).contains("https://")) {
@@ -157,17 +166,17 @@ public class RequestManager {
 				}
 
 				connection.setConnectTimeout(16 * 1000);
-				if (!Util.IsEmptyString(requestInfo.m_strCookie)) {
-                	connection.addRequestProperty("Cookie", requestInfo.m_strCookie);
+				if (!Util.IsEmptyString(req.GetCookie())) {
+                	connection.addRequestProperty("Cookie", req.GetCookie());
                 }else if (!req.IsRaw()){
                 	connection.addRequestProperty("Cookie", GetCookie());
                 }
  
-				connection.setRequestMethod(requestInfo.m_strRequestMethod);
+				connection.setRequestMethod(req.GetRequestMethod());
 				connection.setDoInput(true);
 				
-				String strPostData = requestInfo.m_strPostData;
-				if (!Util.IsEmptyString(strPostData) && requestInfo.m_strRequestMethod.equals(g_strPost)) {
+				String strPostData = req.GetPostData();
+				if (!Util.IsEmptyString(strPostData) && req.IsPost()) {
 					connection.setDoOutput(true);
 					DataOutputStream streamWriter = new DataOutputStream(connection.getOutputStream());
 					streamWriter.writeBytes(strPostData);
@@ -235,10 +244,49 @@ public class RequestManager {
         }  
         @Override  
         protected void onPostExecute(RequestRecord reqRecord) {
+        	if (m_listRequestManagerEvents != null) {
+        		for (WeakReference<IRequestManagerEvent> eventHandlerRef : m_listRequestManagerEvents) {
+        			IRequestManagerEvent eventHandler = eventHandlerRef.get();
+        			if (eventHandler != null) {
+        				eventHandler.RequestManagerOnComplete(reqRecord.m_requester, reqRecord.m_bOverwrite, reqRecord.m_pCallback.get());
+        			}
+        		}
+        	}
         	if (reqRecord != null && reqRecord.m_pCallback != null) {
-        		reqRecord.m_pCallback.OnRequestComplete(reqRecord.m_nRequestId, reqRecord.m_requester);
+        		IRequestManagerCallback pCallback = reqRecord.m_pCallback.get();
+        		if (pCallback != null){
+        			pCallback.OnRequestComplete(reqRecord.m_nRequestId, reqRecord.m_requester);
+        		}
         	}
         }
+    }
+    public void AttchEvent(IRequestManagerEvent newEventHandler) {
+    	if (m_listRequestManagerEvents == null) {
+    		m_listRequestManagerEvents = new ArrayList<WeakReference<IRequestManagerEvent>>();
+    	}
+
+		for (WeakReference<IRequestManagerEvent> eventHandlerRef : m_listRequestManagerEvents) {
+			IRequestManagerEvent eventHandler = eventHandlerRef.get();
+			if (eventHandler == newEventHandler) {
+				return;
+			}
+		}
+		m_listRequestManagerEvents.add(new WeakReference<IRequestManagerEvent>(newEventHandler));
+    }
+    public void DetachEvent(IRequestManagerEvent newEventHandler) {
+    	if (m_listRequestManagerEvents == null) {
+    		return;
+    	}
+
+    	int i = 0;
+		for (WeakReference<IRequestManagerEvent> eventHandlerRef : m_listRequestManagerEvents) {
+			IRequestManagerEvent eventHandler = eventHandlerRef.get();
+			if (eventHandler == newEventHandler) {
+				m_listRequestManagerEvents.remove(i);
+				break;
+			}
+			++i;
+		}
     }
     
     public String BuildSessoinUrl(String strUrl) {	
@@ -266,4 +314,8 @@ public class RequestManager {
 	private String m_strSessionId;
 	private String m_strDeviceId;
 	private int m_nUserId = -1;
+	private ArrayList<WeakReference<IRequestManagerEvent>> m_listRequestManagerEvents;
 }
+
+
+

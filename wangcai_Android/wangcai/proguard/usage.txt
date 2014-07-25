@@ -2230,13 +2230,12 @@ com.coolstore.request.AppWallConfig:
     private static final int sg_nHide
     private static final int sg_nRecommand
     private static final int sg_nInMorePanel
-    53:56:public com.coolstore.request.AppWallConfig$AppWallInfo GetAppWallInfo(int)
 com.coolstore.request.ExtractInfo:
     31:31:public int GetExtractItemCount()
     42:45:public com.coolstore.request.ExtractInfo$ExtractItem GetExtractItem(int)
 com.coolstore.request.HttpsHelper:
-    30:30:public HttpsHelper()
-    63:71:public static void trustAllHosts()
+    26:26:public HttpsHelper()
+    59:67:public static void trustAllHosts()
 com.coolstore.request.HttpsHelper$MyTrustManager
 com.coolstore.request.HttpsHelper$SSLSocketFactoryEx
 com.coolstore.request.HttpsHelper$SSLSocketFactoryEx$1
@@ -2253,7 +2252,7 @@ com.coolstore.request.RequesterFactory:
     5:5:public RequesterFactory()
 com.coolstore.request.Requesters.Reqeust_UpdateInviter
 com.coolstore.request.Requesters.Request_DownloadFile:
-    71:71:public java.io.InputStream GetInputStream()
+    67:67:public java.io.InputStream GetInputStream()
 com.coolstore.request.Requesters.Request_GetExchangeCode:
     37:37:public java.lang.String GetExchangeCode()
 com.coolstore.request.Requesters.Request_GetUserInfo:
@@ -2261,7 +2260,7 @@ com.coolstore.request.Requesters.Request_GetUserInfo:
     37:37:public int GetSex()
     40:40:public java.lang.String GetInterest()
 com.coolstore.request.Requesters.Request_Poll:
-    75:76:public void SetMsgId(int)
+    73:74:public void SetMsgId(int)
 com.coolstore.request.Requesters.Request_UpdateUserInfo:
     31:32:public void SetAge(int)
     34:35:public void SetSex(int)
@@ -2292,8 +2291,7 @@ com.coolstore.wangcai.ConfigCenter:
     private static final java.lang.String sg_strHasClickMenu
     private static final java.lang.String sg_strShouldReceiveMsg
     private static final java.lang.String sg_strShouldPlaySound
-    83:83:public void SetLastBalance(int)
-    85:85:public int GetLastBalance()
+    private static final java.lang.String sg_strLastBalance
 com.coolstore.wangcai.ConfigCenter$ConfigCenterEvent
 com.coolstore.wangcai.Manifest
 com.coolstore.wangcai.Manifest$permission
@@ -2313,13 +2311,14 @@ com.coolstore.wangcai.R$raw
 com.coolstore.wangcai.R$string
 com.coolstore.wangcai.R$style
 com.coolstore.wangcai.R$styleable:
-    2642:2642:public R$styleable()
+    2640:2640:public R$styleable()
 com.coolstore.wangcai.WangcaiApp:
-    118:118:public int GetTaskCount()
-    121:124:com.coolstore.wangcai.WangcaiApp$TaskInfo GetTaskInfo(int)
-    128:128:public boolean HasLogin()
-    359:363:public java.lang.String GetPhoneId()
-    390:390:public int GetPollElapse()
+    68:68:public boolean HasInit()
+    133:133:public int GetTaskCount()
+    136:139:com.coolstore.wangcai.WangcaiApp$TaskInfo GetTaskInfo(int)
+    386:390:public java.lang.String GetPhoneId()
+    417:417:public int GetPollElapse()
+    436:436:public int GetSurveyListVersion()
 com.coolstore.wangcai.WangcaiApp$TaskInfo
 com.coolstore.wangcai.WangcaiApp$WangcaiAppEvent:
     public abstract void OnLevelUpgrate(int)
@@ -2355,8 +2354,6 @@ com.coolstore.wangcai.activity.MainActivity:
     public static final java.lang.String sg_nIntentType
     public static final int sg_nIntentType_NewPurseNotification
 com.coolstore.wangcai.activity.MidiWall
-com.coolstore.wangcai.activity.MyWangcaiActivity:
-    private static final int ms_nRunAnimationTaskId
 com.coolstore.wangcai.activity.RegisterActivity:
     private static final int sg_nTimerElapse
     private static final int sg_nTotalCountDownSeconds
@@ -2377,7 +2374,8 @@ com.coolstore.wangcai.base.ActivityRegistry:
     23:27:public boolean Remove(int)
     31:34:public com.coolstore.wangcai.base.WangcaiActivity GetTopActivity()
 com.coolstore.wangcai.base.AppWallHelper:
-    18:18:public AppWallHelper()
+    20:20:public AppWallHelper()
+com.coolstore.wangcai.base.AppWallHelper$WanpuAppWall
 com.coolstore.wangcai.base.PushReceiver:
     public static final int nPushType_Normal
     public static final int nPushType_Custom
@@ -2394,16 +2392,13 @@ com.coolstore.wangcai.base.SmsReader:
     public static final java.lang.String SmsMessageReceiveAction
 com.coolstore.wangcai.base.WangcaiActivity:
     private static final int sg_nInvlidLevelChanged
-    104:104:public void OnLevelUpgrate(int)
+    106:106:public void OnLevelUpgrate(int)
 com.coolstore.wangcai.ctrls.ItemBase:
     20:23:public void SetVisibility(int)
     30:30:public android.view.View GetView()
 com.coolstore.wangcai.ctrls.MyWangcaiItem:
-    27:30:public void SetVisibility(int)
-    32:32:public android.view.View GetView()
-com.coolstore.wangcai.ctrls.SlidingLayout
-com.coolstore.wangcai.ctrls.SlidingLayout$LeftViewScrollTask
-com.coolstore.wangcai.ctrls.SlidingLayout$RightViewScrollTask
+    25:28:public void SetVisibility(int)
+    30:30:public android.view.View GetView()
 com.coolstore.wangcai.share.WXEntryActivity
 com.google.zxing.Binarizer
 com.google.zxing.BinaryBitmap
